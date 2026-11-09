@@ -13,7 +13,7 @@
 
 ## Constants
 #
-DATASETS_URL="https://issmteam.github.io/ISSM-Documentation/using-issm/tutorials/datasets"
+DATASETS_URL="https://issmteam.github.io/ISSM-Documentation/tutorials/datasets.html"
 DIRECTORY_PREFIX=$(cd $(dirname "$0"); pwd)"/../examples/Data" # Default behavior is to download datasets to examples/Data directory relative to this script
 
 if [ $# -gt 0 ]; then
@@ -37,19 +37,64 @@ while IFS= read -r url; do
 done < <(
 	curl -Lks "$DATASETS_URL" |
 	perl -0777 -ne '
-	if (/<div data-marker="datasets-list-start"><\/div>(.*?)<div data-marker="datasets-list-end"><\/div>/s) {
-	print $1;
-	}
+		if (m{
+			<div\b[^>]*\bdata-marker=["'"'"']datasets-list-start["'"'"'][^>]*>\s*</div>
+		(.*?)
+		<div\b[^>]*\bdata-marker=["'"'"']datasets-list-end["'"'"'][^>]*>\s*</div>
+		}sx) {
+		print $1;
+		}
 	' |
-	grep -Eo 'href="[^"]*"' |
+	grep -Eo 'href="[^"]+"' |
 	sed 's/^href="//; s/"$//'
 )
 
+printf '================================================================\n'
+printf 'Found %d dataset URLs\n' "${#dataset_urls[@]}"
+printf '%s\n' "${dataset_urls[@]}"
+printf '================================================================\n'
+
+# Skip datasets that have already been downloaded
+#
+urls_to_download=()
+for url in "${dataset_urls[@]}"; do
+	[ -z "${url}" ] && continue
+
+	file_name=$(basename "${url%%\?*}")
+	[ -z "${file_name}" ] && continue
+
+	if [ -f "${DIRECTORY_PREFIX}/${file_name}" ]; then
+		echo "File ${file_name} already downloaded, skipping..."
+	else
+		urls_to_download+=("${url}")
+	fi
+done
+
 # Get datasets
 #
-echo "Downloading examples datasets..."
-printf '%s\n' "${dataset_urls[@]}" |
-wget --quiet --no-clobber --directory-prefix="${DIRECTORY_PREFIX}" -i -
+# NOTE: wget is not available by default on macOS, so fall back to cURL
+#
+if [ ${#urls_to_download[@]} -eq 0 ]; then
+	echo "All examples datasets already downloaded"
+else
+	echo "Downloading examples datasets..."
+
+	if command -v wget > /dev/null 2>&1; then
+		printf '%s\n' "${urls_to_download[@]}" |
+		wget --quiet --no-check-certificate --no-clobber --directory-prefix="${DIRECTORY_PREFIX}" -i -
+	else
+		for url in "${urls_to_download[@]}"; do
+			file_name=$(basename "${url%%\?*}")
+
+			curl -Lk --fail --silent --show-error --output "${DIRECTORY_PREFIX}/${file_name}.part" "${url}" &&
+			mv "${DIRECTORY_PREFIX}/${file_name}.part" "${DIRECTORY_PREFIX}/${file_name}" ||
+			{
+				echo "Error: failed to download ${url}" >&2
+				rm -f "${DIRECTORY_PREFIX}/${file_name}.part"
+			}
+		done
+	fi
+fi
 
 # Expand zip files
 unzip -n -d "${DIRECTORY_PREFIX}" "${DIRECTORY_PREFIX}/*.zip"

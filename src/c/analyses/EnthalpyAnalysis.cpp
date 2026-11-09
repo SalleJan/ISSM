@@ -454,9 +454,6 @@ void           EnthalpyAnalysis::Core(FemModel* femmodel){/*{{{*/
 	PostProcessing(femmodel);
 
 }/*}}}*/
-void           EnthalpyAnalysis::PreCore(FemModel* femmodel){/*{{{*/
-	_error_("not implemented");
-}/*}}}*/
 ElementVector* EnthalpyAnalysis::CreateDVector(Element* element){/*{{{*/
 	/*Default, return NULL*/
 	return NULL;
@@ -1390,6 +1387,7 @@ void           EnthalpyAnalysis::InputUpdateFromSolution(IssmDouble* solution,El
 	int         i,rheology_law;
 	int        *doflist   = NULL;
 	IssmDouble *xyz_list  = NULL;
+	IssmDouble  beta, rho_i, g;
 
 	/*Fetch number of nodes and dof for this finite element*/
 	int numnodes    = element->GetNumberOfNodes();
@@ -1415,6 +1413,10 @@ void           EnthalpyAnalysis::InputUpdateFromSolution(IssmDouble* solution,El
 	/*Get all inputs and parameters*/
 	element->GetInputValue(&converged,ConvergedEnum);
 	element->GetInputListOnNodes(&pressure[0],PressureEnum);
+	element->FindParam(&beta,MaterialsBetaEnum);
+	element->FindParam(&rho_i,MaterialsRhoIceEnum);
+	element->FindParam(&g,ConstantsGEnum);
+	beta = beta*rho_i*g; /* pressure melting point in K m-1 for Arrhenius law*/
 	int finite_element = element->GetElementType(); if(finite_element==P1Enum) finite_element = P1DGEnum;
 	if(converged){
 		for(i=0;i<numnodes;i++){
@@ -1468,7 +1470,7 @@ void           EnthalpyAnalysis::InputUpdateFromSolution(IssmDouble* solution,El
 				break;
 			case ArrheniusEnum:{
 				element->GetVerticesCoordinates(&xyz_list);
-				for(i=0;i<numnodes;i++) B[i]=Arrhenius(temperature[i],surface[i]-xyz_list[i*3+2],n[i]);
+				for(i=0;i<numnodes;i++) B[i]=Arrhenius(temperature[i],surface[i]-xyz_list[i*3+2],n[i],beta);
 				element->AddInput(MaterialsRheologyBEnum,&B[0],finite_element);
 				break;
 				}

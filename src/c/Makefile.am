@@ -319,6 +319,7 @@ issm_sources += \
 	./cores/hydrology_core.cpp \
 	./solutionsequences/solutionsequence_hydro_nonlinear.cpp \
 	./solutionsequences/solutionsequence_shakti_nonlinear.cpp \
+	./solutionsequences/solutionsequence_imlglads_nonlinear.cpp \
 	./solutionsequences/solutionsequence_glads_nonlinear.cpp \
 	./cores/stressbalance_core.cpp \
 	./solutionsequences/solutionsequence_stokescoupling_nonlinear.cpp \
@@ -485,6 +486,9 @@ endif
 if HYDROLOGYGLADS
 issm_sources += ./analyses/HydrologyGlaDSAnalysis.cpp
 endif
+if HYDROLOGYIMLGLADS
+issm_sources += ./analyses/HydrologyIMLGlaDSAnalysis.cpp
+endif
 if HYDROLOGYDCINEFFICIENT
 issm_sources += ./analyses/HydrologyDCInefficientAnalysis.cpp
 endif
@@ -591,6 +595,11 @@ endif
 if PyBind11
 issm_sources += ./classes/Params/EmulatorParam.cpp
 issm_sources += ./modules/StressBalanceEmulatorx/StressBalanceEmulatorx.cpp
+endif
+#}}}
+# GPU_HO{{{
+if GPU_HO
+issm_sources += ./classes/Params/GPUHOParam.cpp
 endif
 #}}}
 # Sampling sources {{{

@@ -164,6 +164,10 @@ void HydrologyShaktiAnalysis::UpdateParameters(Parameters* parameters,IoModel* i
 	parameters->AddObject(iomodel->CopyConstantObject("md.hydrology.gap_height_min",HydrologyGapHeightMinEnum));
 	parameters->AddObject(iomodel->CopyConstantObject("md.hydrology.gap_height_max",HydrologyGapHeightMaxEnum));
 	parameters->AddObject(iomodel->CopyConstantObject("md.hydrology.melt_flag",HydrologyMeltFlagEnum));
+	parameters->AddObject(iomodel->CopyConstantObject("md.hydrology.maxiter",HydrologyMaxiterEnum));
+	parameters->AddObject(iomodel->CopyConstantObject("md.hydrology.restol",HydrologyRestolEnum));
+	parameters->AddObject(iomodel->CopyConstantObject("md.hydrology.reltol",HydrologyReltolEnum));
+	parameters->AddObject(iomodel->CopyConstantObject("md.hydrology.abstol",HydrologyAbstolEnum));
 
   /*Requested outputs*/
   iomodel->FindConstant(&requestedoutputs,&numoutputs,"md.hydrology.requested_outputs");
@@ -177,9 +181,6 @@ void HydrologyShaktiAnalysis::UpdateParameters(Parameters* parameters,IoModel* i
 
 /*Finite Element Analysis*/
 void           HydrologyShaktiAnalysis::Core(FemModel* femmodel){/*{{{*/
-	_error_("not implemented");
-}/*}}}*/
-void           HydrologyShaktiAnalysis::PreCore(FemModel* femmodel){/*{{{*/
 	_error_("not implemented");
 }/*}}}*/
 ElementVector* HydrologyShaktiAnalysis::CreateDVector(Element* element){/*{{{*/
@@ -485,9 +486,15 @@ void           HydrologyShaktiAnalysis::InputUpdateFromSolution(IssmDouble* solu
    xDelete<IssmDouble>(head_old);
 }/*}}}*/
 void           HydrologyShaktiAnalysis::UpdateConstraints(FemModel* femmodel){/*{{{*/
+
 	/*Update active elements based on ice levelset and ocean levelset*/
 	GetMaskOfIceVerticesLSMx(femmodel,true);
 	SetActiveNodesLSMx(femmodel,true);
+
+	IssmDouble rho_ice = femmodel->parameters->FindParam(MaterialsRhoIceEnum);
+	IssmDouble rho_fw  = femmodel->parameters->FindParam(MaterialsRhoFreshwaterEnum);
+	IssmDouble rho_sw  = femmodel->parameters->FindParam(MaterialsRhoSeawaterEnum);
+	IssmDouble g       = femmodel->parameters->FindParam(ConstantsGEnum);
 
 	/*Constrain all nodes that are grounded and unconstrain the ones that float*/
 	for(Object* & object : femmodel->elements->objects){
@@ -507,15 +514,18 @@ void           HydrologyShaktiAnalysis::UpdateConstraints(FemModel* femmodel){/*
 		element->GetInputListOnNodes(&thickness[0],ThicknessEnum);
 		element->GetInputListOnNodes(&ls_active[0],HydrologyMaskNodeActivationEnum);
 
-		//for(int in=0;in<numnodes;in++){ //
-		for(int in=0;in<3;in++){ //
+		for(int in=0;in<numnodes;in++){ //
 			Node* node=element->GetNode(in);
 			if(mask[in]>0. && ls_active[in]==1.){
 				node->Activate(); //Not sure if we need this!
 			}
 			else{
-			   node->Deactivate();// node should be inactive
-            node->ApplyConstraint(0,0.0); // set head (dof 0) to 0.0 m
+				node->Deactivate();// node should be inactive
+				IssmDouble h = 0.;
+				if(mask[in]<0.){
+					h = bed[in]*(rho_fw-rho_sw)/rho_fw;
+				}
+            node->ApplyConstraint(0, h); 
 			}
 		}
 		xDelete<IssmDouble>(mask);

@@ -197,7 +197,7 @@ class Penta: public Element,public ElementHook,public PentaRef{
 		IssmDouble		TotalCalvingMeltingFluxLevelset(bool scaled);
 		IssmDouble     TotalFloatingBmb(bool scaled);
 		IssmDouble     TotalGroundedBmb(bool scaled);
-		IssmDouble     TotalHydrologyBasalFlux(bool scaled){_error_("not implemented yet");};
+		IssmDouble     TotalHydrologyGroundinglineDischarge(bool scaled){_error_("not implemented yet");};
 		IssmDouble     TotalSmb(bool scaled);
 		IssmDouble     TotalSmbMelt(bool scaled);
 		IssmDouble     TotalSmbRefreeze(bool scaled);
@@ -236,6 +236,9 @@ class Penta: public Element,public ElementHook,public PentaRef{
 		void       SealevelchangeOceanAverage(GrdLoads* loads, Vector<IssmDouble>* oceanareas, Vector<IssmDouble>* subelementoceanareas, IssmDouble* sealevelpercpu, SealevelGeometry* slgeom){_error_("not implemented yet");};
 		void       SealevelchangeDeformationConvolution(IssmDouble* sealevelpercpu, GrdLoads* loads,  IssmDouble* rotationvector,SealevelGeometry* slgeom){_error_("not implemented yet");};
 		void       SealevelchangeUpdateViscousFields(IssmDouble lincoeff, int newindex, int offset){_error_("not implemented yet");};
+		#endif
+		#ifdef _HAVE_GPU_HO_
+		void GetHOMetadataArraySizes(void);
 		#endif
 
 		/*}}}*/

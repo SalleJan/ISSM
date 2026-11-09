@@ -16,7 +16,10 @@
 #include <sstream>
 #include <vector>
 namespace py = pybind11;
+
 #endif
+
+#define MAXVERTICES 6 /*Maximum number of vertices per element, currently Penta, to avoid dynamic mem allocation*/
 
 void SmbForcingx(FemModel* femmodel){/*{{{*/
 
@@ -31,53 +34,42 @@ void SmbGradientsx(FemModel* femmodel){/*{{{*/
 	//    INPUT parameters: ni: working size of arrays
 	//    INPUT: surface elevation (m): hd(NA)
 	//    OUTPUT: mass-balance (m/yr ice): agd(NA)
-	int v;
-	IssmDouble yts;								// conversion factor year to second
+
+	IssmDouble Href[MAXVERTICES];
+	IssmDouble Smbref[MAXVERTICES];
+	IssmDouble b_pos[MAXVERTICES];
+	IssmDouble b_neg[MAXVERTICES];
+	IssmDouble s[MAXVERTICES];
+	IssmDouble smb[MAXVERTICES];
 
 	/*Loop over all the elements of this partition*/
 	for(Object* & object : femmodel->elements->objects){
 		Element* element=xDynamicCast<Element*>(object);
-
-		/*Allocate all arrays*/
-		int         numvertices = element->GetNumberOfVertices();
-		IssmDouble* Href        = xNew<IssmDouble>(numvertices); // reference elevation from which deviations are used to calculate the SMB adjustment
-		IssmDouble* Smbref      = xNew<IssmDouble>(numvertices); // reference SMB to which deviations are added
-		IssmDouble* b_pos       = xNew<IssmDouble>(numvertices); // Hs-SMB relation parameter
-		IssmDouble* b_neg       = xNew<IssmDouble>(numvertices); // Hs-SMB relation paremeter
-		IssmDouble* s           = xNew<IssmDouble>(numvertices); // surface elevation (m)
-		IssmDouble* smb         = xNew<IssmDouble>(numvertices);
+		int      numvertices = element->GetNumberOfVertices();
+		_assert_(numvertices<=MAXVERTICES);
 
 		/*Recover SmbGradients*/
-		element->GetInputListOnVertices(Href,SmbHrefEnum);
-		element->GetInputListOnVertices(Smbref,SmbSmbrefEnum);
-		element->GetInputListOnVertices(b_pos,SmbBPosEnum);
-		element->GetInputListOnVertices(b_neg,SmbBNegEnum);
+		element->GetInputListOnVertices(&Href[0],SmbHrefEnum);
+		element->GetInputListOnVertices(&Smbref[0],SmbSmbrefEnum);
+		element->GetInputListOnVertices(&b_pos[0],SmbBPosEnum);
+		element->GetInputListOnVertices(&b_neg[0],SmbBNegEnum);
 
 		/*Recover surface elevation at vertices: */
-		element->GetInputListOnVertices(s,SurfaceEnum);
-
-		/* Get constants */
-		femmodel->parameters->FindParam(&yts,ConstantsYtsEnum);
+		element->GetInputListOnVertices(&s[0],SurfaceEnum);
 
 		// loop over all vertices
-		for(v=0;v<numvertices;v++){
-			if(Smbref[v]>0){
-				smb[v]=Smbref[v]+b_pos[v]*(s[v]-Href[v]);
+		for(int i=0;i<numvertices;i++){
+			if(Smbref[i]>0){
+				smb[i]=Smbref[i]+b_pos[i]*(s[i]-Href[i]);
 			}
 			else{
-				smb[v]=Smbref[v]+b_neg[v]*(s[v]-Href[v]);
+				smb[i]=Smbref[i]+b_neg[i]*(s[i]-Href[i]);
 			}
 
-		}  //end of the loop over the vertices
+		} 
 
-		/*Add input to element and Free memory*/
-		element->AddInput(SmbMassBalanceEnum,smb,P1Enum);
-		xDelete<IssmDouble>(Href);
-		xDelete<IssmDouble>(Smbref);
-		xDelete<IssmDouble>(b_pos);
-		xDelete<IssmDouble>(b_neg);
-		xDelete<IssmDouble>(s);
-		xDelete<IssmDouble>(smb);
+		/*Add input to element*/
+		element->AddInput(SmbMassBalanceEnum,&smb[0],P1Enum);
 	}
 
 }/*}}}*/
@@ -593,6 +585,75 @@ void SmbEmulatorx(FemModel* femmodel){/*{{{*/
 
 	InputUpdateFromVectorx(femmodel,smb_local.data(),SmbMassBalanceEnum,VertexLIdEnum);
 
+}/*}}}*/
+void SmbEmulatorUNetx(FemModel* femmodel){/*{{{*/
+
+	if(!femmodel->parameters->Exist(SmbEmulatorEnum)) _error_("SmbEmulatorEnum not found; SMB emulator was not initialized");
+	Param* emulator_param = femmodel->parameters->FindParamObject(SmbEmulatorEnum);
+	if(emulator_param->ObjectEnum()!=EmulatorParamEnum) _error_("Parameter should be EmulatorParam");
+	EmulatorParam* smbemulator = xDynamicCast<EmulatorParam*>(emulator_param);
+
+	int rank = IssmComm::GetRank();
+	int numberofvertices = femmodel->vertices->NumberOfVertices();
+	const IssmDouble dts = 86400.;
+	IssmDouble timeinputs, rho_ice;
+	femmodel->parameters->FindParam(&timeinputs,TimeEnum);
+	femmodel->parameters->FindParam(&rho_ice,MaterialsRhoIceEnum);
+
+	/*Fetch ISSM elevation*/
+	IssmDouble* surface;
+	int surface_size;
+	GetVectorFromInputsx(&surface,&surface_size,femmodel,SurfaceEnum);
+	std::vector<IssmDouble> smb_all(numberofvertices,0.);
+
+	/*Evaluate emulator on rank 0*/
+	if(rank==0){
+		const size_t nvertices = static_cast<size_t>(numberofvertices);
+		const size_t nfeatures = 1;
+		std::vector<float> features(nvertices*nfeatures);
+
+      // unit change
+	   for(size_t i=0;i<nvertices;i++){
+			features[i*nfeatures + 0] = static_cast<float>(surface[i]/1.0);
+		}
+
+		try{
+			py::gil_scoped_acquire gil;
+			std::vector<ssize_t> features_shape = {static_cast<ssize_t>(nvertices),static_cast<ssize_t>(nfeatures)};
+			py::array_t<float> features_np(features_shape,features.data());
+
+			// To-do: interpolation, mesh -> grid
+			//
+
+			py::object output_obj = smbemulator->mod.attr("predict_logits_np")(features_np);
+			py::array_t<float,py::array::c_style | py::array::forcecast> output_array(output_obj);
+			
+			py::buffer_info output_info = output_array.request();
+			const float* output = static_cast<const float*>(output_info.ptr);
+			
+			// To-do: interpolation, grid -> mesh
+			//
+
+			// unit change
+			for(size_t i=0;i<nvertices;i++){
+				smb_all[i] = static_cast<IssmDouble>(output[i]);
+			}
+		}
+		catch(const py::error_already_set& e){
+			_error_("SmbEmulatorx Python exception: " << e.what());
+		}
+		catch(const std::exception& e){
+		   _error_("SmbEmulatorx exception: " << e.what());
+		}
+	}
+
+	xDelete<IssmDouble>(surface);
+
+	ISSM_MPI_Comm comm = IssmComm::GetComm();
+	ISSM_MPI_Bcast(smb_all.data(),numberofvertices,ISSM_MPI_DOUBLE,0,comm);
+   InputUpdateFromVectorx(femmodel,smb_all.data(),SmbMassBalanceEnum,VertexSIdEnum);
+
+	return;
 }/*}}}*/
 #endif
 void SmbHenningx(FemModel* femmodel){/*{{{*/
