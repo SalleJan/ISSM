@@ -1,0 +1,11 @@
+#include <petsc/finclude/petscmat.h>
+#include <petsc/finclude/petscdm.h>
+#include <../ftn/dm/petscdm.h>
+#include <petsc/finclude/petscdmlabel.h>
+#include <../ftn/dm/petscdmlabel.h>
+#include <petsc/finclude/petscfe.h>
+#include <../ftn/dm/petscfe.h>
+#include <petsc/finclude/petscds.h>
+#include <../ftn/dm/petscds.h>
+#include <petsc/finclude/petscdt.h>
+#include <../ftn/dm/petscdt.h>

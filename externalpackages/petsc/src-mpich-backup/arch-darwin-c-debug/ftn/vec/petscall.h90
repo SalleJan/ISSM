@@ -1,0 +1,4 @@
+#include <../ftn/vec/petscsys.h90>
+#include <../ftn/vec/petscsf.h90>
+#include <../ftn/vec/petscis.h90>
+#include <../ftn/vec/petscvec.h90>

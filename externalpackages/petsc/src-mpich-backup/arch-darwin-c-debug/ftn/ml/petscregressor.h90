@@ -1,0 +1,450 @@
+  interface
+  subroutine PetscRegressorRegister(sname,function, ierr)
+  use, intrinsic :: ISO_C_binding
+  character(*) :: sname
+  external :: function
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscRegressorRegister
+#endif
+  interface
+  subroutine PetscRegressorCreate(comm,newregressor, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscRegressor
+  MPIU_Comm :: comm
+  PetscRegressor :: newregressor
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscRegressorCreate
+#endif
+  interface
+  subroutine PetscRegressorView(regressor,viewer, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscRegressor,tPetscViewer
+  PetscRegressor :: regressor
+  PetscViewer :: viewer
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscRegressorView
+#endif
+  interface
+  subroutine PetscRegressorViewFromOptions(A,obj,name, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscRegressor,tPetscObject
+  PetscRegressor :: A
+  PetscObject :: obj
+  character(*) :: name
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscRegressorViewFromOptions
+#endif
+  interface
+  subroutine PetscRegressorSetFromOptions(regressor, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscRegressor
+  PetscRegressor :: regressor
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscRegressorSetFromOptions
+#endif
+  interface
+  subroutine PetscRegressorSetUp(regressor, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscRegressor
+  PetscRegressor :: regressor
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscRegressorSetUp
+#endif
+  interface
+  subroutine PetscRegressorFit(regressor,X,y, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscRegressor,tMat,tVec
+  PetscRegressor :: regressor
+  Mat :: X
+  Vec :: y
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscRegressorFit
+#endif
+  interface
+  subroutine PetscRegressorPredict(regressor,X,y, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscRegressor,tMat,tVec
+  PetscRegressor :: regressor
+  Mat :: X
+  Vec :: y
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscRegressorPredict
+#endif
+  interface
+  subroutine PetscRegressorReset(regressor, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscRegressor
+  PetscRegressor :: regressor
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscRegressorReset
+#endif
+  interface
+  subroutine PetscRegressorDestroy(regressor, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscRegressor
+  PetscRegressor :: regressor
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscRegressorDestroy
+#endif
+  interface
+  subroutine PetscRegressorSetType(regressor,type, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscRegressor
+  PetscRegressor :: regressor
+  character(*) :: type
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscRegressorSetType
+#endif
+  interface
+  subroutine PetscRegressorGetType(regressor,type, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscRegressor
+  PetscRegressor :: regressor
+  character(*) :: type
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscRegressorGetType
+#endif
+  interface
+  subroutine PetscRegressorSetRegularizerWeight(regressor,weight, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscRegressor
+  PetscRegressor :: regressor
+  PetscReal :: weight
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscRegressorSetRegularizerWeight
+#endif
+  interface
+  subroutine PetscRegressorGetTao(regressor,tao, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscRegressor,tTao
+  PetscRegressor :: regressor
+  Tao :: tao
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscRegressorGetTao
+#endif
+  interface
+  subroutine PetscRegressorSetOptionsPrefix(regressor,p, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscRegressor
+  PetscRegressor :: regressor
+  character(*) :: p
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscRegressorSetOptionsPrefix
+#endif
+  interface
+  subroutine PetscRegressorAppendOptionsPrefix(regressor,p, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscRegressor
+  PetscRegressor :: regressor
+  character(*) :: p
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscRegressorAppendOptionsPrefix
+#endif
+  interface
+  subroutine PetscRegressorGetOptionsPrefix(regressor,p, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscRegressor
+  PetscRegressor :: regressor
+  character(*) :: p
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscRegressorGetOptionsPrefix
+#endif
+  interface
+  subroutine PetscRegressorInitializePackage(ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscRegressorInitializePackage
+#endif
+  interface
+  subroutine PetscRegressorFinalizePackage(ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscRegressorFinalizePackage
+#endif
+  interface
+  subroutine PetscRegressorLinearSetFitIntercept(regressor,flg, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscRegressor
+  PetscRegressor :: regressor
+  PetscBool :: flg
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscRegressorLinearSetFitIntercept
+#endif
+  interface
+  subroutine PetscRegressorLinearSetUseKSP(regressor,flg, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscRegressor
+  PetscRegressor :: regressor
+  PetscBool :: flg
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscRegressorLinearSetUseKSP
+#endif
+  interface
+  subroutine PetscRegressorLinearGetKSP(regressor,ksp, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscRegressor,tKSP
+  PetscRegressor :: regressor
+  KSP :: ksp
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscRegressorLinearGetKSP
+#endif
+  interface
+  subroutine PetscRegressorLinearSetType(regressor,type, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscRegressor,ePetscRegressorLinearType
+  PetscRegressor :: regressor
+  PetscRegressorLinearType :: type
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscRegressorLinearSetType
+#endif
+  interface
+  subroutine PetscRegressorLinearGetType(regressor,type, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscRegressor,ePetscRegressorLinearType
+  PetscRegressor :: regressor
+  PetscRegressorLinearType :: type
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscRegressorLinearGetType
+#endif
+  interface operator(.ne.)
+    module procedure PetscRegressornotequals
+  end interface operator (.ne.)
+  interface operator(.eq.)
+    module procedure PetscRegressorequals
+  end interface operator (.eq.)
+
+  interface PetscObjectCast
+    module procedure PetscObjectCastRegressor
+  end interface
+  interface PetscBarrier
+  module procedure PetscBarrierRegressor
+  end interface
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectSAWsTakeAccess
+    module procedure PetscObjectSAWsTakeAccessRegressor
+  end interface
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectSAWsGrantAccess
+    module procedure PetscObjectSAWsGrantAccessRegressor
+  end interface
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectSAWsBlock
+    module procedure PetscObjectSAWsBlockRegressor
+  end interface
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectSAWsSetBlock
+    module procedure PetscObjectSAWsSetBlockRegressor
+  end interface
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectSAWsViewOff
+    module procedure PetscObjectSAWsViewOffRegressor
+  end interface
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectViewSAWs
+    module procedure PetscObjectViewSAWsRegressor
+  end interface
+#endif
+  interface PetscObjectGetType
+    module procedure PetscObjectGetTypeRegressor
+  end interface
+  interface PetscObjectSetPrintedOptions
+    module procedure PetscObjectSetPrintedOptionsRegressor
+  end interface
+  interface PetscObjectInheritPrintedOptions
+    module procedure PetscObjectInheritPrintedOptionsRegressor
+  end interface
+  interface PetscObjectAddOptionsHandler
+    module procedure PetscObjectAddOptionsHandlerRegressor
+  end interface
+  interface PetscObjectProcessOptionsHandlers
+    module procedure PetscObjectProcessOptionsHandlersRegressor
+  end interface
+  interface PetscObjectDestroyOptionsHandlers
+    module procedure PetscObjectDestroyOptionsHandlersRegressor
+  end interface
+  interface PetscObjectReference
+    module procedure PetscObjectReferenceRegressor
+  end interface
+  interface PetscObjectGetReference
+    module procedure PetscObjectGetReferenceRegressor
+  end interface
+  interface PetscObjectDereference
+    module procedure PetscObjectDereferenceRegressor
+  end interface
+  interface PetscObjectRemoveReference
+    module procedure PetscObjectRemoveReferenceRegressor
+  end interface
+  interface PetscObjectHasFunction
+    module procedure PetscObjectHasFunctionRegressor
+  end interface
+  interface PetscObjectSetFromOptions
+    module procedure PetscObjectSetFromOptionsRegressor
+  end interface
+  interface PetscObjectSetUp
+    module procedure PetscObjectSetUpRegressor
+  end interface
+  interface PetscObjectGetName
+    module procedure PetscObjectGetNameRegressor
+  end interface
+  interface PetscObjectDestroy
+    module procedure PetscObjectDestroyRegressor
+  end interface
+  interface PetscObjectView
+    module procedure PetscObjectViewRegressor
+  end interface
+  interface PetscObjectViewFromOptions
+    module procedure PetscObjectViewFromOptionsRegressor
+  end interface
+  interface PetscObjectTypeCompare
+    module procedure PetscObjectTypeCompareRegressor
+  end interface
+  interface PetscObjectObjectTypeCompare
+    module procedure PetscObjectObjectTypeCompareRegressor
+  end interface
+  interface PetscObjectBaseTypeCompare
+    module procedure PetscObjectBaseTypeCompareRegressor
+  end interface
+  interface PetscObjectRegisterDestroy
+    module procedure PetscObjectRegisterDestroyRegressor
+  end interface
+  interface PetscObjectGetId
+    module procedure PetscObjectGetIdRegressor
+  end interface
+  interface PetscObjectCompareId
+    module procedure PetscObjectCompareIdRegressor
+  end interface
+  interface PetscObjectGetOptions
+    module procedure PetscObjectGetOptionsRegressor
+  end interface
+  interface PetscObjectSetOptions
+    module procedure PetscObjectSetOptionsRegressor
+  end interface
+  interface PetscObjectSetOptionsPrefix
+    module procedure PetscObjectSetOptionsPrefixRegressor
+  end interface
+  interface PetscObjectAppendOptionsPrefix
+    module procedure PetscObjectAppendOptionsPrefixRegressor
+  end interface
+  interface PetscObjectGetOptionsPrefix
+    module procedure PetscObjectGetOptionsPrefixRegressor
+  end interface
+  interface PetscObjectPrependOptionsPrefix
+    module procedure PetscObjectPrependOptionsPrefixRegressor
+  end interface
+  interface PetscObjectGetComm
+    module procedure PetscObjectGetCommRegressor
+  end interface
+  interface PetscObjectGetTabLevel
+    module procedure PetscObjectGetTabLevelRegressor
+  end interface
+  interface PetscObjectSetTabLevel
+    module procedure PetscObjectSetTabLevelRegressor
+  end interface
+  interface PetscObjectIncrementTabLevel
+    module procedure PetscObjectIncrementTabLevelRegressor
+  end interface
+  interface PetscObjectGetNewTag
+    module procedure PetscObjectGetNewTagRegressor
+  end interface
+  interface PetscObjectGetClassId
+    module procedure PetscObjectGetClassIdRegressor
+  end interface
+  interface PetscObjectGetClassName
+    module procedure PetscObjectGetClassNameRegressor
+  end interface
+  interface PetscObjectSetName
+    module procedure PetscObjectSetNameRegressor
+  end interface
+  interface PetscObjectPrintClassNamePrefixType
+    module procedure PetscObjectPrintClassNamePrefixTypeRegressor
+  end interface
+  interface PetscObjectName
+    module procedure PetscObjectNameRegressor
+  end interface
+  interface PetscObjectChangeTypeName
+    module procedure PetscObjectChangeTypeNameRegressor
+  end interface
+  interface operator(.ne.)
+    module procedure PetscRegressorLinearTypenotequals
+  end interface operator (.ne.)
+  interface operator(.eq.)
+    module procedure PetscRegressorLinearTypeequals
+  end interface operator (.eq.)
+

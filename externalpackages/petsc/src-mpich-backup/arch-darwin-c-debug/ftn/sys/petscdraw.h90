@@ -1,0 +1,2966 @@
+  interface
+  subroutine PetscDrawSetSave(draw,filename, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDraw
+  PetscDraw :: draw
+  character(*) :: filename
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDrawSetSave
+#endif
+  interface
+  subroutine PetscDrawSetSaveMovie(draw,movieext, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDraw
+  PetscDraw :: draw
+  character(*) :: movieext
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDrawSetSaveMovie
+#endif
+  interface
+  subroutine PetscDrawSetSaveFinalImage(draw,filename, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDraw
+  PetscDraw :: draw
+  character(*) :: filename
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDrawSetSaveFinalImage
+#endif
+  interface
+  subroutine PetscDrawSave(draw, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDraw
+  PetscDraw :: draw
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDrawSave
+#endif
+  interface
+  subroutine PetscDrawSaveMovie(draw, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDraw
+  PetscDraw :: draw
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDrawSaveMovie
+#endif
+  interface
+  subroutine PetscDrawEllipse(draw,x,y,a,b,c, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDraw
+  PetscDraw :: draw
+  PetscReal :: x
+  PetscReal :: y
+  PetscReal :: a
+  PetscReal :: b
+  integer4 :: c
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDrawEllipse
+#endif
+  interface
+  subroutine PetscDrawFlush(draw, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDraw
+  PetscDraw :: draw
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDrawFlush
+#endif
+  interface
+  subroutine PetscDrawGetMouseButton(draw,button,x_user,y_user,x_phys,y_phys, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDraw,ePetscDrawButton
+  PetscDraw :: draw
+  PetscDrawButton :: button
+  PetscReal :: x_user
+  PetscReal :: y_user
+  PetscReal :: x_phys
+  PetscReal :: y_phys
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDrawGetMouseButton
+#endif
+  interface
+  subroutine PetscDrawView(indraw,viewer, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDraw,tPetscViewer
+  PetscDraw :: indraw
+  PetscViewer :: viewer
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDrawView
+#endif
+  interface
+  subroutine PetscDrawViewFromOptions(A,obj,name, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDraw,tPetscObject
+  PetscDraw :: A
+  PetscObject :: obj
+  character(*) :: name
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDrawViewFromOptions
+#endif
+  interface
+  subroutine PetscDrawCreate(comm,display,title,x,y,w,h,indraw, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDraw
+  MPIU_Comm :: comm
+  character(*) :: display
+  character(*) :: title
+  integer4 :: x
+  integer4 :: y
+  integer4 :: w
+  integer4 :: h
+  PetscDraw :: indraw
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDrawCreate
+#endif
+  interface
+  subroutine PetscDrawSetType(draw,type, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDraw
+  PetscDraw :: draw
+  character(*) :: type
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDrawSetType
+#endif
+  interface
+  subroutine PetscDrawGetType(draw,type, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDraw
+  PetscDraw :: draw
+  character(*) :: type
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDrawGetType
+#endif
+  interface
+  subroutine PetscDrawRegister(sname,function, ierr)
+  use, intrinsic :: ISO_C_binding
+  character(*) :: sname
+  external :: function
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDrawRegister
+#endif
+  interface
+  subroutine PetscDrawSetOptionsPrefix(draw,prefix, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDraw
+  PetscDraw :: draw
+  character(*) :: prefix
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDrawSetOptionsPrefix
+#endif
+  interface
+  subroutine PetscDrawSetFromOptions(draw, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDraw
+  PetscDraw :: draw
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDrawSetFromOptions
+#endif
+  interface
+  subroutine PetscDrawSetViewPort(draw,xl,yl,xr,yr, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDraw
+  PetscDraw :: draw
+  PetscReal :: xl
+  PetscReal :: yl
+  PetscReal :: xr
+  PetscReal :: yr
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDrawSetViewPort
+#endif
+  interface
+  subroutine PetscDrawGetViewPort(draw,xl,yl,xr,yr, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDraw
+  PetscDraw :: draw
+  PetscReal :: xl
+  PetscReal :: yl
+  PetscReal :: xr
+  PetscReal :: yr
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDrawGetViewPort
+#endif
+  interface
+  subroutine PetscDrawViewPortsCreate(draw,nports,newports, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDraw
+  PetscDraw :: draw
+  PetscInt :: nports
+  PetscDrawViewPorts, pointer :: newports(:)
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDrawViewPortsCreate
+#endif
+  interface
+  subroutine PetscDrawViewPortsCreateRect(draw,nx,ny,newports, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDraw
+  PetscDraw :: draw
+  PetscInt :: nx
+  PetscInt :: ny
+  PetscDrawViewPorts, pointer :: newports(:)
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDrawViewPortsCreateRect
+#endif
+  interface
+  subroutine PetscDrawViewPortsDestroy(ports, ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscDrawViewPorts :: ports
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDrawViewPortsDestroy
+#endif
+  interface
+  subroutine PetscDrawViewPortsSet(ports,port, ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscDrawViewPorts :: ports
+  PetscInt :: port
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDrawViewPortsSet
+#endif
+  interface
+  subroutine PetscDrawString(draw,xl,yl,cl,text, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDraw
+  PetscDraw :: draw
+  PetscReal :: xl
+  PetscReal :: yl
+  integer4 :: cl
+  character(*) :: text
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDrawString
+#endif
+  interface
+  subroutine PetscDrawStringVertical(draw,xl,yl,cl,text, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDraw
+  PetscDraw :: draw
+  PetscReal :: xl
+  PetscReal :: yl
+  integer4 :: cl
+  character(*) :: text
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDrawStringVertical
+#endif
+  interface
+  subroutine PetscDrawStringCentered(draw,xc,yl,cl,text, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDraw
+  PetscDraw :: draw
+  PetscReal :: xc
+  PetscReal :: yl
+  integer4 :: cl
+  character(*) :: text
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDrawStringCentered
+#endif
+  interface
+  subroutine PetscDrawStringBoxed(draw,sxl,syl,sc,bc,text,w,h, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDraw
+  PetscDraw :: draw
+  PetscReal :: sxl
+  PetscReal :: syl
+  integer4 :: sc
+  integer4 :: bc
+  character(*) :: text
+  PetscReal :: w
+  PetscReal :: h
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDrawStringBoxed
+#endif
+  interface
+  subroutine PetscDrawStringSetSize(draw,width,height, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDraw
+  PetscDraw :: draw
+  PetscReal :: width
+  PetscReal :: height
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDrawStringSetSize
+#endif
+  interface
+  subroutine PetscDrawStringGetSize(draw,width,height, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDraw
+  PetscDraw :: draw
+  PetscReal :: width
+  PetscReal :: height
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDrawStringGetSize
+#endif
+  interface
+  subroutine PetscDrawFinalizePackage(ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDrawFinalizePackage
+#endif
+  interface
+  subroutine PetscDrawInitializePackage(ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDrawInitializePackage
+#endif
+  interface
+  subroutine PetscDrawResizeWindow(draw,w,h, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDraw
+  PetscDraw :: draw
+  integer4 :: w
+  integer4 :: h
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDrawResizeWindow
+#endif
+  interface
+  subroutine PetscDrawGetWindowSize(draw,w,h, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDraw
+  PetscDraw :: draw
+  integer4 :: w
+  integer4 :: h
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDrawGetWindowSize
+#endif
+  interface
+  subroutine PetscDrawCheckResizedWindow(draw, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDraw
+  PetscDraw :: draw
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDrawCheckResizedWindow
+#endif
+  interface
+  subroutine PetscDrawGetTitle(draw,title, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDraw
+  PetscDraw :: draw
+  character(*) :: title
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDrawGetTitle
+#endif
+  interface
+  subroutine PetscDrawSetTitle(draw,title, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDraw
+  PetscDraw :: draw
+  character(*) :: title
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDrawSetTitle
+#endif
+  interface
+  subroutine PetscDrawAppendTitle(draw,title, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDraw
+  PetscDraw :: draw
+  character(*) :: title
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDrawAppendTitle
+#endif
+  interface
+  subroutine PetscDrawDestroy(draw, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDraw
+  PetscDraw :: draw
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDrawDestroy
+#endif
+  interface
+  subroutine PetscDrawGetPopup(draw,popup, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDraw
+  PetscDraw :: draw
+  PetscDraw :: popup
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDrawGetPopup
+#endif
+  interface
+  subroutine PetscDrawSetDisplay(draw,display, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDraw
+  PetscDraw :: draw
+  character(*) :: display
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDrawSetDisplay
+#endif
+  interface
+  subroutine PetscDrawSetDoubleBuffer(draw, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDraw
+  PetscDraw :: draw
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDrawSetDoubleBuffer
+#endif
+  interface
+  subroutine PetscDrawGetSingleton(draw,sdraw, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDraw
+  PetscDraw :: draw
+  PetscDraw :: sdraw
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDrawGetSingleton
+#endif
+  interface
+  subroutine PetscDrawRestoreSingleton(draw,sdraw, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDraw
+  PetscDraw :: draw
+  PetscDraw :: sdraw
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDrawRestoreSingleton
+#endif
+  interface
+  subroutine PetscDrawSetVisible(draw,visible, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDraw
+  PetscDraw :: draw
+  PetscBool :: visible
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDrawSetVisible
+#endif
+  interface
+  subroutine PetscDrawSetCoordinates(draw,xl,yl,xr,yr, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDraw
+  PetscDraw :: draw
+  PetscReal :: xl
+  PetscReal :: yl
+  PetscReal :: xr
+  PetscReal :: yr
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDrawSetCoordinates
+#endif
+  interface
+  subroutine PetscDrawGetCoordinates(draw,xl,yl,xr,yr, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDraw
+  PetscDraw :: draw
+  PetscReal :: xl
+  PetscReal :: yl
+  PetscReal :: xr
+  PetscReal :: yr
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDrawGetCoordinates
+#endif
+  interface
+  subroutine PetscDrawGetBoundingBox(draw,xl,yl,xr,yr, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDraw
+  PetscDraw :: draw
+  PetscReal :: xl
+  PetscReal :: yl
+  PetscReal :: xr
+  PetscReal :: yr
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDrawGetBoundingBox
+#endif
+  interface
+  subroutine PetscDrawGetCurrentPoint(draw,x,y, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDraw
+  PetscDraw :: draw
+  PetscReal :: x
+  PetscReal :: y
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDrawGetCurrentPoint
+#endif
+  interface
+  subroutine PetscDrawSetCurrentPoint(draw,x,y, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDraw
+  PetscDraw :: draw
+  PetscReal :: x
+  PetscReal :: y
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDrawSetCurrentPoint
+#endif
+  interface
+  subroutine PetscDrawPushCurrentPoint(draw,x,y, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDraw
+  PetscDraw :: draw
+  PetscReal :: x
+  PetscReal :: y
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDrawPushCurrentPoint
+#endif
+  interface
+  subroutine PetscDrawPopCurrentPoint(draw, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDraw
+  PetscDraw :: draw
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDrawPopCurrentPoint
+#endif
+  interface
+  subroutine PetscDrawLine(draw,xl,yl,xr,yr,cl, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDraw
+  PetscDraw :: draw
+  PetscReal :: xl
+  PetscReal :: yl
+  PetscReal :: xr
+  PetscReal :: yr
+  integer4 :: cl
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDrawLine
+#endif
+  interface
+  subroutine PetscDrawArrow(draw,xl,yl,xr,yr,cl, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDraw
+  PetscDraw :: draw
+  PetscReal :: xl
+  PetscReal :: yl
+  PetscReal :: xr
+  PetscReal :: yr
+  integer4 :: cl
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDrawArrow
+#endif
+  interface
+  subroutine PetscDrawLineSetWidth(draw,width, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDraw
+  PetscDraw :: draw
+  PetscReal :: width
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDrawLineSetWidth
+#endif
+  interface
+  subroutine PetscDrawLineGetWidth(draw,width, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDraw
+  PetscDraw :: draw
+  PetscReal :: width
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDrawLineGetWidth
+#endif
+  interface
+  subroutine PetscDrawTriangle(draw,x1,y_1,x2,y2,x3,y3,c1,c2,c3, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDraw
+  PetscDraw :: draw
+  PetscReal :: x1
+  PetscReal :: y_1
+  PetscReal :: x2
+  PetscReal :: y2
+  PetscReal :: x3
+  PetscReal :: y3
+  integer4 :: c1
+  integer4 :: c2
+  integer4 :: c3
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDrawTriangle
+#endif
+  interface
+  subroutine PetscDrawScalePopup(popup,min,max, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDraw
+  PetscDraw :: popup
+  PetscReal :: min
+  PetscReal :: max
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDrawScalePopup
+#endif
+  interface
+  subroutine PetscDrawTensorContour(draw,m,n,xi,yi,v, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDraw
+  PetscDraw :: draw
+  integer4 :: m
+  integer4 :: n
+  PetscReal :: xi(*)
+  PetscReal :: yi(*)
+  PetscReal :: v(*)
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDrawTensorContour
+#endif
+  interface
+  subroutine PetscDrawTensorContourPatch(draw,m,n,x,y,min,max,v, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDraw
+  PetscDraw :: draw
+  integer4 :: m
+  integer4 :: n
+  PetscReal :: x
+  PetscReal :: y
+  PetscReal :: min
+  PetscReal :: max
+  PetscReal :: v
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDrawTensorContourPatch
+#endif
+  interface
+  subroutine PetscDrawPoint(draw,xl,yl,cl, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDraw
+  PetscDraw :: draw
+  PetscReal :: xl
+  PetscReal :: yl
+  integer4 :: cl
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDrawPoint
+#endif
+  interface
+  subroutine PetscDrawPointPixel(draw,x,y,c, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDraw
+  PetscDraw :: draw
+  integer4 :: x
+  integer4 :: y
+  integer4 :: c
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDrawPointPixel
+#endif
+  interface
+  subroutine PetscDrawPointSetSize(draw,width, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDraw
+  PetscDraw :: draw
+  PetscReal :: width
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDrawPointSetSize
+#endif
+  interface
+  subroutine PetscDrawClear(draw, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDraw
+  PetscDraw :: draw
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDrawClear
+#endif
+  interface
+  subroutine PetscDrawBOP(draw, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDraw
+  PetscDraw :: draw
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDrawBOP
+#endif
+  interface
+  subroutine PetscDrawEOP(draw, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDraw
+  PetscDraw :: draw
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDrawEOP
+#endif
+  interface
+  subroutine PetscDrawPause(draw, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDraw
+  PetscDraw :: draw
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDrawPause
+#endif
+  interface
+  subroutine PetscDrawSetPause(draw,lpause, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDraw
+  PetscDraw :: draw
+  PetscReal :: lpause
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDrawSetPause
+#endif
+  interface
+  subroutine PetscDrawGetPause(draw,lpause, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDraw
+  PetscDraw :: draw
+  PetscReal :: lpause
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDrawGetPause
+#endif
+  interface
+  subroutine PetscDrawMarker(draw,xl,yl,cl, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDraw
+  PetscDraw :: draw
+  PetscReal :: xl
+  PetscReal :: yl
+  integer4 :: cl
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDrawMarker
+#endif
+  interface
+  subroutine PetscDrawSetMarkerType(draw,mtype, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDraw,ePetscDrawMarkerType
+  PetscDraw :: draw
+  PetscDrawMarkerType :: mtype
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDrawSetMarkerType
+#endif
+  interface
+  subroutine PetscDrawGetMarkerType(draw,mtype, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDraw,ePetscDrawMarkerType
+  PetscDraw :: draw
+  PetscDrawMarkerType :: mtype
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDrawGetMarkerType
+#endif
+  interface
+  subroutine PetscDrawIndicatorFunction(draw,xmin,xmax,ymin,ymax,c,indicator,ctx, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDraw
+  PetscDraw :: draw
+  PetscReal :: xmin
+  PetscReal :: xmax
+  PetscReal :: ymin
+  PetscReal :: ymax
+  integer4 :: c
+  external :: indicator
+  type(*) :: ctx
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDrawIndicatorFunction
+#endif
+  interface
+  subroutine PetscDrawCoordinateToPixel(draw,x,y,i,j, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDraw
+  PetscDraw :: draw
+  PetscReal :: x
+  PetscReal :: y
+  integer4 :: i
+  integer4 :: j
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDrawCoordinateToPixel
+#endif
+  interface
+  subroutine PetscDrawPixelToCoordinate(draw,i,j,x,y, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDraw
+  PetscDraw :: draw
+  integer4 :: i
+  integer4 :: j
+  PetscReal :: x
+  PetscReal :: y
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDrawPixelToCoordinate
+#endif
+  interface
+  subroutine PetscDrawRectangle(draw,xl,yl,xr,yr,c1,c2,c3,c4, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDraw
+  PetscDraw :: draw
+  PetscReal :: xl
+  PetscReal :: yl
+  PetscReal :: xr
+  PetscReal :: yr
+  integer4 :: c1
+  integer4 :: c2
+  integer4 :: c3
+  integer4 :: c4
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDrawRectangle
+#endif
+  interface
+  subroutine PetscDrawOpenImage(comm,filename,w,h,draw, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDraw
+  MPIU_Comm :: comm
+  character(*) :: filename
+  integer4 :: w
+  integer4 :: h
+  PetscDraw :: draw
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDrawOpenImage
+#endif
+  interface
+  subroutine PetscDrawOpenNull(comm,win, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDraw
+  MPIU_Comm :: comm
+  PetscDraw :: win
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDrawOpenNull
+#endif
+  interface
+  subroutine PetscDrawIsNull(draw,yes, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDraw
+  PetscDraw :: draw
+  PetscBool :: yes
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDrawIsNull
+#endif
+  interface
+  subroutine PetscDrawOpenX(comm,display,title,x,y,w,h,draw, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDraw
+  MPIU_Comm :: comm
+  character(*) :: display
+  character(*) :: title
+  integer4 :: x
+  integer4 :: y
+  integer4 :: w
+  integer4 :: h
+  PetscDraw :: draw
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDrawOpenX
+#endif
+  interface
+  subroutine PetscDrawZoom(draw,func,ctx, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDraw
+  PetscDraw :: draw
+  external :: func
+  type(*) :: ctx
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDrawZoom
+#endif
+  interface
+  subroutine PetscDrawUtilitySetGamma(g, ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscReal :: g
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDrawUtilitySetGamma
+#endif
+  interface operator(.ne.)
+    module procedure PetscDrawnotequals
+  end interface operator (.ne.)
+  interface operator(.eq.)
+    module procedure PetscDrawequals
+  end interface operator (.eq.)
+
+  interface PetscObjectCast
+    module procedure PetscObjectCastDraw
+  end interface
+  interface PetscBarrier
+  module procedure PetscBarrierDraw
+  end interface
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectSAWsTakeAccess
+    module procedure PetscObjectSAWsTakeAccessDraw
+  end interface
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectSAWsGrantAccess
+    module procedure PetscObjectSAWsGrantAccessDraw
+  end interface
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectSAWsBlock
+    module procedure PetscObjectSAWsBlockDraw
+  end interface
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectSAWsSetBlock
+    module procedure PetscObjectSAWsSetBlockDraw
+  end interface
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectSAWsViewOff
+    module procedure PetscObjectSAWsViewOffDraw
+  end interface
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectViewSAWs
+    module procedure PetscObjectViewSAWsDraw
+  end interface
+#endif
+  interface PetscObjectGetType
+    module procedure PetscObjectGetTypeDraw
+  end interface
+  interface PetscObjectSetPrintedOptions
+    module procedure PetscObjectSetPrintedOptionsDraw
+  end interface
+  interface PetscObjectInheritPrintedOptions
+    module procedure PetscObjectInheritPrintedOptionsDraw
+  end interface
+  interface PetscObjectAddOptionsHandler
+    module procedure PetscObjectAddOptionsHandlerDraw
+  end interface
+  interface PetscObjectProcessOptionsHandlers
+    module procedure PetscObjectProcessOptionsHandlersDraw
+  end interface
+  interface PetscObjectDestroyOptionsHandlers
+    module procedure PetscObjectDestroyOptionsHandlersDraw
+  end interface
+  interface PetscObjectReference
+    module procedure PetscObjectReferenceDraw
+  end interface
+  interface PetscObjectGetReference
+    module procedure PetscObjectGetReferenceDraw
+  end interface
+  interface PetscObjectDereference
+    module procedure PetscObjectDereferenceDraw
+  end interface
+  interface PetscObjectRemoveReference
+    module procedure PetscObjectRemoveReferenceDraw
+  end interface
+  interface PetscObjectHasFunction
+    module procedure PetscObjectHasFunctionDraw
+  end interface
+  interface PetscObjectSetFromOptions
+    module procedure PetscObjectSetFromOptionsDraw
+  end interface
+  interface PetscObjectSetUp
+    module procedure PetscObjectSetUpDraw
+  end interface
+  interface PetscObjectGetName
+    module procedure PetscObjectGetNameDraw
+  end interface
+  interface PetscObjectDestroy
+    module procedure PetscObjectDestroyDraw
+  end interface
+  interface PetscObjectView
+    module procedure PetscObjectViewDraw
+  end interface
+  interface PetscObjectViewFromOptions
+    module procedure PetscObjectViewFromOptionsDraw
+  end interface
+  interface PetscObjectTypeCompare
+    module procedure PetscObjectTypeCompareDraw
+  end interface
+  interface PetscObjectObjectTypeCompare
+    module procedure PetscObjectObjectTypeCompareDraw
+  end interface
+  interface PetscObjectBaseTypeCompare
+    module procedure PetscObjectBaseTypeCompareDraw
+  end interface
+  interface PetscObjectRegisterDestroy
+    module procedure PetscObjectRegisterDestroyDraw
+  end interface
+  interface PetscObjectGetId
+    module procedure PetscObjectGetIdDraw
+  end interface
+  interface PetscObjectCompareId
+    module procedure PetscObjectCompareIdDraw
+  end interface
+  interface PetscObjectGetOptions
+    module procedure PetscObjectGetOptionsDraw
+  end interface
+  interface PetscObjectSetOptions
+    module procedure PetscObjectSetOptionsDraw
+  end interface
+  interface PetscObjectSetOptionsPrefix
+    module procedure PetscObjectSetOptionsPrefixDraw
+  end interface
+  interface PetscObjectAppendOptionsPrefix
+    module procedure PetscObjectAppendOptionsPrefixDraw
+  end interface
+  interface PetscObjectGetOptionsPrefix
+    module procedure PetscObjectGetOptionsPrefixDraw
+  end interface
+  interface PetscObjectPrependOptionsPrefix
+    module procedure PetscObjectPrependOptionsPrefixDraw
+  end interface
+  interface PetscObjectGetComm
+    module procedure PetscObjectGetCommDraw
+  end interface
+  interface PetscObjectGetTabLevel
+    module procedure PetscObjectGetTabLevelDraw
+  end interface
+  interface PetscObjectSetTabLevel
+    module procedure PetscObjectSetTabLevelDraw
+  end interface
+  interface PetscObjectIncrementTabLevel
+    module procedure PetscObjectIncrementTabLevelDraw
+  end interface
+  interface PetscObjectGetNewTag
+    module procedure PetscObjectGetNewTagDraw
+  end interface
+  interface PetscObjectGetClassId
+    module procedure PetscObjectGetClassIdDraw
+  end interface
+  interface PetscObjectGetClassName
+    module procedure PetscObjectGetClassNameDraw
+  end interface
+  interface PetscObjectSetName
+    module procedure PetscObjectSetNameDraw
+  end interface
+  interface PetscObjectPrintClassNamePrefixType
+    module procedure PetscObjectPrintClassNamePrefixTypeDraw
+  end interface
+  interface PetscObjectName
+    module procedure PetscObjectNameDraw
+  end interface
+  interface PetscObjectChangeTypeName
+    module procedure PetscObjectChangeTypeNameDraw
+  end interface
+  interface
+  subroutine PetscDrawAxisCreate(draw,axis, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDraw,tPetscDrawAxis
+  PetscDraw :: draw
+  PetscDrawAxis :: axis
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDrawAxisCreate
+#endif
+  interface
+  subroutine PetscDrawAxisDestroy(axis, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDrawAxis
+  PetscDrawAxis :: axis
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDrawAxisDestroy
+#endif
+  interface
+  subroutine PetscDrawAxisSetColors(axis,ac,tc,cc, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDrawAxis
+  PetscDrawAxis :: axis
+  integer4 :: ac
+  integer4 :: tc
+  integer4 :: cc
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDrawAxisSetColors
+#endif
+  interface
+  subroutine PetscDrawAxisSetLabels(axis,top,xlabel,ylabel, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDrawAxis
+  PetscDrawAxis :: axis
+  character(*) :: top
+  character(*) :: xlabel
+  character(*) :: ylabel
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDrawAxisSetLabels
+#endif
+  interface
+  subroutine PetscDrawAxisSetLimits(axis,xmin,xmax,ymin,ymax, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDrawAxis
+  PetscDrawAxis :: axis
+  PetscReal :: xmin
+  PetscReal :: xmax
+  PetscReal :: ymin
+  PetscReal :: ymax
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDrawAxisSetLimits
+#endif
+  interface
+  subroutine PetscDrawAxisGetLimits(axis,xmin,xmax,ymin,ymax, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDrawAxis
+  PetscDrawAxis :: axis
+  PetscReal :: xmin
+  PetscReal :: xmax
+  PetscReal :: ymin
+  PetscReal :: ymax
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDrawAxisGetLimits
+#endif
+  interface
+  subroutine PetscDrawAxisSetHoldLimits(axis,hold, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDrawAxis
+  PetscDrawAxis :: axis
+  PetscBool :: hold
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDrawAxisSetHoldLimits
+#endif
+  interface
+  subroutine PetscDrawAxisDraw(axis, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDrawAxis
+  PetscDrawAxis :: axis
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDrawAxisDraw
+#endif
+  interface operator(.ne.)
+    module procedure PetscDrawAxisnotequals
+  end interface operator (.ne.)
+  interface operator(.eq.)
+    module procedure PetscDrawAxisequals
+  end interface operator (.eq.)
+
+  interface PetscObjectCast
+    module procedure PetscObjectCastDrawAxis
+  end interface
+  interface PetscBarrier
+  module procedure PetscBarrierDrawAxis
+  end interface
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectSAWsTakeAccess
+    module procedure PetscObjectSAWsTakeAccessDrawAxis
+  end interface
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectSAWsGrantAccess
+    module procedure PetscObjectSAWsGrantAccessDrawAxis
+  end interface
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectSAWsBlock
+    module procedure PetscObjectSAWsBlockDrawAxis
+  end interface
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectSAWsSetBlock
+    module procedure PetscObjectSAWsSetBlockDrawAxis
+  end interface
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectSAWsViewOff
+    module procedure PetscObjectSAWsViewOffDrawAxis
+  end interface
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectViewSAWs
+    module procedure PetscObjectViewSAWsDrawAxis
+  end interface
+#endif
+  interface PetscObjectGetType
+    module procedure PetscObjectGetTypeDrawAxis
+  end interface
+  interface PetscObjectSetPrintedOptions
+    module procedure PetscObjectSetPrintedOptionsDrawAxis
+  end interface
+  interface PetscObjectInheritPrintedOptions
+    module procedure PetscObjectInheritPrintedOptionsDrawAxis
+  end interface
+  interface PetscObjectAddOptionsHandler
+    module procedure PetscObjectAddOptionsHandlerDrawAxis
+  end interface
+  interface PetscObjectProcessOptionsHandlers
+    module procedure PetscObjectProcessOptionsHandlersDrawAxis
+  end interface
+  interface PetscObjectDestroyOptionsHandlers
+    module procedure PetscObjectDestroyOptionsHandlersDrawAxis
+  end interface
+  interface PetscObjectReference
+    module procedure PetscObjectReferenceDrawAxis
+  end interface
+  interface PetscObjectGetReference
+    module procedure PetscObjectGetReferenceDrawAxis
+  end interface
+  interface PetscObjectDereference
+    module procedure PetscObjectDereferenceDrawAxis
+  end interface
+  interface PetscObjectRemoveReference
+    module procedure PetscObjectRemoveReferenceDrawAxis
+  end interface
+  interface PetscObjectHasFunction
+    module procedure PetscObjectHasFunctionDrawAxis
+  end interface
+  interface PetscObjectSetFromOptions
+    module procedure PetscObjectSetFromOptionsDrawAxis
+  end interface
+  interface PetscObjectSetUp
+    module procedure PetscObjectSetUpDrawAxis
+  end interface
+  interface PetscObjectGetName
+    module procedure PetscObjectGetNameDrawAxis
+  end interface
+  interface PetscObjectDestroy
+    module procedure PetscObjectDestroyDrawAxis
+  end interface
+  interface PetscObjectView
+    module procedure PetscObjectViewDrawAxis
+  end interface
+  interface PetscObjectViewFromOptions
+    module procedure PetscObjectViewFromOptionsDrawAxis
+  end interface
+  interface PetscObjectTypeCompare
+    module procedure PetscObjectTypeCompareDrawAxis
+  end interface
+  interface PetscObjectObjectTypeCompare
+    module procedure PetscObjectObjectTypeCompareDrawAxis
+  end interface
+  interface PetscObjectBaseTypeCompare
+    module procedure PetscObjectBaseTypeCompareDrawAxis
+  end interface
+  interface PetscObjectRegisterDestroy
+    module procedure PetscObjectRegisterDestroyDrawAxis
+  end interface
+  interface PetscObjectGetId
+    module procedure PetscObjectGetIdDrawAxis
+  end interface
+  interface PetscObjectCompareId
+    module procedure PetscObjectCompareIdDrawAxis
+  end interface
+  interface PetscObjectGetOptions
+    module procedure PetscObjectGetOptionsDrawAxis
+  end interface
+  interface PetscObjectSetOptions
+    module procedure PetscObjectSetOptionsDrawAxis
+  end interface
+  interface PetscObjectSetOptionsPrefix
+    module procedure PetscObjectSetOptionsPrefixDrawAxis
+  end interface
+  interface PetscObjectAppendOptionsPrefix
+    module procedure PetscObjectAppendOptionsPrefixDrawAxis
+  end interface
+  interface PetscObjectGetOptionsPrefix
+    module procedure PetscObjectGetOptionsPrefixDrawAxis
+  end interface
+  interface PetscObjectPrependOptionsPrefix
+    module procedure PetscObjectPrependOptionsPrefixDrawAxis
+  end interface
+  interface PetscObjectGetComm
+    module procedure PetscObjectGetCommDrawAxis
+  end interface
+  interface PetscObjectGetTabLevel
+    module procedure PetscObjectGetTabLevelDrawAxis
+  end interface
+  interface PetscObjectSetTabLevel
+    module procedure PetscObjectSetTabLevelDrawAxis
+  end interface
+  interface PetscObjectIncrementTabLevel
+    module procedure PetscObjectIncrementTabLevelDrawAxis
+  end interface
+  interface PetscObjectGetNewTag
+    module procedure PetscObjectGetNewTagDrawAxis
+  end interface
+  interface PetscObjectGetClassId
+    module procedure PetscObjectGetClassIdDrawAxis
+  end interface
+  interface PetscObjectGetClassName
+    module procedure PetscObjectGetClassNameDrawAxis
+  end interface
+  interface PetscObjectSetName
+    module procedure PetscObjectSetNameDrawAxis
+  end interface
+  interface PetscObjectPrintClassNamePrefixType
+    module procedure PetscObjectPrintClassNamePrefixTypeDrawAxis
+  end interface
+  interface PetscObjectName
+    module procedure PetscObjectNameDrawAxis
+  end interface
+  interface PetscObjectChangeTypeName
+    module procedure PetscObjectChangeTypeNameDrawAxis
+  end interface
+  interface
+  subroutine PetscDrawLGGetAxis(lg,axis, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDrawLG,tPetscDrawAxis
+  PetscDrawLG :: lg
+  PetscDrawAxis :: axis
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDrawLGGetAxis
+#endif
+  interface
+  subroutine PetscDrawLGGetDraw(lg,draw, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDrawLG,tPetscDraw
+  PetscDrawLG :: lg
+  PetscDraw :: draw
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDrawLGGetDraw
+#endif
+  interface
+  subroutine PetscDrawLGSPDraw(lg,spin, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDrawLG,tPetscDrawSP
+  PetscDrawLG :: lg
+  PetscDrawSP :: spin
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDrawLGSPDraw
+#endif
+  interface
+  subroutine PetscDrawLGCreate(draw,dim,outlg, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDraw,tPetscDrawLG
+  PetscDraw :: draw
+  PetscInt :: dim
+  PetscDrawLG :: outlg
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDrawLGCreate
+#endif
+  interface
+  subroutine PetscDrawLGSetColors(lg,colors, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDrawLG
+  PetscDrawLG :: lg
+  integer4 :: colors(*)
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDrawLGSetColors
+#endif
+  interface
+  subroutine PetscDrawLGGetDimension(lg,dim, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDrawLG
+  PetscDrawLG :: lg
+  PetscInt :: dim
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDrawLGGetDimension
+#endif
+  interface
+  subroutine PetscDrawLGSetDimension(lg,dim, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDrawLG
+  PetscDrawLG :: lg
+  PetscInt :: dim
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDrawLGSetDimension
+#endif
+  interface
+  subroutine PetscDrawLGGetData(lg,dim,n,x,y, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDrawLG
+  PetscDrawLG :: lg
+  PetscInt :: dim
+  PetscInt :: n
+  PetscReal, pointer :: x(:)
+  PetscReal, pointer :: y(:)
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDrawLGGetData
+#endif
+  interface
+  subroutine PetscDrawLGSetLimits(lg,x_min,x_max,y_min,y_max, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDrawLG
+  PetscDrawLG :: lg
+  PetscReal :: x_min
+  PetscReal :: x_max
+  PetscReal :: y_min
+  PetscReal :: y_max
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDrawLGSetLimits
+#endif
+  interface
+  subroutine PetscDrawLGReset(lg, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDrawLG
+  PetscDrawLG :: lg
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDrawLGReset
+#endif
+  interface
+  subroutine PetscDrawLGDestroy(lg, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDrawLG
+  PetscDrawLG :: lg
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDrawLGDestroy
+#endif
+  interface
+  subroutine PetscDrawLGSetUseMarkers(lg,flg, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDrawLG
+  PetscDrawLG :: lg
+  PetscBool :: flg
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDrawLGSetUseMarkers
+#endif
+  interface
+  subroutine PetscDrawLGDraw(lg, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDrawLG
+  PetscDrawLG :: lg
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDrawLGDraw
+#endif
+  interface
+  subroutine PetscDrawLGSave(lg, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDrawLG
+  PetscDrawLG :: lg
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDrawLGSave
+#endif
+  interface
+  subroutine PetscDrawLGView(lg,viewer, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDrawLG,tPetscViewer
+  PetscDrawLG :: lg
+  PetscViewer :: viewer
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDrawLGView
+#endif
+  interface
+  subroutine PetscDrawLGSetOptionsPrefix(lg,prefix, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDrawLG
+  PetscDrawLG :: lg
+  character(*) :: prefix
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDrawLGSetOptionsPrefix
+#endif
+  interface
+  subroutine PetscDrawLGSetFromOptions(lg, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDrawLG
+  PetscDrawLG :: lg
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDrawLGSetFromOptions
+#endif
+  interface
+  subroutine PetscDrawLGAddCommonPoint(lg,x,y, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDrawLG
+  PetscDrawLG :: lg
+  PetscReal :: x
+  PetscReal :: y
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDrawLGAddCommonPoint
+#endif
+  interface
+  subroutine PetscDrawLGAddPoint(lg,x,y, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDrawLG
+  PetscDrawLG :: lg
+  PetscReal :: x
+  PetscReal :: y
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDrawLGAddPoint
+#endif
+  interface
+  subroutine PetscDrawLGAddPoints(lg,n,xx,yy, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDrawLG
+  PetscDrawLG :: lg
+  PetscInt :: n
+  PetscReal, pointer :: xx(:)
+  PetscReal, pointer :: yy(:)
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDrawLGAddPoints
+#endif
+  interface operator(.ne.)
+    module procedure PetscDrawLGnotequals
+  end interface operator (.ne.)
+  interface operator(.eq.)
+    module procedure PetscDrawLGequals
+  end interface operator (.eq.)
+
+  interface PetscObjectCast
+    module procedure PetscObjectCastDrawLG
+  end interface
+  interface PetscBarrier
+  module procedure PetscBarrierDrawLG
+  end interface
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectSAWsTakeAccess
+    module procedure PetscObjectSAWsTakeAccessDrawLG
+  end interface
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectSAWsGrantAccess
+    module procedure PetscObjectSAWsGrantAccessDrawLG
+  end interface
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectSAWsBlock
+    module procedure PetscObjectSAWsBlockDrawLG
+  end interface
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectSAWsSetBlock
+    module procedure PetscObjectSAWsSetBlockDrawLG
+  end interface
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectSAWsViewOff
+    module procedure PetscObjectSAWsViewOffDrawLG
+  end interface
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectViewSAWs
+    module procedure PetscObjectViewSAWsDrawLG
+  end interface
+#endif
+  interface PetscObjectGetType
+    module procedure PetscObjectGetTypeDrawLG
+  end interface
+  interface PetscObjectSetPrintedOptions
+    module procedure PetscObjectSetPrintedOptionsDrawLG
+  end interface
+  interface PetscObjectInheritPrintedOptions
+    module procedure PetscObjectInheritPrintedOptionsDrawLG
+  end interface
+  interface PetscObjectAddOptionsHandler
+    module procedure PetscObjectAddOptionsHandlerDrawLG
+  end interface
+  interface PetscObjectProcessOptionsHandlers
+    module procedure PetscObjectProcessOptionsHandlersDrawLG
+  end interface
+  interface PetscObjectDestroyOptionsHandlers
+    module procedure PetscObjectDestroyOptionsHandlersDrawLG
+  end interface
+  interface PetscObjectReference
+    module procedure PetscObjectReferenceDrawLG
+  end interface
+  interface PetscObjectGetReference
+    module procedure PetscObjectGetReferenceDrawLG
+  end interface
+  interface PetscObjectDereference
+    module procedure PetscObjectDereferenceDrawLG
+  end interface
+  interface PetscObjectRemoveReference
+    module procedure PetscObjectRemoveReferenceDrawLG
+  end interface
+  interface PetscObjectHasFunction
+    module procedure PetscObjectHasFunctionDrawLG
+  end interface
+  interface PetscObjectSetFromOptions
+    module procedure PetscObjectSetFromOptionsDrawLG
+  end interface
+  interface PetscObjectSetUp
+    module procedure PetscObjectSetUpDrawLG
+  end interface
+  interface PetscObjectGetName
+    module procedure PetscObjectGetNameDrawLG
+  end interface
+  interface PetscObjectDestroy
+    module procedure PetscObjectDestroyDrawLG
+  end interface
+  interface PetscObjectView
+    module procedure PetscObjectViewDrawLG
+  end interface
+  interface PetscObjectViewFromOptions
+    module procedure PetscObjectViewFromOptionsDrawLG
+  end interface
+  interface PetscObjectTypeCompare
+    module procedure PetscObjectTypeCompareDrawLG
+  end interface
+  interface PetscObjectObjectTypeCompare
+    module procedure PetscObjectObjectTypeCompareDrawLG
+  end interface
+  interface PetscObjectBaseTypeCompare
+    module procedure PetscObjectBaseTypeCompareDrawLG
+  end interface
+  interface PetscObjectRegisterDestroy
+    module procedure PetscObjectRegisterDestroyDrawLG
+  end interface
+  interface PetscObjectGetId
+    module procedure PetscObjectGetIdDrawLG
+  end interface
+  interface PetscObjectCompareId
+    module procedure PetscObjectCompareIdDrawLG
+  end interface
+  interface PetscObjectGetOptions
+    module procedure PetscObjectGetOptionsDrawLG
+  end interface
+  interface PetscObjectSetOptions
+    module procedure PetscObjectSetOptionsDrawLG
+  end interface
+  interface PetscObjectSetOptionsPrefix
+    module procedure PetscObjectSetOptionsPrefixDrawLG
+  end interface
+  interface PetscObjectAppendOptionsPrefix
+    module procedure PetscObjectAppendOptionsPrefixDrawLG
+  end interface
+  interface PetscObjectGetOptionsPrefix
+    module procedure PetscObjectGetOptionsPrefixDrawLG
+  end interface
+  interface PetscObjectPrependOptionsPrefix
+    module procedure PetscObjectPrependOptionsPrefixDrawLG
+  end interface
+  interface PetscObjectGetComm
+    module procedure PetscObjectGetCommDrawLG
+  end interface
+  interface PetscObjectGetTabLevel
+    module procedure PetscObjectGetTabLevelDrawLG
+  end interface
+  interface PetscObjectSetTabLevel
+    module procedure PetscObjectSetTabLevelDrawLG
+  end interface
+  interface PetscObjectIncrementTabLevel
+    module procedure PetscObjectIncrementTabLevelDrawLG
+  end interface
+  interface PetscObjectGetNewTag
+    module procedure PetscObjectGetNewTagDrawLG
+  end interface
+  interface PetscObjectGetClassId
+    module procedure PetscObjectGetClassIdDrawLG
+  end interface
+  interface PetscObjectGetClassName
+    module procedure PetscObjectGetClassNameDrawLG
+  end interface
+  interface PetscObjectSetName
+    module procedure PetscObjectSetNameDrawLG
+  end interface
+  interface PetscObjectPrintClassNamePrefixType
+    module procedure PetscObjectPrintClassNamePrefixTypeDrawLG
+  end interface
+  interface PetscObjectName
+    module procedure PetscObjectNameDrawLG
+  end interface
+  interface PetscObjectChangeTypeName
+    module procedure PetscObjectChangeTypeNameDrawLG
+  end interface
+  interface
+  subroutine PetscDrawSplitViewPort(draw, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDraw
+  PetscDraw :: draw
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDrawSplitViewPort
+#endif
+  interface
+  subroutine PetscDrawSPCreate(draw,dim,drawsp, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDraw,tPetscDrawSP
+  PetscDraw :: draw
+  integer4 :: dim
+  PetscDrawSP :: drawsp
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDrawSPCreate
+#endif
+  interface
+  subroutine PetscDrawSPSetDimension(sp,dim, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDrawSP
+  PetscDrawSP :: sp
+  integer4 :: dim
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDrawSPSetDimension
+#endif
+  interface
+  subroutine PetscDrawSPGetDimension(sp,dim, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDrawSP
+  PetscDrawSP :: sp
+  integer4 :: dim
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDrawSPGetDimension
+#endif
+  interface
+  subroutine PetscDrawSPReset(sp, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDrawSP
+  PetscDrawSP :: sp
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDrawSPReset
+#endif
+  interface
+  subroutine PetscDrawSPDestroy(sp, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDrawSP
+  PetscDrawSP :: sp
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDrawSPDestroy
+#endif
+  interface
+  subroutine PetscDrawSPAddPoint(sp,x,y, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDrawSP
+  PetscDrawSP :: sp
+  PetscReal :: x
+  PetscReal :: y
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDrawSPAddPoint
+#endif
+  interface
+  subroutine PetscDrawSPAddPoints(sp,n,xx,yy, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDrawSP
+  PetscDrawSP :: sp
+  integer4 :: n
+  PetscReal, pointer :: xx(:)
+  PetscReal, pointer :: yy(:)
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDrawSPAddPoints
+#endif
+  interface
+  subroutine PetscDrawSPAddPointColorized(sp,x,y,z, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDrawSP
+  PetscDrawSP :: sp
+  PetscReal :: x
+  PetscReal :: y
+  PetscReal :: z
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDrawSPAddPointColorized
+#endif
+  interface
+  subroutine PetscDrawSPDraw(sp,clear, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDrawSP
+  PetscDrawSP :: sp
+  PetscBool :: clear
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDrawSPDraw
+#endif
+  interface
+  subroutine PetscDrawSPSave(sp, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDrawSP
+  PetscDrawSP :: sp
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDrawSPSave
+#endif
+  interface
+  subroutine PetscDrawSPSetLimits(sp,x_min,x_max,y_min,y_max, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDrawSP
+  PetscDrawSP :: sp
+  PetscReal :: x_min
+  PetscReal :: x_max
+  PetscReal :: y_min
+  PetscReal :: y_max
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDrawSPSetLimits
+#endif
+  interface
+  subroutine PetscDrawSPGetAxis(sp,axis, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDrawSP,tPetscDrawAxis
+  PetscDrawSP :: sp
+  PetscDrawAxis :: axis
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDrawSPGetAxis
+#endif
+  interface
+  subroutine PetscDrawSPGetDraw(sp,draw, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDrawSP,tPetscDraw
+  PetscDrawSP :: sp
+  PetscDraw :: draw
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDrawSPGetDraw
+#endif
+  interface operator(.ne.)
+    module procedure PetscDrawSPnotequals
+  end interface operator (.ne.)
+  interface operator(.eq.)
+    module procedure PetscDrawSPequals
+  end interface operator (.eq.)
+
+  interface PetscObjectCast
+    module procedure PetscObjectCastDrawSP
+  end interface
+  interface PetscBarrier
+  module procedure PetscBarrierDrawSP
+  end interface
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectSAWsTakeAccess
+    module procedure PetscObjectSAWsTakeAccessDrawSP
+  end interface
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectSAWsGrantAccess
+    module procedure PetscObjectSAWsGrantAccessDrawSP
+  end interface
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectSAWsBlock
+    module procedure PetscObjectSAWsBlockDrawSP
+  end interface
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectSAWsSetBlock
+    module procedure PetscObjectSAWsSetBlockDrawSP
+  end interface
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectSAWsViewOff
+    module procedure PetscObjectSAWsViewOffDrawSP
+  end interface
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectViewSAWs
+    module procedure PetscObjectViewSAWsDrawSP
+  end interface
+#endif
+  interface PetscObjectGetType
+    module procedure PetscObjectGetTypeDrawSP
+  end interface
+  interface PetscObjectSetPrintedOptions
+    module procedure PetscObjectSetPrintedOptionsDrawSP
+  end interface
+  interface PetscObjectInheritPrintedOptions
+    module procedure PetscObjectInheritPrintedOptionsDrawSP
+  end interface
+  interface PetscObjectAddOptionsHandler
+    module procedure PetscObjectAddOptionsHandlerDrawSP
+  end interface
+  interface PetscObjectProcessOptionsHandlers
+    module procedure PetscObjectProcessOptionsHandlersDrawSP
+  end interface
+  interface PetscObjectDestroyOptionsHandlers
+    module procedure PetscObjectDestroyOptionsHandlersDrawSP
+  end interface
+  interface PetscObjectReference
+    module procedure PetscObjectReferenceDrawSP
+  end interface
+  interface PetscObjectGetReference
+    module procedure PetscObjectGetReferenceDrawSP
+  end interface
+  interface PetscObjectDereference
+    module procedure PetscObjectDereferenceDrawSP
+  end interface
+  interface PetscObjectRemoveReference
+    module procedure PetscObjectRemoveReferenceDrawSP
+  end interface
+  interface PetscObjectHasFunction
+    module procedure PetscObjectHasFunctionDrawSP
+  end interface
+  interface PetscObjectSetFromOptions
+    module procedure PetscObjectSetFromOptionsDrawSP
+  end interface
+  interface PetscObjectSetUp
+    module procedure PetscObjectSetUpDrawSP
+  end interface
+  interface PetscObjectGetName
+    module procedure PetscObjectGetNameDrawSP
+  end interface
+  interface PetscObjectDestroy
+    module procedure PetscObjectDestroyDrawSP
+  end interface
+  interface PetscObjectView
+    module procedure PetscObjectViewDrawSP
+  end interface
+  interface PetscObjectViewFromOptions
+    module procedure PetscObjectViewFromOptionsDrawSP
+  end interface
+  interface PetscObjectTypeCompare
+    module procedure PetscObjectTypeCompareDrawSP
+  end interface
+  interface PetscObjectObjectTypeCompare
+    module procedure PetscObjectObjectTypeCompareDrawSP
+  end interface
+  interface PetscObjectBaseTypeCompare
+    module procedure PetscObjectBaseTypeCompareDrawSP
+  end interface
+  interface PetscObjectRegisterDestroy
+    module procedure PetscObjectRegisterDestroyDrawSP
+  end interface
+  interface PetscObjectGetId
+    module procedure PetscObjectGetIdDrawSP
+  end interface
+  interface PetscObjectCompareId
+    module procedure PetscObjectCompareIdDrawSP
+  end interface
+  interface PetscObjectGetOptions
+    module procedure PetscObjectGetOptionsDrawSP
+  end interface
+  interface PetscObjectSetOptions
+    module procedure PetscObjectSetOptionsDrawSP
+  end interface
+  interface PetscObjectSetOptionsPrefix
+    module procedure PetscObjectSetOptionsPrefixDrawSP
+  end interface
+  interface PetscObjectAppendOptionsPrefix
+    module procedure PetscObjectAppendOptionsPrefixDrawSP
+  end interface
+  interface PetscObjectGetOptionsPrefix
+    module procedure PetscObjectGetOptionsPrefixDrawSP
+  end interface
+  interface PetscObjectPrependOptionsPrefix
+    module procedure PetscObjectPrependOptionsPrefixDrawSP
+  end interface
+  interface PetscObjectGetComm
+    module procedure PetscObjectGetCommDrawSP
+  end interface
+  interface PetscObjectGetTabLevel
+    module procedure PetscObjectGetTabLevelDrawSP
+  end interface
+  interface PetscObjectSetTabLevel
+    module procedure PetscObjectSetTabLevelDrawSP
+  end interface
+  interface PetscObjectIncrementTabLevel
+    module procedure PetscObjectIncrementTabLevelDrawSP
+  end interface
+  interface PetscObjectGetNewTag
+    module procedure PetscObjectGetNewTagDrawSP
+  end interface
+  interface PetscObjectGetClassId
+    module procedure PetscObjectGetClassIdDrawSP
+  end interface
+  interface PetscObjectGetClassName
+    module procedure PetscObjectGetClassNameDrawSP
+  end interface
+  interface PetscObjectSetName
+    module procedure PetscObjectSetNameDrawSP
+  end interface
+  interface PetscObjectPrintClassNamePrefixType
+    module procedure PetscObjectPrintClassNamePrefixTypeDrawSP
+  end interface
+  interface PetscObjectName
+    module procedure PetscObjectNameDrawSP
+  end interface
+  interface PetscObjectChangeTypeName
+    module procedure PetscObjectChangeTypeNameDrawSP
+  end interface
+  interface
+  subroutine PetscDrawHGCreate(draw,bins,hist, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDraw,tPetscDrawHG
+  PetscDraw :: draw
+  integer4 :: bins
+  PetscDrawHG :: hist
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDrawHGCreate
+#endif
+  interface
+  subroutine PetscDrawHGSetNumberBins(hist,bins, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDrawHG
+  PetscDrawHG :: hist
+  integer4 :: bins
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDrawHGSetNumberBins
+#endif
+  interface
+  subroutine PetscDrawHGReset(hist, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDrawHG
+  PetscDrawHG :: hist
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDrawHGReset
+#endif
+  interface
+  subroutine PetscDrawHGDestroy(hist, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDrawHG
+  PetscDrawHG :: hist
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDrawHGDestroy
+#endif
+  interface
+  subroutine PetscDrawHGAddValue(hist,value, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDrawHG
+  PetscDrawHG :: hist
+  PetscReal :: value
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDrawHGAddValue
+#endif
+  interface
+  subroutine PetscDrawHGAddWeightedValue(hist,value,weight, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDrawHG
+  PetscDrawHG :: hist
+  PetscReal :: value
+  PetscReal :: weight
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDrawHGAddWeightedValue
+#endif
+  interface
+  subroutine PetscDrawHGDraw(hist, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDrawHG
+  PetscDrawHG :: hist
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDrawHGDraw
+#endif
+  interface
+  subroutine PetscDrawHGSave(hg, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDrawHG
+  PetscDrawHG :: hg
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDrawHGSave
+#endif
+  interface
+  subroutine PetscDrawHGView(hist,viewer, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDrawHG,tPetscViewer
+  PetscDrawHG :: hist
+  PetscViewer :: viewer
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDrawHGView
+#endif
+  interface
+  subroutine PetscDrawHGSetColor(hist,color, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDrawHG
+  PetscDrawHG :: hist
+  integer4 :: color
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDrawHGSetColor
+#endif
+  interface
+  subroutine PetscDrawHGSetLimits(hist,x_min,x_max,y_min,y_max, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDrawHG
+  PetscDrawHG :: hist
+  PetscReal :: x_min
+  PetscReal :: x_max
+  integer4 :: y_min
+  integer4 :: y_max
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDrawHGSetLimits
+#endif
+  interface
+  subroutine PetscDrawHGCalcStats(hist,calc, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDrawHG
+  PetscDrawHG :: hist
+  PetscBool :: calc
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDrawHGCalcStats
+#endif
+  interface
+  subroutine PetscDrawHGIntegerBins(hist,ints, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDrawHG
+  PetscDrawHG :: hist
+  PetscBool :: ints
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDrawHGIntegerBins
+#endif
+  interface
+  subroutine PetscDrawHGGetAxis(hist,axis, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDrawHG,tPetscDrawAxis
+  PetscDrawHG :: hist
+  PetscDrawAxis :: axis
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDrawHGGetAxis
+#endif
+  interface
+  subroutine PetscDrawHGGetDraw(hist,draw, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDrawHG,tPetscDraw
+  PetscDrawHG :: hist
+  PetscDraw :: draw
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDrawHGGetDraw
+#endif
+  interface operator(.ne.)
+    module procedure PetscDrawHGnotequals
+  end interface operator (.ne.)
+  interface operator(.eq.)
+    module procedure PetscDrawHGequals
+  end interface operator (.eq.)
+
+  interface PetscObjectCast
+    module procedure PetscObjectCastDrawHG
+  end interface
+  interface PetscBarrier
+  module procedure PetscBarrierDrawHG
+  end interface
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectSAWsTakeAccess
+    module procedure PetscObjectSAWsTakeAccessDrawHG
+  end interface
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectSAWsGrantAccess
+    module procedure PetscObjectSAWsGrantAccessDrawHG
+  end interface
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectSAWsBlock
+    module procedure PetscObjectSAWsBlockDrawHG
+  end interface
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectSAWsSetBlock
+    module procedure PetscObjectSAWsSetBlockDrawHG
+  end interface
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectSAWsViewOff
+    module procedure PetscObjectSAWsViewOffDrawHG
+  end interface
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectViewSAWs
+    module procedure PetscObjectViewSAWsDrawHG
+  end interface
+#endif
+  interface PetscObjectGetType
+    module procedure PetscObjectGetTypeDrawHG
+  end interface
+  interface PetscObjectSetPrintedOptions
+    module procedure PetscObjectSetPrintedOptionsDrawHG
+  end interface
+  interface PetscObjectInheritPrintedOptions
+    module procedure PetscObjectInheritPrintedOptionsDrawHG
+  end interface
+  interface PetscObjectAddOptionsHandler
+    module procedure PetscObjectAddOptionsHandlerDrawHG
+  end interface
+  interface PetscObjectProcessOptionsHandlers
+    module procedure PetscObjectProcessOptionsHandlersDrawHG
+  end interface
+  interface PetscObjectDestroyOptionsHandlers
+    module procedure PetscObjectDestroyOptionsHandlersDrawHG
+  end interface
+  interface PetscObjectReference
+    module procedure PetscObjectReferenceDrawHG
+  end interface
+  interface PetscObjectGetReference
+    module procedure PetscObjectGetReferenceDrawHG
+  end interface
+  interface PetscObjectDereference
+    module procedure PetscObjectDereferenceDrawHG
+  end interface
+  interface PetscObjectRemoveReference
+    module procedure PetscObjectRemoveReferenceDrawHG
+  end interface
+  interface PetscObjectHasFunction
+    module procedure PetscObjectHasFunctionDrawHG
+  end interface
+  interface PetscObjectSetFromOptions
+    module procedure PetscObjectSetFromOptionsDrawHG
+  end interface
+  interface PetscObjectSetUp
+    module procedure PetscObjectSetUpDrawHG
+  end interface
+  interface PetscObjectGetName
+    module procedure PetscObjectGetNameDrawHG
+  end interface
+  interface PetscObjectDestroy
+    module procedure PetscObjectDestroyDrawHG
+  end interface
+  interface PetscObjectView
+    module procedure PetscObjectViewDrawHG
+  end interface
+  interface PetscObjectViewFromOptions
+    module procedure PetscObjectViewFromOptionsDrawHG
+  end interface
+  interface PetscObjectTypeCompare
+    module procedure PetscObjectTypeCompareDrawHG
+  end interface
+  interface PetscObjectObjectTypeCompare
+    module procedure PetscObjectObjectTypeCompareDrawHG
+  end interface
+  interface PetscObjectBaseTypeCompare
+    module procedure PetscObjectBaseTypeCompareDrawHG
+  end interface
+  interface PetscObjectRegisterDestroy
+    module procedure PetscObjectRegisterDestroyDrawHG
+  end interface
+  interface PetscObjectGetId
+    module procedure PetscObjectGetIdDrawHG
+  end interface
+  interface PetscObjectCompareId
+    module procedure PetscObjectCompareIdDrawHG
+  end interface
+  interface PetscObjectGetOptions
+    module procedure PetscObjectGetOptionsDrawHG
+  end interface
+  interface PetscObjectSetOptions
+    module procedure PetscObjectSetOptionsDrawHG
+  end interface
+  interface PetscObjectSetOptionsPrefix
+    module procedure PetscObjectSetOptionsPrefixDrawHG
+  end interface
+  interface PetscObjectAppendOptionsPrefix
+    module procedure PetscObjectAppendOptionsPrefixDrawHG
+  end interface
+  interface PetscObjectGetOptionsPrefix
+    module procedure PetscObjectGetOptionsPrefixDrawHG
+  end interface
+  interface PetscObjectPrependOptionsPrefix
+    module procedure PetscObjectPrependOptionsPrefixDrawHG
+  end interface
+  interface PetscObjectGetComm
+    module procedure PetscObjectGetCommDrawHG
+  end interface
+  interface PetscObjectGetTabLevel
+    module procedure PetscObjectGetTabLevelDrawHG
+  end interface
+  interface PetscObjectSetTabLevel
+    module procedure PetscObjectSetTabLevelDrawHG
+  end interface
+  interface PetscObjectIncrementTabLevel
+    module procedure PetscObjectIncrementTabLevelDrawHG
+  end interface
+  interface PetscObjectGetNewTag
+    module procedure PetscObjectGetNewTagDrawHG
+  end interface
+  interface PetscObjectGetClassId
+    module procedure PetscObjectGetClassIdDrawHG
+  end interface
+  interface PetscObjectGetClassName
+    module procedure PetscObjectGetClassNameDrawHG
+  end interface
+  interface PetscObjectSetName
+    module procedure PetscObjectSetNameDrawHG
+  end interface
+  interface PetscObjectPrintClassNamePrefixType
+    module procedure PetscObjectPrintClassNamePrefixTypeDrawHG
+  end interface
+  interface PetscObjectName
+    module procedure PetscObjectNameDrawHG
+  end interface
+  interface PetscObjectChangeTypeName
+    module procedure PetscObjectChangeTypeNameDrawHG
+  end interface
+  interface
+  subroutine PetscDrawBarCreate(draw,bar, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDraw,tPetscDrawBar
+  PetscDraw :: draw
+  PetscDrawBar :: bar
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDrawBarCreate
+#endif
+  interface
+  subroutine PetscDrawBarDestroy(bar, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDrawBar
+  PetscDrawBar :: bar
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDrawBarDestroy
+#endif
+  interface
+  subroutine PetscDrawBarDraw(bar, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDrawBar
+  PetscDrawBar :: bar
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDrawBarDraw
+#endif
+  interface
+  subroutine PetscDrawBarSave(bar, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDrawBar
+  PetscDrawBar :: bar
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDrawBarSave
+#endif
+  interface
+  subroutine PetscDrawBarSetColor(bar,color, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDrawBar
+  PetscDrawBar :: bar
+  integer4 :: color
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDrawBarSetColor
+#endif
+  interface
+  subroutine PetscDrawBarSort(bar,sort,tolerance, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDrawBar
+  PetscDrawBar :: bar
+  PetscBool :: sort
+  PetscReal :: tolerance
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDrawBarSort
+#endif
+  interface
+  subroutine PetscDrawBarSetLimits(bar,y_min,y_max, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDrawBar
+  PetscDrawBar :: bar
+  PetscReal :: y_min
+  PetscReal :: y_max
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDrawBarSetLimits
+#endif
+  interface
+  subroutine PetscDrawBarGetAxis(bar,axis, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDrawBar,tPetscDrawAxis
+  PetscDrawBar :: bar
+  PetscDrawAxis :: axis
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDrawBarGetAxis
+#endif
+  interface
+  subroutine PetscDrawBarGetDraw(bar,draw, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDrawBar,tPetscDraw
+  PetscDrawBar :: bar
+  PetscDraw :: draw
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDrawBarGetDraw
+#endif
+  interface
+  subroutine PetscDrawBarSetFromOptions(bar, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDrawBar
+  PetscDrawBar :: bar
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDrawBarSetFromOptions
+#endif
+  interface operator(.ne.)
+    module procedure PetscDrawBarnotequals
+  end interface operator (.ne.)
+  interface operator(.eq.)
+    module procedure PetscDrawBarequals
+  end interface operator (.eq.)
+
+  interface PetscObjectCast
+    module procedure PetscObjectCastDrawBar
+  end interface
+  interface PetscBarrier
+  module procedure PetscBarrierDrawBar
+  end interface
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectSAWsTakeAccess
+    module procedure PetscObjectSAWsTakeAccessDrawBar
+  end interface
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectSAWsGrantAccess
+    module procedure PetscObjectSAWsGrantAccessDrawBar
+  end interface
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectSAWsBlock
+    module procedure PetscObjectSAWsBlockDrawBar
+  end interface
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectSAWsSetBlock
+    module procedure PetscObjectSAWsSetBlockDrawBar
+  end interface
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectSAWsViewOff
+    module procedure PetscObjectSAWsViewOffDrawBar
+  end interface
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectViewSAWs
+    module procedure PetscObjectViewSAWsDrawBar
+  end interface
+#endif
+  interface PetscObjectGetType
+    module procedure PetscObjectGetTypeDrawBar
+  end interface
+  interface PetscObjectSetPrintedOptions
+    module procedure PetscObjectSetPrintedOptionsDrawBar
+  end interface
+  interface PetscObjectInheritPrintedOptions
+    module procedure PetscObjectInheritPrintedOptionsDrawBar
+  end interface
+  interface PetscObjectAddOptionsHandler
+    module procedure PetscObjectAddOptionsHandlerDrawBar
+  end interface
+  interface PetscObjectProcessOptionsHandlers
+    module procedure PetscObjectProcessOptionsHandlersDrawBar
+  end interface
+  interface PetscObjectDestroyOptionsHandlers
+    module procedure PetscObjectDestroyOptionsHandlersDrawBar
+  end interface
+  interface PetscObjectReference
+    module procedure PetscObjectReferenceDrawBar
+  end interface
+  interface PetscObjectGetReference
+    module procedure PetscObjectGetReferenceDrawBar
+  end interface
+  interface PetscObjectDereference
+    module procedure PetscObjectDereferenceDrawBar
+  end interface
+  interface PetscObjectRemoveReference
+    module procedure PetscObjectRemoveReferenceDrawBar
+  end interface
+  interface PetscObjectHasFunction
+    module procedure PetscObjectHasFunctionDrawBar
+  end interface
+  interface PetscObjectSetFromOptions
+    module procedure PetscObjectSetFromOptionsDrawBar
+  end interface
+  interface PetscObjectSetUp
+    module procedure PetscObjectSetUpDrawBar
+  end interface
+  interface PetscObjectGetName
+    module procedure PetscObjectGetNameDrawBar
+  end interface
+  interface PetscObjectDestroy
+    module procedure PetscObjectDestroyDrawBar
+  end interface
+  interface PetscObjectView
+    module procedure PetscObjectViewDrawBar
+  end interface
+  interface PetscObjectViewFromOptions
+    module procedure PetscObjectViewFromOptionsDrawBar
+  end interface
+  interface PetscObjectTypeCompare
+    module procedure PetscObjectTypeCompareDrawBar
+  end interface
+  interface PetscObjectObjectTypeCompare
+    module procedure PetscObjectObjectTypeCompareDrawBar
+  end interface
+  interface PetscObjectBaseTypeCompare
+    module procedure PetscObjectBaseTypeCompareDrawBar
+  end interface
+  interface PetscObjectRegisterDestroy
+    module procedure PetscObjectRegisterDestroyDrawBar
+  end interface
+  interface PetscObjectGetId
+    module procedure PetscObjectGetIdDrawBar
+  end interface
+  interface PetscObjectCompareId
+    module procedure PetscObjectCompareIdDrawBar
+  end interface
+  interface PetscObjectGetOptions
+    module procedure PetscObjectGetOptionsDrawBar
+  end interface
+  interface PetscObjectSetOptions
+    module procedure PetscObjectSetOptionsDrawBar
+  end interface
+  interface PetscObjectSetOptionsPrefix
+    module procedure PetscObjectSetOptionsPrefixDrawBar
+  end interface
+  interface PetscObjectAppendOptionsPrefix
+    module procedure PetscObjectAppendOptionsPrefixDrawBar
+  end interface
+  interface PetscObjectGetOptionsPrefix
+    module procedure PetscObjectGetOptionsPrefixDrawBar
+  end interface
+  interface PetscObjectPrependOptionsPrefix
+    module procedure PetscObjectPrependOptionsPrefixDrawBar
+  end interface
+  interface PetscObjectGetComm
+    module procedure PetscObjectGetCommDrawBar
+  end interface
+  interface PetscObjectGetTabLevel
+    module procedure PetscObjectGetTabLevelDrawBar
+  end interface
+  interface PetscObjectSetTabLevel
+    module procedure PetscObjectSetTabLevelDrawBar
+  end interface
+  interface PetscObjectIncrementTabLevel
+    module procedure PetscObjectIncrementTabLevelDrawBar
+  end interface
+  interface PetscObjectGetNewTag
+    module procedure PetscObjectGetNewTagDrawBar
+  end interface
+  interface PetscObjectGetClassId
+    module procedure PetscObjectGetClassIdDrawBar
+  end interface
+  interface PetscObjectGetClassName
+    module procedure PetscObjectGetClassNameDrawBar
+  end interface
+  interface PetscObjectSetName
+    module procedure PetscObjectSetNameDrawBar
+  end interface
+  interface PetscObjectPrintClassNamePrefixType
+    module procedure PetscObjectPrintClassNamePrefixTypeDrawBar
+  end interface
+  interface PetscObjectName
+    module procedure PetscObjectNameDrawBar
+  end interface
+  interface PetscObjectChangeTypeName
+    module procedure PetscObjectChangeTypeNameDrawBar
+  end interface
+  interface
+  subroutine PetscViewerDrawBaseAdd(viewer,windownumber, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscViewer
+  PetscViewer :: viewer
+  PetscInt :: windownumber
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscViewerDrawBaseAdd
+#endif
+  interface
+  subroutine PetscViewerDrawBaseSet(viewer,windownumber, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscViewer
+  PetscViewer :: viewer
+  PetscInt :: windownumber
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscViewerDrawBaseSet
+#endif
+  interface
+  subroutine PetscViewerDrawSetTitle(v,title, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscViewer
+  PetscViewer :: v
+  character(*) :: title
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscViewerDrawSetTitle
+#endif
+  interface
+  subroutine PetscViewerDrawGetTitle(v,title, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscViewer
+  PetscViewer :: v
+  character(*) :: title
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscViewerDrawGetTitle
+#endif
+  interface
+  subroutine PetscViewerDrawGetDraw(viewer,windownumber,draw, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscViewer,tPetscDraw
+  PetscViewer :: viewer
+  PetscInt :: windownumber
+  PetscDraw :: draw
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscViewerDrawGetDraw
+#endif
+  interface
+  subroutine PetscViewerDrawGetDrawLG(viewer,windownumber,drawlg, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscViewer,tPetscDrawLG
+  PetscViewer :: viewer
+  PetscInt :: windownumber
+  PetscDrawLG :: drawlg
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscViewerDrawGetDrawLG
+#endif
+  interface
+  subroutine PetscViewerDrawGetDrawAxis(viewer,windownumber,drawaxis, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscViewer,tPetscDrawAxis
+  PetscViewer :: viewer
+  PetscInt :: windownumber
+  PetscDrawAxis :: drawaxis
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscViewerDrawGetDrawAxis
+#endif
+  interface
+  subroutine PetscViewerDrawGetDrawType(v,drawtype, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscViewer
+  PetscViewer :: v
+  character(*) :: drawtype
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscViewerDrawGetDrawType
+#endif
+  interface operator(.ne.)
+    module procedure PetscDrawMarkerTypenotequals
+  end interface operator (.ne.)
+  interface operator(.eq.)
+    module procedure PetscDrawMarkerTypeequals
+  end interface operator (.eq.)
+
+  interface operator(.ne.)
+    module procedure PetscDrawButtonnotequals
+  end interface operator (.ne.)
+  interface operator(.eq.)
+    module procedure PetscDrawButtonequals
+  end interface operator (.eq.)
+

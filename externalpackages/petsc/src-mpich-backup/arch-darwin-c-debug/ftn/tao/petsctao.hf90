@@ -1,0 +1,429 @@
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT:: Taonotequals
+!DEC$ ATTRIBUTES DLLEXPORT:: Taoequals
+#endif
+
+  function Taonotequals(A,B)
+    logical Taonotequals
+    type(tTao), intent(in) :: A,B
+    Taonotequals = (A%v .ne. B%v)
+  end function
+  function Taoequals(A,B)
+    logical Taoequals
+    type(tTao), intent(in) :: A,B
+    Taoequals = (A%v .eq. B%v)
+  end function
+  function PetscObjectCastTao(obj)
+    Tao obj
+    PetscObject PetscObjectCastTao
+    PetscObjectCastTao%v = obj%v
+  end function 
+  subroutine PetscBarrierTao(obj,ierr)
+    Tao obj
+    PetscErrorCode ierr
+    call PetscBarrier(PetscObjectCast(obj),ierr)
+  end subroutine 
+#if defined(PETSC_HAVE_SAWS)
+  subroutine PetscObjectSAWsTakeAccessTao(obj, ierr)
+  Tao obj
+  PetscErrorCode ierr
+  call PetscObjectSAWsTakeAccess(PetscObjectCast(obj), ierr)
+  end subroutine 
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  subroutine PetscObjectSAWsGrantAccessTao(obj, ierr)
+  Tao obj
+  PetscErrorCode ierr
+  call PetscObjectSAWsGrantAccess(PetscObjectCast(obj), ierr)
+  end subroutine 
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  subroutine PetscObjectSAWsBlockTao(obj, ierr)
+  Tao obj
+  PetscErrorCode ierr
+  call PetscObjectSAWsBlock(PetscObjectCast(obj), ierr)
+  end subroutine 
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  subroutine PetscObjectSAWsSetBlockTao(obj, flg, ierr)
+  Tao obj
+  PetscBool :: flg
+  PetscErrorCode ierr
+  call PetscObjectSAWsSetBlock(PetscObjectCast(obj), flg, ierr)
+  end subroutine 
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  subroutine PetscObjectSAWsViewOffTao(obj, ierr)
+  Tao obj
+  PetscErrorCode ierr
+  call PetscObjectSAWsViewOff(PetscObjectCast(obj), ierr)
+  end subroutine 
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  subroutine PetscObjectViewSAWsTao(obj, viewer, ierr)
+  Tao obj
+  PetscViewer :: viewer
+  PetscErrorCode ierr
+  call PetscObjectViewSAWs(PetscObjectCast(obj), viewer, ierr)
+  end subroutine 
+#endif
+  subroutine PetscObjectGetTypeTao(obj, type, ierr)
+  Tao obj
+  character(*) :: type
+  PetscErrorCode ierr
+  call PetscObjectGetType(PetscObjectCast(obj), type, ierr)
+  end subroutine 
+  subroutine PetscObjectSetPrintedOptionsTao(obj, ierr)
+  Tao obj
+  PetscErrorCode ierr
+  call PetscObjectSetPrintedOptions(PetscObjectCast(obj), ierr)
+  end subroutine 
+  subroutine PetscObjectInheritPrintedOptionsTao(pobj, obj, ierr)
+  Tao pobj
+  PetscObject :: obj
+  PetscErrorCode ierr
+  call PetscObjectInheritPrintedOptions(PetscObjectCast(pobj), obj, ierr)
+  end subroutine 
+  subroutine PetscObjectAddOptionsHandlerTao(obj, handle, destroy, ctx, ierr)
+  Tao obj
+  external :: handle
+  external :: destroy
+  type(*) :: ctx
+  PetscErrorCode ierr
+  call PetscObjectAddOptionsHandler(PetscObjectCast(obj), handle, destroy, ctx, ierr)
+  end subroutine 
+  subroutine PetscObjectProcessOptionsHandlersTao(obj, PetscOptionsObject, ierr)
+  Tao obj
+  PetscOptionItems :: PetscOptionsObject
+  PetscErrorCode ierr
+  call PetscObjectProcessOptionsHandlers(PetscObjectCast(obj), PetscOptionsObject, ierr)
+  end subroutine 
+  subroutine PetscObjectDestroyOptionsHandlersTao(obj, ierr)
+  Tao obj
+  PetscErrorCode ierr
+  call PetscObjectDestroyOptionsHandlers(PetscObjectCast(obj), ierr)
+  end subroutine 
+  subroutine PetscObjectReferenceTao(obj, ierr)
+  Tao obj
+  PetscErrorCode ierr
+  call PetscObjectReference(PetscObjectCast(obj), ierr)
+  end subroutine 
+  subroutine PetscObjectGetReferenceTao(obj, cnt, ierr)
+  Tao obj
+  PetscInt :: cnt
+  PetscErrorCode ierr
+  call PetscObjectGetReference(PetscObjectCast(obj), cnt, ierr)
+  end subroutine 
+  subroutine PetscObjectDereferenceTao(obj, ierr)
+  Tao obj
+  PetscErrorCode ierr
+  call PetscObjectDereference(PetscObjectCast(obj), ierr)
+  end subroutine 
+  subroutine PetscObjectRemoveReferenceTao(obj, name, ierr)
+  Tao obj
+  character(*) :: name
+  PetscErrorCode ierr
+  call PetscObjectRemoveReference(PetscObjectCast(obj), name, ierr)
+  end subroutine 
+  subroutine PetscObjectHasFunctionTao(obj, name, has, ierr)
+  Tao obj
+  character(*) :: name
+  PetscBool :: has
+  PetscErrorCode ierr
+  call PetscObjectHasFunction(PetscObjectCast(obj), name, has, ierr)
+  end subroutine 
+  subroutine PetscObjectSetFromOptionsTao(obj, ierr)
+  Tao obj
+  PetscErrorCode ierr
+  call PetscObjectSetFromOptions(PetscObjectCast(obj), ierr)
+  end subroutine 
+  subroutine PetscObjectSetUpTao(obj, ierr)
+  Tao obj
+  PetscErrorCode ierr
+  call PetscObjectSetUp(PetscObjectCast(obj), ierr)
+  end subroutine 
+  subroutine PetscObjectGetNameTao(obj, name, ierr)
+  Tao obj
+  character(*) :: name
+  PetscErrorCode ierr
+  call PetscObjectGetName(PetscObjectCast(obj), name, ierr)
+  end subroutine 
+  subroutine PetscObjectDestroyTao(obj, ierr)
+  Tao obj
+  PetscErrorCode ierr
+  call PetscObjectDestroy(PetscObjectCast(obj), ierr)
+  end subroutine 
+  subroutine PetscObjectViewTao(obj, viewer, ierr)
+  Tao obj
+  PetscViewer :: viewer
+  PetscErrorCode ierr
+  call PetscObjectView(PetscObjectCast(obj), viewer, ierr)
+  end subroutine 
+  subroutine PetscObjectViewFromOptionsTao(obj, bobj, name, ierr)
+  Tao obj
+  PetscObject :: bobj
+  character(*) :: name
+  PetscErrorCode ierr
+  call PetscObjectViewFromOptions(PetscObjectCast(obj), bobj, name, ierr)
+  end subroutine 
+  subroutine PetscObjectTypeCompareTao(obj, type_name, same, ierr)
+  Tao obj
+  character(*) :: type_name
+  PetscBool :: same
+  PetscErrorCode ierr
+  call PetscObjectTypeCompare(PetscObjectCast(obj), type_name, same, ierr)
+  end subroutine 
+  subroutine PetscObjectObjectTypeCompareTao(obj1, obj2, same, ierr)
+  Tao obj1
+  PetscObject :: obj2
+  PetscBool :: same
+  PetscErrorCode ierr
+  call PetscObjectObjectTypeCompare(PetscObjectCast(obj1), obj2, same, ierr)
+  end subroutine 
+  subroutine PetscObjectBaseTypeCompareTao(obj, type_name, same, ierr)
+  Tao obj
+  character(*) :: type_name
+  PetscBool :: same
+  PetscErrorCode ierr
+  call PetscObjectBaseTypeCompare(PetscObjectCast(obj), type_name, same, ierr)
+  end subroutine 
+  subroutine PetscObjectRegisterDestroyTao(obj, ierr)
+  Tao obj
+  PetscErrorCode ierr
+  call PetscObjectRegisterDestroy(PetscObjectCast(obj), ierr)
+  end subroutine 
+  subroutine PetscObjectGetIdTao(obj, id, ierr)
+  Tao obj
+  PetscObjectId :: id
+  PetscErrorCode ierr
+  call PetscObjectGetId(PetscObjectCast(obj), id, ierr)
+  end subroutine 
+  subroutine PetscObjectCompareIdTao(obj, id, eq, ierr)
+  Tao obj
+  PetscObjectId :: id
+  PetscBool :: eq
+  PetscErrorCode ierr
+  call PetscObjectCompareId(PetscObjectCast(obj), id, eq, ierr)
+  end subroutine 
+  subroutine PetscObjectGetOptionsTao(obj, options, ierr)
+  Tao obj
+  PetscOptions :: options
+  PetscErrorCode ierr
+  call PetscObjectGetOptions(PetscObjectCast(obj), options, ierr)
+  end subroutine 
+  subroutine PetscObjectSetOptionsTao(obj, options, ierr)
+  Tao obj
+  PetscOptions :: options
+  PetscErrorCode ierr
+  call PetscObjectSetOptions(PetscObjectCast(obj), options, ierr)
+  end subroutine 
+  subroutine PetscObjectSetOptionsPrefixTao(obj, prefix, ierr)
+  Tao obj
+  character(*) :: prefix
+  PetscErrorCode ierr
+  call PetscObjectSetOptionsPrefix(PetscObjectCast(obj), prefix, ierr)
+  end subroutine 
+  subroutine PetscObjectAppendOptionsPrefixTao(obj, prefix, ierr)
+  Tao obj
+  character(*) :: prefix
+  PetscErrorCode ierr
+  call PetscObjectAppendOptionsPrefix(PetscObjectCast(obj), prefix, ierr)
+  end subroutine 
+  subroutine PetscObjectGetOptionsPrefixTao(obj, prefix, ierr)
+  Tao obj
+  character(*) :: prefix
+  PetscErrorCode ierr
+  call PetscObjectGetOptionsPrefix(PetscObjectCast(obj), prefix, ierr)
+  end subroutine 
+  subroutine PetscObjectPrependOptionsPrefixTao(obj, prefix, ierr)
+  Tao obj
+  character(*) :: prefix
+  PetscErrorCode ierr
+  call PetscObjectPrependOptionsPrefix(PetscObjectCast(obj), prefix, ierr)
+  end subroutine 
+  subroutine PetscObjectGetCommTao(obj, comm, ierr)
+  Tao obj
+  MPIU_Comm :: comm
+  PetscErrorCode ierr
+  call PetscObjectGetComm(PetscObjectCast(obj), comm, ierr)
+  end subroutine 
+  subroutine PetscObjectGetTabLevelTao(obj, tab, ierr)
+  Tao obj
+  PetscInt :: tab
+  PetscErrorCode ierr
+  call PetscObjectGetTabLevel(PetscObjectCast(obj), tab, ierr)
+  end subroutine 
+  subroutine PetscObjectSetTabLevelTao(obj, tab, ierr)
+  Tao obj
+  PetscInt :: tab
+  PetscErrorCode ierr
+  call PetscObjectSetTabLevel(PetscObjectCast(obj), tab, ierr)
+  end subroutine 
+  subroutine PetscObjectIncrementTabLevelTao(obj, oldobj, tab, ierr)
+  Tao obj
+  PetscObject :: oldobj
+  PetscInt :: tab
+  PetscErrorCode ierr
+  call PetscObjectIncrementTabLevel(PetscObjectCast(obj), oldobj, tab, ierr)
+  end subroutine 
+  subroutine PetscObjectGetNewTagTao(obj, tag, ierr)
+  Tao obj
+  PetscMPIInt :: tag
+  PetscErrorCode ierr
+  call PetscObjectGetNewTag(PetscObjectCast(obj), tag, ierr)
+  end subroutine 
+  subroutine PetscObjectGetClassIdTao(obj, classid, ierr)
+  Tao obj
+  PetscClassId :: classid
+  PetscErrorCode ierr
+  call PetscObjectGetClassId(PetscObjectCast(obj), classid, ierr)
+  end subroutine 
+  subroutine PetscObjectGetClassNameTao(obj, classname, ierr)
+  Tao obj
+  character(*) :: classname
+  PetscErrorCode ierr
+  call PetscObjectGetClassName(PetscObjectCast(obj), classname, ierr)
+  end subroutine 
+  subroutine PetscObjectSetNameTao(obj, name, ierr)
+  Tao obj
+  character(*) :: name
+  PetscErrorCode ierr
+  call PetscObjectSetName(PetscObjectCast(obj), name, ierr)
+  end subroutine 
+  subroutine PetscObjectPrintClassNamePrefixTypeTao(obj, viewer, ierr)
+  Tao obj
+  PetscViewer :: viewer
+  PetscErrorCode ierr
+  call PetscObjectPrintClassNamePrefixType(PetscObjectCast(obj), viewer, ierr)
+  end subroutine 
+  subroutine PetscObjectNameTao(obj, ierr)
+  Tao obj
+  PetscErrorCode ierr
+  call PetscObjectName(PetscObjectCast(obj), ierr)
+  end subroutine 
+  subroutine PetscObjectChangeTypeNameTao(obj, type_name, ierr)
+  Tao obj
+  character(*) :: type_name
+  PetscErrorCode ierr
+  call PetscObjectChangeTypeName(PetscObjectCast(obj), type_name, ierr)
+  end subroutine 
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT:: TaoMonitorDrawCtxnotequals
+!DEC$ ATTRIBUTES DLLEXPORT:: TaoMonitorDrawCtxequals
+#endif
+
+  function TaoMonitorDrawCtxnotequals(A,B)
+    logical TaoMonitorDrawCtxnotequals
+    type(tTaoMonitorDrawCtx), intent(in) :: A,B
+    TaoMonitorDrawCtxnotequals = (A%v .ne. B%v)
+  end function
+  function TaoMonitorDrawCtxequals(A,B)
+    logical TaoMonitorDrawCtxequals
+    type(tTaoMonitorDrawCtx), intent(in) :: A,B
+    TaoMonitorDrawCtxequals = (A%v .eq. B%v)
+  end function
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT:: TaoSubsetTypenotequals
+!DEC$ ATTRIBUTES DLLEXPORT:: TaoSubsetTypeequals
+#endif
+
+  function TaoSubsetTypenotequals(A,B)
+    logical TaoSubsetTypenotequals
+    type(eTaoSubsetType), intent(in) :: A,B
+    TaoSubsetTypenotequals = (A%v .ne. B%v)
+  end function
+  function TaoSubsetTypeequals(A,B)
+    logical TaoSubsetTypeequals
+    type(eTaoSubsetType), intent(in) :: A,B
+    TaoSubsetTypeequals = (A%v .eq. B%v)
+  end function
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT:: TaoADMMUpdateTypenotequals
+!DEC$ ATTRIBUTES DLLEXPORT:: TaoADMMUpdateTypeequals
+#endif
+
+  function TaoADMMUpdateTypenotequals(A,B)
+    logical TaoADMMUpdateTypenotequals
+    type(eTaoADMMUpdateType), intent(in) :: A,B
+    TaoADMMUpdateTypenotequals = (A%v .ne. B%v)
+  end function
+  function TaoADMMUpdateTypeequals(A,B)
+    logical TaoADMMUpdateTypeequals
+    type(eTaoADMMUpdateType), intent(in) :: A,B
+    TaoADMMUpdateTypeequals = (A%v .eq. B%v)
+  end function
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT:: TaoADMMRegularizerTypenotequals
+!DEC$ ATTRIBUTES DLLEXPORT:: TaoADMMRegularizerTypeequals
+#endif
+
+  function TaoADMMRegularizerTypenotequals(A,B)
+    logical TaoADMMRegularizerTypenotequals
+    type(eTaoADMMRegularizerType), intent(in) :: A,B
+    TaoADMMRegularizerTypenotequals = (A%v .ne. B%v)
+  end function
+  function TaoADMMRegularizerTypeequals(A,B)
+    logical TaoADMMRegularizerTypeequals
+    type(eTaoADMMRegularizerType), intent(in) :: A,B
+    TaoADMMRegularizerTypeequals = (A%v .eq. B%v)
+  end function
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT:: TaoALMMTypenotequals
+!DEC$ ATTRIBUTES DLLEXPORT:: TaoALMMTypeequals
+#endif
+
+  function TaoALMMTypenotequals(A,B)
+    logical TaoALMMTypenotequals
+    type(eTaoALMMType), intent(in) :: A,B
+    TaoALMMTypenotequals = (A%v .ne. B%v)
+  end function
+  function TaoALMMTypeequals(A,B)
+    logical TaoALMMTypeequals
+    type(eTaoALMMType), intent(in) :: A,B
+    TaoALMMTypeequals = (A%v .eq. B%v)
+  end function
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT:: TaoBNCGTypenotequals
+!DEC$ ATTRIBUTES DLLEXPORT:: TaoBNCGTypeequals
+#endif
+
+  function TaoBNCGTypenotequals(A,B)
+    logical TaoBNCGTypenotequals
+    type(eTaoBNCGType), intent(in) :: A,B
+    TaoBNCGTypenotequals = (A%v .ne. B%v)
+  end function
+  function TaoBNCGTypeequals(A,B)
+    logical TaoBNCGTypeequals
+    type(eTaoBNCGType), intent(in) :: A,B
+    TaoBNCGTypeequals = (A%v .eq. B%v)
+  end function
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT:: TaoConvergedReasonnotequals
+!DEC$ ATTRIBUTES DLLEXPORT:: TaoConvergedReasonequals
+#endif
+
+  function TaoConvergedReasonnotequals(A,B)
+    logical TaoConvergedReasonnotequals
+    type(eTaoConvergedReason), intent(in) :: A,B
+    TaoConvergedReasonnotequals = (A%v .ne. B%v)
+  end function
+  function TaoConvergedReasonequals(A,B)
+    logical TaoConvergedReasonequals
+    type(eTaoConvergedReason), intent(in) :: A,B
+    TaoConvergedReasonequals = (A%v .eq. B%v)
+  end function
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT:: TaoBRGNRegularizationTypenotequals
+!DEC$ ATTRIBUTES DLLEXPORT:: TaoBRGNRegularizationTypeequals
+#endif
+
+  function TaoBRGNRegularizationTypenotequals(A,B)
+    logical TaoBRGNRegularizationTypenotequals
+    type(eTaoBRGNRegularizationType), intent(in) :: A,B
+    TaoBRGNRegularizationTypenotequals = (A%v .ne. B%v)
+  end function
+  function TaoBRGNRegularizationTypeequals(A,B)
+    logical TaoBRGNRegularizationTypeequals
+    type(eTaoBRGNRegularizationType), intent(in) :: A,B
+    TaoBRGNRegularizationTypeequals = (A%v .eq. B%v)
+  end function

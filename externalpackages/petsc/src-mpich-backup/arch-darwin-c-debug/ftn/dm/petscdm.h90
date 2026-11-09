@@ -1,0 +1,4104 @@
+  interface
+  subroutine VecGetDM(v,dm, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVec,tDM
+  Vec :: v
+  DM :: dm
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecGetDM
+#endif
+  interface
+  subroutine VecSetDM(v,dm, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVec,tDM
+  Vec :: v
+  DM :: dm
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecSetDM
+#endif
+  interface
+  subroutine MatGetDM(A,dm, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tMat,tDM
+  Mat :: A
+  DM :: dm
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::MatGetDM
+#endif
+  interface
+  subroutine MatSetDM(A,dm, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tMat,tDM
+  Mat :: A
+  DM :: dm
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::MatSetDM
+#endif
+  interface
+  subroutine MatFDColoringUseDM(coloring,fdcoloring, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tMat,tMatFDColoring
+  Mat :: coloring
+  MatFDColoring :: fdcoloring
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::MatFDColoringUseDM
+#endif
+  interface operator(.ne.)
+    module procedure DMInterpolationInfonotequals
+  end interface operator (.ne.)
+  interface operator(.eq.)
+    module procedure DMInterpolationInfoequals
+  end interface operator (.eq.)
+
+  interface
+  subroutine DMInterpolationCreate(comm,ctx, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDMInterpolationInfo
+  MPIU_Comm :: comm
+  DMInterpolationInfo :: ctx
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMInterpolationCreate
+#endif
+  interface
+  subroutine DMInterpolationSetDim(ctx,dim, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDMInterpolationInfo
+  DMInterpolationInfo :: ctx
+  PetscInt :: dim
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMInterpolationSetDim
+#endif
+  interface
+  subroutine DMInterpolationGetDim(ctx,dim, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDMInterpolationInfo
+  DMInterpolationInfo :: ctx
+  PetscInt :: dim
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMInterpolationGetDim
+#endif
+  interface
+  subroutine DMInterpolationSetDof(ctx,dof, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDMInterpolationInfo
+  DMInterpolationInfo :: ctx
+  PetscInt :: dof
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMInterpolationSetDof
+#endif
+  interface
+  subroutine DMInterpolationGetDof(ctx,dof, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDMInterpolationInfo
+  DMInterpolationInfo :: ctx
+  PetscInt :: dof
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMInterpolationGetDof
+#endif
+  interface
+  subroutine DMInterpolationAddPoints(ctx,n,points, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDMInterpolationInfo
+  DMInterpolationInfo :: ctx
+  PetscInt :: n
+  PetscReal :: points(*)
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMInterpolationAddPoints
+#endif
+  interface
+  subroutine DMInterpolationSetUp(ctx,dm,redundantPoints,ignoreOutsideDomain, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDMInterpolationInfo,tDM
+  DMInterpolationInfo :: ctx
+  DM :: dm
+  PetscBool :: redundantPoints
+  PetscBool :: ignoreOutsideDomain
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMInterpolationSetUp
+#endif
+  interface
+  subroutine DMInterpolationGetCoordinates(ctx,coordinates, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDMInterpolationInfo,tVec
+  DMInterpolationInfo :: ctx
+  Vec :: coordinates
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMInterpolationGetCoordinates
+#endif
+  interface
+  subroutine DMInterpolationGetVector(ctx,v, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDMInterpolationInfo,tVec
+  DMInterpolationInfo :: ctx
+  Vec :: v
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMInterpolationGetVector
+#endif
+  interface
+  subroutine DMInterpolationRestoreVector(ctx,v, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDMInterpolationInfo,tVec
+  DMInterpolationInfo :: ctx
+  Vec :: v
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMInterpolationRestoreVector
+#endif
+  interface
+  subroutine DMInterpolationEvaluate(ctx,dm,x,v, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDMInterpolationInfo,tDM,tVec
+  DMInterpolationInfo :: ctx
+  DM :: dm
+  Vec :: x
+  Vec :: v
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMInterpolationEvaluate
+#endif
+  interface
+  subroutine DMInterpolationDestroy(ctx, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDMInterpolationInfo
+  DMInterpolationInfo :: ctx
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMInterpolationDestroy
+#endif
+  interface
+  subroutine DMCreateSectionSubDM(dm,numFields,fields,numComps,comps,is,subdm, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM,tIS
+  DM :: dm
+  PetscInt :: numFields
+  PetscInt :: fields(*)
+  PetscInt :: numComps(*)
+  PetscInt :: comps(*)
+  IS :: is
+  DM :: subdm
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMCreateSectionSubDM
+#endif
+  interface
+  subroutine DMCreateSectionSuperDM(dms,len,is,superdm, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM,tIS
+  DM :: dms(*)
+  PetscInt :: len
+  IS, pointer :: is(:)
+  DM :: superdm
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMCreateSectionSuperDM
+#endif
+  interface
+  subroutine DMCreate(comm,dm, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  MPIU_Comm :: comm
+  DM :: dm
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMCreate
+#endif
+  interface
+  subroutine DMClone(dm,newdm, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  DM :: newdm
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMClone
+#endif
+  interface
+  subroutine DMSetVecType(dm,ctype, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  character(*) :: ctype
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMSetVecType
+#endif
+  interface
+  subroutine DMGetVecType(da,ctype, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: da
+  character(*) :: ctype
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMGetVecType
+#endif
+  interface
+  subroutine DMSetISColoringType(dm,ctype, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM,eISColoringType
+  DM :: dm
+  ISColoringType :: ctype
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMSetISColoringType
+#endif
+  interface
+  subroutine DMGetISColoringType(dm,ctype, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM,eISColoringType
+  DM :: dm
+  ISColoringType :: ctype
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMGetISColoringType
+#endif
+  interface
+  subroutine DMSetMatType(dm,ctype, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  character(*) :: ctype
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMSetMatType
+#endif
+  interface
+  subroutine DMGetMatType(dm,ctype, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  character(*) :: ctype
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMGetMatType
+#endif
+  interface
+  subroutine DMSetOptionsPrefix(dm,prefix, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  character(*) :: prefix
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMSetOptionsPrefix
+#endif
+  interface
+  subroutine DMAppendOptionsPrefix(dm,prefix, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  character(*) :: prefix
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMAppendOptionsPrefix
+#endif
+  interface
+  subroutine DMGetOptionsPrefix(dm,prefix, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  character(*) :: prefix
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMGetOptionsPrefix
+#endif
+  interface
+  subroutine DMDestroy(dm, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMDestroy
+#endif
+  interface
+  subroutine DMSetUp(dm, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMSetUp
+#endif
+  interface
+  subroutine DMSetFromOptions(dm, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMSetFromOptions
+#endif
+  interface
+  subroutine DMViewFromOptions(dm,obj,name, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM,tPetscObject
+  DM :: dm
+  PetscObject :: obj
+  character(*) :: name
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMViewFromOptions
+#endif
+  interface
+  subroutine DMView(dm,v, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM,tPetscViewer
+  DM :: dm
+  PetscViewer :: v
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMView
+#endif
+  interface
+  subroutine DMCreateGlobalVector(dm,vec, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM,tVec
+  DM :: dm
+  Vec :: vec
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMCreateGlobalVector
+#endif
+  interface
+  subroutine DMCreateLocalVector(dm,vec, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM,tVec
+  DM :: dm
+  Vec :: vec
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMCreateLocalVector
+#endif
+  interface
+  subroutine DMGetLocalToGlobalMapping(dm,ltog, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM,tISLocalToGlobalMapping
+  DM :: dm
+  ISLocalToGlobalMapping :: ltog
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMGetLocalToGlobalMapping
+#endif
+  interface
+  subroutine DMGetBlockSize(dm,bs, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  PetscInt :: bs
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMGetBlockSize
+#endif
+  interface
+  subroutine DMCreateInterpolation(dmc,dmf,mat,vec, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM,tMat,tVec
+  DM :: dmc
+  DM :: dmf
+  Mat :: mat
+  Vec :: vec
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMCreateInterpolation
+#endif
+  interface
+  subroutine DMCreateInterpolationScale(dac,daf,mat,scale, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM,tMat,tVec
+  DM :: dac
+  DM :: daf
+  Mat :: mat
+  Vec :: scale
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMCreateInterpolationScale
+#endif
+  interface
+  subroutine DMCreateRestriction(dmc,dmf,mat, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM,tMat
+  DM :: dmc
+  DM :: dmf
+  Mat :: mat
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMCreateRestriction
+#endif
+  interface
+  subroutine DMCreateInjection(dac,daf,mat, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM,tMat
+  DM :: dac
+  DM :: daf
+  Mat :: mat
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMCreateInjection
+#endif
+  interface
+  subroutine DMCreateMassMatrix(dmc,dmf,mat, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM,tMat
+  DM :: dmc
+  DM :: dmf
+  Mat :: mat
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMCreateMassMatrix
+#endif
+  interface
+  subroutine DMCreateMassMatrixLumped(dm,llm,lm, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM,tVec
+  DM :: dm
+  Vec :: llm
+  Vec :: lm
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMCreateMassMatrixLumped
+#endif
+  interface
+  subroutine DMCreateGradientMatrix(dmc,dmf,mat, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM,tMat
+  DM :: dmc
+  DM :: dmf
+  Mat :: mat
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMCreateGradientMatrix
+#endif
+  interface
+  subroutine DMCreateColoring(dm,ctype,coloring, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM,eISColoringType,tISColoring
+  DM :: dm
+  ISColoringType :: ctype
+  ISColoring :: coloring
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMCreateColoring
+#endif
+  interface
+  subroutine DMCreateMatrix(dm,mat, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM,tMat
+  DM :: dm
+  Mat :: mat
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMCreateMatrix
+#endif
+  interface
+  subroutine DMSetMatrixPreallocateSkip(dm,skip, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  PetscBool :: skip
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMSetMatrixPreallocateSkip
+#endif
+  interface
+  subroutine DMSetMatrixPreallocateOnly(dm,only, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  PetscBool :: only
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMSetMatrixPreallocateOnly
+#endif
+  interface
+  subroutine DMSetMatrixStructureOnly(dm,only, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  PetscBool :: only
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMSetMatrixStructureOnly
+#endif
+  interface
+  subroutine DMSetBlockingType(dm,btype, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM,eDMBlockingType
+  DM :: dm
+  DMBlockingType :: btype
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMSetBlockingType
+#endif
+  interface
+  subroutine DMGetBlockingType(dm,btype, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM,eDMBlockingType
+  DM :: dm
+  DMBlockingType :: btype
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMGetBlockingType
+#endif
+  interface
+  subroutine DMSetNullSpaceConstructor(dm,field,nullsp, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  PetscInt :: field
+  external :: nullsp
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMSetNullSpaceConstructor
+#endif
+  interface
+  subroutine DMSetNearNullSpaceConstructor(dm,field,nullsp, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  PetscInt :: field
+  external :: nullsp
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMSetNearNullSpaceConstructor
+#endif
+  interface
+  subroutine DMCreateSubDM(dm,numFields,fields,is,subdm, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM,tIS
+  DM :: dm
+  PetscInt :: numFields
+  PetscInt :: fields(*)
+  IS :: is
+  DM :: subdm
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMCreateSubDM
+#endif
+  interface
+  subroutine DMCreateSuperDM(dms,n,is,superdm, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM,tIS
+  DM :: dms(*)
+  PetscInt :: n
+  IS, pointer :: is(:)
+  DM :: superdm
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMCreateSuperDM
+#endif
+  interface
+  subroutine DMCreateDomainDecompositionScatters(dm,n,subdms,iscat,oscat,gscat, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM,tVecScatter
+  DM :: dm
+  PetscInt :: n
+  DM :: subdms(*)
+  VecScatter, pointer :: iscat(:)
+  VecScatter, pointer :: oscat(:)
+  VecScatter, pointer :: gscat(:)
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMCreateDomainDecompositionScatters
+#endif
+  interface
+  subroutine DMRefine(dm,comm,dmf, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  MPIU_Comm :: comm
+  DM :: dmf
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMRefine
+#endif
+  interface
+  subroutine DMRefineHookAdd(coarse,refinehook,interphook,ctx, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: coarse
+  external :: refinehook
+  external :: interphook
+  type(*) :: ctx
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMRefineHookAdd
+#endif
+  interface
+  subroutine DMRefineHookRemove(coarse,refinehook,interphook,ctx, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: coarse
+  external :: refinehook
+  external :: interphook
+  type(*) :: ctx
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMRefineHookRemove
+#endif
+  interface
+  subroutine DMInterpolate(coarse,interp,fine, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM,tMat
+  DM :: coarse
+  Mat :: interp
+  DM :: fine
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMInterpolate
+#endif
+  interface
+  subroutine DMInterpolateSolution(coarse,fine,interp,coarseSol,fineSol, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM,tMat,tVec
+  DM :: coarse
+  DM :: fine
+  Mat :: interp
+  Vec :: coarseSol
+  Vec :: fineSol
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMInterpolateSolution
+#endif
+  interface
+  subroutine DMGetRefineLevel(dm,level, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  PetscInt :: level
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMGetRefineLevel
+#endif
+  interface
+  subroutine DMSetRefineLevel(dm,level, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  PetscInt :: level
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMSetRefineLevel
+#endif
+  interface
+  subroutine DMExtrude(dm,layers,dme, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  PetscInt :: layers
+  DM :: dme
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMExtrude
+#endif
+  interface
+  subroutine DMHasBasisTransform(dm,flg, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  PetscBool :: flg
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMHasBasisTransform
+#endif
+  interface
+  subroutine DMCopyTransform(dm,newdm, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  DM :: newdm
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMCopyTransform
+#endif
+  interface
+  subroutine DMGlobalToLocalHookAdd(dm,beginhook,endhook,ctx, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  external :: beginhook
+  external :: endhook
+  type(*) :: ctx
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMGlobalToLocalHookAdd
+#endif
+  interface
+  subroutine DMGlobalToLocal(dm,g,mode,l, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM,tVec,eInsertMode
+  DM :: dm
+  Vec :: g
+  InsertMode :: mode
+  Vec :: l
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMGlobalToLocal
+#endif
+  interface
+  subroutine DMGlobalToLocalBegin(dm,g,mode,l, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM,tVec,eInsertMode
+  DM :: dm
+  Vec :: g
+  InsertMode :: mode
+  Vec :: l
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMGlobalToLocalBegin
+#endif
+  interface
+  subroutine DMGlobalToLocalEnd(dm,g,mode,l, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM,tVec,eInsertMode
+  DM :: dm
+  Vec :: g
+  InsertMode :: mode
+  Vec :: l
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMGlobalToLocalEnd
+#endif
+  interface
+  subroutine DMLocalToGlobalHookAdd(dm,beginhook,endhook,ctx, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  external :: beginhook
+  external :: endhook
+  type(*) :: ctx
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMLocalToGlobalHookAdd
+#endif
+  interface
+  subroutine DMLocalToGlobal(dm,l,mode,g, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM,tVec,eInsertMode
+  DM :: dm
+  Vec :: l
+  InsertMode :: mode
+  Vec :: g
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMLocalToGlobal
+#endif
+  interface
+  subroutine DMLocalToGlobalBegin(dm,l,mode,g, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM,tVec,eInsertMode
+  DM :: dm
+  Vec :: l
+  InsertMode :: mode
+  Vec :: g
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMLocalToGlobalBegin
+#endif
+  interface
+  subroutine DMLocalToGlobalEnd(dm,l,mode,g, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM,tVec,eInsertMode
+  DM :: dm
+  Vec :: l
+  InsertMode :: mode
+  Vec :: g
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMLocalToGlobalEnd
+#endif
+  interface
+  subroutine DMLocalToLocalBegin(dm,g,mode,l, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM,tVec,eInsertMode
+  DM :: dm
+  Vec :: g
+  InsertMode :: mode
+  Vec :: l
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMLocalToLocalBegin
+#endif
+  interface
+  subroutine DMLocalToLocalEnd(dm,g,mode,l, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM,tVec,eInsertMode
+  DM :: dm
+  Vec :: g
+  InsertMode :: mode
+  Vec :: l
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMLocalToLocalEnd
+#endif
+  interface
+  subroutine DMCoarsen(dm,comm,dmc, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  MPIU_Comm :: comm
+  DM :: dmc
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMCoarsen
+#endif
+  interface
+  subroutine DMCoarsenHookAdd(fine,coarsenhook,restricthook,ctx, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: fine
+  external :: coarsenhook
+  external :: restricthook
+  type(*) :: ctx
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMCoarsenHookAdd
+#endif
+  interface
+  subroutine DMCoarsenHookRemove(fine,coarsenhook,restricthook,ctx, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: fine
+  external :: coarsenhook
+  external :: restricthook
+  type(*) :: ctx
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMCoarsenHookRemove
+#endif
+  interface
+  subroutine DMRestrict(fine,restrct,rscale,inject,coarse, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM,tMat,tVec
+  DM :: fine
+  Mat :: restrct
+  Vec :: rscale
+  Mat :: inject
+  DM :: coarse
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMRestrict
+#endif
+  interface
+  subroutine DMSubDomainHookAdd(global,ddhook,restricthook,ctx, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: global
+  external :: ddhook
+  external :: restricthook
+  type(*) :: ctx
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMSubDomainHookAdd
+#endif
+  interface
+  subroutine DMSubDomainHookRemove(global,ddhook,restricthook,ctx, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: global
+  external :: ddhook
+  external :: restricthook
+  type(*) :: ctx
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMSubDomainHookRemove
+#endif
+  interface
+  subroutine DMSubDomainRestrict(global,oscatter,gscatter,subdm, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM,tVecScatter
+  DM :: global
+  VecScatter :: oscatter
+  VecScatter :: gscatter
+  DM :: subdm
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMSubDomainRestrict
+#endif
+  interface
+  subroutine DMGetCoarsenLevel(dm,level, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  PetscInt :: level
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMGetCoarsenLevel
+#endif
+  interface
+  subroutine DMSetCoarsenLevel(dm,level, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  PetscInt :: level
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMSetCoarsenLevel
+#endif
+  interface
+  subroutine DMRefineHierarchy(dm,nlevels,dmf, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  PetscInt :: nlevels
+  DM :: dmf(*)
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMRefineHierarchy
+#endif
+  interface
+  subroutine DMCoarsenHierarchy(dm,nlevels,dmc, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  PetscInt :: nlevels
+  DM :: dmc(*)
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMCoarsenHierarchy
+#endif
+  interface
+  subroutine DMSetApplicationContextDestroy(dm,destroy, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  external destroy
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMSetApplicationContextDestroy
+#endif
+  interface
+  subroutine DMSetApplicationContext(dm,ctx, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  type(*) :: ctx
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMSetApplicationContext
+#endif
+  interface
+  subroutine DMGetApplicationContextcptr(dm,ctx, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  type(c_ptr) :: ctx
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMGetApplicationContextcptr
+#endif
+  interface
+  subroutine DMSetVariableBounds(dm,f, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  external :: f
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMSetVariableBounds
+#endif
+  interface
+  subroutine DMHasVariableBounds(dm,flg, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  PetscBool :: flg
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMHasVariableBounds
+#endif
+  interface
+  subroutine DMComputeVariableBounds(dm,xl,xu, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM,tVec
+  DM :: dm
+  Vec :: xl
+  Vec :: xu
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMComputeVariableBounds
+#endif
+  interface
+  subroutine DMHasColoring(dm,flg, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  PetscBool :: flg
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMHasColoring
+#endif
+  interface
+  subroutine DMHasCreateRestriction(dm,flg, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  PetscBool :: flg
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMHasCreateRestriction
+#endif
+  interface
+  subroutine DMHasCreateInjection(dm,flg, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  PetscBool :: flg
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMHasCreateInjection
+#endif
+  interface
+  subroutine DMSetType(dm,method, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  character(*) :: method
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMSetType
+#endif
+  interface
+  subroutine DMGetType(dm,type, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  character(*) :: type
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMGetType
+#endif
+  interface
+  subroutine DMConvert(dm,newtype,M, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  character(*) :: newtype
+  DM :: M
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMConvert
+#endif
+  interface
+  subroutine DMRegister(sname,function, ierr)
+  use, intrinsic :: ISO_C_binding
+  character(*) :: sname
+  external :: function
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMRegister
+#endif
+  interface
+  subroutine DMLoad(newdm,viewer, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM,tPetscViewer
+  DM :: newdm
+  PetscViewer :: viewer
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMLoad
+#endif
+  interface
+  subroutine DMPrintCellIndices(c,name,len,x, ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscInt :: c
+  character(*) :: name
+  PetscInt :: len
+  PetscInt :: x(*)
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMPrintCellIndices
+#endif
+  interface
+  subroutine DMPrintCellVector(c,name,len,x, ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscInt :: c
+  character(*) :: name
+  PetscInt :: len
+  PetscScalar :: x(*)
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMPrintCellVector
+#endif
+  interface
+  subroutine DMPrintCellVectorReal(c,name,len,x, ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscInt :: c
+  character(*) :: name
+  PetscInt :: len
+  PetscReal :: x(*)
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMPrintCellVectorReal
+#endif
+  interface
+  subroutine DMPrintCellMatrix(c,name,rows,cols,A, ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscInt :: c
+  character(*) :: name
+  PetscInt :: rows
+  PetscInt :: cols
+  PetscScalar :: A(*)
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMPrintCellMatrix
+#endif
+  interface
+  subroutine DMPrintLocalVec(dm,name,tol,X, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM,tVec
+  DM :: dm
+  character(*) :: name
+  PetscReal :: tol
+  Vec :: X
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMPrintLocalVec
+#endif
+  interface
+  subroutine DMGetLocalSection(dm,section, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM,tPetscSection
+  DM :: dm
+  PetscSection :: section
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMGetLocalSection
+#endif
+  interface
+  subroutine DMSetLocalSection(dm,section, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM,tPetscSection
+  DM :: dm
+  PetscSection :: section
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMSetLocalSection
+#endif
+  interface
+  subroutine DMGetDefaultConstraints(dm,section,mat,bias, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM,tPetscSection,tMat,tVec
+  DM :: dm
+  PetscSection :: section
+  Mat :: mat
+  Vec :: bias
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMGetDefaultConstraints
+#endif
+  interface
+  subroutine DMSetDefaultConstraints(dm,section,mat,bias, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM,tPetscSection,tMat,tVec
+  DM :: dm
+  PetscSection :: section
+  Mat :: mat
+  Vec :: bias
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMSetDefaultConstraints
+#endif
+  interface
+  subroutine DMGetGlobalSection(dm,section, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM,tPetscSection
+  DM :: dm
+  PetscSection :: section
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMGetGlobalSection
+#endif
+  interface
+  subroutine DMSetGlobalSection(dm,section, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM,tPetscSection
+  DM :: dm
+  PetscSection :: section
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMSetGlobalSection
+#endif
+  interface
+  subroutine DMGetSectionSF(dm,sf, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM,tPetscSF
+  DM :: dm
+  PetscSF :: sf
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMGetSectionSF
+#endif
+  interface
+  subroutine DMSetSectionSF(dm,sf, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM,tPetscSF
+  DM :: dm
+  PetscSF :: sf
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMSetSectionSF
+#endif
+  interface
+  subroutine DMCreateSectionSF(dm,localSection,globalSection, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM,tPetscSection
+  DM :: dm
+  PetscSection :: localSection
+  PetscSection :: globalSection
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMCreateSectionSF
+#endif
+  interface
+  subroutine DMGetPointSF(dm,sf, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM,tPetscSF
+  DM :: dm
+  PetscSF :: sf
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMGetPointSF
+#endif
+  interface
+  subroutine DMSetPointSF(dm,sf, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM,tPetscSF
+  DM :: dm
+  PetscSF :: sf
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMSetPointSF
+#endif
+  interface
+  subroutine DMGetNaturalSF(dm,sf, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM,tPetscSF
+  DM :: dm
+  PetscSF :: sf
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMGetNaturalSF
+#endif
+  interface
+  subroutine DMSetNaturalSF(dm,sf, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM,tPetscSF
+  DM :: dm
+  PetscSF :: sf
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMSetNaturalSF
+#endif
+  interface
+  subroutine DMClearFields(dm, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMClearFields
+#endif
+  interface
+  subroutine DMGetNumFields(dm,numFields, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  PetscInt :: numFields
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMGetNumFields
+#endif
+  interface
+  subroutine DMSetNumFields(dm,numFields, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  PetscInt :: numFields
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMSetNumFields
+#endif
+  interface
+  subroutine DMGetField(dm,f,label,disc, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM,tDMLabel,tPetscObject
+  DM :: dm
+  PetscInt :: f
+  DMLabel :: label
+  PetscObject :: disc
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMGetField
+#endif
+  interface
+  subroutine DMSetField(dm,f,label,disc, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM,tDMLabel,tPetscObject
+  DM :: dm
+  PetscInt :: f
+  DMLabel :: label
+  PetscObject :: disc
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMSetField
+#endif
+  interface
+  subroutine DMAddField(dm,label,disc, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM,tDMLabel,tPetscObject
+  DM :: dm
+  DMLabel :: label
+  PetscObject :: disc
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMAddField
+#endif
+  interface
+  subroutine DMSetFieldAvoidTensor(dm,f,avoidTensor, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  PetscInt :: f
+  PetscBool :: avoidTensor
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMSetFieldAvoidTensor
+#endif
+  interface
+  subroutine DMGetFieldAvoidTensor(dm,f,avoidTensor, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  PetscInt :: f
+  PetscBool :: avoidTensor
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMGetFieldAvoidTensor
+#endif
+  interface
+  subroutine DMCopyFields(dm,minDegree,maxDegree,newdm, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  PetscInt :: minDegree
+  PetscInt :: maxDegree
+  DM :: newdm
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMCopyFields
+#endif
+  interface
+  subroutine DMGetAdjacency(dm,f,useCone,useClosure, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  PetscInt :: f
+  PetscBool :: useCone
+  PetscBool :: useClosure
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMGetAdjacency
+#endif
+  interface
+  subroutine DMSetAdjacency(dm,f,useCone,useClosure, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  PetscInt :: f
+  PetscBool :: useCone
+  PetscBool :: useClosure
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMSetAdjacency
+#endif
+  interface
+  subroutine DMGetBasicAdjacency(dm,useCone,useClosure, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  PetscBool :: useCone
+  PetscBool :: useClosure
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMGetBasicAdjacency
+#endif
+  interface
+  subroutine DMSetBasicAdjacency(dm,useCone,useClosure, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  PetscBool :: useCone
+  PetscBool :: useClosure
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMSetBasicAdjacency
+#endif
+  interface
+  subroutine DMGetNumDS(dm,Nds, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  PetscInt :: Nds
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMGetNumDS
+#endif
+  interface
+  subroutine DMClearDS(dm, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMClearDS
+#endif
+  interface
+  subroutine DMGetDS(dm,ds, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM,tPetscDS
+  DM :: dm
+  PetscDS :: ds
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMGetDS
+#endif
+  interface
+  subroutine DMGetCellDS(dm,point,ds,dsIn, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM,tPetscDS
+  DM :: dm
+  PetscInt :: point
+  PetscDS :: ds
+  PetscDS :: dsIn
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMGetCellDS
+#endif
+  interface
+  subroutine DMGetRegionDS(dm,label,fields,ds,dsIn, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM,tDMLabel,tIS,tPetscDS
+  DM :: dm
+  DMLabel :: label
+  IS :: fields
+  PetscDS :: ds
+  PetscDS :: dsIn
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMGetRegionDS
+#endif
+  interface
+  subroutine DMSetRegionDS(dm,label,fields,ds,dsIn, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM,tDMLabel,tIS,tPetscDS
+  DM :: dm
+  DMLabel :: label
+  IS :: fields
+  PetscDS :: ds
+  PetscDS :: dsIn
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMSetRegionDS
+#endif
+  interface
+  subroutine DMGetRegionNumDS(dm,num,label,fields,ds,dsIn, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM,tDMLabel,tIS,tPetscDS
+  DM :: dm
+  PetscInt :: num
+  DMLabel :: label
+  IS :: fields
+  PetscDS :: ds
+  PetscDS :: dsIn
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMGetRegionNumDS
+#endif
+  interface
+  subroutine DMSetRegionNumDS(dm,num,label,fields,ds,dsIn, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM,tDMLabel,tIS,tPetscDS
+  DM :: dm
+  PetscInt :: num
+  DMLabel :: label
+  IS :: fields
+  PetscDS :: ds
+  PetscDS :: dsIn
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMSetRegionNumDS
+#endif
+  interface
+  subroutine DMFindRegionNum(dm,ds,num, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM,tPetscDS
+  DM :: dm
+  PetscDS :: ds
+  PetscInt :: num
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMFindRegionNum
+#endif
+  interface
+  subroutine DMCreateFEDefault(dm,Nc,prefix,qorder,fem, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM,tPetscFE
+  DM :: dm
+  PetscInt :: Nc
+  character(*) :: prefix
+  PetscInt :: qorder
+  PetscFE :: fem
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMCreateFEDefault
+#endif
+  interface
+  subroutine DMCreateDS(dm, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMCreateDS
+#endif
+  interface
+  subroutine DMUseTensorOrder(dm,tensor, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  PetscBool :: tensor
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMUseTensorOrder
+#endif
+  interface
+  subroutine DMComputeExactSolution(dm,time,u,u_t, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM,tVec
+  DM :: dm
+  PetscReal :: time
+  Vec :: u
+  Vec :: u_t
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMComputeExactSolution
+#endif
+  interface
+  subroutine DMCopyDS(dm,minDegree,maxDegree,newdm, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  PetscInt :: minDegree
+  PetscInt :: maxDegree
+  DM :: newdm
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMCopyDS
+#endif
+  interface
+  subroutine DMCopyDisc(dm,newdm, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  DM :: newdm
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMCopyDisc
+#endif
+  interface
+  subroutine DMGetDimension(dm,dim, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  PetscInt :: dim
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMGetDimension
+#endif
+  interface
+  subroutine DMSetDimension(dm,dim, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  PetscInt :: dim
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMSetDimension
+#endif
+  interface
+  subroutine DMGetDimPoints(dm,dim,pStart,pEnd, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  PetscInt :: dim
+  PetscInt :: pStart
+  PetscInt :: pEnd
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMGetDimPoints
+#endif
+  interface
+  subroutine DMGetOutputDM(dm,odm, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  DM :: odm
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMGetOutputDM
+#endif
+  interface
+  subroutine DMGetOutputSequenceNumber(dm,num,val, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  PetscInt :: num
+  PetscReal :: val
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMGetOutputSequenceNumber
+#endif
+  interface
+  subroutine DMSetOutputSequenceNumber(dm,num,val, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  PetscInt :: num
+  PetscReal :: val
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMSetOutputSequenceNumber
+#endif
+  interface
+  subroutine DMOutputSequenceLoad(dm,viewer,name,num,val, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM,tPetscViewer
+  DM :: dm
+  PetscViewer :: viewer
+  character(*) :: name
+  PetscInt :: num
+  PetscReal :: val
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMOutputSequenceLoad
+#endif
+  interface
+  subroutine DMGetOutputSequenceLength(dm,viewer,name,len, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM,tPetscViewer
+  DM :: dm
+  PetscViewer :: viewer
+  character(*) :: name
+  PetscInt :: len
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMGetOutputSequenceLength
+#endif
+  interface
+  subroutine DMGetUseNatural(dm,useNatural, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  PetscBool :: useNatural
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMGetUseNatural
+#endif
+  interface
+  subroutine DMSetUseNatural(dm,useNatural, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  PetscBool :: useNatural
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMSetUseNatural
+#endif
+  interface
+  subroutine DMCreateLabel(dm,name, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  character(*) :: name
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMCreateLabel
+#endif
+  interface
+  subroutine DMCreateLabelAtIndex(dm,l,name, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  PetscInt :: l
+  character(*) :: name
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMCreateLabelAtIndex
+#endif
+  interface
+  subroutine DMGetLabelValue(dm,name,point,value, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  character(*) :: name
+  PetscInt :: point
+  PetscInt :: value
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMGetLabelValue
+#endif
+  interface
+  subroutine DMSetLabelValue(dm,name,point,value, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  character(*) :: name
+  PetscInt :: point
+  PetscInt :: value
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMSetLabelValue
+#endif
+  interface
+  subroutine DMClearLabelValue(dm,name,point,value, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  character(*) :: name
+  PetscInt :: point
+  PetscInt :: value
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMClearLabelValue
+#endif
+  interface
+  subroutine DMGetLabelSize(dm,name,size, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  character(*) :: name
+  PetscInt :: size
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMGetLabelSize
+#endif
+  interface
+  subroutine DMGetLabelIdIS(dm,name,ids, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM,tIS
+  DM :: dm
+  character(*) :: name
+  IS :: ids
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMGetLabelIdIS
+#endif
+  interface
+  subroutine DMGetStratumSize(dm,name,value,size, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  character(*) :: name
+  PetscInt :: value
+  PetscInt :: size
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMGetStratumSize
+#endif
+  interface
+  subroutine DMGetStratumIS(dm,name,value,points, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM,tIS
+  DM :: dm
+  character(*) :: name
+  PetscInt :: value
+  IS :: points
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMGetStratumIS
+#endif
+  interface
+  subroutine DMSetStratumIS(dm,name,value,points, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM,tIS
+  DM :: dm
+  character(*) :: name
+  PetscInt :: value
+  IS :: points
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMSetStratumIS
+#endif
+  interface
+  subroutine DMClearLabelStratum(dm,name,value, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  character(*) :: name
+  PetscInt :: value
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMClearLabelStratum
+#endif
+  interface
+  subroutine DMGetNumLabels(dm,numLabels, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  PetscInt :: numLabels
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMGetNumLabels
+#endif
+  interface
+  subroutine DMGetLabelName(dm,n,name, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  PetscInt :: n
+  character(*) :: name
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMGetLabelName
+#endif
+  interface
+  subroutine DMHasLabel(dm,name,hasLabel, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  character(*) :: name
+  PetscBool :: hasLabel
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMHasLabel
+#endif
+  interface
+  subroutine DMGetLabel(dm,name,label, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM,tDMLabel
+  DM :: dm
+  character(*) :: name
+  DMLabel :: label
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMGetLabel
+#endif
+  interface
+  subroutine DMGetLabelByNum(dm,n,label, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM,tDMLabel
+  DM :: dm
+  PetscInt :: n
+  DMLabel :: label
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMGetLabelByNum
+#endif
+  interface
+  subroutine DMAddLabel(dm,label, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM,tDMLabel
+  DM :: dm
+  DMLabel :: label
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMAddLabel
+#endif
+  interface
+  subroutine DMSetLabel(dm,label, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM,tDMLabel
+  DM :: dm
+  DMLabel :: label
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMSetLabel
+#endif
+  interface
+  subroutine DMRemoveLabel(dm,name,label, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM,tDMLabel
+  DM :: dm
+  character(*) :: name
+  DMLabel :: label
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMRemoveLabel
+#endif
+  interface
+  subroutine DMRemoveLabelBySelf(dm,label,failNotFound, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM,tDMLabel
+  DM :: dm
+  DMLabel :: label
+  PetscBool :: failNotFound
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMRemoveLabelBySelf
+#endif
+  interface
+  subroutine DMGetLabelOutput(dm,name,output, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  character(*) :: name
+  PetscBool :: output
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMGetLabelOutput
+#endif
+  interface
+  subroutine DMSetLabelOutput(dm,name,output, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  character(*) :: name
+  PetscBool :: output
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMSetLabelOutput
+#endif
+  interface
+  subroutine DMCopyLabels(dmA,dmB,mode,all,emode, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM,ePetscCopyMode,eDMCopyLabelsMode
+  DM :: dmA
+  DM :: dmB
+  PetscCopyMode :: mode
+  PetscBool :: all
+  DMCopyLabelsMode :: emode
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMCopyLabels
+#endif
+  interface
+  subroutine DMGetCoarseDM(dm,cdm, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  DM :: cdm
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMGetCoarseDM
+#endif
+  interface
+  subroutine DMSetCoarseDM(dm,cdm, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  DM :: cdm
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMSetCoarseDM
+#endif
+  interface
+  subroutine DMGetFineDM(dm,fdm, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  DM :: fdm
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMGetFineDM
+#endif
+  interface
+  subroutine DMSetFineDM(dm,fdm, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  DM :: fdm
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMSetFineDM
+#endif
+  interface
+  subroutine DMAddBoundary(dm,type,name,label,Nv,values,field,Nc,comps,bcFunc,bcFunc_t,ctx,bd, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM,eDMBoundaryConditionType,tDMLabel
+  DM :: dm
+  DMBoundaryConditionType :: type
+  character(*) :: name
+  DMLabel :: label
+  PetscInt :: Nv
+  PetscInt :: values(*)
+  PetscInt :: field
+  PetscInt :: Nc
+  PetscInt :: comps(*)
+  external bcFunc
+  external bcFunc_t
+  type(*) :: ctx
+  PetscInt :: bd
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMAddBoundary
+#endif
+  interface
+  subroutine DMIsBoundaryPoint(dm,point,isBd, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  PetscInt :: point
+  PetscBool :: isBd
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMIsBoundaryPoint
+#endif
+  interface
+  subroutine DMHasBound(dm,hasBound, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  PetscBool :: hasBound
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMHasBound
+#endif
+  interface
+  subroutine DMGetNeighbors(dm,nranks,ranks, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  PetscInt :: nranks
+  PetscMPIInt, pointer :: ranks(:)
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMGetNeighbors
+#endif
+  interface
+  subroutine DMGetCompatibility(dm1,dm2,compatible,set, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm1
+  DM :: dm2
+  PetscBool :: compatible
+  PetscBool :: set
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMGetCompatibility
+#endif
+  interface
+  subroutine DMMonitorCancel(dm, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMMonitorCancel
+#endif
+  interface
+  subroutine DMMonitorSetFromOptions(dm,name,help,manual,monitor,monitorsetup,flg, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  character(*) :: name
+  character(*) :: help
+  character(*) :: manual
+  external :: monitor
+  external :: monitorsetup
+  PetscBool :: flg
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMMonitorSetFromOptions
+#endif
+  interface
+  subroutine DMMonitor(dm, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMMonitor
+#endif
+  interface
+  subroutine DMComputeError(dm,sol,errors,errorVec, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM,tVec
+  DM :: dm
+  Vec :: sol
+  PetscReal :: errors(*)
+  Vec :: errorVec
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMComputeError
+#endif
+  interface
+  subroutine DMGetNumAuxiliaryVec(dm,numAux, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  PetscInt :: numAux
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMGetNumAuxiliaryVec
+#endif
+  interface
+  subroutine DMGetAuxiliaryVec(dm,label,value,part,aux, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM,tDMLabel,tVec
+  DM :: dm
+  DMLabel :: label
+  PetscInt :: value
+  PetscInt :: part
+  Vec :: aux
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMGetAuxiliaryVec
+#endif
+  interface
+  subroutine DMSetAuxiliaryVec(dm,label,value,part,aux, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM,tDMLabel,tVec
+  DM :: dm
+  DMLabel :: label
+  PetscInt :: value
+  PetscInt :: part
+  Vec :: aux
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMSetAuxiliaryVec
+#endif
+  interface
+  subroutine DMGetAuxiliaryLabels(dm,labels,values,parts, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM,tDMLabel
+  DM :: dm
+  DMLabel :: labels(*)
+  PetscInt :: values(*)
+  PetscInt :: parts(*)
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMGetAuxiliaryLabels
+#endif
+  interface
+  subroutine DMCopyAuxiliaryVec(dm,dmNew, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  DM :: dmNew
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMCopyAuxiliaryVec
+#endif
+  interface
+  subroutine DMClearAuxiliaryVec(dm, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMClearAuxiliaryVec
+#endif
+  interface
+  subroutine DMPolytopeMatchOrientation(ct,sourceCone,targetCone,ornt,found, ierr)
+  use, intrinsic :: ISO_C_binding
+  import eDMPolytopeType
+  DMPolytopeType :: ct
+  PetscInt :: sourceCone(*)
+  PetscInt :: targetCone(*)
+  PetscInt :: ornt
+  PetscBool :: found
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMPolytopeMatchOrientation
+#endif
+  interface
+  subroutine DMPolytopeGetOrientation(ct,sourceCone,targetCone,ornt, ierr)
+  use, intrinsic :: ISO_C_binding
+  import eDMPolytopeType
+  DMPolytopeType :: ct
+  PetscInt :: sourceCone(*)
+  PetscInt :: targetCone(*)
+  PetscInt :: ornt
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMPolytopeGetOrientation
+#endif
+  interface
+  subroutine DMPolytopeMatchVertexOrientation(ct,sourceVert,targetVert,ornt,found, ierr)
+  use, intrinsic :: ISO_C_binding
+  import eDMPolytopeType
+  DMPolytopeType :: ct
+  PetscInt :: sourceVert(*)
+  PetscInt :: targetVert(*)
+  PetscInt :: ornt
+  PetscBool :: found
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMPolytopeMatchVertexOrientation
+#endif
+  interface
+  subroutine DMPolytopeGetVertexOrientation(ct,sourceCone,targetCone,ornt, ierr)
+  use, intrinsic :: ISO_C_binding
+  import eDMPolytopeType
+  DMPolytopeType :: ct
+  PetscInt :: sourceCone(*)
+  PetscInt :: targetCone(*)
+  PetscInt :: ornt
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMPolytopeGetVertexOrientation
+#endif
+  interface
+  subroutine DMPolytopeInCellTest(ct,point,inside, ierr)
+  use, intrinsic :: ISO_C_binding
+  import eDMPolytopeType
+  DMPolytopeType :: ct
+  PetscReal :: point(*)
+  PetscBool :: inside
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMPolytopeInCellTest
+#endif
+  interface
+  subroutine DMReorderSectionSetDefault(dm,reorder, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM,eDMReorderDefaultFlag
+  DM :: dm
+  DMReorderDefaultFlag :: reorder
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMReorderSectionSetDefault
+#endif
+  interface
+  subroutine DMReorderSectionGetDefault(dm,reorder, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM,eDMReorderDefaultFlag
+  DM :: dm
+  DMReorderDefaultFlag :: reorder
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMReorderSectionGetDefault
+#endif
+  interface
+  subroutine DMReorderSectionSetType(dm,reorder, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  character(*) :: reorder
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMReorderSectionSetType
+#endif
+  interface
+  subroutine DMReorderSectionGetType(dm,reorder, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  character(*) :: reorder
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMReorderSectionGetType
+#endif
+  interface
+  subroutine DMGetLocalVector(dm,g, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM,tVec
+  DM :: dm
+  Vec :: g
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMGetLocalVector
+#endif
+  interface
+  subroutine DMRestoreLocalVector(dm,g, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM,tVec
+  DM :: dm
+  Vec :: g
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMRestoreLocalVector
+#endif
+  interface
+  subroutine DMGetGlobalVector(dm,g, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM,tVec
+  DM :: dm
+  Vec :: g
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMGetGlobalVector
+#endif
+  interface
+  subroutine DMClearGlobalVectors(dm, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMClearGlobalVectors
+#endif
+  interface
+  subroutine DMClearLocalVectors(dm, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMClearLocalVectors
+#endif
+  interface
+  subroutine DMRestoreGlobalVector(dm,g, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM,tVec
+  DM :: dm
+  Vec :: g
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMRestoreGlobalVector
+#endif
+  interface
+  subroutine DMClearNamedGlobalVectors(dm, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMClearNamedGlobalVectors
+#endif
+  interface
+  subroutine DMClearNamedLocalVectors(dm, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMClearNamedLocalVectors
+#endif
+  interface
+  subroutine DMHasNamedGlobalVector(dm,name,exists, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  character(*) :: name
+  PetscBool :: exists
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMHasNamedGlobalVector
+#endif
+  interface
+  subroutine DMGetNamedGlobalVector(dm,name,X, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM,tVec
+  DM :: dm
+  character(*) :: name
+  Vec :: X
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMGetNamedGlobalVector
+#endif
+  interface
+  subroutine DMRestoreNamedGlobalVector(dm,name,X, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM,tVec
+  DM :: dm
+  character(*) :: name
+  Vec :: X
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMRestoreNamedGlobalVector
+#endif
+  interface
+  subroutine DMHasNamedLocalVector(dm,name,exists, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  character(*) :: name
+  PetscBool :: exists
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMHasNamedLocalVector
+#endif
+  interface
+  subroutine DMGetNamedLocalVector(dm,name,X, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM,tVec
+  DM :: dm
+  character(*) :: name
+  Vec :: X
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMGetNamedLocalVector
+#endif
+  interface
+  subroutine DMRestoreNamedLocalVector(dm,name,X, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM,tVec
+  DM :: dm
+  character(*) :: name
+  Vec :: X
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMRestoreNamedLocalVector
+#endif
+  interface
+  subroutine DMFinalizePackage(ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMFinalizePackage
+#endif
+  interface
+  subroutine DMInitializePackage(ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMInitializePackage
+#endif
+  interface
+  subroutine DMGetCoordinateDM(dm,cdm, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  DM :: cdm
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMGetCoordinateDM
+#endif
+  interface
+  subroutine DMSetCoordinateDM(dm,cdm, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  DM :: cdm
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMSetCoordinateDM
+#endif
+  interface
+  subroutine DMGetCellCoordinateDM(dm,cdm, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  DM :: cdm
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMGetCellCoordinateDM
+#endif
+  interface
+  subroutine DMSetCellCoordinateDM(dm,cdm, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  DM :: cdm
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMSetCellCoordinateDM
+#endif
+  interface
+  subroutine DMGetCoordinateDim(dm,dim, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  PetscInt :: dim
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMGetCoordinateDim
+#endif
+  interface
+  subroutine DMSetCoordinateDim(dm,dim, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  PetscInt :: dim
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMSetCoordinateDim
+#endif
+  interface
+  subroutine DMGetCoordinateSection(dm,section, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM,tPetscSection
+  DM :: dm
+  PetscSection :: section
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMGetCoordinateSection
+#endif
+  interface
+  subroutine DMSetCoordinateSection(dm,dim,section, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM,tPetscSection
+  DM :: dm
+  PetscInt :: dim
+  PetscSection :: section
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMSetCoordinateSection
+#endif
+  interface
+  subroutine DMGetCellCoordinateSection(dm,section, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM,tPetscSection
+  DM :: dm
+  PetscSection :: section
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMGetCellCoordinateSection
+#endif
+  interface
+  subroutine DMSetCellCoordinateSection(dm,dim,section, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM,tPetscSection
+  DM :: dm
+  PetscInt :: dim
+  PetscSection :: section
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMSetCellCoordinateSection
+#endif
+  interface
+  subroutine DMGetCoordinates(dm,c, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM,tVec
+  DM :: dm
+  Vec :: c
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMGetCoordinates
+#endif
+  interface
+  subroutine DMSetCoordinates(dm,c, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM,tVec
+  DM :: dm
+  Vec :: c
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMSetCoordinates
+#endif
+  interface
+  subroutine DMGetCellCoordinates(dm,c, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM,tVec
+  DM :: dm
+  Vec :: c
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMGetCellCoordinates
+#endif
+  interface
+  subroutine DMSetCellCoordinates(dm,c, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM,tVec
+  DM :: dm
+  Vec :: c
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMSetCellCoordinates
+#endif
+  interface
+  subroutine DMGetCoordinatesLocalSetUp(dm, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMGetCoordinatesLocalSetUp
+#endif
+  interface
+  subroutine DMGetCoordinatesLocal(dm,c, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM,tVec
+  DM :: dm
+  Vec :: c
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMGetCoordinatesLocal
+#endif
+  interface
+  subroutine DMGetCoordinatesLocalNoncollective(dm,c, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM,tVec
+  DM :: dm
+  Vec :: c
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMGetCoordinatesLocalNoncollective
+#endif
+  interface
+  subroutine DMGetCoordinatesLocalTuple(dm,p,pCoordSection,pCoord, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM,tIS,tPetscSection,tVec
+  DM :: dm
+  IS :: p
+  PetscSection :: pCoordSection
+  Vec :: pCoord
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMGetCoordinatesLocalTuple
+#endif
+  interface
+  subroutine DMSetCoordinatesLocal(dm,c, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM,tVec
+  DM :: dm
+  Vec :: c
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMSetCoordinatesLocal
+#endif
+  interface
+  subroutine DMGetCellCoordinatesLocalSetUp(dm, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMGetCellCoordinatesLocalSetUp
+#endif
+  interface
+  subroutine DMGetCellCoordinatesLocal(dm,c, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM,tVec
+  DM :: dm
+  Vec :: c
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMGetCellCoordinatesLocal
+#endif
+  interface
+  subroutine DMGetCellCoordinatesLocalNoncollective(dm,c, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM,tVec
+  DM :: dm
+  Vec :: c
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMGetCellCoordinatesLocalNoncollective
+#endif
+  interface
+  subroutine DMSetCellCoordinatesLocal(dm,c, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM,tVec
+  DM :: dm
+  Vec :: c
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMSetCellCoordinatesLocal
+#endif
+  interface
+  subroutine DMGetCoordinateField(dm,field, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM,tDMField
+  DM :: dm
+  DMField :: field
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMGetCoordinateField
+#endif
+  interface
+  subroutine DMSetCoordinateField(dm,field, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM,tDMField
+  DM :: dm
+  DMField :: field
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMSetCoordinateField
+#endif
+  interface
+  subroutine DMSetCellCoordinateField(dm,field, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM,tDMField
+  DM :: dm
+  DMField :: field
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMSetCellCoordinateField
+#endif
+  interface
+  subroutine DMGetLocalBoundingBox(dm,lmin,lmax, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  PetscReal :: lmin(*)
+  PetscReal :: lmax(*)
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMGetLocalBoundingBox
+#endif
+  interface
+  subroutine DMGetBoundingBox(dm,gmin,gmax, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  PetscReal :: gmin(*)
+  PetscReal :: gmax(*)
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMGetBoundingBox
+#endif
+  interface
+  subroutine DMSetCoordinateDisc(dm,disc,localized,project, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM,tPetscFE
+  DM :: dm
+  PetscFE :: disc
+  PetscBool :: localized
+  PetscBool :: project
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMSetCoordinateDisc
+#endif
+  interface
+  subroutine DMLocatePoints(dm,v,ltype,cellSF, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM,tVec,eDMPointLocationType,tPetscSF
+  DM :: dm
+  Vec :: v
+  DMPointLocationType :: ltype
+  PetscSF :: cellSF
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMLocatePoints
+#endif
+  interface
+  subroutine DMGeomModelRegisterAll(ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMGeomModelRegisterAll
+#endif
+  interface
+  subroutine DMGeomModelRegister(sname,fnc, ierr)
+  use, intrinsic :: ISO_C_binding
+  character(*) :: sname
+  external :: fnc
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMGeomModelRegister
+#endif
+  interface
+  subroutine DMGeomModelRegisterDestroy(ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMGeomModelRegisterDestroy
+#endif
+  interface
+  subroutine DMSetSnapToGeomModel(dm,name, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  character(*) :: name
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMSetSnapToGeomModel
+#endif
+  interface
+  subroutine DMSnapToGeomModel(dm,p,dE,mcoords,gcoords, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  PetscInt :: p
+  PetscInt :: dE
+  PetscScalar :: mcoords(*)
+  PetscScalar :: gcoords(*)
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMSnapToGeomModel
+#endif
+  interface
+  subroutine DMGenerateRegisterAll(ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMGenerateRegisterAll
+#endif
+  interface
+  subroutine DMGenerateRegister(sname,fnc,rfnc,alfnc,dim, ierr)
+  use, intrinsic :: ISO_C_binding
+  character(*) :: sname
+  external :: fnc
+  external :: rfnc
+  external :: alfnc
+  PetscInt :: dim
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMGenerateRegister
+#endif
+  interface
+  subroutine DMGenerateRegisterDestroy(ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMGenerateRegisterDestroy
+#endif
+  interface
+  subroutine DMAdaptLabel(dm,label,dmAdapt, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM,tDMLabel
+  DM :: dm
+  DMLabel :: label
+  DM :: dmAdapt
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMAdaptLabel
+#endif
+  interface
+  subroutine DMAdaptMetric(dm,metric,bdLabel,rgLabel,dmAdapt, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM,tVec,tDMLabel
+  DM :: dm
+  Vec :: metric
+  DMLabel :: bdLabel
+  DMLabel :: rgLabel
+  DM :: dmAdapt
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMAdaptMetric
+#endif
+  interface
+  subroutine DMGetPeriodicity(dm,maxCell,Lstart,L, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  PetscReal, pointer :: maxCell(:)
+  PetscReal, pointer :: Lstart(:)
+  PetscReal, pointer :: L(:)
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMGetPeriodicity
+#endif
+  interface
+  subroutine DMSetPeriodicity(dm,maxCell,Lstart,L, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  PetscReal :: maxCell(*)
+  PetscReal :: Lstart(*)
+  PetscReal :: L(*)
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMSetPeriodicity
+#endif
+  interface
+  subroutine DMLocalizeCoordinate(dm,in,endpoint,out, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  PetscScalar :: in(*)
+  PetscBool :: endpoint
+  PetscScalar :: out(*)
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMLocalizeCoordinate
+#endif
+  interface
+  subroutine DMGetCoordinatesLocalizedLocal(dm,areLocalized, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  PetscBool :: areLocalized
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMGetCoordinatesLocalizedLocal
+#endif
+  interface
+  subroutine DMGetCoordinatesLocalized(dm,areLocalized, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  PetscBool :: areLocalized
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMGetCoordinatesLocalized
+#endif
+  interface
+  subroutine DMGetSparseLocalize(dm,sparse, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  PetscBool :: sparse
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMGetSparseLocalize
+#endif
+  interface
+  subroutine DMSetSparseLocalize(dm,sparse, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  PetscBool :: sparse
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMSetSparseLocalize
+#endif
+  interface
+  subroutine DMLocalizeCoordinates(dm, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMLocalizeCoordinates
+#endif
+  interface
+  subroutine DMGetFirstLabeledPoint(dm,odm,label,numIds,ids,height,point,ds, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM,tDMLabel,tPetscDS
+  DM :: dm
+  DM :: odm
+  DMLabel :: label
+  PetscInt :: numIds
+  PetscInt :: ids(*)
+  PetscInt :: height
+  PetscInt :: point
+  PetscDS :: ds
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMGetFirstLabeledPoint
+#endif
+  interface operator(.ne.)
+    module procedure DMnotequals
+  end interface operator (.ne.)
+  interface operator(.eq.)
+    module procedure DMequals
+  end interface operator (.eq.)
+
+  interface PetscObjectCast
+    module procedure PetscObjectCastDM
+  end interface
+  interface PetscBarrier
+  module procedure PetscBarrierDM
+  end interface
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectSAWsTakeAccess
+    module procedure PetscObjectSAWsTakeAccessDM
+  end interface
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectSAWsGrantAccess
+    module procedure PetscObjectSAWsGrantAccessDM
+  end interface
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectSAWsBlock
+    module procedure PetscObjectSAWsBlockDM
+  end interface
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectSAWsSetBlock
+    module procedure PetscObjectSAWsSetBlockDM
+  end interface
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectSAWsViewOff
+    module procedure PetscObjectSAWsViewOffDM
+  end interface
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectViewSAWs
+    module procedure PetscObjectViewSAWsDM
+  end interface
+#endif
+  interface PetscObjectGetType
+    module procedure PetscObjectGetTypeDM
+  end interface
+  interface PetscObjectSetPrintedOptions
+    module procedure PetscObjectSetPrintedOptionsDM
+  end interface
+  interface PetscObjectInheritPrintedOptions
+    module procedure PetscObjectInheritPrintedOptionsDM
+  end interface
+  interface PetscObjectAddOptionsHandler
+    module procedure PetscObjectAddOptionsHandlerDM
+  end interface
+  interface PetscObjectProcessOptionsHandlers
+    module procedure PetscObjectProcessOptionsHandlersDM
+  end interface
+  interface PetscObjectDestroyOptionsHandlers
+    module procedure PetscObjectDestroyOptionsHandlersDM
+  end interface
+  interface PetscObjectReference
+    module procedure PetscObjectReferenceDM
+  end interface
+  interface PetscObjectGetReference
+    module procedure PetscObjectGetReferenceDM
+  end interface
+  interface PetscObjectDereference
+    module procedure PetscObjectDereferenceDM
+  end interface
+  interface PetscObjectRemoveReference
+    module procedure PetscObjectRemoveReferenceDM
+  end interface
+  interface PetscObjectHasFunction
+    module procedure PetscObjectHasFunctionDM
+  end interface
+  interface PetscObjectSetFromOptions
+    module procedure PetscObjectSetFromOptionsDM
+  end interface
+  interface PetscObjectSetUp
+    module procedure PetscObjectSetUpDM
+  end interface
+  interface PetscObjectGetName
+    module procedure PetscObjectGetNameDM
+  end interface
+  interface PetscObjectDestroy
+    module procedure PetscObjectDestroyDM
+  end interface
+  interface PetscObjectView
+    module procedure PetscObjectViewDM
+  end interface
+  interface PetscObjectViewFromOptions
+    module procedure PetscObjectViewFromOptionsDM
+  end interface
+  interface PetscObjectTypeCompare
+    module procedure PetscObjectTypeCompareDM
+  end interface
+  interface PetscObjectObjectTypeCompare
+    module procedure PetscObjectObjectTypeCompareDM
+  end interface
+  interface PetscObjectBaseTypeCompare
+    module procedure PetscObjectBaseTypeCompareDM
+  end interface
+  interface PetscObjectRegisterDestroy
+    module procedure PetscObjectRegisterDestroyDM
+  end interface
+  interface PetscObjectGetId
+    module procedure PetscObjectGetIdDM
+  end interface
+  interface PetscObjectCompareId
+    module procedure PetscObjectCompareIdDM
+  end interface
+  interface PetscObjectGetOptions
+    module procedure PetscObjectGetOptionsDM
+  end interface
+  interface PetscObjectSetOptions
+    module procedure PetscObjectSetOptionsDM
+  end interface
+  interface PetscObjectSetOptionsPrefix
+    module procedure PetscObjectSetOptionsPrefixDM
+  end interface
+  interface PetscObjectAppendOptionsPrefix
+    module procedure PetscObjectAppendOptionsPrefixDM
+  end interface
+  interface PetscObjectGetOptionsPrefix
+    module procedure PetscObjectGetOptionsPrefixDM
+  end interface
+  interface PetscObjectPrependOptionsPrefix
+    module procedure PetscObjectPrependOptionsPrefixDM
+  end interface
+  interface PetscObjectGetComm
+    module procedure PetscObjectGetCommDM
+  end interface
+  interface PetscObjectGetTabLevel
+    module procedure PetscObjectGetTabLevelDM
+  end interface
+  interface PetscObjectSetTabLevel
+    module procedure PetscObjectSetTabLevelDM
+  end interface
+  interface PetscObjectIncrementTabLevel
+    module procedure PetscObjectIncrementTabLevelDM
+  end interface
+  interface PetscObjectGetNewTag
+    module procedure PetscObjectGetNewTagDM
+  end interface
+  interface PetscObjectGetClassId
+    module procedure PetscObjectGetClassIdDM
+  end interface
+  interface PetscObjectGetClassName
+    module procedure PetscObjectGetClassNameDM
+  end interface
+  interface PetscObjectSetName
+    module procedure PetscObjectSetNameDM
+  end interface
+  interface PetscObjectPrintClassNamePrefixType
+    module procedure PetscObjectPrintClassNamePrefixTypeDM
+  end interface
+  interface PetscObjectName
+    module procedure PetscObjectNameDM
+  end interface
+  interface PetscObjectChangeTypeName
+    module procedure PetscObjectChangeTypeNameDM
+  end interface
+  interface operator(.ne.)
+    module procedure DMFieldnotequals
+  end interface operator (.ne.)
+  interface operator(.eq.)
+    module procedure DMFieldequals
+  end interface operator (.eq.)
+
+  interface PetscObjectCast
+    module procedure PetscObjectCastDMField
+  end interface
+  interface PetscBarrier
+  module procedure PetscBarrierDMField
+  end interface
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectSAWsTakeAccess
+    module procedure PetscObjectSAWsTakeAccessDMField
+  end interface
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectSAWsGrantAccess
+    module procedure PetscObjectSAWsGrantAccessDMField
+  end interface
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectSAWsBlock
+    module procedure PetscObjectSAWsBlockDMField
+  end interface
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectSAWsSetBlock
+    module procedure PetscObjectSAWsSetBlockDMField
+  end interface
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectSAWsViewOff
+    module procedure PetscObjectSAWsViewOffDMField
+  end interface
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectViewSAWs
+    module procedure PetscObjectViewSAWsDMField
+  end interface
+#endif
+  interface PetscObjectGetType
+    module procedure PetscObjectGetTypeDMField
+  end interface
+  interface PetscObjectSetPrintedOptions
+    module procedure PetscObjectSetPrintedOptionsDMField
+  end interface
+  interface PetscObjectInheritPrintedOptions
+    module procedure PetscObjectInheritPrintedOptionsDMField
+  end interface
+  interface PetscObjectAddOptionsHandler
+    module procedure PetscObjectAddOptionsHandlerDMField
+  end interface
+  interface PetscObjectProcessOptionsHandlers
+    module procedure PetscObjectProcessOptionsHandlersDMField
+  end interface
+  interface PetscObjectDestroyOptionsHandlers
+    module procedure PetscObjectDestroyOptionsHandlersDMField
+  end interface
+  interface PetscObjectReference
+    module procedure PetscObjectReferenceDMField
+  end interface
+  interface PetscObjectGetReference
+    module procedure PetscObjectGetReferenceDMField
+  end interface
+  interface PetscObjectDereference
+    module procedure PetscObjectDereferenceDMField
+  end interface
+  interface PetscObjectRemoveReference
+    module procedure PetscObjectRemoveReferenceDMField
+  end interface
+  interface PetscObjectHasFunction
+    module procedure PetscObjectHasFunctionDMField
+  end interface
+  interface PetscObjectSetFromOptions
+    module procedure PetscObjectSetFromOptionsDMField
+  end interface
+  interface PetscObjectSetUp
+    module procedure PetscObjectSetUpDMField
+  end interface
+  interface PetscObjectGetName
+    module procedure PetscObjectGetNameDMField
+  end interface
+  interface PetscObjectDestroy
+    module procedure PetscObjectDestroyDMField
+  end interface
+  interface PetscObjectView
+    module procedure PetscObjectViewDMField
+  end interface
+  interface PetscObjectViewFromOptions
+    module procedure PetscObjectViewFromOptionsDMField
+  end interface
+  interface PetscObjectTypeCompare
+    module procedure PetscObjectTypeCompareDMField
+  end interface
+  interface PetscObjectObjectTypeCompare
+    module procedure PetscObjectObjectTypeCompareDMField
+  end interface
+  interface PetscObjectBaseTypeCompare
+    module procedure PetscObjectBaseTypeCompareDMField
+  end interface
+  interface PetscObjectRegisterDestroy
+    module procedure PetscObjectRegisterDestroyDMField
+  end interface
+  interface PetscObjectGetId
+    module procedure PetscObjectGetIdDMField
+  end interface
+  interface PetscObjectCompareId
+    module procedure PetscObjectCompareIdDMField
+  end interface
+  interface PetscObjectGetOptions
+    module procedure PetscObjectGetOptionsDMField
+  end interface
+  interface PetscObjectSetOptions
+    module procedure PetscObjectSetOptionsDMField
+  end interface
+  interface PetscObjectSetOptionsPrefix
+    module procedure PetscObjectSetOptionsPrefixDMField
+  end interface
+  interface PetscObjectAppendOptionsPrefix
+    module procedure PetscObjectAppendOptionsPrefixDMField
+  end interface
+  interface PetscObjectGetOptionsPrefix
+    module procedure PetscObjectGetOptionsPrefixDMField
+  end interface
+  interface PetscObjectPrependOptionsPrefix
+    module procedure PetscObjectPrependOptionsPrefixDMField
+  end interface
+  interface PetscObjectGetComm
+    module procedure PetscObjectGetCommDMField
+  end interface
+  interface PetscObjectGetTabLevel
+    module procedure PetscObjectGetTabLevelDMField
+  end interface
+  interface PetscObjectSetTabLevel
+    module procedure PetscObjectSetTabLevelDMField
+  end interface
+  interface PetscObjectIncrementTabLevel
+    module procedure PetscObjectIncrementTabLevelDMField
+  end interface
+  interface PetscObjectGetNewTag
+    module procedure PetscObjectGetNewTagDMField
+  end interface
+  interface PetscObjectGetClassId
+    module procedure PetscObjectGetClassIdDMField
+  end interface
+  interface PetscObjectGetClassName
+    module procedure PetscObjectGetClassNameDMField
+  end interface
+  interface PetscObjectSetName
+    module procedure PetscObjectSetNameDMField
+  end interface
+  interface PetscObjectPrintClassNamePrefixType
+    module procedure PetscObjectPrintClassNamePrefixTypeDMField
+  end interface
+  interface PetscObjectName
+    module procedure PetscObjectNameDMField
+  end interface
+  interface PetscObjectChangeTypeName
+    module procedure PetscObjectChangeTypeNameDMField
+  end interface
+  interface operator(.ne.)
+    module procedure DMUniversalLabelnotequals
+  end interface operator (.ne.)
+  interface operator(.eq.)
+    module procedure DMUniversalLabelequals
+  end interface operator (.eq.)
+
+  interface PetscObjectCast
+    module procedure PetscObjectCastDMUniversalLabel
+  end interface
+  interface PetscBarrier
+  module procedure PetscBarrierDMUniversalLabel
+  end interface
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectSAWsTakeAccess
+    module procedure PetscObjectSAWsTakeAccessDMUniversalLabel
+  end interface
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectSAWsGrantAccess
+    module procedure PetscObjectSAWsGrantAccessDMUniversalLabel
+  end interface
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectSAWsBlock
+    module procedure PetscObjectSAWsBlockDMUniversalLabel
+  end interface
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectSAWsSetBlock
+    module procedure PetscObjectSAWsSetBlockDMUniversalLabel
+  end interface
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectSAWsViewOff
+    module procedure PetscObjectSAWsViewOffDMUniversalLabel
+  end interface
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectViewSAWs
+    module procedure PetscObjectViewSAWsDMUniversalLabel
+  end interface
+#endif
+  interface PetscObjectGetType
+    module procedure PetscObjectGetTypeDMUniversalLabel
+  end interface
+  interface PetscObjectSetPrintedOptions
+    module procedure PetscObjectSetPrintedOptionsDMUniversalLabel
+  end interface
+  interface PetscObjectInheritPrintedOptions
+    module procedure PetscObjectInheritPrintedOptionsDMUniversalLabel
+  end interface
+  interface PetscObjectAddOptionsHandler
+    module procedure PetscObjectAddOptionsHandlerDMUniversalLabel
+  end interface
+  interface PetscObjectProcessOptionsHandlers
+    module procedure PetscObjectProcessOptionsHandlersDMUniversalLabel
+  end interface
+  interface PetscObjectDestroyOptionsHandlers
+    module procedure PetscObjectDestroyOptionsHandlersDMUniversalLabel
+  end interface
+  interface PetscObjectReference
+    module procedure PetscObjectReferenceDMUniversalLabel
+  end interface
+  interface PetscObjectGetReference
+    module procedure PetscObjectGetReferenceDMUniversalLabel
+  end interface
+  interface PetscObjectDereference
+    module procedure PetscObjectDereferenceDMUniversalLabel
+  end interface
+  interface PetscObjectRemoveReference
+    module procedure PetscObjectRemoveReferenceDMUniversalLabel
+  end interface
+  interface PetscObjectHasFunction
+    module procedure PetscObjectHasFunctionDMUniversalLabel
+  end interface
+  interface PetscObjectSetFromOptions
+    module procedure PetscObjectSetFromOptionsDMUniversalLabel
+  end interface
+  interface PetscObjectSetUp
+    module procedure PetscObjectSetUpDMUniversalLabel
+  end interface
+  interface PetscObjectGetName
+    module procedure PetscObjectGetNameDMUniversalLabel
+  end interface
+  interface PetscObjectDestroy
+    module procedure PetscObjectDestroyDMUniversalLabel
+  end interface
+  interface PetscObjectView
+    module procedure PetscObjectViewDMUniversalLabel
+  end interface
+  interface PetscObjectViewFromOptions
+    module procedure PetscObjectViewFromOptionsDMUniversalLabel
+  end interface
+  interface PetscObjectTypeCompare
+    module procedure PetscObjectTypeCompareDMUniversalLabel
+  end interface
+  interface PetscObjectObjectTypeCompare
+    module procedure PetscObjectObjectTypeCompareDMUniversalLabel
+  end interface
+  interface PetscObjectBaseTypeCompare
+    module procedure PetscObjectBaseTypeCompareDMUniversalLabel
+  end interface
+  interface PetscObjectRegisterDestroy
+    module procedure PetscObjectRegisterDestroyDMUniversalLabel
+  end interface
+  interface PetscObjectGetId
+    module procedure PetscObjectGetIdDMUniversalLabel
+  end interface
+  interface PetscObjectCompareId
+    module procedure PetscObjectCompareIdDMUniversalLabel
+  end interface
+  interface PetscObjectGetOptions
+    module procedure PetscObjectGetOptionsDMUniversalLabel
+  end interface
+  interface PetscObjectSetOptions
+    module procedure PetscObjectSetOptionsDMUniversalLabel
+  end interface
+  interface PetscObjectSetOptionsPrefix
+    module procedure PetscObjectSetOptionsPrefixDMUniversalLabel
+  end interface
+  interface PetscObjectAppendOptionsPrefix
+    module procedure PetscObjectAppendOptionsPrefixDMUniversalLabel
+  end interface
+  interface PetscObjectGetOptionsPrefix
+    module procedure PetscObjectGetOptionsPrefixDMUniversalLabel
+  end interface
+  interface PetscObjectPrependOptionsPrefix
+    module procedure PetscObjectPrependOptionsPrefixDMUniversalLabel
+  end interface
+  interface PetscObjectGetComm
+    module procedure PetscObjectGetCommDMUniversalLabel
+  end interface
+  interface PetscObjectGetTabLevel
+    module procedure PetscObjectGetTabLevelDMUniversalLabel
+  end interface
+  interface PetscObjectSetTabLevel
+    module procedure PetscObjectSetTabLevelDMUniversalLabel
+  end interface
+  interface PetscObjectIncrementTabLevel
+    module procedure PetscObjectIncrementTabLevelDMUniversalLabel
+  end interface
+  interface PetscObjectGetNewTag
+    module procedure PetscObjectGetNewTagDMUniversalLabel
+  end interface
+  interface PetscObjectGetClassId
+    module procedure PetscObjectGetClassIdDMUniversalLabel
+  end interface
+  interface PetscObjectGetClassName
+    module procedure PetscObjectGetClassNameDMUniversalLabel
+  end interface
+  interface PetscObjectSetName
+    module procedure PetscObjectSetNameDMUniversalLabel
+  end interface
+  interface PetscObjectPrintClassNamePrefixType
+    module procedure PetscObjectPrintClassNamePrefixTypeDMUniversalLabel
+  end interface
+  interface PetscObjectName
+    module procedure PetscObjectNameDMUniversalLabel
+  end interface
+  interface PetscObjectChangeTypeName
+    module procedure PetscObjectChangeTypeNameDMUniversalLabel
+  end interface
+  interface operator(.ne.)
+    module procedure DMGeneratorFunctionListnotequals
+  end interface operator (.ne.)
+  interface operator(.eq.)
+    module procedure DMGeneratorFunctionListequals
+  end interface operator (.eq.)
+
+  interface operator(.ne.)
+    module procedure DMCopyLabelsModenotequals
+  end interface operator (.ne.)
+  interface operator(.eq.)
+    module procedure DMCopyLabelsModeequals
+  end interface operator (.eq.)
+
+  interface operator(.ne.)
+    module procedure DMBoundaryTypenotequals
+  end interface operator (.ne.)
+  interface operator(.eq.)
+    module procedure DMBoundaryTypeequals
+  end interface operator (.eq.)
+
+  interface operator(.ne.)
+    module procedure DMBoundaryConditionTypenotequals
+  end interface operator (.ne.)
+  interface operator(.eq.)
+    module procedure DMBoundaryConditionTypeequals
+  end interface operator (.eq.)
+
+  interface operator(.ne.)
+    module procedure DMPointLocationTypenotequals
+  end interface operator (.ne.)
+  interface operator(.eq.)
+    module procedure DMPointLocationTypeequals
+  end interface operator (.eq.)
+
+  interface operator(.ne.)
+    module procedure DMBlockingTypenotequals
+  end interface operator (.ne.)
+  interface operator(.eq.)
+    module procedure DMBlockingTypeequals
+  end interface operator (.eq.)
+
+  interface operator(.ne.)
+    module procedure DMAdaptationStrategynotequals
+  end interface operator (.ne.)
+  interface operator(.eq.)
+    module procedure DMAdaptationStrategyequals
+  end interface operator (.eq.)
+
+  interface operator(.ne.)
+    module procedure DMAdaptationCriterionnotequals
+  end interface operator (.ne.)
+  interface operator(.eq.)
+    module procedure DMAdaptationCriterionequals
+  end interface operator (.eq.)
+
+  interface operator(.ne.)
+    module procedure DMAdaptFlagnotequals
+  end interface operator (.ne.)
+  interface operator(.eq.)
+    module procedure DMAdaptFlagequals
+  end interface operator (.eq.)
+
+  interface operator(.ne.)
+    module procedure DMDirectionnotequals
+  end interface operator (.ne.)
+  interface operator(.eq.)
+    module procedure DMDirectionequals
+  end interface operator (.eq.)
+
+  interface operator(.ne.)
+    module procedure DMEnclosureTypenotequals
+  end interface operator (.ne.)
+  interface operator(.eq.)
+    module procedure DMEnclosureTypeequals
+  end interface operator (.eq.)
+
+  interface operator(.ne.)
+    module procedure DMPolytopeTypenotequals
+  end interface operator (.ne.)
+  interface operator(.eq.)
+    module procedure DMPolytopeTypeequals
+  end interface operator (.eq.)
+
+  interface operator(.ne.)
+    module procedure PetscUnitnotequals
+  end interface operator (.ne.)
+  interface operator(.eq.)
+    module procedure PetscUnitequals
+  end interface operator (.eq.)
+
+  interface operator(.ne.)
+    module procedure DMReorderDefaultFlagnotequals
+  end interface operator (.ne.)
+  interface operator(.eq.)
+    module procedure DMReorderDefaultFlagequals
+  end interface operator (.eq.)
+

@@ -1,0 +1,46 @@
+  type ePetscErrorType
+    PetscEnum:: v = PETSC_FORTRAN_TYPE_INITIALIZE
+  end type ePetscErrorType
+
+  PetscErrorType, parameter :: PETSC_NULL_ERRORTYPE = ePetscErrorType(-50)
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PETSC_NULL_ERRORTYPE
+#endif
+    PetscErrorType, parameter :: PETSC_ERROR_INITIAL = ePetscErrorType(0)
+    PetscErrorType, parameter :: PETSC_ERROR_REPEAT = ePetscErrorType(1)
+    PetscErrorType, parameter :: PETSC_ERROR_IN_CXX = ePetscErrorType(2)
+
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PETSC_ERROR_INITIAL 
+!DEC$ ATTRIBUTES DLLEXPORT::PETSC_ERROR_REPEAT 
+!DEC$ ATTRIBUTES DLLEXPORT::PETSC_ERROR_IN_CXX 
+#endif
+
+  type ePetscFPTrap
+    PetscEnum:: v = PETSC_FORTRAN_TYPE_INITIALIZE
+  end type ePetscFPTrap
+
+  PetscFPTrap, parameter :: PETSC_NULL_FPTRAP = ePetscFPTrap(-50)
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PETSC_NULL_FPTRAP
+#endif
+    PetscFPTrap, parameter :: PETSC_FP_TRAP_OFF = ePetscFPTrap(0)
+    PetscFPTrap, parameter :: PETSC_FP_TRAP_INDIV = ePetscFPTrap(1)
+    PetscFPTrap, parameter :: PETSC_FP_TRAP_FLTOPERR = ePetscFPTrap(2)
+    PetscFPTrap, parameter :: PETSC_FP_TRAP_FLTOVF = ePetscFPTrap(4)
+    PetscFPTrap, parameter :: PETSC_FP_TRAP_FLTUND = ePetscFPTrap(8)
+    PetscFPTrap, parameter :: PETSC_FP_TRAP_FLTDIV = ePetscFPTrap(16)
+    PetscFPTrap, parameter :: PETSC_FP_TRAP_FLTINEX = ePetscFPTrap(32)
+    PetscFPTrap, parameter :: PETSC_FP_TRAP_ON = ePetscFPTrap(63)
+
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PETSC_FP_TRAP_OFF 
+!DEC$ ATTRIBUTES DLLEXPORT::PETSC_FP_TRAP_INDIV 
+!DEC$ ATTRIBUTES DLLEXPORT::PETSC_FP_TRAP_FLTOPERR 
+!DEC$ ATTRIBUTES DLLEXPORT::PETSC_FP_TRAP_FLTOVF 
+!DEC$ ATTRIBUTES DLLEXPORT::PETSC_FP_TRAP_FLTUND 
+!DEC$ ATTRIBUTES DLLEXPORT::PETSC_FP_TRAP_FLTDIV 
+!DEC$ ATTRIBUTES DLLEXPORT::PETSC_FP_TRAP_FLTINEX 
+!DEC$ ATTRIBUTES DLLEXPORT::PETSC_FP_TRAP_ON 
+#endif
+

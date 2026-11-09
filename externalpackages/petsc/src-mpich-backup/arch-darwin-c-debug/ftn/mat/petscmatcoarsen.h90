@@ -1,0 +1,365 @@
+  interface
+  subroutine MatCoarsenRegister(sname,function, ierr)
+  use, intrinsic :: ISO_C_binding
+  character(*) :: sname
+  external :: function
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::MatCoarsenRegister
+#endif
+  interface
+  subroutine MatCoarsenGetType(coarsen,type, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tMatCoarsen
+  MatCoarsen :: coarsen
+  character(*) :: type
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::MatCoarsenGetType
+#endif
+  interface
+  subroutine MatCoarsenApply(coarser, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tMatCoarsen
+  MatCoarsen :: coarser
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::MatCoarsenApply
+#endif
+  interface
+  subroutine MatCoarsenSetAdjacency(agg,adj, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tMatCoarsen,tMat
+  MatCoarsen :: agg
+  Mat :: adj
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::MatCoarsenSetAdjacency
+#endif
+  interface
+  subroutine MatCoarsenSetStrictAggs(agg,str, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tMatCoarsen
+  MatCoarsen :: agg
+  PetscBool :: str
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::MatCoarsenSetStrictAggs
+#endif
+  interface
+  subroutine MatCoarsenDestroy(agg, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tMatCoarsen
+  MatCoarsen :: agg
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::MatCoarsenDestroy
+#endif
+  interface
+  subroutine MatCoarsenViewFromOptions(A,obj,name, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tMatCoarsen,tPetscObject
+  MatCoarsen :: A
+  PetscObject :: obj
+  character(*) :: name
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::MatCoarsenViewFromOptions
+#endif
+  interface
+  subroutine MatCoarsenView(agg,viewer, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tMatCoarsen,tPetscViewer
+  MatCoarsen :: agg
+  PetscViewer :: viewer
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::MatCoarsenView
+#endif
+  interface
+  subroutine MatCoarsenSetType(coarser,type, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tMatCoarsen
+  MatCoarsen :: coarser
+  character(*) :: type
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::MatCoarsenSetType
+#endif
+  interface
+  subroutine MatCoarsenSetGreedyOrdering(coarser,perm, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tMatCoarsen,tIS
+  MatCoarsen :: coarser
+  IS :: perm
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::MatCoarsenSetGreedyOrdering
+#endif
+  interface
+  subroutine MatCoarsenSetFromOptions(coarser, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tMatCoarsen
+  MatCoarsen :: coarser
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::MatCoarsenSetFromOptions
+#endif
+  interface
+  subroutine MatCoarsenSetMaximumIterations(coarse,n, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tMatCoarsen
+  MatCoarsen :: coarse
+  PetscInt :: n
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::MatCoarsenSetMaximumIterations
+#endif
+  interface
+  subroutine MatCoarsenSetStrengthIndex(coarse,n,idx, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tMatCoarsen
+  MatCoarsen :: coarse
+  PetscInt :: n
+  PetscInt :: idx(*)
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::MatCoarsenSetStrengthIndex
+#endif
+  interface
+  subroutine MatCoarsenSetThreshold(coarse,b, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tMatCoarsen
+  MatCoarsen :: coarse
+  PetscReal :: b
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::MatCoarsenSetThreshold
+#endif
+  interface
+  subroutine MatCoarsenCreate(comm,newcrs, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tMatCoarsen
+  MPIU_Comm :: comm
+  MatCoarsen :: newcrs
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::MatCoarsenCreate
+#endif
+  interface
+  subroutine MatCoarsenMISKSetDistance(crs,k, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tMatCoarsen
+  MatCoarsen :: crs
+  PetscInt :: k
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::MatCoarsenMISKSetDistance
+#endif
+  interface
+  subroutine MatCoarsenMISKGetDistance(crs,k, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tMatCoarsen
+  MatCoarsen :: crs
+  PetscInt :: k
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::MatCoarsenMISKGetDistance
+#endif
+  interface operator(.ne.)
+    module procedure MatCoarsennotequals
+  end interface operator (.ne.)
+  interface operator(.eq.)
+    module procedure MatCoarsenequals
+  end interface operator (.eq.)
+
+  interface PetscObjectCast
+    module procedure PetscObjectCastMatCoarsen
+  end interface
+  interface PetscBarrier
+  module procedure PetscBarrierMatCoarsen
+  end interface
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectSAWsTakeAccess
+    module procedure PetscObjectSAWsTakeAccessMatCoarsen
+  end interface
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectSAWsGrantAccess
+    module procedure PetscObjectSAWsGrantAccessMatCoarsen
+  end interface
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectSAWsBlock
+    module procedure PetscObjectSAWsBlockMatCoarsen
+  end interface
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectSAWsSetBlock
+    module procedure PetscObjectSAWsSetBlockMatCoarsen
+  end interface
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectSAWsViewOff
+    module procedure PetscObjectSAWsViewOffMatCoarsen
+  end interface
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectViewSAWs
+    module procedure PetscObjectViewSAWsMatCoarsen
+  end interface
+#endif
+  interface PetscObjectGetType
+    module procedure PetscObjectGetTypeMatCoarsen
+  end interface
+  interface PetscObjectSetPrintedOptions
+    module procedure PetscObjectSetPrintedOptionsMatCoarsen
+  end interface
+  interface PetscObjectInheritPrintedOptions
+    module procedure PetscObjectInheritPrintedOptionsMatCoarsen
+  end interface
+  interface PetscObjectAddOptionsHandler
+    module procedure PetscObjectAddOptionsHandlerMatCoarsen
+  end interface
+  interface PetscObjectProcessOptionsHandlers
+    module procedure PetscObjectProcessOptionsHandlersMatCoarsen
+  end interface
+  interface PetscObjectDestroyOptionsHandlers
+    module procedure PetscObjectDestroyOptionsHandlersMatCoarsen
+  end interface
+  interface PetscObjectReference
+    module procedure PetscObjectReferenceMatCoarsen
+  end interface
+  interface PetscObjectGetReference
+    module procedure PetscObjectGetReferenceMatCoarsen
+  end interface
+  interface PetscObjectDereference
+    module procedure PetscObjectDereferenceMatCoarsen
+  end interface
+  interface PetscObjectRemoveReference
+    module procedure PetscObjectRemoveReferenceMatCoarsen
+  end interface
+  interface PetscObjectHasFunction
+    module procedure PetscObjectHasFunctionMatCoarsen
+  end interface
+  interface PetscObjectSetFromOptions
+    module procedure PetscObjectSetFromOptionsMatCoarsen
+  end interface
+  interface PetscObjectSetUp
+    module procedure PetscObjectSetUpMatCoarsen
+  end interface
+  interface PetscObjectGetName
+    module procedure PetscObjectGetNameMatCoarsen
+  end interface
+  interface PetscObjectDestroy
+    module procedure PetscObjectDestroyMatCoarsen
+  end interface
+  interface PetscObjectView
+    module procedure PetscObjectViewMatCoarsen
+  end interface
+  interface PetscObjectViewFromOptions
+    module procedure PetscObjectViewFromOptionsMatCoarsen
+  end interface
+  interface PetscObjectTypeCompare
+    module procedure PetscObjectTypeCompareMatCoarsen
+  end interface
+  interface PetscObjectObjectTypeCompare
+    module procedure PetscObjectObjectTypeCompareMatCoarsen
+  end interface
+  interface PetscObjectBaseTypeCompare
+    module procedure PetscObjectBaseTypeCompareMatCoarsen
+  end interface
+  interface PetscObjectRegisterDestroy
+    module procedure PetscObjectRegisterDestroyMatCoarsen
+  end interface
+  interface PetscObjectGetId
+    module procedure PetscObjectGetIdMatCoarsen
+  end interface
+  interface PetscObjectCompareId
+    module procedure PetscObjectCompareIdMatCoarsen
+  end interface
+  interface PetscObjectGetOptions
+    module procedure PetscObjectGetOptionsMatCoarsen
+  end interface
+  interface PetscObjectSetOptions
+    module procedure PetscObjectSetOptionsMatCoarsen
+  end interface
+  interface PetscObjectSetOptionsPrefix
+    module procedure PetscObjectSetOptionsPrefixMatCoarsen
+  end interface
+  interface PetscObjectAppendOptionsPrefix
+    module procedure PetscObjectAppendOptionsPrefixMatCoarsen
+  end interface
+  interface PetscObjectGetOptionsPrefix
+    module procedure PetscObjectGetOptionsPrefixMatCoarsen
+  end interface
+  interface PetscObjectPrependOptionsPrefix
+    module procedure PetscObjectPrependOptionsPrefixMatCoarsen
+  end interface
+  interface PetscObjectGetComm
+    module procedure PetscObjectGetCommMatCoarsen
+  end interface
+  interface PetscObjectGetTabLevel
+    module procedure PetscObjectGetTabLevelMatCoarsen
+  end interface
+  interface PetscObjectSetTabLevel
+    module procedure PetscObjectSetTabLevelMatCoarsen
+  end interface
+  interface PetscObjectIncrementTabLevel
+    module procedure PetscObjectIncrementTabLevelMatCoarsen
+  end interface
+  interface PetscObjectGetNewTag
+    module procedure PetscObjectGetNewTagMatCoarsen
+  end interface
+  interface PetscObjectGetClassId
+    module procedure PetscObjectGetClassIdMatCoarsen
+  end interface
+  interface PetscObjectGetClassName
+    module procedure PetscObjectGetClassNameMatCoarsen
+  end interface
+  interface PetscObjectSetName
+    module procedure PetscObjectSetNameMatCoarsen
+  end interface
+  interface PetscObjectPrintClassNamePrefixType
+    module procedure PetscObjectPrintClassNamePrefixTypeMatCoarsen
+  end interface
+  interface PetscObjectName
+    module procedure PetscObjectNameMatCoarsen
+  end interface
+  interface PetscObjectChangeTypeName
+    module procedure PetscObjectChangeTypeNameMatCoarsen
+  end interface

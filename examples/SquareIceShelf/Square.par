@@ -8,6 +8,7 @@ ymax=max(md.mesh.y);
 md.geometry.thickness = hmax+(hmin-hmax)*(md.mesh.y-ymin)/(ymax-ymin);
 md.geometry.base      = -md.materials.rho_ice/md.materials.rho_water*md.geometry.thickness;
 md.geometry.surface   = md.geometry.base+md.geometry.thickness;
+md.geometry.bed       = -1000*ones(md.mesh.numberofvertices,1);
 
 disp('      creating drag');
 md.friction.coefficient=200*ones(md.mesh.numberofvertices,1);
@@ -22,9 +23,23 @@ md.initialization.vz=zeros(md.mesh.numberofvertices,1);
 md.initialization.vel=zeros(md.mesh.numberofvertices,1);
 
 disp('      creating flow law parameter');
-md.materials.rheology_B=paterson((273-20)*ones(md.mesh.numberofvertices,1));
+md.materials.rheology_B=cuffey((273-20)*ones(md.mesh.numberofvertices,1));
 md.materials.rheology_n=3*ones(md.mesh.numberofelements,1);
 md.damage.D=zeros(md.mesh.numberofvertices,1);
 
 disp('      creating boundary conditions');
 md=SetIceShelfBC(md,'Front.exp');
+
+%Stuff for transient
+disp('Transient stuff')
+md.transient.ismovingfront = 1
+md.basalforcings.geothermalflux = zeros(md.mesh.numberofvertices,1);
+md.initialization.pressure = md.constants.g*md.materials.rho_ice*md.geometry.thickness;
+md.initialization.temperature = 273*ones(md.mesh.numberofvertices,1);
+md.thermal.spctemperature     = [md.initialization.temperature;1];
+md.mask.ice_levelset          = -1*ones(md.mesh.numberofvertices,1)
+pos                           = find(md.mesh.y > 700000);
+md.mask.ice_levelset(pos)     = 1;
+
+%Extra stuff
+%md.basalforcings.floatingice_melting_rate = [0*ones(md.mesh.numberofvertices,1),zeros(md.mesh.numberofvertices,1);1,50];

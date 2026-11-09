@@ -1,0 +1,15 @@
+interface
+  subroutine SNESRestoreConvergenceHistory(snes, a, its, na, ierr)
+    use, intrinsic :: ISO_C_binding
+    import tSNES
+    SNES snes
+    PetscInt na
+    PetscReal, pointer :: a(:)
+    PetscInt, pointer :: its(:)
+    PetscErrorCode, intent(out) :: ierr
+  end subroutine
+end interface
+
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESRestoreConvergenceHistory
+#endif

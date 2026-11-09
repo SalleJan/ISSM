@@ -33,7 +33,7 @@ cd ${PETSC_DIR}
 	--with-ssl=0 \
 	--with-pic=1 \
 	--download-metis=1 \
-	--download-mpich=1 \
+	--with-mpi-dir="$(brew --prefix open-mpi)" \
 	--download-mumps=1 \
 	--download-parmetis=1 \
 	--download-scalapack=1 \

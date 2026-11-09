@@ -1,0 +1,40 @@
+  interface
+  subroutine DMRedundantSetSize(dm,rank,N, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  PetscMPIInt :: rank
+  PetscInt :: N
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMRedundantSetSize
+#endif
+  interface
+  subroutine DMRedundantGetSize(dm,rank,N, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  PetscMPIInt :: rank
+  PetscInt :: N
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMRedundantGetSize
+#endif
+  interface
+  subroutine DMRedundantCreate(comm,rank,N,dm, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  MPIU_Comm :: comm
+  PetscMPIInt :: rank
+  PetscInt :: N
+  DM :: dm
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMRedundantCreate
+#endif

@@ -1,0 +1,97 @@
+  interface
+  subroutine DMPlexSNESComputeObjectiveFEM(dm,X,obj,ctx, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM,tVec
+  DM :: dm
+  Vec :: X
+  PetscReal :: obj
+  type(*) :: ctx
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMPlexSNESComputeObjectiveFEM
+#endif
+  interface
+  subroutine DMPlexSNESComputeResidualFEM(dm,X,F,ctx, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM,tVec
+  DM :: dm
+  Vec :: X
+  Vec :: F
+  type(*) :: ctx
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMPlexSNESComputeResidualFEM
+#endif
+  interface
+  subroutine DMPlexSNESComputeResidualDS(dm,X,F,ctx, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM,tVec
+  DM :: dm
+  Vec :: X
+  Vec :: F
+  type(*) :: ctx
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMPlexSNESComputeResidualDS
+#endif
+  interface
+  subroutine DMPlexSNESComputeBoundaryFEM(dm,X,ctx, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM,tVec
+  DM :: dm
+  Vec :: X
+  type(*) :: ctx
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMPlexSNESComputeBoundaryFEM
+#endif
+  interface
+  subroutine DMPlexSNESComputeJacobianFEM(dm,X,Jac,JacP,ctx, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM,tVec,tMat
+  DM :: dm
+  Vec :: X
+  Mat :: Jac
+  Mat :: JacP
+  type(*) :: ctx
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMPlexSNESComputeJacobianFEM
+#endif
+  interface
+  subroutine DMPlexSetSNESLocalFEM(dm,use_obj,ctx, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  PetscBool :: use_obj
+  type(*) :: ctx
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMPlexSetSNESLocalFEM
+#endif
+  interface
+  subroutine DMPlexSNESComputeResidualCEED(dm,locX,locF,ctx, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM,tVec
+  DM :: dm
+  Vec :: locX
+  Vec :: locF
+  type(*) :: ctx
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMPlexSNESComputeResidualCEED
+#endif

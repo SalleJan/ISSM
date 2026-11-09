@@ -1,0 +1,7 @@
+#include <../ftn/sys/petscsys.hf90>
+#include <../ftn/sys/petscmath.hf90>
+#include <../ftn/sys/petscerror.hf90>
+#include <../ftn/sys/petscviewer.hf90>
+#include <../ftn/sys/petscoptions.hf90>
+#include <../ftn/sys/petsclog.hf90>
+#include <../ftn/sys/petscdevice.hf90>

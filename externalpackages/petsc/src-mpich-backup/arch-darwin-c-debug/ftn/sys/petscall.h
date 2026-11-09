@@ -1,0 +1,16 @@
+#include <petsc/finclude/petscmacros.h>
+#include <petsc/finclude/petscsys.h>
+#include <../ftn/sys/petscsys.h>
+#include <petsc/finclude/petscmath.h>
+#include <../ftn/sys/petscmath.h>
+#include <petsc/finclude/petscerror.h>
+#include <../ftn/sys/petscerror.h>
+#include <petsc/finclude/petscviewer.h>
+#include <../ftn/sys/petscviewer.h>
+#include <petsc/finclude/petscoptions.h>
+#include <../ftn/sys/petscoptions.h>
+#include <petsc/finclude/petsclog.h>
+#include <../ftn/sys/petsclog.h>
+#include <petsc/finclude/petscstring.h>
+#include <petsc/finclude/petscdevice.h>
+#include <../ftn/sys/petscdevice.h>

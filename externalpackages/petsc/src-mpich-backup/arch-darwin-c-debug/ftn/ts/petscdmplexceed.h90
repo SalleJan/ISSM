@@ -1,0 +1,15 @@
+  interface
+  subroutine DMPlexTSComputeRHSFunctionFVMCEED(dm,time,locX,F,ctx, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM,tVec
+  DM :: dm
+  PetscReal :: time
+  Vec :: locX
+  Vec :: F
+  type(*) :: ctx
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMPlexTSComputeRHSFunctionFVMCEED
+#endif

@@ -1,0 +1,199 @@
+  interface
+  subroutine PetscTokenFind(a,result, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscToken
+  PetscToken :: a
+  character(*) :: result
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscTokenFind
+#endif
+  interface
+  subroutine PetscTokenCreate(a,b,t, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscToken
+  character(*) :: a
+  character :: b
+  PetscToken :: t
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscTokenCreate
+#endif
+  interface
+  subroutine PetscTokenDestroy(a, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscToken
+  PetscToken :: a
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscTokenDestroy
+#endif
+  interface
+  subroutine PetscStrcasecmp(a,b,t, ierr)
+  use, intrinsic :: ISO_C_binding
+  character(*) :: a
+  character(*) :: b
+  PetscBool :: t
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscStrcasecmp
+#endif
+  interface
+  subroutine PetscStrInList(str,list,sep,found, ierr)
+  use, intrinsic :: ISO_C_binding
+  character(*) :: str
+  character(*) :: list
+  character :: sep
+  PetscBool :: found
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscStrInList
+#endif
+  interface
+  subroutine PetscStrreplace(comm,aa,b, ierr)
+  use, intrinsic :: ISO_C_binding
+  MPIU_Comm :: comm
+  character(*) :: aa
+  character(*) :: b
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscStrreplace
+#endif
+  interface
+  subroutine PetscStrcat(s,t, ierr)
+  use, intrinsic :: ISO_C_binding
+  character(*) :: s
+  character(*) :: t
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscStrcat
+#endif
+  interface
+  subroutine PetscStrcpy(s,t, ierr)
+  use, intrinsic :: ISO_C_binding
+  character(*) :: s
+  character(*) :: t
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscStrcpy
+#endif
+  interface
+  subroutine PetscStrtolower(a, ierr)
+  use, intrinsic :: ISO_C_binding
+  character(*) :: a
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscStrtolower
+#endif
+  interface
+  subroutine PetscStrtoupper(a, ierr)
+  use, intrinsic :: ISO_C_binding
+  character(*) :: a
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscStrtoupper
+#endif
+  interface
+  subroutine PetscStrlen(s,len, ierr)
+  use, intrinsic :: ISO_C_binding
+  character(*) :: s
+  PetscSizeT :: len
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscStrlen
+#endif
+  interface
+  subroutine PetscStrcmp(a,b,flg, ierr)
+  use, intrinsic :: ISO_C_binding
+  character(*) :: a
+  character(*) :: b
+  PetscBool :: flg
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscStrcmp
+#endif
+  interface
+  subroutine PetscStrlcat(s,t,n, ierr)
+  use, intrinsic :: ISO_C_binding
+  character(*) :: s
+  character(*) :: t
+  PetscSizeT :: n
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscStrlcat
+#endif
+  interface
+  subroutine PetscStrncmp(a,b,n,t, ierr)
+  use, intrinsic :: ISO_C_binding
+  character(*) :: a
+  character(*) :: b
+  PetscSizeT :: n
+  PetscBool :: t
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscStrncmp
+#endif
+  interface
+  subroutine PetscStrgrt(a,b,t, ierr)
+  use, intrinsic :: ISO_C_binding
+  character(*) :: a
+  character(*) :: b
+  PetscBool :: t
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscStrgrt
+#endif
+  interface
+  subroutine PetscStrendswith(a,b,flg, ierr)
+  use, intrinsic :: ISO_C_binding
+  character(*) :: a
+  character(*) :: b
+  PetscBool :: flg
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscStrendswith
+#endif
+  interface
+  subroutine PetscStrbeginswith(a,b,flg, ierr)
+  use, intrinsic :: ISO_C_binding
+  character(*) :: a
+  character(*) :: b
+  PetscBool :: flg
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscStrbeginswith
+#endif

@@ -47,9 +47,9 @@ if nargin==5
 else
 	%read data
 	switch (oshostname()),
-		case {'ronne'}
+		case {'uuh4h4jl2p7y'}
 			if hemisphere==1
-				searisenc='/home/ModelData/SeaRISE/Greenland_5km_dev1.2.nc';
+				searisenc='/Users/7092946/Desktop/GitHub/ISSM/examples/Data/Greenland_5km_dev1.2.nc';
 			elseif hemisphere==-1
 				searisenc='/home/ModelData/SeaRISE/Antarctica_5km_dev1.0.nc';
 			end

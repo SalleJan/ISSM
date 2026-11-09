@@ -1,0 +1,30 @@
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT:: LandauDeviceTypenotequals
+!DEC$ ATTRIBUTES DLLEXPORT:: LandauDeviceTypeequals
+#endif
+
+  function LandauDeviceTypenotequals(A,B)
+    logical LandauDeviceTypenotequals
+    type(eLandauDeviceType), intent(in) :: A,B
+    LandauDeviceTypenotequals = (A%v .ne. B%v)
+  end function
+  function LandauDeviceTypeequals(A,B)
+    logical LandauDeviceTypeequals
+    type(eLandauDeviceType), intent(in) :: A,B
+    LandauDeviceTypeequals = (A%v .eq. B%v)
+  end function
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT:: LandauOMPTimersnotequals
+!DEC$ ATTRIBUTES DLLEXPORT:: LandauOMPTimersequals
+#endif
+
+  function LandauOMPTimersnotequals(A,B)
+    logical LandauOMPTimersnotequals
+    type(eLandauOMPTimers), intent(in) :: A,B
+    LandauOMPTimersnotequals = (A%v .ne. B%v)
+  end function
+  function LandauOMPTimersequals(A,B)
+    logical LandauOMPTimersequals
+    type(eLandauOMPTimers), intent(in) :: A,B
+    LandauOMPTimersequals = (A%v .eq. B%v)
+  end function

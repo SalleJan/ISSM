@@ -1,0 +1,639 @@
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT:: PCnotequals
+!DEC$ ATTRIBUTES DLLEXPORT:: PCequals
+#endif
+
+  function PCnotequals(A,B)
+    logical PCnotequals
+    type(tPC), intent(in) :: A,B
+    PCnotequals = (A%v .ne. B%v)
+  end function
+  function PCequals(A,B)
+    logical PCequals
+    type(tPC), intent(in) :: A,B
+    PCequals = (A%v .eq. B%v)
+  end function
+  function PetscObjectCastPC(obj)
+    PC obj
+    PetscObject PetscObjectCastPC
+    PetscObjectCastPC%v = obj%v
+  end function 
+  subroutine PetscBarrierPC(obj,ierr)
+    PC obj
+    PetscErrorCode ierr
+    call PetscBarrier(PetscObjectCast(obj),ierr)
+  end subroutine 
+#if defined(PETSC_HAVE_SAWS)
+  subroutine PetscObjectSAWsTakeAccessPC(obj, ierr)
+  PC obj
+  PetscErrorCode ierr
+  call PetscObjectSAWsTakeAccess(PetscObjectCast(obj), ierr)
+  end subroutine 
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  subroutine PetscObjectSAWsGrantAccessPC(obj, ierr)
+  PC obj
+  PetscErrorCode ierr
+  call PetscObjectSAWsGrantAccess(PetscObjectCast(obj), ierr)
+  end subroutine 
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  subroutine PetscObjectSAWsBlockPC(obj, ierr)
+  PC obj
+  PetscErrorCode ierr
+  call PetscObjectSAWsBlock(PetscObjectCast(obj), ierr)
+  end subroutine 
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  subroutine PetscObjectSAWsSetBlockPC(obj, flg, ierr)
+  PC obj
+  PetscBool :: flg
+  PetscErrorCode ierr
+  call PetscObjectSAWsSetBlock(PetscObjectCast(obj), flg, ierr)
+  end subroutine 
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  subroutine PetscObjectSAWsViewOffPC(obj, ierr)
+  PC obj
+  PetscErrorCode ierr
+  call PetscObjectSAWsViewOff(PetscObjectCast(obj), ierr)
+  end subroutine 
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  subroutine PetscObjectViewSAWsPC(obj, viewer, ierr)
+  PC obj
+  PetscViewer :: viewer
+  PetscErrorCode ierr
+  call PetscObjectViewSAWs(PetscObjectCast(obj), viewer, ierr)
+  end subroutine 
+#endif
+  subroutine PetscObjectGetTypePC(obj, type, ierr)
+  PC obj
+  character(*) :: type
+  PetscErrorCode ierr
+  call PetscObjectGetType(PetscObjectCast(obj), type, ierr)
+  end subroutine 
+  subroutine PetscObjectSetPrintedOptionsPC(obj, ierr)
+  PC obj
+  PetscErrorCode ierr
+  call PetscObjectSetPrintedOptions(PetscObjectCast(obj), ierr)
+  end subroutine 
+  subroutine PetscObjectInheritPrintedOptionsPC(pobj, obj, ierr)
+  PC pobj
+  PetscObject :: obj
+  PetscErrorCode ierr
+  call PetscObjectInheritPrintedOptions(PetscObjectCast(pobj), obj, ierr)
+  end subroutine 
+  subroutine PetscObjectAddOptionsHandlerPC(obj, handle, destroy, ctx, ierr)
+  PC obj
+  external :: handle
+  external :: destroy
+  type(*) :: ctx
+  PetscErrorCode ierr
+  call PetscObjectAddOptionsHandler(PetscObjectCast(obj), handle, destroy, ctx, ierr)
+  end subroutine 
+  subroutine PetscObjectProcessOptionsHandlersPC(obj, PetscOptionsObject, ierr)
+  PC obj
+  PetscOptionItems :: PetscOptionsObject
+  PetscErrorCode ierr
+  call PetscObjectProcessOptionsHandlers(PetscObjectCast(obj), PetscOptionsObject, ierr)
+  end subroutine 
+  subroutine PetscObjectDestroyOptionsHandlersPC(obj, ierr)
+  PC obj
+  PetscErrorCode ierr
+  call PetscObjectDestroyOptionsHandlers(PetscObjectCast(obj), ierr)
+  end subroutine 
+  subroutine PetscObjectReferencePC(obj, ierr)
+  PC obj
+  PetscErrorCode ierr
+  call PetscObjectReference(PetscObjectCast(obj), ierr)
+  end subroutine 
+  subroutine PetscObjectGetReferencePC(obj, cnt, ierr)
+  PC obj
+  PetscInt :: cnt
+  PetscErrorCode ierr
+  call PetscObjectGetReference(PetscObjectCast(obj), cnt, ierr)
+  end subroutine 
+  subroutine PetscObjectDereferencePC(obj, ierr)
+  PC obj
+  PetscErrorCode ierr
+  call PetscObjectDereference(PetscObjectCast(obj), ierr)
+  end subroutine 
+  subroutine PetscObjectRemoveReferencePC(obj, name, ierr)
+  PC obj
+  character(*) :: name
+  PetscErrorCode ierr
+  call PetscObjectRemoveReference(PetscObjectCast(obj), name, ierr)
+  end subroutine 
+  subroutine PetscObjectHasFunctionPC(obj, name, has, ierr)
+  PC obj
+  character(*) :: name
+  PetscBool :: has
+  PetscErrorCode ierr
+  call PetscObjectHasFunction(PetscObjectCast(obj), name, has, ierr)
+  end subroutine 
+  subroutine PetscObjectSetFromOptionsPC(obj, ierr)
+  PC obj
+  PetscErrorCode ierr
+  call PetscObjectSetFromOptions(PetscObjectCast(obj), ierr)
+  end subroutine 
+  subroutine PetscObjectSetUpPC(obj, ierr)
+  PC obj
+  PetscErrorCode ierr
+  call PetscObjectSetUp(PetscObjectCast(obj), ierr)
+  end subroutine 
+  subroutine PetscObjectGetNamePC(obj, name, ierr)
+  PC obj
+  character(*) :: name
+  PetscErrorCode ierr
+  call PetscObjectGetName(PetscObjectCast(obj), name, ierr)
+  end subroutine 
+  subroutine PetscObjectDestroyPC(obj, ierr)
+  PC obj
+  PetscErrorCode ierr
+  call PetscObjectDestroy(PetscObjectCast(obj), ierr)
+  end subroutine 
+  subroutine PetscObjectViewPC(obj, viewer, ierr)
+  PC obj
+  PetscViewer :: viewer
+  PetscErrorCode ierr
+  call PetscObjectView(PetscObjectCast(obj), viewer, ierr)
+  end subroutine 
+  subroutine PetscObjectViewFromOptionsPC(obj, bobj, name, ierr)
+  PC obj
+  PetscObject :: bobj
+  character(*) :: name
+  PetscErrorCode ierr
+  call PetscObjectViewFromOptions(PetscObjectCast(obj), bobj, name, ierr)
+  end subroutine 
+  subroutine PetscObjectTypeComparePC(obj, type_name, same, ierr)
+  PC obj
+  character(*) :: type_name
+  PetscBool :: same
+  PetscErrorCode ierr
+  call PetscObjectTypeCompare(PetscObjectCast(obj), type_name, same, ierr)
+  end subroutine 
+  subroutine PetscObjectObjectTypeComparePC(obj1, obj2, same, ierr)
+  PC obj1
+  PetscObject :: obj2
+  PetscBool :: same
+  PetscErrorCode ierr
+  call PetscObjectObjectTypeCompare(PetscObjectCast(obj1), obj2, same, ierr)
+  end subroutine 
+  subroutine PetscObjectBaseTypeComparePC(obj, type_name, same, ierr)
+  PC obj
+  character(*) :: type_name
+  PetscBool :: same
+  PetscErrorCode ierr
+  call PetscObjectBaseTypeCompare(PetscObjectCast(obj), type_name, same, ierr)
+  end subroutine 
+  subroutine PetscObjectRegisterDestroyPC(obj, ierr)
+  PC obj
+  PetscErrorCode ierr
+  call PetscObjectRegisterDestroy(PetscObjectCast(obj), ierr)
+  end subroutine 
+  subroutine PetscObjectGetIdPC(obj, id, ierr)
+  PC obj
+  PetscObjectId :: id
+  PetscErrorCode ierr
+  call PetscObjectGetId(PetscObjectCast(obj), id, ierr)
+  end subroutine 
+  subroutine PetscObjectCompareIdPC(obj, id, eq, ierr)
+  PC obj
+  PetscObjectId :: id
+  PetscBool :: eq
+  PetscErrorCode ierr
+  call PetscObjectCompareId(PetscObjectCast(obj), id, eq, ierr)
+  end subroutine 
+  subroutine PetscObjectGetOptionsPC(obj, options, ierr)
+  PC obj
+  PetscOptions :: options
+  PetscErrorCode ierr
+  call PetscObjectGetOptions(PetscObjectCast(obj), options, ierr)
+  end subroutine 
+  subroutine PetscObjectSetOptionsPC(obj, options, ierr)
+  PC obj
+  PetscOptions :: options
+  PetscErrorCode ierr
+  call PetscObjectSetOptions(PetscObjectCast(obj), options, ierr)
+  end subroutine 
+  subroutine PetscObjectSetOptionsPrefixPC(obj, prefix, ierr)
+  PC obj
+  character(*) :: prefix
+  PetscErrorCode ierr
+  call PetscObjectSetOptionsPrefix(PetscObjectCast(obj), prefix, ierr)
+  end subroutine 
+  subroutine PetscObjectAppendOptionsPrefixPC(obj, prefix, ierr)
+  PC obj
+  character(*) :: prefix
+  PetscErrorCode ierr
+  call PetscObjectAppendOptionsPrefix(PetscObjectCast(obj), prefix, ierr)
+  end subroutine 
+  subroutine PetscObjectGetOptionsPrefixPC(obj, prefix, ierr)
+  PC obj
+  character(*) :: prefix
+  PetscErrorCode ierr
+  call PetscObjectGetOptionsPrefix(PetscObjectCast(obj), prefix, ierr)
+  end subroutine 
+  subroutine PetscObjectPrependOptionsPrefixPC(obj, prefix, ierr)
+  PC obj
+  character(*) :: prefix
+  PetscErrorCode ierr
+  call PetscObjectPrependOptionsPrefix(PetscObjectCast(obj), prefix, ierr)
+  end subroutine 
+  subroutine PetscObjectGetCommPC(obj, comm, ierr)
+  PC obj
+  MPIU_Comm :: comm
+  PetscErrorCode ierr
+  call PetscObjectGetComm(PetscObjectCast(obj), comm, ierr)
+  end subroutine 
+  subroutine PetscObjectGetTabLevelPC(obj, tab, ierr)
+  PC obj
+  PetscInt :: tab
+  PetscErrorCode ierr
+  call PetscObjectGetTabLevel(PetscObjectCast(obj), tab, ierr)
+  end subroutine 
+  subroutine PetscObjectSetTabLevelPC(obj, tab, ierr)
+  PC obj
+  PetscInt :: tab
+  PetscErrorCode ierr
+  call PetscObjectSetTabLevel(PetscObjectCast(obj), tab, ierr)
+  end subroutine 
+  subroutine PetscObjectIncrementTabLevelPC(obj, oldobj, tab, ierr)
+  PC obj
+  PetscObject :: oldobj
+  PetscInt :: tab
+  PetscErrorCode ierr
+  call PetscObjectIncrementTabLevel(PetscObjectCast(obj), oldobj, tab, ierr)
+  end subroutine 
+  subroutine PetscObjectGetNewTagPC(obj, tag, ierr)
+  PC obj
+  PetscMPIInt :: tag
+  PetscErrorCode ierr
+  call PetscObjectGetNewTag(PetscObjectCast(obj), tag, ierr)
+  end subroutine 
+  subroutine PetscObjectGetClassIdPC(obj, classid, ierr)
+  PC obj
+  PetscClassId :: classid
+  PetscErrorCode ierr
+  call PetscObjectGetClassId(PetscObjectCast(obj), classid, ierr)
+  end subroutine 
+  subroutine PetscObjectGetClassNamePC(obj, classname, ierr)
+  PC obj
+  character(*) :: classname
+  PetscErrorCode ierr
+  call PetscObjectGetClassName(PetscObjectCast(obj), classname, ierr)
+  end subroutine 
+  subroutine PetscObjectSetNamePC(obj, name, ierr)
+  PC obj
+  character(*) :: name
+  PetscErrorCode ierr
+  call PetscObjectSetName(PetscObjectCast(obj), name, ierr)
+  end subroutine 
+  subroutine PetscObjectPrintClassNamePrefixTypePC(obj, viewer, ierr)
+  PC obj
+  PetscViewer :: viewer
+  PetscErrorCode ierr
+  call PetscObjectPrintClassNamePrefixType(PetscObjectCast(obj), viewer, ierr)
+  end subroutine 
+  subroutine PetscObjectNamePC(obj, ierr)
+  PC obj
+  PetscErrorCode ierr
+  call PetscObjectName(PetscObjectCast(obj), ierr)
+  end subroutine 
+  subroutine PetscObjectChangeTypeNamePC(obj, type_name, ierr)
+  PC obj
+  character(*) :: type_name
+  PetscErrorCode ierr
+  call PetscObjectChangeTypeName(PetscObjectCast(obj), type_name, ierr)
+  end subroutine 
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT:: PCSidenotequals
+!DEC$ ATTRIBUTES DLLEXPORT:: PCSideequals
+#endif
+
+  function PCSidenotequals(A,B)
+    logical PCSidenotequals
+    type(ePCSide), intent(in) :: A,B
+    PCSidenotequals = (A%v .ne. B%v)
+  end function
+  function PCSideequals(A,B)
+    logical PCSideequals
+    type(ePCSide), intent(in) :: A,B
+    PCSideequals = (A%v .eq. B%v)
+  end function
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT:: PCRichardsonConvergedReasonnotequals
+!DEC$ ATTRIBUTES DLLEXPORT:: PCRichardsonConvergedReasonequals
+#endif
+
+  function PCRichardsonConvergedReasonnotequals(A,B)
+    logical PCRichardsonConvergedReasonnotequals
+    type(ePCRichardsonConvergedReason), intent(in) :: A,B
+    PCRichardsonConvergedReasonnotequals = (A%v .ne. B%v)
+  end function
+  function PCRichardsonConvergedReasonequals(A,B)
+    logical PCRichardsonConvergedReasonequals
+    type(ePCRichardsonConvergedReason), intent(in) :: A,B
+    PCRichardsonConvergedReasonequals = (A%v .eq. B%v)
+  end function
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT:: PCJacobiTypenotequals
+!DEC$ ATTRIBUTES DLLEXPORT:: PCJacobiTypeequals
+#endif
+
+  function PCJacobiTypenotequals(A,B)
+    logical PCJacobiTypenotequals
+    type(ePCJacobiType), intent(in) :: A,B
+    PCJacobiTypenotequals = (A%v .ne. B%v)
+  end function
+  function PCJacobiTypeequals(A,B)
+    logical PCJacobiTypeequals
+    type(ePCJacobiType), intent(in) :: A,B
+    PCJacobiTypeequals = (A%v .eq. B%v)
+  end function
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT:: PCASMTypenotequals
+!DEC$ ATTRIBUTES DLLEXPORT:: PCASMTypeequals
+#endif
+
+  function PCASMTypenotequals(A,B)
+    logical PCASMTypenotequals
+    type(ePCASMType), intent(in) :: A,B
+    PCASMTypenotequals = (A%v .ne. B%v)
+  end function
+  function PCASMTypeequals(A,B)
+    logical PCASMTypeequals
+    type(ePCASMType), intent(in) :: A,B
+    PCASMTypeequals = (A%v .eq. B%v)
+  end function
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT:: PCGASMTypenotequals
+!DEC$ ATTRIBUTES DLLEXPORT:: PCGASMTypeequals
+#endif
+
+  function PCGASMTypenotequals(A,B)
+    logical PCGASMTypenotequals
+    type(ePCGASMType), intent(in) :: A,B
+    PCGASMTypenotequals = (A%v .ne. B%v)
+  end function
+  function PCGASMTypeequals(A,B)
+    logical PCGASMTypeequals
+    type(ePCGASMType), intent(in) :: A,B
+    PCGASMTypeequals = (A%v .eq. B%v)
+  end function
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT:: PCCompositeTypenotequals
+!DEC$ ATTRIBUTES DLLEXPORT:: PCCompositeTypeequals
+#endif
+
+  function PCCompositeTypenotequals(A,B)
+    logical PCCompositeTypenotequals
+    type(ePCCompositeType), intent(in) :: A,B
+    PCCompositeTypenotequals = (A%v .ne. B%v)
+  end function
+  function PCCompositeTypeequals(A,B)
+    logical PCCompositeTypeequals
+    type(ePCCompositeType), intent(in) :: A,B
+    PCCompositeTypeequals = (A%v .eq. B%v)
+  end function
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT:: PCFieldSplitSchurPreTypenotequals
+!DEC$ ATTRIBUTES DLLEXPORT:: PCFieldSplitSchurPreTypeequals
+#endif
+
+  function PCFieldSplitSchurPreTypenotequals(A,B)
+    logical PCFieldSplitSchurPreTypenotequals
+    type(ePCFieldSplitSchurPreType), intent(in) :: A,B
+    PCFieldSplitSchurPreTypenotequals = (A%v .ne. B%v)
+  end function
+  function PCFieldSplitSchurPreTypeequals(A,B)
+    logical PCFieldSplitSchurPreTypeequals
+    type(ePCFieldSplitSchurPreType), intent(in) :: A,B
+    PCFieldSplitSchurPreTypeequals = (A%v .eq. B%v)
+  end function
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT:: PCFieldSplitSchurFactTypenotequals
+!DEC$ ATTRIBUTES DLLEXPORT:: PCFieldSplitSchurFactTypeequals
+#endif
+
+  function PCFieldSplitSchurFactTypenotequals(A,B)
+    logical PCFieldSplitSchurFactTypenotequals
+    type(ePCFieldSplitSchurFactType), intent(in) :: A,B
+    PCFieldSplitSchurFactTypenotequals = (A%v .ne. B%v)
+  end function
+  function PCFieldSplitSchurFactTypeequals(A,B)
+    logical PCFieldSplitSchurFactTypeequals
+    type(ePCFieldSplitSchurFactType), intent(in) :: A,B
+    PCFieldSplitSchurFactTypeequals = (A%v .eq. B%v)
+  end function
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT:: PCPARMSGlobalTypenotequals
+!DEC$ ATTRIBUTES DLLEXPORT:: PCPARMSGlobalTypeequals
+#endif
+
+  function PCPARMSGlobalTypenotequals(A,B)
+    logical PCPARMSGlobalTypenotequals
+    type(ePCPARMSGlobalType), intent(in) :: A,B
+    PCPARMSGlobalTypenotequals = (A%v .ne. B%v)
+  end function
+  function PCPARMSGlobalTypeequals(A,B)
+    logical PCPARMSGlobalTypeequals
+    type(ePCPARMSGlobalType), intent(in) :: A,B
+    PCPARMSGlobalTypeequals = (A%v .eq. B%v)
+  end function
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT:: PCPARMSLocalTypenotequals
+!DEC$ ATTRIBUTES DLLEXPORT:: PCPARMSLocalTypeequals
+#endif
+
+  function PCPARMSLocalTypenotequals(A,B)
+    logical PCPARMSLocalTypenotequals
+    type(ePCPARMSLocalType), intent(in) :: A,B
+    PCPARMSLocalTypenotequals = (A%v .ne. B%v)
+  end function
+  function PCPARMSLocalTypeequals(A,B)
+    logical PCPARMSLocalTypeequals
+    type(ePCPARMSLocalType), intent(in) :: A,B
+    PCPARMSLocalTypeequals = (A%v .eq. B%v)
+  end function
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT:: PCMGTypenotequals
+!DEC$ ATTRIBUTES DLLEXPORT:: PCMGTypeequals
+#endif
+
+  function PCMGTypenotequals(A,B)
+    logical PCMGTypenotequals
+    type(ePCMGType), intent(in) :: A,B
+    PCMGTypenotequals = (A%v .ne. B%v)
+  end function
+  function PCMGTypeequals(A,B)
+    logical PCMGTypeequals
+    type(ePCMGType), intent(in) :: A,B
+    PCMGTypeequals = (A%v .eq. B%v)
+  end function
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT:: PCMGCycleTypenotequals
+!DEC$ ATTRIBUTES DLLEXPORT:: PCMGCycleTypeequals
+#endif
+
+  function PCMGCycleTypenotequals(A,B)
+    logical PCMGCycleTypenotequals
+    type(ePCMGCycleType), intent(in) :: A,B
+    PCMGCycleTypenotequals = (A%v .ne. B%v)
+  end function
+  function PCMGCycleTypeequals(A,B)
+    logical PCMGCycleTypeequals
+    type(ePCMGCycleType), intent(in) :: A,B
+    PCMGCycleTypeequals = (A%v .eq. B%v)
+  end function
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT:: PCMGGalerkinTypenotequals
+!DEC$ ATTRIBUTES DLLEXPORT:: PCMGGalerkinTypeequals
+#endif
+
+  function PCMGGalerkinTypenotequals(A,B)
+    logical PCMGGalerkinTypenotequals
+    type(ePCMGGalerkinType), intent(in) :: A,B
+    PCMGGalerkinTypenotequals = (A%v .ne. B%v)
+  end function
+  function PCMGGalerkinTypeequals(A,B)
+    logical PCMGGalerkinTypeequals
+    type(ePCMGGalerkinType), intent(in) :: A,B
+    PCMGGalerkinTypeequals = (A%v .eq. B%v)
+  end function
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT:: PCExoticTypenotequals
+!DEC$ ATTRIBUTES DLLEXPORT:: PCExoticTypeequals
+#endif
+
+  function PCExoticTypenotequals(A,B)
+    logical PCExoticTypenotequals
+    type(ePCExoticType), intent(in) :: A,B
+    PCExoticTypenotequals = (A%v .ne. B%v)
+  end function
+  function PCExoticTypeequals(A,B)
+    logical PCExoticTypeequals
+    type(ePCExoticType), intent(in) :: A,B
+    PCExoticTypeequals = (A%v .eq. B%v)
+  end function
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT:: PCBDDCInterfaceExtTypenotequals
+!DEC$ ATTRIBUTES DLLEXPORT:: PCBDDCInterfaceExtTypeequals
+#endif
+
+  function PCBDDCInterfaceExtTypenotequals(A,B)
+    logical PCBDDCInterfaceExtTypenotequals
+    type(ePCBDDCInterfaceExtType), intent(in) :: A,B
+    PCBDDCInterfaceExtTypenotequals = (A%v .ne. B%v)
+  end function
+  function PCBDDCInterfaceExtTypeequals(A,B)
+    logical PCBDDCInterfaceExtTypeequals
+    type(ePCBDDCInterfaceExtType), intent(in) :: A,B
+    PCBDDCInterfaceExtTypeequals = (A%v .eq. B%v)
+  end function
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT:: PCMGCoarseSpaceTypenotequals
+!DEC$ ATTRIBUTES DLLEXPORT:: PCMGCoarseSpaceTypeequals
+#endif
+
+  function PCMGCoarseSpaceTypenotequals(A,B)
+    logical PCMGCoarseSpaceTypenotequals
+    type(ePCMGCoarseSpaceType), intent(in) :: A,B
+    PCMGCoarseSpaceTypenotequals = (A%v .ne. B%v)
+  end function
+  function PCMGCoarseSpaceTypeequals(A,B)
+    logical PCMGCoarseSpaceTypeequals
+    type(ePCMGCoarseSpaceType), intent(in) :: A,B
+    PCMGCoarseSpaceTypeequals = (A%v .eq. B%v)
+  end function
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT:: PCPatchConstructTypenotequals
+!DEC$ ATTRIBUTES DLLEXPORT:: PCPatchConstructTypeequals
+#endif
+
+  function PCPatchConstructTypenotequals(A,B)
+    logical PCPatchConstructTypenotequals
+    type(ePCPatchConstructType), intent(in) :: A,B
+    PCPatchConstructTypenotequals = (A%v .ne. B%v)
+  end function
+  function PCPatchConstructTypeequals(A,B)
+    logical PCPatchConstructTypeequals
+    type(ePCPatchConstructType), intent(in) :: A,B
+    PCPatchConstructTypeequals = (A%v .eq. B%v)
+  end function
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT:: PCDeflationSpaceTypenotequals
+!DEC$ ATTRIBUTES DLLEXPORT:: PCDeflationSpaceTypeequals
+#endif
+
+  function PCDeflationSpaceTypenotequals(A,B)
+    logical PCDeflationSpaceTypenotequals
+    type(ePCDeflationSpaceType), intent(in) :: A,B
+    PCDeflationSpaceTypenotequals = (A%v .ne. B%v)
+  end function
+  function PCDeflationSpaceTypeequals(A,B)
+    logical PCDeflationSpaceTypeequals
+    type(ePCDeflationSpaceType), intent(in) :: A,B
+    PCDeflationSpaceTypeequals = (A%v .eq. B%v)
+  end function
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT:: PCHPDDMCoarseCorrectionTypenotequals
+!DEC$ ATTRIBUTES DLLEXPORT:: PCHPDDMCoarseCorrectionTypeequals
+#endif
+
+  function PCHPDDMCoarseCorrectionTypenotequals(A,B)
+    logical PCHPDDMCoarseCorrectionTypenotequals
+    type(ePCHPDDMCoarseCorrectionType), intent(in) :: A,B
+    PCHPDDMCoarseCorrectionTypenotequals = (A%v .ne. B%v)
+  end function
+  function PCHPDDMCoarseCorrectionTypeequals(A,B)
+    logical PCHPDDMCoarseCorrectionTypeequals
+    type(ePCHPDDMCoarseCorrectionType), intent(in) :: A,B
+    PCHPDDMCoarseCorrectionTypeequals = (A%v .eq. B%v)
+  end function
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT:: PCHPDDMSchurPreTypenotequals
+!DEC$ ATTRIBUTES DLLEXPORT:: PCHPDDMSchurPreTypeequals
+#endif
+
+  function PCHPDDMSchurPreTypenotequals(A,B)
+    logical PCHPDDMSchurPreTypenotequals
+    type(ePCHPDDMSchurPreType), intent(in) :: A,B
+    PCHPDDMSchurPreTypenotequals = (A%v .ne. B%v)
+  end function
+  function PCHPDDMSchurPreTypeequals(A,B)
+    logical PCHPDDMSchurPreTypeequals
+    type(ePCHPDDMSchurPreType), intent(in) :: A,B
+    PCHPDDMSchurPreTypeequals = (A%v .eq. B%v)
+  end function
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT:: PCFailedReasonnotequals
+!DEC$ ATTRIBUTES DLLEXPORT:: PCFailedReasonequals
+#endif
+
+  function PCFailedReasonnotequals(A,B)
+    logical PCFailedReasonnotequals
+    type(ePCFailedReason), intent(in) :: A,B
+    PCFailedReasonnotequals = (A%v .ne. B%v)
+  end function
+  function PCFailedReasonequals(A,B)
+    logical PCFailedReasonequals
+    type(ePCFailedReason), intent(in) :: A,B
+    PCFailedReasonequals = (A%v .eq. B%v)
+  end function
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT:: PCGAMGLayoutTypenotequals
+!DEC$ ATTRIBUTES DLLEXPORT:: PCGAMGLayoutTypeequals
+#endif
+
+  function PCGAMGLayoutTypenotequals(A,B)
+    logical PCGAMGLayoutTypenotequals
+    type(ePCGAMGLayoutType), intent(in) :: A,B
+    PCGAMGLayoutTypenotequals = (A%v .ne. B%v)
+  end function
+  function PCGAMGLayoutTypeequals(A,B)
+    logical PCGAMGLayoutTypeequals
+    type(ePCGAMGLayoutType), intent(in) :: A,B
+    PCGAMGLayoutTypeequals = (A%v .eq. B%v)
+  end function

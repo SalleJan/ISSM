@@ -1,0 +1,654 @@
+#include <petsc/finclude/petsc.h>
+module shashimodule
+  use petscsnes
+  implicit none
+  PetscScalar, parameter :: &
+    an_c_additive = 2.0, &
+    an_h_additive = 6.0, &
+    an_o_additive = 1.0
+  PetscInt, parameter :: an_h = 1, an_c = 4
+  PetscScalar, parameter :: pt = 0.1
+  PetscScalar, parameter :: k_eq(23) = &
+    [1.75149D-05, &
+     4.01405D-06, &
+     6.04663D-14, &
+     2.73612D-01, &
+     3.25592D-03, &
+     5.33568D+05, &
+     2.07479D+05, &
+     1.11841D-02, &
+     1.72684D-03, &
+     1.98588D-07, &
+     7.23600D+27, &
+     5.73926D+49, &
+     1.00000D+00, &
+     1.64493D+16, &
+     2.73837D-29, &
+     3.27419D+50, &
+     1.72447D-23, &
+     4.24657D-06, &
+     1.16065D-14, &
+     3.28020D+25, &
+     1.06291D+00, &
+     9.11507D+02, &
+     6.02837D+03]
+
+contains
+!
+! ------------------------------------------------------------------------
+!
+!  FormFunction - Evaluates nonlinear function, F(x).
+!
+!  Input Parameters:
+!  snes - the SNES context
+!  x - input vector
+!  dummy - optional user-defined context (not used here)
+!
+!  Output Parameter:
+!  f - function vector
+!
+  subroutine FormFunction(snes, x, f, dummy, ierr)
+    SNES snes
+    Vec x, f
+    PetscErrorCode, intent(out) :: ierr
+    integer dummy(*)
+
+!  Declarations for use with local arrays
+
+    PetscScalar, pointer ::lx_v(:), lf_v(:)
+
+!  Get pointers to vector data.
+!    - For default PETSc vectors, VecGetArray() returns a pointer to
+!      the data array.  Otherwise, the routine is implementation dependent.
+!    - You MUST call VecRestoreArray() when you no longer need access to
+!      the array.
+!    - Note that the Fortran interface to VecGetArray() differs from the
+!      C version.  See the Fortran chapter of the users manual for details.
+
+    PetscCall(VecGetArrayRead(x, lx_v, ierr))
+    PetscCall(VecGetArray(f, lf_v, ierr))
+    PetscCall(ShashiFormFunction(lx_v, lf_v))
+    PetscCall(VecRestoreArrayRead(x, lx_v, ierr))
+    PetscCall(VecRestoreArray(f, lf_v, ierr))
+  end
+
+! ---------------------------------------------------------------------
+!
+!  FormJacobian - Evaluates Jacobian matrix.
+!
+!  Input Parameters:
+!  snes - the SNES context
+!  x - input vector
+!  dummy - optional user-defined context (not used here)
+!
+!  Output Parameters:
+!  A - Jacobian matrix
+!  B - optionally different matrix used to construct the preconditioner
+!
+  subroutine FormJacobian(snes, X, jac, B, dummy, ierr)
+    SNES snes
+    Vec X
+    Mat jac, B
+    PetscErrorCode, intent(out) :: ierr
+    integer dummy(*)
+
+!  Declarations for use with local arrays
+    PetscScalar, pointer ::lx_v(:), lf_v(:, :)
+
+!  Get pointer to vector data
+
+    PetscCall(VecGetArrayRead(x, lx_v, ierr))
+    PetscCall(MatDenseGetArray(B, lf_v, ierr))
+    PetscCall(ShashiFormJacobian(lx_v, lf_v))
+    PetscCall(MatDenseRestoreArray(B, lf_v, ierr))
+    PetscCall(VecRestoreArrayRead(x, lx_v, ierr))
+
+!  Assemble matrix
+
+    PetscCall(MatAssemblyBegin(jac, MAT_FINAL_ASSEMBLY, ierr))
+    PetscCall(MatAssemblyEnd(jac, MAT_FINAL_ASSEMBLY, ierr))
+
+  end
+
+  subroutine ShashiLowerBound(an_r)
+    PetscScalar an_r(26)
+    PetscInt i
+
+    an_r(2:26) = 1000.0/6.023D+23
+  end
+
+  subroutine ShashiInitialGuess(an_r)
+    PetscScalar an_r(26)
+
+    an_r = 0.0
+    an_r(3) = .5
+    an_r(6) = 1.88000
+    an_r(14) = 1.
+
+#if defined(solution)
+    an_r(1) = 3.802208D-33
+    an_r(2) = 1.298287D-29
+    an_r(3) = 2.533067D-04
+    an_r(4) = 6.865078D-22
+    an_r(5) = 9.993125D-01
+    an_r(6) = 1.879964D+00
+    an_r(7) = 4.449489D-13
+    an_r(8) = 3.428687D-07
+    an_r(9) = 7.105138D-05
+    an_r(10) = 1.094368D-04
+    an_r(11) = 2.362305D-06
+    an_r(12) = 1.107145D-09
+    an_r(13) = 1.276162D-24
+    an_r(14) = 6.315538D-04
+    an_r(15) = 2.356540D-09
+    an_r(16) = 2.048248D-09
+    an_r(17) = 1.966187D-22
+    an_r(18) = 7.856497D-29
+    an_r(19) = 1.987840D-36
+    an_r(20) = 8.182441D-22
+    an_r(21) = 2.684880D-16
+    an_r(22) = 2.680473D-16
+    an_r(23) = 6.594967D-18
+    an_r(24) = 2.509714D-21
+    an_r(25) = 3.096459D-21
+    an_r(26) = 6.149551D-18
+#endif
+  end
+
+  subroutine ShashiFormFunction(an_r, f_eq)
+    PetscScalar, intent(in) :: an_r(26)
+    PetscScalar, intent(out) :: f_eq(26)
+    PetscScalar, parameter :: &
+      atom_c_init = 6.7408177364816552D-022, &
+      atom_h_init = 2.0, &
+      atom_o_init = 1.0, &
+      atom_n_init = 3.76
+    PetscScalar an_r(26), f_eq(26)
+    PetscScalar part_p(26), idiff
+    PetscInt i_cc, i_hh, i_h2o
+    PetscScalar an_t
+    PetscScalar a_io2
+    PetscInt i, ip
+
+    an_t = sum(an_r)
+
+    f_eq(1) = atom_h_init &
+              - (an_h*an_r(1) + an_h_additive*an_r(2) &
+                 + 2*an_r(5) + an_r(10) + an_r(11) + 2*an_r(14) &
+                 + an_r(16) + 2*an_r(17) + an_r(19) &
+                 + an_r(20) + 3*an_r(22) + an_r(26))
+
+    f_eq(2) = atom_o_init &
+              - (an_o_additive*an_r(2) + 2*an_r(3) &
+                 + 2*an_r(4) + an_r(5) &
+                 + an_r(8) + an_r(9) + an_r(10) + an_r(12) + an_r(13) &
+                 + 2*an_r(15) + 2*an_r(16) + an_r(20) + an_r(22) &
+                 + an_r(23) + 2*an_r(24) + 1*an_r(25) + an_r(26))
+
+    f_eq(3) = an_r(2) - 1.0d-150
+
+    f_eq(4) = atom_c_init &
+              - (an_c*an_r(1) + an_c_additive*an_r(2) &
+                 + an_r(4) + an_r(13) + 2*an_r(17) + an_r(18) &
+                 + an_r(19) + an_r(20))
+
+    part_p(1:26) = (an_r(1:26)/an_t)*pt
+
+    i_cc = an_c
+    i_hh = an_h
+    a_io2 = i_cc + i_hh/4.0
+    i_h2o = i_hh/2
+    idiff = (i_cc + i_h2o) - (a_io2 + 1)
+
+    f_eq(5) = k_eq(11)*an_r(1)*an_r(3)**a_io2 &
+              - (an_r(4)**i_cc)*(an_r(5)**i_h2o)*((pt/an_t)**idiff)
+!           write(6,*)f_eq(5),an_r(1), an_r(3), an_r(4),an_r(5),' II'
+!          stop
+    f_eq(6) = atom_n_init &
+              - (2*an_r(6) + an_r(7) + an_r(9) + 2*an_r(12) &
+                 + an_r(15) &
+                 + an_r(23))
+
+    f_eq(7) = part_p(11) &
+              - (k_eq(1)*sqrt(part_p(14) + 1d-23))
+    f_eq(8) = part_p(8) &
+              - (k_eq(2)*sqrt(part_p(3) + 1d-23))
+
+    f_eq(9) = part_p(7) &
+              - (k_eq(3)*sqrt(part_p(6) + 1d-23))
+
+    f_eq(10) = part_p(10) &
+               - (k_eq(4)*sqrt(part_p(3) + 1d-23)) &
+               *sqrt(part_p(14))
+
+    f_eq(11) = part_p(9) &
+               - (k_eq(5)*sqrt(part_p(3) + 1d-23)) &
+               *sqrt(part_p(6) + 1d-23)
+    f_eq(12) = part_p(5) &
+               - (k_eq(6)*sqrt(part_p(3) + 1d-23)) &
+               *(part_p(14))
+
+    f_eq(13) = part_p(4) &
+               - (k_eq(7)*sqrt(part_p(3) + 1.0d-23)) &
+               *(part_p(13))
+
+    f_eq(14) = part_p(15) &
+               - (k_eq(8)*sqrt(part_p(3) + 1.0d-50)) &
+               *(part_p(9))
+    f_eq(15) = part_p(16) &
+               - (k_eq(9)*part_p(3)) &
+               *sqrt(part_p(14) + 1d-23)
+
+    f_eq(16) = part_p(12) &
+               - (k_eq(10)*sqrt(part_p(3) + 1d-23)) &
+               *(part_p(6))
+
+    f_eq(17) = part_p(14)*part_p(18)**2 &
+               - (k_eq(15)*part_p(17))
+
+    f_eq(18) = (part_p(13)**2) &
+               - (k_eq(16)*part_p(3)*part_p(18)**2)
+    print *, f_eq(18), part_p(3), part_p(18), part_p(13), k_eq(16)
+
+    f_eq(19) = part_p(19)*part_p(3) - k_eq(17)*part_p(13)*part_p(10)
+
+    f_eq(20) = part_p(21)*part_p(20) - k_eq(18)*part_p(19)*part_p(8)
+
+    f_eq(21) = part_p(21)*part_p(23) - k_eq(19)*part_p(7)*part_p(8)
+
+    f_eq(22) = part_p(5)*part_p(11) - k_eq(20)*part_p(21)*part_p(22)
+
+    f_eq(23) = part_p(24) - k_eq(21)*part_p(21)*part_p(3)
+
+    f_eq(24) = part_p(3)*part_p(25) - k_eq(22)*part_p(24)*part_p(8)
+
+    f_eq(25) = part_p(26) - k_eq(23)*part_p(21)*part_p(10)
+
+    f_eq(26) = -(an_r(20) + an_r(22) + an_r(23)) &
+               + (an_r(21) + an_r(24) + an_r(25) + an_r(26))
+
+    do i = 1, 26
+      write (44, *) i, f_eq(i) ! MarDiehl: What is "44"?
+    end do
+
+  end
+
+  subroutine ShashiFormJacobian(an_r, d_eq)
+    PetscScalar an_t, ai_o2
+    PetscScalar const5, const3
+    PetscInt jj, jb, ii3, id, ib, i
+    PetscScalar an_r(26)
+    PetscScalar d_eq(26, 26)
+    PetscScalar ai_pwr1, idiff
+    PetscInt i_cc, i_hh
+    PetscInt i_h2o, i_pwr2, i_co2_h2o
+    PetscInt j
+
+    d_eq = 0.0d0
+    an_t = sum(an_r)
+
+    d_eq(1, 1) = -an_h
+    d_eq(1, 2) = -an_h_additive
+    d_eq(1, 5) = -2
+    d_eq(1, 10) = -1
+    d_eq(1, 11) = -1
+    d_eq(1, 14) = -2
+    d_eq(1, 16) = -1
+    d_eq(1, 17) = -2
+    d_eq(1, 19) = -1
+    d_eq(1, 20) = -1
+    d_eq(1, 22) = -3
+    d_eq(1, 26) = -1
+
+    d_eq(2, 2) = -1*an_o_additive
+    d_eq(2, 3) = -2
+    d_eq(2, 4) = -2
+    d_eq(2, 5) = -1
+    d_eq(2, 8) = -1
+    d_eq(2, 9) = -1
+    d_eq(2, 10) = -1
+    d_eq(2, 12) = -1
+    d_eq(2, 13) = -1
+    d_eq(2, 15) = -2
+    d_eq(2, 16) = -2
+    d_eq(2, 20) = -1
+    d_eq(2, 22) = -1
+    d_eq(2, 23) = -1
+    d_eq(2, 24) = -2
+    d_eq(2, 25) = -1
+    d_eq(2, 26) = -1
+
+    d_eq(6, 6) = -2
+    d_eq(6, 7) = -1
+    d_eq(6, 9) = -1
+    d_eq(6, 12) = -2
+    d_eq(6, 15) = -1
+    d_eq(6, 23) = -1
+
+    d_eq(4, 1) = -an_c
+    d_eq(4, 2) = -an_c_additive
+    d_eq(4, 4) = -1
+    d_eq(4, 13) = -1
+    d_eq(4, 17) = -2
+    d_eq(4, 18) = -1
+    d_eq(4, 19) = -1
+    d_eq(4, 20) = -1
+
+!----------
+    const3 = (an_t**2)*sqrt(an_t)
+    const5 = an_t*const3
+
+    i_cc = an_c
+    i_hh = an_h
+    ai_o2 = i_cc + float(i_hh)/4.0
+    i_co2_h2o = i_cc + i_hh/2
+    i_h2o = i_hh/2
+    ai_pwr1 = 1 + i_cc + float(i_hh)/4.0
+    i_pwr2 = i_cc + i_hh/2
+    idiff = (i_cc + i_h2o) - (ai_o2 + 1)
+
+    d_eq(5, :) = &
+      -(an_r(4)**i_cc)*(an_r(5)**i_h2o) &
+      *((pt/an_t)**idiff)*(-idiff/an_t)
+    d_eq(5, 1) = d_eq(5, 1) + k_eq(11)*(an_r(3)**ai_o2)
+    d_eq(5, 3) = d_eq(5, 3) + k_eq(11)*(ai_o2*an_r(3)**(ai_o2 - 1))*an_r(1)
+    d_eq(5, 4) = d_eq(5, 4) - (i_cc*an_r(4)**(i_cc - 1))* &
+                 (an_r(5)**i_h2o)*((pt/an_t)**idiff)
+    d_eq(5, 5) = d_eq(5, 5) &
+                 - (i_h2o*(an_r(5)**(i_h2o - 1))) &
+                 *(an_r(4)**i_cc)*((pt/an_t)**idiff)
+
+    d_eq(3, :) = 0.0d0
+    d_eq(3, 2) = 1.0d0
+
+    d_eq(7, :) = pt*an_r(11)*(-1.0)/an_t**2 &
+                 - k_eq(1)*sqrt(pt)*sqrt(an_r(14) + 1d-50)*(-0.5/const3)
+    d_eq(7, 11) = d_eq(7, 11) + pt/an_t
+    d_eq(7, 14) = d_eq(7, 14) &
+                  - k_eq(1)*sqrt(pt)*(0.5/(sqrt((an_r(14) + 1d-50)*an_t)))
+
+    d_eq(8, :) = pt*an_r(8)*(-1.0)/an_t**2 &
+                 - k_eq(2)*sqrt(pt)*sqrt(an_r(3) + 1.0d-50)*(-0.5/const3)
+    d_eq(8, 3) = d_eq(8, 3) &
+                 - k_eq(2)*sqrt(pt)*(0.5/(sqrt((an_r(3) + 1.0d-50)*an_t)))
+    d_eq(8, 8) = d_eq(8, 8) + pt/an_t
+
+    d_eq(9, :) = pt*an_r(7)*(-1.0)/an_t**2 &
+                 - k_eq(3)*sqrt(pt)*sqrt(an_r(6))*(-0.5/const3)
+    d_eq(9, 7) = d_eq(9, 7) + pt/an_t
+    d_eq(9, 6) = d_eq(9, 6) &
+                 - k_eq(3)*sqrt(pt)*(0.5/(sqrt(an_r(6)*an_t)))
+
+    d_eq(10, :) = pt*an_r(10)*(-1.0)/an_t**2 &
+                  - k_eq(4)*(pt)*sqrt((an_r(3) + 1.0d-50) &
+                                      *an_r(14))*(-1.0/an_t**2)
+    d_eq(10, 3) = d_eq(10, 3) &
+                  - k_eq(4)*(pt)*sqrt(an_r(14)) &
+                  *(0.5/(sqrt(an_r(3) + 1.0d-50)*an_t))
+    d_eq(10, 10) = d_eq(10, 10) + pt/an_t
+    d_eq(10, 14) = d_eq(10, 14) &
+                   - k_eq(4)*(pt)*sqrt(an_r(3) + 1.0d-50) &
+                   *(0.5/(sqrt(an_r(14) + 1.0d-50)*an_t))
+
+    d_eq(11, :) = pt*an_r(9)*(-1.0)/an_t**2 &
+                  - k_eq(5)*(pt)*sqrt((an_r(3) + 1.0d-50)*an_r(6)) &
+                  *(-1.0/an_t**2)
+    d_eq(11, 3) = d_eq(11, 3) &
+                  - k_eq(5)*(pt)*sqrt(an_r(6))*(0.5/ &
+                                                (sqrt(an_r(3) + 1.0d-50)*an_t))
+    d_eq(11, 6) = d_eq(11, 6) &
+                  - k_eq(5)*(pt)*sqrt(an_r(3) + 1.0d-50) &
+                  *(0.5/(sqrt(an_r(6))*an_t))
+    d_eq(11, 9) = d_eq(11, 9) + pt/an_t
+
+    d_eq(12, :) = pt*an_r(5)*(-1.0)/an_t**2 &
+                  - k_eq(6)*(pt**1.5)*sqrt(an_r(3) + 1.0d-50) &
+                  *(an_r(14))*(-1.5/const5)
+    d_eq(12, 3) = d_eq(12, 3) &
+                  - k_eq(6)*(pt**1.5)*((an_r(14) + 1.0d-50)/const3) &
+                  *(0.5/sqrt(an_r(3) + 1.0d-50))
+    d_eq(12, 5) = d_eq(12, 5) + pt/an_t
+    d_eq(12, 14) = d_eq(12, 14) &
+                   - k_eq(6)*(pt**1.5)*(sqrt(an_r(3) + 1.0d-50)/const3)
+
+    d_eq(13, :) = pt*an_r(4)*(-1.0)/an_t**2 &
+                  - k_eq(7)*(pt**1.5)*sqrt(an_r(3) + 1.0d-50) &
+                  *(an_r(13))*(-1.5/const5)
+    d_eq(13, 3) = d_eq(13, 3) &
+                  - k_eq(7)*(pt**1.5)*(an_r(13)/const3) &
+                  *(0.5/sqrt(an_r(3) + 1.0d-50))
+    d_eq(13, 4) = d_eq(13, 4) + pt/an_t
+    d_eq(13, 13) = d_eq(13, 13) &
+                   - k_eq(7)*(pt**1.5)*(sqrt(an_r(3) + 1.0d-50)/const3)
+
+    d_eq(14, :) = pt*an_r(15)*(-1.0)/an_t**2 &
+                  - k_eq(8)*(pt**1.5)*sqrt(an_r(3) + 1.0d-50) &
+                  *(an_r(9))*(-1.5/const5)
+    d_eq(14, 3) = d_eq(14, 3) &
+                  - k_eq(8)*(pt**1.5)*(an_r(9)/const3) &
+                  *(0.5/sqrt(an_r(3) + 1.0d-50))
+    d_eq(14, 9) = d_eq(14, 9) &
+                  - k_eq(8)*(pt**1.5)*(sqrt(an_r(3) + 1.0d-50)/const3)
+    d_eq(14, 15) = d_eq(14, 15) + pt/an_t
+
+    d_eq(15, :) = pt*an_r(16)*(-1.0)/an_t**2 &
+                  - k_eq(9)*(pt**1.5)*sqrt(an_r(14) + 1.0d-50) &
+                  *(an_r(3))*(-1.5/const5)
+    d_eq(15, 3) = d_eq(15, 3) &
+                  - k_eq(9)*(pt**1.5)*(sqrt(an_r(14) + 1.0d-50)/const3)
+    d_eq(15, 14) = d_eq(15, 14) &
+                   - k_eq(9)*(pt**1.5)*(an_r(3)/const3) &
+                   *(0.5/sqrt(an_r(14) + 1.0d-50))
+    d_eq(15, 16) = d_eq(15, 16) + pt/an_t
+
+    d_eq(16, :) = pt*an_r(12)*(-1.0)/an_t**2 &
+                  - k_eq(10)*(pt**1.5)*sqrt(an_r(3) + 1.0d-50) &
+                  *(an_r(6))*(-1.5/const5)
+    d_eq(16, 3) = d_eq(16, 3) &
+                  - k_eq(10)*(pt**1.5)*(an_r(6)/const3) &
+                  *(0.5/sqrt(an_r(3) + 1.0d-50))
+    d_eq(16, 6) = d_eq(16, 6) &
+                  - k_eq(10)*(pt**1.5)*(sqrt(an_r(3) + 1.0d-50)/const3)
+    d_eq(16, 12) = d_eq(16, 12) + pt/an_t
+
+    d_eq(17, :) = an_r(14)*an_r(18)*an_r(18)*(pt**3)*(-3/an_t**4) &
+                  - k_eq(15)*an_r(17)*pt*(-1/an_t**2)
+    d_eq(17, 14) = d_eq(17, 14) + an_r(18)*an_r(18)*(pt**3)/an_t**3
+    d_eq(17, 17) = d_eq(17, 17) - k_eq(15)*pt/an_t
+    d_eq(17, 18) = d_eq(17, 18) + 2*an_r(18)*an_r(14)*(pt**3)/an_t**3
+
+    d_eq(18, :) = an_r(13)*an_r(13)*(pt**2)*(-2/an_t**3) &
+                  - k_eq(16)*an_r(3)*an_r(18)*an_r(18)*(pt**3)*(-3/an_t**4)
+    d_eq(18, 3) = d_eq(18, 3) &
+                  - k_eq(16)*an_r(18)*an_r(18)*pt**3/an_t**3
+    d_eq(18, 13) = d_eq(18, 13) &
+                   + 2*an_r(13)*pt**2/an_t**2
+    d_eq(18, 18) = d_eq(18, 18) - k_eq(16)*an_r(3)*2*an_r(18)*pt**3/an_t**3
+
+    d_eq(19, :) = an_r(3)*an_r(19)*(pt**2)*(-2/an_t**3) &
+                  - k_eq(17)*an_r(13)*an_r(10)*pt**2*(-2/an_t**3)
+    d_eq(19, 13) = d_eq(19, 13) &
+                   - k_eq(17)*an_r(10)*pt**2/an_t**2
+    d_eq(19, 10) = d_eq(19, 10) &
+                   - k_eq(17)*an_r(13)*pt**2/an_t**2
+    d_eq(19, 3) = d_eq(19, 3) + an_r(19)*pt**2/an_t**2
+    d_eq(19, 19) = d_eq(19, 19) + an_r(3)*pt**2/an_t**2
+
+    d_eq(20, :) = an_r(21)*an_r(20)*(pt**2)*(-2/an_t**3) &
+                  - k_eq(18)*an_r(19)*an_r(8)*pt**2*(-2/an_t**3)
+    d_eq(20, 8) = d_eq(20, 8) &
+                  - k_eq(18)*an_r(19)*pt**2/an_t**2
+    d_eq(20, 19) = d_eq(20, 19) &
+                   - k_eq(18)*an_r(8)*pt**2/an_t**2
+    d_eq(20, 20) = d_eq(20, 20) + an_r(21)*pt**2/an_t**2
+    d_eq(20, 21) = d_eq(20, 21) + an_r(20)*pt**2/an_t**2
+
+    d_eq(21, :) = an_r(21)*an_r(23)*(pt**2)*(-2/an_t**3) &
+                  - k_eq(19)*an_r(7)*an_r(8)*pt**2*(-2/an_t**3)
+    d_eq(21, 7) = d_eq(21, 7) &
+                  - k_eq(19)*an_r(8)*pt**2/an_t**2
+    d_eq(21, 8) = d_eq(21, 8) &
+                  - k_eq(19)*an_r(7)*pt**2/an_t**2
+    d_eq(21, 21) = d_eq(21, 21) + an_r(23)*pt**2/an_t**2
+    d_eq(21, 23) = d_eq(21, 23) + an_r(21)*pt**2/an_t**2
+
+    d_eq(22, :) = an_r(5)*an_r(11)*(pt**2)*(-2/an_t**3) &
+                  - k_eq(20)*an_r(21)*an_r(22)*pt**2*(-2/an_t**3)
+    d_eq(22, 21) = d_eq(22, 21) &
+                   - k_eq(20)*an_r(22)*pt**2/an_t**2
+    d_eq(22, 22) = d_eq(22, 22) &
+                   - k_eq(20)*an_r(21)*pt**2/an_t**2
+    d_eq(22, 11) = d_eq(22, 11) + an_r(5)*pt**2/(an_t**2)
+    d_eq(22, 5) = d_eq(22, 5) + an_r(11)*pt**2/(an_t**2)
+
+    d_eq(23, :) = an_r(24)*(pt)*(-1/an_t**2) &
+                  - k_eq(21)*an_r(21)*an_r(3)*pt**2*(-2/an_t**3)
+    d_eq(23, 3) = d_eq(23, 3) &
+                  - k_eq(21)*an_r(21)*pt**2/an_t**2
+    d_eq(23, 21) = d_eq(23, 21) &
+                   - k_eq(21)*an_r(3)*pt**2/an_t**2
+    d_eq(23, 24) = d_eq(23, 24) + pt/(an_t)
+
+    d_eq(24, :) = an_r(3)*an_r(25)*(pt**2)*(-2/an_t**3) &
+                  - k_eq(22)*an_r(24)*an_r(8)*pt**2*(-2/an_t**3)
+    d_eq(24, 8) = d_eq(24, 8) &
+                  - k_eq(22)*an_r(24)*pt**2/an_t**2
+    d_eq(24, 24) = d_eq(24, 24) &
+                   - k_eq(22)*an_r(8)*pt**2/an_t**2
+    d_eq(24, 3) = d_eq(24, 3) + an_r(25)*pt**2/an_t**2
+    d_eq(24, 25) = d_eq(24, 25) + an_r(3)*pt**2/an_t**2
+
+    d_eq(25, :) = an_r(26)*(pt)*(-1/an_t**2) &
+                  - k_eq(23)*an_r(21)*an_r(10)*pt**2*(-2/an_t**3)
+    d_eq(25, 10) = d_eq(25, 10) &
+                   - k_eq(23)*an_r(21)*pt**2/an_t**2
+    d_eq(25, 21) = d_eq(25, 21) &
+                   - k_eq(23)*an_r(10)*pt**2/an_t**2
+    d_eq(25, 26) = d_eq(25, 26) + pt/(an_t)
+
+    d_eq(26, 20) = -1
+    d_eq(26, 22) = -1
+    d_eq(26, 23) = -1
+    d_eq(26, 21) = 1
+    d_eq(26, 24) = 1
+    d_eq(26, 25) = 1
+    d_eq(26, 26) = 1
+
+    do j = 1, 26
+      do i = 1, 26
+        write (44, *) i, j, d_eq(i, j)
+      end do
+    end do
+
+  end
+
+  subroutine ShashiPostCheck(ls, X, Y, W, c_Y, c_W, dummy)
+    SNESLineSearch ls
+    PetscErrorCode ierr
+    Vec X, Y, W
+    PetscObject dummy
+    PetscBool c_Y, c_W
+    PetscScalar, pointer :: xx(:)
+    PetscInt i
+    PetscCall(VecGetArray(W, xx, ierr))
+    do i = 1, 26
+      if (xx(i) < 0.0) then
+        xx(i) = 0.0
+        c_W = PETSC_TRUE
+      end if
+      if (xx(i) > 3.0) xx(i) = 3.0
+    end do
+    PetscCall(VecRestoreArray(W, xx, ierr))
+  end
+end module shashimodule
+
+program main
+  use petsc
+  use shashimodule
+  implicit none
+
+! - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+!                   Variable declarations
+! - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+!
+!  Variables:
+!     snes        - nonlinear solver
+!     x, r        - solution, residual vectors
+!     J           - Jacobian matrix
+!
+  SNES snes
+  Vec x, r, lb, ub
+  Mat J
+  PetscErrorCode ierr
+  PetscMPIInt size
+  PetscScalar, pointer :: xx(:)
+  PetscScalar, parameter :: zero = 0.0
+  PetscScalar big
+  SNESLineSearch ls
+!
+! - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+!                 Beginning of program
+! - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  PetscCallA(PetscInitialize(ierr))
+  PetscCallMPIA(MPI_Comm_size(PETSC_COMM_WORLD, size, ierr))
+  PetscCheckA(size == 1, PETSC_COMM_WORLD, 1, 'requires one process')
+
+  big = PETSC_INFINITY
+! - - - - - - - - - -- - - - - - - - - - - - - - - - - - - - - - - - - -
+!  Create nonlinear solver context
+! - - - - - - - - - -- - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  PetscCallA(SNESCreate(PETSC_COMM_WORLD, snes, ierr))
+
+! - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+!  Create matrix and vector data structures; set corresponding routines
+! - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+! Create vectors for solution and nonlinear function
+  PetscCallA(VecCreateSeq(PETSC_COMM_SELF, 26_PETSC_INT_KND, x, ierr))
+  PetscCallA(VecDuplicate(x, r, ierr))
+
+! Create Jacobian matrix data structure
+  PetscCallA(MatCreateDense(PETSC_COMM_SELF, 26, 26, 26, 26, PETSC_NULL_SCALAR, J, ierr))
+
+! Set function evaluation routine and vector
+  PetscCallA(SNESSetFunction(snes, r, FormFunction, 0, ierr))
+
+! Set Jacobian matrix data structure and Jacobian evaluation routine
+  PetscCallA(SNESSetJacobian(snes, J, J, FormJacobian, 0, ierr))
+
+  PetscCallA(VecDuplicate(x, lb, ierr))
+  PetscCallA(VecDuplicate(x, ub, ierr))
+  PetscCallA(VecSet(lb, zero, ierr))
+! PetscCallA(VecGetArray(lb,xx,ierr))
+! PetscCallA(ShashiLowerBound(xx))
+! PetscCallA(VecRestoreArray(lb,xx,ierr))
+  PetscCallA(VecSet(ub, big, ierr))
+! PetscCallA(SNESVISetVariableBounds(snes,lb,ub,ierr))
+
+  PetscCallA(SNESGetLineSearch(snes, ls, ierr))
+  PetscCallA(SNESLineSearchSetPostCheck(ls, ShashiPostCheck, 0, ierr))
+  PetscCallA(SNESSetType(snes, SNESVINEWTONRSLS, ierr))
+
+  PetscCallA(SNESSetFromOptions(snes, ierr))
+
+! set initial guess
+  PetscCallA(VecGetArray(x, xx, ierr))
+  PetscCallA(ShashiInitialGuess(xx))
+  PetscCallA(VecRestoreArray(x, xx, ierr))
+
+  PetscCallA(SNESSolve(snes, PETSC_NULL_VEC, x, ierr))
+
+! - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+!  Free work space.  All PETSc objects should be destroyed when they
+!  are no longer needed.
+! - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  PetscCallA(VecDestroy(lb, ierr))
+  PetscCallA(VecDestroy(ub, ierr))
+  PetscCallA(VecDestroy(x, ierr))
+  PetscCallA(VecDestroy(r, ierr))
+  PetscCallA(MatDestroy(J, ierr))
+  PetscCallA(SNESDestroy(snes, ierr))
+  PetscCallA(PetscFinalize(ierr))
+end

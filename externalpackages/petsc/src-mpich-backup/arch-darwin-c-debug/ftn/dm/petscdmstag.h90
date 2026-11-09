@@ -1,0 +1,677 @@
+  interface
+  subroutine DMStagCreate1d(comm,bndx,M,dof0,dof1,stencilType,stencilWidth,lx,dm, ierr)
+  use, intrinsic :: ISO_C_binding
+  import eDMBoundaryType,eDMStagStencilType,tDM
+  MPIU_Comm :: comm
+  DMBoundaryType :: bndx
+  PetscInt :: M
+  PetscInt :: dof0
+  PetscInt :: dof1
+  DMStagStencilType :: stencilType
+  PetscInt :: stencilWidth
+  PetscInt :: lx(*)
+  DM :: dm
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMStagCreate1d
+#endif
+  interface
+  subroutine DMStagVecSplitToDMDA(dm,vec,loc,c,pda,pdavec, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM,tVec,eDMStagStencilLocation
+  DM :: dm
+  Vec :: vec
+  DMStagStencilLocation :: loc
+  PetscInt :: c
+  DM :: pda
+  Vec :: pdavec
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMStagVecSplitToDMDA
+#endif
+  interface
+  subroutine DMStagCreateISFromStencils(dm,n_stencil,stencils,is, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM,sDMStagStencil,tIS
+  DM :: dm
+  PetscInt :: n_stencil
+  DMStagStencil :: stencils(*)
+  IS :: is
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMStagCreateISFromStencils
+#endif
+  interface
+  subroutine DMStagGetLocationDOF(dm,loc,dof, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM,eDMStagStencilLocation
+  DM :: dm
+  DMStagStencilLocation :: loc
+  PetscInt :: dof
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMStagGetLocationDOF
+#endif
+  interface
+  subroutine DMStagMatGetValuesStencil(dm,mat,nRow,posRow,nCol,posCol,val, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM,tMat,sDMStagStencil
+  DM :: dm
+  Mat :: mat
+  PetscInt :: nRow
+  DMStagStencil :: posRow
+  PetscInt :: nCol
+  DMStagStencil :: posCol
+  PetscScalar :: val
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMStagMatGetValuesStencil
+#endif
+  interface
+  subroutine DMStagMatSetValuesStencil(dm,mat,nRow,posRow,nCol,posCol,val,insertMode, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM,tMat,sDMStagStencil,eInsertMode
+  DM :: dm
+  Mat :: mat
+  PetscInt :: nRow
+  DMStagStencil :: posRow
+  PetscInt :: nCol
+  DMStagStencil :: posCol
+  PetscScalar :: val
+  InsertMode :: insertMode
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMStagMatSetValuesStencil
+#endif
+  interface
+  subroutine DMStagStencilToIndexLocal(dm,dim,n,pos,ix, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM,sDMStagStencil
+  DM :: dm
+  PetscInt :: dim
+  PetscInt :: n
+  DMStagStencil :: pos
+  PetscInt :: ix
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMStagStencilToIndexLocal
+#endif
+  interface
+  subroutine DMStagVecGetValuesStencil(dm,vec,n,pos,val, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM,tVec,sDMStagStencil
+  DM :: dm
+  Vec :: vec
+  PetscInt :: n
+  DMStagStencil :: pos
+  PetscScalar :: val
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMStagVecGetValuesStencil
+#endif
+  interface
+  subroutine DMStagVecSetValuesStencil(dm,vec,n,pos,val,insertMode, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM,tVec,sDMStagStencil,eInsertMode
+  DM :: dm
+  Vec :: vec
+  PetscInt :: n
+  DMStagStencil :: pos
+  PetscScalar :: val
+  InsertMode :: insertMode
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMStagVecSetValuesStencil
+#endif
+  interface
+  subroutine DMStagRestrictSimple(dmf,xf,dmc,xc, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM,tVec
+  DM :: dmf
+  Vec :: xf
+  DM :: dmc
+  Vec :: xc
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMStagRestrictSimple
+#endif
+  interface
+  subroutine DMStagCreate3d(comm,bndx,bndy,bndz,M,N,P,M_m,M_n,M_p,dof0,dof1,dof2,dof3,stencilType,stencilWidth,lx,ly,lz,dm, ierr)
+  use, intrinsic :: ISO_C_binding
+  import eDMBoundaryType,eDMStagStencilType,tDM
+  MPIU_Comm :: comm
+  DMBoundaryType :: bndx
+  DMBoundaryType :: bndy
+  DMBoundaryType :: bndz
+  PetscInt :: M
+  PetscInt :: N
+  PetscInt :: P
+  PetscInt :: M_m
+  PetscInt :: M_n
+  PetscInt :: M_p
+  PetscInt :: dof0
+  PetscInt :: dof1
+  PetscInt :: dof2
+  PetscInt :: dof3
+  DMStagStencilType :: stencilType
+  PetscInt :: stencilWidth
+  PetscInt :: lx(*)
+  PetscInt :: ly(*)
+  PetscInt :: lz(*)
+  DM :: dm
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMStagCreate3d
+#endif
+  interface
+  subroutine DMStagGetBoundaryTypes(dm,boundaryTypeX,boundaryTypeY,boundaryTypeZ, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM,eDMBoundaryType
+  DM :: dm
+  DMBoundaryType :: boundaryTypeX
+  DMBoundaryType :: boundaryTypeY
+  DMBoundaryType :: boundaryTypeZ
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMStagGetBoundaryTypes
+#endif
+  interface
+  subroutine DMStagGetCorners(dm,x,y,z,m,n,p,nExtrax,nExtray,nExtraz, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  PetscInt :: x
+  PetscInt :: y
+  PetscInt :: z
+  PetscInt :: m
+  PetscInt :: n
+  PetscInt :: p
+  PetscInt :: nExtrax
+  PetscInt :: nExtray
+  PetscInt :: nExtraz
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMStagGetCorners
+#endif
+  interface
+  subroutine DMStagGetDOF(dm,dof0,dof1,dof2,dof3, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  PetscInt :: dof0
+  PetscInt :: dof1
+  PetscInt :: dof2
+  PetscInt :: dof3
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMStagGetDOF
+#endif
+  interface
+  subroutine DMStagGetGhostCorners(dm,x,y,z,m,n,p, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  PetscInt :: x
+  PetscInt :: y
+  PetscInt :: z
+  PetscInt :: m
+  PetscInt :: n
+  PetscInt :: p
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMStagGetGhostCorners
+#endif
+  interface
+  subroutine DMStagGetGlobalSizes(dm,M,N,P, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  PetscInt :: M
+  PetscInt :: N
+  PetscInt :: P
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMStagGetGlobalSizes
+#endif
+  interface
+  subroutine DMStagGetIsFirstRank(dm,isFirstRank0,isFirstRank1,isFirstRank2, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  PetscBool :: isFirstRank0
+  PetscBool :: isFirstRank1
+  PetscBool :: isFirstRank2
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMStagGetIsFirstRank
+#endif
+  interface
+  subroutine DMStagGetIsLastRank(dm,isLastRank0,isLastRank1,isLastRank2, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  PetscBool :: isLastRank0
+  PetscBool :: isLastRank1
+  PetscBool :: isLastRank2
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMStagGetIsLastRank
+#endif
+  interface
+  subroutine DMStagGetLocalSizes(dm,m,n,p, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  PetscInt :: m
+  PetscInt :: n
+  PetscInt :: p
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMStagGetLocalSizes
+#endif
+  interface
+  subroutine DMStagGetNumRanks(dm,nRanks0,nRanks1,nRanks2, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  PetscInt :: nRanks0
+  PetscInt :: nRanks1
+  PetscInt :: nRanks2
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMStagGetNumRanks
+#endif
+  interface
+  subroutine DMStagGetEntries(dm,entries, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  PetscInt :: entries
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMStagGetEntries
+#endif
+  interface
+  subroutine DMStagGetEntriesLocal(dm,entries, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  PetscInt :: entries
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMStagGetEntriesLocal
+#endif
+  interface
+  subroutine DMStagGetEntriesPerElement(dm,entriesPerElement, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  PetscInt :: entriesPerElement
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMStagGetEntriesPerElement
+#endif
+  interface
+  subroutine DMStagGetStencilType(dm,stencilType, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM,eDMStagStencilType
+  DM :: dm
+  DMStagStencilType :: stencilType
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMStagGetStencilType
+#endif
+  interface
+  subroutine DMStagGetStencilWidth(dm,stencilWidth, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  PetscInt :: stencilWidth
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMStagGetStencilWidth
+#endif
+  interface
+  subroutine DMStagGetOwnershipRanges(dm,lx,ly,lz, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  PetscInt, pointer :: lx(:)
+  PetscInt, pointer :: ly(:)
+  PetscInt, pointer :: lz(:)
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMStagGetOwnershipRanges
+#endif
+  interface
+  subroutine DMStagCreateCompatibleDMStag(dm,dof0,dof1,dof2,dof3,newdm, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  PetscInt :: dof0
+  PetscInt :: dof1
+  PetscInt :: dof2
+  PetscInt :: dof3
+  DM :: newdm
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMStagCreateCompatibleDMStag
+#endif
+  interface
+  subroutine DMStagGetLocationSlot(dm,loc,c,slot, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM,eDMStagStencilLocation
+  DM :: dm
+  DMStagStencilLocation :: loc
+  PetscInt :: c
+  PetscInt :: slot
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMStagGetLocationSlot
+#endif
+  interface
+  subroutine DMStagGetRefinementFactor(dm,refine_x,refine_y,refine_z, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  PetscInt :: refine_x
+  PetscInt :: refine_y
+  PetscInt :: refine_z
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMStagGetRefinementFactor
+#endif
+  interface
+  subroutine DMStagMigrateVec(dm,vec,dmTo,vecTo, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM,tVec
+  DM :: dm
+  Vec :: vec
+  DM :: dmTo
+  Vec :: vecTo
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMStagMigrateVec
+#endif
+  interface
+  subroutine DMStagPopulateLocalToGlobalInjective(dm, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMStagPopulateLocalToGlobalInjective
+#endif
+  interface
+  subroutine DMStagSetBoundaryTypes(dm,boundaryType0,boundaryType1,boundaryType2, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM,eDMBoundaryType
+  DM :: dm
+  DMBoundaryType :: boundaryType0
+  DMBoundaryType :: boundaryType1
+  DMBoundaryType :: boundaryType2
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMStagSetBoundaryTypes
+#endif
+  interface
+  subroutine DMStagSetCoordinateDMType(dm,dmtype, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  character(*) :: dmtype
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMStagSetCoordinateDMType
+#endif
+  interface
+  subroutine DMStagSetDOF(dm,dof0,dof1,dof2,dof3, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  PetscInt :: dof0
+  PetscInt :: dof1
+  PetscInt :: dof2
+  PetscInt :: dof3
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMStagSetDOF
+#endif
+  interface
+  subroutine DMStagSetNumRanks(dm,nRanks0,nRanks1,nRanks2, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  PetscInt :: nRanks0
+  PetscInt :: nRanks1
+  PetscInt :: nRanks2
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMStagSetNumRanks
+#endif
+  interface
+  subroutine DMStagSetStencilType(dm,stencilType, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM,eDMStagStencilType
+  DM :: dm
+  DMStagStencilType :: stencilType
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMStagSetStencilType
+#endif
+  interface
+  subroutine DMStagSetStencilWidth(dm,stencilWidth, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  PetscInt :: stencilWidth
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMStagSetStencilWidth
+#endif
+  interface
+  subroutine DMStagSetGlobalSizes(dm,N0,N1,N2, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  PetscInt :: N0
+  PetscInt :: N1
+  PetscInt :: N2
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMStagSetGlobalSizes
+#endif
+  interface
+  subroutine DMStagSetOwnershipRanges(dm,lx,ly,lz, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  PetscInt :: lx(*)
+  PetscInt :: ly(*)
+  PetscInt :: lz(*)
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMStagSetOwnershipRanges
+#endif
+  interface
+  subroutine DMStagSetRefinementFactor(dm,refine_x,refine_y,refine_z, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  PetscInt :: refine_x
+  PetscInt :: refine_y
+  PetscInt :: refine_z
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMStagSetRefinementFactor
+#endif
+  interface
+  subroutine DMStagSetUniformCoordinates(dm,xmin,xmax,ymin,ymax,zmin,zmax, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  PetscReal :: xmin
+  PetscReal :: xmax
+  PetscReal :: ymin
+  PetscReal :: ymax
+  PetscReal :: zmin
+  PetscReal :: zmax
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMStagSetUniformCoordinates
+#endif
+  interface
+  subroutine DMStagSetUniformCoordinatesExplicit(dm,xmin,xmax,ymin,ymax,zmin,zmax, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  PetscReal :: xmin
+  PetscReal :: xmax
+  PetscReal :: ymin
+  PetscReal :: ymax
+  PetscReal :: zmin
+  PetscReal :: zmax
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMStagSetUniformCoordinatesExplicit
+#endif
+  interface
+  subroutine DMStagSetUniformCoordinatesProduct(dm,xmin,xmax,ymin,ymax,zmin,zmax, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  PetscReal :: xmin
+  PetscReal :: xmax
+  PetscReal :: ymin
+  PetscReal :: ymax
+  PetscReal :: zmin
+  PetscReal :: zmax
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMStagSetUniformCoordinatesProduct
+#endif
+  interface
+  subroutine DMStagCreate2d(comm,bndx,bndy,M,N,M_m,M_n,dof0,dof1,dof2,stencilType,stencilWidth,lx,ly,dm, ierr)
+  use, intrinsic :: ISO_C_binding
+  import eDMBoundaryType,eDMStagStencilType,tDM
+  MPIU_Comm :: comm
+  DMBoundaryType :: bndx
+  DMBoundaryType :: bndy
+  PetscInt :: M
+  PetscInt :: N
+  PetscInt :: M_m
+  PetscInt :: M_n
+  PetscInt :: dof0
+  PetscInt :: dof1
+  PetscInt :: dof2
+  DMStagStencilType :: stencilType
+  PetscInt :: stencilWidth
+  PetscInt :: lx(*)
+  PetscInt :: ly(*)
+  DM :: dm
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMStagCreate2d
+#endif
+  interface operator(.ne.)
+    module procedure DMStagStencilLocationnotequals
+  end interface operator (.ne.)
+  interface operator(.eq.)
+    module procedure DMStagStencilLocationequals
+  end interface operator (.eq.)
+
+  interface operator(.ne.)
+    module procedure DMStagStencilTypenotequals
+  end interface operator (.ne.)
+  interface operator(.eq.)
+    module procedure DMStagStencilTypeequals
+  end interface operator (.eq.)
+

@@ -1,0 +1,32 @@
+  interface
+  subroutine PetscHTTPSRequest(type,url,header,ctype,body,ssl,buff, ierr)
+  use, intrinsic :: ISO_C_binding
+  character(*) :: type
+  character(*) :: url
+  character(*) :: header
+  character(*) :: ctype
+  character(*) :: body
+  SSL :: ssl
+  character(*) :: buff
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscHTTPSRequest
+#endif
+  interface
+  subroutine PetscHTTPRequest(type,url,header,ctype,body,sock,buff, ierr)
+  use, intrinsic :: ISO_C_binding
+  character(*) :: type
+  character(*) :: url
+  character(*) :: header
+  character(*) :: ctype
+  character(*) :: body
+  integer4 :: sock
+  character(*) :: buff
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscHTTPRequest
+#endif

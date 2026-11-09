@@ -1,0 +1,116 @@
+  interface
+  subroutine DMPatchZoom(dm,lower,upper,commz,dmz,sfz,sfzr, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM,sMatStencil,tPetscSF
+  DM :: dm
+  MatStencil :: lower
+  MatStencil :: upper
+  MPIU_Comm :: commz
+  DM :: dmz
+  PetscSF :: sfz
+  PetscSF :: sfzr
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMPatchZoom
+#endif
+  interface
+  subroutine DMPatchSolve(dm, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMPatchSolve
+#endif
+  interface
+  subroutine DMPatchGetCoarse(dm,dmCoarse, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  DM :: dmCoarse
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMPatchGetCoarse
+#endif
+  interface
+  subroutine DMPatchGetPatchSize(dm,patchSize, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM,sMatStencil
+  DM :: dm
+  MatStencil :: patchSize
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMPatchGetPatchSize
+#endif
+  interface
+  subroutine DMPatchSetPatchSize(dm,patchSize, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM,sMatStencil
+  DM :: dm
+  MatStencil :: patchSize
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMPatchSetPatchSize
+#endif
+  interface
+  subroutine DMPatchGetCommSize(dm,commSize, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM,sMatStencil
+  DM :: dm
+  MatStencil :: commSize
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMPatchGetCommSize
+#endif
+  interface
+  subroutine DMPatchSetCommSize(dm,commSize, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM,sMatStencil
+  DM :: dm
+  MatStencil :: commSize
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMPatchSetCommSize
+#endif
+  interface
+  subroutine DMPatchCreate(comm,mesh, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  MPIU_Comm :: comm
+  DM :: mesh
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMPatchCreate
+#endif
+  interface
+  subroutine DMPatchCreateGrid(comm,dim,patchSize,commSize,gridSize,dm, ierr)
+  use, intrinsic :: ISO_C_binding
+  import sMatStencil,tDM
+  MPIU_Comm :: comm
+  PetscInt :: dim
+  MatStencil :: patchSize
+  MatStencil :: commSize
+  MatStencil :: gridSize
+  DM :: dm
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMPatchCreateGrid
+#endif

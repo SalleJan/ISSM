@@ -1,0 +1,2066 @@
+  interface
+  subroutine PetscDSFinalizePackage(ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDSFinalizePackage
+#endif
+  interface
+  subroutine PetscDSInitializePackage(ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDSInitializePackage
+#endif
+  interface
+  subroutine PetscDSRegister(sname,function, ierr)
+  use, intrinsic :: ISO_C_binding
+  character(*) :: sname
+  external :: function
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDSRegister
+#endif
+  interface
+  subroutine PetscDSSetType(prob,name, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDS
+  PetscDS :: prob
+  character(*) :: name
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDSSetType
+#endif
+  interface
+  subroutine PetscDSGetType(prob,name, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDS
+  PetscDS :: prob
+  character(*) :: name
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDSGetType
+#endif
+  interface
+  subroutine PetscDSViewFromOptions(A,obj,name, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDS,tPetscObject
+  PetscDS :: A
+  PetscObject :: obj
+  character(*) :: name
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDSViewFromOptions
+#endif
+  interface
+  subroutine PetscDSView(prob,v, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDS,tPetscViewer
+  PetscDS :: prob
+  PetscViewer :: v
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDSView
+#endif
+  interface
+  subroutine PetscDSSetFromOptions(prob, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDS
+  PetscDS :: prob
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDSSetFromOptions
+#endif
+  interface
+  subroutine PetscDSSetUp(prob, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDS
+  PetscDS :: prob
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDSSetUp
+#endif
+  interface
+  subroutine PetscDSDestroy(ds, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDS
+  PetscDS :: ds
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDSDestroy
+#endif
+  interface
+  subroutine PetscDSCreate(comm,ds, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDS
+  MPIU_Comm :: comm
+  PetscDS :: ds
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDSCreate
+#endif
+  interface
+  subroutine PetscDSGetNumFields(prob,Nf, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDS
+  PetscDS :: prob
+  PetscInt :: Nf
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDSGetNumFields
+#endif
+  interface
+  subroutine PetscDSGetSpatialDimension(prob,dim, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDS
+  PetscDS :: prob
+  PetscInt :: dim
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDSGetSpatialDimension
+#endif
+  interface
+  subroutine PetscDSGetCoordinateDimension(prob,dimEmbed, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDS
+  PetscDS :: prob
+  PetscInt :: dimEmbed
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDSGetCoordinateDimension
+#endif
+  interface
+  subroutine PetscDSSetCoordinateDimension(prob,dimEmbed, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDS
+  PetscDS :: prob
+  PetscInt :: dimEmbed
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDSSetCoordinateDimension
+#endif
+  interface
+  subroutine PetscDSGetForceQuad(ds,forceQuad, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDS
+  PetscDS :: ds
+  PetscBool :: forceQuad
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDSGetForceQuad
+#endif
+  interface
+  subroutine PetscDSSetForceQuad(ds,forceQuad, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDS
+  PetscDS :: ds
+  PetscBool :: forceQuad
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDSSetForceQuad
+#endif
+  interface
+  subroutine PetscDSIsCohesive(ds,isCohesive, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDS
+  PetscDS :: ds
+  PetscBool :: isCohesive
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDSIsCohesive
+#endif
+  interface
+  subroutine PetscDSGetNumCohesive(ds,numCohesive, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDS
+  PetscDS :: ds
+  PetscInt :: numCohesive
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDSGetNumCohesive
+#endif
+  interface
+  subroutine PetscDSGetCohesive(ds,f,isCohesive, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDS
+  PetscDS :: ds
+  PetscInt :: f
+  PetscBool :: isCohesive
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDSGetCohesive
+#endif
+  interface
+  subroutine PetscDSSetCohesive(ds,f,isCohesive, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDS
+  PetscDS :: ds
+  PetscInt :: f
+  PetscBool :: isCohesive
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDSSetCohesive
+#endif
+  interface
+  subroutine PetscDSGetTotalDimension(prob,dim, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDS
+  PetscDS :: prob
+  PetscInt :: dim
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDSGetTotalDimension
+#endif
+  interface
+  subroutine PetscDSGetTotalComponents(prob,Nc, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDS
+  PetscDS :: prob
+  PetscInt :: Nc
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDSGetTotalComponents
+#endif
+  interface
+  subroutine PetscDSGetDiscretization(prob,f,disc, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDS,tPetscObject
+  PetscDS :: prob
+  PetscInt :: f
+  PetscObject :: disc
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDSGetDiscretization
+#endif
+  interface
+  subroutine PetscDSSetDiscretization(prob,f,disc, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDS,tPetscObject
+  PetscDS :: prob
+  PetscInt :: f
+  PetscObject :: disc
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDSSetDiscretization
+#endif
+  interface
+  subroutine PetscDSGetWeakForm(ds,wf, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDS,tPetscWeakForm
+  PetscDS :: ds
+  PetscWeakForm :: wf
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDSGetWeakForm
+#endif
+  interface
+  subroutine PetscDSSetWeakForm(ds,wf, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDS,tPetscWeakForm
+  PetscDS :: ds
+  PetscWeakForm :: wf
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDSSetWeakForm
+#endif
+  interface
+  subroutine PetscDSAddDiscretization(prob,disc, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDS,tPetscObject
+  PetscDS :: prob
+  PetscObject :: disc
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDSAddDiscretization
+#endif
+  interface
+  subroutine PetscDSGetQuadrature(prob,q, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDS,tPetscQuadrature
+  PetscDS :: prob
+  PetscQuadrature :: q
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDSGetQuadrature
+#endif
+  interface
+  subroutine PetscDSGetImplicit(prob,f,implicit, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDS
+  PetscDS :: prob
+  PetscInt :: f
+  PetscBool :: implicit
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDSGetImplicit
+#endif
+  interface
+  subroutine PetscDSSetImplicit(prob,f,implicit, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDS
+  PetscDS :: prob
+  PetscInt :: f
+  PetscBool :: implicit
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDSSetImplicit
+#endif
+  interface
+  subroutine PetscDSGetJetDegree(ds,f,k, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDS
+  PetscDS :: ds
+  PetscInt :: f
+  PetscInt :: k
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDSGetJetDegree
+#endif
+  interface
+  subroutine PetscDSSetJetDegree(ds,f,k, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDS
+  PetscDS :: ds
+  PetscInt :: f
+  PetscInt :: k
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDSSetJetDegree
+#endif
+  interface
+  subroutine PetscDSSetObjective(ds,f,obj, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDS
+  PetscDS :: ds
+  PetscInt :: f
+  external obj
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDSSetObjective
+#endif
+  interface
+  subroutine PetscDSSetResidual(ds,f,f0,f1, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDS
+  PetscDS :: ds
+  PetscInt :: f
+  external f0
+  external f1
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDSSetResidual
+#endif
+  interface
+  subroutine PetscDSSetRHSResidual(ds,f,f0,f1, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDS
+  PetscDS :: ds
+  PetscInt :: f
+  external f0
+  external f1
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDSSetRHSResidual
+#endif
+  interface
+  subroutine PetscDSHasJacobian(ds,hasJac, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDS
+  PetscDS :: ds
+  PetscBool :: hasJac
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDSHasJacobian
+#endif
+  interface
+  subroutine PetscDSSetJacobian(ds,f,g,g0,g1,g2,g3, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDS
+  PetscDS :: ds
+  PetscInt :: f
+  PetscInt :: g
+  external g0
+  external g1
+  external g2
+  external g3
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDSSetJacobian
+#endif
+  interface
+  subroutine PetscDSUseJacobianPreconditioner(prob,useJacPre, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDS
+  PetscDS :: prob
+  PetscBool :: useJacPre
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDSUseJacobianPreconditioner
+#endif
+  interface
+  subroutine PetscDSHasJacobianPreconditioner(ds,hasJacPre, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDS
+  PetscDS :: ds
+  PetscBool :: hasJacPre
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDSHasJacobianPreconditioner
+#endif
+  interface
+  subroutine PetscDSSetJacobianPreconditioner(ds,f,g,g0,g1,g2,g3, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDS
+  PetscDS :: ds
+  PetscInt :: f
+  PetscInt :: g
+  external g0
+  external g1
+  external g2
+  external g3
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDSSetJacobianPreconditioner
+#endif
+  interface
+  subroutine PetscDSHasDynamicJacobian(ds,hasDynJac, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDS
+  PetscDS :: ds
+  PetscBool :: hasDynJac
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDSHasDynamicJacobian
+#endif
+  interface
+  subroutine PetscDSSetDynamicJacobian(ds,f,g,g0,g1,g2,g3, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDS
+  PetscDS :: ds
+  PetscInt :: f
+  PetscInt :: g
+  external g0
+  external g1
+  external g2
+  external g3
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDSSetDynamicJacobian
+#endif
+  interface
+  subroutine PetscDSSetRiemannSolver(ds,f,r, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDS
+  PetscDS :: ds
+  PetscInt :: f
+  external r
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDSSetRiemannSolver
+#endif
+  interface
+  subroutine PetscDSSetUpdate(ds,f,update, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDS
+  PetscDS :: ds
+  PetscInt :: f
+  external update
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDSSetUpdate
+#endif
+  interface
+  subroutine PetscDSGetContextcptr(ds,f,ctx, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDS
+  PetscDS :: ds
+  PetscInt :: f
+  type(c_ptr) :: ctx
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDSGetContextcptr
+#endif
+  interface
+  subroutine PetscDSSetContext(ds,f,ctx, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDS
+  PetscDS :: ds
+  PetscInt :: f
+  type(*) :: ctx
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDSSetContext
+#endif
+  interface
+  subroutine PetscDSSetBdResidual(ds,f,f0,f1, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDS
+  PetscDS :: ds
+  PetscInt :: f
+  external f0
+  external f1
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDSSetBdResidual
+#endif
+  interface
+  subroutine PetscDSHasBdJacobian(ds,hasBdJac, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDS
+  PetscDS :: ds
+  PetscBool :: hasBdJac
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDSHasBdJacobian
+#endif
+  interface
+  subroutine PetscDSSetBdJacobian(ds,f,g,g0,g1,g2,g3, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDS
+  PetscDS :: ds
+  PetscInt :: f
+  PetscInt :: g
+  external g0
+  external g1
+  external g2
+  external g3
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDSSetBdJacobian
+#endif
+  interface
+  subroutine PetscDSHasBdJacobianPreconditioner(ds,hasBdJacPre, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDS
+  PetscDS :: ds
+  PetscBool :: hasBdJacPre
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDSHasBdJacobianPreconditioner
+#endif
+  interface
+  subroutine PetscDSSetBdJacobianPreconditioner(ds,f,g,g0,g1,g2,g3, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDS
+  PetscDS :: ds
+  PetscInt :: f
+  PetscInt :: g
+  external g0
+  external g1
+  external g2
+  external g3
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDSSetBdJacobianPreconditioner
+#endif
+  interface
+  subroutine PetscDSSetExactSolution(prob,f,sol,ctx, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDS
+  PetscDS :: prob
+  PetscInt :: f
+  external sol
+  type(*) :: ctx
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDSSetExactSolution
+#endif
+  interface
+  subroutine PetscDSSetExactSolutionTimeDerivative(prob,f,sol,ctx, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDS
+  PetscDS :: prob
+  PetscInt :: f
+  external sol
+  type(*) :: ctx
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDSSetExactSolutionTimeDerivative
+#endif
+  interface
+  subroutine PetscDSSetLowerBound(ds,f,lb,ctx, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDS
+  PetscDS :: ds
+  PetscInt :: f
+  external lb
+  type(*) :: ctx
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDSSetLowerBound
+#endif
+  interface
+  subroutine PetscDSSetUpperBound(ds,f,ub,ctx, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDS
+  PetscDS :: ds
+  PetscInt :: f
+  external ub
+  type(*) :: ctx
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDSSetUpperBound
+#endif
+  interface
+  subroutine PetscDSGetConstants(ds,numConstants,constants, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDS
+  PetscDS :: ds
+  PetscInt :: numConstants
+  PetscScalar, pointer :: constants(:)
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDSGetConstants
+#endif
+  interface
+  subroutine PetscDSSetConstants(ds,numConstants,constants, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDS
+  PetscDS :: ds
+  PetscInt :: numConstants
+  PetscScalar :: constants(*)
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDSSetConstants
+#endif
+  interface
+  subroutine PetscDSSetIntegrationParameters(ds,fieldI,fieldJ, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDS
+  PetscDS :: ds
+  PetscInt :: fieldI
+  PetscInt :: fieldJ
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDSSetIntegrationParameters
+#endif
+  interface
+  subroutine PetscDSSetCellParameters(ds,volume, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDS
+  PetscDS :: ds
+  PetscReal :: volume
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDSSetCellParameters
+#endif
+  interface
+  subroutine PetscDSGetFieldIndex(prob,disc,f, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDS,tPetscObject
+  PetscDS :: prob
+  PetscObject :: disc
+  PetscInt :: f
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDSGetFieldIndex
+#endif
+  interface
+  subroutine PetscDSGetFieldSize(prob,f,size, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDS
+  PetscDS :: prob
+  PetscInt :: f
+  PetscInt :: size
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDSGetFieldSize
+#endif
+  interface
+  subroutine PetscDSGetFieldOffset(prob,f,off, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDS
+  PetscDS :: prob
+  PetscInt :: f
+  PetscInt :: off
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDSGetFieldOffset
+#endif
+  interface
+  subroutine PetscDSGetFieldOffsetCohesive(ds,f,off, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDS
+  PetscDS :: ds
+  PetscInt :: f
+  PetscInt :: off
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDSGetFieldOffsetCohesive
+#endif
+  interface
+  subroutine PetscDSGetDimensions(prob,dimensions, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDS
+  PetscDS :: prob
+  PetscInt, pointer :: dimensions(:)
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDSGetDimensions
+#endif
+  interface
+  subroutine PetscDSGetComponents(prob,components, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDS
+  PetscDS :: prob
+  PetscInt, pointer :: components(:)
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDSGetComponents
+#endif
+  interface
+  subroutine PetscDSGetComponentOffset(prob,f,off, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDS
+  PetscDS :: prob
+  PetscInt :: f
+  PetscInt :: off
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDSGetComponentOffset
+#endif
+  interface
+  subroutine PetscDSGetComponentOffsets(prob,offsets, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDS
+  PetscDS :: prob
+  PetscInt, pointer :: offsets(:)
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDSGetComponentOffsets
+#endif
+  interface
+  subroutine PetscDSGetComponentDerivativeOffsets(prob,offsets, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDS
+  PetscDS :: prob
+  PetscInt, pointer :: offsets(:)
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDSGetComponentDerivativeOffsets
+#endif
+  interface
+  subroutine PetscDSGetComponentOffsetsCohesive(ds,s,offsets, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDS
+  PetscDS :: ds
+  PetscInt :: s
+  PetscInt, pointer :: offsets(:)
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDSGetComponentOffsetsCohesive
+#endif
+  interface
+  subroutine PetscDSGetComponentDerivativeOffsetsCohesive(ds,s,offsets, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDS
+  PetscDS :: ds
+  PetscInt :: s
+  PetscInt, pointer :: offsets(:)
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDSGetComponentDerivativeOffsetsCohesive
+#endif
+  interface
+  subroutine PetscDSGetFaceTabulation(prob,Tf, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDS,tPetscTabulation
+  PetscDS :: prob
+  PetscTabulation, pointer :: Tf(:)
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDSGetFaceTabulation
+#endif
+  interface
+  subroutine PetscDSGetEvaluationArrays(prob,u,u_t,u_x, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDS
+  PetscDS :: prob
+  PetscScalar, pointer :: u(:)
+  PetscScalar, pointer :: u_t(:)
+  PetscScalar, pointer :: u_x(:)
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDSGetEvaluationArrays
+#endif
+  interface
+  subroutine PetscDSGetWeakFormArrays(prob,f0,f1,g0,g1,g2,g3, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDS
+  PetscDS :: prob
+  PetscScalar, pointer :: f0(:)
+  PetscScalar, pointer :: f1(:)
+  PetscScalar, pointer :: g0(:)
+  PetscScalar, pointer :: g1(:)
+  PetscScalar, pointer :: g2(:)
+  PetscScalar, pointer :: g3(:)
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDSGetWeakFormArrays
+#endif
+  interface
+  subroutine PetscDSAddBoundary(ds,type,name,label,Nv,values,field,Nc,comps,bcFunc,bcFunc_t,ctx,bd, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDS,eDMBoundaryConditionType,tDMLabel
+  PetscDS :: ds
+  DMBoundaryConditionType :: type
+  character(*) :: name
+  DMLabel :: label
+  PetscInt :: Nv
+  PetscInt :: values(*)
+  PetscInt :: field
+  PetscInt :: Nc
+  PetscInt :: comps(*)
+  external bcFunc
+  external bcFunc_t
+  type(*) :: ctx
+  PetscInt :: bd
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDSAddBoundary
+#endif
+  interface
+  subroutine PetscDSAddBoundaryByName(ds,type,name,lname,Nv,values,field,Nc,comps,bcFunc,bcFunc_t,ctx,bd, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDS,eDMBoundaryConditionType
+  PetscDS :: ds
+  DMBoundaryConditionType :: type
+  character(*) :: name
+  character(*) :: lname
+  PetscInt :: Nv
+  PetscInt :: values(*)
+  PetscInt :: field
+  PetscInt :: Nc
+  PetscInt :: comps(*)
+  external bcFunc
+  external bcFunc_t
+  type(*) :: ctx
+  PetscInt :: bd
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDSAddBoundaryByName
+#endif
+  interface
+  subroutine PetscDSUpdateBoundary(ds,bd,type,name,label,Nv,values,field,Nc,comps,bcFunc,bcFunc_t,ctx, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDS,eDMBoundaryConditionType,tDMLabel
+  PetscDS :: ds
+  PetscInt :: bd
+  DMBoundaryConditionType :: type
+  character(*) :: name
+  DMLabel :: label
+  PetscInt :: Nv
+  PetscInt :: values(*)
+  PetscInt :: field
+  PetscInt :: Nc
+  PetscInt :: comps(*)
+  external bcFunc
+  external bcFunc_t
+  type(*) :: ctx
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDSUpdateBoundary
+#endif
+  interface
+  subroutine PetscDSGetNumBoundary(ds,numBd, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDS
+  PetscDS :: ds
+  PetscInt :: numBd
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDSGetNumBoundary
+#endif
+  interface
+  subroutine PetscDSUpdateBoundaryLabels(ds,dm, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDS,tDM
+  PetscDS :: ds
+  DM :: dm
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDSUpdateBoundaryLabels
+#endif
+  interface
+  subroutine PetscDSCopyBoundary(ds,numFields,fields,newds, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDS
+  PetscDS :: ds
+  PetscInt :: numFields
+  PetscInt :: fields(*)
+  PetscDS :: newds
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDSCopyBoundary
+#endif
+  interface
+  subroutine PetscDSDestroyBoundary(ds, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDS
+  PetscDS :: ds
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDSDestroyBoundary
+#endif
+  interface
+  subroutine PetscDSSelectDiscretizations(prob,numFields,fields,minDegree,maxDegree,newprob, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDS
+  PetscDS :: prob
+  PetscInt :: numFields
+  PetscInt :: fields(*)
+  PetscInt :: minDegree
+  PetscInt :: maxDegree
+  PetscDS :: newprob
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDSSelectDiscretizations
+#endif
+  interface
+  subroutine PetscDSSelectEquations(prob,numFields,fields,newprob, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDS
+  PetscDS :: prob
+  PetscInt :: numFields
+  PetscInt :: fields(*)
+  PetscDS :: newprob
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDSSelectEquations
+#endif
+  interface
+  subroutine PetscDSCopyEquations(prob,newprob, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDS
+  PetscDS :: prob
+  PetscDS :: newprob
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDSCopyEquations
+#endif
+  interface
+  subroutine PetscDSCopyConstants(prob,newprob, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDS
+  PetscDS :: prob
+  PetscDS :: newprob
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDSCopyConstants
+#endif
+  interface
+  subroutine PetscDSCopyExactSolutions(ds,newds, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDS
+  PetscDS :: ds
+  PetscDS :: newds
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDSCopyExactSolutions
+#endif
+  interface
+  subroutine PetscDSCopyBounds(ds,newds, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDS
+  PetscDS :: ds
+  PetscDS :: newds
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDSCopyBounds
+#endif
+  interface
+  subroutine PetscDSCopy(ds,minDegree,maxDegree,dmNew,dsNew, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDS,tDM
+  PetscDS :: ds
+  PetscInt :: minDegree
+  PetscInt :: maxDegree
+  DM :: dmNew
+  PetscDS :: dsNew
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDSCopy
+#endif
+  interface
+  subroutine PetscDSGetHeightSubspace(prob,height,subprob, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDS
+  PetscDS :: prob
+  PetscInt :: height
+  PetscDS :: subprob
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDSGetHeightSubspace
+#endif
+  interface
+  subroutine PetscDSPermuteQuadPoint(ds,ornt,field,q,qperm, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDS
+  PetscDS :: ds
+  PetscInt :: ornt
+  PetscInt :: field
+  PetscInt :: q
+  PetscInt :: qperm
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDSPermuteQuadPoint
+#endif
+  interface operator(.ne.)
+    module procedure PetscDSnotequals
+  end interface operator (.ne.)
+  interface operator(.eq.)
+    module procedure PetscDSequals
+  end interface operator (.eq.)
+
+  interface PetscObjectCast
+    module procedure PetscObjectCastDS
+  end interface
+  interface PetscBarrier
+  module procedure PetscBarrierDS
+  end interface
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectSAWsTakeAccess
+    module procedure PetscObjectSAWsTakeAccessDS
+  end interface
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectSAWsGrantAccess
+    module procedure PetscObjectSAWsGrantAccessDS
+  end interface
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectSAWsBlock
+    module procedure PetscObjectSAWsBlockDS
+  end interface
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectSAWsSetBlock
+    module procedure PetscObjectSAWsSetBlockDS
+  end interface
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectSAWsViewOff
+    module procedure PetscObjectSAWsViewOffDS
+  end interface
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectViewSAWs
+    module procedure PetscObjectViewSAWsDS
+  end interface
+#endif
+  interface PetscObjectGetType
+    module procedure PetscObjectGetTypeDS
+  end interface
+  interface PetscObjectSetPrintedOptions
+    module procedure PetscObjectSetPrintedOptionsDS
+  end interface
+  interface PetscObjectInheritPrintedOptions
+    module procedure PetscObjectInheritPrintedOptionsDS
+  end interface
+  interface PetscObjectAddOptionsHandler
+    module procedure PetscObjectAddOptionsHandlerDS
+  end interface
+  interface PetscObjectProcessOptionsHandlers
+    module procedure PetscObjectProcessOptionsHandlersDS
+  end interface
+  interface PetscObjectDestroyOptionsHandlers
+    module procedure PetscObjectDestroyOptionsHandlersDS
+  end interface
+  interface PetscObjectReference
+    module procedure PetscObjectReferenceDS
+  end interface
+  interface PetscObjectGetReference
+    module procedure PetscObjectGetReferenceDS
+  end interface
+  interface PetscObjectDereference
+    module procedure PetscObjectDereferenceDS
+  end interface
+  interface PetscObjectRemoveReference
+    module procedure PetscObjectRemoveReferenceDS
+  end interface
+  interface PetscObjectHasFunction
+    module procedure PetscObjectHasFunctionDS
+  end interface
+  interface PetscObjectSetFromOptions
+    module procedure PetscObjectSetFromOptionsDS
+  end interface
+  interface PetscObjectSetUp
+    module procedure PetscObjectSetUpDS
+  end interface
+  interface PetscObjectGetName
+    module procedure PetscObjectGetNameDS
+  end interface
+  interface PetscObjectDestroy
+    module procedure PetscObjectDestroyDS
+  end interface
+  interface PetscObjectView
+    module procedure PetscObjectViewDS
+  end interface
+  interface PetscObjectViewFromOptions
+    module procedure PetscObjectViewFromOptionsDS
+  end interface
+  interface PetscObjectTypeCompare
+    module procedure PetscObjectTypeCompareDS
+  end interface
+  interface PetscObjectObjectTypeCompare
+    module procedure PetscObjectObjectTypeCompareDS
+  end interface
+  interface PetscObjectBaseTypeCompare
+    module procedure PetscObjectBaseTypeCompareDS
+  end interface
+  interface PetscObjectRegisterDestroy
+    module procedure PetscObjectRegisterDestroyDS
+  end interface
+  interface PetscObjectGetId
+    module procedure PetscObjectGetIdDS
+  end interface
+  interface PetscObjectCompareId
+    module procedure PetscObjectCompareIdDS
+  end interface
+  interface PetscObjectGetOptions
+    module procedure PetscObjectGetOptionsDS
+  end interface
+  interface PetscObjectSetOptions
+    module procedure PetscObjectSetOptionsDS
+  end interface
+  interface PetscObjectSetOptionsPrefix
+    module procedure PetscObjectSetOptionsPrefixDS
+  end interface
+  interface PetscObjectAppendOptionsPrefix
+    module procedure PetscObjectAppendOptionsPrefixDS
+  end interface
+  interface PetscObjectGetOptionsPrefix
+    module procedure PetscObjectGetOptionsPrefixDS
+  end interface
+  interface PetscObjectPrependOptionsPrefix
+    module procedure PetscObjectPrependOptionsPrefixDS
+  end interface
+  interface PetscObjectGetComm
+    module procedure PetscObjectGetCommDS
+  end interface
+  interface PetscObjectGetTabLevel
+    module procedure PetscObjectGetTabLevelDS
+  end interface
+  interface PetscObjectSetTabLevel
+    module procedure PetscObjectSetTabLevelDS
+  end interface
+  interface PetscObjectIncrementTabLevel
+    module procedure PetscObjectIncrementTabLevelDS
+  end interface
+  interface PetscObjectGetNewTag
+    module procedure PetscObjectGetNewTagDS
+  end interface
+  interface PetscObjectGetClassId
+    module procedure PetscObjectGetClassIdDS
+  end interface
+  interface PetscObjectGetClassName
+    module procedure PetscObjectGetClassNameDS
+  end interface
+  interface PetscObjectSetName
+    module procedure PetscObjectSetNameDS
+  end interface
+  interface PetscObjectPrintClassNamePrefixType
+    module procedure PetscObjectPrintClassNamePrefixTypeDS
+  end interface
+  interface PetscObjectName
+    module procedure PetscObjectNameDS
+  end interface
+  interface PetscObjectChangeTypeName
+    module procedure PetscObjectChangeTypeNameDS
+  end interface
+  interface
+  subroutine PetscWeakFormCopy(wf,wfNew, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscWeakForm
+  PetscWeakForm :: wf
+  PetscWeakForm :: wfNew
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscWeakFormCopy
+#endif
+  interface
+  subroutine PetscWeakFormClear(wf, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscWeakForm
+  PetscWeakForm :: wf
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscWeakFormClear
+#endif
+  interface
+  subroutine PetscWeakFormRewriteKeys(wf,label,Nv,values, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscWeakForm,tDMLabel
+  PetscWeakForm :: wf
+  DMLabel :: label
+  PetscInt :: Nv
+  PetscInt :: values(*)
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscWeakFormRewriteKeys
+#endif
+  interface
+  subroutine PetscWeakFormReplaceLabel(wf,label, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscWeakForm,tDMLabel
+  PetscWeakForm :: wf
+  DMLabel :: label
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscWeakFormReplaceLabel
+#endif
+  interface
+  subroutine PetscWeakFormClearIndex(wf,label,val,f,part,kind,ind, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscWeakForm,tDMLabel,ePetscWeakFormKind
+  PetscWeakForm :: wf
+  DMLabel :: label
+  PetscInt :: val
+  PetscInt :: f
+  PetscInt :: part
+  PetscWeakFormKind :: kind
+  PetscInt :: ind
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscWeakFormClearIndex
+#endif
+  interface
+  subroutine PetscWeakFormAddObjective(wf,label,val,f,part,obj, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscWeakForm,tDMLabel
+  PetscWeakForm :: wf
+  DMLabel :: label
+  PetscInt :: val
+  PetscInt :: f
+  PetscInt :: part
+  external :: obj
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscWeakFormAddObjective
+#endif
+  interface
+  subroutine PetscWeakFormSetIndexObjective(wf,label,val,f,part,ind,obj, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscWeakForm,tDMLabel
+  PetscWeakForm :: wf
+  DMLabel :: label
+  PetscInt :: val
+  PetscInt :: f
+  PetscInt :: part
+  PetscInt :: ind
+  external :: obj
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscWeakFormSetIndexObjective
+#endif
+  interface
+  subroutine PetscWeakFormAddResidual(wf,label,val,f,part,f0,f1, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscWeakForm,tDMLabel
+  PetscWeakForm :: wf
+  DMLabel :: label
+  PetscInt :: val
+  PetscInt :: f
+  PetscInt :: part
+  external :: f0
+  external :: f1
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscWeakFormAddResidual
+#endif
+  interface
+  subroutine PetscWeakFormSetIndexResidual(wf,label,val,f,part,i0,f0,i1,f1, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscWeakForm,tDMLabel
+  PetscWeakForm :: wf
+  DMLabel :: label
+  PetscInt :: val
+  PetscInt :: f
+  PetscInt :: part
+  PetscInt :: i0
+  external :: f0
+  PetscInt :: i1
+  external :: f1
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscWeakFormSetIndexResidual
+#endif
+  interface
+  subroutine PetscWeakFormAddBdResidual(wf,label,val,f,part,f0,f1, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscWeakForm,tDMLabel
+  PetscWeakForm :: wf
+  DMLabel :: label
+  PetscInt :: val
+  PetscInt :: f
+  PetscInt :: part
+  external :: f0
+  external :: f1
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscWeakFormAddBdResidual
+#endif
+  interface
+  subroutine PetscWeakFormSetIndexBdResidual(wf,label,val,f,part,i0,f0,i1,f1, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscWeakForm,tDMLabel
+  PetscWeakForm :: wf
+  DMLabel :: label
+  PetscInt :: val
+  PetscInt :: f
+  PetscInt :: part
+  PetscInt :: i0
+  external :: f0
+  PetscInt :: i1
+  external :: f1
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscWeakFormSetIndexBdResidual
+#endif
+  interface
+  subroutine PetscWeakFormHasJacobian(wf,hasJac, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscWeakForm
+  PetscWeakForm :: wf
+  PetscBool :: hasJac
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscWeakFormHasJacobian
+#endif
+  interface
+  subroutine PetscWeakFormAddJacobian(wf,label,val,f,g,part,g0,g1,g2,g3, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscWeakForm,tDMLabel
+  PetscWeakForm :: wf
+  DMLabel :: label
+  PetscInt :: val
+  PetscInt :: f
+  PetscInt :: g
+  PetscInt :: part
+  external :: g0
+  external :: g1
+  external :: g2
+  external :: g3
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscWeakFormAddJacobian
+#endif
+  interface
+  subroutine PetscWeakFormSetIndexJacobian(wf,label,val,f,g,part,i0,g0,i1,g1,i2,g2,i3,g3, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscWeakForm,tDMLabel
+  PetscWeakForm :: wf
+  DMLabel :: label
+  PetscInt :: val
+  PetscInt :: f
+  PetscInt :: g
+  PetscInt :: part
+  PetscInt :: i0
+  external :: g0
+  PetscInt :: i1
+  external :: g1
+  PetscInt :: i2
+  external :: g2
+  PetscInt :: i3
+  external :: g3
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscWeakFormSetIndexJacobian
+#endif
+  interface
+  subroutine PetscWeakFormHasJacobianPreconditioner(wf,hasJacPre, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscWeakForm
+  PetscWeakForm :: wf
+  PetscBool :: hasJacPre
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscWeakFormHasJacobianPreconditioner
+#endif
+  interface
+  subroutine PetscWeakFormAddJacobianPreconditioner(wf,label,val,f,g,part,g0,g1,g2,g3, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscWeakForm,tDMLabel
+  PetscWeakForm :: wf
+  DMLabel :: label
+  PetscInt :: val
+  PetscInt :: f
+  PetscInt :: g
+  PetscInt :: part
+  external :: g0
+  external :: g1
+  external :: g2
+  external :: g3
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscWeakFormAddJacobianPreconditioner
+#endif
+  interface
+  subroutine PetscWeakFormSetIndexJacobianPreconditioner(wf,label,val,f,g,part,i0,g0,i1,g1,i2,g2,i3,g3, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscWeakForm,tDMLabel
+  PetscWeakForm :: wf
+  DMLabel :: label
+  PetscInt :: val
+  PetscInt :: f
+  PetscInt :: g
+  PetscInt :: part
+  PetscInt :: i0
+  external :: g0
+  PetscInt :: i1
+  external :: g1
+  PetscInt :: i2
+  external :: g2
+  PetscInt :: i3
+  external :: g3
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscWeakFormSetIndexJacobianPreconditioner
+#endif
+  interface
+  subroutine PetscWeakFormHasBdJacobian(wf,hasJac, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscWeakForm
+  PetscWeakForm :: wf
+  PetscBool :: hasJac
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscWeakFormHasBdJacobian
+#endif
+  interface
+  subroutine PetscWeakFormAddBdJacobian(wf,label,val,f,g,part,g0,g1,g2,g3, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscWeakForm,tDMLabel
+  PetscWeakForm :: wf
+  DMLabel :: label
+  PetscInt :: val
+  PetscInt :: f
+  PetscInt :: g
+  PetscInt :: part
+  external :: g0
+  external :: g1
+  external :: g2
+  external :: g3
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscWeakFormAddBdJacobian
+#endif
+  interface
+  subroutine PetscWeakFormSetIndexBdJacobian(wf,label,val,f,g,part,i0,g0,i1,g1,i2,g2,i3,g3, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscWeakForm,tDMLabel
+  PetscWeakForm :: wf
+  DMLabel :: label
+  PetscInt :: val
+  PetscInt :: f
+  PetscInt :: g
+  PetscInt :: part
+  PetscInt :: i0
+  external :: g0
+  PetscInt :: i1
+  external :: g1
+  PetscInt :: i2
+  external :: g2
+  PetscInt :: i3
+  external :: g3
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscWeakFormSetIndexBdJacobian
+#endif
+  interface
+  subroutine PetscWeakFormHasBdJacobianPreconditioner(wf,hasJacPre, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscWeakForm
+  PetscWeakForm :: wf
+  PetscBool :: hasJacPre
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscWeakFormHasBdJacobianPreconditioner
+#endif
+  interface
+  subroutine PetscWeakFormAddBdJacobianPreconditioner(wf,label,val,f,g,part,g0,g1,g2,g3, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscWeakForm,tDMLabel
+  PetscWeakForm :: wf
+  DMLabel :: label
+  PetscInt :: val
+  PetscInt :: f
+  PetscInt :: g
+  PetscInt :: part
+  external :: g0
+  external :: g1
+  external :: g2
+  external :: g3
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscWeakFormAddBdJacobianPreconditioner
+#endif
+  interface
+  subroutine PetscWeakFormSetIndexBdJacobianPreconditioner(wf,label,val,f,g,part,i0,g0,i1,g1,i2,g2,i3,g3, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscWeakForm,tDMLabel
+  PetscWeakForm :: wf
+  DMLabel :: label
+  PetscInt :: val
+  PetscInt :: f
+  PetscInt :: g
+  PetscInt :: part
+  PetscInt :: i0
+  external :: g0
+  PetscInt :: i1
+  external :: g1
+  PetscInt :: i2
+  external :: g2
+  PetscInt :: i3
+  external :: g3
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscWeakFormSetIndexBdJacobianPreconditioner
+#endif
+  interface
+  subroutine PetscWeakFormHasDynamicJacobian(wf,hasDynJac, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscWeakForm
+  PetscWeakForm :: wf
+  PetscBool :: hasDynJac
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscWeakFormHasDynamicJacobian
+#endif
+  interface
+  subroutine PetscWeakFormAddDynamicJacobian(wf,label,val,f,g,part,g0,g1,g2,g3, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscWeakForm,tDMLabel
+  PetscWeakForm :: wf
+  DMLabel :: label
+  PetscInt :: val
+  PetscInt :: f
+  PetscInt :: g
+  PetscInt :: part
+  external :: g0
+  external :: g1
+  external :: g2
+  external :: g3
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscWeakFormAddDynamicJacobian
+#endif
+  interface
+  subroutine PetscWeakFormSetIndexDynamicJacobian(wf,label,val,f,g,part,i0,g0,i1,g1,i2,g2,i3,g3, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscWeakForm,tDMLabel
+  PetscWeakForm :: wf
+  DMLabel :: label
+  PetscInt :: val
+  PetscInt :: f
+  PetscInt :: g
+  PetscInt :: part
+  PetscInt :: i0
+  external :: g0
+  PetscInt :: i1
+  external :: g1
+  PetscInt :: i2
+  external :: g2
+  PetscInt :: i3
+  external :: g3
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscWeakFormSetIndexDynamicJacobian
+#endif
+  interface
+  subroutine PetscWeakFormSetIndexRiemannSolver(wf,label,val,f,part,i,r, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscWeakForm,tDMLabel
+  PetscWeakForm :: wf
+  DMLabel :: label
+  PetscInt :: val
+  PetscInt :: f
+  PetscInt :: part
+  PetscInt :: i
+  external :: r
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscWeakFormSetIndexRiemannSolver
+#endif
+  interface
+  subroutine PetscWeakFormGetNumFields(wf,Nf, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscWeakForm
+  PetscWeakForm :: wf
+  PetscInt :: Nf
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscWeakFormGetNumFields
+#endif
+  interface
+  subroutine PetscWeakFormSetNumFields(wf,Nf, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscWeakForm
+  PetscWeakForm :: wf
+  PetscInt :: Nf
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscWeakFormSetNumFields
+#endif
+  interface
+  subroutine PetscWeakFormDestroy(wf, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscWeakForm
+  PetscWeakForm :: wf
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscWeakFormDestroy
+#endif
+  interface
+  subroutine PetscWeakFormView(wf,v, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscWeakForm,tPetscViewer
+  PetscWeakForm :: wf
+  PetscViewer :: v
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscWeakFormView
+#endif
+  interface
+  subroutine PetscWeakFormCreate(comm,wf, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscWeakForm
+  MPIU_Comm :: comm
+  PetscWeakForm :: wf
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscWeakFormCreate
+#endif
+  interface operator(.ne.)
+    module procedure PetscWeakFormnotequals
+  end interface operator (.ne.)
+  interface operator(.eq.)
+    module procedure PetscWeakFormequals
+  end interface operator (.eq.)
+
+  interface PetscObjectCast
+    module procedure PetscObjectCastWeakForm
+  end interface
+  interface PetscBarrier
+  module procedure PetscBarrierWeakForm
+  end interface
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectSAWsTakeAccess
+    module procedure PetscObjectSAWsTakeAccessWeakForm
+  end interface
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectSAWsGrantAccess
+    module procedure PetscObjectSAWsGrantAccessWeakForm
+  end interface
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectSAWsBlock
+    module procedure PetscObjectSAWsBlockWeakForm
+  end interface
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectSAWsSetBlock
+    module procedure PetscObjectSAWsSetBlockWeakForm
+  end interface
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectSAWsViewOff
+    module procedure PetscObjectSAWsViewOffWeakForm
+  end interface
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectViewSAWs
+    module procedure PetscObjectViewSAWsWeakForm
+  end interface
+#endif
+  interface PetscObjectGetType
+    module procedure PetscObjectGetTypeWeakForm
+  end interface
+  interface PetscObjectSetPrintedOptions
+    module procedure PetscObjectSetPrintedOptionsWeakForm
+  end interface
+  interface PetscObjectInheritPrintedOptions
+    module procedure PetscObjectInheritPrintedOptionsWeakForm
+  end interface
+  interface PetscObjectAddOptionsHandler
+    module procedure PetscObjectAddOptionsHandlerWeakForm
+  end interface
+  interface PetscObjectProcessOptionsHandlers
+    module procedure PetscObjectProcessOptionsHandlersWeakForm
+  end interface
+  interface PetscObjectDestroyOptionsHandlers
+    module procedure PetscObjectDestroyOptionsHandlersWeakForm
+  end interface
+  interface PetscObjectReference
+    module procedure PetscObjectReferenceWeakForm
+  end interface
+  interface PetscObjectGetReference
+    module procedure PetscObjectGetReferenceWeakForm
+  end interface
+  interface PetscObjectDereference
+    module procedure PetscObjectDereferenceWeakForm
+  end interface
+  interface PetscObjectRemoveReference
+    module procedure PetscObjectRemoveReferenceWeakForm
+  end interface
+  interface PetscObjectHasFunction
+    module procedure PetscObjectHasFunctionWeakForm
+  end interface
+  interface PetscObjectSetFromOptions
+    module procedure PetscObjectSetFromOptionsWeakForm
+  end interface
+  interface PetscObjectSetUp
+    module procedure PetscObjectSetUpWeakForm
+  end interface
+  interface PetscObjectGetName
+    module procedure PetscObjectGetNameWeakForm
+  end interface
+  interface PetscObjectDestroy
+    module procedure PetscObjectDestroyWeakForm
+  end interface
+  interface PetscObjectView
+    module procedure PetscObjectViewWeakForm
+  end interface
+  interface PetscObjectViewFromOptions
+    module procedure PetscObjectViewFromOptionsWeakForm
+  end interface
+  interface PetscObjectTypeCompare
+    module procedure PetscObjectTypeCompareWeakForm
+  end interface
+  interface PetscObjectObjectTypeCompare
+    module procedure PetscObjectObjectTypeCompareWeakForm
+  end interface
+  interface PetscObjectBaseTypeCompare
+    module procedure PetscObjectBaseTypeCompareWeakForm
+  end interface
+  interface PetscObjectRegisterDestroy
+    module procedure PetscObjectRegisterDestroyWeakForm
+  end interface
+  interface PetscObjectGetId
+    module procedure PetscObjectGetIdWeakForm
+  end interface
+  interface PetscObjectCompareId
+    module procedure PetscObjectCompareIdWeakForm
+  end interface
+  interface PetscObjectGetOptions
+    module procedure PetscObjectGetOptionsWeakForm
+  end interface
+  interface PetscObjectSetOptions
+    module procedure PetscObjectSetOptionsWeakForm
+  end interface
+  interface PetscObjectSetOptionsPrefix
+    module procedure PetscObjectSetOptionsPrefixWeakForm
+  end interface
+  interface PetscObjectAppendOptionsPrefix
+    module procedure PetscObjectAppendOptionsPrefixWeakForm
+  end interface
+  interface PetscObjectGetOptionsPrefix
+    module procedure PetscObjectGetOptionsPrefixWeakForm
+  end interface
+  interface PetscObjectPrependOptionsPrefix
+    module procedure PetscObjectPrependOptionsPrefixWeakForm
+  end interface
+  interface PetscObjectGetComm
+    module procedure PetscObjectGetCommWeakForm
+  end interface
+  interface PetscObjectGetTabLevel
+    module procedure PetscObjectGetTabLevelWeakForm
+  end interface
+  interface PetscObjectSetTabLevel
+    module procedure PetscObjectSetTabLevelWeakForm
+  end interface
+  interface PetscObjectIncrementTabLevel
+    module procedure PetscObjectIncrementTabLevelWeakForm
+  end interface
+  interface PetscObjectGetNewTag
+    module procedure PetscObjectGetNewTagWeakForm
+  end interface
+  interface PetscObjectGetClassId
+    module procedure PetscObjectGetClassIdWeakForm
+  end interface
+  interface PetscObjectGetClassName
+    module procedure PetscObjectGetClassNameWeakForm
+  end interface
+  interface PetscObjectSetName
+    module procedure PetscObjectSetNameWeakForm
+  end interface
+  interface PetscObjectPrintClassNamePrefixType
+    module procedure PetscObjectPrintClassNamePrefixTypeWeakForm
+  end interface
+  interface PetscObjectName
+    module procedure PetscObjectNameWeakForm
+  end interface
+  interface PetscObjectChangeTypeName
+    module procedure PetscObjectChangeTypeNameWeakForm
+  end interface
+  interface
+  subroutine PetscFormKeySort(n,arr, ierr)
+  use, intrinsic :: ISO_C_binding
+  import sPetscFormKey
+  PetscInt :: n
+  PetscFormKey :: arr(*)
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscFormKeySort
+#endif
+  interface operator(.ne.)
+    module procedure PetscWeakFormKindnotequals
+  end interface operator (.ne.)
+  interface operator(.eq.)
+    module procedure PetscWeakFormKindequals
+  end interface operator (.eq.)
+
+  interface operator(.ne.)
+    module procedure PetscDiscTypenotequals
+  end interface operator (.ne.)
+  interface operator(.eq.)
+    module procedure PetscDiscTypeequals
+  end interface operator (.eq.)
+

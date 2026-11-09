@@ -1,0 +1,324 @@
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT:: TaoLineSearchnotequals
+!DEC$ ATTRIBUTES DLLEXPORT:: TaoLineSearchequals
+#endif
+
+  function TaoLineSearchnotequals(A,B)
+    logical TaoLineSearchnotequals
+    type(tTaoLineSearch), intent(in) :: A,B
+    TaoLineSearchnotequals = (A%v .ne. B%v)
+  end function
+  function TaoLineSearchequals(A,B)
+    logical TaoLineSearchequals
+    type(tTaoLineSearch), intent(in) :: A,B
+    TaoLineSearchequals = (A%v .eq. B%v)
+  end function
+  function PetscObjectCastTaoLineSearch(obj)
+    TaoLineSearch obj
+    PetscObject PetscObjectCastTaoLineSearch
+    PetscObjectCastTaoLineSearch%v = obj%v
+  end function 
+  subroutine PetscBarrierTaoLineSearch(obj,ierr)
+    TaoLineSearch obj
+    PetscErrorCode ierr
+    call PetscBarrier(PetscObjectCast(obj),ierr)
+  end subroutine 
+#if defined(PETSC_HAVE_SAWS)
+  subroutine PetscObjectSAWsTakeAccessTaoLineSearch(obj, ierr)
+  TaoLineSearch obj
+  PetscErrorCode ierr
+  call PetscObjectSAWsTakeAccess(PetscObjectCast(obj), ierr)
+  end subroutine 
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  subroutine PetscObjectSAWsGrantAccessTaoLineSearch(obj, ierr)
+  TaoLineSearch obj
+  PetscErrorCode ierr
+  call PetscObjectSAWsGrantAccess(PetscObjectCast(obj), ierr)
+  end subroutine 
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  subroutine PetscObjectSAWsBlockTaoLineSearch(obj, ierr)
+  TaoLineSearch obj
+  PetscErrorCode ierr
+  call PetscObjectSAWsBlock(PetscObjectCast(obj), ierr)
+  end subroutine 
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  subroutine PetscObjectSAWsSetBlockTaoLineSearch(obj, flg, ierr)
+  TaoLineSearch obj
+  PetscBool :: flg
+  PetscErrorCode ierr
+  call PetscObjectSAWsSetBlock(PetscObjectCast(obj), flg, ierr)
+  end subroutine 
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  subroutine PetscObjectSAWsViewOffTaoLineSearch(obj, ierr)
+  TaoLineSearch obj
+  PetscErrorCode ierr
+  call PetscObjectSAWsViewOff(PetscObjectCast(obj), ierr)
+  end subroutine 
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  subroutine PetscObjectViewSAWsTaoLineSearch(obj, viewer, ierr)
+  TaoLineSearch obj
+  PetscViewer :: viewer
+  PetscErrorCode ierr
+  call PetscObjectViewSAWs(PetscObjectCast(obj), viewer, ierr)
+  end subroutine 
+#endif
+  subroutine PetscObjectGetTypeTaoLineSearch(obj, type, ierr)
+  TaoLineSearch obj
+  character(*) :: type
+  PetscErrorCode ierr
+  call PetscObjectGetType(PetscObjectCast(obj), type, ierr)
+  end subroutine 
+  subroutine PetscObjectSetPrintedOptionsTaoLineSearch(obj, ierr)
+  TaoLineSearch obj
+  PetscErrorCode ierr
+  call PetscObjectSetPrintedOptions(PetscObjectCast(obj), ierr)
+  end subroutine 
+  subroutine PetscObjectInheritPrintedOptionsTaoLineSearch(pobj, obj, ierr)
+  TaoLineSearch pobj
+  PetscObject :: obj
+  PetscErrorCode ierr
+  call PetscObjectInheritPrintedOptions(PetscObjectCast(pobj), obj, ierr)
+  end subroutine 
+  subroutine PetscObjectAddOptionsHandlerTaoLineSearch(obj, handle, destroy, ctx, ierr)
+  TaoLineSearch obj
+  external :: handle
+  external :: destroy
+  type(*) :: ctx
+  PetscErrorCode ierr
+  call PetscObjectAddOptionsHandler(PetscObjectCast(obj), handle, destroy, ctx, ierr)
+  end subroutine 
+  subroutine PetscObjectProcessOptionsHandlersTaoLineSearch(obj, PetscOptionsObject, ierr)
+  TaoLineSearch obj
+  PetscOptionItems :: PetscOptionsObject
+  PetscErrorCode ierr
+  call PetscObjectProcessOptionsHandlers(PetscObjectCast(obj), PetscOptionsObject, ierr)
+  end subroutine 
+  subroutine PetscObjectDestroyOptionsHandlersTaoLineSearch(obj, ierr)
+  TaoLineSearch obj
+  PetscErrorCode ierr
+  call PetscObjectDestroyOptionsHandlers(PetscObjectCast(obj), ierr)
+  end subroutine 
+  subroutine PetscObjectReferenceTaoLineSearch(obj, ierr)
+  TaoLineSearch obj
+  PetscErrorCode ierr
+  call PetscObjectReference(PetscObjectCast(obj), ierr)
+  end subroutine 
+  subroutine PetscObjectGetReferenceTaoLineSearch(obj, cnt, ierr)
+  TaoLineSearch obj
+  PetscInt :: cnt
+  PetscErrorCode ierr
+  call PetscObjectGetReference(PetscObjectCast(obj), cnt, ierr)
+  end subroutine 
+  subroutine PetscObjectDereferenceTaoLineSearch(obj, ierr)
+  TaoLineSearch obj
+  PetscErrorCode ierr
+  call PetscObjectDereference(PetscObjectCast(obj), ierr)
+  end subroutine 
+  subroutine PetscObjectRemoveReferenceTaoLineSearch(obj, name, ierr)
+  TaoLineSearch obj
+  character(*) :: name
+  PetscErrorCode ierr
+  call PetscObjectRemoveReference(PetscObjectCast(obj), name, ierr)
+  end subroutine 
+  subroutine PetscObjectHasFunctionTaoLineSearch(obj, name, has, ierr)
+  TaoLineSearch obj
+  character(*) :: name
+  PetscBool :: has
+  PetscErrorCode ierr
+  call PetscObjectHasFunction(PetscObjectCast(obj), name, has, ierr)
+  end subroutine 
+  subroutine PetscObjectSetFromOptionsTaoLineSearch(obj, ierr)
+  TaoLineSearch obj
+  PetscErrorCode ierr
+  call PetscObjectSetFromOptions(PetscObjectCast(obj), ierr)
+  end subroutine 
+  subroutine PetscObjectSetUpTaoLineSearch(obj, ierr)
+  TaoLineSearch obj
+  PetscErrorCode ierr
+  call PetscObjectSetUp(PetscObjectCast(obj), ierr)
+  end subroutine 
+  subroutine PetscObjectGetNameTaoLineSearch(obj, name, ierr)
+  TaoLineSearch obj
+  character(*) :: name
+  PetscErrorCode ierr
+  call PetscObjectGetName(PetscObjectCast(obj), name, ierr)
+  end subroutine 
+  subroutine PetscObjectDestroyTaoLineSearch(obj, ierr)
+  TaoLineSearch obj
+  PetscErrorCode ierr
+  call PetscObjectDestroy(PetscObjectCast(obj), ierr)
+  end subroutine 
+  subroutine PetscObjectViewTaoLineSearch(obj, viewer, ierr)
+  TaoLineSearch obj
+  PetscViewer :: viewer
+  PetscErrorCode ierr
+  call PetscObjectView(PetscObjectCast(obj), viewer, ierr)
+  end subroutine 
+  subroutine PetscObjectViewFromOptionsTaoLineSearch(obj, bobj, name, ierr)
+  TaoLineSearch obj
+  PetscObject :: bobj
+  character(*) :: name
+  PetscErrorCode ierr
+  call PetscObjectViewFromOptions(PetscObjectCast(obj), bobj, name, ierr)
+  end subroutine 
+  subroutine PetscObjectTypeCompareTaoLineSearch(obj, type_name, same, ierr)
+  TaoLineSearch obj
+  character(*) :: type_name
+  PetscBool :: same
+  PetscErrorCode ierr
+  call PetscObjectTypeCompare(PetscObjectCast(obj), type_name, same, ierr)
+  end subroutine 
+  subroutine PetscObjectObjectTypeCompareTaoLineSearch(obj1, obj2, same, ierr)
+  TaoLineSearch obj1
+  PetscObject :: obj2
+  PetscBool :: same
+  PetscErrorCode ierr
+  call PetscObjectObjectTypeCompare(PetscObjectCast(obj1), obj2, same, ierr)
+  end subroutine 
+  subroutine PetscObjectBaseTypeCompareTaoLineSearch(obj, type_name, same, ierr)
+  TaoLineSearch obj
+  character(*) :: type_name
+  PetscBool :: same
+  PetscErrorCode ierr
+  call PetscObjectBaseTypeCompare(PetscObjectCast(obj), type_name, same, ierr)
+  end subroutine 
+  subroutine PetscObjectRegisterDestroyTaoLineSearch(obj, ierr)
+  TaoLineSearch obj
+  PetscErrorCode ierr
+  call PetscObjectRegisterDestroy(PetscObjectCast(obj), ierr)
+  end subroutine 
+  subroutine PetscObjectGetIdTaoLineSearch(obj, id, ierr)
+  TaoLineSearch obj
+  PetscObjectId :: id
+  PetscErrorCode ierr
+  call PetscObjectGetId(PetscObjectCast(obj), id, ierr)
+  end subroutine 
+  subroutine PetscObjectCompareIdTaoLineSearch(obj, id, eq, ierr)
+  TaoLineSearch obj
+  PetscObjectId :: id
+  PetscBool :: eq
+  PetscErrorCode ierr
+  call PetscObjectCompareId(PetscObjectCast(obj), id, eq, ierr)
+  end subroutine 
+  subroutine PetscObjectGetOptionsTaoLineSearch(obj, options, ierr)
+  TaoLineSearch obj
+  PetscOptions :: options
+  PetscErrorCode ierr
+  call PetscObjectGetOptions(PetscObjectCast(obj), options, ierr)
+  end subroutine 
+  subroutine PetscObjectSetOptionsTaoLineSearch(obj, options, ierr)
+  TaoLineSearch obj
+  PetscOptions :: options
+  PetscErrorCode ierr
+  call PetscObjectSetOptions(PetscObjectCast(obj), options, ierr)
+  end subroutine 
+  subroutine PetscObjectSetOptionsPrefixTaoLineSearch(obj, prefix, ierr)
+  TaoLineSearch obj
+  character(*) :: prefix
+  PetscErrorCode ierr
+  call PetscObjectSetOptionsPrefix(PetscObjectCast(obj), prefix, ierr)
+  end subroutine 
+  subroutine PetscObjectAppendOptionsPrefixTaoLineSearch(obj, prefix, ierr)
+  TaoLineSearch obj
+  character(*) :: prefix
+  PetscErrorCode ierr
+  call PetscObjectAppendOptionsPrefix(PetscObjectCast(obj), prefix, ierr)
+  end subroutine 
+  subroutine PetscObjectGetOptionsPrefixTaoLineSearch(obj, prefix, ierr)
+  TaoLineSearch obj
+  character(*) :: prefix
+  PetscErrorCode ierr
+  call PetscObjectGetOptionsPrefix(PetscObjectCast(obj), prefix, ierr)
+  end subroutine 
+  subroutine PetscObjectPrependOptionsPrefixTaoLineSearch(obj, prefix, ierr)
+  TaoLineSearch obj
+  character(*) :: prefix
+  PetscErrorCode ierr
+  call PetscObjectPrependOptionsPrefix(PetscObjectCast(obj), prefix, ierr)
+  end subroutine 
+  subroutine PetscObjectGetCommTaoLineSearch(obj, comm, ierr)
+  TaoLineSearch obj
+  MPIU_Comm :: comm
+  PetscErrorCode ierr
+  call PetscObjectGetComm(PetscObjectCast(obj), comm, ierr)
+  end subroutine 
+  subroutine PetscObjectGetTabLevelTaoLineSearch(obj, tab, ierr)
+  TaoLineSearch obj
+  PetscInt :: tab
+  PetscErrorCode ierr
+  call PetscObjectGetTabLevel(PetscObjectCast(obj), tab, ierr)
+  end subroutine 
+  subroutine PetscObjectSetTabLevelTaoLineSearch(obj, tab, ierr)
+  TaoLineSearch obj
+  PetscInt :: tab
+  PetscErrorCode ierr
+  call PetscObjectSetTabLevel(PetscObjectCast(obj), tab, ierr)
+  end subroutine 
+  subroutine PetscObjectIncrementTabLevelTaoLineSearch(obj, oldobj, tab, ierr)
+  TaoLineSearch obj
+  PetscObject :: oldobj
+  PetscInt :: tab
+  PetscErrorCode ierr
+  call PetscObjectIncrementTabLevel(PetscObjectCast(obj), oldobj, tab, ierr)
+  end subroutine 
+  subroutine PetscObjectGetNewTagTaoLineSearch(obj, tag, ierr)
+  TaoLineSearch obj
+  PetscMPIInt :: tag
+  PetscErrorCode ierr
+  call PetscObjectGetNewTag(PetscObjectCast(obj), tag, ierr)
+  end subroutine 
+  subroutine PetscObjectGetClassIdTaoLineSearch(obj, classid, ierr)
+  TaoLineSearch obj
+  PetscClassId :: classid
+  PetscErrorCode ierr
+  call PetscObjectGetClassId(PetscObjectCast(obj), classid, ierr)
+  end subroutine 
+  subroutine PetscObjectGetClassNameTaoLineSearch(obj, classname, ierr)
+  TaoLineSearch obj
+  character(*) :: classname
+  PetscErrorCode ierr
+  call PetscObjectGetClassName(PetscObjectCast(obj), classname, ierr)
+  end subroutine 
+  subroutine PetscObjectSetNameTaoLineSearch(obj, name, ierr)
+  TaoLineSearch obj
+  character(*) :: name
+  PetscErrorCode ierr
+  call PetscObjectSetName(PetscObjectCast(obj), name, ierr)
+  end subroutine 
+  subroutine PetscObjectPrintClassNamePrefixTypeTaoLineSearch(obj, viewer, ierr)
+  TaoLineSearch obj
+  PetscViewer :: viewer
+  PetscErrorCode ierr
+  call PetscObjectPrintClassNamePrefixType(PetscObjectCast(obj), viewer, ierr)
+  end subroutine 
+  subroutine PetscObjectNameTaoLineSearch(obj, ierr)
+  TaoLineSearch obj
+  PetscErrorCode ierr
+  call PetscObjectName(PetscObjectCast(obj), ierr)
+  end subroutine 
+  subroutine PetscObjectChangeTypeNameTaoLineSearch(obj, type_name, ierr)
+  TaoLineSearch obj
+  character(*) :: type_name
+  PetscErrorCode ierr
+  call PetscObjectChangeTypeName(PetscObjectCast(obj), type_name, ierr)
+  end subroutine 
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT:: TaoLineSearchConvergedReasonnotequals
+!DEC$ ATTRIBUTES DLLEXPORT:: TaoLineSearchConvergedReasonequals
+#endif
+
+  function TaoLineSearchConvergedReasonnotequals(A,B)
+    logical TaoLineSearchConvergedReasonnotequals
+    type(eTaoLineSearchConvergedReason), intent(in) :: A,B
+    TaoLineSearchConvergedReasonnotequals = (A%v .ne. B%v)
+  end function
+  function TaoLineSearchConvergedReasonequals(A,B)
+    logical TaoLineSearchConvergedReasonequals
+    type(eTaoLineSearchConvergedReason), intent(in) :: A,B
+    TaoLineSearchConvergedReasonequals = (A%v .eq. B%v)
+  end function

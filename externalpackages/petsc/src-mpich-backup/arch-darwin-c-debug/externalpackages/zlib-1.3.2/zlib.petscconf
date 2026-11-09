@@ -1,0 +1,2 @@
+args: CC="/Users/7092946/Desktop/GitHub/ISSM/externalpackages/petsc/install/bin/mpicc" CFLAGS="-Wno-sign-conversion -Wno-float-conversion -Wno-implicit-float-conversion -Qunused-arguments -fno-stack-check -O0 -g" prefix="/Users/7092946/Desktop/GitHub/ISSM/externalpackages/petsc/install"
+cargs: 

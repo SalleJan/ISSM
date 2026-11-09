@@ -2,21 +2,52 @@
 md.miscellaneous.name='SeaRISEgreenland';
 md.mesh.epsg=3413;
 
+md.transient.ismovingfront=1;
+md.transient.isgroundingline=1;
+
 disp('   Loading SeaRISE data from NetCDF');
 ncdata='../Data/Greenland_5km_dev1.2.nc';
+ncdata_bedrock = '../Data/BedMachineGreenland-v6.6.nc';
 x1    = ncread(ncdata,'x1');
 y1    = ncread(ncdata,'y1');
 usrf  = ncread(ncdata,'usrf')';
+%usrf  = ncread(ncdata_bedrock, 'surface');
 topg  = ncread(ncdata,'topg')';
+topg = ncread(ncdata_bedrock, 'bed');
+x1_bed = ncread(ncdata_bedrock, 'x');
+y1_bed = ncread(ncdata_bedrock, 'y');
 velx  = ncread(ncdata,'surfvelx')';
 vely  = ncread(ncdata,'surfvely')';
 temp  = ncread(ncdata,'airtemp2m')';
 smb   = ncread(ncdata,'smb')';
 gflux = ncread(ncdata,'bheatflx')';
+mask = ncread(ncdata_bedrock,'mask');
 
 disp('   Interpolating surface and bedrock');
-md.geometry.base     = InterpFromGridToMesh(x1,y1,topg,md.mesh.x,md.mesh.y,0);
+[md.mesh.lat,md.mesh.long]  = xy2ll(md.mesh.x,md.mesh.y,+1,39,71);
+[xi,yi]= ll2xy(md.mesh.lat,md.mesh.long,+1,45,70);
+md.geometry.base     = InterpFromGridToMesh(double(x1_bed),double(flipud(y1_bed)),flipud(topg'),xi,yi,0);
+%md.geometry.base     = InterpFromGridToMesh(x1,y1,topg,md.mesh.x,md.mesh.y,0);
+md.geometry.bed = md.geometry.base;
+%md.geometry.surface = InterpFromGridToMesh(double(x1_bed),double(flipud(y1_bed)),flipud(usrf'),xi,yi,0);
 md.geometry.surface = InterpFromGridToMesh(x1,y1,usrf,md.mesh.x,md.mesh.y,0);
+mask_ice = InterpFromGridToMesh(double(x1_bed),double(flipud(y1_bed)),flipud(double(mask')),xi,yi,0);
+
+pos_ocean = find(mask_ice==0 | mask_ice==3);
+pos_land = find(mask_ice==1 | mask_ice==2);
+pos_ice = find(mask_ice==2 | mask_ice==3);
+pos_noice = find(mask_ice==1 | mask_ice==0);
+md.mask.ocean_levelset(pos_ocean) = -1;
+md.mask.ocean_levelset(pos_land) = 1;
+md.mask.ice_levelset(pos_ice) = -1;
+md.mask.ice_levelset(pos_noice) = 1;
+
+%Stuff for ismovingfront
+%md.levelset.kill_icebergs=1;
+md.levelset.spclevelset = NaN*ones(md.mesh.numberofvertices,1);
+calving = [2000*ones(md.mesh.numberofvertices,1) 0*ones(md.mesh.numberofvertices,1)];
+md.calving.calvingrate = [calving;1 10];
+md.frontalforcings.meltingrate = zeros(md.mesh.numberofvertices,1);
 
 disp('   Constructing thickness');
 md.geometry.thickness=md.geometry.surface-md.geometry.base;
@@ -51,12 +82,12 @@ md.friction.q=ones(md.mesh.numberofelements,1);
 
 disp('   Construct ice rheological properties');
 md.materials.rheology_n=3*ones(md.mesh.numberofelements,1);
-md.materials.rheology_B=paterson(md.initialization.temperature);
+md.materials.rheology_B=cuffey(md.initialization.temperature);
 md.friction.q=ones(md.mesh.numberofelements,1);
 md.friction.p=ones(md.mesh.numberofelements,1);
 
 disp('   Set other boundary conditions');
-md.mask.ice_levelset(md.mesh.vertexonboundary==1)=0;
+%md.mask.ice_levelset(md.mesh.vertexonboundary==1)=0;
 md.basalforcings.floatingice_melting_rate = zeros(md.mesh.numberofvertices,1);
 md.basalforcings.groundedice_melting_rate = zeros(md.mesh.numberofvertices,1);
 md.thermal.spctemperature     = [md.initialization.temperature;1]; %impose observed temperature on surface

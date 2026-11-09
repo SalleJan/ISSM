@@ -1,0 +1,1506 @@
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT:: TSnotequals
+!DEC$ ATTRIBUTES DLLEXPORT:: TSequals
+#endif
+
+  function TSnotequals(A,B)
+    logical TSnotequals
+    type(tTS), intent(in) :: A,B
+    TSnotequals = (A%v .ne. B%v)
+  end function
+  function TSequals(A,B)
+    logical TSequals
+    type(tTS), intent(in) :: A,B
+    TSequals = (A%v .eq. B%v)
+  end function
+  function PetscObjectCastTS(obj)
+    TS obj
+    PetscObject PetscObjectCastTS
+    PetscObjectCastTS%v = obj%v
+  end function 
+  subroutine PetscBarrierTS(obj,ierr)
+    TS obj
+    PetscErrorCode ierr
+    call PetscBarrier(PetscObjectCast(obj),ierr)
+  end subroutine 
+#if defined(PETSC_HAVE_SAWS)
+  subroutine PetscObjectSAWsTakeAccessTS(obj, ierr)
+  TS obj
+  PetscErrorCode ierr
+  call PetscObjectSAWsTakeAccess(PetscObjectCast(obj), ierr)
+  end subroutine 
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  subroutine PetscObjectSAWsGrantAccessTS(obj, ierr)
+  TS obj
+  PetscErrorCode ierr
+  call PetscObjectSAWsGrantAccess(PetscObjectCast(obj), ierr)
+  end subroutine 
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  subroutine PetscObjectSAWsBlockTS(obj, ierr)
+  TS obj
+  PetscErrorCode ierr
+  call PetscObjectSAWsBlock(PetscObjectCast(obj), ierr)
+  end subroutine 
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  subroutine PetscObjectSAWsSetBlockTS(obj, flg, ierr)
+  TS obj
+  PetscBool :: flg
+  PetscErrorCode ierr
+  call PetscObjectSAWsSetBlock(PetscObjectCast(obj), flg, ierr)
+  end subroutine 
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  subroutine PetscObjectSAWsViewOffTS(obj, ierr)
+  TS obj
+  PetscErrorCode ierr
+  call PetscObjectSAWsViewOff(PetscObjectCast(obj), ierr)
+  end subroutine 
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  subroutine PetscObjectViewSAWsTS(obj, viewer, ierr)
+  TS obj
+  PetscViewer :: viewer
+  PetscErrorCode ierr
+  call PetscObjectViewSAWs(PetscObjectCast(obj), viewer, ierr)
+  end subroutine 
+#endif
+  subroutine PetscObjectGetTypeTS(obj, type, ierr)
+  TS obj
+  character(*) :: type
+  PetscErrorCode ierr
+  call PetscObjectGetType(PetscObjectCast(obj), type, ierr)
+  end subroutine 
+  subroutine PetscObjectSetPrintedOptionsTS(obj, ierr)
+  TS obj
+  PetscErrorCode ierr
+  call PetscObjectSetPrintedOptions(PetscObjectCast(obj), ierr)
+  end subroutine 
+  subroutine PetscObjectInheritPrintedOptionsTS(pobj, obj, ierr)
+  TS pobj
+  PetscObject :: obj
+  PetscErrorCode ierr
+  call PetscObjectInheritPrintedOptions(PetscObjectCast(pobj), obj, ierr)
+  end subroutine 
+  subroutine PetscObjectAddOptionsHandlerTS(obj, handle, destroy, ctx, ierr)
+  TS obj
+  external :: handle
+  external :: destroy
+  type(*) :: ctx
+  PetscErrorCode ierr
+  call PetscObjectAddOptionsHandler(PetscObjectCast(obj), handle, destroy, ctx, ierr)
+  end subroutine 
+  subroutine PetscObjectProcessOptionsHandlersTS(obj, PetscOptionsObject, ierr)
+  TS obj
+  PetscOptionItems :: PetscOptionsObject
+  PetscErrorCode ierr
+  call PetscObjectProcessOptionsHandlers(PetscObjectCast(obj), PetscOptionsObject, ierr)
+  end subroutine 
+  subroutine PetscObjectDestroyOptionsHandlersTS(obj, ierr)
+  TS obj
+  PetscErrorCode ierr
+  call PetscObjectDestroyOptionsHandlers(PetscObjectCast(obj), ierr)
+  end subroutine 
+  subroutine PetscObjectReferenceTS(obj, ierr)
+  TS obj
+  PetscErrorCode ierr
+  call PetscObjectReference(PetscObjectCast(obj), ierr)
+  end subroutine 
+  subroutine PetscObjectGetReferenceTS(obj, cnt, ierr)
+  TS obj
+  PetscInt :: cnt
+  PetscErrorCode ierr
+  call PetscObjectGetReference(PetscObjectCast(obj), cnt, ierr)
+  end subroutine 
+  subroutine PetscObjectDereferenceTS(obj, ierr)
+  TS obj
+  PetscErrorCode ierr
+  call PetscObjectDereference(PetscObjectCast(obj), ierr)
+  end subroutine 
+  subroutine PetscObjectRemoveReferenceTS(obj, name, ierr)
+  TS obj
+  character(*) :: name
+  PetscErrorCode ierr
+  call PetscObjectRemoveReference(PetscObjectCast(obj), name, ierr)
+  end subroutine 
+  subroutine PetscObjectHasFunctionTS(obj, name, has, ierr)
+  TS obj
+  character(*) :: name
+  PetscBool :: has
+  PetscErrorCode ierr
+  call PetscObjectHasFunction(PetscObjectCast(obj), name, has, ierr)
+  end subroutine 
+  subroutine PetscObjectSetFromOptionsTS(obj, ierr)
+  TS obj
+  PetscErrorCode ierr
+  call PetscObjectSetFromOptions(PetscObjectCast(obj), ierr)
+  end subroutine 
+  subroutine PetscObjectSetUpTS(obj, ierr)
+  TS obj
+  PetscErrorCode ierr
+  call PetscObjectSetUp(PetscObjectCast(obj), ierr)
+  end subroutine 
+  subroutine PetscObjectGetNameTS(obj, name, ierr)
+  TS obj
+  character(*) :: name
+  PetscErrorCode ierr
+  call PetscObjectGetName(PetscObjectCast(obj), name, ierr)
+  end subroutine 
+  subroutine PetscObjectDestroyTS(obj, ierr)
+  TS obj
+  PetscErrorCode ierr
+  call PetscObjectDestroy(PetscObjectCast(obj), ierr)
+  end subroutine 
+  subroutine PetscObjectViewTS(obj, viewer, ierr)
+  TS obj
+  PetscViewer :: viewer
+  PetscErrorCode ierr
+  call PetscObjectView(PetscObjectCast(obj), viewer, ierr)
+  end subroutine 
+  subroutine PetscObjectViewFromOptionsTS(obj, bobj, name, ierr)
+  TS obj
+  PetscObject :: bobj
+  character(*) :: name
+  PetscErrorCode ierr
+  call PetscObjectViewFromOptions(PetscObjectCast(obj), bobj, name, ierr)
+  end subroutine 
+  subroutine PetscObjectTypeCompareTS(obj, type_name, same, ierr)
+  TS obj
+  character(*) :: type_name
+  PetscBool :: same
+  PetscErrorCode ierr
+  call PetscObjectTypeCompare(PetscObjectCast(obj), type_name, same, ierr)
+  end subroutine 
+  subroutine PetscObjectObjectTypeCompareTS(obj1, obj2, same, ierr)
+  TS obj1
+  PetscObject :: obj2
+  PetscBool :: same
+  PetscErrorCode ierr
+  call PetscObjectObjectTypeCompare(PetscObjectCast(obj1), obj2, same, ierr)
+  end subroutine 
+  subroutine PetscObjectBaseTypeCompareTS(obj, type_name, same, ierr)
+  TS obj
+  character(*) :: type_name
+  PetscBool :: same
+  PetscErrorCode ierr
+  call PetscObjectBaseTypeCompare(PetscObjectCast(obj), type_name, same, ierr)
+  end subroutine 
+  subroutine PetscObjectRegisterDestroyTS(obj, ierr)
+  TS obj
+  PetscErrorCode ierr
+  call PetscObjectRegisterDestroy(PetscObjectCast(obj), ierr)
+  end subroutine 
+  subroutine PetscObjectGetIdTS(obj, id, ierr)
+  TS obj
+  PetscObjectId :: id
+  PetscErrorCode ierr
+  call PetscObjectGetId(PetscObjectCast(obj), id, ierr)
+  end subroutine 
+  subroutine PetscObjectCompareIdTS(obj, id, eq, ierr)
+  TS obj
+  PetscObjectId :: id
+  PetscBool :: eq
+  PetscErrorCode ierr
+  call PetscObjectCompareId(PetscObjectCast(obj), id, eq, ierr)
+  end subroutine 
+  subroutine PetscObjectGetOptionsTS(obj, options, ierr)
+  TS obj
+  PetscOptions :: options
+  PetscErrorCode ierr
+  call PetscObjectGetOptions(PetscObjectCast(obj), options, ierr)
+  end subroutine 
+  subroutine PetscObjectSetOptionsTS(obj, options, ierr)
+  TS obj
+  PetscOptions :: options
+  PetscErrorCode ierr
+  call PetscObjectSetOptions(PetscObjectCast(obj), options, ierr)
+  end subroutine 
+  subroutine PetscObjectSetOptionsPrefixTS(obj, prefix, ierr)
+  TS obj
+  character(*) :: prefix
+  PetscErrorCode ierr
+  call PetscObjectSetOptionsPrefix(PetscObjectCast(obj), prefix, ierr)
+  end subroutine 
+  subroutine PetscObjectAppendOptionsPrefixTS(obj, prefix, ierr)
+  TS obj
+  character(*) :: prefix
+  PetscErrorCode ierr
+  call PetscObjectAppendOptionsPrefix(PetscObjectCast(obj), prefix, ierr)
+  end subroutine 
+  subroutine PetscObjectGetOptionsPrefixTS(obj, prefix, ierr)
+  TS obj
+  character(*) :: prefix
+  PetscErrorCode ierr
+  call PetscObjectGetOptionsPrefix(PetscObjectCast(obj), prefix, ierr)
+  end subroutine 
+  subroutine PetscObjectPrependOptionsPrefixTS(obj, prefix, ierr)
+  TS obj
+  character(*) :: prefix
+  PetscErrorCode ierr
+  call PetscObjectPrependOptionsPrefix(PetscObjectCast(obj), prefix, ierr)
+  end subroutine 
+  subroutine PetscObjectGetCommTS(obj, comm, ierr)
+  TS obj
+  MPIU_Comm :: comm
+  PetscErrorCode ierr
+  call PetscObjectGetComm(PetscObjectCast(obj), comm, ierr)
+  end subroutine 
+  subroutine PetscObjectGetTabLevelTS(obj, tab, ierr)
+  TS obj
+  PetscInt :: tab
+  PetscErrorCode ierr
+  call PetscObjectGetTabLevel(PetscObjectCast(obj), tab, ierr)
+  end subroutine 
+  subroutine PetscObjectSetTabLevelTS(obj, tab, ierr)
+  TS obj
+  PetscInt :: tab
+  PetscErrorCode ierr
+  call PetscObjectSetTabLevel(PetscObjectCast(obj), tab, ierr)
+  end subroutine 
+  subroutine PetscObjectIncrementTabLevelTS(obj, oldobj, tab, ierr)
+  TS obj
+  PetscObject :: oldobj
+  PetscInt :: tab
+  PetscErrorCode ierr
+  call PetscObjectIncrementTabLevel(PetscObjectCast(obj), oldobj, tab, ierr)
+  end subroutine 
+  subroutine PetscObjectGetNewTagTS(obj, tag, ierr)
+  TS obj
+  PetscMPIInt :: tag
+  PetscErrorCode ierr
+  call PetscObjectGetNewTag(PetscObjectCast(obj), tag, ierr)
+  end subroutine 
+  subroutine PetscObjectGetClassIdTS(obj, classid, ierr)
+  TS obj
+  PetscClassId :: classid
+  PetscErrorCode ierr
+  call PetscObjectGetClassId(PetscObjectCast(obj), classid, ierr)
+  end subroutine 
+  subroutine PetscObjectGetClassNameTS(obj, classname, ierr)
+  TS obj
+  character(*) :: classname
+  PetscErrorCode ierr
+  call PetscObjectGetClassName(PetscObjectCast(obj), classname, ierr)
+  end subroutine 
+  subroutine PetscObjectSetNameTS(obj, name, ierr)
+  TS obj
+  character(*) :: name
+  PetscErrorCode ierr
+  call PetscObjectSetName(PetscObjectCast(obj), name, ierr)
+  end subroutine 
+  subroutine PetscObjectPrintClassNamePrefixTypeTS(obj, viewer, ierr)
+  TS obj
+  PetscViewer :: viewer
+  PetscErrorCode ierr
+  call PetscObjectPrintClassNamePrefixType(PetscObjectCast(obj), viewer, ierr)
+  end subroutine 
+  subroutine PetscObjectNameTS(obj, ierr)
+  TS obj
+  PetscErrorCode ierr
+  call PetscObjectName(PetscObjectCast(obj), ierr)
+  end subroutine 
+  subroutine PetscObjectChangeTypeNameTS(obj, type_name, ierr)
+  TS obj
+  character(*) :: type_name
+  PetscErrorCode ierr
+  call PetscObjectChangeTypeName(PetscObjectCast(obj), type_name, ierr)
+  end subroutine 
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT:: TSTrajectorynotequals
+!DEC$ ATTRIBUTES DLLEXPORT:: TSTrajectoryequals
+#endif
+
+  function TSTrajectorynotequals(A,B)
+    logical TSTrajectorynotequals
+    type(tTSTrajectory), intent(in) :: A,B
+    TSTrajectorynotequals = (A%v .ne. B%v)
+  end function
+  function TSTrajectoryequals(A,B)
+    logical TSTrajectoryequals
+    type(tTSTrajectory), intent(in) :: A,B
+    TSTrajectoryequals = (A%v .eq. B%v)
+  end function
+  function PetscObjectCastTSTrajectory(obj)
+    TSTrajectory obj
+    PetscObject PetscObjectCastTSTrajectory
+    PetscObjectCastTSTrajectory%v = obj%v
+  end function 
+  subroutine PetscBarrierTSTrajectory(obj,ierr)
+    TSTrajectory obj
+    PetscErrorCode ierr
+    call PetscBarrier(PetscObjectCast(obj),ierr)
+  end subroutine 
+#if defined(PETSC_HAVE_SAWS)
+  subroutine PetscObjectSAWsTakeAccessTSTrajectory(obj, ierr)
+  TSTrajectory obj
+  PetscErrorCode ierr
+  call PetscObjectSAWsTakeAccess(PetscObjectCast(obj), ierr)
+  end subroutine 
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  subroutine PetscObjectSAWsGrantAccessTSTrajectory(obj, ierr)
+  TSTrajectory obj
+  PetscErrorCode ierr
+  call PetscObjectSAWsGrantAccess(PetscObjectCast(obj), ierr)
+  end subroutine 
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  subroutine PetscObjectSAWsBlockTSTrajectory(obj, ierr)
+  TSTrajectory obj
+  PetscErrorCode ierr
+  call PetscObjectSAWsBlock(PetscObjectCast(obj), ierr)
+  end subroutine 
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  subroutine PetscObjectSAWsSetBlockTSTrajectory(obj, flg, ierr)
+  TSTrajectory obj
+  PetscBool :: flg
+  PetscErrorCode ierr
+  call PetscObjectSAWsSetBlock(PetscObjectCast(obj), flg, ierr)
+  end subroutine 
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  subroutine PetscObjectSAWsViewOffTSTrajectory(obj, ierr)
+  TSTrajectory obj
+  PetscErrorCode ierr
+  call PetscObjectSAWsViewOff(PetscObjectCast(obj), ierr)
+  end subroutine 
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  subroutine PetscObjectViewSAWsTSTrajectory(obj, viewer, ierr)
+  TSTrajectory obj
+  PetscViewer :: viewer
+  PetscErrorCode ierr
+  call PetscObjectViewSAWs(PetscObjectCast(obj), viewer, ierr)
+  end subroutine 
+#endif
+  subroutine PetscObjectGetTypeTSTrajectory(obj, type, ierr)
+  TSTrajectory obj
+  character(*) :: type
+  PetscErrorCode ierr
+  call PetscObjectGetType(PetscObjectCast(obj), type, ierr)
+  end subroutine 
+  subroutine PetscObjectSetPrintedOptionsTSTrajectory(obj, ierr)
+  TSTrajectory obj
+  PetscErrorCode ierr
+  call PetscObjectSetPrintedOptions(PetscObjectCast(obj), ierr)
+  end subroutine 
+  subroutine PetscObjectInheritPrintedOptionsTSTrajectory(pobj, obj, ierr)
+  TSTrajectory pobj
+  PetscObject :: obj
+  PetscErrorCode ierr
+  call PetscObjectInheritPrintedOptions(PetscObjectCast(pobj), obj, ierr)
+  end subroutine 
+  subroutine PetscObjectAddOptionsHandlerTSTrajectory(obj, handle, destroy, ctx, ierr)
+  TSTrajectory obj
+  external :: handle
+  external :: destroy
+  type(*) :: ctx
+  PetscErrorCode ierr
+  call PetscObjectAddOptionsHandler(PetscObjectCast(obj), handle, destroy, ctx, ierr)
+  end subroutine 
+  subroutine PetscObjectProcessOptionsHandlersTSTrajectory(obj, PetscOptionsObject, ierr)
+  TSTrajectory obj
+  PetscOptionItems :: PetscOptionsObject
+  PetscErrorCode ierr
+  call PetscObjectProcessOptionsHandlers(PetscObjectCast(obj), PetscOptionsObject, ierr)
+  end subroutine 
+  subroutine PetscObjectDestroyOptionsHandlersTSTrajectory(obj, ierr)
+  TSTrajectory obj
+  PetscErrorCode ierr
+  call PetscObjectDestroyOptionsHandlers(PetscObjectCast(obj), ierr)
+  end subroutine 
+  subroutine PetscObjectReferenceTSTrajectory(obj, ierr)
+  TSTrajectory obj
+  PetscErrorCode ierr
+  call PetscObjectReference(PetscObjectCast(obj), ierr)
+  end subroutine 
+  subroutine PetscObjectGetReferenceTSTrajectory(obj, cnt, ierr)
+  TSTrajectory obj
+  PetscInt :: cnt
+  PetscErrorCode ierr
+  call PetscObjectGetReference(PetscObjectCast(obj), cnt, ierr)
+  end subroutine 
+  subroutine PetscObjectDereferenceTSTrajectory(obj, ierr)
+  TSTrajectory obj
+  PetscErrorCode ierr
+  call PetscObjectDereference(PetscObjectCast(obj), ierr)
+  end subroutine 
+  subroutine PetscObjectRemoveReferenceTSTrajectory(obj, name, ierr)
+  TSTrajectory obj
+  character(*) :: name
+  PetscErrorCode ierr
+  call PetscObjectRemoveReference(PetscObjectCast(obj), name, ierr)
+  end subroutine 
+  subroutine PetscObjectHasFunctionTSTrajectory(obj, name, has, ierr)
+  TSTrajectory obj
+  character(*) :: name
+  PetscBool :: has
+  PetscErrorCode ierr
+  call PetscObjectHasFunction(PetscObjectCast(obj), name, has, ierr)
+  end subroutine 
+  subroutine PetscObjectSetFromOptionsTSTrajectory(obj, ierr)
+  TSTrajectory obj
+  PetscErrorCode ierr
+  call PetscObjectSetFromOptions(PetscObjectCast(obj), ierr)
+  end subroutine 
+  subroutine PetscObjectSetUpTSTrajectory(obj, ierr)
+  TSTrajectory obj
+  PetscErrorCode ierr
+  call PetscObjectSetUp(PetscObjectCast(obj), ierr)
+  end subroutine 
+  subroutine PetscObjectGetNameTSTrajectory(obj, name, ierr)
+  TSTrajectory obj
+  character(*) :: name
+  PetscErrorCode ierr
+  call PetscObjectGetName(PetscObjectCast(obj), name, ierr)
+  end subroutine 
+  subroutine PetscObjectDestroyTSTrajectory(obj, ierr)
+  TSTrajectory obj
+  PetscErrorCode ierr
+  call PetscObjectDestroy(PetscObjectCast(obj), ierr)
+  end subroutine 
+  subroutine PetscObjectViewTSTrajectory(obj, viewer, ierr)
+  TSTrajectory obj
+  PetscViewer :: viewer
+  PetscErrorCode ierr
+  call PetscObjectView(PetscObjectCast(obj), viewer, ierr)
+  end subroutine 
+  subroutine PetscObjectViewFromOptionsTSTrajectory(obj, bobj, name, ierr)
+  TSTrajectory obj
+  PetscObject :: bobj
+  character(*) :: name
+  PetscErrorCode ierr
+  call PetscObjectViewFromOptions(PetscObjectCast(obj), bobj, name, ierr)
+  end subroutine 
+  subroutine PetscObjectTypeCompareTSTrajectory(obj, type_name, same, ierr)
+  TSTrajectory obj
+  character(*) :: type_name
+  PetscBool :: same
+  PetscErrorCode ierr
+  call PetscObjectTypeCompare(PetscObjectCast(obj), type_name, same, ierr)
+  end subroutine 
+  subroutine PetscObjectObjectTypeCompareTSTrajectory(obj1, obj2, same, ierr)
+  TSTrajectory obj1
+  PetscObject :: obj2
+  PetscBool :: same
+  PetscErrorCode ierr
+  call PetscObjectObjectTypeCompare(PetscObjectCast(obj1), obj2, same, ierr)
+  end subroutine 
+  subroutine PetscObjectBaseTypeCompareTSTrajectory(obj, type_name, same, ierr)
+  TSTrajectory obj
+  character(*) :: type_name
+  PetscBool :: same
+  PetscErrorCode ierr
+  call PetscObjectBaseTypeCompare(PetscObjectCast(obj), type_name, same, ierr)
+  end subroutine 
+  subroutine PetscObjectRegisterDestroyTSTrajectory(obj, ierr)
+  TSTrajectory obj
+  PetscErrorCode ierr
+  call PetscObjectRegisterDestroy(PetscObjectCast(obj), ierr)
+  end subroutine 
+  subroutine PetscObjectGetIdTSTrajectory(obj, id, ierr)
+  TSTrajectory obj
+  PetscObjectId :: id
+  PetscErrorCode ierr
+  call PetscObjectGetId(PetscObjectCast(obj), id, ierr)
+  end subroutine 
+  subroutine PetscObjectCompareIdTSTrajectory(obj, id, eq, ierr)
+  TSTrajectory obj
+  PetscObjectId :: id
+  PetscBool :: eq
+  PetscErrorCode ierr
+  call PetscObjectCompareId(PetscObjectCast(obj), id, eq, ierr)
+  end subroutine 
+  subroutine PetscObjectGetOptionsTSTrajectory(obj, options, ierr)
+  TSTrajectory obj
+  PetscOptions :: options
+  PetscErrorCode ierr
+  call PetscObjectGetOptions(PetscObjectCast(obj), options, ierr)
+  end subroutine 
+  subroutine PetscObjectSetOptionsTSTrajectory(obj, options, ierr)
+  TSTrajectory obj
+  PetscOptions :: options
+  PetscErrorCode ierr
+  call PetscObjectSetOptions(PetscObjectCast(obj), options, ierr)
+  end subroutine 
+  subroutine PetscObjectSetOptionsPrefixTSTrajectory(obj, prefix, ierr)
+  TSTrajectory obj
+  character(*) :: prefix
+  PetscErrorCode ierr
+  call PetscObjectSetOptionsPrefix(PetscObjectCast(obj), prefix, ierr)
+  end subroutine 
+  subroutine PetscObjectAppendOptionsPrefixTSTrajectory(obj, prefix, ierr)
+  TSTrajectory obj
+  character(*) :: prefix
+  PetscErrorCode ierr
+  call PetscObjectAppendOptionsPrefix(PetscObjectCast(obj), prefix, ierr)
+  end subroutine 
+  subroutine PetscObjectGetOptionsPrefixTSTrajectory(obj, prefix, ierr)
+  TSTrajectory obj
+  character(*) :: prefix
+  PetscErrorCode ierr
+  call PetscObjectGetOptionsPrefix(PetscObjectCast(obj), prefix, ierr)
+  end subroutine 
+  subroutine PetscObjectPrependOptionsPrefixTSTrajectory(obj, prefix, ierr)
+  TSTrajectory obj
+  character(*) :: prefix
+  PetscErrorCode ierr
+  call PetscObjectPrependOptionsPrefix(PetscObjectCast(obj), prefix, ierr)
+  end subroutine 
+  subroutine PetscObjectGetCommTSTrajectory(obj, comm, ierr)
+  TSTrajectory obj
+  MPIU_Comm :: comm
+  PetscErrorCode ierr
+  call PetscObjectGetComm(PetscObjectCast(obj), comm, ierr)
+  end subroutine 
+  subroutine PetscObjectGetTabLevelTSTrajectory(obj, tab, ierr)
+  TSTrajectory obj
+  PetscInt :: tab
+  PetscErrorCode ierr
+  call PetscObjectGetTabLevel(PetscObjectCast(obj), tab, ierr)
+  end subroutine 
+  subroutine PetscObjectSetTabLevelTSTrajectory(obj, tab, ierr)
+  TSTrajectory obj
+  PetscInt :: tab
+  PetscErrorCode ierr
+  call PetscObjectSetTabLevel(PetscObjectCast(obj), tab, ierr)
+  end subroutine 
+  subroutine PetscObjectIncrementTabLevelTSTrajectory(obj, oldobj, tab, ierr)
+  TSTrajectory obj
+  PetscObject :: oldobj
+  PetscInt :: tab
+  PetscErrorCode ierr
+  call PetscObjectIncrementTabLevel(PetscObjectCast(obj), oldobj, tab, ierr)
+  end subroutine 
+  subroutine PetscObjectGetNewTagTSTrajectory(obj, tag, ierr)
+  TSTrajectory obj
+  PetscMPIInt :: tag
+  PetscErrorCode ierr
+  call PetscObjectGetNewTag(PetscObjectCast(obj), tag, ierr)
+  end subroutine 
+  subroutine PetscObjectGetClassIdTSTrajectory(obj, classid, ierr)
+  TSTrajectory obj
+  PetscClassId :: classid
+  PetscErrorCode ierr
+  call PetscObjectGetClassId(PetscObjectCast(obj), classid, ierr)
+  end subroutine 
+  subroutine PetscObjectGetClassNameTSTrajectory(obj, classname, ierr)
+  TSTrajectory obj
+  character(*) :: classname
+  PetscErrorCode ierr
+  call PetscObjectGetClassName(PetscObjectCast(obj), classname, ierr)
+  end subroutine 
+  subroutine PetscObjectSetNameTSTrajectory(obj, name, ierr)
+  TSTrajectory obj
+  character(*) :: name
+  PetscErrorCode ierr
+  call PetscObjectSetName(PetscObjectCast(obj), name, ierr)
+  end subroutine 
+  subroutine PetscObjectPrintClassNamePrefixTypeTSTrajectory(obj, viewer, ierr)
+  TSTrajectory obj
+  PetscViewer :: viewer
+  PetscErrorCode ierr
+  call PetscObjectPrintClassNamePrefixType(PetscObjectCast(obj), viewer, ierr)
+  end subroutine 
+  subroutine PetscObjectNameTSTrajectory(obj, ierr)
+  TSTrajectory obj
+  PetscErrorCode ierr
+  call PetscObjectName(PetscObjectCast(obj), ierr)
+  end subroutine 
+  subroutine PetscObjectChangeTypeNameTSTrajectory(obj, type_name, ierr)
+  TSTrajectory obj
+  character(*) :: type_name
+  PetscErrorCode ierr
+  call PetscObjectChangeTypeName(PetscObjectCast(obj), type_name, ierr)
+  end subroutine 
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT:: TSMonitorDrawCtxnotequals
+!DEC$ ATTRIBUTES DLLEXPORT:: TSMonitorDrawCtxequals
+#endif
+
+  function TSMonitorDrawCtxnotequals(A,B)
+    logical TSMonitorDrawCtxnotequals
+    type(tTSMonitorDrawCtx), intent(in) :: A,B
+    TSMonitorDrawCtxnotequals = (A%v .ne. B%v)
+  end function
+  function TSMonitorDrawCtxequals(A,B)
+    logical TSMonitorDrawCtxequals
+    type(tTSMonitorDrawCtx), intent(in) :: A,B
+    TSMonitorDrawCtxequals = (A%v .eq. B%v)
+  end function
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT:: TSMonitorSolutionCtxnotequals
+!DEC$ ATTRIBUTES DLLEXPORT:: TSMonitorSolutionCtxequals
+#endif
+
+  function TSMonitorSolutionCtxnotequals(A,B)
+    logical TSMonitorSolutionCtxnotequals
+    type(tTSMonitorSolutionCtx), intent(in) :: A,B
+    TSMonitorSolutionCtxnotequals = (A%v .ne. B%v)
+  end function
+  function TSMonitorSolutionCtxequals(A,B)
+    logical TSMonitorSolutionCtxequals
+    type(tTSMonitorSolutionCtx), intent(in) :: A,B
+    TSMonitorSolutionCtxequals = (A%v .eq. B%v)
+  end function
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT:: TSMonitorVTKCtxnotequals
+!DEC$ ATTRIBUTES DLLEXPORT:: TSMonitorVTKCtxequals
+#endif
+
+  function TSMonitorVTKCtxnotequals(A,B)
+    logical TSMonitorVTKCtxnotequals
+    type(tTSMonitorVTKCtx), intent(in) :: A,B
+    TSMonitorVTKCtxnotequals = (A%v .ne. B%v)
+  end function
+  function TSMonitorVTKCtxequals(A,B)
+    logical TSMonitorVTKCtxequals
+    type(tTSMonitorVTKCtx), intent(in) :: A,B
+    TSMonitorVTKCtxequals = (A%v .eq. B%v)
+  end function
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT:: TSMonitorLGCtxnotequals
+!DEC$ ATTRIBUTES DLLEXPORT:: TSMonitorLGCtxequals
+#endif
+
+  function TSMonitorLGCtxnotequals(A,B)
+    logical TSMonitorLGCtxnotequals
+    type(tTSMonitorLGCtx), intent(in) :: A,B
+    TSMonitorLGCtxnotequals = (A%v .ne. B%v)
+  end function
+  function TSMonitorLGCtxequals(A,B)
+    logical TSMonitorLGCtxequals
+    type(tTSMonitorLGCtx), intent(in) :: A,B
+    TSMonitorLGCtxequals = (A%v .eq. B%v)
+  end function
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT:: TSMonitorLGCtxNetworknotequals
+!DEC$ ATTRIBUTES DLLEXPORT:: TSMonitorLGCtxNetworkequals
+#endif
+
+  function TSMonitorLGCtxNetworknotequals(A,B)
+    logical TSMonitorLGCtxNetworknotequals
+    type(tTSMonitorLGCtxNetwork), intent(in) :: A,B
+    TSMonitorLGCtxNetworknotequals = (A%v .ne. B%v)
+  end function
+  function TSMonitorLGCtxNetworkequals(A,B)
+    logical TSMonitorLGCtxNetworkequals
+    type(tTSMonitorLGCtxNetwork), intent(in) :: A,B
+    TSMonitorLGCtxNetworkequals = (A%v .eq. B%v)
+  end function
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT:: TSMonitorEnvelopeCtxnotequals
+!DEC$ ATTRIBUTES DLLEXPORT:: TSMonitorEnvelopeCtxequals
+#endif
+
+  function TSMonitorEnvelopeCtxnotequals(A,B)
+    logical TSMonitorEnvelopeCtxnotequals
+    type(tTSMonitorEnvelopeCtx), intent(in) :: A,B
+    TSMonitorEnvelopeCtxnotequals = (A%v .ne. B%v)
+  end function
+  function TSMonitorEnvelopeCtxequals(A,B)
+    logical TSMonitorEnvelopeCtxequals
+    type(tTSMonitorEnvelopeCtx), intent(in) :: A,B
+    TSMonitorEnvelopeCtxequals = (A%v .eq. B%v)
+  end function
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT:: TSMonitorSPEigCtxnotequals
+!DEC$ ATTRIBUTES DLLEXPORT:: TSMonitorSPEigCtxequals
+#endif
+
+  function TSMonitorSPEigCtxnotequals(A,B)
+    logical TSMonitorSPEigCtxnotequals
+    type(tTSMonitorSPEigCtx), intent(in) :: A,B
+    TSMonitorSPEigCtxnotequals = (A%v .ne. B%v)
+  end function
+  function TSMonitorSPEigCtxequals(A,B)
+    logical TSMonitorSPEigCtxequals
+    type(tTSMonitorSPEigCtx), intent(in) :: A,B
+    TSMonitorSPEigCtxequals = (A%v .eq. B%v)
+  end function
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT:: TSMonitorSPCtxnotequals
+!DEC$ ATTRIBUTES DLLEXPORT:: TSMonitorSPCtxequals
+#endif
+
+  function TSMonitorSPCtxnotequals(A,B)
+    logical TSMonitorSPCtxnotequals
+    type(tTSMonitorSPCtx), intent(in) :: A,B
+    TSMonitorSPCtxnotequals = (A%v .ne. B%v)
+  end function
+  function TSMonitorSPCtxequals(A,B)
+    logical TSMonitorSPCtxequals
+    type(tTSMonitorSPCtx), intent(in) :: A,B
+    TSMonitorSPCtxequals = (A%v .eq. B%v)
+  end function
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT:: TSMonitorHGCtxnotequals
+!DEC$ ATTRIBUTES DLLEXPORT:: TSMonitorHGCtxequals
+#endif
+
+  function TSMonitorHGCtxnotequals(A,B)
+    logical TSMonitorHGCtxnotequals
+    type(tTSMonitorHGCtx), intent(in) :: A,B
+    TSMonitorHGCtxnotequals = (A%v .ne. B%v)
+  end function
+  function TSMonitorHGCtxequals(A,B)
+    logical TSMonitorHGCtxequals
+    type(tTSMonitorHGCtx), intent(in) :: A,B
+    TSMonitorHGCtxequals = (A%v .eq. B%v)
+  end function
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT:: TSEventnotequals
+!DEC$ ATTRIBUTES DLLEXPORT:: TSEventequals
+#endif
+
+  function TSEventnotequals(A,B)
+    logical TSEventnotequals
+    type(tTSEvent), intent(in) :: A,B
+    TSEventnotequals = (A%v .ne. B%v)
+  end function
+  function TSEventequals(A,B)
+    logical TSEventequals
+    type(tTSEvent), intent(in) :: A,B
+    TSEventequals = (A%v .eq. B%v)
+  end function
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT:: TSAdaptnotequals
+!DEC$ ATTRIBUTES DLLEXPORT:: TSAdaptequals
+#endif
+
+  function TSAdaptnotequals(A,B)
+    logical TSAdaptnotequals
+    type(tTSAdapt), intent(in) :: A,B
+    TSAdaptnotequals = (A%v .ne. B%v)
+  end function
+  function TSAdaptequals(A,B)
+    logical TSAdaptequals
+    type(tTSAdapt), intent(in) :: A,B
+    TSAdaptequals = (A%v .eq. B%v)
+  end function
+  function PetscObjectCastTSAdapt(obj)
+    TSAdapt obj
+    PetscObject PetscObjectCastTSAdapt
+    PetscObjectCastTSAdapt%v = obj%v
+  end function 
+  subroutine PetscBarrierTSAdapt(obj,ierr)
+    TSAdapt obj
+    PetscErrorCode ierr
+    call PetscBarrier(PetscObjectCast(obj),ierr)
+  end subroutine 
+#if defined(PETSC_HAVE_SAWS)
+  subroutine PetscObjectSAWsTakeAccessTSAdapt(obj, ierr)
+  TSAdapt obj
+  PetscErrorCode ierr
+  call PetscObjectSAWsTakeAccess(PetscObjectCast(obj), ierr)
+  end subroutine 
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  subroutine PetscObjectSAWsGrantAccessTSAdapt(obj, ierr)
+  TSAdapt obj
+  PetscErrorCode ierr
+  call PetscObjectSAWsGrantAccess(PetscObjectCast(obj), ierr)
+  end subroutine 
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  subroutine PetscObjectSAWsBlockTSAdapt(obj, ierr)
+  TSAdapt obj
+  PetscErrorCode ierr
+  call PetscObjectSAWsBlock(PetscObjectCast(obj), ierr)
+  end subroutine 
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  subroutine PetscObjectSAWsSetBlockTSAdapt(obj, flg, ierr)
+  TSAdapt obj
+  PetscBool :: flg
+  PetscErrorCode ierr
+  call PetscObjectSAWsSetBlock(PetscObjectCast(obj), flg, ierr)
+  end subroutine 
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  subroutine PetscObjectSAWsViewOffTSAdapt(obj, ierr)
+  TSAdapt obj
+  PetscErrorCode ierr
+  call PetscObjectSAWsViewOff(PetscObjectCast(obj), ierr)
+  end subroutine 
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  subroutine PetscObjectViewSAWsTSAdapt(obj, viewer, ierr)
+  TSAdapt obj
+  PetscViewer :: viewer
+  PetscErrorCode ierr
+  call PetscObjectViewSAWs(PetscObjectCast(obj), viewer, ierr)
+  end subroutine 
+#endif
+  subroutine PetscObjectGetTypeTSAdapt(obj, type, ierr)
+  TSAdapt obj
+  character(*) :: type
+  PetscErrorCode ierr
+  call PetscObjectGetType(PetscObjectCast(obj), type, ierr)
+  end subroutine 
+  subroutine PetscObjectSetPrintedOptionsTSAdapt(obj, ierr)
+  TSAdapt obj
+  PetscErrorCode ierr
+  call PetscObjectSetPrintedOptions(PetscObjectCast(obj), ierr)
+  end subroutine 
+  subroutine PetscObjectInheritPrintedOptionsTSAdapt(pobj, obj, ierr)
+  TSAdapt pobj
+  PetscObject :: obj
+  PetscErrorCode ierr
+  call PetscObjectInheritPrintedOptions(PetscObjectCast(pobj), obj, ierr)
+  end subroutine 
+  subroutine PetscObjectAddOptionsHandlerTSAdapt(obj, handle, destroy, ctx, ierr)
+  TSAdapt obj
+  external :: handle
+  external :: destroy
+  type(*) :: ctx
+  PetscErrorCode ierr
+  call PetscObjectAddOptionsHandler(PetscObjectCast(obj), handle, destroy, ctx, ierr)
+  end subroutine 
+  subroutine PetscObjectProcessOptionsHandlersTSAdapt(obj, PetscOptionsObject, ierr)
+  TSAdapt obj
+  PetscOptionItems :: PetscOptionsObject
+  PetscErrorCode ierr
+  call PetscObjectProcessOptionsHandlers(PetscObjectCast(obj), PetscOptionsObject, ierr)
+  end subroutine 
+  subroutine PetscObjectDestroyOptionsHandlersTSAdapt(obj, ierr)
+  TSAdapt obj
+  PetscErrorCode ierr
+  call PetscObjectDestroyOptionsHandlers(PetscObjectCast(obj), ierr)
+  end subroutine 
+  subroutine PetscObjectReferenceTSAdapt(obj, ierr)
+  TSAdapt obj
+  PetscErrorCode ierr
+  call PetscObjectReference(PetscObjectCast(obj), ierr)
+  end subroutine 
+  subroutine PetscObjectGetReferenceTSAdapt(obj, cnt, ierr)
+  TSAdapt obj
+  PetscInt :: cnt
+  PetscErrorCode ierr
+  call PetscObjectGetReference(PetscObjectCast(obj), cnt, ierr)
+  end subroutine 
+  subroutine PetscObjectDereferenceTSAdapt(obj, ierr)
+  TSAdapt obj
+  PetscErrorCode ierr
+  call PetscObjectDereference(PetscObjectCast(obj), ierr)
+  end subroutine 
+  subroutine PetscObjectRemoveReferenceTSAdapt(obj, name, ierr)
+  TSAdapt obj
+  character(*) :: name
+  PetscErrorCode ierr
+  call PetscObjectRemoveReference(PetscObjectCast(obj), name, ierr)
+  end subroutine 
+  subroutine PetscObjectHasFunctionTSAdapt(obj, name, has, ierr)
+  TSAdapt obj
+  character(*) :: name
+  PetscBool :: has
+  PetscErrorCode ierr
+  call PetscObjectHasFunction(PetscObjectCast(obj), name, has, ierr)
+  end subroutine 
+  subroutine PetscObjectSetFromOptionsTSAdapt(obj, ierr)
+  TSAdapt obj
+  PetscErrorCode ierr
+  call PetscObjectSetFromOptions(PetscObjectCast(obj), ierr)
+  end subroutine 
+  subroutine PetscObjectSetUpTSAdapt(obj, ierr)
+  TSAdapt obj
+  PetscErrorCode ierr
+  call PetscObjectSetUp(PetscObjectCast(obj), ierr)
+  end subroutine 
+  subroutine PetscObjectGetNameTSAdapt(obj, name, ierr)
+  TSAdapt obj
+  character(*) :: name
+  PetscErrorCode ierr
+  call PetscObjectGetName(PetscObjectCast(obj), name, ierr)
+  end subroutine 
+  subroutine PetscObjectDestroyTSAdapt(obj, ierr)
+  TSAdapt obj
+  PetscErrorCode ierr
+  call PetscObjectDestroy(PetscObjectCast(obj), ierr)
+  end subroutine 
+  subroutine PetscObjectViewTSAdapt(obj, viewer, ierr)
+  TSAdapt obj
+  PetscViewer :: viewer
+  PetscErrorCode ierr
+  call PetscObjectView(PetscObjectCast(obj), viewer, ierr)
+  end subroutine 
+  subroutine PetscObjectViewFromOptionsTSAdapt(obj, bobj, name, ierr)
+  TSAdapt obj
+  PetscObject :: bobj
+  character(*) :: name
+  PetscErrorCode ierr
+  call PetscObjectViewFromOptions(PetscObjectCast(obj), bobj, name, ierr)
+  end subroutine 
+  subroutine PetscObjectTypeCompareTSAdapt(obj, type_name, same, ierr)
+  TSAdapt obj
+  character(*) :: type_name
+  PetscBool :: same
+  PetscErrorCode ierr
+  call PetscObjectTypeCompare(PetscObjectCast(obj), type_name, same, ierr)
+  end subroutine 
+  subroutine PetscObjectObjectTypeCompareTSAdapt(obj1, obj2, same, ierr)
+  TSAdapt obj1
+  PetscObject :: obj2
+  PetscBool :: same
+  PetscErrorCode ierr
+  call PetscObjectObjectTypeCompare(PetscObjectCast(obj1), obj2, same, ierr)
+  end subroutine 
+  subroutine PetscObjectBaseTypeCompareTSAdapt(obj, type_name, same, ierr)
+  TSAdapt obj
+  character(*) :: type_name
+  PetscBool :: same
+  PetscErrorCode ierr
+  call PetscObjectBaseTypeCompare(PetscObjectCast(obj), type_name, same, ierr)
+  end subroutine 
+  subroutine PetscObjectRegisterDestroyTSAdapt(obj, ierr)
+  TSAdapt obj
+  PetscErrorCode ierr
+  call PetscObjectRegisterDestroy(PetscObjectCast(obj), ierr)
+  end subroutine 
+  subroutine PetscObjectGetIdTSAdapt(obj, id, ierr)
+  TSAdapt obj
+  PetscObjectId :: id
+  PetscErrorCode ierr
+  call PetscObjectGetId(PetscObjectCast(obj), id, ierr)
+  end subroutine 
+  subroutine PetscObjectCompareIdTSAdapt(obj, id, eq, ierr)
+  TSAdapt obj
+  PetscObjectId :: id
+  PetscBool :: eq
+  PetscErrorCode ierr
+  call PetscObjectCompareId(PetscObjectCast(obj), id, eq, ierr)
+  end subroutine 
+  subroutine PetscObjectGetOptionsTSAdapt(obj, options, ierr)
+  TSAdapt obj
+  PetscOptions :: options
+  PetscErrorCode ierr
+  call PetscObjectGetOptions(PetscObjectCast(obj), options, ierr)
+  end subroutine 
+  subroutine PetscObjectSetOptionsTSAdapt(obj, options, ierr)
+  TSAdapt obj
+  PetscOptions :: options
+  PetscErrorCode ierr
+  call PetscObjectSetOptions(PetscObjectCast(obj), options, ierr)
+  end subroutine 
+  subroutine PetscObjectSetOptionsPrefixTSAdapt(obj, prefix, ierr)
+  TSAdapt obj
+  character(*) :: prefix
+  PetscErrorCode ierr
+  call PetscObjectSetOptionsPrefix(PetscObjectCast(obj), prefix, ierr)
+  end subroutine 
+  subroutine PetscObjectAppendOptionsPrefixTSAdapt(obj, prefix, ierr)
+  TSAdapt obj
+  character(*) :: prefix
+  PetscErrorCode ierr
+  call PetscObjectAppendOptionsPrefix(PetscObjectCast(obj), prefix, ierr)
+  end subroutine 
+  subroutine PetscObjectGetOptionsPrefixTSAdapt(obj, prefix, ierr)
+  TSAdapt obj
+  character(*) :: prefix
+  PetscErrorCode ierr
+  call PetscObjectGetOptionsPrefix(PetscObjectCast(obj), prefix, ierr)
+  end subroutine 
+  subroutine PetscObjectPrependOptionsPrefixTSAdapt(obj, prefix, ierr)
+  TSAdapt obj
+  character(*) :: prefix
+  PetscErrorCode ierr
+  call PetscObjectPrependOptionsPrefix(PetscObjectCast(obj), prefix, ierr)
+  end subroutine 
+  subroutine PetscObjectGetCommTSAdapt(obj, comm, ierr)
+  TSAdapt obj
+  MPIU_Comm :: comm
+  PetscErrorCode ierr
+  call PetscObjectGetComm(PetscObjectCast(obj), comm, ierr)
+  end subroutine 
+  subroutine PetscObjectGetTabLevelTSAdapt(obj, tab, ierr)
+  TSAdapt obj
+  PetscInt :: tab
+  PetscErrorCode ierr
+  call PetscObjectGetTabLevel(PetscObjectCast(obj), tab, ierr)
+  end subroutine 
+  subroutine PetscObjectSetTabLevelTSAdapt(obj, tab, ierr)
+  TSAdapt obj
+  PetscInt :: tab
+  PetscErrorCode ierr
+  call PetscObjectSetTabLevel(PetscObjectCast(obj), tab, ierr)
+  end subroutine 
+  subroutine PetscObjectIncrementTabLevelTSAdapt(obj, oldobj, tab, ierr)
+  TSAdapt obj
+  PetscObject :: oldobj
+  PetscInt :: tab
+  PetscErrorCode ierr
+  call PetscObjectIncrementTabLevel(PetscObjectCast(obj), oldobj, tab, ierr)
+  end subroutine 
+  subroutine PetscObjectGetNewTagTSAdapt(obj, tag, ierr)
+  TSAdapt obj
+  PetscMPIInt :: tag
+  PetscErrorCode ierr
+  call PetscObjectGetNewTag(PetscObjectCast(obj), tag, ierr)
+  end subroutine 
+  subroutine PetscObjectGetClassIdTSAdapt(obj, classid, ierr)
+  TSAdapt obj
+  PetscClassId :: classid
+  PetscErrorCode ierr
+  call PetscObjectGetClassId(PetscObjectCast(obj), classid, ierr)
+  end subroutine 
+  subroutine PetscObjectGetClassNameTSAdapt(obj, classname, ierr)
+  TSAdapt obj
+  character(*) :: classname
+  PetscErrorCode ierr
+  call PetscObjectGetClassName(PetscObjectCast(obj), classname, ierr)
+  end subroutine 
+  subroutine PetscObjectSetNameTSAdapt(obj, name, ierr)
+  TSAdapt obj
+  character(*) :: name
+  PetscErrorCode ierr
+  call PetscObjectSetName(PetscObjectCast(obj), name, ierr)
+  end subroutine 
+  subroutine PetscObjectPrintClassNamePrefixTypeTSAdapt(obj, viewer, ierr)
+  TSAdapt obj
+  PetscViewer :: viewer
+  PetscErrorCode ierr
+  call PetscObjectPrintClassNamePrefixType(PetscObjectCast(obj), viewer, ierr)
+  end subroutine 
+  subroutine PetscObjectNameTSAdapt(obj, ierr)
+  TSAdapt obj
+  PetscErrorCode ierr
+  call PetscObjectName(PetscObjectCast(obj), ierr)
+  end subroutine 
+  subroutine PetscObjectChangeTypeNameTSAdapt(obj, type_name, ierr)
+  TSAdapt obj
+  character(*) :: type_name
+  PetscErrorCode ierr
+  call PetscObjectChangeTypeName(PetscObjectCast(obj), type_name, ierr)
+  end subroutine 
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT:: TSGLLEAdaptnotequals
+!DEC$ ATTRIBUTES DLLEXPORT:: TSGLLEAdaptequals
+#endif
+
+  function TSGLLEAdaptnotequals(A,B)
+    logical TSGLLEAdaptnotequals
+    type(tTSGLLEAdapt), intent(in) :: A,B
+    TSGLLEAdaptnotequals = (A%v .ne. B%v)
+  end function
+  function TSGLLEAdaptequals(A,B)
+    logical TSGLLEAdaptequals
+    type(tTSGLLEAdapt), intent(in) :: A,B
+    TSGLLEAdaptequals = (A%v .eq. B%v)
+  end function
+  function PetscObjectCastTSGLLEAdapt(obj)
+    TSGLLEAdapt obj
+    PetscObject PetscObjectCastTSGLLEAdapt
+    PetscObjectCastTSGLLEAdapt%v = obj%v
+  end function 
+  subroutine PetscBarrierTSGLLEAdapt(obj,ierr)
+    TSGLLEAdapt obj
+    PetscErrorCode ierr
+    call PetscBarrier(PetscObjectCast(obj),ierr)
+  end subroutine 
+#if defined(PETSC_HAVE_SAWS)
+  subroutine PetscObjectSAWsTakeAccessTSGLLEAdapt(obj, ierr)
+  TSGLLEAdapt obj
+  PetscErrorCode ierr
+  call PetscObjectSAWsTakeAccess(PetscObjectCast(obj), ierr)
+  end subroutine 
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  subroutine PetscObjectSAWsGrantAccessTSGLLEAdapt(obj, ierr)
+  TSGLLEAdapt obj
+  PetscErrorCode ierr
+  call PetscObjectSAWsGrantAccess(PetscObjectCast(obj), ierr)
+  end subroutine 
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  subroutine PetscObjectSAWsBlockTSGLLEAdapt(obj, ierr)
+  TSGLLEAdapt obj
+  PetscErrorCode ierr
+  call PetscObjectSAWsBlock(PetscObjectCast(obj), ierr)
+  end subroutine 
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  subroutine PetscObjectSAWsSetBlockTSGLLEAdapt(obj, flg, ierr)
+  TSGLLEAdapt obj
+  PetscBool :: flg
+  PetscErrorCode ierr
+  call PetscObjectSAWsSetBlock(PetscObjectCast(obj), flg, ierr)
+  end subroutine 
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  subroutine PetscObjectSAWsViewOffTSGLLEAdapt(obj, ierr)
+  TSGLLEAdapt obj
+  PetscErrorCode ierr
+  call PetscObjectSAWsViewOff(PetscObjectCast(obj), ierr)
+  end subroutine 
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  subroutine PetscObjectViewSAWsTSGLLEAdapt(obj, viewer, ierr)
+  TSGLLEAdapt obj
+  PetscViewer :: viewer
+  PetscErrorCode ierr
+  call PetscObjectViewSAWs(PetscObjectCast(obj), viewer, ierr)
+  end subroutine 
+#endif
+  subroutine PetscObjectGetTypeTSGLLEAdapt(obj, type, ierr)
+  TSGLLEAdapt obj
+  character(*) :: type
+  PetscErrorCode ierr
+  call PetscObjectGetType(PetscObjectCast(obj), type, ierr)
+  end subroutine 
+  subroutine PetscObjectSetPrintedOptionsTSGLLEAdapt(obj, ierr)
+  TSGLLEAdapt obj
+  PetscErrorCode ierr
+  call PetscObjectSetPrintedOptions(PetscObjectCast(obj), ierr)
+  end subroutine 
+  subroutine PetscObjectInheritPrintedOptionsTSGLLEAdapt(pobj, obj, ierr)
+  TSGLLEAdapt pobj
+  PetscObject :: obj
+  PetscErrorCode ierr
+  call PetscObjectInheritPrintedOptions(PetscObjectCast(pobj), obj, ierr)
+  end subroutine 
+  subroutine PetscObjectAddOptionsHandlerTSGLLEAdapt(obj, handle, destroy, ctx, ierr)
+  TSGLLEAdapt obj
+  external :: handle
+  external :: destroy
+  type(*) :: ctx
+  PetscErrorCode ierr
+  call PetscObjectAddOptionsHandler(PetscObjectCast(obj), handle, destroy, ctx, ierr)
+  end subroutine 
+  subroutine PetscObjectProcessOptionsHandlersTSGLLEAdapt(obj, PetscOptionsObject, ierr)
+  TSGLLEAdapt obj
+  PetscOptionItems :: PetscOptionsObject
+  PetscErrorCode ierr
+  call PetscObjectProcessOptionsHandlers(PetscObjectCast(obj), PetscOptionsObject, ierr)
+  end subroutine 
+  subroutine PetscObjectDestroyOptionsHandlersTSGLLEAdapt(obj, ierr)
+  TSGLLEAdapt obj
+  PetscErrorCode ierr
+  call PetscObjectDestroyOptionsHandlers(PetscObjectCast(obj), ierr)
+  end subroutine 
+  subroutine PetscObjectReferenceTSGLLEAdapt(obj, ierr)
+  TSGLLEAdapt obj
+  PetscErrorCode ierr
+  call PetscObjectReference(PetscObjectCast(obj), ierr)
+  end subroutine 
+  subroutine PetscObjectGetReferenceTSGLLEAdapt(obj, cnt, ierr)
+  TSGLLEAdapt obj
+  PetscInt :: cnt
+  PetscErrorCode ierr
+  call PetscObjectGetReference(PetscObjectCast(obj), cnt, ierr)
+  end subroutine 
+  subroutine PetscObjectDereferenceTSGLLEAdapt(obj, ierr)
+  TSGLLEAdapt obj
+  PetscErrorCode ierr
+  call PetscObjectDereference(PetscObjectCast(obj), ierr)
+  end subroutine 
+  subroutine PetscObjectRemoveReferenceTSGLLEAdapt(obj, name, ierr)
+  TSGLLEAdapt obj
+  character(*) :: name
+  PetscErrorCode ierr
+  call PetscObjectRemoveReference(PetscObjectCast(obj), name, ierr)
+  end subroutine 
+  subroutine PetscObjectHasFunctionTSGLLEAdapt(obj, name, has, ierr)
+  TSGLLEAdapt obj
+  character(*) :: name
+  PetscBool :: has
+  PetscErrorCode ierr
+  call PetscObjectHasFunction(PetscObjectCast(obj), name, has, ierr)
+  end subroutine 
+  subroutine PetscObjectSetFromOptionsTSGLLEAdapt(obj, ierr)
+  TSGLLEAdapt obj
+  PetscErrorCode ierr
+  call PetscObjectSetFromOptions(PetscObjectCast(obj), ierr)
+  end subroutine 
+  subroutine PetscObjectSetUpTSGLLEAdapt(obj, ierr)
+  TSGLLEAdapt obj
+  PetscErrorCode ierr
+  call PetscObjectSetUp(PetscObjectCast(obj), ierr)
+  end subroutine 
+  subroutine PetscObjectGetNameTSGLLEAdapt(obj, name, ierr)
+  TSGLLEAdapt obj
+  character(*) :: name
+  PetscErrorCode ierr
+  call PetscObjectGetName(PetscObjectCast(obj), name, ierr)
+  end subroutine 
+  subroutine PetscObjectDestroyTSGLLEAdapt(obj, ierr)
+  TSGLLEAdapt obj
+  PetscErrorCode ierr
+  call PetscObjectDestroy(PetscObjectCast(obj), ierr)
+  end subroutine 
+  subroutine PetscObjectViewTSGLLEAdapt(obj, viewer, ierr)
+  TSGLLEAdapt obj
+  PetscViewer :: viewer
+  PetscErrorCode ierr
+  call PetscObjectView(PetscObjectCast(obj), viewer, ierr)
+  end subroutine 
+  subroutine PetscObjectViewFromOptionsTSGLLEAdapt(obj, bobj, name, ierr)
+  TSGLLEAdapt obj
+  PetscObject :: bobj
+  character(*) :: name
+  PetscErrorCode ierr
+  call PetscObjectViewFromOptions(PetscObjectCast(obj), bobj, name, ierr)
+  end subroutine 
+  subroutine PetscObjectTypeCompareTSGLLEAdapt(obj, type_name, same, ierr)
+  TSGLLEAdapt obj
+  character(*) :: type_name
+  PetscBool :: same
+  PetscErrorCode ierr
+  call PetscObjectTypeCompare(PetscObjectCast(obj), type_name, same, ierr)
+  end subroutine 
+  subroutine PetscObjectObjectTypeCompareTSGLLEAdapt(obj1, obj2, same, ierr)
+  TSGLLEAdapt obj1
+  PetscObject :: obj2
+  PetscBool :: same
+  PetscErrorCode ierr
+  call PetscObjectObjectTypeCompare(PetscObjectCast(obj1), obj2, same, ierr)
+  end subroutine 
+  subroutine PetscObjectBaseTypeCompareTSGLLEAdapt(obj, type_name, same, ierr)
+  TSGLLEAdapt obj
+  character(*) :: type_name
+  PetscBool :: same
+  PetscErrorCode ierr
+  call PetscObjectBaseTypeCompare(PetscObjectCast(obj), type_name, same, ierr)
+  end subroutine 
+  subroutine PetscObjectRegisterDestroyTSGLLEAdapt(obj, ierr)
+  TSGLLEAdapt obj
+  PetscErrorCode ierr
+  call PetscObjectRegisterDestroy(PetscObjectCast(obj), ierr)
+  end subroutine 
+  subroutine PetscObjectGetIdTSGLLEAdapt(obj, id, ierr)
+  TSGLLEAdapt obj
+  PetscObjectId :: id
+  PetscErrorCode ierr
+  call PetscObjectGetId(PetscObjectCast(obj), id, ierr)
+  end subroutine 
+  subroutine PetscObjectCompareIdTSGLLEAdapt(obj, id, eq, ierr)
+  TSGLLEAdapt obj
+  PetscObjectId :: id
+  PetscBool :: eq
+  PetscErrorCode ierr
+  call PetscObjectCompareId(PetscObjectCast(obj), id, eq, ierr)
+  end subroutine 
+  subroutine PetscObjectGetOptionsTSGLLEAdapt(obj, options, ierr)
+  TSGLLEAdapt obj
+  PetscOptions :: options
+  PetscErrorCode ierr
+  call PetscObjectGetOptions(PetscObjectCast(obj), options, ierr)
+  end subroutine 
+  subroutine PetscObjectSetOptionsTSGLLEAdapt(obj, options, ierr)
+  TSGLLEAdapt obj
+  PetscOptions :: options
+  PetscErrorCode ierr
+  call PetscObjectSetOptions(PetscObjectCast(obj), options, ierr)
+  end subroutine 
+  subroutine PetscObjectSetOptionsPrefixTSGLLEAdapt(obj, prefix, ierr)
+  TSGLLEAdapt obj
+  character(*) :: prefix
+  PetscErrorCode ierr
+  call PetscObjectSetOptionsPrefix(PetscObjectCast(obj), prefix, ierr)
+  end subroutine 
+  subroutine PetscObjectAppendOptionsPrefixTSGLLEAdapt(obj, prefix, ierr)
+  TSGLLEAdapt obj
+  character(*) :: prefix
+  PetscErrorCode ierr
+  call PetscObjectAppendOptionsPrefix(PetscObjectCast(obj), prefix, ierr)
+  end subroutine 
+  subroutine PetscObjectGetOptionsPrefixTSGLLEAdapt(obj, prefix, ierr)
+  TSGLLEAdapt obj
+  character(*) :: prefix
+  PetscErrorCode ierr
+  call PetscObjectGetOptionsPrefix(PetscObjectCast(obj), prefix, ierr)
+  end subroutine 
+  subroutine PetscObjectPrependOptionsPrefixTSGLLEAdapt(obj, prefix, ierr)
+  TSGLLEAdapt obj
+  character(*) :: prefix
+  PetscErrorCode ierr
+  call PetscObjectPrependOptionsPrefix(PetscObjectCast(obj), prefix, ierr)
+  end subroutine 
+  subroutine PetscObjectGetCommTSGLLEAdapt(obj, comm, ierr)
+  TSGLLEAdapt obj
+  MPIU_Comm :: comm
+  PetscErrorCode ierr
+  call PetscObjectGetComm(PetscObjectCast(obj), comm, ierr)
+  end subroutine 
+  subroutine PetscObjectGetTabLevelTSGLLEAdapt(obj, tab, ierr)
+  TSGLLEAdapt obj
+  PetscInt :: tab
+  PetscErrorCode ierr
+  call PetscObjectGetTabLevel(PetscObjectCast(obj), tab, ierr)
+  end subroutine 
+  subroutine PetscObjectSetTabLevelTSGLLEAdapt(obj, tab, ierr)
+  TSGLLEAdapt obj
+  PetscInt :: tab
+  PetscErrorCode ierr
+  call PetscObjectSetTabLevel(PetscObjectCast(obj), tab, ierr)
+  end subroutine 
+  subroutine PetscObjectIncrementTabLevelTSGLLEAdapt(obj, oldobj, tab, ierr)
+  TSGLLEAdapt obj
+  PetscObject :: oldobj
+  PetscInt :: tab
+  PetscErrorCode ierr
+  call PetscObjectIncrementTabLevel(PetscObjectCast(obj), oldobj, tab, ierr)
+  end subroutine 
+  subroutine PetscObjectGetNewTagTSGLLEAdapt(obj, tag, ierr)
+  TSGLLEAdapt obj
+  PetscMPIInt :: tag
+  PetscErrorCode ierr
+  call PetscObjectGetNewTag(PetscObjectCast(obj), tag, ierr)
+  end subroutine 
+  subroutine PetscObjectGetClassIdTSGLLEAdapt(obj, classid, ierr)
+  TSGLLEAdapt obj
+  PetscClassId :: classid
+  PetscErrorCode ierr
+  call PetscObjectGetClassId(PetscObjectCast(obj), classid, ierr)
+  end subroutine 
+  subroutine PetscObjectGetClassNameTSGLLEAdapt(obj, classname, ierr)
+  TSGLLEAdapt obj
+  character(*) :: classname
+  PetscErrorCode ierr
+  call PetscObjectGetClassName(PetscObjectCast(obj), classname, ierr)
+  end subroutine 
+  subroutine PetscObjectSetNameTSGLLEAdapt(obj, name, ierr)
+  TSGLLEAdapt obj
+  character(*) :: name
+  PetscErrorCode ierr
+  call PetscObjectSetName(PetscObjectCast(obj), name, ierr)
+  end subroutine 
+  subroutine PetscObjectPrintClassNamePrefixTypeTSGLLEAdapt(obj, viewer, ierr)
+  TSGLLEAdapt obj
+  PetscViewer :: viewer
+  PetscErrorCode ierr
+  call PetscObjectPrintClassNamePrefixType(PetscObjectCast(obj), viewer, ierr)
+  end subroutine 
+  subroutine PetscObjectNameTSGLLEAdapt(obj, ierr)
+  TSGLLEAdapt obj
+  PetscErrorCode ierr
+  call PetscObjectName(PetscObjectCast(obj), ierr)
+  end subroutine 
+  subroutine PetscObjectChangeTypeNameTSGLLEAdapt(obj, type_name, ierr)
+  TSGLLEAdapt obj
+  character(*) :: type_name
+  PetscErrorCode ierr
+  call PetscObjectChangeTypeName(PetscObjectCast(obj), type_name, ierr)
+  end subroutine 
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT:: TSProblemTypenotequals
+!DEC$ ATTRIBUTES DLLEXPORT:: TSProblemTypeequals
+#endif
+
+  function TSProblemTypenotequals(A,B)
+    logical TSProblemTypenotequals
+    type(eTSProblemType), intent(in) :: A,B
+    TSProblemTypenotequals = (A%v .ne. B%v)
+  end function
+  function TSProblemTypeequals(A,B)
+    logical TSProblemTypeequals
+    type(eTSProblemType), intent(in) :: A,B
+    TSProblemTypeequals = (A%v .eq. B%v)
+  end function
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT:: TSEquationTypenotequals
+!DEC$ ATTRIBUTES DLLEXPORT:: TSEquationTypeequals
+#endif
+
+  function TSEquationTypenotequals(A,B)
+    logical TSEquationTypenotequals
+    type(eTSEquationType), intent(in) :: A,B
+    TSEquationTypenotequals = (A%v .ne. B%v)
+  end function
+  function TSEquationTypeequals(A,B)
+    logical TSEquationTypeequals
+    type(eTSEquationType), intent(in) :: A,B
+    TSEquationTypeequals = (A%v .eq. B%v)
+  end function
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT:: TSConvergedReasonnotequals
+!DEC$ ATTRIBUTES DLLEXPORT:: TSConvergedReasonequals
+#endif
+
+  function TSConvergedReasonnotequals(A,B)
+    logical TSConvergedReasonnotequals
+    type(eTSConvergedReason), intent(in) :: A,B
+    TSConvergedReasonnotequals = (A%v .ne. B%v)
+  end function
+  function TSConvergedReasonequals(A,B)
+    logical TSConvergedReasonequals
+    type(eTSConvergedReason), intent(in) :: A,B
+    TSConvergedReasonequals = (A%v .eq. B%v)
+  end function
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT:: TSExactFinalTimeOptionnotequals
+!DEC$ ATTRIBUTES DLLEXPORT:: TSExactFinalTimeOptionequals
+#endif
+
+  function TSExactFinalTimeOptionnotequals(A,B)
+    logical TSExactFinalTimeOptionnotequals
+    type(eTSExactFinalTimeOption), intent(in) :: A,B
+    TSExactFinalTimeOptionnotequals = (A%v .ne. B%v)
+  end function
+  function TSExactFinalTimeOptionequals(A,B)
+    logical TSExactFinalTimeOptionequals
+    type(eTSExactFinalTimeOption), intent(in) :: A,B
+    TSExactFinalTimeOptionequals = (A%v .eq. B%v)
+  end function
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT:: TSTrajectoryMemoryTypenotequals
+!DEC$ ATTRIBUTES DLLEXPORT:: TSTrajectoryMemoryTypeequals
+#endif
+
+  function TSTrajectoryMemoryTypenotequals(A,B)
+    logical TSTrajectoryMemoryTypenotequals
+    type(eTSTrajectoryMemoryType), intent(in) :: A,B
+    TSTrajectoryMemoryTypenotequals = (A%v .ne. B%v)
+  end function
+  function TSTrajectoryMemoryTypeequals(A,B)
+    logical TSTrajectoryMemoryTypeequals
+    type(eTSTrajectoryMemoryType), intent(in) :: A,B
+    TSTrajectoryMemoryTypeequals = (A%v .eq. B%v)
+  end function
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT:: TSDGTypenotequals
+!DEC$ ATTRIBUTES DLLEXPORT:: TSDGTypeequals
+#endif
+
+  function TSDGTypenotequals(A,B)
+    logical TSDGTypenotequals
+    type(eTSDGType), intent(in) :: A,B
+    TSDGTypenotequals = (A%v .ne. B%v)
+  end function
+  function TSDGTypeequals(A,B)
+    logical TSDGTypeequals
+    type(eTSDGType), intent(in) :: A,B
+    TSDGTypeequals = (A%v .eq. B%v)
+  end function
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT:: TSSundialsLmmTypenotequals
+!DEC$ ATTRIBUTES DLLEXPORT:: TSSundialsLmmTypeequals
+#endif
+
+  function TSSundialsLmmTypenotequals(A,B)
+    logical TSSundialsLmmTypenotequals
+    type(eTSSundialsLmmType), intent(in) :: A,B
+    TSSundialsLmmTypenotequals = (A%v .ne. B%v)
+  end function
+  function TSSundialsLmmTypeequals(A,B)
+    logical TSSundialsLmmTypeequals
+    type(eTSSundialsLmmType), intent(in) :: A,B
+    TSSundialsLmmTypeequals = (A%v .eq. B%v)
+  end function
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT:: TSSundialsGramSchmidtTypenotequals
+!DEC$ ATTRIBUTES DLLEXPORT:: TSSundialsGramSchmidtTypeequals
+#endif
+
+  function TSSundialsGramSchmidtTypenotequals(A,B)
+    logical TSSundialsGramSchmidtTypenotequals
+    type(eTSSundialsGramSchmidtType), intent(in) :: A,B
+    TSSundialsGramSchmidtTypenotequals = (A%v .ne. B%v)
+  end function
+  function TSSundialsGramSchmidtTypeequals(A,B)
+    logical TSSundialsGramSchmidtTypeequals
+    type(eTSSundialsGramSchmidtType), intent(in) :: A,B
+    TSSundialsGramSchmidtTypeequals = (A%v .eq. B%v)
+  end function

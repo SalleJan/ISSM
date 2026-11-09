@@ -1,0 +1,65 @@
+  interface
+  subroutine DMPlexLandauCreateVelocitySpace(comm,dim,prefix,X,J,pack, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVec,tMat,tDM
+  MPIU_Comm :: comm
+  PetscInt :: dim
+  character(*) :: prefix
+  Vec :: X
+  Mat :: J
+  DM :: pack
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMPlexLandauCreateVelocitySpace
+#endif
+  interface
+  subroutine DMPlexLandauDestroyVelocitySpace(dm, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMPlexLandauDestroyVelocitySpace
+#endif
+  interface
+  subroutine DMPlexLandauPrintNorms(X,stepi, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVec
+  Vec :: X
+  PetscInt :: stepi
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMPlexLandauPrintNorms
+#endif
+  interface
+  subroutine DMPlexLandauCreateMassMatrix(pack,Amat, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM,tMat
+  DM :: pack
+  Mat :: Amat
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMPlexLandauCreateMassMatrix
+#endif
+  interface operator(.ne.)
+    module procedure LandauDeviceTypenotequals
+  end interface operator (.ne.)
+  interface operator(.eq.)
+    module procedure LandauDeviceTypeequals
+  end interface operator (.eq.)
+
+  interface operator(.ne.)
+    module procedure LandauOMPTimersnotequals
+  end interface operator (.ne.)
+  interface operator(.eq.)
+    module procedure LandauOMPTimersequals
+  end interface operator (.eq.)
+

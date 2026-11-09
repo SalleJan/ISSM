@@ -1,0 +1,1648 @@
+  interface operator(.ne.)
+    module procedure DMSwarmDataFieldnotequals
+  end interface operator (.ne.)
+  interface operator(.eq.)
+    module procedure DMSwarmDataFieldequals
+  end interface operator (.eq.)
+
+  interface PetscObjectCast
+    module procedure PetscObjectCastDMSwarmDataField
+  end interface
+  interface PetscBarrier
+  module procedure PetscBarrierDMSwarmDataField
+  end interface
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectSAWsTakeAccess
+    module procedure PetscObjectSAWsTakeAccessDMSwarmDataField
+  end interface
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectSAWsGrantAccess
+    module procedure PetscObjectSAWsGrantAccessDMSwarmDataField
+  end interface
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectSAWsBlock
+    module procedure PetscObjectSAWsBlockDMSwarmDataField
+  end interface
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectSAWsSetBlock
+    module procedure PetscObjectSAWsSetBlockDMSwarmDataField
+  end interface
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectSAWsViewOff
+    module procedure PetscObjectSAWsViewOffDMSwarmDataField
+  end interface
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectViewSAWs
+    module procedure PetscObjectViewSAWsDMSwarmDataField
+  end interface
+#endif
+  interface PetscObjectGetType
+    module procedure PetscObjectGetTypeDMSwarmDataField
+  end interface
+  interface PetscObjectSetPrintedOptions
+    module procedure PetscObjectSetPrintedOptionsDMSwarmDataField
+  end interface
+  interface PetscObjectInheritPrintedOptions
+    module procedure PetscObjectInheritPrintedOptionsDMSwarmDataField
+  end interface
+  interface PetscObjectAddOptionsHandler
+    module procedure PetscObjectAddOptionsHandlerDMSwarmDataField
+  end interface
+  interface PetscObjectProcessOptionsHandlers
+    module procedure PetscObjectProcessOptionsHandlersDMSwarmDataField
+  end interface
+  interface PetscObjectDestroyOptionsHandlers
+    module procedure PetscObjectDestroyOptionsHandlersDMSwarmDataField
+  end interface
+  interface PetscObjectReference
+    module procedure PetscObjectReferenceDMSwarmDataField
+  end interface
+  interface PetscObjectGetReference
+    module procedure PetscObjectGetReferenceDMSwarmDataField
+  end interface
+  interface PetscObjectDereference
+    module procedure PetscObjectDereferenceDMSwarmDataField
+  end interface
+  interface PetscObjectRemoveReference
+    module procedure PetscObjectRemoveReferenceDMSwarmDataField
+  end interface
+  interface PetscObjectHasFunction
+    module procedure PetscObjectHasFunctionDMSwarmDataField
+  end interface
+  interface PetscObjectSetFromOptions
+    module procedure PetscObjectSetFromOptionsDMSwarmDataField
+  end interface
+  interface PetscObjectSetUp
+    module procedure PetscObjectSetUpDMSwarmDataField
+  end interface
+  interface PetscObjectGetName
+    module procedure PetscObjectGetNameDMSwarmDataField
+  end interface
+  interface PetscObjectDestroy
+    module procedure PetscObjectDestroyDMSwarmDataField
+  end interface
+  interface PetscObjectView
+    module procedure PetscObjectViewDMSwarmDataField
+  end interface
+  interface PetscObjectViewFromOptions
+    module procedure PetscObjectViewFromOptionsDMSwarmDataField
+  end interface
+  interface PetscObjectTypeCompare
+    module procedure PetscObjectTypeCompareDMSwarmDataField
+  end interface
+  interface PetscObjectObjectTypeCompare
+    module procedure PetscObjectObjectTypeCompareDMSwarmDataField
+  end interface
+  interface PetscObjectBaseTypeCompare
+    module procedure PetscObjectBaseTypeCompareDMSwarmDataField
+  end interface
+  interface PetscObjectRegisterDestroy
+    module procedure PetscObjectRegisterDestroyDMSwarmDataField
+  end interface
+  interface PetscObjectGetId
+    module procedure PetscObjectGetIdDMSwarmDataField
+  end interface
+  interface PetscObjectCompareId
+    module procedure PetscObjectCompareIdDMSwarmDataField
+  end interface
+  interface PetscObjectGetOptions
+    module procedure PetscObjectGetOptionsDMSwarmDataField
+  end interface
+  interface PetscObjectSetOptions
+    module procedure PetscObjectSetOptionsDMSwarmDataField
+  end interface
+  interface PetscObjectSetOptionsPrefix
+    module procedure PetscObjectSetOptionsPrefixDMSwarmDataField
+  end interface
+  interface PetscObjectAppendOptionsPrefix
+    module procedure PetscObjectAppendOptionsPrefixDMSwarmDataField
+  end interface
+  interface PetscObjectGetOptionsPrefix
+    module procedure PetscObjectGetOptionsPrefixDMSwarmDataField
+  end interface
+  interface PetscObjectPrependOptionsPrefix
+    module procedure PetscObjectPrependOptionsPrefixDMSwarmDataField
+  end interface
+  interface PetscObjectGetComm
+    module procedure PetscObjectGetCommDMSwarmDataField
+  end interface
+  interface PetscObjectGetTabLevel
+    module procedure PetscObjectGetTabLevelDMSwarmDataField
+  end interface
+  interface PetscObjectSetTabLevel
+    module procedure PetscObjectSetTabLevelDMSwarmDataField
+  end interface
+  interface PetscObjectIncrementTabLevel
+    module procedure PetscObjectIncrementTabLevelDMSwarmDataField
+  end interface
+  interface PetscObjectGetNewTag
+    module procedure PetscObjectGetNewTagDMSwarmDataField
+  end interface
+  interface PetscObjectGetClassId
+    module procedure PetscObjectGetClassIdDMSwarmDataField
+  end interface
+  interface PetscObjectGetClassName
+    module procedure PetscObjectGetClassNameDMSwarmDataField
+  end interface
+  interface PetscObjectSetName
+    module procedure PetscObjectSetNameDMSwarmDataField
+  end interface
+  interface PetscObjectPrintClassNamePrefixType
+    module procedure PetscObjectPrintClassNamePrefixTypeDMSwarmDataField
+  end interface
+  interface PetscObjectName
+    module procedure PetscObjectNameDMSwarmDataField
+  end interface
+  interface PetscObjectChangeTypeName
+    module procedure PetscObjectChangeTypeNameDMSwarmDataField
+  end interface
+  interface
+  subroutine DMSwarmDataBucketGetDMSwarmDataFieldIdByName(db,name,idx, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDMSwarmDataBucket
+  DMSwarmDataBucket :: db
+  character(*) :: name
+  PetscInt :: idx
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMSwarmDataBucketGetDMSwarmDataFieldIdByName
+#endif
+  interface
+  subroutine DMSwarmDataBucketGetDMSwarmDataFieldByName(db,name,gfield, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDMSwarmDataBucket,tDMSwarmDataField
+  DMSwarmDataBucket :: db
+  character(*) :: name
+  DMSwarmDataField :: gfield
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMSwarmDataBucketGetDMSwarmDataFieldByName
+#endif
+  interface
+  subroutine DMSwarmDataBucketQueryDMSwarmDataFieldByName(db,name,found, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDMSwarmDataBucket
+  DMSwarmDataBucket :: db
+  character(*) :: name
+  PetscBool :: found
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMSwarmDataBucketQueryDMSwarmDataFieldByName
+#endif
+  interface operator(.ne.)
+    module procedure DMSwarmDataBucketnotequals
+  end interface operator (.ne.)
+  interface operator(.eq.)
+    module procedure DMSwarmDataBucketequals
+  end interface operator (.eq.)
+
+  interface PetscObjectCast
+    module procedure PetscObjectCastDMSwarmDataBucket
+  end interface
+  interface PetscBarrier
+  module procedure PetscBarrierDMSwarmDataBucket
+  end interface
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectSAWsTakeAccess
+    module procedure PetscObjectSAWsTakeAccessDMSwarmDataBucket
+  end interface
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectSAWsGrantAccess
+    module procedure PetscObjectSAWsGrantAccessDMSwarmDataBucket
+  end interface
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectSAWsBlock
+    module procedure PetscObjectSAWsBlockDMSwarmDataBucket
+  end interface
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectSAWsSetBlock
+    module procedure PetscObjectSAWsSetBlockDMSwarmDataBucket
+  end interface
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectSAWsViewOff
+    module procedure PetscObjectSAWsViewOffDMSwarmDataBucket
+  end interface
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectViewSAWs
+    module procedure PetscObjectViewSAWsDMSwarmDataBucket
+  end interface
+#endif
+  interface PetscObjectGetType
+    module procedure PetscObjectGetTypeDMSwarmDataBucket
+  end interface
+  interface PetscObjectSetPrintedOptions
+    module procedure PetscObjectSetPrintedOptionsDMSwarmDataBucket
+  end interface
+  interface PetscObjectInheritPrintedOptions
+    module procedure PetscObjectInheritPrintedOptionsDMSwarmDataBucket
+  end interface
+  interface PetscObjectAddOptionsHandler
+    module procedure PetscObjectAddOptionsHandlerDMSwarmDataBucket
+  end interface
+  interface PetscObjectProcessOptionsHandlers
+    module procedure PetscObjectProcessOptionsHandlersDMSwarmDataBucket
+  end interface
+  interface PetscObjectDestroyOptionsHandlers
+    module procedure PetscObjectDestroyOptionsHandlersDMSwarmDataBucket
+  end interface
+  interface PetscObjectReference
+    module procedure PetscObjectReferenceDMSwarmDataBucket
+  end interface
+  interface PetscObjectGetReference
+    module procedure PetscObjectGetReferenceDMSwarmDataBucket
+  end interface
+  interface PetscObjectDereference
+    module procedure PetscObjectDereferenceDMSwarmDataBucket
+  end interface
+  interface PetscObjectRemoveReference
+    module procedure PetscObjectRemoveReferenceDMSwarmDataBucket
+  end interface
+  interface PetscObjectHasFunction
+    module procedure PetscObjectHasFunctionDMSwarmDataBucket
+  end interface
+  interface PetscObjectSetFromOptions
+    module procedure PetscObjectSetFromOptionsDMSwarmDataBucket
+  end interface
+  interface PetscObjectSetUp
+    module procedure PetscObjectSetUpDMSwarmDataBucket
+  end interface
+  interface PetscObjectGetName
+    module procedure PetscObjectGetNameDMSwarmDataBucket
+  end interface
+  interface PetscObjectDestroy
+    module procedure PetscObjectDestroyDMSwarmDataBucket
+  end interface
+  interface PetscObjectView
+    module procedure PetscObjectViewDMSwarmDataBucket
+  end interface
+  interface PetscObjectViewFromOptions
+    module procedure PetscObjectViewFromOptionsDMSwarmDataBucket
+  end interface
+  interface PetscObjectTypeCompare
+    module procedure PetscObjectTypeCompareDMSwarmDataBucket
+  end interface
+  interface PetscObjectObjectTypeCompare
+    module procedure PetscObjectObjectTypeCompareDMSwarmDataBucket
+  end interface
+  interface PetscObjectBaseTypeCompare
+    module procedure PetscObjectBaseTypeCompareDMSwarmDataBucket
+  end interface
+  interface PetscObjectRegisterDestroy
+    module procedure PetscObjectRegisterDestroyDMSwarmDataBucket
+  end interface
+  interface PetscObjectGetId
+    module procedure PetscObjectGetIdDMSwarmDataBucket
+  end interface
+  interface PetscObjectCompareId
+    module procedure PetscObjectCompareIdDMSwarmDataBucket
+  end interface
+  interface PetscObjectGetOptions
+    module procedure PetscObjectGetOptionsDMSwarmDataBucket
+  end interface
+  interface PetscObjectSetOptions
+    module procedure PetscObjectSetOptionsDMSwarmDataBucket
+  end interface
+  interface PetscObjectSetOptionsPrefix
+    module procedure PetscObjectSetOptionsPrefixDMSwarmDataBucket
+  end interface
+  interface PetscObjectAppendOptionsPrefix
+    module procedure PetscObjectAppendOptionsPrefixDMSwarmDataBucket
+  end interface
+  interface PetscObjectGetOptionsPrefix
+    module procedure PetscObjectGetOptionsPrefixDMSwarmDataBucket
+  end interface
+  interface PetscObjectPrependOptionsPrefix
+    module procedure PetscObjectPrependOptionsPrefixDMSwarmDataBucket
+  end interface
+  interface PetscObjectGetComm
+    module procedure PetscObjectGetCommDMSwarmDataBucket
+  end interface
+  interface PetscObjectGetTabLevel
+    module procedure PetscObjectGetTabLevelDMSwarmDataBucket
+  end interface
+  interface PetscObjectSetTabLevel
+    module procedure PetscObjectSetTabLevelDMSwarmDataBucket
+  end interface
+  interface PetscObjectIncrementTabLevel
+    module procedure PetscObjectIncrementTabLevelDMSwarmDataBucket
+  end interface
+  interface PetscObjectGetNewTag
+    module procedure PetscObjectGetNewTagDMSwarmDataBucket
+  end interface
+  interface PetscObjectGetClassId
+    module procedure PetscObjectGetClassIdDMSwarmDataBucket
+  end interface
+  interface PetscObjectGetClassName
+    module procedure PetscObjectGetClassNameDMSwarmDataBucket
+  end interface
+  interface PetscObjectSetName
+    module procedure PetscObjectSetNameDMSwarmDataBucket
+  end interface
+  interface PetscObjectPrintClassNamePrefixType
+    module procedure PetscObjectPrintClassNamePrefixTypeDMSwarmDataBucket
+  end interface
+  interface PetscObjectName
+    module procedure PetscObjectNameDMSwarmDataBucket
+  end interface
+  interface PetscObjectChangeTypeName
+    module procedure PetscObjectChangeTypeNameDMSwarmDataBucket
+  end interface
+  interface
+  subroutine DMSwarmSortDestroy(ctx, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDMSwarmSort
+  DMSwarmSort :: ctx
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMSwarmSortDestroy
+#endif
+  interface
+  subroutine DMSwarmSortGetNumberOfPointsPerCell(sw,cell,npoints, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: sw
+  PetscInt :: cell
+  PetscInt :: npoints
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMSwarmSortGetNumberOfPointsPerCell
+#endif
+  interface
+  subroutine DMSwarmSortGetAccess(sw, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: sw
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMSwarmSortGetAccess
+#endif
+  interface
+  subroutine DMSwarmSortRestoreAccess(sw, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: sw
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMSwarmSortRestoreAccess
+#endif
+  interface
+  subroutine DMSwarmSortGetIsValid(sw,isvalid, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: sw
+  PetscBool :: isvalid
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMSwarmSortGetIsValid
+#endif
+  interface
+  subroutine DMSwarmSortGetSizes(sw,ncells,npoints, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: sw
+  PetscInt :: ncells
+  PetscInt :: npoints
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMSwarmSortGetSizes
+#endif
+  interface operator(.ne.)
+    module procedure DMSwarmSortnotequals
+  end interface operator (.ne.)
+  interface operator(.eq.)
+    module procedure DMSwarmSortequals
+  end interface operator (.eq.)
+
+  interface PetscObjectCast
+    module procedure PetscObjectCastDMSwarmSort
+  end interface
+  interface PetscBarrier
+  module procedure PetscBarrierDMSwarmSort
+  end interface
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectSAWsTakeAccess
+    module procedure PetscObjectSAWsTakeAccessDMSwarmSort
+  end interface
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectSAWsGrantAccess
+    module procedure PetscObjectSAWsGrantAccessDMSwarmSort
+  end interface
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectSAWsBlock
+    module procedure PetscObjectSAWsBlockDMSwarmSort
+  end interface
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectSAWsSetBlock
+    module procedure PetscObjectSAWsSetBlockDMSwarmSort
+  end interface
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectSAWsViewOff
+    module procedure PetscObjectSAWsViewOffDMSwarmSort
+  end interface
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectViewSAWs
+    module procedure PetscObjectViewSAWsDMSwarmSort
+  end interface
+#endif
+  interface PetscObjectGetType
+    module procedure PetscObjectGetTypeDMSwarmSort
+  end interface
+  interface PetscObjectSetPrintedOptions
+    module procedure PetscObjectSetPrintedOptionsDMSwarmSort
+  end interface
+  interface PetscObjectInheritPrintedOptions
+    module procedure PetscObjectInheritPrintedOptionsDMSwarmSort
+  end interface
+  interface PetscObjectAddOptionsHandler
+    module procedure PetscObjectAddOptionsHandlerDMSwarmSort
+  end interface
+  interface PetscObjectProcessOptionsHandlers
+    module procedure PetscObjectProcessOptionsHandlersDMSwarmSort
+  end interface
+  interface PetscObjectDestroyOptionsHandlers
+    module procedure PetscObjectDestroyOptionsHandlersDMSwarmSort
+  end interface
+  interface PetscObjectReference
+    module procedure PetscObjectReferenceDMSwarmSort
+  end interface
+  interface PetscObjectGetReference
+    module procedure PetscObjectGetReferenceDMSwarmSort
+  end interface
+  interface PetscObjectDereference
+    module procedure PetscObjectDereferenceDMSwarmSort
+  end interface
+  interface PetscObjectRemoveReference
+    module procedure PetscObjectRemoveReferenceDMSwarmSort
+  end interface
+  interface PetscObjectHasFunction
+    module procedure PetscObjectHasFunctionDMSwarmSort
+  end interface
+  interface PetscObjectSetFromOptions
+    module procedure PetscObjectSetFromOptionsDMSwarmSort
+  end interface
+  interface PetscObjectSetUp
+    module procedure PetscObjectSetUpDMSwarmSort
+  end interface
+  interface PetscObjectGetName
+    module procedure PetscObjectGetNameDMSwarmSort
+  end interface
+  interface PetscObjectDestroy
+    module procedure PetscObjectDestroyDMSwarmSort
+  end interface
+  interface PetscObjectView
+    module procedure PetscObjectViewDMSwarmSort
+  end interface
+  interface PetscObjectViewFromOptions
+    module procedure PetscObjectViewFromOptionsDMSwarmSort
+  end interface
+  interface PetscObjectTypeCompare
+    module procedure PetscObjectTypeCompareDMSwarmSort
+  end interface
+  interface PetscObjectObjectTypeCompare
+    module procedure PetscObjectObjectTypeCompareDMSwarmSort
+  end interface
+  interface PetscObjectBaseTypeCompare
+    module procedure PetscObjectBaseTypeCompareDMSwarmSort
+  end interface
+  interface PetscObjectRegisterDestroy
+    module procedure PetscObjectRegisterDestroyDMSwarmSort
+  end interface
+  interface PetscObjectGetId
+    module procedure PetscObjectGetIdDMSwarmSort
+  end interface
+  interface PetscObjectCompareId
+    module procedure PetscObjectCompareIdDMSwarmSort
+  end interface
+  interface PetscObjectGetOptions
+    module procedure PetscObjectGetOptionsDMSwarmSort
+  end interface
+  interface PetscObjectSetOptions
+    module procedure PetscObjectSetOptionsDMSwarmSort
+  end interface
+  interface PetscObjectSetOptionsPrefix
+    module procedure PetscObjectSetOptionsPrefixDMSwarmSort
+  end interface
+  interface PetscObjectAppendOptionsPrefix
+    module procedure PetscObjectAppendOptionsPrefixDMSwarmSort
+  end interface
+  interface PetscObjectGetOptionsPrefix
+    module procedure PetscObjectGetOptionsPrefixDMSwarmSort
+  end interface
+  interface PetscObjectPrependOptionsPrefix
+    module procedure PetscObjectPrependOptionsPrefixDMSwarmSort
+  end interface
+  interface PetscObjectGetComm
+    module procedure PetscObjectGetCommDMSwarmSort
+  end interface
+  interface PetscObjectGetTabLevel
+    module procedure PetscObjectGetTabLevelDMSwarmSort
+  end interface
+  interface PetscObjectSetTabLevel
+    module procedure PetscObjectSetTabLevelDMSwarmSort
+  end interface
+  interface PetscObjectIncrementTabLevel
+    module procedure PetscObjectIncrementTabLevelDMSwarmSort
+  end interface
+  interface PetscObjectGetNewTag
+    module procedure PetscObjectGetNewTagDMSwarmSort
+  end interface
+  interface PetscObjectGetClassId
+    module procedure PetscObjectGetClassIdDMSwarmSort
+  end interface
+  interface PetscObjectGetClassName
+    module procedure PetscObjectGetClassNameDMSwarmSort
+  end interface
+  interface PetscObjectSetName
+    module procedure PetscObjectSetNameDMSwarmSort
+  end interface
+  interface PetscObjectPrintClassNamePrefixType
+    module procedure PetscObjectPrintClassNamePrefixTypeDMSwarmSort
+  end interface
+  interface PetscObjectName
+    module procedure PetscObjectNameDMSwarmSort
+  end interface
+  interface PetscObjectChangeTypeName
+    module procedure PetscObjectChangeTypeNameDMSwarmSort
+  end interface
+  interface
+  subroutine DMSwarmCellDMDestroy(celldm, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDMSwarmCellDM
+  DMSwarmCellDM :: celldm
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMSwarmCellDMDestroy
+#endif
+  interface
+  subroutine DMSwarmCellDMView(celldm,viewer, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDMSwarmCellDM,tPetscViewer
+  DMSwarmCellDM :: celldm
+  PetscViewer :: viewer
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMSwarmCellDMView
+#endif
+  interface
+  subroutine DMSwarmCellDMGetDM(celldm,dm, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDMSwarmCellDM,tDM
+  DMSwarmCellDM :: celldm
+  DM :: dm
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMSwarmCellDMGetDM
+#endif
+  interface
+  subroutine DMSwarmCellDMGetCellID(celldm,cellid, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDMSwarmCellDM
+  DMSwarmCellDM :: celldm
+  character(*) :: cellid
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMSwarmCellDMGetCellID
+#endif
+  interface
+  subroutine DMSwarmCellDMGetSort(celldm,sort, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDMSwarmCellDM,tDMSwarmSort
+  DMSwarmCellDM :: celldm
+  DMSwarmSort :: sort
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMSwarmCellDMGetSort
+#endif
+  interface
+  subroutine DMSwarmCellDMSetSort(celldm,sort, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDMSwarmCellDM,tDMSwarmSort
+  DMSwarmCellDM :: celldm
+  DMSwarmSort :: sort
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMSwarmCellDMSetSort
+#endif
+  interface
+  subroutine DMSwarmCellDMGetBlockSize(celldm,sw,bs, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDMSwarmCellDM,tDM
+  DMSwarmCellDM :: celldm
+  DM :: sw
+  PetscInt :: bs
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMSwarmCellDMGetBlockSize
+#endif
+  interface
+  subroutine DMSwarmCellDMCreate(dm,Nf,dmFields,Nfc,coordFields,celldm, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM,tDMSwarmCellDM
+  DM :: dm
+  PetscInt :: Nf
+  character(*) :: dmFields
+  PetscInt :: Nfc
+  character(*) :: coordFields
+  DMSwarmCellDM :: celldm
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMSwarmCellDMCreate
+#endif
+  interface operator(.ne.)
+    module procedure DMSwarmCellDMnotequals
+  end interface operator (.ne.)
+  interface operator(.eq.)
+    module procedure DMSwarmCellDMequals
+  end interface operator (.eq.)
+
+  interface PetscObjectCast
+    module procedure PetscObjectCastDMSwarmCellDM
+  end interface
+  interface PetscBarrier
+  module procedure PetscBarrierDMSwarmCellDM
+  end interface
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectSAWsTakeAccess
+    module procedure PetscObjectSAWsTakeAccessDMSwarmCellDM
+  end interface
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectSAWsGrantAccess
+    module procedure PetscObjectSAWsGrantAccessDMSwarmCellDM
+  end interface
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectSAWsBlock
+    module procedure PetscObjectSAWsBlockDMSwarmCellDM
+  end interface
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectSAWsSetBlock
+    module procedure PetscObjectSAWsSetBlockDMSwarmCellDM
+  end interface
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectSAWsViewOff
+    module procedure PetscObjectSAWsViewOffDMSwarmCellDM
+  end interface
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectViewSAWs
+    module procedure PetscObjectViewSAWsDMSwarmCellDM
+  end interface
+#endif
+  interface PetscObjectGetType
+    module procedure PetscObjectGetTypeDMSwarmCellDM
+  end interface
+  interface PetscObjectSetPrintedOptions
+    module procedure PetscObjectSetPrintedOptionsDMSwarmCellDM
+  end interface
+  interface PetscObjectInheritPrintedOptions
+    module procedure PetscObjectInheritPrintedOptionsDMSwarmCellDM
+  end interface
+  interface PetscObjectAddOptionsHandler
+    module procedure PetscObjectAddOptionsHandlerDMSwarmCellDM
+  end interface
+  interface PetscObjectProcessOptionsHandlers
+    module procedure PetscObjectProcessOptionsHandlersDMSwarmCellDM
+  end interface
+  interface PetscObjectDestroyOptionsHandlers
+    module procedure PetscObjectDestroyOptionsHandlersDMSwarmCellDM
+  end interface
+  interface PetscObjectReference
+    module procedure PetscObjectReferenceDMSwarmCellDM
+  end interface
+  interface PetscObjectGetReference
+    module procedure PetscObjectGetReferenceDMSwarmCellDM
+  end interface
+  interface PetscObjectDereference
+    module procedure PetscObjectDereferenceDMSwarmCellDM
+  end interface
+  interface PetscObjectRemoveReference
+    module procedure PetscObjectRemoveReferenceDMSwarmCellDM
+  end interface
+  interface PetscObjectHasFunction
+    module procedure PetscObjectHasFunctionDMSwarmCellDM
+  end interface
+  interface PetscObjectSetFromOptions
+    module procedure PetscObjectSetFromOptionsDMSwarmCellDM
+  end interface
+  interface PetscObjectSetUp
+    module procedure PetscObjectSetUpDMSwarmCellDM
+  end interface
+  interface PetscObjectGetName
+    module procedure PetscObjectGetNameDMSwarmCellDM
+  end interface
+  interface PetscObjectDestroy
+    module procedure PetscObjectDestroyDMSwarmCellDM
+  end interface
+  interface PetscObjectView
+    module procedure PetscObjectViewDMSwarmCellDM
+  end interface
+  interface PetscObjectViewFromOptions
+    module procedure PetscObjectViewFromOptionsDMSwarmCellDM
+  end interface
+  interface PetscObjectTypeCompare
+    module procedure PetscObjectTypeCompareDMSwarmCellDM
+  end interface
+  interface PetscObjectObjectTypeCompare
+    module procedure PetscObjectObjectTypeCompareDMSwarmCellDM
+  end interface
+  interface PetscObjectBaseTypeCompare
+    module procedure PetscObjectBaseTypeCompareDMSwarmCellDM
+  end interface
+  interface PetscObjectRegisterDestroy
+    module procedure PetscObjectRegisterDestroyDMSwarmCellDM
+  end interface
+  interface PetscObjectGetId
+    module procedure PetscObjectGetIdDMSwarmCellDM
+  end interface
+  interface PetscObjectCompareId
+    module procedure PetscObjectCompareIdDMSwarmCellDM
+  end interface
+  interface PetscObjectGetOptions
+    module procedure PetscObjectGetOptionsDMSwarmCellDM
+  end interface
+  interface PetscObjectSetOptions
+    module procedure PetscObjectSetOptionsDMSwarmCellDM
+  end interface
+  interface PetscObjectSetOptionsPrefix
+    module procedure PetscObjectSetOptionsPrefixDMSwarmCellDM
+  end interface
+  interface PetscObjectAppendOptionsPrefix
+    module procedure PetscObjectAppendOptionsPrefixDMSwarmCellDM
+  end interface
+  interface PetscObjectGetOptionsPrefix
+    module procedure PetscObjectGetOptionsPrefixDMSwarmCellDM
+  end interface
+  interface PetscObjectPrependOptionsPrefix
+    module procedure PetscObjectPrependOptionsPrefixDMSwarmCellDM
+  end interface
+  interface PetscObjectGetComm
+    module procedure PetscObjectGetCommDMSwarmCellDM
+  end interface
+  interface PetscObjectGetTabLevel
+    module procedure PetscObjectGetTabLevelDMSwarmCellDM
+  end interface
+  interface PetscObjectSetTabLevel
+    module procedure PetscObjectSetTabLevelDMSwarmCellDM
+  end interface
+  interface PetscObjectIncrementTabLevel
+    module procedure PetscObjectIncrementTabLevelDMSwarmCellDM
+  end interface
+  interface PetscObjectGetNewTag
+    module procedure PetscObjectGetNewTagDMSwarmCellDM
+  end interface
+  interface PetscObjectGetClassId
+    module procedure PetscObjectGetClassIdDMSwarmCellDM
+  end interface
+  interface PetscObjectGetClassName
+    module procedure PetscObjectGetClassNameDMSwarmCellDM
+  end interface
+  interface PetscObjectSetName
+    module procedure PetscObjectSetNameDMSwarmCellDM
+  end interface
+  interface PetscObjectPrintClassNamePrefixType
+    module procedure PetscObjectPrintClassNamePrefixTypeDMSwarmCellDM
+  end interface
+  interface PetscObjectName
+    module procedure PetscObjectNameDMSwarmCellDM
+  end interface
+  interface PetscObjectChangeTypeName
+    module procedure PetscObjectChangeTypeNameDMSwarmCellDM
+  end interface
+  interface
+  subroutine DMSwarmRemap(sw, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: sw
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMSwarmRemap
+#endif
+  interface
+  subroutine DMSwarmSetPointsUniformCoordinates(sw,min,max,npoints,mode, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM,eInsertMode
+  DM :: sw
+  PetscReal :: min(*)
+  PetscReal :: max(*)
+  PetscInt :: npoints(*)
+  InsertMode :: mode
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMSwarmSetPointsUniformCoordinates
+#endif
+  interface
+  subroutine DMSwarmSetPointCoordinates(sw,npoints,coor,redundant,mode, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM,eInsertMode
+  DM :: sw
+  PetscInt :: npoints
+  PetscReal :: coor(*)
+  PetscBool :: redundant
+  InsertMode :: mode
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMSwarmSetPointCoordinates
+#endif
+  interface
+  subroutine DMSwarmInsertPointsUsingCellDM(dm,layout_type,fill_param, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM,eDMSwarmPICLayoutType
+  DM :: dm
+  DMSwarmPICLayoutType :: layout_type
+  PetscInt :: fill_param
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMSwarmInsertPointsUsingCellDM
+#endif
+  interface
+  subroutine DMSwarmSetPointCoordinatesCellwise(dm,npoints,xi, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  PetscInt :: npoints
+  PetscReal :: xi(*)
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMSwarmSetPointCoordinatesCellwise
+#endif
+  interface
+  subroutine DMSwarmGetNumSpecies(sw,Ns, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: sw
+  PetscInt :: Ns
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMSwarmGetNumSpecies
+#endif
+  interface
+  subroutine DMSwarmSetNumSpecies(sw,Ns, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: sw
+  PetscInt :: Ns
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMSwarmSetNumSpecies
+#endif
+  interface
+  subroutine DMSwarmSetCoordinateFunction(sw,coordFunc, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: sw
+  external coordFunc
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMSwarmSetCoordinateFunction
+#endif
+  interface
+  subroutine DMSwarmSetVelocityFunction(sw,velFunc, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: sw
+  external velFunc
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMSwarmSetVelocityFunction
+#endif
+  interface
+  subroutine DMSwarmComputeLocalSize(sw,N,density, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: sw
+  PetscInt :: N
+  external density
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMSwarmComputeLocalSize
+#endif
+  interface
+  subroutine DMSwarmComputeLocalSizeFromOptions(sw, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: sw
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMSwarmComputeLocalSizeFromOptions
+#endif
+  interface
+  subroutine DMSwarmInitializeCoordinates(sw, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: sw
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMSwarmInitializeCoordinates
+#endif
+  interface
+  subroutine DMSwarmInitializeVelocities(sw,sampler,v0, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: sw
+  external sampler
+  PetscReal :: v0(*)
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMSwarmInitializeVelocities
+#endif
+  interface
+  subroutine DMSwarmInitializeVelocitiesFromOptions(sw,v0, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: sw
+  PetscReal :: v0(*)
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMSwarmInitializeVelocitiesFromOptions
+#endif
+  interface
+  subroutine DMSwarmGetMigrateType(dm,mtype, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM,eDMSwarmMigrateType
+  DM :: dm
+  DMSwarmMigrateType :: mtype
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMSwarmGetMigrateType
+#endif
+  interface
+  subroutine DMSwarmSetMigrateType(dm,mtype, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM,eDMSwarmMigrateType
+  DM :: dm
+  DMSwarmMigrateType :: mtype
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMSwarmSetMigrateType
+#endif
+  interface
+  subroutine DMSwarmViewFieldsXDMF(dm,filename,nfields,field_name_list, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  character(*) :: filename
+  PetscInt :: nfields
+  character(*) :: field_name_list
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMSwarmViewFieldsXDMF
+#endif
+  interface
+  subroutine DMSwarmViewXDMF(dm,filename, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  character(*) :: filename
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMSwarmViewXDMF
+#endif
+  interface
+  subroutine DMSwarmVectorDefineField(dm,fieldname, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  character(*) :: fieldname
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMSwarmVectorDefineField
+#endif
+  interface
+  subroutine DMSwarmVectorDefineFields(sw,Nf,fieldnames, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: sw
+  PetscInt :: Nf
+  character(*) :: fieldnames
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMSwarmVectorDefineFields
+#endif
+  interface
+  subroutine DMSwarmCreateMassMatrixSquare(dmCoarse,dmFine,mass, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM,tMat
+  DM :: dmCoarse
+  DM :: dmFine
+  Mat :: mass
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMSwarmCreateMassMatrixSquare
+#endif
+  interface
+  subroutine DMSwarmCreateGlobalVectorFromField(dm,fieldname,vec, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM,tVec
+  DM :: dm
+  character(*) :: fieldname
+  Vec :: vec
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMSwarmCreateGlobalVectorFromField
+#endif
+  interface
+  subroutine DMSwarmDestroyGlobalVectorFromField(dm,fieldname,vec, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM,tVec
+  DM :: dm
+  character(*) :: fieldname
+  Vec :: vec
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMSwarmDestroyGlobalVectorFromField
+#endif
+  interface
+  subroutine DMSwarmCreateLocalVectorFromField(dm,fieldname,vec, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM,tVec
+  DM :: dm
+  character(*) :: fieldname
+  Vec :: vec
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMSwarmCreateLocalVectorFromField
+#endif
+  interface
+  subroutine DMSwarmDestroyLocalVectorFromField(dm,fieldname,vec, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM,tVec
+  DM :: dm
+  character(*) :: fieldname
+  Vec :: vec
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMSwarmDestroyLocalVectorFromField
+#endif
+  interface
+  subroutine DMSwarmCreateGlobalVectorFromFields(dm,Nf,fieldnames,vec, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM,tVec
+  DM :: dm
+  PetscInt :: Nf
+  character(*) :: fieldnames
+  Vec :: vec
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMSwarmCreateGlobalVectorFromFields
+#endif
+  interface
+  subroutine DMSwarmDestroyGlobalVectorFromFields(dm,Nf,fieldnames,vec, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM,tVec
+  DM :: dm
+  PetscInt :: Nf
+  character(*) :: fieldnames
+  Vec :: vec
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMSwarmDestroyGlobalVectorFromFields
+#endif
+  interface
+  subroutine DMSwarmCreateLocalVectorFromFields(dm,Nf,fieldnames,vec, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM,tVec
+  DM :: dm
+  PetscInt :: Nf
+  character(*) :: fieldnames
+  Vec :: vec
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMSwarmCreateLocalVectorFromFields
+#endif
+  interface
+  subroutine DMSwarmDestroyLocalVectorFromFields(dm,Nf,fieldnames,vec, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM,tVec
+  DM :: dm
+  PetscInt :: Nf
+  character(*) :: fieldnames
+  Vec :: vec
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMSwarmDestroyLocalVectorFromFields
+#endif
+  interface
+  subroutine DMSwarmInitializeFieldRegister(dm, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMSwarmInitializeFieldRegister
+#endif
+  interface
+  subroutine DMSwarmFinalizeFieldRegister(dm, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMSwarmFinalizeFieldRegister
+#endif
+  interface
+  subroutine DMSwarmSetLocalSizes(sw,nlocal,buffer, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: sw
+  PetscInt :: nlocal
+  PetscInt :: buffer
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMSwarmSetLocalSizes
+#endif
+  interface
+  subroutine DMSwarmSetCellDM(sw,dm, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: sw
+  DM :: dm
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMSwarmSetCellDM
+#endif
+  interface
+  subroutine DMSwarmGetCellDM(sw,dm, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: sw
+  DM :: dm
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMSwarmGetCellDM
+#endif
+  interface
+  subroutine DMSwarmSetCellDMActive(sw,name, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: sw
+  character(*) :: name
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMSwarmSetCellDMActive
+#endif
+  interface
+  subroutine DMSwarmGetCellDMActive(sw,celldm, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM,tDMSwarmCellDM
+  DM :: sw
+  DMSwarmCellDM :: celldm
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMSwarmGetCellDMActive
+#endif
+  interface
+  subroutine DMSwarmGetCellDMByName(sw,name,celldm, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM,tDMSwarmCellDM
+  DM :: sw
+  character(*) :: name
+  DMSwarmCellDM :: celldm
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMSwarmGetCellDMByName
+#endif
+  interface
+  subroutine DMSwarmAddCellDM(sw,celldm, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM,tDMSwarmCellDM
+  DM :: sw
+  DMSwarmCellDM :: celldm
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMSwarmAddCellDM
+#endif
+  interface
+  subroutine DMSwarmGetLocalSize(dm,nlocal, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  PetscInt :: nlocal
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMSwarmGetLocalSize
+#endif
+  interface
+  subroutine DMSwarmGetSize(dm,n, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  PetscInt :: n
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMSwarmGetSize
+#endif
+  interface
+  subroutine DMSwarmRegisterPetscDatatypeField(dm,fieldname,blocksize,type, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM,ePetscDataType
+  DM :: dm
+  character(*) :: fieldname
+  PetscInt :: blocksize
+  PetscDataType :: type
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMSwarmRegisterPetscDatatypeField
+#endif
+  interface
+  subroutine DMSwarmRegisterUserStructField(dm,fieldname,size, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  character(*) :: fieldname
+  PetscSizeT :: size
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMSwarmRegisterUserStructField
+#endif
+  interface
+  subroutine DMSwarmRegisterUserDatatypeField(dm,fieldname,size,blocksize, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  character(*) :: fieldname
+  PetscSizeT :: size
+  PetscInt :: blocksize
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMSwarmRegisterUserDatatypeField
+#endif
+  interface
+  subroutine DMSwarmGetFieldInfo(dm,fieldname,blocksize,type, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM,ePetscDataType
+  DM :: dm
+  character(*) :: fieldname
+  PetscInt :: blocksize
+  PetscDataType :: type
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMSwarmGetFieldInfo
+#endif
+  interface
+  subroutine DMSwarmAddPoint(dm, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMSwarmAddPoint
+#endif
+  interface
+  subroutine DMSwarmAddNPoints(dm,npoints, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  PetscInt :: npoints
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMSwarmAddNPoints
+#endif
+  interface
+  subroutine DMSwarmRemovePoint(dm, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMSwarmRemovePoint
+#endif
+  interface
+  subroutine DMSwarmRemovePointAtIndex(dm,idx, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  PetscInt :: idx
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMSwarmRemovePointAtIndex
+#endif
+  interface
+  subroutine DMSwarmCopyPoint(dm,pi,pj, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  PetscInt :: pi
+  PetscInt :: pj
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMSwarmCopyPoint
+#endif
+  interface
+  subroutine DMSwarmMigrate(dm,remove_sent_points, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  PetscBool :: remove_sent_points
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMSwarmMigrate
+#endif
+  interface
+  subroutine DMSwarmCollectViewCreate(dm, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMSwarmCollectViewCreate
+#endif
+  interface
+  subroutine DMSwarmCollectViewDestroy(dm, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMSwarmCollectViewDestroy
+#endif
+  interface
+  subroutine DMSwarmSetPointCoordinatesRandom(dm,Npc, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  PetscInt :: Npc
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMSwarmSetPointCoordinatesRandom
+#endif
+  interface
+  subroutine DMSwarmGetType(sw,stype, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM,eDMSwarmType
+  DM :: sw
+  DMSwarmType :: stype
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMSwarmGetType
+#endif
+  interface
+  subroutine DMSwarmSetType(sw,stype, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM,eDMSwarmType
+  DM :: sw
+  DMSwarmType :: stype
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMSwarmSetType
+#endif
+  interface
+  subroutine DMSwarmGetCellSwarm(sw,cellID,cellswarm, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: sw
+  PetscInt :: cellID
+  DM :: cellswarm
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMSwarmGetCellSwarm
+#endif
+  interface
+  subroutine DMSwarmRestoreCellSwarm(sw,cellID,cellswarm, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: sw
+  PetscInt :: cellID
+  DM :: cellswarm
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMSwarmRestoreCellSwarm
+#endif
+  interface
+  subroutine DMSwarmComputeMoments(sw,coordinate,weight,moments, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: sw
+  character(*) :: coordinate
+  character(*) :: weight
+  PetscReal :: moments(*)
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMSwarmComputeMoments
+#endif
+  interface
+  subroutine DMSwarmReplace(dm,ndm, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  DM :: ndm
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMSwarmReplace
+#endif
+  interface
+  subroutine DMSwarmDuplicate(sw,nsw, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: sw
+  DM :: nsw
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMSwarmDuplicate
+#endif
+  interface operator(.ne.)
+    module procedure DMSwarmTypenotequals
+  end interface operator (.ne.)
+  interface operator(.eq.)
+    module procedure DMSwarmTypeequals
+  end interface operator (.eq.)
+
+  interface operator(.ne.)
+    module procedure DMSwarmMigrateTypenotequals
+  end interface operator (.ne.)
+  interface operator(.eq.)
+    module procedure DMSwarmMigrateTypeequals
+  end interface operator (.eq.)
+
+  interface operator(.ne.)
+    module procedure DMSwarmCollectTypenotequals
+  end interface operator (.ne.)
+  interface operator(.eq.)
+    module procedure DMSwarmCollectTypeequals
+  end interface operator (.eq.)
+
+  interface operator(.ne.)
+    module procedure DMSwarmRemapTypenotequals
+  end interface operator (.ne.)
+  interface operator(.eq.)
+    module procedure DMSwarmRemapTypeequals
+  end interface operator (.eq.)
+
+  interface operator(.ne.)
+    module procedure DMSwarmPICLayoutTypenotequals
+  end interface operator (.ne.)
+  interface operator(.eq.)
+    module procedure DMSwarmPICLayoutTypeequals
+  end interface operator (.eq.)
+

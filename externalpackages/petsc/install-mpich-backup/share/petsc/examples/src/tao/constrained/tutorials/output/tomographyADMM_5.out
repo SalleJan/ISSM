@@ -1,0 +1,36 @@
+    Iteration information for misfit_ solve.
+    0 TAO,    Function value: 0.00378251,    Residual: 0.00101179 
+    1 TAO,    Function value: 0.000434894,    Residual: 1.12158e-09 
+    Iteration information for reg_ solve.
+    0 TAO,    Function value: 4.05323e-05,    Residual: 0.00900359 
+    1 TAO,    Function value: 4.05323e-13,    Residual: 7.82167e-19 
+  1 TAO,  Function value: 0.000394602,  Residual: 0.000126509 
+    Iteration information for misfit_ solve.
+    0 TAO,    Function value: 0.000394362,    Residual: 0.000126508 
+    1 TAO,    Function value: 0.000386697,    Residual: 7.22267e-10 
+    Iteration information for reg_ solve.
+    0 TAO,    Function value: 4.11715e-06,    Residual: 0.00286955 
+    1 TAO,    Function value: 5.99794e-13,    Residual: 7.01453e-19 
+  2 TAO,  Function value: 0.000382832,  Residual: 0.000123941 
+    Iteration information for misfit_ solve.
+    0 TAO,    Function value: 0.00038258,    Residual: 0.000123941 
+    1 TAO,    Function value: 0.000184063,    Residual: 2.70141e-10 
+    Iteration information for reg_ solve.
+    0 TAO,    Function value: 4.68457e-05,    Residual: 0.000161933 
+    1 TAO,    Function value: 1.68233e-09,    Residual: 1.18062e-17 
+  3 TAO,  Function value: 0.000137553,  Residual: 4.96779e-05 
+    Iteration information for misfit_ solve.
+    0 TAO,    Function value: 0.000137217,    Residual: 4.96761e-05 
+    1 TAO,    Function value: 0.000117009,    Residual: 3.52261e-10 
+    Iteration information for reg_ solve.
+    0 TAO,    Function value: 1.20727e-05,    Residual: 8.21954e-05 
+    1 TAO,    Function value: 3.55959e-09,    Residual: 5.9924e-18 
+  4 TAO,  Function value: 0.00010531,  Residual: 3.97058e-05 
+    Iteration information for misfit_ solve.
+    0 TAO,    Function value: 0.000104938,    Residual: 3.97058e-05 
+    1 TAO,    Function value: 3.76533e-05,    Residual: 3.76476e-10 
+    Iteration information for reg_ solve.
+    0 TAO,    Function value: 1.80857e-05,    Residual: 1.34431e-05 
+    1 TAO,    Function value: 5.00277e-08,    Residual: 5.4672e-17 
+  5 TAO,  Function value: 2.00888e-05,  Residual: 1.473e-05 
+relative reconstruction error: ||x-xGT||/||xGT|| = 5.4601e-01.

@@ -1,0 +1,9 @@
+  interface
+  subroutine PetscNvshmemFinalize(ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscNvshmemFinalize
+#endif

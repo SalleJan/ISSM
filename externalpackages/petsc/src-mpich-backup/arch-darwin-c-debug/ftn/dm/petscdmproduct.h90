@@ -1,0 +1,52 @@
+  interface
+  subroutine DMProductGetDM(dm,slot,subdm, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  PetscInt :: slot
+  DM :: subdm
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMProductGetDM
+#endif
+  interface
+  subroutine DMProductSetDM(dm,slot,subdm, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  PetscInt :: slot
+  DM :: subdm
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMProductSetDM
+#endif
+  interface
+  subroutine DMProductSetDimensionIndex(dm,slot,idx, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  PetscInt :: slot
+  PetscInt :: idx
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMProductSetDimensionIndex
+#endif
+  interface
+  subroutine DMProductGetDimensionIndex(dm,slot,idx, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  PetscInt :: slot
+  PetscInt :: idx
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMProductGetDimensionIndex
+#endif

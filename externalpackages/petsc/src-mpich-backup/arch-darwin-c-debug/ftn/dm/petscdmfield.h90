@@ -1,0 +1,290 @@
+  interface
+  subroutine DMFieldDestroy(field, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDMField
+  DMField :: field
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMFieldDestroy
+#endif
+  interface
+  subroutine DMFieldView(field,viewer, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDMField,tPetscViewer
+  DMField :: field
+  PetscViewer :: viewer
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMFieldView
+#endif
+  interface
+  subroutine DMFieldSetType(field,type, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDMField
+  DMField :: field
+  character(*) :: type
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMFieldSetType
+#endif
+  interface
+  subroutine DMFieldGetType(field,type, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDMField
+  DMField :: field
+  character(*) :: type
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMFieldGetType
+#endif
+  interface
+  subroutine DMFieldGetNumComponents(field,nc, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDMField
+  DMField :: field
+  PetscInt :: nc
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMFieldGetNumComponents
+#endif
+  interface
+  subroutine DMFieldGetDM(field,dm, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDMField,tDM
+  DMField :: field
+  DM :: dm
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMFieldGetDM
+#endif
+  interface
+  subroutine DMFieldGetDegree(field,cellIS,minDegree,maxDegree, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDMField,tIS
+  DMField :: field
+  IS :: cellIS
+  PetscInt :: minDegree
+  PetscInt :: maxDegree
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMFieldGetDegree
+#endif
+  interface
+  subroutine DMFieldCreateDefaultQuadrature(field,pointIS,quad, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDMField,tIS,tPetscQuadrature
+  DMField :: field
+  IS :: pointIS
+  PetscQuadrature :: quad
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMFieldCreateDefaultQuadrature
+#endif
+  interface
+  subroutine DMFieldCreateDefaultFaceQuadrature(field,pointIS,quad, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDMField,tIS,tPetscQuadrature
+  DMField :: field
+  IS :: pointIS
+  PetscQuadrature :: quad
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMFieldCreateDefaultFaceQuadrature
+#endif
+  interface
+  subroutine DMFieldInitializePackage(ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMFieldInitializePackage
+#endif
+  interface
+  subroutine DMFieldFinalizePackage(ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMFieldFinalizePackage
+#endif
+  interface
+  subroutine DMFieldRegister(sname,function, ierr)
+  use, intrinsic :: ISO_C_binding
+  character(*) :: sname
+  external :: function
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMFieldRegister
+#endif
+  interface
+  subroutine DMFieldCreateDA(dm,nc,cornerValues,field, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM,tDMField
+  DM :: dm
+  PetscInt :: nc
+  PetscScalar :: cornerValues
+  DMField :: field
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMFieldCreateDA
+#endif
+  interface
+  subroutine DMFieldCreateDSWithDG(dm,dmDG,fieldNum,vec,vecDG,field, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM,tVec,tDMField
+  DM :: dm
+  DM :: dmDG
+  PetscInt :: fieldNum
+  Vec :: vec
+  Vec :: vecDG
+  DMField :: field
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMFieldCreateDSWithDG
+#endif
+  interface
+  subroutine DMFieldCreateDS(dm,fieldNum,vec,field, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM,tVec,tDMField
+  DM :: dm
+  PetscInt :: fieldNum
+  Vec :: vec
+  DMField :: field
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMFieldCreateDS
+#endif
+  interface
+  subroutine DMFieldShellGetContextcptr(field,ctx, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDMField
+  DMField :: field
+  type(c_ptr) :: ctx
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMFieldShellGetContextcptr
+#endif
+  interface
+  subroutine DMFieldShellSetDestroy(field,destroy, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDMField
+  DMField :: field
+  external :: destroy
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMFieldShellSetDestroy
+#endif
+  interface
+  subroutine DMFieldShellSetEvaluate(field,evaluate, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDMField
+  DMField :: field
+  external :: evaluate
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMFieldShellSetEvaluate
+#endif
+  interface
+  subroutine DMFieldShellSetEvaluateFE(field,evaluateFE, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDMField
+  DMField :: field
+  external :: evaluateFE
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMFieldShellSetEvaluateFE
+#endif
+  interface
+  subroutine DMFieldShellSetEvaluateFV(field,evaluateFV, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDMField
+  DMField :: field
+  external :: evaluateFV
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMFieldShellSetEvaluateFV
+#endif
+  interface
+  subroutine DMFieldShellSetGetDegree(field,getDegree, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDMField
+  DMField :: field
+  external :: getDegree
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMFieldShellSetGetDegree
+#endif
+  interface
+  subroutine DMFieldShellSetCreateDefaultQuadrature(field,createDefaultQuadrature, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDMField
+  DMField :: field
+  external :: createDefaultQuadrature
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMFieldShellSetCreateDefaultQuadrature
+#endif
+  interface
+  subroutine DMFieldCreateShell(dm,numComponents,continuity,ctx,field, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM,eDMFieldContinuity,tDMField
+  DM :: dm
+  PetscInt :: numComponents
+  DMFieldContinuity :: continuity
+  type(*) :: ctx
+  DMField :: field
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMFieldCreateShell
+#endif
+  interface operator(.ne.)
+    module procedure DMFieldContinuitynotequals
+  end interface operator (.ne.)
+  interface operator(.eq.)
+    module procedure DMFieldContinuityequals
+  end interface operator (.eq.)
+

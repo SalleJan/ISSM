@@ -1,0 +1,120 @@
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT:: PetscGridHashnotequals
+!DEC$ ATTRIBUTES DLLEXPORT:: PetscGridHashequals
+#endif
+
+  function PetscGridHashnotequals(A,B)
+    logical PetscGridHashnotequals
+    type(tPetscGridHash), intent(in) :: A,B
+    PetscGridHashnotequals = (A%v .ne. B%v)
+  end function
+  function PetscGridHashequals(A,B)
+    logical PetscGridHashequals
+    type(tPetscGridHash), intent(in) :: A,B
+    PetscGridHashequals = (A%v .eq. B%v)
+  end function
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT:: DMPlexStorageVersionnotequals
+!DEC$ ATTRIBUTES DLLEXPORT:: DMPlexStorageVersionequals
+#endif
+
+  function DMPlexStorageVersionnotequals(A,B)
+    logical DMPlexStorageVersionnotequals
+    type(tDMPlexStorageVersion), intent(in) :: A,B
+    DMPlexStorageVersionnotequals = (A%v .ne. B%v)
+  end function
+  function DMPlexStorageVersionequals(A,B)
+    logical DMPlexStorageVersionequals
+    type(tDMPlexStorageVersion), intent(in) :: A,B
+    DMPlexStorageVersionequals = (A%v .eq. B%v)
+  end function
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT:: DMPlexPointQueuenotequals
+!DEC$ ATTRIBUTES DLLEXPORT:: DMPlexPointQueueequals
+#endif
+
+  function DMPlexPointQueuenotequals(A,B)
+    logical DMPlexPointQueuenotequals
+    type(tDMPlexPointQueue), intent(in) :: A,B
+    DMPlexPointQueuenotequals = (A%v .ne. B%v)
+  end function
+  function DMPlexPointQueueequals(A,B)
+    logical DMPlexPointQueueequals
+    type(tDMPlexPointQueue), intent(in) :: A,B
+    DMPlexPointQueueequals = (A%v .eq. B%v)
+  end function
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT:: DMPlexInterpolatedFlagnotequals
+!DEC$ ATTRIBUTES DLLEXPORT:: DMPlexInterpolatedFlagequals
+#endif
+
+  function DMPlexInterpolatedFlagnotequals(A,B)
+    logical DMPlexInterpolatedFlagnotequals
+    type(eDMPlexInterpolatedFlag), intent(in) :: A,B
+    DMPlexInterpolatedFlagnotequals = (A%v .ne. B%v)
+  end function
+  function DMPlexInterpolatedFlagequals(A,B)
+    logical DMPlexInterpolatedFlagequals
+    type(eDMPlexInterpolatedFlag), intent(in) :: A,B
+    DMPlexInterpolatedFlagequals = (A%v .eq. B%v)
+  end function
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT:: DMPlexTPSTypenotequals
+!DEC$ ATTRIBUTES DLLEXPORT:: DMPlexTPSTypeequals
+#endif
+
+  function DMPlexTPSTypenotequals(A,B)
+    logical DMPlexTPSTypenotequals
+    type(eDMPlexTPSType), intent(in) :: A,B
+    DMPlexTPSTypenotequals = (A%v .ne. B%v)
+  end function
+  function DMPlexTPSTypeequals(A,B)
+    logical DMPlexTPSTypeequals
+    type(eDMPlexTPSType), intent(in) :: A,B
+    DMPlexTPSTypeequals = (A%v .eq. B%v)
+  end function
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT:: DMPlexShapenotequals
+!DEC$ ATTRIBUTES DLLEXPORT:: DMPlexShapeequals
+#endif
+
+  function DMPlexShapenotequals(A,B)
+    logical DMPlexShapenotequals
+    type(eDMPlexShape), intent(in) :: A,B
+    DMPlexShapenotequals = (A%v .ne. B%v)
+  end function
+  function DMPlexShapeequals(A,B)
+    logical DMPlexShapeequals
+    type(eDMPlexShape), intent(in) :: A,B
+    DMPlexShapeequals = (A%v .eq. B%v)
+  end function
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT:: DMPlexCoordMapnotequals
+!DEC$ ATTRIBUTES DLLEXPORT:: DMPlexCoordMapequals
+#endif
+
+  function DMPlexCoordMapnotequals(A,B)
+    logical DMPlexCoordMapnotequals
+    type(eDMPlexCoordMap), intent(in) :: A,B
+    DMPlexCoordMapnotequals = (A%v .ne. B%v)
+  end function
+  function DMPlexCoordMapequals(A,B)
+    logical DMPlexCoordMapequals
+    type(eDMPlexCoordMap), intent(in) :: A,B
+    DMPlexCoordMapequals = (A%v .eq. B%v)
+  end function
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT:: DMPlexCSRAlgorithmnotequals
+!DEC$ ATTRIBUTES DLLEXPORT:: DMPlexCSRAlgorithmequals
+#endif
+
+  function DMPlexCSRAlgorithmnotequals(A,B)
+    logical DMPlexCSRAlgorithmnotequals
+    type(eDMPlexCSRAlgorithm), intent(in) :: A,B
+    DMPlexCSRAlgorithmnotequals = (A%v .ne. B%v)
+  end function
+  function DMPlexCSRAlgorithmequals(A,B)
+    logical DMPlexCSRAlgorithmequals
+    type(eDMPlexCSRAlgorithm), intent(in) :: A,B
+    DMPlexCSRAlgorithmequals = (A%v .eq. B%v)
+  end function

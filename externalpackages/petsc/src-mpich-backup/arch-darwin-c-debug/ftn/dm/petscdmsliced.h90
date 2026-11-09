@@ -1,0 +1,61 @@
+  interface
+  subroutine DMSlicedSetGhosts(dm,bs,nlocal,Nghosts,ghosts, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  PetscInt :: bs
+  PetscInt :: nlocal
+  PetscInt :: Nghosts
+  PetscInt :: ghosts(*)
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMSlicedSetGhosts
+#endif
+  interface
+  subroutine DMSlicedSetPreallocation(dm,d_nz,d_nnz,o_nz,o_nnz, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  PetscInt :: d_nz
+  PetscInt :: d_nnz(*)
+  PetscInt :: o_nz
+  PetscInt :: o_nnz(*)
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMSlicedSetPreallocation
+#endif
+  interface
+  subroutine DMSlicedSetBlockFills(dm,dfill,ofill, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  PetscInt :: dfill(*)
+  PetscInt :: ofill(*)
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMSlicedSetBlockFills
+#endif
+  interface
+  subroutine DMSlicedCreate(comm,bs,nlocal,Nghosts,ghosts,d_nnz,o_nnz,dm, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  MPIU_Comm :: comm
+  PetscInt :: bs
+  PetscInt :: nlocal
+  PetscInt :: Nghosts
+  PetscInt :: ghosts(*)
+  PetscInt :: d_nnz(*)
+  PetscInt :: o_nnz(*)
+  DM :: dm
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMSlicedCreate
+#endif

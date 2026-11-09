@@ -1,0 +1,30 @@
+  type eDMFieldContinuity
+    PetscEnum:: v = PETSC_FORTRAN_TYPE_INITIALIZE
+  end type eDMFieldContinuity
+
+  DMFieldContinuity, parameter :: PETSC_NULL_DMFIELDCONTINUITY = eDMFieldContinuity(-50)
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PETSC_NULL_DMFIELDCONTINUITY
+#endif
+    DMFieldContinuity, parameter :: DMFIELD_VERTEX = eDMFieldContinuity(0)
+    DMFieldContinuity, parameter :: DMFIELD_EDGE = eDMFieldContinuity(1)
+    DMFieldContinuity, parameter :: DMFIELD_FACET = eDMFieldContinuity(2)
+    DMFieldContinuity, parameter :: DMFIELD_CELL = eDMFieldContinuity(3)
+
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMFIELD_VERTEX
+!DEC$ ATTRIBUTES DLLEXPORT::DMFIELD_EDGE
+!DEC$ ATTRIBUTES DLLEXPORT::DMFIELD_FACET
+!DEC$ ATTRIBUTES DLLEXPORT::DMFIELD_CELL
+#endif
+
+  CHARACTER(LEN=*), PARAMETER :: DMFIELDDA = 'da'
+  CHARACTER(LEN=*), PARAMETER :: DMFIELDDS = 'ds'
+  CHARACTER(LEN=*), PARAMETER :: DMFIELDSHELL = 'shell'
+
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMFIELDDA
+!DEC$ ATTRIBUTES DLLEXPORT::DMFIELDDS
+!DEC$ ATTRIBUTES DLLEXPORT::DMFIELDSHELL
+#endif
+

@@ -1,0 +1,12 @@
+  interface
+  subroutine PetscViewerSAWsOpen(comm,lab, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscViewer
+  MPIU_Comm :: comm
+  PetscViewer :: lab
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscViewerSAWsOpen
+#endif

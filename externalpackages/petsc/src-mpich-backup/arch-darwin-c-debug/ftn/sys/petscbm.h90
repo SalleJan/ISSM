@@ -1,0 +1,335 @@
+  interface
+  subroutine PetscBenchInitializePackage(ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscBenchInitializePackage
+#endif
+  interface
+  subroutine PetscBenchRegister(sname,function, ierr)
+  use, intrinsic :: ISO_C_binding
+  character(*) :: sname
+  external :: function
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscBenchRegister
+#endif
+  interface
+  subroutine PetscBenchReset(bm, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscBench
+  PetscBench :: bm
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscBenchReset
+#endif
+  interface
+  subroutine PetscBenchDestroy(bm, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscBench
+  PetscBench :: bm
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscBenchDestroy
+#endif
+  interface
+  subroutine PetscBenchSetUp(bm, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscBench
+  PetscBench :: bm
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscBenchSetUp
+#endif
+  interface
+  subroutine PetscBenchRun(bm, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscBench
+  PetscBench :: bm
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscBenchRun
+#endif
+  interface
+  subroutine PetscBenchSetFromOptions(bm, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscBench
+  PetscBench :: bm
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscBenchSetFromOptions
+#endif
+  interface
+  subroutine PetscBenchView(bm,viewer, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscBench,tPetscViewer
+  PetscBench :: bm
+  PetscViewer :: viewer
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscBenchView
+#endif
+  interface
+  subroutine PetscBenchViewFromOptions(bm,bobj,name, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscBench,tPetscObject
+  PetscBench :: bm
+  PetscObject :: bobj
+  character(*) :: name
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscBenchViewFromOptions
+#endif
+  interface
+  subroutine PetscBenchCreate(comm,bm, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscBench
+  MPIU_Comm :: comm
+  PetscBench :: bm
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscBenchCreate
+#endif
+  interface
+  subroutine PetscBenchSetOptionsPrefix(bm,pre, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscBench
+  PetscBench :: bm
+  character(*) :: pre
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscBenchSetOptionsPrefix
+#endif
+  interface
+  subroutine PetscBenchSetSize(bm,n, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscBench
+  PetscBench :: bm
+  PetscInt :: n
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscBenchSetSize
+#endif
+  interface
+  subroutine PetscBenchGetSize(bm,n, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscBench
+  PetscBench :: bm
+  PetscInt :: n
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscBenchGetSize
+#endif
+  interface
+  subroutine PetscBenchSetType(bm,type, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscBench
+  PetscBench :: bm
+  character(*) :: type
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscBenchSetType
+#endif
+  interface
+  subroutine PetscBenchGetType(bm,type, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscBench
+  PetscBench :: bm
+  character(*) :: type
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscBenchGetType
+#endif
+  interface operator(.ne.)
+    module procedure PetscBenchnotequals
+  end interface operator (.ne.)
+  interface operator(.eq.)
+    module procedure PetscBenchequals
+  end interface operator (.eq.)
+
+  interface PetscObjectCast
+    module procedure PetscObjectCastBench
+  end interface
+  interface PetscBarrier
+  module procedure PetscBarrierBench
+  end interface
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectSAWsTakeAccess
+    module procedure PetscObjectSAWsTakeAccessBench
+  end interface
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectSAWsGrantAccess
+    module procedure PetscObjectSAWsGrantAccessBench
+  end interface
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectSAWsBlock
+    module procedure PetscObjectSAWsBlockBench
+  end interface
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectSAWsSetBlock
+    module procedure PetscObjectSAWsSetBlockBench
+  end interface
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectSAWsViewOff
+    module procedure PetscObjectSAWsViewOffBench
+  end interface
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectViewSAWs
+    module procedure PetscObjectViewSAWsBench
+  end interface
+#endif
+  interface PetscObjectGetType
+    module procedure PetscObjectGetTypeBench
+  end interface
+  interface PetscObjectSetPrintedOptions
+    module procedure PetscObjectSetPrintedOptionsBench
+  end interface
+  interface PetscObjectInheritPrintedOptions
+    module procedure PetscObjectInheritPrintedOptionsBench
+  end interface
+  interface PetscObjectAddOptionsHandler
+    module procedure PetscObjectAddOptionsHandlerBench
+  end interface
+  interface PetscObjectProcessOptionsHandlers
+    module procedure PetscObjectProcessOptionsHandlersBench
+  end interface
+  interface PetscObjectDestroyOptionsHandlers
+    module procedure PetscObjectDestroyOptionsHandlersBench
+  end interface
+  interface PetscObjectReference
+    module procedure PetscObjectReferenceBench
+  end interface
+  interface PetscObjectGetReference
+    module procedure PetscObjectGetReferenceBench
+  end interface
+  interface PetscObjectDereference
+    module procedure PetscObjectDereferenceBench
+  end interface
+  interface PetscObjectRemoveReference
+    module procedure PetscObjectRemoveReferenceBench
+  end interface
+  interface PetscObjectHasFunction
+    module procedure PetscObjectHasFunctionBench
+  end interface
+  interface PetscObjectSetFromOptions
+    module procedure PetscObjectSetFromOptionsBench
+  end interface
+  interface PetscObjectSetUp
+    module procedure PetscObjectSetUpBench
+  end interface
+  interface PetscObjectGetName
+    module procedure PetscObjectGetNameBench
+  end interface
+  interface PetscObjectDestroy
+    module procedure PetscObjectDestroyBench
+  end interface
+  interface PetscObjectView
+    module procedure PetscObjectViewBench
+  end interface
+  interface PetscObjectViewFromOptions
+    module procedure PetscObjectViewFromOptionsBench
+  end interface
+  interface PetscObjectTypeCompare
+    module procedure PetscObjectTypeCompareBench
+  end interface
+  interface PetscObjectObjectTypeCompare
+    module procedure PetscObjectObjectTypeCompareBench
+  end interface
+  interface PetscObjectBaseTypeCompare
+    module procedure PetscObjectBaseTypeCompareBench
+  end interface
+  interface PetscObjectRegisterDestroy
+    module procedure PetscObjectRegisterDestroyBench
+  end interface
+  interface PetscObjectGetId
+    module procedure PetscObjectGetIdBench
+  end interface
+  interface PetscObjectCompareId
+    module procedure PetscObjectCompareIdBench
+  end interface
+  interface PetscObjectGetOptions
+    module procedure PetscObjectGetOptionsBench
+  end interface
+  interface PetscObjectSetOptions
+    module procedure PetscObjectSetOptionsBench
+  end interface
+  interface PetscObjectSetOptionsPrefix
+    module procedure PetscObjectSetOptionsPrefixBench
+  end interface
+  interface PetscObjectAppendOptionsPrefix
+    module procedure PetscObjectAppendOptionsPrefixBench
+  end interface
+  interface PetscObjectGetOptionsPrefix
+    module procedure PetscObjectGetOptionsPrefixBench
+  end interface
+  interface PetscObjectPrependOptionsPrefix
+    module procedure PetscObjectPrependOptionsPrefixBench
+  end interface
+  interface PetscObjectGetComm
+    module procedure PetscObjectGetCommBench
+  end interface
+  interface PetscObjectGetTabLevel
+    module procedure PetscObjectGetTabLevelBench
+  end interface
+  interface PetscObjectSetTabLevel
+    module procedure PetscObjectSetTabLevelBench
+  end interface
+  interface PetscObjectIncrementTabLevel
+    module procedure PetscObjectIncrementTabLevelBench
+  end interface
+  interface PetscObjectGetNewTag
+    module procedure PetscObjectGetNewTagBench
+  end interface
+  interface PetscObjectGetClassId
+    module procedure PetscObjectGetClassIdBench
+  end interface
+  interface PetscObjectGetClassName
+    module procedure PetscObjectGetClassNameBench
+  end interface
+  interface PetscObjectSetName
+    module procedure PetscObjectSetNameBench
+  end interface
+  interface PetscObjectPrintClassNamePrefixType
+    module procedure PetscObjectPrintClassNamePrefixTypeBench
+  end interface
+  interface PetscObjectName
+    module procedure PetscObjectNameBench
+  end interface
+  interface PetscObjectChangeTypeName
+    module procedure PetscObjectChangeTypeNameBench
+  end interface

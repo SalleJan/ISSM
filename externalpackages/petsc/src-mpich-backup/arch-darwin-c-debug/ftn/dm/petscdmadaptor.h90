@@ -1,0 +1,547 @@
+  interface
+  subroutine DMAdaptorRegisterAll(ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMAdaptorRegisterAll
+#endif
+  interface
+  subroutine DMAdaptorRegisterDestroy(ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMAdaptorRegisterDestroy
+#endif
+  interface
+  subroutine DMAdaptorMonitorRegister(name,vtype,format,monitor,create,destroy, ierr)
+  use, intrinsic :: ISO_C_binding
+  import ePetscViewerFormat
+  character(*) :: name
+  character(*) :: vtype
+  PetscViewerFormat :: format
+  external :: monitor
+  external :: create
+  external :: destroy
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMAdaptorMonitorRegister
+#endif
+  interface
+  subroutine DMAdaptorMonitorRegisterDestroy(ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMAdaptorMonitorRegisterDestroy
+#endif
+  interface
+  subroutine DMAdaptorCreate(comm,adaptor, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDMAdaptor
+  MPIU_Comm :: comm
+  DMAdaptor :: adaptor
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMAdaptorCreate
+#endif
+  interface
+  subroutine DMAdaptorDestroy(adaptor, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDMAdaptor
+  DMAdaptor :: adaptor
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMAdaptorDestroy
+#endif
+  interface
+  subroutine DMAdaptorSetType(adaptor,method, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDMAdaptor
+  DMAdaptor :: adaptor
+  character(*) :: method
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMAdaptorSetType
+#endif
+  interface
+  subroutine DMAdaptorGetType(adaptor,type, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDMAdaptor
+  DMAdaptor :: adaptor
+  character(*) :: type
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMAdaptorGetType
+#endif
+  interface
+  subroutine DMAdaptorMonitorSet(adaptor,monitor,ctx,monitordestroy, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDMAdaptor
+  DMAdaptor :: adaptor
+  external :: monitor
+  type(*) :: ctx
+  external monitordestroy
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMAdaptorMonitorSet
+#endif
+  interface
+  subroutine DMAdaptorMonitorCancel(adaptor, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDMAdaptor
+  DMAdaptor :: adaptor
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMAdaptorMonitorCancel
+#endif
+  interface
+  subroutine DMAdaptorMonitorSetFromOptions(adaptor,opt,name,ctx, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDMAdaptor
+  DMAdaptor :: adaptor
+  character(*) :: opt
+  character(*) :: name
+  type(*) :: ctx
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMAdaptorMonitorSetFromOptions
+#endif
+  interface
+  subroutine DMAdaptorSetOptionsPrefix(adaptor,prefix, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDMAdaptor
+  DMAdaptor :: adaptor
+  character(*) :: prefix
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMAdaptorSetOptionsPrefix
+#endif
+  interface
+  subroutine DMAdaptorSetFromOptions(adaptor, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDMAdaptor
+  DMAdaptor :: adaptor
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMAdaptorSetFromOptions
+#endif
+  interface
+  subroutine DMAdaptorView(adaptor,viewer, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDMAdaptor,tPetscViewer
+  DMAdaptor :: adaptor
+  PetscViewer :: viewer
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMAdaptorView
+#endif
+  interface
+  subroutine DMAdaptorGetSolver(adaptor,snes, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDMAdaptor,tSNES
+  DMAdaptor :: adaptor
+  SNES :: snes
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMAdaptorGetSolver
+#endif
+  interface
+  subroutine DMAdaptorSetSolver(adaptor,snes, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDMAdaptor,tSNES
+  DMAdaptor :: adaptor
+  SNES :: snes
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMAdaptorSetSolver
+#endif
+  interface
+  subroutine DMAdaptorGetSequenceLength(adaptor,num, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDMAdaptor
+  DMAdaptor :: adaptor
+  PetscInt :: num
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMAdaptorGetSequenceLength
+#endif
+  interface
+  subroutine DMAdaptorSetSequenceLength(adaptor,num, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDMAdaptor
+  DMAdaptor :: adaptor
+  PetscInt :: num
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMAdaptorSetSequenceLength
+#endif
+  interface
+  subroutine DMAdaptorSetUp(adaptor, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDMAdaptor
+  DMAdaptor :: adaptor
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMAdaptorSetUp
+#endif
+  interface
+  subroutine DMAdaptorSetTransferFunction(adaptor,tfunc, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDMAdaptor
+  DMAdaptor :: adaptor
+  external :: tfunc
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMAdaptorSetTransferFunction
+#endif
+  interface
+  subroutine DMAdaptorMonitor(adaptor,it,odm,adm,Nf,enorms,error, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDMAdaptor,tDM,tVec
+  DMAdaptor :: adaptor
+  PetscInt :: it
+  DM :: odm
+  DM :: adm
+  PetscInt :: Nf
+  PetscReal :: enorms(*)
+  Vec :: error
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMAdaptorMonitor
+#endif
+  interface
+  subroutine DMAdaptorMonitorSize(adaptor,n,odm,adm,Nf,enorms,error,vf, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDMAdaptor,tDM,tVec
+  DMAdaptor :: adaptor
+  PetscInt :: n
+  DM :: odm
+  DM :: adm
+  PetscInt :: Nf
+  PetscReal :: enorms(*)
+  Vec :: error
+  PetscViewerAndFormat :: vf
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMAdaptorMonitorSize
+#endif
+  interface
+  subroutine DMAdaptorMonitorError(adaptor,n,odm,adm,Nf,enorms,error,vf, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDMAdaptor,tDM,tVec
+  DMAdaptor :: adaptor
+  PetscInt :: n
+  DM :: odm
+  DM :: adm
+  PetscInt :: Nf
+  PetscReal :: enorms(*)
+  Vec :: error
+  PetscViewerAndFormat :: vf
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMAdaptorMonitorError
+#endif
+  interface
+  subroutine DMAdaptorMonitorErrorDraw(adaptor,n,odm,adm,Nf,enorms,error,vf, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDMAdaptor,tDM,tVec
+  DMAdaptor :: adaptor
+  PetscInt :: n
+  DM :: odm
+  DM :: adm
+  PetscInt :: Nf
+  PetscReal :: enorms(*)
+  Vec :: error
+  PetscViewerAndFormat :: vf
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMAdaptorMonitorErrorDraw
+#endif
+  interface
+  subroutine DMAdaptorMonitorErrorDrawLG(adaptor,n,odm,adm,Nf,enorms,error,vf, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDMAdaptor,tDM,tVec
+  DMAdaptor :: adaptor
+  PetscInt :: n
+  DM :: odm
+  DM :: adm
+  PetscInt :: Nf
+  PetscReal :: enorms(*)
+  Vec :: error
+  PetscViewerAndFormat :: vf
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMAdaptorMonitorErrorDrawLG
+#endif
+  interface
+  subroutine DMAdaptorMonitorRegisterAll(ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMAdaptorMonitorRegisterAll
+#endif
+  interface
+  subroutine DMAdaptorAdapt(adaptor,x,strategy,adm,ax, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDMAdaptor,tVec,eDMAdaptationStrategy,tDM
+  DMAdaptor :: adaptor
+  Vec :: x
+  DMAdaptationStrategy :: strategy
+  DM :: adm
+  Vec :: ax
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMAdaptorAdapt
+#endif
+  interface
+  subroutine DMAdaptorSetMixedSetupFunction(adaptor,setupFunc, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDMAdaptor
+  DMAdaptor :: adaptor
+  external :: setupFunc
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMAdaptorSetMixedSetupFunction
+#endif
+  interface
+  subroutine DMAdaptorGetCriterion(adaptor,criterion, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDMAdaptor,eDMAdaptationCriterion
+  DMAdaptor :: adaptor
+  DMAdaptationCriterion :: criterion
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMAdaptorGetCriterion
+#endif
+  interface
+  subroutine DMAdaptorSetCriterion(adaptor,criterion, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDMAdaptor,eDMAdaptationCriterion
+  DMAdaptor :: adaptor
+  DMAdaptationCriterion :: criterion
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMAdaptorSetCriterion
+#endif
+  interface operator(.ne.)
+    module procedure DMAdaptornotequals
+  end interface operator (.ne.)
+  interface operator(.eq.)
+    module procedure DMAdaptorequals
+  end interface operator (.eq.)
+
+  interface PetscObjectCast
+    module procedure PetscObjectCastDMAdaptor
+  end interface
+  interface PetscBarrier
+  module procedure PetscBarrierDMAdaptor
+  end interface
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectSAWsTakeAccess
+    module procedure PetscObjectSAWsTakeAccessDMAdaptor
+  end interface
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectSAWsGrantAccess
+    module procedure PetscObjectSAWsGrantAccessDMAdaptor
+  end interface
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectSAWsBlock
+    module procedure PetscObjectSAWsBlockDMAdaptor
+  end interface
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectSAWsSetBlock
+    module procedure PetscObjectSAWsSetBlockDMAdaptor
+  end interface
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectSAWsViewOff
+    module procedure PetscObjectSAWsViewOffDMAdaptor
+  end interface
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectViewSAWs
+    module procedure PetscObjectViewSAWsDMAdaptor
+  end interface
+#endif
+  interface PetscObjectGetType
+    module procedure PetscObjectGetTypeDMAdaptor
+  end interface
+  interface PetscObjectSetPrintedOptions
+    module procedure PetscObjectSetPrintedOptionsDMAdaptor
+  end interface
+  interface PetscObjectInheritPrintedOptions
+    module procedure PetscObjectInheritPrintedOptionsDMAdaptor
+  end interface
+  interface PetscObjectAddOptionsHandler
+    module procedure PetscObjectAddOptionsHandlerDMAdaptor
+  end interface
+  interface PetscObjectProcessOptionsHandlers
+    module procedure PetscObjectProcessOptionsHandlersDMAdaptor
+  end interface
+  interface PetscObjectDestroyOptionsHandlers
+    module procedure PetscObjectDestroyOptionsHandlersDMAdaptor
+  end interface
+  interface PetscObjectReference
+    module procedure PetscObjectReferenceDMAdaptor
+  end interface
+  interface PetscObjectGetReference
+    module procedure PetscObjectGetReferenceDMAdaptor
+  end interface
+  interface PetscObjectDereference
+    module procedure PetscObjectDereferenceDMAdaptor
+  end interface
+  interface PetscObjectRemoveReference
+    module procedure PetscObjectRemoveReferenceDMAdaptor
+  end interface
+  interface PetscObjectHasFunction
+    module procedure PetscObjectHasFunctionDMAdaptor
+  end interface
+  interface PetscObjectSetFromOptions
+    module procedure PetscObjectSetFromOptionsDMAdaptor
+  end interface
+  interface PetscObjectSetUp
+    module procedure PetscObjectSetUpDMAdaptor
+  end interface
+  interface PetscObjectGetName
+    module procedure PetscObjectGetNameDMAdaptor
+  end interface
+  interface PetscObjectDestroy
+    module procedure PetscObjectDestroyDMAdaptor
+  end interface
+  interface PetscObjectView
+    module procedure PetscObjectViewDMAdaptor
+  end interface
+  interface PetscObjectViewFromOptions
+    module procedure PetscObjectViewFromOptionsDMAdaptor
+  end interface
+  interface PetscObjectTypeCompare
+    module procedure PetscObjectTypeCompareDMAdaptor
+  end interface
+  interface PetscObjectObjectTypeCompare
+    module procedure PetscObjectObjectTypeCompareDMAdaptor
+  end interface
+  interface PetscObjectBaseTypeCompare
+    module procedure PetscObjectBaseTypeCompareDMAdaptor
+  end interface
+  interface PetscObjectRegisterDestroy
+    module procedure PetscObjectRegisterDestroyDMAdaptor
+  end interface
+  interface PetscObjectGetId
+    module procedure PetscObjectGetIdDMAdaptor
+  end interface
+  interface PetscObjectCompareId
+    module procedure PetscObjectCompareIdDMAdaptor
+  end interface
+  interface PetscObjectGetOptions
+    module procedure PetscObjectGetOptionsDMAdaptor
+  end interface
+  interface PetscObjectSetOptions
+    module procedure PetscObjectSetOptionsDMAdaptor
+  end interface
+  interface PetscObjectSetOptionsPrefix
+    module procedure PetscObjectSetOptionsPrefixDMAdaptor
+  end interface
+  interface PetscObjectAppendOptionsPrefix
+    module procedure PetscObjectAppendOptionsPrefixDMAdaptor
+  end interface
+  interface PetscObjectGetOptionsPrefix
+    module procedure PetscObjectGetOptionsPrefixDMAdaptor
+  end interface
+  interface PetscObjectPrependOptionsPrefix
+    module procedure PetscObjectPrependOptionsPrefixDMAdaptor
+  end interface
+  interface PetscObjectGetComm
+    module procedure PetscObjectGetCommDMAdaptor
+  end interface
+  interface PetscObjectGetTabLevel
+    module procedure PetscObjectGetTabLevelDMAdaptor
+  end interface
+  interface PetscObjectSetTabLevel
+    module procedure PetscObjectSetTabLevelDMAdaptor
+  end interface
+  interface PetscObjectIncrementTabLevel
+    module procedure PetscObjectIncrementTabLevelDMAdaptor
+  end interface
+  interface PetscObjectGetNewTag
+    module procedure PetscObjectGetNewTagDMAdaptor
+  end interface
+  interface PetscObjectGetClassId
+    module procedure PetscObjectGetClassIdDMAdaptor
+  end interface
+  interface PetscObjectGetClassName
+    module procedure PetscObjectGetClassNameDMAdaptor
+  end interface
+  interface PetscObjectSetName
+    module procedure PetscObjectSetNameDMAdaptor
+  end interface
+  interface PetscObjectPrintClassNamePrefixType
+    module procedure PetscObjectPrintClassNamePrefixTypeDMAdaptor
+  end interface
+  interface PetscObjectName
+    module procedure PetscObjectNameDMAdaptor
+  end interface
+  interface PetscObjectChangeTypeName
+    module procedure PetscObjectChangeTypeNameDMAdaptor
+  end interface

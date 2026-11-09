@@ -1,0 +1,1311 @@
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT:: DMSwarmDataFieldnotequals
+!DEC$ ATTRIBUTES DLLEXPORT:: DMSwarmDataFieldequals
+#endif
+
+  function DMSwarmDataFieldnotequals(A,B)
+    logical DMSwarmDataFieldnotequals
+    type(tDMSwarmDataField), intent(in) :: A,B
+    DMSwarmDataFieldnotequals = (A%v .ne. B%v)
+  end function
+  function DMSwarmDataFieldequals(A,B)
+    logical DMSwarmDataFieldequals
+    type(tDMSwarmDataField), intent(in) :: A,B
+    DMSwarmDataFieldequals = (A%v .eq. B%v)
+  end function
+  function PetscObjectCastDMSwarmDataField(obj)
+    DMSwarmDataField obj
+    PetscObject PetscObjectCastDMSwarmDataField
+    PetscObjectCastDMSwarmDataField%v = obj%v
+  end function 
+  subroutine PetscBarrierDMSwarmDataField(obj,ierr)
+    DMSwarmDataField obj
+    PetscErrorCode ierr
+    call PetscBarrier(PetscObjectCast(obj),ierr)
+  end subroutine 
+#if defined(PETSC_HAVE_SAWS)
+  subroutine PetscObjectSAWsTakeAccessDMSwarmDataField(obj, ierr)
+  DMSwarmDataField obj
+  PetscErrorCode ierr
+  call PetscObjectSAWsTakeAccess(PetscObjectCast(obj), ierr)
+  end subroutine 
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  subroutine PetscObjectSAWsGrantAccessDMSwarmDataField(obj, ierr)
+  DMSwarmDataField obj
+  PetscErrorCode ierr
+  call PetscObjectSAWsGrantAccess(PetscObjectCast(obj), ierr)
+  end subroutine 
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  subroutine PetscObjectSAWsBlockDMSwarmDataField(obj, ierr)
+  DMSwarmDataField obj
+  PetscErrorCode ierr
+  call PetscObjectSAWsBlock(PetscObjectCast(obj), ierr)
+  end subroutine 
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  subroutine PetscObjectSAWsSetBlockDMSwarmDataField(obj, flg, ierr)
+  DMSwarmDataField obj
+  PetscBool :: flg
+  PetscErrorCode ierr
+  call PetscObjectSAWsSetBlock(PetscObjectCast(obj), flg, ierr)
+  end subroutine 
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  subroutine PetscObjectSAWsViewOffDMSwarmDataField(obj, ierr)
+  DMSwarmDataField obj
+  PetscErrorCode ierr
+  call PetscObjectSAWsViewOff(PetscObjectCast(obj), ierr)
+  end subroutine 
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  subroutine PetscObjectViewSAWsDMSwarmDataField(obj, viewer, ierr)
+  DMSwarmDataField obj
+  PetscViewer :: viewer
+  PetscErrorCode ierr
+  call PetscObjectViewSAWs(PetscObjectCast(obj), viewer, ierr)
+  end subroutine 
+#endif
+  subroutine PetscObjectGetTypeDMSwarmDataField(obj, type, ierr)
+  DMSwarmDataField obj
+  character(*) :: type
+  PetscErrorCode ierr
+  call PetscObjectGetType(PetscObjectCast(obj), type, ierr)
+  end subroutine 
+  subroutine PetscObjectSetPrintedOptionsDMSwarmDataField(obj, ierr)
+  DMSwarmDataField obj
+  PetscErrorCode ierr
+  call PetscObjectSetPrintedOptions(PetscObjectCast(obj), ierr)
+  end subroutine 
+  subroutine PetscObjectInheritPrintedOptionsDMSwarmDataField(pobj, obj, ierr)
+  DMSwarmDataField pobj
+  PetscObject :: obj
+  PetscErrorCode ierr
+  call PetscObjectInheritPrintedOptions(PetscObjectCast(pobj), obj, ierr)
+  end subroutine 
+  subroutine PetscObjectAddOptionsHandlerDMSwarmDataField(obj, handle, destroy, ctx, ierr)
+  DMSwarmDataField obj
+  external :: handle
+  external :: destroy
+  type(*) :: ctx
+  PetscErrorCode ierr
+  call PetscObjectAddOptionsHandler(PetscObjectCast(obj), handle, destroy, ctx, ierr)
+  end subroutine 
+  subroutine PetscObjectProcessOptionsHandlersDMSwarmDataField(obj, PetscOptionsObject, ierr)
+  DMSwarmDataField obj
+  PetscOptionItems :: PetscOptionsObject
+  PetscErrorCode ierr
+  call PetscObjectProcessOptionsHandlers(PetscObjectCast(obj), PetscOptionsObject, ierr)
+  end subroutine 
+  subroutine PetscObjectDestroyOptionsHandlersDMSwarmDataField(obj, ierr)
+  DMSwarmDataField obj
+  PetscErrorCode ierr
+  call PetscObjectDestroyOptionsHandlers(PetscObjectCast(obj), ierr)
+  end subroutine 
+  subroutine PetscObjectReferenceDMSwarmDataField(obj, ierr)
+  DMSwarmDataField obj
+  PetscErrorCode ierr
+  call PetscObjectReference(PetscObjectCast(obj), ierr)
+  end subroutine 
+  subroutine PetscObjectGetReferenceDMSwarmDataField(obj, cnt, ierr)
+  DMSwarmDataField obj
+  PetscInt :: cnt
+  PetscErrorCode ierr
+  call PetscObjectGetReference(PetscObjectCast(obj), cnt, ierr)
+  end subroutine 
+  subroutine PetscObjectDereferenceDMSwarmDataField(obj, ierr)
+  DMSwarmDataField obj
+  PetscErrorCode ierr
+  call PetscObjectDereference(PetscObjectCast(obj), ierr)
+  end subroutine 
+  subroutine PetscObjectRemoveReferenceDMSwarmDataField(obj, name, ierr)
+  DMSwarmDataField obj
+  character(*) :: name
+  PetscErrorCode ierr
+  call PetscObjectRemoveReference(PetscObjectCast(obj), name, ierr)
+  end subroutine 
+  subroutine PetscObjectHasFunctionDMSwarmDataField(obj, name, has, ierr)
+  DMSwarmDataField obj
+  character(*) :: name
+  PetscBool :: has
+  PetscErrorCode ierr
+  call PetscObjectHasFunction(PetscObjectCast(obj), name, has, ierr)
+  end subroutine 
+  subroutine PetscObjectSetFromOptionsDMSwarmDataField(obj, ierr)
+  DMSwarmDataField obj
+  PetscErrorCode ierr
+  call PetscObjectSetFromOptions(PetscObjectCast(obj), ierr)
+  end subroutine 
+  subroutine PetscObjectSetUpDMSwarmDataField(obj, ierr)
+  DMSwarmDataField obj
+  PetscErrorCode ierr
+  call PetscObjectSetUp(PetscObjectCast(obj), ierr)
+  end subroutine 
+  subroutine PetscObjectGetNameDMSwarmDataField(obj, name, ierr)
+  DMSwarmDataField obj
+  character(*) :: name
+  PetscErrorCode ierr
+  call PetscObjectGetName(PetscObjectCast(obj), name, ierr)
+  end subroutine 
+  subroutine PetscObjectDestroyDMSwarmDataField(obj, ierr)
+  DMSwarmDataField obj
+  PetscErrorCode ierr
+  call PetscObjectDestroy(PetscObjectCast(obj), ierr)
+  end subroutine 
+  subroutine PetscObjectViewDMSwarmDataField(obj, viewer, ierr)
+  DMSwarmDataField obj
+  PetscViewer :: viewer
+  PetscErrorCode ierr
+  call PetscObjectView(PetscObjectCast(obj), viewer, ierr)
+  end subroutine 
+  subroutine PetscObjectViewFromOptionsDMSwarmDataField(obj, bobj, name, ierr)
+  DMSwarmDataField obj
+  PetscObject :: bobj
+  character(*) :: name
+  PetscErrorCode ierr
+  call PetscObjectViewFromOptions(PetscObjectCast(obj), bobj, name, ierr)
+  end subroutine 
+  subroutine PetscObjectTypeCompareDMSwarmDataField(obj, type_name, same, ierr)
+  DMSwarmDataField obj
+  character(*) :: type_name
+  PetscBool :: same
+  PetscErrorCode ierr
+  call PetscObjectTypeCompare(PetscObjectCast(obj), type_name, same, ierr)
+  end subroutine 
+  subroutine PetscObjectObjectTypeCompareDMSwarmDataField(obj1, obj2, same, ierr)
+  DMSwarmDataField obj1
+  PetscObject :: obj2
+  PetscBool :: same
+  PetscErrorCode ierr
+  call PetscObjectObjectTypeCompare(PetscObjectCast(obj1), obj2, same, ierr)
+  end subroutine 
+  subroutine PetscObjectBaseTypeCompareDMSwarmDataField(obj, type_name, same, ierr)
+  DMSwarmDataField obj
+  character(*) :: type_name
+  PetscBool :: same
+  PetscErrorCode ierr
+  call PetscObjectBaseTypeCompare(PetscObjectCast(obj), type_name, same, ierr)
+  end subroutine 
+  subroutine PetscObjectRegisterDestroyDMSwarmDataField(obj, ierr)
+  DMSwarmDataField obj
+  PetscErrorCode ierr
+  call PetscObjectRegisterDestroy(PetscObjectCast(obj), ierr)
+  end subroutine 
+  subroutine PetscObjectGetIdDMSwarmDataField(obj, id, ierr)
+  DMSwarmDataField obj
+  PetscObjectId :: id
+  PetscErrorCode ierr
+  call PetscObjectGetId(PetscObjectCast(obj), id, ierr)
+  end subroutine 
+  subroutine PetscObjectCompareIdDMSwarmDataField(obj, id, eq, ierr)
+  DMSwarmDataField obj
+  PetscObjectId :: id
+  PetscBool :: eq
+  PetscErrorCode ierr
+  call PetscObjectCompareId(PetscObjectCast(obj), id, eq, ierr)
+  end subroutine 
+  subroutine PetscObjectGetOptionsDMSwarmDataField(obj, options, ierr)
+  DMSwarmDataField obj
+  PetscOptions :: options
+  PetscErrorCode ierr
+  call PetscObjectGetOptions(PetscObjectCast(obj), options, ierr)
+  end subroutine 
+  subroutine PetscObjectSetOptionsDMSwarmDataField(obj, options, ierr)
+  DMSwarmDataField obj
+  PetscOptions :: options
+  PetscErrorCode ierr
+  call PetscObjectSetOptions(PetscObjectCast(obj), options, ierr)
+  end subroutine 
+  subroutine PetscObjectSetOptionsPrefixDMSwarmDataField(obj, prefix, ierr)
+  DMSwarmDataField obj
+  character(*) :: prefix
+  PetscErrorCode ierr
+  call PetscObjectSetOptionsPrefix(PetscObjectCast(obj), prefix, ierr)
+  end subroutine 
+  subroutine PetscObjectAppendOptionsPrefixDMSwarmDataField(obj, prefix, ierr)
+  DMSwarmDataField obj
+  character(*) :: prefix
+  PetscErrorCode ierr
+  call PetscObjectAppendOptionsPrefix(PetscObjectCast(obj), prefix, ierr)
+  end subroutine 
+  subroutine PetscObjectGetOptionsPrefixDMSwarmDataField(obj, prefix, ierr)
+  DMSwarmDataField obj
+  character(*) :: prefix
+  PetscErrorCode ierr
+  call PetscObjectGetOptionsPrefix(PetscObjectCast(obj), prefix, ierr)
+  end subroutine 
+  subroutine PetscObjectPrependOptionsPrefixDMSwarmDataField(obj, prefix, ierr)
+  DMSwarmDataField obj
+  character(*) :: prefix
+  PetscErrorCode ierr
+  call PetscObjectPrependOptionsPrefix(PetscObjectCast(obj), prefix, ierr)
+  end subroutine 
+  subroutine PetscObjectGetCommDMSwarmDataField(obj, comm, ierr)
+  DMSwarmDataField obj
+  MPIU_Comm :: comm
+  PetscErrorCode ierr
+  call PetscObjectGetComm(PetscObjectCast(obj), comm, ierr)
+  end subroutine 
+  subroutine PetscObjectGetTabLevelDMSwarmDataField(obj, tab, ierr)
+  DMSwarmDataField obj
+  PetscInt :: tab
+  PetscErrorCode ierr
+  call PetscObjectGetTabLevel(PetscObjectCast(obj), tab, ierr)
+  end subroutine 
+  subroutine PetscObjectSetTabLevelDMSwarmDataField(obj, tab, ierr)
+  DMSwarmDataField obj
+  PetscInt :: tab
+  PetscErrorCode ierr
+  call PetscObjectSetTabLevel(PetscObjectCast(obj), tab, ierr)
+  end subroutine 
+  subroutine PetscObjectIncrementTabLevelDMSwarmDataField(obj, oldobj, tab, ierr)
+  DMSwarmDataField obj
+  PetscObject :: oldobj
+  PetscInt :: tab
+  PetscErrorCode ierr
+  call PetscObjectIncrementTabLevel(PetscObjectCast(obj), oldobj, tab, ierr)
+  end subroutine 
+  subroutine PetscObjectGetNewTagDMSwarmDataField(obj, tag, ierr)
+  DMSwarmDataField obj
+  PetscMPIInt :: tag
+  PetscErrorCode ierr
+  call PetscObjectGetNewTag(PetscObjectCast(obj), tag, ierr)
+  end subroutine 
+  subroutine PetscObjectGetClassIdDMSwarmDataField(obj, classid, ierr)
+  DMSwarmDataField obj
+  PetscClassId :: classid
+  PetscErrorCode ierr
+  call PetscObjectGetClassId(PetscObjectCast(obj), classid, ierr)
+  end subroutine 
+  subroutine PetscObjectGetClassNameDMSwarmDataField(obj, classname, ierr)
+  DMSwarmDataField obj
+  character(*) :: classname
+  PetscErrorCode ierr
+  call PetscObjectGetClassName(PetscObjectCast(obj), classname, ierr)
+  end subroutine 
+  subroutine PetscObjectSetNameDMSwarmDataField(obj, name, ierr)
+  DMSwarmDataField obj
+  character(*) :: name
+  PetscErrorCode ierr
+  call PetscObjectSetName(PetscObjectCast(obj), name, ierr)
+  end subroutine 
+  subroutine PetscObjectPrintClassNamePrefixTypeDMSwarmDataField(obj, viewer, ierr)
+  DMSwarmDataField obj
+  PetscViewer :: viewer
+  PetscErrorCode ierr
+  call PetscObjectPrintClassNamePrefixType(PetscObjectCast(obj), viewer, ierr)
+  end subroutine 
+  subroutine PetscObjectNameDMSwarmDataField(obj, ierr)
+  DMSwarmDataField obj
+  PetscErrorCode ierr
+  call PetscObjectName(PetscObjectCast(obj), ierr)
+  end subroutine 
+  subroutine PetscObjectChangeTypeNameDMSwarmDataField(obj, type_name, ierr)
+  DMSwarmDataField obj
+  character(*) :: type_name
+  PetscErrorCode ierr
+  call PetscObjectChangeTypeName(PetscObjectCast(obj), type_name, ierr)
+  end subroutine 
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT:: DMSwarmDataBucketnotequals
+!DEC$ ATTRIBUTES DLLEXPORT:: DMSwarmDataBucketequals
+#endif
+
+  function DMSwarmDataBucketnotequals(A,B)
+    logical DMSwarmDataBucketnotequals
+    type(tDMSwarmDataBucket), intent(in) :: A,B
+    DMSwarmDataBucketnotequals = (A%v .ne. B%v)
+  end function
+  function DMSwarmDataBucketequals(A,B)
+    logical DMSwarmDataBucketequals
+    type(tDMSwarmDataBucket), intent(in) :: A,B
+    DMSwarmDataBucketequals = (A%v .eq. B%v)
+  end function
+  function PetscObjectCastDMSwarmDataBucket(obj)
+    DMSwarmDataBucket obj
+    PetscObject PetscObjectCastDMSwarmDataBucket
+    PetscObjectCastDMSwarmDataBucket%v = obj%v
+  end function 
+  subroutine PetscBarrierDMSwarmDataBucket(obj,ierr)
+    DMSwarmDataBucket obj
+    PetscErrorCode ierr
+    call PetscBarrier(PetscObjectCast(obj),ierr)
+  end subroutine 
+#if defined(PETSC_HAVE_SAWS)
+  subroutine PetscObjectSAWsTakeAccessDMSwarmDataBucket(obj, ierr)
+  DMSwarmDataBucket obj
+  PetscErrorCode ierr
+  call PetscObjectSAWsTakeAccess(PetscObjectCast(obj), ierr)
+  end subroutine 
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  subroutine PetscObjectSAWsGrantAccessDMSwarmDataBucket(obj, ierr)
+  DMSwarmDataBucket obj
+  PetscErrorCode ierr
+  call PetscObjectSAWsGrantAccess(PetscObjectCast(obj), ierr)
+  end subroutine 
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  subroutine PetscObjectSAWsBlockDMSwarmDataBucket(obj, ierr)
+  DMSwarmDataBucket obj
+  PetscErrorCode ierr
+  call PetscObjectSAWsBlock(PetscObjectCast(obj), ierr)
+  end subroutine 
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  subroutine PetscObjectSAWsSetBlockDMSwarmDataBucket(obj, flg, ierr)
+  DMSwarmDataBucket obj
+  PetscBool :: flg
+  PetscErrorCode ierr
+  call PetscObjectSAWsSetBlock(PetscObjectCast(obj), flg, ierr)
+  end subroutine 
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  subroutine PetscObjectSAWsViewOffDMSwarmDataBucket(obj, ierr)
+  DMSwarmDataBucket obj
+  PetscErrorCode ierr
+  call PetscObjectSAWsViewOff(PetscObjectCast(obj), ierr)
+  end subroutine 
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  subroutine PetscObjectViewSAWsDMSwarmDataBucket(obj, viewer, ierr)
+  DMSwarmDataBucket obj
+  PetscViewer :: viewer
+  PetscErrorCode ierr
+  call PetscObjectViewSAWs(PetscObjectCast(obj), viewer, ierr)
+  end subroutine 
+#endif
+  subroutine PetscObjectGetTypeDMSwarmDataBucket(obj, type, ierr)
+  DMSwarmDataBucket obj
+  character(*) :: type
+  PetscErrorCode ierr
+  call PetscObjectGetType(PetscObjectCast(obj), type, ierr)
+  end subroutine 
+  subroutine PetscObjectSetPrintedOptionsDMSwarmDataBucket(obj, ierr)
+  DMSwarmDataBucket obj
+  PetscErrorCode ierr
+  call PetscObjectSetPrintedOptions(PetscObjectCast(obj), ierr)
+  end subroutine 
+  subroutine PetscObjectInheritPrintedOptionsDMSwarmDataBucket(pobj, obj, ierr)
+  DMSwarmDataBucket pobj
+  PetscObject :: obj
+  PetscErrorCode ierr
+  call PetscObjectInheritPrintedOptions(PetscObjectCast(pobj), obj, ierr)
+  end subroutine 
+  subroutine PetscObjectAddOptionsHandlerDMSwarmDataBucket(obj, handle, destroy, ctx, ierr)
+  DMSwarmDataBucket obj
+  external :: handle
+  external :: destroy
+  type(*) :: ctx
+  PetscErrorCode ierr
+  call PetscObjectAddOptionsHandler(PetscObjectCast(obj), handle, destroy, ctx, ierr)
+  end subroutine 
+  subroutine PetscObjectProcessOptionsHandlersDMSwarmDataBucket(obj, PetscOptionsObject, ierr)
+  DMSwarmDataBucket obj
+  PetscOptionItems :: PetscOptionsObject
+  PetscErrorCode ierr
+  call PetscObjectProcessOptionsHandlers(PetscObjectCast(obj), PetscOptionsObject, ierr)
+  end subroutine 
+  subroutine PetscObjectDestroyOptionsHandlersDMSwarmDataBucket(obj, ierr)
+  DMSwarmDataBucket obj
+  PetscErrorCode ierr
+  call PetscObjectDestroyOptionsHandlers(PetscObjectCast(obj), ierr)
+  end subroutine 
+  subroutine PetscObjectReferenceDMSwarmDataBucket(obj, ierr)
+  DMSwarmDataBucket obj
+  PetscErrorCode ierr
+  call PetscObjectReference(PetscObjectCast(obj), ierr)
+  end subroutine 
+  subroutine PetscObjectGetReferenceDMSwarmDataBucket(obj, cnt, ierr)
+  DMSwarmDataBucket obj
+  PetscInt :: cnt
+  PetscErrorCode ierr
+  call PetscObjectGetReference(PetscObjectCast(obj), cnt, ierr)
+  end subroutine 
+  subroutine PetscObjectDereferenceDMSwarmDataBucket(obj, ierr)
+  DMSwarmDataBucket obj
+  PetscErrorCode ierr
+  call PetscObjectDereference(PetscObjectCast(obj), ierr)
+  end subroutine 
+  subroutine PetscObjectRemoveReferenceDMSwarmDataBucket(obj, name, ierr)
+  DMSwarmDataBucket obj
+  character(*) :: name
+  PetscErrorCode ierr
+  call PetscObjectRemoveReference(PetscObjectCast(obj), name, ierr)
+  end subroutine 
+  subroutine PetscObjectHasFunctionDMSwarmDataBucket(obj, name, has, ierr)
+  DMSwarmDataBucket obj
+  character(*) :: name
+  PetscBool :: has
+  PetscErrorCode ierr
+  call PetscObjectHasFunction(PetscObjectCast(obj), name, has, ierr)
+  end subroutine 
+  subroutine PetscObjectSetFromOptionsDMSwarmDataBucket(obj, ierr)
+  DMSwarmDataBucket obj
+  PetscErrorCode ierr
+  call PetscObjectSetFromOptions(PetscObjectCast(obj), ierr)
+  end subroutine 
+  subroutine PetscObjectSetUpDMSwarmDataBucket(obj, ierr)
+  DMSwarmDataBucket obj
+  PetscErrorCode ierr
+  call PetscObjectSetUp(PetscObjectCast(obj), ierr)
+  end subroutine 
+  subroutine PetscObjectGetNameDMSwarmDataBucket(obj, name, ierr)
+  DMSwarmDataBucket obj
+  character(*) :: name
+  PetscErrorCode ierr
+  call PetscObjectGetName(PetscObjectCast(obj), name, ierr)
+  end subroutine 
+  subroutine PetscObjectDestroyDMSwarmDataBucket(obj, ierr)
+  DMSwarmDataBucket obj
+  PetscErrorCode ierr
+  call PetscObjectDestroy(PetscObjectCast(obj), ierr)
+  end subroutine 
+  subroutine PetscObjectViewDMSwarmDataBucket(obj, viewer, ierr)
+  DMSwarmDataBucket obj
+  PetscViewer :: viewer
+  PetscErrorCode ierr
+  call PetscObjectView(PetscObjectCast(obj), viewer, ierr)
+  end subroutine 
+  subroutine PetscObjectViewFromOptionsDMSwarmDataBucket(obj, bobj, name, ierr)
+  DMSwarmDataBucket obj
+  PetscObject :: bobj
+  character(*) :: name
+  PetscErrorCode ierr
+  call PetscObjectViewFromOptions(PetscObjectCast(obj), bobj, name, ierr)
+  end subroutine 
+  subroutine PetscObjectTypeCompareDMSwarmDataBucket(obj, type_name, same, ierr)
+  DMSwarmDataBucket obj
+  character(*) :: type_name
+  PetscBool :: same
+  PetscErrorCode ierr
+  call PetscObjectTypeCompare(PetscObjectCast(obj), type_name, same, ierr)
+  end subroutine 
+  subroutine PetscObjectObjectTypeCompareDMSwarmDataBucket(obj1, obj2, same, ierr)
+  DMSwarmDataBucket obj1
+  PetscObject :: obj2
+  PetscBool :: same
+  PetscErrorCode ierr
+  call PetscObjectObjectTypeCompare(PetscObjectCast(obj1), obj2, same, ierr)
+  end subroutine 
+  subroutine PetscObjectBaseTypeCompareDMSwarmDataBucket(obj, type_name, same, ierr)
+  DMSwarmDataBucket obj
+  character(*) :: type_name
+  PetscBool :: same
+  PetscErrorCode ierr
+  call PetscObjectBaseTypeCompare(PetscObjectCast(obj), type_name, same, ierr)
+  end subroutine 
+  subroutine PetscObjectRegisterDestroyDMSwarmDataBucket(obj, ierr)
+  DMSwarmDataBucket obj
+  PetscErrorCode ierr
+  call PetscObjectRegisterDestroy(PetscObjectCast(obj), ierr)
+  end subroutine 
+  subroutine PetscObjectGetIdDMSwarmDataBucket(obj, id, ierr)
+  DMSwarmDataBucket obj
+  PetscObjectId :: id
+  PetscErrorCode ierr
+  call PetscObjectGetId(PetscObjectCast(obj), id, ierr)
+  end subroutine 
+  subroutine PetscObjectCompareIdDMSwarmDataBucket(obj, id, eq, ierr)
+  DMSwarmDataBucket obj
+  PetscObjectId :: id
+  PetscBool :: eq
+  PetscErrorCode ierr
+  call PetscObjectCompareId(PetscObjectCast(obj), id, eq, ierr)
+  end subroutine 
+  subroutine PetscObjectGetOptionsDMSwarmDataBucket(obj, options, ierr)
+  DMSwarmDataBucket obj
+  PetscOptions :: options
+  PetscErrorCode ierr
+  call PetscObjectGetOptions(PetscObjectCast(obj), options, ierr)
+  end subroutine 
+  subroutine PetscObjectSetOptionsDMSwarmDataBucket(obj, options, ierr)
+  DMSwarmDataBucket obj
+  PetscOptions :: options
+  PetscErrorCode ierr
+  call PetscObjectSetOptions(PetscObjectCast(obj), options, ierr)
+  end subroutine 
+  subroutine PetscObjectSetOptionsPrefixDMSwarmDataBucket(obj, prefix, ierr)
+  DMSwarmDataBucket obj
+  character(*) :: prefix
+  PetscErrorCode ierr
+  call PetscObjectSetOptionsPrefix(PetscObjectCast(obj), prefix, ierr)
+  end subroutine 
+  subroutine PetscObjectAppendOptionsPrefixDMSwarmDataBucket(obj, prefix, ierr)
+  DMSwarmDataBucket obj
+  character(*) :: prefix
+  PetscErrorCode ierr
+  call PetscObjectAppendOptionsPrefix(PetscObjectCast(obj), prefix, ierr)
+  end subroutine 
+  subroutine PetscObjectGetOptionsPrefixDMSwarmDataBucket(obj, prefix, ierr)
+  DMSwarmDataBucket obj
+  character(*) :: prefix
+  PetscErrorCode ierr
+  call PetscObjectGetOptionsPrefix(PetscObjectCast(obj), prefix, ierr)
+  end subroutine 
+  subroutine PetscObjectPrependOptionsPrefixDMSwarmDataBucket(obj, prefix, ierr)
+  DMSwarmDataBucket obj
+  character(*) :: prefix
+  PetscErrorCode ierr
+  call PetscObjectPrependOptionsPrefix(PetscObjectCast(obj), prefix, ierr)
+  end subroutine 
+  subroutine PetscObjectGetCommDMSwarmDataBucket(obj, comm, ierr)
+  DMSwarmDataBucket obj
+  MPIU_Comm :: comm
+  PetscErrorCode ierr
+  call PetscObjectGetComm(PetscObjectCast(obj), comm, ierr)
+  end subroutine 
+  subroutine PetscObjectGetTabLevelDMSwarmDataBucket(obj, tab, ierr)
+  DMSwarmDataBucket obj
+  PetscInt :: tab
+  PetscErrorCode ierr
+  call PetscObjectGetTabLevel(PetscObjectCast(obj), tab, ierr)
+  end subroutine 
+  subroutine PetscObjectSetTabLevelDMSwarmDataBucket(obj, tab, ierr)
+  DMSwarmDataBucket obj
+  PetscInt :: tab
+  PetscErrorCode ierr
+  call PetscObjectSetTabLevel(PetscObjectCast(obj), tab, ierr)
+  end subroutine 
+  subroutine PetscObjectIncrementTabLevelDMSwarmDataBucket(obj, oldobj, tab, ierr)
+  DMSwarmDataBucket obj
+  PetscObject :: oldobj
+  PetscInt :: tab
+  PetscErrorCode ierr
+  call PetscObjectIncrementTabLevel(PetscObjectCast(obj), oldobj, tab, ierr)
+  end subroutine 
+  subroutine PetscObjectGetNewTagDMSwarmDataBucket(obj, tag, ierr)
+  DMSwarmDataBucket obj
+  PetscMPIInt :: tag
+  PetscErrorCode ierr
+  call PetscObjectGetNewTag(PetscObjectCast(obj), tag, ierr)
+  end subroutine 
+  subroutine PetscObjectGetClassIdDMSwarmDataBucket(obj, classid, ierr)
+  DMSwarmDataBucket obj
+  PetscClassId :: classid
+  PetscErrorCode ierr
+  call PetscObjectGetClassId(PetscObjectCast(obj), classid, ierr)
+  end subroutine 
+  subroutine PetscObjectGetClassNameDMSwarmDataBucket(obj, classname, ierr)
+  DMSwarmDataBucket obj
+  character(*) :: classname
+  PetscErrorCode ierr
+  call PetscObjectGetClassName(PetscObjectCast(obj), classname, ierr)
+  end subroutine 
+  subroutine PetscObjectSetNameDMSwarmDataBucket(obj, name, ierr)
+  DMSwarmDataBucket obj
+  character(*) :: name
+  PetscErrorCode ierr
+  call PetscObjectSetName(PetscObjectCast(obj), name, ierr)
+  end subroutine 
+  subroutine PetscObjectPrintClassNamePrefixTypeDMSwarmDataBucket(obj, viewer, ierr)
+  DMSwarmDataBucket obj
+  PetscViewer :: viewer
+  PetscErrorCode ierr
+  call PetscObjectPrintClassNamePrefixType(PetscObjectCast(obj), viewer, ierr)
+  end subroutine 
+  subroutine PetscObjectNameDMSwarmDataBucket(obj, ierr)
+  DMSwarmDataBucket obj
+  PetscErrorCode ierr
+  call PetscObjectName(PetscObjectCast(obj), ierr)
+  end subroutine 
+  subroutine PetscObjectChangeTypeNameDMSwarmDataBucket(obj, type_name, ierr)
+  DMSwarmDataBucket obj
+  character(*) :: type_name
+  PetscErrorCode ierr
+  call PetscObjectChangeTypeName(PetscObjectCast(obj), type_name, ierr)
+  end subroutine 
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT:: DMSwarmSortnotequals
+!DEC$ ATTRIBUTES DLLEXPORT:: DMSwarmSortequals
+#endif
+
+  function DMSwarmSortnotequals(A,B)
+    logical DMSwarmSortnotequals
+    type(tDMSwarmSort), intent(in) :: A,B
+    DMSwarmSortnotequals = (A%v .ne. B%v)
+  end function
+  function DMSwarmSortequals(A,B)
+    logical DMSwarmSortequals
+    type(tDMSwarmSort), intent(in) :: A,B
+    DMSwarmSortequals = (A%v .eq. B%v)
+  end function
+  function PetscObjectCastDMSwarmSort(obj)
+    DMSwarmSort obj
+    PetscObject PetscObjectCastDMSwarmSort
+    PetscObjectCastDMSwarmSort%v = obj%v
+  end function 
+  subroutine PetscBarrierDMSwarmSort(obj,ierr)
+    DMSwarmSort obj
+    PetscErrorCode ierr
+    call PetscBarrier(PetscObjectCast(obj),ierr)
+  end subroutine 
+#if defined(PETSC_HAVE_SAWS)
+  subroutine PetscObjectSAWsTakeAccessDMSwarmSort(obj, ierr)
+  DMSwarmSort obj
+  PetscErrorCode ierr
+  call PetscObjectSAWsTakeAccess(PetscObjectCast(obj), ierr)
+  end subroutine 
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  subroutine PetscObjectSAWsGrantAccessDMSwarmSort(obj, ierr)
+  DMSwarmSort obj
+  PetscErrorCode ierr
+  call PetscObjectSAWsGrantAccess(PetscObjectCast(obj), ierr)
+  end subroutine 
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  subroutine PetscObjectSAWsBlockDMSwarmSort(obj, ierr)
+  DMSwarmSort obj
+  PetscErrorCode ierr
+  call PetscObjectSAWsBlock(PetscObjectCast(obj), ierr)
+  end subroutine 
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  subroutine PetscObjectSAWsSetBlockDMSwarmSort(obj, flg, ierr)
+  DMSwarmSort obj
+  PetscBool :: flg
+  PetscErrorCode ierr
+  call PetscObjectSAWsSetBlock(PetscObjectCast(obj), flg, ierr)
+  end subroutine 
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  subroutine PetscObjectSAWsViewOffDMSwarmSort(obj, ierr)
+  DMSwarmSort obj
+  PetscErrorCode ierr
+  call PetscObjectSAWsViewOff(PetscObjectCast(obj), ierr)
+  end subroutine 
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  subroutine PetscObjectViewSAWsDMSwarmSort(obj, viewer, ierr)
+  DMSwarmSort obj
+  PetscViewer :: viewer
+  PetscErrorCode ierr
+  call PetscObjectViewSAWs(PetscObjectCast(obj), viewer, ierr)
+  end subroutine 
+#endif
+  subroutine PetscObjectGetTypeDMSwarmSort(obj, type, ierr)
+  DMSwarmSort obj
+  character(*) :: type
+  PetscErrorCode ierr
+  call PetscObjectGetType(PetscObjectCast(obj), type, ierr)
+  end subroutine 
+  subroutine PetscObjectSetPrintedOptionsDMSwarmSort(obj, ierr)
+  DMSwarmSort obj
+  PetscErrorCode ierr
+  call PetscObjectSetPrintedOptions(PetscObjectCast(obj), ierr)
+  end subroutine 
+  subroutine PetscObjectInheritPrintedOptionsDMSwarmSort(pobj, obj, ierr)
+  DMSwarmSort pobj
+  PetscObject :: obj
+  PetscErrorCode ierr
+  call PetscObjectInheritPrintedOptions(PetscObjectCast(pobj), obj, ierr)
+  end subroutine 
+  subroutine PetscObjectAddOptionsHandlerDMSwarmSort(obj, handle, destroy, ctx, ierr)
+  DMSwarmSort obj
+  external :: handle
+  external :: destroy
+  type(*) :: ctx
+  PetscErrorCode ierr
+  call PetscObjectAddOptionsHandler(PetscObjectCast(obj), handle, destroy, ctx, ierr)
+  end subroutine 
+  subroutine PetscObjectProcessOptionsHandlersDMSwarmSort(obj, PetscOptionsObject, ierr)
+  DMSwarmSort obj
+  PetscOptionItems :: PetscOptionsObject
+  PetscErrorCode ierr
+  call PetscObjectProcessOptionsHandlers(PetscObjectCast(obj), PetscOptionsObject, ierr)
+  end subroutine 
+  subroutine PetscObjectDestroyOptionsHandlersDMSwarmSort(obj, ierr)
+  DMSwarmSort obj
+  PetscErrorCode ierr
+  call PetscObjectDestroyOptionsHandlers(PetscObjectCast(obj), ierr)
+  end subroutine 
+  subroutine PetscObjectReferenceDMSwarmSort(obj, ierr)
+  DMSwarmSort obj
+  PetscErrorCode ierr
+  call PetscObjectReference(PetscObjectCast(obj), ierr)
+  end subroutine 
+  subroutine PetscObjectGetReferenceDMSwarmSort(obj, cnt, ierr)
+  DMSwarmSort obj
+  PetscInt :: cnt
+  PetscErrorCode ierr
+  call PetscObjectGetReference(PetscObjectCast(obj), cnt, ierr)
+  end subroutine 
+  subroutine PetscObjectDereferenceDMSwarmSort(obj, ierr)
+  DMSwarmSort obj
+  PetscErrorCode ierr
+  call PetscObjectDereference(PetscObjectCast(obj), ierr)
+  end subroutine 
+  subroutine PetscObjectRemoveReferenceDMSwarmSort(obj, name, ierr)
+  DMSwarmSort obj
+  character(*) :: name
+  PetscErrorCode ierr
+  call PetscObjectRemoveReference(PetscObjectCast(obj), name, ierr)
+  end subroutine 
+  subroutine PetscObjectHasFunctionDMSwarmSort(obj, name, has, ierr)
+  DMSwarmSort obj
+  character(*) :: name
+  PetscBool :: has
+  PetscErrorCode ierr
+  call PetscObjectHasFunction(PetscObjectCast(obj), name, has, ierr)
+  end subroutine 
+  subroutine PetscObjectSetFromOptionsDMSwarmSort(obj, ierr)
+  DMSwarmSort obj
+  PetscErrorCode ierr
+  call PetscObjectSetFromOptions(PetscObjectCast(obj), ierr)
+  end subroutine 
+  subroutine PetscObjectSetUpDMSwarmSort(obj, ierr)
+  DMSwarmSort obj
+  PetscErrorCode ierr
+  call PetscObjectSetUp(PetscObjectCast(obj), ierr)
+  end subroutine 
+  subroutine PetscObjectGetNameDMSwarmSort(obj, name, ierr)
+  DMSwarmSort obj
+  character(*) :: name
+  PetscErrorCode ierr
+  call PetscObjectGetName(PetscObjectCast(obj), name, ierr)
+  end subroutine 
+  subroutine PetscObjectDestroyDMSwarmSort(obj, ierr)
+  DMSwarmSort obj
+  PetscErrorCode ierr
+  call PetscObjectDestroy(PetscObjectCast(obj), ierr)
+  end subroutine 
+  subroutine PetscObjectViewDMSwarmSort(obj, viewer, ierr)
+  DMSwarmSort obj
+  PetscViewer :: viewer
+  PetscErrorCode ierr
+  call PetscObjectView(PetscObjectCast(obj), viewer, ierr)
+  end subroutine 
+  subroutine PetscObjectViewFromOptionsDMSwarmSort(obj, bobj, name, ierr)
+  DMSwarmSort obj
+  PetscObject :: bobj
+  character(*) :: name
+  PetscErrorCode ierr
+  call PetscObjectViewFromOptions(PetscObjectCast(obj), bobj, name, ierr)
+  end subroutine 
+  subroutine PetscObjectTypeCompareDMSwarmSort(obj, type_name, same, ierr)
+  DMSwarmSort obj
+  character(*) :: type_name
+  PetscBool :: same
+  PetscErrorCode ierr
+  call PetscObjectTypeCompare(PetscObjectCast(obj), type_name, same, ierr)
+  end subroutine 
+  subroutine PetscObjectObjectTypeCompareDMSwarmSort(obj1, obj2, same, ierr)
+  DMSwarmSort obj1
+  PetscObject :: obj2
+  PetscBool :: same
+  PetscErrorCode ierr
+  call PetscObjectObjectTypeCompare(PetscObjectCast(obj1), obj2, same, ierr)
+  end subroutine 
+  subroutine PetscObjectBaseTypeCompareDMSwarmSort(obj, type_name, same, ierr)
+  DMSwarmSort obj
+  character(*) :: type_name
+  PetscBool :: same
+  PetscErrorCode ierr
+  call PetscObjectBaseTypeCompare(PetscObjectCast(obj), type_name, same, ierr)
+  end subroutine 
+  subroutine PetscObjectRegisterDestroyDMSwarmSort(obj, ierr)
+  DMSwarmSort obj
+  PetscErrorCode ierr
+  call PetscObjectRegisterDestroy(PetscObjectCast(obj), ierr)
+  end subroutine 
+  subroutine PetscObjectGetIdDMSwarmSort(obj, id, ierr)
+  DMSwarmSort obj
+  PetscObjectId :: id
+  PetscErrorCode ierr
+  call PetscObjectGetId(PetscObjectCast(obj), id, ierr)
+  end subroutine 
+  subroutine PetscObjectCompareIdDMSwarmSort(obj, id, eq, ierr)
+  DMSwarmSort obj
+  PetscObjectId :: id
+  PetscBool :: eq
+  PetscErrorCode ierr
+  call PetscObjectCompareId(PetscObjectCast(obj), id, eq, ierr)
+  end subroutine 
+  subroutine PetscObjectGetOptionsDMSwarmSort(obj, options, ierr)
+  DMSwarmSort obj
+  PetscOptions :: options
+  PetscErrorCode ierr
+  call PetscObjectGetOptions(PetscObjectCast(obj), options, ierr)
+  end subroutine 
+  subroutine PetscObjectSetOptionsDMSwarmSort(obj, options, ierr)
+  DMSwarmSort obj
+  PetscOptions :: options
+  PetscErrorCode ierr
+  call PetscObjectSetOptions(PetscObjectCast(obj), options, ierr)
+  end subroutine 
+  subroutine PetscObjectSetOptionsPrefixDMSwarmSort(obj, prefix, ierr)
+  DMSwarmSort obj
+  character(*) :: prefix
+  PetscErrorCode ierr
+  call PetscObjectSetOptionsPrefix(PetscObjectCast(obj), prefix, ierr)
+  end subroutine 
+  subroutine PetscObjectAppendOptionsPrefixDMSwarmSort(obj, prefix, ierr)
+  DMSwarmSort obj
+  character(*) :: prefix
+  PetscErrorCode ierr
+  call PetscObjectAppendOptionsPrefix(PetscObjectCast(obj), prefix, ierr)
+  end subroutine 
+  subroutine PetscObjectGetOptionsPrefixDMSwarmSort(obj, prefix, ierr)
+  DMSwarmSort obj
+  character(*) :: prefix
+  PetscErrorCode ierr
+  call PetscObjectGetOptionsPrefix(PetscObjectCast(obj), prefix, ierr)
+  end subroutine 
+  subroutine PetscObjectPrependOptionsPrefixDMSwarmSort(obj, prefix, ierr)
+  DMSwarmSort obj
+  character(*) :: prefix
+  PetscErrorCode ierr
+  call PetscObjectPrependOptionsPrefix(PetscObjectCast(obj), prefix, ierr)
+  end subroutine 
+  subroutine PetscObjectGetCommDMSwarmSort(obj, comm, ierr)
+  DMSwarmSort obj
+  MPIU_Comm :: comm
+  PetscErrorCode ierr
+  call PetscObjectGetComm(PetscObjectCast(obj), comm, ierr)
+  end subroutine 
+  subroutine PetscObjectGetTabLevelDMSwarmSort(obj, tab, ierr)
+  DMSwarmSort obj
+  PetscInt :: tab
+  PetscErrorCode ierr
+  call PetscObjectGetTabLevel(PetscObjectCast(obj), tab, ierr)
+  end subroutine 
+  subroutine PetscObjectSetTabLevelDMSwarmSort(obj, tab, ierr)
+  DMSwarmSort obj
+  PetscInt :: tab
+  PetscErrorCode ierr
+  call PetscObjectSetTabLevel(PetscObjectCast(obj), tab, ierr)
+  end subroutine 
+  subroutine PetscObjectIncrementTabLevelDMSwarmSort(obj, oldobj, tab, ierr)
+  DMSwarmSort obj
+  PetscObject :: oldobj
+  PetscInt :: tab
+  PetscErrorCode ierr
+  call PetscObjectIncrementTabLevel(PetscObjectCast(obj), oldobj, tab, ierr)
+  end subroutine 
+  subroutine PetscObjectGetNewTagDMSwarmSort(obj, tag, ierr)
+  DMSwarmSort obj
+  PetscMPIInt :: tag
+  PetscErrorCode ierr
+  call PetscObjectGetNewTag(PetscObjectCast(obj), tag, ierr)
+  end subroutine 
+  subroutine PetscObjectGetClassIdDMSwarmSort(obj, classid, ierr)
+  DMSwarmSort obj
+  PetscClassId :: classid
+  PetscErrorCode ierr
+  call PetscObjectGetClassId(PetscObjectCast(obj), classid, ierr)
+  end subroutine 
+  subroutine PetscObjectGetClassNameDMSwarmSort(obj, classname, ierr)
+  DMSwarmSort obj
+  character(*) :: classname
+  PetscErrorCode ierr
+  call PetscObjectGetClassName(PetscObjectCast(obj), classname, ierr)
+  end subroutine 
+  subroutine PetscObjectSetNameDMSwarmSort(obj, name, ierr)
+  DMSwarmSort obj
+  character(*) :: name
+  PetscErrorCode ierr
+  call PetscObjectSetName(PetscObjectCast(obj), name, ierr)
+  end subroutine 
+  subroutine PetscObjectPrintClassNamePrefixTypeDMSwarmSort(obj, viewer, ierr)
+  DMSwarmSort obj
+  PetscViewer :: viewer
+  PetscErrorCode ierr
+  call PetscObjectPrintClassNamePrefixType(PetscObjectCast(obj), viewer, ierr)
+  end subroutine 
+  subroutine PetscObjectNameDMSwarmSort(obj, ierr)
+  DMSwarmSort obj
+  PetscErrorCode ierr
+  call PetscObjectName(PetscObjectCast(obj), ierr)
+  end subroutine 
+  subroutine PetscObjectChangeTypeNameDMSwarmSort(obj, type_name, ierr)
+  DMSwarmSort obj
+  character(*) :: type_name
+  PetscErrorCode ierr
+  call PetscObjectChangeTypeName(PetscObjectCast(obj), type_name, ierr)
+  end subroutine 
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT:: DMSwarmCellDMnotequals
+!DEC$ ATTRIBUTES DLLEXPORT:: DMSwarmCellDMequals
+#endif
+
+  function DMSwarmCellDMnotequals(A,B)
+    logical DMSwarmCellDMnotequals
+    type(tDMSwarmCellDM), intent(in) :: A,B
+    DMSwarmCellDMnotequals = (A%v .ne. B%v)
+  end function
+  function DMSwarmCellDMequals(A,B)
+    logical DMSwarmCellDMequals
+    type(tDMSwarmCellDM), intent(in) :: A,B
+    DMSwarmCellDMequals = (A%v .eq. B%v)
+  end function
+  function PetscObjectCastDMSwarmCellDM(obj)
+    DMSwarmCellDM obj
+    PetscObject PetscObjectCastDMSwarmCellDM
+    PetscObjectCastDMSwarmCellDM%v = obj%v
+  end function 
+  subroutine PetscBarrierDMSwarmCellDM(obj,ierr)
+    DMSwarmCellDM obj
+    PetscErrorCode ierr
+    call PetscBarrier(PetscObjectCast(obj),ierr)
+  end subroutine 
+#if defined(PETSC_HAVE_SAWS)
+  subroutine PetscObjectSAWsTakeAccessDMSwarmCellDM(obj, ierr)
+  DMSwarmCellDM obj
+  PetscErrorCode ierr
+  call PetscObjectSAWsTakeAccess(PetscObjectCast(obj), ierr)
+  end subroutine 
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  subroutine PetscObjectSAWsGrantAccessDMSwarmCellDM(obj, ierr)
+  DMSwarmCellDM obj
+  PetscErrorCode ierr
+  call PetscObjectSAWsGrantAccess(PetscObjectCast(obj), ierr)
+  end subroutine 
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  subroutine PetscObjectSAWsBlockDMSwarmCellDM(obj, ierr)
+  DMSwarmCellDM obj
+  PetscErrorCode ierr
+  call PetscObjectSAWsBlock(PetscObjectCast(obj), ierr)
+  end subroutine 
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  subroutine PetscObjectSAWsSetBlockDMSwarmCellDM(obj, flg, ierr)
+  DMSwarmCellDM obj
+  PetscBool :: flg
+  PetscErrorCode ierr
+  call PetscObjectSAWsSetBlock(PetscObjectCast(obj), flg, ierr)
+  end subroutine 
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  subroutine PetscObjectSAWsViewOffDMSwarmCellDM(obj, ierr)
+  DMSwarmCellDM obj
+  PetscErrorCode ierr
+  call PetscObjectSAWsViewOff(PetscObjectCast(obj), ierr)
+  end subroutine 
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  subroutine PetscObjectViewSAWsDMSwarmCellDM(obj, viewer, ierr)
+  DMSwarmCellDM obj
+  PetscViewer :: viewer
+  PetscErrorCode ierr
+  call PetscObjectViewSAWs(PetscObjectCast(obj), viewer, ierr)
+  end subroutine 
+#endif
+  subroutine PetscObjectGetTypeDMSwarmCellDM(obj, type, ierr)
+  DMSwarmCellDM obj
+  character(*) :: type
+  PetscErrorCode ierr
+  call PetscObjectGetType(PetscObjectCast(obj), type, ierr)
+  end subroutine 
+  subroutine PetscObjectSetPrintedOptionsDMSwarmCellDM(obj, ierr)
+  DMSwarmCellDM obj
+  PetscErrorCode ierr
+  call PetscObjectSetPrintedOptions(PetscObjectCast(obj), ierr)
+  end subroutine 
+  subroutine PetscObjectInheritPrintedOptionsDMSwarmCellDM(pobj, obj, ierr)
+  DMSwarmCellDM pobj
+  PetscObject :: obj
+  PetscErrorCode ierr
+  call PetscObjectInheritPrintedOptions(PetscObjectCast(pobj), obj, ierr)
+  end subroutine 
+  subroutine PetscObjectAddOptionsHandlerDMSwarmCellDM(obj, handle, destroy, ctx, ierr)
+  DMSwarmCellDM obj
+  external :: handle
+  external :: destroy
+  type(*) :: ctx
+  PetscErrorCode ierr
+  call PetscObjectAddOptionsHandler(PetscObjectCast(obj), handle, destroy, ctx, ierr)
+  end subroutine 
+  subroutine PetscObjectProcessOptionsHandlersDMSwarmCellDM(obj, PetscOptionsObject, ierr)
+  DMSwarmCellDM obj
+  PetscOptionItems :: PetscOptionsObject
+  PetscErrorCode ierr
+  call PetscObjectProcessOptionsHandlers(PetscObjectCast(obj), PetscOptionsObject, ierr)
+  end subroutine 
+  subroutine PetscObjectDestroyOptionsHandlersDMSwarmCellDM(obj, ierr)
+  DMSwarmCellDM obj
+  PetscErrorCode ierr
+  call PetscObjectDestroyOptionsHandlers(PetscObjectCast(obj), ierr)
+  end subroutine 
+  subroutine PetscObjectReferenceDMSwarmCellDM(obj, ierr)
+  DMSwarmCellDM obj
+  PetscErrorCode ierr
+  call PetscObjectReference(PetscObjectCast(obj), ierr)
+  end subroutine 
+  subroutine PetscObjectGetReferenceDMSwarmCellDM(obj, cnt, ierr)
+  DMSwarmCellDM obj
+  PetscInt :: cnt
+  PetscErrorCode ierr
+  call PetscObjectGetReference(PetscObjectCast(obj), cnt, ierr)
+  end subroutine 
+  subroutine PetscObjectDereferenceDMSwarmCellDM(obj, ierr)
+  DMSwarmCellDM obj
+  PetscErrorCode ierr
+  call PetscObjectDereference(PetscObjectCast(obj), ierr)
+  end subroutine 
+  subroutine PetscObjectRemoveReferenceDMSwarmCellDM(obj, name, ierr)
+  DMSwarmCellDM obj
+  character(*) :: name
+  PetscErrorCode ierr
+  call PetscObjectRemoveReference(PetscObjectCast(obj), name, ierr)
+  end subroutine 
+  subroutine PetscObjectHasFunctionDMSwarmCellDM(obj, name, has, ierr)
+  DMSwarmCellDM obj
+  character(*) :: name
+  PetscBool :: has
+  PetscErrorCode ierr
+  call PetscObjectHasFunction(PetscObjectCast(obj), name, has, ierr)
+  end subroutine 
+  subroutine PetscObjectSetFromOptionsDMSwarmCellDM(obj, ierr)
+  DMSwarmCellDM obj
+  PetscErrorCode ierr
+  call PetscObjectSetFromOptions(PetscObjectCast(obj), ierr)
+  end subroutine 
+  subroutine PetscObjectSetUpDMSwarmCellDM(obj, ierr)
+  DMSwarmCellDM obj
+  PetscErrorCode ierr
+  call PetscObjectSetUp(PetscObjectCast(obj), ierr)
+  end subroutine 
+  subroutine PetscObjectGetNameDMSwarmCellDM(obj, name, ierr)
+  DMSwarmCellDM obj
+  character(*) :: name
+  PetscErrorCode ierr
+  call PetscObjectGetName(PetscObjectCast(obj), name, ierr)
+  end subroutine 
+  subroutine PetscObjectDestroyDMSwarmCellDM(obj, ierr)
+  DMSwarmCellDM obj
+  PetscErrorCode ierr
+  call PetscObjectDestroy(PetscObjectCast(obj), ierr)
+  end subroutine 
+  subroutine PetscObjectViewDMSwarmCellDM(obj, viewer, ierr)
+  DMSwarmCellDM obj
+  PetscViewer :: viewer
+  PetscErrorCode ierr
+  call PetscObjectView(PetscObjectCast(obj), viewer, ierr)
+  end subroutine 
+  subroutine PetscObjectViewFromOptionsDMSwarmCellDM(obj, bobj, name, ierr)
+  DMSwarmCellDM obj
+  PetscObject :: bobj
+  character(*) :: name
+  PetscErrorCode ierr
+  call PetscObjectViewFromOptions(PetscObjectCast(obj), bobj, name, ierr)
+  end subroutine 
+  subroutine PetscObjectTypeCompareDMSwarmCellDM(obj, type_name, same, ierr)
+  DMSwarmCellDM obj
+  character(*) :: type_name
+  PetscBool :: same
+  PetscErrorCode ierr
+  call PetscObjectTypeCompare(PetscObjectCast(obj), type_name, same, ierr)
+  end subroutine 
+  subroutine PetscObjectObjectTypeCompareDMSwarmCellDM(obj1, obj2, same, ierr)
+  DMSwarmCellDM obj1
+  PetscObject :: obj2
+  PetscBool :: same
+  PetscErrorCode ierr
+  call PetscObjectObjectTypeCompare(PetscObjectCast(obj1), obj2, same, ierr)
+  end subroutine 
+  subroutine PetscObjectBaseTypeCompareDMSwarmCellDM(obj, type_name, same, ierr)
+  DMSwarmCellDM obj
+  character(*) :: type_name
+  PetscBool :: same
+  PetscErrorCode ierr
+  call PetscObjectBaseTypeCompare(PetscObjectCast(obj), type_name, same, ierr)
+  end subroutine 
+  subroutine PetscObjectRegisterDestroyDMSwarmCellDM(obj, ierr)
+  DMSwarmCellDM obj
+  PetscErrorCode ierr
+  call PetscObjectRegisterDestroy(PetscObjectCast(obj), ierr)
+  end subroutine 
+  subroutine PetscObjectGetIdDMSwarmCellDM(obj, id, ierr)
+  DMSwarmCellDM obj
+  PetscObjectId :: id
+  PetscErrorCode ierr
+  call PetscObjectGetId(PetscObjectCast(obj), id, ierr)
+  end subroutine 
+  subroutine PetscObjectCompareIdDMSwarmCellDM(obj, id, eq, ierr)
+  DMSwarmCellDM obj
+  PetscObjectId :: id
+  PetscBool :: eq
+  PetscErrorCode ierr
+  call PetscObjectCompareId(PetscObjectCast(obj), id, eq, ierr)
+  end subroutine 
+  subroutine PetscObjectGetOptionsDMSwarmCellDM(obj, options, ierr)
+  DMSwarmCellDM obj
+  PetscOptions :: options
+  PetscErrorCode ierr
+  call PetscObjectGetOptions(PetscObjectCast(obj), options, ierr)
+  end subroutine 
+  subroutine PetscObjectSetOptionsDMSwarmCellDM(obj, options, ierr)
+  DMSwarmCellDM obj
+  PetscOptions :: options
+  PetscErrorCode ierr
+  call PetscObjectSetOptions(PetscObjectCast(obj), options, ierr)
+  end subroutine 
+  subroutine PetscObjectSetOptionsPrefixDMSwarmCellDM(obj, prefix, ierr)
+  DMSwarmCellDM obj
+  character(*) :: prefix
+  PetscErrorCode ierr
+  call PetscObjectSetOptionsPrefix(PetscObjectCast(obj), prefix, ierr)
+  end subroutine 
+  subroutine PetscObjectAppendOptionsPrefixDMSwarmCellDM(obj, prefix, ierr)
+  DMSwarmCellDM obj
+  character(*) :: prefix
+  PetscErrorCode ierr
+  call PetscObjectAppendOptionsPrefix(PetscObjectCast(obj), prefix, ierr)
+  end subroutine 
+  subroutine PetscObjectGetOptionsPrefixDMSwarmCellDM(obj, prefix, ierr)
+  DMSwarmCellDM obj
+  character(*) :: prefix
+  PetscErrorCode ierr
+  call PetscObjectGetOptionsPrefix(PetscObjectCast(obj), prefix, ierr)
+  end subroutine 
+  subroutine PetscObjectPrependOptionsPrefixDMSwarmCellDM(obj, prefix, ierr)
+  DMSwarmCellDM obj
+  character(*) :: prefix
+  PetscErrorCode ierr
+  call PetscObjectPrependOptionsPrefix(PetscObjectCast(obj), prefix, ierr)
+  end subroutine 
+  subroutine PetscObjectGetCommDMSwarmCellDM(obj, comm, ierr)
+  DMSwarmCellDM obj
+  MPIU_Comm :: comm
+  PetscErrorCode ierr
+  call PetscObjectGetComm(PetscObjectCast(obj), comm, ierr)
+  end subroutine 
+  subroutine PetscObjectGetTabLevelDMSwarmCellDM(obj, tab, ierr)
+  DMSwarmCellDM obj
+  PetscInt :: tab
+  PetscErrorCode ierr
+  call PetscObjectGetTabLevel(PetscObjectCast(obj), tab, ierr)
+  end subroutine 
+  subroutine PetscObjectSetTabLevelDMSwarmCellDM(obj, tab, ierr)
+  DMSwarmCellDM obj
+  PetscInt :: tab
+  PetscErrorCode ierr
+  call PetscObjectSetTabLevel(PetscObjectCast(obj), tab, ierr)
+  end subroutine 
+  subroutine PetscObjectIncrementTabLevelDMSwarmCellDM(obj, oldobj, tab, ierr)
+  DMSwarmCellDM obj
+  PetscObject :: oldobj
+  PetscInt :: tab
+  PetscErrorCode ierr
+  call PetscObjectIncrementTabLevel(PetscObjectCast(obj), oldobj, tab, ierr)
+  end subroutine 
+  subroutine PetscObjectGetNewTagDMSwarmCellDM(obj, tag, ierr)
+  DMSwarmCellDM obj
+  PetscMPIInt :: tag
+  PetscErrorCode ierr
+  call PetscObjectGetNewTag(PetscObjectCast(obj), tag, ierr)
+  end subroutine 
+  subroutine PetscObjectGetClassIdDMSwarmCellDM(obj, classid, ierr)
+  DMSwarmCellDM obj
+  PetscClassId :: classid
+  PetscErrorCode ierr
+  call PetscObjectGetClassId(PetscObjectCast(obj), classid, ierr)
+  end subroutine 
+  subroutine PetscObjectGetClassNameDMSwarmCellDM(obj, classname, ierr)
+  DMSwarmCellDM obj
+  character(*) :: classname
+  PetscErrorCode ierr
+  call PetscObjectGetClassName(PetscObjectCast(obj), classname, ierr)
+  end subroutine 
+  subroutine PetscObjectSetNameDMSwarmCellDM(obj, name, ierr)
+  DMSwarmCellDM obj
+  character(*) :: name
+  PetscErrorCode ierr
+  call PetscObjectSetName(PetscObjectCast(obj), name, ierr)
+  end subroutine 
+  subroutine PetscObjectPrintClassNamePrefixTypeDMSwarmCellDM(obj, viewer, ierr)
+  DMSwarmCellDM obj
+  PetscViewer :: viewer
+  PetscErrorCode ierr
+  call PetscObjectPrintClassNamePrefixType(PetscObjectCast(obj), viewer, ierr)
+  end subroutine 
+  subroutine PetscObjectNameDMSwarmCellDM(obj, ierr)
+  DMSwarmCellDM obj
+  PetscErrorCode ierr
+  call PetscObjectName(PetscObjectCast(obj), ierr)
+  end subroutine 
+  subroutine PetscObjectChangeTypeNameDMSwarmCellDM(obj, type_name, ierr)
+  DMSwarmCellDM obj
+  character(*) :: type_name
+  PetscErrorCode ierr
+  call PetscObjectChangeTypeName(PetscObjectCast(obj), type_name, ierr)
+  end subroutine 
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT:: DMSwarmTypenotequals
+!DEC$ ATTRIBUTES DLLEXPORT:: DMSwarmTypeequals
+#endif
+
+  function DMSwarmTypenotequals(A,B)
+    logical DMSwarmTypenotequals
+    type(eDMSwarmType), intent(in) :: A,B
+    DMSwarmTypenotequals = (A%v .ne. B%v)
+  end function
+  function DMSwarmTypeequals(A,B)
+    logical DMSwarmTypeequals
+    type(eDMSwarmType), intent(in) :: A,B
+    DMSwarmTypeequals = (A%v .eq. B%v)
+  end function
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT:: DMSwarmMigrateTypenotequals
+!DEC$ ATTRIBUTES DLLEXPORT:: DMSwarmMigrateTypeequals
+#endif
+
+  function DMSwarmMigrateTypenotequals(A,B)
+    logical DMSwarmMigrateTypenotequals
+    type(eDMSwarmMigrateType), intent(in) :: A,B
+    DMSwarmMigrateTypenotequals = (A%v .ne. B%v)
+  end function
+  function DMSwarmMigrateTypeequals(A,B)
+    logical DMSwarmMigrateTypeequals
+    type(eDMSwarmMigrateType), intent(in) :: A,B
+    DMSwarmMigrateTypeequals = (A%v .eq. B%v)
+  end function
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT:: DMSwarmCollectTypenotequals
+!DEC$ ATTRIBUTES DLLEXPORT:: DMSwarmCollectTypeequals
+#endif
+
+  function DMSwarmCollectTypenotequals(A,B)
+    logical DMSwarmCollectTypenotequals
+    type(eDMSwarmCollectType), intent(in) :: A,B
+    DMSwarmCollectTypenotequals = (A%v .ne. B%v)
+  end function
+  function DMSwarmCollectTypeequals(A,B)
+    logical DMSwarmCollectTypeequals
+    type(eDMSwarmCollectType), intent(in) :: A,B
+    DMSwarmCollectTypeequals = (A%v .eq. B%v)
+  end function
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT:: DMSwarmRemapTypenotequals
+!DEC$ ATTRIBUTES DLLEXPORT:: DMSwarmRemapTypeequals
+#endif
+
+  function DMSwarmRemapTypenotequals(A,B)
+    logical DMSwarmRemapTypenotequals
+    type(eDMSwarmRemapType), intent(in) :: A,B
+    DMSwarmRemapTypenotequals = (A%v .ne. B%v)
+  end function
+  function DMSwarmRemapTypeequals(A,B)
+    logical DMSwarmRemapTypeequals
+    type(eDMSwarmRemapType), intent(in) :: A,B
+    DMSwarmRemapTypeequals = (A%v .eq. B%v)
+  end function
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT:: DMSwarmPICLayoutTypenotequals
+!DEC$ ATTRIBUTES DLLEXPORT:: DMSwarmPICLayoutTypeequals
+#endif
+
+  function DMSwarmPICLayoutTypenotequals(A,B)
+    logical DMSwarmPICLayoutTypenotequals
+    type(eDMSwarmPICLayoutType), intent(in) :: A,B
+    DMSwarmPICLayoutTypenotequals = (A%v .ne. B%v)
+  end function
+  function DMSwarmPICLayoutTypeequals(A,B)
+    logical DMSwarmPICLayoutTypeequals
+    type(eDMSwarmPICLayoutType), intent(in) :: A,B
+    DMSwarmPICLayoutTypeequals = (A%v .eq. B%v)
+  end function

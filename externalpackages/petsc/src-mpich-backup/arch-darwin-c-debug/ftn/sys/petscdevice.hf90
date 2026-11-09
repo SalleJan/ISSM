@@ -1,0 +1,459 @@
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT:: PetscDevicenotequals
+!DEC$ ATTRIBUTES DLLEXPORT:: PetscDeviceequals
+#endif
+
+  function PetscDevicenotequals(A,B)
+    logical PetscDevicenotequals
+    type(tPetscDevice), intent(in) :: A,B
+    PetscDevicenotequals = (A%v .ne. B%v)
+  end function
+  function PetscDeviceequals(A,B)
+    logical PetscDeviceequals
+    type(tPetscDevice), intent(in) :: A,B
+    PetscDeviceequals = (A%v .eq. B%v)
+  end function
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT:: PetscDeviceContextnotequals
+!DEC$ ATTRIBUTES DLLEXPORT:: PetscDeviceContextequals
+#endif
+
+  function PetscDeviceContextnotequals(A,B)
+    logical PetscDeviceContextnotequals
+    type(tPetscDeviceContext), intent(in) :: A,B
+    PetscDeviceContextnotequals = (A%v .ne. B%v)
+  end function
+  function PetscDeviceContextequals(A,B)
+    logical PetscDeviceContextequals
+    type(tPetscDeviceContext), intent(in) :: A,B
+    PetscDeviceContextequals = (A%v .eq. B%v)
+  end function
+  function PetscObjectCastDeviceContext(obj)
+    PetscDeviceContext obj
+    PetscObject PetscObjectCastDeviceContext
+    PetscObjectCastDeviceContext%v = obj%v
+  end function 
+  subroutine PetscBarrierDeviceContext(obj,ierr)
+    PetscDeviceContext obj
+    PetscErrorCode ierr
+    call PetscBarrier(PetscObjectCast(obj),ierr)
+  end subroutine 
+#if defined(PETSC_HAVE_SAWS)
+  subroutine PetscObjectSAWsTakeAccessDeviceContext(obj, ierr)
+  PetscDeviceContext obj
+  PetscErrorCode ierr
+  call PetscObjectSAWsTakeAccess(PetscObjectCast(obj), ierr)
+  end subroutine 
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  subroutine PetscObjectSAWsGrantAccessDeviceContext(obj, ierr)
+  PetscDeviceContext obj
+  PetscErrorCode ierr
+  call PetscObjectSAWsGrantAccess(PetscObjectCast(obj), ierr)
+  end subroutine 
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  subroutine PetscObjectSAWsBlockDeviceContext(obj, ierr)
+  PetscDeviceContext obj
+  PetscErrorCode ierr
+  call PetscObjectSAWsBlock(PetscObjectCast(obj), ierr)
+  end subroutine 
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  subroutine PetscObjectSAWsSetBlockDeviceContext(obj, flg, ierr)
+  PetscDeviceContext obj
+  PetscBool :: flg
+  PetscErrorCode ierr
+  call PetscObjectSAWsSetBlock(PetscObjectCast(obj), flg, ierr)
+  end subroutine 
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  subroutine PetscObjectSAWsViewOffDeviceContext(obj, ierr)
+  PetscDeviceContext obj
+  PetscErrorCode ierr
+  call PetscObjectSAWsViewOff(PetscObjectCast(obj), ierr)
+  end subroutine 
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  subroutine PetscObjectViewSAWsDeviceContext(obj, viewer, ierr)
+  PetscDeviceContext obj
+  PetscViewer :: viewer
+  PetscErrorCode ierr
+  call PetscObjectViewSAWs(PetscObjectCast(obj), viewer, ierr)
+  end subroutine 
+#endif
+  subroutine PetscObjectGetTypeDeviceContext(obj, type, ierr)
+  PetscDeviceContext obj
+  character(*) :: type
+  PetscErrorCode ierr
+  call PetscObjectGetType(PetscObjectCast(obj), type, ierr)
+  end subroutine 
+  subroutine PetscObjectSetPrintedOptionsDeviceContext(obj, ierr)
+  PetscDeviceContext obj
+  PetscErrorCode ierr
+  call PetscObjectSetPrintedOptions(PetscObjectCast(obj), ierr)
+  end subroutine 
+  subroutine PetscObjectInheritPrintedOptionsDeviceContext(pobj, obj, ierr)
+  PetscDeviceContext pobj
+  PetscObject :: obj
+  PetscErrorCode ierr
+  call PetscObjectInheritPrintedOptions(PetscObjectCast(pobj), obj, ierr)
+  end subroutine 
+  subroutine PetscObjectAddOptionsHandlerDeviceContext(obj, handle, destroy, ctx, ierr)
+  PetscDeviceContext obj
+  external :: handle
+  external :: destroy
+  type(*) :: ctx
+  PetscErrorCode ierr
+  call PetscObjectAddOptionsHandler(PetscObjectCast(obj), handle, destroy, ctx, ierr)
+  end subroutine 
+  subroutine PetscObjectProcessOptionsHandlersDeviceContext(obj, PetscOptionsObject, ierr)
+  PetscDeviceContext obj
+  PetscOptionItems :: PetscOptionsObject
+  PetscErrorCode ierr
+  call PetscObjectProcessOptionsHandlers(PetscObjectCast(obj), PetscOptionsObject, ierr)
+  end subroutine 
+  subroutine PetscObjectDestroyOptionsHandlersDeviceContext(obj, ierr)
+  PetscDeviceContext obj
+  PetscErrorCode ierr
+  call PetscObjectDestroyOptionsHandlers(PetscObjectCast(obj), ierr)
+  end subroutine 
+  subroutine PetscObjectReferenceDeviceContext(obj, ierr)
+  PetscDeviceContext obj
+  PetscErrorCode ierr
+  call PetscObjectReference(PetscObjectCast(obj), ierr)
+  end subroutine 
+  subroutine PetscObjectGetReferenceDeviceContext(obj, cnt, ierr)
+  PetscDeviceContext obj
+  PetscInt :: cnt
+  PetscErrorCode ierr
+  call PetscObjectGetReference(PetscObjectCast(obj), cnt, ierr)
+  end subroutine 
+  subroutine PetscObjectDereferenceDeviceContext(obj, ierr)
+  PetscDeviceContext obj
+  PetscErrorCode ierr
+  call PetscObjectDereference(PetscObjectCast(obj), ierr)
+  end subroutine 
+  subroutine PetscObjectRemoveReferenceDeviceContext(obj, name, ierr)
+  PetscDeviceContext obj
+  character(*) :: name
+  PetscErrorCode ierr
+  call PetscObjectRemoveReference(PetscObjectCast(obj), name, ierr)
+  end subroutine 
+  subroutine PetscObjectHasFunctionDeviceContext(obj, name, has, ierr)
+  PetscDeviceContext obj
+  character(*) :: name
+  PetscBool :: has
+  PetscErrorCode ierr
+  call PetscObjectHasFunction(PetscObjectCast(obj), name, has, ierr)
+  end subroutine 
+  subroutine PetscObjectSetFromOptionsDeviceContext(obj, ierr)
+  PetscDeviceContext obj
+  PetscErrorCode ierr
+  call PetscObjectSetFromOptions(PetscObjectCast(obj), ierr)
+  end subroutine 
+  subroutine PetscObjectSetUpDeviceContext(obj, ierr)
+  PetscDeviceContext obj
+  PetscErrorCode ierr
+  call PetscObjectSetUp(PetscObjectCast(obj), ierr)
+  end subroutine 
+  subroutine PetscObjectGetNameDeviceContext(obj, name, ierr)
+  PetscDeviceContext obj
+  character(*) :: name
+  PetscErrorCode ierr
+  call PetscObjectGetName(PetscObjectCast(obj), name, ierr)
+  end subroutine 
+  subroutine PetscObjectDestroyDeviceContext(obj, ierr)
+  PetscDeviceContext obj
+  PetscErrorCode ierr
+  call PetscObjectDestroy(PetscObjectCast(obj), ierr)
+  end subroutine 
+  subroutine PetscObjectViewDeviceContext(obj, viewer, ierr)
+  PetscDeviceContext obj
+  PetscViewer :: viewer
+  PetscErrorCode ierr
+  call PetscObjectView(PetscObjectCast(obj), viewer, ierr)
+  end subroutine 
+  subroutine PetscObjectViewFromOptionsDeviceContext(obj, bobj, name, ierr)
+  PetscDeviceContext obj
+  PetscObject :: bobj
+  character(*) :: name
+  PetscErrorCode ierr
+  call PetscObjectViewFromOptions(PetscObjectCast(obj), bobj, name, ierr)
+  end subroutine 
+  subroutine PetscObjectTypeCompareDeviceContext(obj, type_name, same, ierr)
+  PetscDeviceContext obj
+  character(*) :: type_name
+  PetscBool :: same
+  PetscErrorCode ierr
+  call PetscObjectTypeCompare(PetscObjectCast(obj), type_name, same, ierr)
+  end subroutine 
+  subroutine PetscObjectObjectTypeCompareDeviceContext(obj1, obj2, same, ierr)
+  PetscDeviceContext obj1
+  PetscObject :: obj2
+  PetscBool :: same
+  PetscErrorCode ierr
+  call PetscObjectObjectTypeCompare(PetscObjectCast(obj1), obj2, same, ierr)
+  end subroutine 
+  subroutine PetscObjectBaseTypeCompareDeviceContext(obj, type_name, same, ierr)
+  PetscDeviceContext obj
+  character(*) :: type_name
+  PetscBool :: same
+  PetscErrorCode ierr
+  call PetscObjectBaseTypeCompare(PetscObjectCast(obj), type_name, same, ierr)
+  end subroutine 
+  subroutine PetscObjectRegisterDestroyDeviceContext(obj, ierr)
+  PetscDeviceContext obj
+  PetscErrorCode ierr
+  call PetscObjectRegisterDestroy(PetscObjectCast(obj), ierr)
+  end subroutine 
+  subroutine PetscObjectGetIdDeviceContext(obj, id, ierr)
+  PetscDeviceContext obj
+  PetscObjectId :: id
+  PetscErrorCode ierr
+  call PetscObjectGetId(PetscObjectCast(obj), id, ierr)
+  end subroutine 
+  subroutine PetscObjectCompareIdDeviceContext(obj, id, eq, ierr)
+  PetscDeviceContext obj
+  PetscObjectId :: id
+  PetscBool :: eq
+  PetscErrorCode ierr
+  call PetscObjectCompareId(PetscObjectCast(obj), id, eq, ierr)
+  end subroutine 
+  subroutine PetscObjectGetOptionsDeviceContext(obj, options, ierr)
+  PetscDeviceContext obj
+  PetscOptions :: options
+  PetscErrorCode ierr
+  call PetscObjectGetOptions(PetscObjectCast(obj), options, ierr)
+  end subroutine 
+  subroutine PetscObjectSetOptionsDeviceContext(obj, options, ierr)
+  PetscDeviceContext obj
+  PetscOptions :: options
+  PetscErrorCode ierr
+  call PetscObjectSetOptions(PetscObjectCast(obj), options, ierr)
+  end subroutine 
+  subroutine PetscObjectSetOptionsPrefixDeviceContext(obj, prefix, ierr)
+  PetscDeviceContext obj
+  character(*) :: prefix
+  PetscErrorCode ierr
+  call PetscObjectSetOptionsPrefix(PetscObjectCast(obj), prefix, ierr)
+  end subroutine 
+  subroutine PetscObjectAppendOptionsPrefixDeviceContext(obj, prefix, ierr)
+  PetscDeviceContext obj
+  character(*) :: prefix
+  PetscErrorCode ierr
+  call PetscObjectAppendOptionsPrefix(PetscObjectCast(obj), prefix, ierr)
+  end subroutine 
+  subroutine PetscObjectGetOptionsPrefixDeviceContext(obj, prefix, ierr)
+  PetscDeviceContext obj
+  character(*) :: prefix
+  PetscErrorCode ierr
+  call PetscObjectGetOptionsPrefix(PetscObjectCast(obj), prefix, ierr)
+  end subroutine 
+  subroutine PetscObjectPrependOptionsPrefixDeviceContext(obj, prefix, ierr)
+  PetscDeviceContext obj
+  character(*) :: prefix
+  PetscErrorCode ierr
+  call PetscObjectPrependOptionsPrefix(PetscObjectCast(obj), prefix, ierr)
+  end subroutine 
+  subroutine PetscObjectGetCommDeviceContext(obj, comm, ierr)
+  PetscDeviceContext obj
+  MPIU_Comm :: comm
+  PetscErrorCode ierr
+  call PetscObjectGetComm(PetscObjectCast(obj), comm, ierr)
+  end subroutine 
+  subroutine PetscObjectGetTabLevelDeviceContext(obj, tab, ierr)
+  PetscDeviceContext obj
+  PetscInt :: tab
+  PetscErrorCode ierr
+  call PetscObjectGetTabLevel(PetscObjectCast(obj), tab, ierr)
+  end subroutine 
+  subroutine PetscObjectSetTabLevelDeviceContext(obj, tab, ierr)
+  PetscDeviceContext obj
+  PetscInt :: tab
+  PetscErrorCode ierr
+  call PetscObjectSetTabLevel(PetscObjectCast(obj), tab, ierr)
+  end subroutine 
+  subroutine PetscObjectIncrementTabLevelDeviceContext(obj, oldobj, tab, ierr)
+  PetscDeviceContext obj
+  PetscObject :: oldobj
+  PetscInt :: tab
+  PetscErrorCode ierr
+  call PetscObjectIncrementTabLevel(PetscObjectCast(obj), oldobj, tab, ierr)
+  end subroutine 
+  subroutine PetscObjectGetNewTagDeviceContext(obj, tag, ierr)
+  PetscDeviceContext obj
+  PetscMPIInt :: tag
+  PetscErrorCode ierr
+  call PetscObjectGetNewTag(PetscObjectCast(obj), tag, ierr)
+  end subroutine 
+  subroutine PetscObjectGetClassIdDeviceContext(obj, classid, ierr)
+  PetscDeviceContext obj
+  PetscClassId :: classid
+  PetscErrorCode ierr
+  call PetscObjectGetClassId(PetscObjectCast(obj), classid, ierr)
+  end subroutine 
+  subroutine PetscObjectGetClassNameDeviceContext(obj, classname, ierr)
+  PetscDeviceContext obj
+  character(*) :: classname
+  PetscErrorCode ierr
+  call PetscObjectGetClassName(PetscObjectCast(obj), classname, ierr)
+  end subroutine 
+  subroutine PetscObjectSetNameDeviceContext(obj, name, ierr)
+  PetscDeviceContext obj
+  character(*) :: name
+  PetscErrorCode ierr
+  call PetscObjectSetName(PetscObjectCast(obj), name, ierr)
+  end subroutine 
+  subroutine PetscObjectPrintClassNamePrefixTypeDeviceContext(obj, viewer, ierr)
+  PetscDeviceContext obj
+  PetscViewer :: viewer
+  PetscErrorCode ierr
+  call PetscObjectPrintClassNamePrefixType(PetscObjectCast(obj), viewer, ierr)
+  end subroutine 
+  subroutine PetscObjectNameDeviceContext(obj, ierr)
+  PetscDeviceContext obj
+  PetscErrorCode ierr
+  call PetscObjectName(PetscObjectCast(obj), ierr)
+  end subroutine 
+  subroutine PetscObjectChangeTypeNameDeviceContext(obj, type_name, ierr)
+  PetscDeviceContext obj
+  character(*) :: type_name
+  PetscErrorCode ierr
+  call PetscObjectChangeTypeName(PetscObjectCast(obj), type_name, ierr)
+  end subroutine 
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT:: PetscMemTypenotequals
+!DEC$ ATTRIBUTES DLLEXPORT:: PetscMemTypeequals
+#endif
+
+  function PetscMemTypenotequals(A,B)
+    logical PetscMemTypenotequals
+    type(ePetscMemType), intent(in) :: A,B
+    PetscMemTypenotequals = (A%v .ne. B%v)
+  end function
+  function PetscMemTypeequals(A,B)
+    logical PetscMemTypeequals
+    type(ePetscMemType), intent(in) :: A,B
+    PetscMemTypeequals = (A%v .eq. B%v)
+  end function
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT:: PetscOffloadMasknotequals
+!DEC$ ATTRIBUTES DLLEXPORT:: PetscOffloadMaskequals
+#endif
+
+  function PetscOffloadMasknotequals(A,B)
+    logical PetscOffloadMasknotequals
+    type(ePetscOffloadMask), intent(in) :: A,B
+    PetscOffloadMasknotequals = (A%v .ne. B%v)
+  end function
+  function PetscOffloadMaskequals(A,B)
+    logical PetscOffloadMaskequals
+    type(ePetscOffloadMask), intent(in) :: A,B
+    PetscOffloadMaskequals = (A%v .eq. B%v)
+  end function
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT:: PetscDeviceInitTypenotequals
+!DEC$ ATTRIBUTES DLLEXPORT:: PetscDeviceInitTypeequals
+#endif
+
+  function PetscDeviceInitTypenotequals(A,B)
+    logical PetscDeviceInitTypenotequals
+    type(ePetscDeviceInitType), intent(in) :: A,B
+    PetscDeviceInitTypenotequals = (A%v .ne. B%v)
+  end function
+  function PetscDeviceInitTypeequals(A,B)
+    logical PetscDeviceInitTypeequals
+    type(ePetscDeviceInitType), intent(in) :: A,B
+    PetscDeviceInitTypeequals = (A%v .eq. B%v)
+  end function
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT:: PetscDeviceTypenotequals
+!DEC$ ATTRIBUTES DLLEXPORT:: PetscDeviceTypeequals
+#endif
+
+  function PetscDeviceTypenotequals(A,B)
+    logical PetscDeviceTypenotequals
+    type(ePetscDeviceType), intent(in) :: A,B
+    PetscDeviceTypenotequals = (A%v .ne. B%v)
+  end function
+  function PetscDeviceTypeequals(A,B)
+    logical PetscDeviceTypeequals
+    type(ePetscDeviceType), intent(in) :: A,B
+    PetscDeviceTypeequals = (A%v .eq. B%v)
+  end function
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT:: PetscDeviceAttributenotequals
+!DEC$ ATTRIBUTES DLLEXPORT:: PetscDeviceAttributeequals
+#endif
+
+  function PetscDeviceAttributenotequals(A,B)
+    logical PetscDeviceAttributenotequals
+    type(ePetscDeviceAttribute), intent(in) :: A,B
+    PetscDeviceAttributenotequals = (A%v .ne. B%v)
+  end function
+  function PetscDeviceAttributeequals(A,B)
+    logical PetscDeviceAttributeequals
+    type(ePetscDeviceAttribute), intent(in) :: A,B
+    PetscDeviceAttributeequals = (A%v .eq. B%v)
+  end function
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT:: PetscStreamTypenotequals
+!DEC$ ATTRIBUTES DLLEXPORT:: PetscStreamTypeequals
+#endif
+
+  function PetscStreamTypenotequals(A,B)
+    logical PetscStreamTypenotequals
+    type(ePetscStreamType), intent(in) :: A,B
+    PetscStreamTypenotequals = (A%v .ne. B%v)
+  end function
+  function PetscStreamTypeequals(A,B)
+    logical PetscStreamTypeequals
+    type(ePetscStreamType), intent(in) :: A,B
+    PetscStreamTypeequals = (A%v .eq. B%v)
+  end function
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT:: PetscDeviceContextJoinModenotequals
+!DEC$ ATTRIBUTES DLLEXPORT:: PetscDeviceContextJoinModeequals
+#endif
+
+  function PetscDeviceContextJoinModenotequals(A,B)
+    logical PetscDeviceContextJoinModenotequals
+    type(ePetscDeviceContextJoinMode), intent(in) :: A,B
+    PetscDeviceContextJoinModenotequals = (A%v .ne. B%v)
+  end function
+  function PetscDeviceContextJoinModeequals(A,B)
+    logical PetscDeviceContextJoinModeequals
+    type(ePetscDeviceContextJoinMode), intent(in) :: A,B
+    PetscDeviceContextJoinModeequals = (A%v .eq. B%v)
+  end function
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT:: PetscDeviceCopyModenotequals
+!DEC$ ATTRIBUTES DLLEXPORT:: PetscDeviceCopyModeequals
+#endif
+
+  function PetscDeviceCopyModenotequals(A,B)
+    logical PetscDeviceCopyModenotequals
+    type(ePetscDeviceCopyMode), intent(in) :: A,B
+    PetscDeviceCopyModenotequals = (A%v .ne. B%v)
+  end function
+  function PetscDeviceCopyModeequals(A,B)
+    logical PetscDeviceCopyModeequals
+    type(ePetscDeviceCopyMode), intent(in) :: A,B
+    PetscDeviceCopyModeequals = (A%v .eq. B%v)
+  end function
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT:: PetscMemoryAccessModenotequals
+!DEC$ ATTRIBUTES DLLEXPORT:: PetscMemoryAccessModeequals
+#endif
+
+  function PetscMemoryAccessModenotequals(A,B)
+    logical PetscMemoryAccessModenotequals
+    type(ePetscMemoryAccessMode), intent(in) :: A,B
+    PetscMemoryAccessModenotequals = (A%v .ne. B%v)
+  end function
+  function PetscMemoryAccessModeequals(A,B)
+    logical PetscMemoryAccessModeequals
+    type(ePetscMemoryAccessMode), intent(in) :: A,B
+    PetscMemoryAccessModeequals = (A%v .eq. B%v)
+  end function

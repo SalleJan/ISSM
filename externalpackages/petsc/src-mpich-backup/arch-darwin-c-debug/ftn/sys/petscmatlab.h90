@@ -1,0 +1,253 @@
+  interface
+  subroutine PetscMatlabEngineCreate(comm,host,mengine, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscMatlabEngine
+  MPIU_Comm :: comm
+  character(*) :: host
+  PetscMatlabEngine :: mengine
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscMatlabEngineCreate
+#endif
+  interface
+  subroutine PetscMatlabEngineDestroy(v, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscMatlabEngine
+  PetscMatlabEngine :: v
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscMatlabEngineDestroy
+#endif
+  interface
+  subroutine PetscMatlabEngineGetOutput(mengine,string, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscMatlabEngine
+  PetscMatlabEngine :: mengine
+  character(*) :: string
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscMatlabEngineGetOutput
+#endif
+  interface
+  subroutine PetscMatlabEnginePut(mengine,obj, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscMatlabEngine,tPetscObject
+  PetscMatlabEngine :: mengine
+  PetscObject :: obj
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscMatlabEnginePut
+#endif
+  interface
+  subroutine PetscMatlabEngineGet(mengine,obj, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscMatlabEngine,tPetscObject
+  PetscMatlabEngine :: mengine
+  PetscObject :: obj
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscMatlabEngineGet
+#endif
+  interface
+  subroutine PetscMatlabEnginePutArray(mengine,m,n,array,name, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscMatlabEngine
+  PetscMatlabEngine :: mengine
+  integer4 :: m
+  integer4 :: n
+  PetscScalar :: array(*)
+  character(*) :: name
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscMatlabEnginePutArray
+#endif
+  interface
+  subroutine PetscMatlabEngineGetArray(mengine,m,n,array,name, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscMatlabEngine
+  PetscMatlabEngine :: mengine
+  integer4 :: m
+  integer4 :: n
+  PetscScalar :: array(*)
+  character(*) :: name
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscMatlabEngineGetArray
+#endif
+  interface operator(.ne.)
+    module procedure PetscMatlabEnginenotequals
+  end interface operator (.ne.)
+  interface operator(.eq.)
+    module procedure PetscMatlabEngineequals
+  end interface operator (.eq.)
+
+  interface PetscObjectCast
+    module procedure PetscObjectCastMatlabEngine
+  end interface
+  interface PetscBarrier
+  module procedure PetscBarrierMatlabEngine
+  end interface
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectSAWsTakeAccess
+    module procedure PetscObjectSAWsTakeAccessMatlabEngine
+  end interface
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectSAWsGrantAccess
+    module procedure PetscObjectSAWsGrantAccessMatlabEngine
+  end interface
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectSAWsBlock
+    module procedure PetscObjectSAWsBlockMatlabEngine
+  end interface
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectSAWsSetBlock
+    module procedure PetscObjectSAWsSetBlockMatlabEngine
+  end interface
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectSAWsViewOff
+    module procedure PetscObjectSAWsViewOffMatlabEngine
+  end interface
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectViewSAWs
+    module procedure PetscObjectViewSAWsMatlabEngine
+  end interface
+#endif
+  interface PetscObjectGetType
+    module procedure PetscObjectGetTypeMatlabEngine
+  end interface
+  interface PetscObjectSetPrintedOptions
+    module procedure PetscObjectSetPrintedOptionsMatlabEngine
+  end interface
+  interface PetscObjectInheritPrintedOptions
+    module procedure PetscObjectInheritPrintedOptionsMatlabEngine
+  end interface
+  interface PetscObjectAddOptionsHandler
+    module procedure PetscObjectAddOptionsHandlerMatlabEngine
+  end interface
+  interface PetscObjectProcessOptionsHandlers
+    module procedure PetscObjectProcessOptionsHandlersMatlabEngine
+  end interface
+  interface PetscObjectDestroyOptionsHandlers
+    module procedure PetscObjectDestroyOptionsHandlersMatlabEngine
+  end interface
+  interface PetscObjectReference
+    module procedure PetscObjectReferenceMatlabEngine
+  end interface
+  interface PetscObjectGetReference
+    module procedure PetscObjectGetReferenceMatlabEngine
+  end interface
+  interface PetscObjectDereference
+    module procedure PetscObjectDereferenceMatlabEngine
+  end interface
+  interface PetscObjectRemoveReference
+    module procedure PetscObjectRemoveReferenceMatlabEngine
+  end interface
+  interface PetscObjectHasFunction
+    module procedure PetscObjectHasFunctionMatlabEngine
+  end interface
+  interface PetscObjectSetFromOptions
+    module procedure PetscObjectSetFromOptionsMatlabEngine
+  end interface
+  interface PetscObjectSetUp
+    module procedure PetscObjectSetUpMatlabEngine
+  end interface
+  interface PetscObjectGetName
+    module procedure PetscObjectGetNameMatlabEngine
+  end interface
+  interface PetscObjectDestroy
+    module procedure PetscObjectDestroyMatlabEngine
+  end interface
+  interface PetscObjectView
+    module procedure PetscObjectViewMatlabEngine
+  end interface
+  interface PetscObjectViewFromOptions
+    module procedure PetscObjectViewFromOptionsMatlabEngine
+  end interface
+  interface PetscObjectTypeCompare
+    module procedure PetscObjectTypeCompareMatlabEngine
+  end interface
+  interface PetscObjectObjectTypeCompare
+    module procedure PetscObjectObjectTypeCompareMatlabEngine
+  end interface
+  interface PetscObjectBaseTypeCompare
+    module procedure PetscObjectBaseTypeCompareMatlabEngine
+  end interface
+  interface PetscObjectRegisterDestroy
+    module procedure PetscObjectRegisterDestroyMatlabEngine
+  end interface
+  interface PetscObjectGetId
+    module procedure PetscObjectGetIdMatlabEngine
+  end interface
+  interface PetscObjectCompareId
+    module procedure PetscObjectCompareIdMatlabEngine
+  end interface
+  interface PetscObjectGetOptions
+    module procedure PetscObjectGetOptionsMatlabEngine
+  end interface
+  interface PetscObjectSetOptions
+    module procedure PetscObjectSetOptionsMatlabEngine
+  end interface
+  interface PetscObjectSetOptionsPrefix
+    module procedure PetscObjectSetOptionsPrefixMatlabEngine
+  end interface
+  interface PetscObjectAppendOptionsPrefix
+    module procedure PetscObjectAppendOptionsPrefixMatlabEngine
+  end interface
+  interface PetscObjectGetOptionsPrefix
+    module procedure PetscObjectGetOptionsPrefixMatlabEngine
+  end interface
+  interface PetscObjectPrependOptionsPrefix
+    module procedure PetscObjectPrependOptionsPrefixMatlabEngine
+  end interface
+  interface PetscObjectGetComm
+    module procedure PetscObjectGetCommMatlabEngine
+  end interface
+  interface PetscObjectGetTabLevel
+    module procedure PetscObjectGetTabLevelMatlabEngine
+  end interface
+  interface PetscObjectSetTabLevel
+    module procedure PetscObjectSetTabLevelMatlabEngine
+  end interface
+  interface PetscObjectIncrementTabLevel
+    module procedure PetscObjectIncrementTabLevelMatlabEngine
+  end interface
+  interface PetscObjectGetNewTag
+    module procedure PetscObjectGetNewTagMatlabEngine
+  end interface
+  interface PetscObjectGetClassId
+    module procedure PetscObjectGetClassIdMatlabEngine
+  end interface
+  interface PetscObjectGetClassName
+    module procedure PetscObjectGetClassNameMatlabEngine
+  end interface
+  interface PetscObjectSetName
+    module procedure PetscObjectSetNameMatlabEngine
+  end interface
+  interface PetscObjectPrintClassNamePrefixType
+    module procedure PetscObjectPrintClassNamePrefixTypeMatlabEngine
+  end interface
+  interface PetscObjectName
+    module procedure PetscObjectNameMatlabEngine
+  end interface
+  interface PetscObjectChangeTypeName
+    module procedure PetscObjectChangeTypeNameMatlabEngine
+  end interface

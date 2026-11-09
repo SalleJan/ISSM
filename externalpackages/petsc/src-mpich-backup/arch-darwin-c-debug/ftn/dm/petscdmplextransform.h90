@@ -1,0 +1,1060 @@
+  interface
+  subroutine DMPlexSetTransformType(dm,type, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  character(*) :: type
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMPlexSetTransformType
+#endif
+  interface
+  subroutine DMPlexGetTransformType(dm,type, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  character(*) :: type
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMPlexGetTransformType
+#endif
+  interface
+  subroutine DMPlexSetTransform(dm,tr, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM,tDMPlexTransform
+  DM :: dm
+  DMPlexTransform :: tr
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMPlexSetTransform
+#endif
+  interface
+  subroutine DMPlexGetTransform(dm,tr, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM,tDMPlexTransform
+  DM :: dm
+  DMPlexTransform :: tr
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMPlexGetTransform
+#endif
+  interface
+  subroutine DMPlexSetSaveTransform(dm,save, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  PetscBool :: save
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMPlexSetSaveTransform
+#endif
+  interface
+  subroutine DMPlexGetSaveTransform(dm,save, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  PetscBool :: save
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMPlexGetSaveTransform
+#endif
+  interface
+  subroutine DMPlexCreateEphemeral(tr,prefix,dm, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDMPlexTransform,tDM
+  DMPlexTransform :: tr
+  character(*) :: prefix
+  DM :: dm
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMPlexCreateEphemeral
+#endif
+  interface
+  subroutine DMPlexRefineToSimplexGetReflect(tr,reflect, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDMPlexTransform
+  DMPlexTransform :: tr
+  PetscBool :: reflect
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMPlexRefineToSimplexGetReflect
+#endif
+  interface
+  subroutine DMPlexRefineToSimplexSetReflect(tr,reflect, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDMPlexTransform
+  DMPlexTransform :: tr
+  PetscBool :: reflect
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMPlexRefineToSimplexSetReflect
+#endif
+  interface
+  subroutine DMPlexRefineRegularGetAffineFaceTransforms(tr,ct,Nf,v0,J,invJ,detJ, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDMPlexTransform,eDMPolytopeType
+  DMPlexTransform :: tr
+  DMPolytopeType :: ct
+  PetscInt :: Nf
+  PetscReal, pointer :: v0(:)
+  PetscReal, pointer :: J(:)
+  PetscReal, pointer :: invJ(:)
+  PetscReal, pointer :: detJ(:)
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMPlexRefineRegularGetAffineFaceTransforms
+#endif
+  interface
+  subroutine DMPlexRefineRegularGetAffineTransforms(tr,ct,Nc,v0,J,invJ, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDMPlexTransform,eDMPolytopeType
+  DMPlexTransform :: tr
+  DMPolytopeType :: ct
+  PetscInt :: Nc
+  PetscReal, pointer :: v0(:)
+  PetscReal, pointer :: J(:)
+  PetscReal, pointer :: invJ(:)
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMPlexRefineRegularGetAffineTransforms
+#endif
+  interface
+  subroutine DMPlexTransformRegisterAll(ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMPlexTransformRegisterAll
+#endif
+  interface
+  subroutine DMPlexTransformRegisterDestroy(ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMPlexTransformRegisterDestroy
+#endif
+  interface
+  subroutine DMPlexTransformCreate(comm,tr, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDMPlexTransform
+  MPIU_Comm :: comm
+  DMPlexTransform :: tr
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMPlexTransformCreate
+#endif
+  interface
+  subroutine DMPlexTransformSetType(tr,method, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDMPlexTransform
+  DMPlexTransform :: tr
+  character(*) :: method
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMPlexTransformSetType
+#endif
+  interface
+  subroutine DMPlexTransformGetType(tr,type, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDMPlexTransform
+  DMPlexTransform :: tr
+  character(*) :: type
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMPlexTransformGetType
+#endif
+  interface
+  subroutine DMPlexTransformView(tr,v, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDMPlexTransform,tPetscViewer
+  DMPlexTransform :: tr
+  PetscViewer :: v
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMPlexTransformView
+#endif
+  interface
+  subroutine DMPlexTransformSetFromOptions(tr, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDMPlexTransform
+  DMPlexTransform :: tr
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMPlexTransformSetFromOptions
+#endif
+  interface
+  subroutine DMPlexTransformDestroy(tr, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDMPlexTransform
+  DMPlexTransform :: tr
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMPlexTransformDestroy
+#endif
+  interface
+  subroutine DMPlexTransformSetUp(tr, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDMPlexTransform
+  DMPlexTransform :: tr
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMPlexTransformSetUp
+#endif
+  interface
+  subroutine DMPlexTransformGetDM(tr,dm, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDMPlexTransform,tDM
+  DMPlexTransform :: tr
+  DM :: dm
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMPlexTransformGetDM
+#endif
+  interface
+  subroutine DMPlexTransformSetDM(tr,dm, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDMPlexTransform,tDM
+  DMPlexTransform :: tr
+  DM :: dm
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMPlexTransformSetDM
+#endif
+  interface
+  subroutine DMPlexTransformGetActive(tr,active, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDMPlexTransform,tDMLabel
+  DMPlexTransform :: tr
+  DMLabel :: active
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMPlexTransformGetActive
+#endif
+  interface
+  subroutine DMPlexTransformSetActive(tr,active, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDMPlexTransform,tDMLabel
+  DMPlexTransform :: tr
+  DMLabel :: active
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMPlexTransformSetActive
+#endif
+  interface
+  subroutine DMPlexTransformGetTransformTypes(tr,trType, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDMPlexTransform,tDMLabel
+  DMPlexTransform :: tr
+  DMLabel :: trType
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMPlexTransformGetTransformTypes
+#endif
+  interface
+  subroutine DMPlexTransformSetTransformTypes(tr,trType, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDMPlexTransform,tDMLabel
+  DMPlexTransform :: tr
+  DMLabel :: trType
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMPlexTransformSetTransformTypes
+#endif
+  interface
+  subroutine DMPlexTransformSetDimensions(tr,dm,trdm, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDMPlexTransform,tDM
+  DMPlexTransform :: tr
+  DM :: dm
+  DM :: trdm
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMPlexTransformSetDimensions
+#endif
+  interface
+  subroutine DMPlexTransformGetChart(tr,pStart,pEnd, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDMPlexTransform
+  DMPlexTransform :: tr
+  PetscInt :: pStart
+  PetscInt :: pEnd
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMPlexTransformGetChart
+#endif
+  interface
+  subroutine DMPlexTransformGetCellType(tr,cell,celltype, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDMPlexTransform,eDMPolytopeType
+  DMPlexTransform :: tr
+  PetscInt :: cell
+  DMPolytopeType :: celltype
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMPlexTransformGetCellType
+#endif
+  interface
+  subroutine DMPlexTransformGetCellTypeStratum(tr,celltype,start,end, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDMPlexTransform,eDMPolytopeType
+  DMPlexTransform :: tr
+  DMPolytopeType :: celltype
+  PetscInt :: start
+  PetscInt :: end
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMPlexTransformGetCellTypeStratum
+#endif
+  interface
+  subroutine DMPlexTransformGetDepth(tr,depth, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDMPlexTransform
+  DMPlexTransform :: tr
+  PetscInt :: depth
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMPlexTransformGetDepth
+#endif
+  interface
+  subroutine DMPlexTransformGetDepthStratum(tr,depth,start,end, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDMPlexTransform
+  DMPlexTransform :: tr
+  PetscInt :: depth
+  PetscInt :: start
+  PetscInt :: end
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMPlexTransformGetDepthStratum
+#endif
+  interface
+  subroutine DMPlexTransformGetMatchStrata(tr,match, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDMPlexTransform
+  DMPlexTransform :: tr
+  PetscBool :: match
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMPlexTransformGetMatchStrata
+#endif
+  interface
+  subroutine DMPlexTransformSetMatchStrata(tr,match, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDMPlexTransform
+  DMPlexTransform :: tr
+  PetscBool :: match
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMPlexTransformSetMatchStrata
+#endif
+  interface
+  subroutine DMPlexTransformGetTargetPoint(tr,ct,ctNew,p,r,pNew, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDMPlexTransform,eDMPolytopeType
+  DMPlexTransform :: tr
+  DMPolytopeType :: ct
+  DMPolytopeType :: ctNew
+  PetscInt :: p
+  PetscInt :: r
+  PetscInt :: pNew
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMPlexTransformGetTargetPoint
+#endif
+  interface
+  subroutine DMPlexTransformGetSourcePoint(tr,pNew,ct,ctNew,p,r, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDMPlexTransform,eDMPolytopeType
+  DMPlexTransform :: tr
+  PetscInt :: pNew
+  DMPolytopeType :: ct
+  DMPolytopeType :: ctNew
+  PetscInt :: p
+  PetscInt :: r
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMPlexTransformGetSourcePoint
+#endif
+  interface
+  subroutine DMPlexTransformCellTransform(tr,source,p,rt,Nt,target,size,cone,ornt, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDMPlexTransform,eDMPolytopeType
+  DMPlexTransform :: tr
+  DMPolytopeType :: source
+  PetscInt :: p
+  PetscInt :: rt
+  PetscInt :: Nt
+  DMPolytopeType, pointer :: target(:)
+  PetscInt, pointer :: size(:)
+  PetscInt, pointer :: cone(:)
+  PetscInt, pointer :: ornt(:)
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMPlexTransformCellTransform
+#endif
+  interface
+  subroutine DMPlexTransformGetSubcellOrientationIdentity(tr,sct,sp,so,tct,r,o,rnew,onew, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDMPlexTransform,eDMPolytopeType
+  DMPlexTransform :: tr
+  DMPolytopeType :: sct
+  PetscInt :: sp
+  PetscInt :: so
+  DMPolytopeType :: tct
+  PetscInt :: r
+  PetscInt :: o
+  PetscInt :: rnew
+  PetscInt :: onew
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMPlexTransformGetSubcellOrientationIdentity
+#endif
+  interface
+  subroutine DMPlexTransformCellTransformIdentity(tr,source,p,rt,Nt,target,size,cone,ornt, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDMPlexTransform,eDMPolytopeType
+  DMPlexTransform :: tr
+  DMPolytopeType :: source
+  PetscInt :: p
+  PetscInt :: rt
+  PetscInt :: Nt
+  DMPolytopeType, pointer :: target(:)
+  PetscInt, pointer :: size(:)
+  PetscInt, pointer :: cone(:)
+  PetscInt, pointer :: ornt(:)
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMPlexTransformCellTransformIdentity
+#endif
+  interface
+  subroutine DMPlexTransformGetSubcellOrientation(tr,sct,sp,so,tct,r,o,rnew,onew, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDMPlexTransform,eDMPolytopeType
+  DMPlexTransform :: tr
+  DMPolytopeType :: sct
+  PetscInt :: sp
+  PetscInt :: so
+  DMPolytopeType :: tct
+  PetscInt :: r
+  PetscInt :: o
+  PetscInt :: rnew
+  PetscInt :: onew
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMPlexTransformGetSubcellOrientation
+#endif
+  interface
+  subroutine DMPlexTransformGetConeSize(tr,q,coneSize, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDMPlexTransform
+  DMPlexTransform :: tr
+  PetscInt :: q
+  PetscInt :: coneSize
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMPlexTransformGetConeSize
+#endif
+  interface
+  subroutine DMPlexTransformGetConeOriented(tr,q,po,cone,ornt, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDMPlexTransform
+  DMPlexTransform :: tr
+  PetscInt :: q
+  PetscInt :: po
+  PetscInt, pointer :: cone(:)
+  PetscInt, pointer :: ornt(:)
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMPlexTransformGetConeOriented
+#endif
+  interface
+  subroutine DMPlexTransformGetCone(tr,q,cone,ornt, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDMPlexTransform
+  DMPlexTransform :: tr
+  PetscInt :: q
+  PetscInt, pointer :: cone(:)
+  PetscInt, pointer :: ornt(:)
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMPlexTransformGetCone
+#endif
+  interface
+  subroutine DMPlexTransformRestoreCone(tr,q,cone,ornt, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDMPlexTransform
+  DMPlexTransform :: tr
+  PetscInt :: q
+  PetscInt, pointer :: cone(:)
+  PetscInt, pointer :: ornt(:)
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMPlexTransformRestoreCone
+#endif
+  interface
+  subroutine DMPlexTransformGetCellVertices(tr,ct,Nv,trVerts, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDMPlexTransform,eDMPolytopeType
+  DMPlexTransform :: tr
+  DMPolytopeType :: ct
+  PetscInt :: Nv
+  PetscScalar, pointer :: trVerts(:)
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMPlexTransformGetCellVertices
+#endif
+  interface
+  subroutine DMPlexTransformGetSubcellVertices(tr,ct,rct,r,subVerts, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDMPlexTransform,eDMPolytopeType
+  DMPlexTransform :: tr
+  DMPolytopeType :: ct
+  DMPolytopeType :: rct
+  PetscInt :: r
+  PetscInt, pointer :: subVerts(:)
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMPlexTransformGetSubcellVertices
+#endif
+  interface
+  subroutine DMPlexTransformMapCoordinates(tr,pct,ct,p,r,Nv,dE,in,out, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDMPlexTransform,eDMPolytopeType
+  DMPlexTransform :: tr
+  DMPolytopeType :: pct
+  DMPolytopeType :: ct
+  PetscInt :: p
+  PetscInt :: r
+  PetscInt :: Nv
+  PetscInt :: dE
+  PetscScalar :: in(*)
+  PetscScalar :: out(*)
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMPlexTransformMapCoordinates
+#endif
+  interface
+  subroutine DMPlexTransformCreateDiscLabels(tr,rdm, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDMPlexTransform,tDM
+  DMPlexTransform :: tr
+  DM :: rdm
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMPlexTransformCreateDiscLabels
+#endif
+  interface
+  subroutine DMPlexTransformApply(tr,dm,trdm, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDMPlexTransform,tDM
+  DMPlexTransform :: tr
+  DM :: dm
+  DM :: trdm
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMPlexTransformApply
+#endif
+  interface
+  subroutine DMPlexTransformAdaptLabel(dm,metric,adaptLabel,rgLabel,rdm, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM,tVec,tDMLabel
+  DM :: dm
+  Vec :: metric
+  DMLabel :: adaptLabel
+  DMLabel :: rgLabel
+  DM :: rdm
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMPlexTransformAdaptLabel
+#endif
+  interface
+  subroutine DMPlexTransformCohesiveExtrudeGetTensor(tr,useTensor, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDMPlexTransform
+  DMPlexTransform :: tr
+  PetscBool :: useTensor
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMPlexTransformCohesiveExtrudeGetTensor
+#endif
+  interface
+  subroutine DMPlexTransformCohesiveExtrudeSetTensor(tr,useTensor, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDMPlexTransform
+  DMPlexTransform :: tr
+  PetscBool :: useTensor
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMPlexTransformCohesiveExtrudeSetTensor
+#endif
+  interface
+  subroutine DMPlexTransformCohesiveExtrudeGetWidth(tr,width, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDMPlexTransform
+  DMPlexTransform :: tr
+  PetscReal :: width
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMPlexTransformCohesiveExtrudeGetWidth
+#endif
+  interface
+  subroutine DMPlexTransformCohesiveExtrudeSetWidth(tr,width, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDMPlexTransform
+  DMPlexTransform :: tr
+  PetscReal :: width
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMPlexTransformCohesiveExtrudeSetWidth
+#endif
+  interface
+  subroutine DMPlexTransformCohesiveExtrudeGetUnsplit(tr,unsplit, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDMPlexTransform,tDMLabel
+  DMPlexTransform :: tr
+  DMLabel :: unsplit
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMPlexTransformCohesiveExtrudeGetUnsplit
+#endif
+  interface
+  subroutine DMPlexTransformExtrudeGetLayers(tr,layers, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDMPlexTransform
+  DMPlexTransform :: tr
+  PetscInt :: layers
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMPlexTransformExtrudeGetLayers
+#endif
+  interface
+  subroutine DMPlexTransformExtrudeSetLayers(tr,layers, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDMPlexTransform
+  DMPlexTransform :: tr
+  PetscInt :: layers
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMPlexTransformExtrudeSetLayers
+#endif
+  interface
+  subroutine DMPlexTransformExtrudeGetThickness(tr,thickness, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDMPlexTransform
+  DMPlexTransform :: tr
+  PetscReal :: thickness
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMPlexTransformExtrudeGetThickness
+#endif
+  interface
+  subroutine DMPlexTransformExtrudeSetThickness(tr,thickness, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDMPlexTransform
+  DMPlexTransform :: tr
+  PetscReal :: thickness
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMPlexTransformExtrudeSetThickness
+#endif
+  interface
+  subroutine DMPlexTransformExtrudeGetTensor(tr,useTensor, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDMPlexTransform
+  DMPlexTransform :: tr
+  PetscBool :: useTensor
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMPlexTransformExtrudeGetTensor
+#endif
+  interface
+  subroutine DMPlexTransformExtrudeSetTensor(tr,useTensor, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDMPlexTransform
+  DMPlexTransform :: tr
+  PetscBool :: useTensor
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMPlexTransformExtrudeSetTensor
+#endif
+  interface
+  subroutine DMPlexTransformExtrudeGetSymmetric(tr,symmetric, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDMPlexTransform
+  DMPlexTransform :: tr
+  PetscBool :: symmetric
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMPlexTransformExtrudeGetSymmetric
+#endif
+  interface
+  subroutine DMPlexTransformExtrudeSetSymmetric(tr,symmetric, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDMPlexTransform
+  DMPlexTransform :: tr
+  PetscBool :: symmetric
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMPlexTransformExtrudeSetSymmetric
+#endif
+  interface
+  subroutine DMPlexTransformExtrudeGetPeriodic(tr,periodic, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDMPlexTransform
+  DMPlexTransform :: tr
+  PetscBool :: periodic
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMPlexTransformExtrudeGetPeriodic
+#endif
+  interface
+  subroutine DMPlexTransformExtrudeSetPeriodic(tr,periodic, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDMPlexTransform
+  DMPlexTransform :: tr
+  PetscBool :: periodic
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMPlexTransformExtrudeSetPeriodic
+#endif
+  interface
+  subroutine DMPlexTransformExtrudeGetNormal(tr,normal, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDMPlexTransform
+  DMPlexTransform :: tr
+  PetscReal :: normal(*)
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMPlexTransformExtrudeGetNormal
+#endif
+  interface
+  subroutine DMPlexTransformExtrudeSetNormal(tr,normal, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDMPlexTransform
+  DMPlexTransform :: tr
+  PetscReal :: normal(*)
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMPlexTransformExtrudeSetNormal
+#endif
+  interface
+  subroutine DMPlexTransformExtrudeSetNormalFunction(tr,normalFunc, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDMPlexTransform
+  DMPlexTransform :: tr
+  external normalFunc
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMPlexTransformExtrudeSetNormalFunction
+#endif
+  interface
+  subroutine DMPlexTransformExtrudeSetThicknesses(tr,Nth,thicknesses, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDMPlexTransform
+  DMPlexTransform :: tr
+  PetscInt :: Nth
+  PetscReal :: thicknesses(*)
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMPlexTransformExtrudeSetThicknesses
+#endif
+  interface operator(.ne.)
+    module procedure DMPlexTransformnotequals
+  end interface operator (.ne.)
+  interface operator(.eq.)
+    module procedure DMPlexTransformequals
+  end interface operator (.eq.)
+
+  interface PetscObjectCast
+    module procedure PetscObjectCastDMPlexTransform
+  end interface
+  interface PetscBarrier
+  module procedure PetscBarrierDMPlexTransform
+  end interface
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectSAWsTakeAccess
+    module procedure PetscObjectSAWsTakeAccessDMPlexTransform
+  end interface
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectSAWsGrantAccess
+    module procedure PetscObjectSAWsGrantAccessDMPlexTransform
+  end interface
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectSAWsBlock
+    module procedure PetscObjectSAWsBlockDMPlexTransform
+  end interface
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectSAWsSetBlock
+    module procedure PetscObjectSAWsSetBlockDMPlexTransform
+  end interface
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectSAWsViewOff
+    module procedure PetscObjectSAWsViewOffDMPlexTransform
+  end interface
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectViewSAWs
+    module procedure PetscObjectViewSAWsDMPlexTransform
+  end interface
+#endif
+  interface PetscObjectGetType
+    module procedure PetscObjectGetTypeDMPlexTransform
+  end interface
+  interface PetscObjectSetPrintedOptions
+    module procedure PetscObjectSetPrintedOptionsDMPlexTransform
+  end interface
+  interface PetscObjectInheritPrintedOptions
+    module procedure PetscObjectInheritPrintedOptionsDMPlexTransform
+  end interface
+  interface PetscObjectAddOptionsHandler
+    module procedure PetscObjectAddOptionsHandlerDMPlexTransform
+  end interface
+  interface PetscObjectProcessOptionsHandlers
+    module procedure PetscObjectProcessOptionsHandlersDMPlexTransform
+  end interface
+  interface PetscObjectDestroyOptionsHandlers
+    module procedure PetscObjectDestroyOptionsHandlersDMPlexTransform
+  end interface
+  interface PetscObjectReference
+    module procedure PetscObjectReferenceDMPlexTransform
+  end interface
+  interface PetscObjectGetReference
+    module procedure PetscObjectGetReferenceDMPlexTransform
+  end interface
+  interface PetscObjectDereference
+    module procedure PetscObjectDereferenceDMPlexTransform
+  end interface
+  interface PetscObjectRemoveReference
+    module procedure PetscObjectRemoveReferenceDMPlexTransform
+  end interface
+  interface PetscObjectHasFunction
+    module procedure PetscObjectHasFunctionDMPlexTransform
+  end interface
+  interface PetscObjectSetFromOptions
+    module procedure PetscObjectSetFromOptionsDMPlexTransform
+  end interface
+  interface PetscObjectSetUp
+    module procedure PetscObjectSetUpDMPlexTransform
+  end interface
+  interface PetscObjectGetName
+    module procedure PetscObjectGetNameDMPlexTransform
+  end interface
+  interface PetscObjectDestroy
+    module procedure PetscObjectDestroyDMPlexTransform
+  end interface
+  interface PetscObjectView
+    module procedure PetscObjectViewDMPlexTransform
+  end interface
+  interface PetscObjectViewFromOptions
+    module procedure PetscObjectViewFromOptionsDMPlexTransform
+  end interface
+  interface PetscObjectTypeCompare
+    module procedure PetscObjectTypeCompareDMPlexTransform
+  end interface
+  interface PetscObjectObjectTypeCompare
+    module procedure PetscObjectObjectTypeCompareDMPlexTransform
+  end interface
+  interface PetscObjectBaseTypeCompare
+    module procedure PetscObjectBaseTypeCompareDMPlexTransform
+  end interface
+  interface PetscObjectRegisterDestroy
+    module procedure PetscObjectRegisterDestroyDMPlexTransform
+  end interface
+  interface PetscObjectGetId
+    module procedure PetscObjectGetIdDMPlexTransform
+  end interface
+  interface PetscObjectCompareId
+    module procedure PetscObjectCompareIdDMPlexTransform
+  end interface
+  interface PetscObjectGetOptions
+    module procedure PetscObjectGetOptionsDMPlexTransform
+  end interface
+  interface PetscObjectSetOptions
+    module procedure PetscObjectSetOptionsDMPlexTransform
+  end interface
+  interface PetscObjectSetOptionsPrefix
+    module procedure PetscObjectSetOptionsPrefixDMPlexTransform
+  end interface
+  interface PetscObjectAppendOptionsPrefix
+    module procedure PetscObjectAppendOptionsPrefixDMPlexTransform
+  end interface
+  interface PetscObjectGetOptionsPrefix
+    module procedure PetscObjectGetOptionsPrefixDMPlexTransform
+  end interface
+  interface PetscObjectPrependOptionsPrefix
+    module procedure PetscObjectPrependOptionsPrefixDMPlexTransform
+  end interface
+  interface PetscObjectGetComm
+    module procedure PetscObjectGetCommDMPlexTransform
+  end interface
+  interface PetscObjectGetTabLevel
+    module procedure PetscObjectGetTabLevelDMPlexTransform
+  end interface
+  interface PetscObjectSetTabLevel
+    module procedure PetscObjectSetTabLevelDMPlexTransform
+  end interface
+  interface PetscObjectIncrementTabLevel
+    module procedure PetscObjectIncrementTabLevelDMPlexTransform
+  end interface
+  interface PetscObjectGetNewTag
+    module procedure PetscObjectGetNewTagDMPlexTransform
+  end interface
+  interface PetscObjectGetClassId
+    module procedure PetscObjectGetClassIdDMPlexTransform
+  end interface
+  interface PetscObjectGetClassName
+    module procedure PetscObjectGetClassNameDMPlexTransform
+  end interface
+  interface PetscObjectSetName
+    module procedure PetscObjectSetNameDMPlexTransform
+  end interface
+  interface PetscObjectPrintClassNamePrefixType
+    module procedure PetscObjectPrintClassNamePrefixTypeDMPlexTransform
+  end interface
+  interface PetscObjectName
+    module procedure PetscObjectNameDMPlexTransform
+  end interface
+  interface PetscObjectChangeTypeName
+    module procedure PetscObjectChangeTypeNameDMPlexTransform
+  end interface

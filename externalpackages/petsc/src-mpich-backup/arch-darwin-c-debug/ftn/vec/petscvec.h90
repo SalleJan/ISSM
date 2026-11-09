@@ -1,0 +1,4084 @@
+  interface
+  subroutine VecMaxPointwiseDivide(x,y,max, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVec
+  Vec :: x
+  Vec :: y
+  PetscReal :: max
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecMaxPointwiseDivide
+#endif
+  interface
+  subroutine VecDot(x,y,val, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVec
+  Vec :: x
+  Vec :: y
+  PetscScalar :: val
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecDot
+#endif
+  interface
+  subroutine VecDotRealPart(x,y,val, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVec
+  Vec :: x
+  Vec :: y
+  PetscReal :: val
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecDotRealPart
+#endif
+  interface
+  subroutine VecNorm(x,type,val, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVec,eNormType
+  Vec :: x
+  NormType :: type
+  PetscReal :: val
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecNorm
+#endif
+  interface
+  subroutine VecNormAvailable(x,type,available,val, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVec,eNormType
+  Vec :: x
+  NormType :: type
+  PetscBool :: available
+  PetscReal :: val
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecNormAvailable
+#endif
+  interface
+  subroutine VecNormalize(x,val, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVec
+  Vec :: x
+  PetscReal :: val
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecNormalize
+#endif
+  interface
+  subroutine VecMax(x,p,val, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVec
+  Vec :: x
+  PetscInt :: p
+  PetscReal :: val
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecMax
+#endif
+  interface
+  subroutine VecMin(x,p,val, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVec
+  Vec :: x
+  PetscInt :: p
+  PetscReal :: val
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecMin
+#endif
+  interface
+  subroutine VecTDot(x,y,val, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVec
+  Vec :: x
+  Vec :: y
+  PetscScalar :: val
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecTDot
+#endif
+  interface
+  subroutine VecAXPY(y,alpha,x, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVec
+  Vec :: y
+  PetscScalar :: alpha
+  Vec :: x
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecAXPY
+#endif
+  interface
+  subroutine VecAYPX(y,beta,x, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVec
+  Vec :: y
+  PetscScalar :: beta
+  Vec :: x
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecAYPX
+#endif
+  interface
+  subroutine VecAXPBY(y,alpha,beta,x, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVec
+  Vec :: y
+  PetscScalar :: alpha
+  PetscScalar :: beta
+  Vec :: x
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecAXPBY
+#endif
+  interface
+  subroutine VecAXPBYPCZ(z,alpha,beta,gamma,x,y, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVec
+  Vec :: z
+  PetscScalar :: alpha
+  PetscScalar :: beta
+  PetscScalar :: gamma
+  Vec :: x
+  Vec :: y
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecAXPBYPCZ
+#endif
+  interface
+  subroutine VecWAXPY(w,alpha,x,y, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVec
+  Vec :: w
+  PetscScalar :: alpha
+  Vec :: x
+  Vec :: y
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecWAXPY
+#endif
+  interface
+  subroutine VecGetValues(x,ni,ix,y, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVec
+  Vec :: x
+  PetscInt :: ni
+  PetscInt :: ix(*)
+  PetscScalar :: y(*)
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecGetValues
+#endif
+  interface
+  subroutine VecMTDot(x,nv,y,val, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVec
+  Vec :: x
+  PetscInt :: nv
+  Vec :: y(*)
+  PetscScalar :: val(*)
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecMTDot
+#endif
+  interface
+  subroutine VecMDot(x,nv,y,val, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVec
+  Vec :: x
+  PetscInt :: nv
+  Vec :: y(*)
+  PetscScalar :: val(*)
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecMDot
+#endif
+  interface
+  subroutine VecMAXPY(y,nv,alpha,x, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVec
+  Vec :: y
+  PetscInt :: nv
+  PetscScalar :: alpha(*)
+  Vec :: x(*)
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecMAXPY
+#endif
+  interface
+  subroutine VecMAXPBY(y,nv,alpha,beta,x, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVec
+  Vec :: y
+  PetscInt :: nv
+  PetscScalar :: alpha(*)
+  PetscScalar :: beta
+  Vec :: x(*)
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecMAXPBY
+#endif
+  interface
+  subroutine VecConcatenate(nx,X,Y,x_is, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVec,tIS
+  PetscInt :: nx
+  Vec :: X(*)
+  Vec :: Y
+  IS, pointer :: x_is(:)
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecConcatenate
+#endif
+  interface
+  subroutine VecGetSubVector(X,is,Y, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVec,tIS
+  Vec :: X
+  IS :: is
+  Vec :: Y
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecGetSubVector
+#endif
+  interface
+  subroutine VecRestoreSubVector(X,is,Y, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVec,tIS
+  Vec :: X
+  IS :: is
+  Vec :: Y
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecRestoreSubVector
+#endif
+  interface
+  subroutine VecCreateLocalVector(v,w, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVec
+  Vec :: v
+  Vec :: w
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecCreateLocalVector
+#endif
+  interface
+  subroutine VecGetLocalVectorRead(v,w, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVec
+  Vec :: v
+  Vec :: w
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecGetLocalVectorRead
+#endif
+  interface
+  subroutine VecRestoreLocalVectorRead(v,w, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVec
+  Vec :: v
+  Vec :: w
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecRestoreLocalVectorRead
+#endif
+  interface
+  subroutine VecGetLocalVector(v,w, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVec
+  Vec :: v
+  Vec :: w
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecGetLocalVector
+#endif
+  interface
+  subroutine VecRestoreLocalVector(v,w, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVec
+  Vec :: v
+  Vec :: w
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecRestoreLocalVector
+#endif
+  interface
+  subroutine VecGetArray(x,a, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVec
+  Vec :: x
+  PetscScalar, pointer :: a(:)
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecGetArray
+#endif
+  interface
+  subroutine VecRestoreArray(x,a, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVec
+  Vec :: x
+  PetscScalar, pointer :: a(:)
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecRestoreArray
+#endif
+  interface
+  subroutine VecGetArrayRead(x,a, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVec
+  Vec :: x
+  PetscScalar, pointer :: a(:)
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecGetArrayRead
+#endif
+  interface
+  subroutine VecRestoreArrayRead(x,a, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVec
+  Vec :: x
+  PetscScalar, pointer :: a(:)
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecRestoreArrayRead
+#endif
+  interface
+  subroutine VecGetArrayWrite(x,a, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVec
+  Vec :: x
+  PetscScalar, pointer :: a(:)
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecGetArrayWrite
+#endif
+  interface
+  subroutine VecRestoreArrayWrite(x,a, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVec
+  Vec :: x
+  PetscScalar, pointer :: a(:)
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecRestoreArrayWrite
+#endif
+  interface
+  subroutine VecGetArrayAndMemType(x,a,mtype, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVec,ePetscMemType
+  Vec :: x
+  PetscScalar, pointer :: a(:)
+  PetscMemType :: mtype
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecGetArrayAndMemType
+#endif
+  interface
+  subroutine VecRestoreArrayAndMemType(x,a, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVec
+  Vec :: x
+  PetscScalar, pointer :: a(:)
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecRestoreArrayAndMemType
+#endif
+  interface
+  subroutine VecGetArrayReadAndMemType(x,a,mtype, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVec,ePetscMemType
+  Vec :: x
+  PetscScalar, pointer :: a(:)
+  PetscMemType :: mtype
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecGetArrayReadAndMemType
+#endif
+  interface
+  subroutine VecRestoreArrayReadAndMemType(x,a, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVec
+  Vec :: x
+  PetscScalar, pointer :: a(:)
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecRestoreArrayReadAndMemType
+#endif
+  interface
+  subroutine VecGetArrayWriteAndMemType(x,a,mtype, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVec,ePetscMemType
+  Vec :: x
+  PetscScalar, pointer :: a(:)
+  PetscMemType :: mtype
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecGetArrayWriteAndMemType
+#endif
+  interface
+  subroutine VecRestoreArrayWriteAndMemType(x,a, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVec
+  Vec :: x
+  PetscScalar, pointer :: a(:)
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecRestoreArrayWriteAndMemType
+#endif
+  interface
+  subroutine VecPlaceArray(vec,array, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVec
+  Vec :: vec
+  PetscScalar :: array(*)
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecPlaceArray
+#endif
+  interface
+  subroutine VecReplaceArray(vec,array, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVec
+  Vec :: vec
+  PetscScalar :: array(*)
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecReplaceArray
+#endif
+  interface
+  subroutine VecGetArray1d(x,m,mstart,a, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVec
+  Vec :: x
+  PetscInt :: m
+  PetscInt :: mstart
+  PetscScalar, pointer :: a(:)
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecGetArray1d
+#endif
+  interface
+  subroutine VecGetArray1dWrite(x,m,mstart,a, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVec
+  Vec :: x
+  PetscInt :: m
+  PetscInt :: mstart
+  PetscScalar, pointer :: a(:)
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecGetArray1dWrite
+#endif
+  interface
+  subroutine VecRestoreArray1d(x,m,mstart,a, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVec
+  Vec :: x
+  PetscInt :: m
+  PetscInt :: mstart
+  PetscScalar, pointer :: a(:)
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecRestoreArray1d
+#endif
+  interface
+  subroutine VecRestoreArray1dWrite(x,m,mstart,a, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVec
+  Vec :: x
+  PetscInt :: m
+  PetscInt :: mstart
+  PetscScalar, pointer :: a(:)
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecRestoreArray1dWrite
+#endif
+  interface
+  subroutine VecGetArray1dRead(x,m,mstart,a, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVec
+  Vec :: x
+  PetscInt :: m
+  PetscInt :: mstart
+  PetscScalar, pointer :: a(:)
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecGetArray1dRead
+#endif
+  interface
+  subroutine VecRestoreArray1dRead(x,m,mstart,a, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVec
+  Vec :: x
+  PetscInt :: m
+  PetscInt :: mstart
+  PetscScalar, pointer :: a(:)
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecRestoreArray1dRead
+#endif
+  interface
+  subroutine VecLockGet(x,state, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVec
+  Vec :: x
+  PetscInt :: state
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecLockGet
+#endif
+  interface
+  subroutine VecLockGetLocation(x,file,func,line, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVec
+  Vec :: x
+  character(*) :: file
+  character(*) :: func
+  integer4 :: line
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecLockGetLocation
+#endif
+  interface
+  subroutine VecLockReadPush(x, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVec
+  Vec :: x
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecLockReadPush
+#endif
+  interface
+  subroutine VecLockReadPop(x, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVec
+  Vec :: x
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecLockReadPop
+#endif
+  interface
+  subroutine VecLockWriteSet(x,flg, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVec
+  Vec :: x
+  PetscBool :: flg
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecLockWriteSet
+#endif
+  interface
+  subroutine VecGetLocalToGlobalMapping(X,mapping, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVec,tISLocalToGlobalMapping
+  Vec :: X
+  ISLocalToGlobalMapping :: mapping
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecGetLocalToGlobalMapping
+#endif
+  interface
+  subroutine VecAssemblyBegin(vec, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVec
+  Vec :: vec
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecAssemblyBegin
+#endif
+  interface
+  subroutine VecAssemblyEnd(vec, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVec
+  Vec :: vec
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecAssemblyEnd
+#endif
+  interface
+  subroutine VecPointwiseMax(w,x,y, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVec
+  Vec :: w
+  Vec :: x
+  Vec :: y
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecPointwiseMax
+#endif
+  interface
+  subroutine VecPointwiseMin(w,x,y, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVec
+  Vec :: w
+  Vec :: x
+  Vec :: y
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecPointwiseMin
+#endif
+  interface
+  subroutine VecPointwiseMaxAbs(w,x,y, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVec
+  Vec :: w
+  Vec :: x
+  Vec :: y
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecPointwiseMaxAbs
+#endif
+  interface
+  subroutine VecPointwiseDivide(w,x,y, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVec
+  Vec :: w
+  Vec :: x
+  Vec :: y
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecPointwiseDivide
+#endif
+  interface
+  subroutine VecPointwiseSign(y,x,sign_type, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVec,eVecSignMode
+  Vec :: y
+  Vec :: x
+  VecSignMode :: sign_type
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecPointwiseSign
+#endif
+  interface
+  subroutine VecPointwiseMult(w,x,y, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVec
+  Vec :: w
+  Vec :: x
+  Vec :: y
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecPointwiseMult
+#endif
+  interface
+  subroutine VecDuplicate(v,newv, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVec
+  Vec :: v
+  Vec :: newv
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecDuplicate
+#endif
+  interface
+  subroutine VecDestroy(v, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVec
+  Vec :: v
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecDestroy
+#endif
+  interface
+  subroutine VecDuplicateVecs(v,m,M_V, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVec
+  Vec :: v
+  PetscInt :: m
+  Vec, pointer :: M_V(:)
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecDuplicateVecs
+#endif
+  interface
+  subroutine VecDestroyVecs(m,vv, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVec
+  PetscInt :: m
+  Vec, pointer :: vv(:)
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecDestroyVecs
+#endif
+  interface
+  subroutine VecViewFromOptions(A,obj,name, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVec,tPetscObject
+  Vec :: A
+  PetscObject :: obj
+  character(*) :: name
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecViewFromOptions
+#endif
+  interface
+  subroutine VecView(vec,viewer, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVec,tPetscViewer
+  Vec :: vec
+  PetscViewer :: viewer
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecView
+#endif
+  interface
+  subroutine VecViewNative(vec,viewer, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVec,tPetscViewer
+  Vec :: vec
+  PetscViewer :: viewer
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecViewNative
+#endif
+  interface
+  subroutine VecGetSize(x,size, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVec
+  Vec :: x
+  PetscInt :: size
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecGetSize
+#endif
+  interface
+  subroutine VecGetLocalSize(x,size, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVec
+  Vec :: x
+  PetscInt :: size
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecGetLocalSize
+#endif
+  interface
+  subroutine VecGetOwnershipRange(x,low,high, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVec
+  Vec :: x
+  PetscInt :: low
+  PetscInt :: high
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecGetOwnershipRange
+#endif
+  interface
+  subroutine VecGetOwnershipRanges(x,ranges, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVec
+  Vec :: x
+  PetscInt, pointer :: ranges(:)
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecGetOwnershipRanges
+#endif
+  interface
+  subroutine VecResetArray(vec, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVec
+  Vec :: vec
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecResetArray
+#endif
+  interface
+  subroutine VecLoad(vec,viewer, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVec,tPetscViewer
+  Vec :: vec
+  PetscViewer :: viewer
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecLoad
+#endif
+  interface
+  subroutine VecReciprocal(vec, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVec
+  Vec :: vec
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecReciprocal
+#endif
+  interface
+  subroutine VecZeroEntries(vec, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVec
+  Vec :: vec
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecZeroEntries
+#endif
+  interface
+  subroutine VecGetBlockSize(v,bs, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVec
+  Vec :: v
+  PetscInt :: bs
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecGetBlockSize
+#endif
+  interface
+  subroutine VecAppendOptionsPrefix(v,prefix, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVec
+  Vec :: v
+  character(*) :: prefix
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecAppendOptionsPrefix
+#endif
+  interface
+  subroutine VecGetOptionsPrefix(v,prefix, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVec
+  Vec :: v
+  character(*) :: prefix
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecGetOptionsPrefix
+#endif
+  interface
+  subroutine VecGetState(v,state, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVec
+  Vec :: v
+  PetscObjectState :: state
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecGetState
+#endif
+  interface
+  subroutine VecCopy(x,y, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVec
+  Vec :: x
+  Vec :: y
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecCopy
+#endif
+  interface
+  subroutine VecGetLayout(x,map, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVec,tPetscLayout
+  Vec :: x
+  PetscLayout :: map
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecGetLayout
+#endif
+  interface
+  subroutine VecFlag(xin,flg, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVec
+  Vec :: xin
+  PetscInt :: flg
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecFlag
+#endif
+  interface
+  subroutine VecBindToCPU(v,flg, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVec
+  Vec :: v
+  PetscBool :: flg
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecBindToCPU
+#endif
+  interface
+  subroutine VecBoundToCPU(v,flg, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVec
+  Vec :: v
+  PetscBool :: flg
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecBoundToCPU
+#endif
+  interface
+  subroutine VecGetBindingPropagates(v,flg, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVec
+  Vec :: v
+  PetscBool :: flg
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecGetBindingPropagates
+#endif
+  interface
+  subroutine VecGetPinnedMemoryMin(v,mbytes, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVec
+  Vec :: v
+  PetscSizeT :: mbytes
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecGetPinnedMemoryMin
+#endif
+  interface
+  subroutine VecGetOffloadMask(v,mask, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVec,ePetscOffloadMask
+  Vec :: v
+  PetscOffloadMask :: mask
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecGetOffloadMask
+#endif
+  interface
+  subroutine VecErrorWeightedNorms(U,Y,E,wnormtype,atol,vatol,rtol,vrtol,ignore_max,norm,norm_loc,norma,norma_loc,normr,normr_loc, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVec,eNormType
+  Vec :: U
+  Vec :: Y
+  Vec :: E
+  NormType :: wnormtype
+  PetscReal :: atol
+  Vec :: vatol
+  PetscReal :: rtol
+  Vec :: vrtol
+  PetscReal :: ignore_max
+  PetscReal :: norm
+  PetscInt :: norm_loc
+  PetscReal :: norma
+  PetscInt :: norma_loc
+  PetscReal :: normr
+  PetscInt :: normr_loc
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecErrorWeightedNorms
+#endif
+  interface
+  subroutine VecRegisterAll(ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecRegisterAll
+#endif
+  interface
+  subroutine VecGetType(vec,type, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVec
+  Vec :: vec
+  character(*) :: type
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecGetType
+#endif
+  interface
+  subroutine VecRegister(sname,function, ierr)
+  use, intrinsic :: ISO_C_binding
+  character(*) :: sname
+  external :: function
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecRegister
+#endif
+  interface
+  subroutine VecInitializePackage(ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecInitializePackage
+#endif
+  interface
+  subroutine VecFinalizePackage(ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecFinalizePackage
+#endif
+  interface
+  subroutine VecCreate(comm,vec, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVec
+  MPIU_Comm :: comm
+  Vec :: vec
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecCreate
+#endif
+  interface
+  subroutine VecCreateFromOptions(comm,prefix,bs,m,n,vec, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVec
+  MPIU_Comm :: comm
+  character(*) :: prefix
+  PetscInt :: bs
+  PetscInt :: m
+  PetscInt :: n
+  Vec :: vec
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecCreateFromOptions
+#endif
+  interface
+  subroutine VecCreateMPI(comm,n,M_N,v, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVec
+  MPIU_Comm :: comm
+  PetscInt :: n
+  PetscInt :: M_N
+  Vec :: v
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecCreateMPI
+#endif
+  interface
+  subroutine VecGhostGetLocalForm(g,l, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVec
+  Vec :: g
+  Vec :: l
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecGhostGetLocalForm
+#endif
+  interface
+  subroutine VecGhostIsLocalForm(g,l,flg, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVec
+  Vec :: g
+  Vec :: l
+  PetscBool :: flg
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecGhostIsLocalForm
+#endif
+  interface
+  subroutine VecGhostRestoreLocalForm(g,l, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVec
+  Vec :: g
+  Vec :: l
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecGhostRestoreLocalForm
+#endif
+  interface
+  subroutine VecGhostUpdateBegin(g,insertmode,scattermode, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVec,eInsertMode,eScatterMode
+  Vec :: g
+  InsertMode :: insertmode
+  ScatterMode :: scattermode
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecGhostUpdateBegin
+#endif
+  interface
+  subroutine VecGhostUpdateEnd(g,insertmode,scattermode, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVec,eInsertMode,eScatterMode
+  Vec :: g
+  InsertMode :: insertmode
+  ScatterMode :: scattermode
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecGhostUpdateEnd
+#endif
+  interface
+  subroutine VecCreateMPIWithArray(comm,bs,n,M_N,array,vv, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVec
+  MPIU_Comm :: comm
+  PetscInt :: bs
+  PetscInt :: n
+  PetscInt :: M_N
+  PetscScalar :: array(*)
+  Vec :: vv
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecCreateMPIWithArray
+#endif
+  interface
+  subroutine VecCreateGhostWithArray(comm,n,M_N,nghost,ghosts,array,vv, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVec
+  MPIU_Comm :: comm
+  PetscInt :: n
+  PetscInt :: M_N
+  PetscInt :: nghost
+  PetscInt :: ghosts(*)
+  PetscScalar :: array(*)
+  Vec :: vv
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecCreateGhostWithArray
+#endif
+  interface
+  subroutine VecGhostGetGhostIS(X,ghost, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVec,tIS
+  Vec :: X
+  IS :: ghost
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecGhostGetGhostIS
+#endif
+  interface
+  subroutine VecCreateGhost(comm,n,M_N,nghost,ghosts,vv, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVec
+  MPIU_Comm :: comm
+  PetscInt :: n
+  PetscInt :: M_N
+  PetscInt :: nghost
+  PetscInt :: ghosts(*)
+  Vec :: vv
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecCreateGhost
+#endif
+  interface
+  subroutine VecMPISetGhost(vv,nghost,ghosts, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVec
+  Vec :: vv
+  PetscInt :: nghost
+  PetscInt :: ghosts(*)
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecMPISetGhost
+#endif
+  interface
+  subroutine VecCreateGhostBlockWithArray(comm,bs,n,M_N,nghost,ghosts,array,vv, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVec
+  MPIU_Comm :: comm
+  PetscInt :: bs
+  PetscInt :: n
+  PetscInt :: M_N
+  PetscInt :: nghost
+  PetscInt :: ghosts(*)
+  PetscScalar :: array(*)
+  Vec :: vv
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecCreateGhostBlockWithArray
+#endif
+  interface
+  subroutine VecCreateGhostBlock(comm,bs,n,M_N,nghost,ghosts,vv, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVec
+  MPIU_Comm :: comm
+  PetscInt :: bs
+  PetscInt :: n
+  PetscInt :: M_N
+  PetscInt :: nghost
+  PetscInt :: ghosts(*)
+  Vec :: vv
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecCreateGhostBlock
+#endif
+  interface
+  subroutine VecCreateMPIKokkosWithArray(comm,bs,n,M_N,darray,v, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVec
+  MPIU_Comm :: comm
+  PetscInt :: bs
+  PetscInt :: n
+  PetscInt :: M_N
+  PetscScalar :: darray(*)
+  Vec :: v
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecCreateMPIKokkosWithArray
+#endif
+  interface
+  subroutine VecCreateSeq(comm,n,v, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVec
+  MPIU_Comm :: comm
+  PetscInt :: n
+  Vec :: v
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecCreateSeq
+#endif
+  interface
+  subroutine VecCreateSeqWithArray(comm,bs,n,array,V, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVec
+  MPIU_Comm :: comm
+  PetscInt :: bs
+  PetscInt :: n
+  PetscScalar :: array(*)
+  Vec :: V
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecCreateSeqWithArray
+#endif
+  interface
+  subroutine VecKokkosPlaceArray(v,a, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVec
+  Vec :: v
+  PetscScalar :: a
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecKokkosPlaceArray
+#endif
+  interface
+  subroutine VecKokkosResetArray(v, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVec
+  Vec :: v
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecKokkosResetArray
+#endif
+  interface
+  subroutine VecCreateSeqKokkosWithArray(comm,bs,n,darray,v, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVec
+  MPIU_Comm :: comm
+  PetscInt :: bs
+  PetscInt :: n
+  PetscScalar :: darray(*)
+  Vec :: v
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecCreateSeqKokkosWithArray
+#endif
+  interface
+  subroutine VecCreateSeqKokkos(comm,n,v, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVec
+  MPIU_Comm :: comm
+  PetscInt :: n
+  Vec :: v
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecCreateSeqKokkos
+#endif
+  interface
+  subroutine VecCreateSeqViennaCL(comm,n,v, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVec
+  MPIU_Comm :: comm
+  PetscInt :: n
+  Vec :: v
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecCreateSeqViennaCL
+#endif
+  interface
+  subroutine VecCreateShared(comm,n,M_N,v, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVec
+  MPIU_Comm :: comm
+  PetscInt :: n
+  PetscInt :: M_N
+  Vec :: v
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecCreateShared
+#endif
+  interface
+  subroutine VecNestGetSubVec(X,idxm,sx, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVec
+  Vec :: X
+  PetscInt :: idxm
+  Vec :: sx
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecNestGetSubVec
+#endif
+  interface
+  subroutine VecNestGetSubVecs(X,N,sx, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVec
+  Vec :: X
+  PetscInt :: N
+  Vec, pointer :: sx(:)
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecNestGetSubVecs
+#endif
+  interface
+  subroutine VecNestGetSubVecsRead(X,N,sx, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVec
+  Vec :: X
+  PetscInt :: N
+  Vec, pointer :: sx(:)
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecNestGetSubVecsRead
+#endif
+  interface
+  subroutine VecNestRestoreSubVecsRead(X,N,sx, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVec
+  Vec :: X
+  PetscInt :: N
+  Vec, pointer :: sx(:)
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecNestRestoreSubVecsRead
+#endif
+  interface
+  subroutine VecNestSetSubVec(X,idxm,sx, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVec
+  Vec :: X
+  PetscInt :: idxm
+  Vec :: sx
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecNestSetSubVec
+#endif
+  interface
+  subroutine VecNestSetSubVecs(X,N,idxm,sx, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVec
+  Vec :: X
+  PetscInt :: N
+  PetscInt :: idxm(*)
+  Vec :: sx(*)
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecNestSetSubVecs
+#endif
+  interface
+  subroutine VecNestGetSize(X,N, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVec
+  Vec :: X
+  PetscInt :: N
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecNestGetSize
+#endif
+  interface
+  subroutine VecCreateNest(comm,nb,is,x,Y, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tIS,tVec
+  MPIU_Comm :: comm
+  PetscInt :: nb
+  IS :: is(*)
+  Vec :: x(*)
+  Vec :: Y
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecCreateNest
+#endif
+  interface
+  subroutine VecDotBegin(x,y,result, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVec
+  Vec :: x
+  Vec :: y
+  PetscScalar :: result
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecDotBegin
+#endif
+  interface
+  subroutine VecDotEnd(x,y,result, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVec
+  Vec :: x
+  Vec :: y
+  PetscScalar :: result
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecDotEnd
+#endif
+  interface
+  subroutine VecTDotBegin(x,y,result, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVec
+  Vec :: x
+  Vec :: y
+  PetscScalar :: result
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecTDotBegin
+#endif
+  interface
+  subroutine VecTDotEnd(x,y,result, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVec
+  Vec :: x
+  Vec :: y
+  PetscScalar :: result
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecTDotEnd
+#endif
+  interface
+  subroutine VecNormBegin(x,ntype,result, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVec,eNormType
+  Vec :: x
+  NormType :: ntype
+  PetscReal :: result
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecNormBegin
+#endif
+  interface
+  subroutine VecNormEnd(x,ntype,result, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVec,eNormType
+  Vec :: x
+  NormType :: ntype
+  PetscReal :: result
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecNormEnd
+#endif
+  interface
+  subroutine VecMDotBegin(x,nv,y,result, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVec
+  Vec :: x
+  PetscInt :: nv
+  Vec :: y(*)
+  PetscScalar :: result(*)
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecMDotBegin
+#endif
+  interface
+  subroutine VecMDotEnd(x,nv,y,result, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVec
+  Vec :: x
+  PetscInt :: nv
+  Vec :: y(*)
+  PetscScalar :: result(*)
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecMDotEnd
+#endif
+  interface
+  subroutine VecMTDotBegin(x,nv,y,result, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVec
+  Vec :: x
+  PetscInt :: nv
+  Vec :: y(*)
+  PetscScalar :: result(*)
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecMTDotBegin
+#endif
+  interface
+  subroutine VecMTDotEnd(x,nv,y,result, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVec
+  Vec :: x
+  PetscInt :: nv
+  Vec :: y(*)
+  PetscScalar :: result(*)
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecMTDotEnd
+#endif
+  interface
+  subroutine VecExp(v, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVec
+  Vec :: v
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecExp
+#endif
+  interface
+  subroutine VecLog(v, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVec
+  Vec :: v
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecLog
+#endif
+  interface
+  subroutine VecAbs(v, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVec
+  Vec :: v
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecAbs
+#endif
+  interface
+  subroutine VecConjugate(x, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVec
+  Vec :: x
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecConjugate
+#endif
+  interface
+  subroutine VecImaginaryPart(v, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVec
+  Vec :: v
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecImaginaryPart
+#endif
+  interface
+  subroutine VecRealPart(v, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVec
+  Vec :: v
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecRealPart
+#endif
+  interface
+  subroutine VecDotNorm2(s,t,dp,nm, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVec
+  Vec :: s
+  Vec :: t
+  PetscScalar :: dp
+  PetscReal :: nm
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecDotNorm2
+#endif
+  interface
+  subroutine VecMean(v,mean, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVec
+  Vec :: v
+  PetscScalar :: mean
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecMean
+#endif
+  interface
+  subroutine VecPermute(x,row,inv, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVec,tIS
+  Vec :: x
+  IS :: row
+  PetscBool :: inv
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecPermute
+#endif
+  interface
+  subroutine VecEqual(vec1,vec2,flg, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVec
+  Vec :: vec1
+  Vec :: vec2
+  PetscBool :: flg
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecEqual
+#endif
+  interface
+  subroutine VecUniqueEntries(vec,n,e, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVec
+  Vec :: vec
+  PetscInt :: n
+  PetscScalar, pointer :: e(:)
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecUniqueEntries
+#endif
+  interface
+  subroutine VecFilter(v,tol, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVec
+  Vec :: v
+  PetscReal :: tol
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecFilter
+#endif
+  interface
+  subroutine VecWhichEqual(Vec1,Vec2,S, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVec,tIS
+  Vec :: Vec1
+  Vec :: Vec2
+  IS :: S
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecWhichEqual
+#endif
+  interface
+  subroutine VecWhichLessThan(Vec1,Vec2,S, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVec,tIS
+  Vec :: Vec1
+  Vec :: Vec2
+  IS :: S
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecWhichLessThan
+#endif
+  interface
+  subroutine VecWhichGreaterThan(Vec1,Vec2,S, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVec,tIS
+  Vec :: Vec1
+  Vec :: Vec2
+  IS :: S
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecWhichGreaterThan
+#endif
+  interface
+  subroutine VecWhichBetween(VecLow,V,VecHigh,S, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVec,tIS
+  Vec :: VecLow
+  Vec :: V
+  Vec :: VecHigh
+  IS :: S
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecWhichBetween
+#endif
+  interface
+  subroutine VecWhichBetweenOrEqual(VecLow,V,VecHigh,S, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVec,tIS
+  Vec :: VecLow
+  Vec :: V
+  Vec :: VecHigh
+  IS :: S
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecWhichBetweenOrEqual
+#endif
+  interface
+  subroutine VecWhichInactive(VecLow,V,D,VecHigh,Strong,S, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVec,tIS
+  Vec :: VecLow
+  Vec :: V
+  Vec :: D
+  Vec :: VecHigh
+  PetscBool :: Strong
+  IS :: S
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecWhichInactive
+#endif
+  interface
+  subroutine VecISAXPY(vfull,is,alpha,vreduced, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVec,tIS
+  Vec :: vfull
+  IS :: is
+  PetscScalar :: alpha
+  Vec :: vreduced
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecISAXPY
+#endif
+  interface
+  subroutine VecISCopy(vfull,is,mode,vreduced, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVec,tIS,eScatterMode
+  Vec :: vfull
+  IS :: is
+  ScatterMode :: mode
+  Vec :: vreduced
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecISCopy
+#endif
+  interface
+  subroutine VecISSet(V,S,c, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVec,tIS
+  Vec :: V
+  IS :: S
+  PetscScalar :: c
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecISSet
+#endif
+  interface
+  subroutine VecISShift(V,S,c, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVec,tIS
+  Vec :: V
+  IS :: S
+  PetscScalar :: c
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecISShift
+#endif
+  interface
+  subroutine VecBoundGradientProjection(G,X,XL,XU,GP, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVec
+  Vec :: G
+  Vec :: X
+  Vec :: XL
+  Vec :: XU
+  Vec :: GP
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecBoundGradientProjection
+#endif
+  interface
+  subroutine VecPow(v,p, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVec
+  Vec :: v
+  PetscScalar :: p
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecPow
+#endif
+  interface
+  subroutine VecMedian(Vec1,Vec2,Vec3,VMedian, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVec
+  Vec :: Vec1
+  Vec :: Vec2
+  Vec :: Vec3
+  Vec :: VMedian
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecMedian
+#endif
+  interface
+  subroutine VecGetValuesSection(v,s,point,values, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVec,tPetscSection
+  Vec :: v
+  PetscSection :: s
+  PetscInt :: point
+  PetscScalar, pointer :: values(:)
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecGetValuesSection
+#endif
+  interface
+  subroutine VecGetArrayPair(x,y,xv,yv, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVec
+  Vec :: x
+  Vec :: y
+  PetscScalar, pointer :: xv(:)
+  PetscScalar, pointer :: yv(:)
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecGetArrayPair
+#endif
+  interface
+  subroutine VecRestoreArrayPair(x,y,xv,yv, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVec
+  Vec :: x
+  Vec :: y
+  PetscScalar, pointer :: xv(:)
+  PetscScalar, pointer :: yv(:)
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecRestoreArrayPair
+#endif
+  interface operator(.ne.)
+    module procedure Vecnotequals
+  end interface operator (.ne.)
+  interface operator(.eq.)
+    module procedure Vecequals
+  end interface operator (.eq.)
+
+  interface PetscObjectCast
+    module procedure PetscObjectCastVec
+  end interface
+  interface PetscBarrier
+  module procedure PetscBarrierVec
+  end interface
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectSAWsTakeAccess
+    module procedure PetscObjectSAWsTakeAccessVec
+  end interface
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectSAWsGrantAccess
+    module procedure PetscObjectSAWsGrantAccessVec
+  end interface
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectSAWsBlock
+    module procedure PetscObjectSAWsBlockVec
+  end interface
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectSAWsSetBlock
+    module procedure PetscObjectSAWsSetBlockVec
+  end interface
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectSAWsViewOff
+    module procedure PetscObjectSAWsViewOffVec
+  end interface
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectViewSAWs
+    module procedure PetscObjectViewSAWsVec
+  end interface
+#endif
+  interface PetscObjectGetType
+    module procedure PetscObjectGetTypeVec
+  end interface
+  interface PetscObjectSetPrintedOptions
+    module procedure PetscObjectSetPrintedOptionsVec
+  end interface
+  interface PetscObjectInheritPrintedOptions
+    module procedure PetscObjectInheritPrintedOptionsVec
+  end interface
+  interface PetscObjectAddOptionsHandler
+    module procedure PetscObjectAddOptionsHandlerVec
+  end interface
+  interface PetscObjectProcessOptionsHandlers
+    module procedure PetscObjectProcessOptionsHandlersVec
+  end interface
+  interface PetscObjectDestroyOptionsHandlers
+    module procedure PetscObjectDestroyOptionsHandlersVec
+  end interface
+  interface PetscObjectReference
+    module procedure PetscObjectReferenceVec
+  end interface
+  interface PetscObjectGetReference
+    module procedure PetscObjectGetReferenceVec
+  end interface
+  interface PetscObjectDereference
+    module procedure PetscObjectDereferenceVec
+  end interface
+  interface PetscObjectRemoveReference
+    module procedure PetscObjectRemoveReferenceVec
+  end interface
+  interface PetscObjectHasFunction
+    module procedure PetscObjectHasFunctionVec
+  end interface
+  interface PetscObjectSetFromOptions
+    module procedure PetscObjectSetFromOptionsVec
+  end interface
+  interface PetscObjectSetUp
+    module procedure PetscObjectSetUpVec
+  end interface
+  interface PetscObjectGetName
+    module procedure PetscObjectGetNameVec
+  end interface
+  interface PetscObjectDestroy
+    module procedure PetscObjectDestroyVec
+  end interface
+  interface PetscObjectView
+    module procedure PetscObjectViewVec
+  end interface
+  interface PetscObjectViewFromOptions
+    module procedure PetscObjectViewFromOptionsVec
+  end interface
+  interface PetscObjectTypeCompare
+    module procedure PetscObjectTypeCompareVec
+  end interface
+  interface PetscObjectObjectTypeCompare
+    module procedure PetscObjectObjectTypeCompareVec
+  end interface
+  interface PetscObjectBaseTypeCompare
+    module procedure PetscObjectBaseTypeCompareVec
+  end interface
+  interface PetscObjectRegisterDestroy
+    module procedure PetscObjectRegisterDestroyVec
+  end interface
+  interface PetscObjectGetId
+    module procedure PetscObjectGetIdVec
+  end interface
+  interface PetscObjectCompareId
+    module procedure PetscObjectCompareIdVec
+  end interface
+  interface PetscObjectGetOptions
+    module procedure PetscObjectGetOptionsVec
+  end interface
+  interface PetscObjectSetOptions
+    module procedure PetscObjectSetOptionsVec
+  end interface
+  interface PetscObjectSetOptionsPrefix
+    module procedure PetscObjectSetOptionsPrefixVec
+  end interface
+  interface PetscObjectAppendOptionsPrefix
+    module procedure PetscObjectAppendOptionsPrefixVec
+  end interface
+  interface PetscObjectGetOptionsPrefix
+    module procedure PetscObjectGetOptionsPrefixVec
+  end interface
+  interface PetscObjectPrependOptionsPrefix
+    module procedure PetscObjectPrependOptionsPrefixVec
+  end interface
+  interface PetscObjectGetComm
+    module procedure PetscObjectGetCommVec
+  end interface
+  interface PetscObjectGetTabLevel
+    module procedure PetscObjectGetTabLevelVec
+  end interface
+  interface PetscObjectSetTabLevel
+    module procedure PetscObjectSetTabLevelVec
+  end interface
+  interface PetscObjectIncrementTabLevel
+    module procedure PetscObjectIncrementTabLevelVec
+  end interface
+  interface PetscObjectGetNewTag
+    module procedure PetscObjectGetNewTagVec
+  end interface
+  interface PetscObjectGetClassId
+    module procedure PetscObjectGetClassIdVec
+  end interface
+  interface PetscObjectGetClassName
+    module procedure PetscObjectGetClassNameVec
+  end interface
+  interface PetscObjectSetName
+    module procedure PetscObjectSetNameVec
+  end interface
+  interface PetscObjectPrintClassNamePrefixType
+    module procedure PetscObjectPrintClassNamePrefixTypeVec
+  end interface
+  interface PetscObjectName
+    module procedure PetscObjectNameVec
+  end interface
+  interface PetscObjectChangeTypeName
+    module procedure PetscObjectChangeTypeNameVec
+  end interface
+  interface
+  subroutine VecScale(x,alpha, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVec
+  Vec :: x
+  PetscScalar :: alpha
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecScale
+#endif
+  interface
+  subroutine VecSet(x,alpha, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVec
+  Vec :: x
+  PetscScalar :: alpha
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecSet
+#endif
+  interface
+  subroutine VecSetValues(x,ni,ix,y,iora, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVec,eInsertMode
+  Vec :: x
+  PetscInt :: ni
+  PetscInt :: ix(*)
+  PetscScalar :: y(*)
+  InsertMode :: iora
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecSetValues
+#endif
+  interface
+  subroutine VecSetValuesBlocked(x,ni,ix,y,iora, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVec,eInsertMode
+  Vec :: x
+  PetscInt :: ni
+  PetscInt :: ix(*)
+  PetscScalar :: y(*)
+  InsertMode :: iora
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecSetValuesBlocked
+#endif
+  interface
+  subroutine VecSetValuesLocal(x,ni,ix,y,iora, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVec,eInsertMode
+  Vec :: x
+  PetscInt :: ni
+  PetscInt :: ix(*)
+  PetscScalar :: y(*)
+  InsertMode :: iora
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecSetValuesLocal
+#endif
+  interface
+  subroutine VecSetValuesBlockedLocal(x,ni,ix,y,iora, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVec,eInsertMode
+  Vec :: x
+  PetscInt :: ni
+  PetscInt :: ix(*)
+  PetscScalar :: y(*)
+  InsertMode :: iora
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecSetValuesBlockedLocal
+#endif
+  interface
+  subroutine VecStashGetInfo(vec,nstash,reallocs,bnstash,breallocs, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVec
+  Vec :: vec
+  PetscInt :: nstash
+  PetscInt :: reallocs
+  PetscInt :: bnstash
+  PetscInt :: breallocs
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecStashGetInfo
+#endif
+  interface
+  subroutine VecSetLocalToGlobalMapping(x,mapping, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVec,tISLocalToGlobalMapping
+  Vec :: x
+  ISLocalToGlobalMapping :: mapping
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecSetLocalToGlobalMapping
+#endif
+  interface
+  subroutine VecSetPreallocationCOO(x,ncoo,coo_i, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVec
+  Vec :: x
+  PetscCount :: ncoo
+  PetscInt :: coo_i(*)
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecSetPreallocationCOO
+#endif
+  interface
+  subroutine VecSetPreallocationCOOLocal(x,ncoo,coo_i, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVec
+  Vec :: x
+  PetscCount :: ncoo
+  PetscInt :: coo_i(*)
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecSetPreallocationCOOLocal
+#endif
+  interface
+  subroutine VecSetValuesCOO(x,coo_v,imode, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVec,eInsertMode
+  Vec :: x
+  PetscScalar :: coo_v(*)
+  InsertMode :: imode
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecSetValuesCOO
+#endif
+  interface
+  subroutine VecSetOption(x,op,flag, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVec,eVecOption
+  Vec :: x
+  VecOption :: op
+  PetscBool :: flag
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecSetOption
+#endif
+  interface
+  subroutine VecSetOperation(vec,op,f, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVec,eVecOperation
+  Vec :: vec
+  VecOperation :: op
+  external f
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecSetOperation
+#endif
+  interface
+  subroutine VecStashSetInitialSize(vec,size,bsize, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVec
+  Vec :: vec
+  PetscInt :: size
+  PetscInt :: bsize
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecStashSetInitialSize
+#endif
+  interface
+  subroutine VecSetRandom(x,rctx, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVec,tPetscRandom
+  Vec :: x
+  PetscRandom :: rctx
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecSetRandom
+#endif
+  interface
+  subroutine VecSetRandomGaussian(v,rng,mean,std_dev, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVec,tPetscRandom
+  Vec :: v
+  PetscRandom :: rng
+  PetscReal :: mean
+  PetscReal :: std_dev
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecSetRandomGaussian
+#endif
+  interface
+  subroutine VecSetFromOptions(vec, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVec
+  Vec :: vec
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecSetFromOptions
+#endif
+  interface
+  subroutine VecSetSizes(v,n,M_N, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVec
+  Vec :: v
+  PetscInt :: n
+  PetscInt :: M_N
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecSetSizes
+#endif
+  interface
+  subroutine VecSetBlockSize(v,bs, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVec
+  Vec :: v
+  PetscInt :: bs
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecSetBlockSize
+#endif
+  interface
+  subroutine VecSetOptionsPrefix(v,prefix, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVec
+  Vec :: v
+  character(*) :: prefix
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecSetOptionsPrefix
+#endif
+  interface
+  subroutine VecSetUp(v, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVec
+  Vec :: v
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecSetUp
+#endif
+  interface
+  subroutine VecSwap(x,y, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVec
+  Vec :: x
+  Vec :: y
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecSwap
+#endif
+  interface
+  subroutine VecStashViewFromOptions(obj,bobj,name, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVec,tPetscObject
+  Vec :: obj
+  PetscObject :: bobj
+  character(*) :: name
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecStashViewFromOptions
+#endif
+  interface
+  subroutine VecStashView(v,viewer, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVec,tPetscViewer
+  Vec :: v
+  PetscViewer :: viewer
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecStashView
+#endif
+  interface
+  subroutine VecSetLayout(x,map, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVec,tPetscLayout
+  Vec :: x
+  PetscLayout :: map
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecSetLayout
+#endif
+  interface
+  subroutine VecSetBindingPropagates(v,flg, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVec
+  Vec :: v
+  PetscBool :: flg
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecSetBindingPropagates
+#endif
+  interface
+  subroutine VecSetPinnedMemoryMin(v,mbytes, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVec
+  Vec :: v
+  PetscSizeT :: mbytes
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecSetPinnedMemoryMin
+#endif
+  interface
+  subroutine VecSetType(vec,newType, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVec
+  Vec :: vec
+  character(*) :: newType
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecSetType
+#endif
+  interface
+  subroutine VecStrideSet(v,start,s, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVec
+  Vec :: v
+  PetscInt :: start
+  PetscScalar :: s
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecStrideSet
+#endif
+  interface
+  subroutine VecStrideScale(v,start,scale, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVec
+  Vec :: v
+  PetscInt :: start
+  PetscScalar :: scale
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecStrideScale
+#endif
+  interface
+  subroutine VecStrideNorm(v,start,ntype,nrm, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVec,eNormType
+  Vec :: v
+  PetscInt :: start
+  NormType :: ntype
+  PetscReal :: nrm
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecStrideNorm
+#endif
+  interface
+  subroutine VecStrideMax(v,start,idex,nrm, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVec
+  Vec :: v
+  PetscInt :: start
+  PetscInt :: idex
+  PetscReal :: nrm
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecStrideMax
+#endif
+  interface
+  subroutine VecStrideMin(v,start,idex,nrm, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVec
+  Vec :: v
+  PetscInt :: start
+  PetscInt :: idex
+  PetscReal :: nrm
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecStrideMin
+#endif
+  interface
+  subroutine VecStrideSum(v,start,sum, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVec
+  Vec :: v
+  PetscInt :: start
+  PetscScalar :: sum
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecStrideSum
+#endif
+  interface
+  subroutine VecStrideScaleAll(v,scales, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVec
+  Vec :: v
+  PetscScalar :: scales
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecStrideScaleAll
+#endif
+  interface
+  subroutine VecStrideNormAll(v,ntype,nrm, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVec,eNormType
+  Vec :: v
+  NormType :: ntype
+  PetscReal :: nrm(*)
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecStrideNormAll
+#endif
+  interface
+  subroutine VecStrideMaxAll(v,idex,nrm, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVec
+  Vec :: v
+  PetscInt :: idex(*)
+  PetscReal :: nrm(*)
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecStrideMaxAll
+#endif
+  interface
+  subroutine VecStrideMinAll(v,idex,nrm, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVec
+  Vec :: v
+  PetscInt :: idex(*)
+  PetscReal :: nrm(*)
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecStrideMinAll
+#endif
+  interface
+  subroutine VecStrideSumAll(v,sums, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVec
+  Vec :: v
+  PetscScalar :: sums(*)
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecStrideSumAll
+#endif
+  interface
+  subroutine VecStrideGatherAll(v,s,addv, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVec,eInsertMode
+  Vec :: v
+  Vec :: s(*)
+  InsertMode :: addv
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecStrideGatherAll
+#endif
+  interface
+  subroutine VecStrideScatterAll(s,v,addv, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVec,eInsertMode
+  Vec :: s(*)
+  Vec :: v
+  InsertMode :: addv
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecStrideScatterAll
+#endif
+  interface
+  subroutine VecStrideGather(v,start,s,addv, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVec,eInsertMode
+  Vec :: v
+  PetscInt :: start
+  Vec :: s
+  InsertMode :: addv
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecStrideGather
+#endif
+  interface
+  subroutine VecStrideScatter(s,start,v,addv, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVec,eInsertMode
+  Vec :: s
+  PetscInt :: start
+  Vec :: v
+  InsertMode :: addv
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecStrideScatter
+#endif
+  interface
+  subroutine VecStrideSubSetGather(v,nidx,idxv,idxs,s,addv, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVec,eInsertMode
+  Vec :: v
+  PetscInt :: nidx
+  PetscInt :: idxv(*)
+  PetscInt :: idxs(*)
+  Vec :: s
+  InsertMode :: addv
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecStrideSubSetGather
+#endif
+  interface
+  subroutine VecStrideSubSetScatter(s,nidx,idxs,idxv,v,addv, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVec,eInsertMode
+  Vec :: s
+  PetscInt :: nidx
+  PetscInt :: idxs(*)
+  PetscInt :: idxv(*)
+  Vec :: v
+  InsertMode :: addv
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecStrideSubSetScatter
+#endif
+  interface
+  subroutine VecSqrtAbs(v, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVec
+  Vec :: v
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecSqrtAbs
+#endif
+  interface
+  subroutine VecSum(v,sum, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVec
+  Vec :: v
+  PetscScalar :: sum
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecSum
+#endif
+  interface
+  subroutine VecShift(v,shift, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVec
+  Vec :: v
+  PetscScalar :: shift
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecShift
+#endif
+  interface
+  subroutine VecScatterSetUp(sf, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVecScatter
+  VecScatter :: sf
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecScatterSetUp
+#endif
+  interface
+  subroutine VecScatterSetType(sf,type, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVecScatter
+  VecScatter :: sf
+  VecScatterType :: type
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecScatterSetType
+#endif
+  interface
+  subroutine VecScatterGetType(sf,type, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVecScatter
+  VecScatter :: sf
+  VecScatterType :: type
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecScatterGetType
+#endif
+  interface
+  subroutine VecScatterRegister(sname,function, ierr)
+  use, intrinsic :: ISO_C_binding
+  character(*) :: sname
+  external :: function
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecScatterRegister
+#endif
+  interface
+  subroutine VecScatterGetMerged(sf,flg, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVecScatter
+  VecScatter :: sf
+  PetscBool :: flg
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecScatterGetMerged
+#endif
+  interface
+  subroutine VecScatterDestroy(sf, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVecScatter
+  VecScatter :: sf
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecScatterDestroy
+#endif
+  interface
+  subroutine VecScatterCopy(sf,newsf, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVecScatter
+  VecScatter :: sf
+  VecScatter :: newsf
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecScatterCopy
+#endif
+  interface
+  subroutine VecScatterViewFromOptions(sf,obj,name, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVecScatter,tPetscObject
+  VecScatter :: sf
+  PetscObject :: obj
+  character(*) :: name
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecScatterViewFromOptions
+#endif
+  interface
+  subroutine VecScatterView(sf,viewer, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVecScatter,tPetscViewer
+  VecScatter :: sf
+  PetscViewer :: viewer
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecScatterView
+#endif
+  interface
+  subroutine VecScatterRemap(sf,tomap,frommap, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVecScatter
+  VecScatter :: sf
+  PetscInt :: tomap(*)
+  PetscInt :: frommap(*)
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecScatterRemap
+#endif
+  interface
+  subroutine VecScatterSetFromOptions(sf, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVecScatter
+  VecScatter :: sf
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecScatterSetFromOptions
+#endif
+  interface
+  subroutine VecScatterCreate(x,ix,y,iy,newsf, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVec,tIS,tVecScatter
+  Vec :: x
+  IS :: ix
+  Vec :: y
+  IS :: iy
+  VecScatter :: newsf
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecScatterCreate
+#endif
+  interface
+  subroutine VecScatterCreateToAll(vin,ctx,vout, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVec,tVecScatter
+  Vec :: vin
+  VecScatter :: ctx
+  Vec :: vout
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecScatterCreateToAll
+#endif
+  interface
+  subroutine VecScatterCreateToZero(vin,ctx,vout, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVec,tVecScatter
+  Vec :: vin
+  VecScatter :: ctx
+  Vec :: vout
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecScatterCreateToZero
+#endif
+  interface
+  subroutine VecScatterBegin(sf,x,y,addv,mode, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVecScatter,tVec,eInsertMode,eScatterMode
+  VecScatter :: sf
+  Vec :: x
+  Vec :: y
+  InsertMode :: addv
+  ScatterMode :: mode
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecScatterBegin
+#endif
+  interface
+  subroutine VecScatterEnd(sf,x,y,addv,mode, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVecScatter,tVec,eInsertMode,eScatterMode
+  VecScatter :: sf
+  Vec :: x
+  Vec :: y
+  InsertMode :: addv
+  ScatterMode :: mode
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecScatterEnd
+#endif
+  interface
+  subroutine VecStepMaxBounded(X,DX,XL,XU,stepmax, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVec
+  Vec :: X
+  Vec :: DX
+  Vec :: XL
+  Vec :: XU
+  PetscReal :: stepmax
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecStepMaxBounded
+#endif
+  interface
+  subroutine VecStepBoundInfo(X,DX,XL,XU,boundmin,wolfemin,boundmax, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVec
+  Vec :: X
+  Vec :: DX
+  Vec :: XL
+  Vec :: XU
+  PetscReal :: boundmin
+  PetscReal :: wolfemin
+  PetscReal :: boundmax
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecStepBoundInfo
+#endif
+  interface
+  subroutine VecStepMax(X,DX,step, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVec
+  Vec :: X
+  Vec :: DX
+  PetscReal :: step
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecStepMax
+#endif
+  interface
+  subroutine VecsDestroy(x, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVecs
+  Vecs :: x
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecsDestroy
+#endif
+  interface
+  subroutine VecsCreateSeq(comm,p,m,x, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVecs
+  MPIU_Comm :: comm
+  PetscInt :: p
+  PetscInt :: m
+  Vecs :: x
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecsCreateSeq
+#endif
+  interface
+  subroutine VecsCreateSeqWithArray(comm,p,m,a,x, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVecs
+  MPIU_Comm :: comm
+  PetscInt :: p
+  PetscInt :: m
+  PetscScalar :: a
+  Vecs :: x
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecsCreateSeqWithArray
+#endif
+  interface
+  subroutine VecsDuplicate(x,y, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVecs
+  Vecs :: x
+  Vecs :: y
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecsDuplicate
+#endif
+  interface
+  subroutine VecSetValuesSection(v,s,point,values,mode, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVec,tPetscSection,eInsertMode
+  Vec :: v
+  PetscSection :: s
+  PetscInt :: point
+  PetscScalar :: values(*)
+  InsertMode :: mode
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecSetValuesSection
+#endif
+  interface
+  subroutine VecSetValue(v,i,va,mode, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVec,eInsertMode
+  Vec :: v
+  PetscInt :: i
+  PetscScalar :: va
+  InsertMode :: mode
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecSetValue
+#endif
+  interface
+  subroutine VecSetValueLocal(v,i,va,mode, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVec,eInsertMode
+  Vec :: v
+  PetscInt :: i
+  PetscScalar :: va
+  InsertMode :: mode
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecSetValueLocal
+#endif
+  interface
+  subroutine VecSetErrorIfLocked(x,arg, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVec
+  Vec :: x
+  PetscInt :: arg
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecSetErrorIfLocked
+#endif
+  interface operator(.ne.)
+    module procedure Vecsnotequals
+  end interface operator (.ne.)
+  interface operator(.eq.)
+    module procedure Vecsequals
+  end interface operator (.eq.)
+
+  interface operator(.ne.)
+    module procedure PetscViennaCLIndicesnotequals
+  end interface operator (.ne.)
+  interface operator(.eq.)
+    module procedure PetscViennaCLIndicesequals
+  end interface operator (.eq.)
+
+  interface PetscObjectCast
+    module procedure PetscObjectCastViennaCLIndices
+  end interface
+  interface PetscBarrier
+  module procedure PetscBarrierViennaCLIndices
+  end interface
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectSAWsTakeAccess
+    module procedure PetscObjectSAWsTakeAccessViennaCLIndices
+  end interface
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectSAWsGrantAccess
+    module procedure PetscObjectSAWsGrantAccessViennaCLIndices
+  end interface
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectSAWsBlock
+    module procedure PetscObjectSAWsBlockViennaCLIndices
+  end interface
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectSAWsSetBlock
+    module procedure PetscObjectSAWsSetBlockViennaCLIndices
+  end interface
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectSAWsViewOff
+    module procedure PetscObjectSAWsViewOffViennaCLIndices
+  end interface
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectViewSAWs
+    module procedure PetscObjectViewSAWsViennaCLIndices
+  end interface
+#endif
+  interface PetscObjectGetType
+    module procedure PetscObjectGetTypeViennaCLIndices
+  end interface
+  interface PetscObjectSetPrintedOptions
+    module procedure PetscObjectSetPrintedOptionsViennaCLIndices
+  end interface
+  interface PetscObjectInheritPrintedOptions
+    module procedure PetscObjectInheritPrintedOptionsViennaCLIndices
+  end interface
+  interface PetscObjectAddOptionsHandler
+    module procedure PetscObjectAddOptionsHandlerViennaCLIndices
+  end interface
+  interface PetscObjectProcessOptionsHandlers
+    module procedure PetscObjectProcessOptionsHandlersViennaCLIndices
+  end interface
+  interface PetscObjectDestroyOptionsHandlers
+    module procedure PetscObjectDestroyOptionsHandlersViennaCLIndices
+  end interface
+  interface PetscObjectReference
+    module procedure PetscObjectReferenceViennaCLIndices
+  end interface
+  interface PetscObjectGetReference
+    module procedure PetscObjectGetReferenceViennaCLIndices
+  end interface
+  interface PetscObjectDereference
+    module procedure PetscObjectDereferenceViennaCLIndices
+  end interface
+  interface PetscObjectRemoveReference
+    module procedure PetscObjectRemoveReferenceViennaCLIndices
+  end interface
+  interface PetscObjectHasFunction
+    module procedure PetscObjectHasFunctionViennaCLIndices
+  end interface
+  interface PetscObjectSetFromOptions
+    module procedure PetscObjectSetFromOptionsViennaCLIndices
+  end interface
+  interface PetscObjectSetUp
+    module procedure PetscObjectSetUpViennaCLIndices
+  end interface
+  interface PetscObjectGetName
+    module procedure PetscObjectGetNameViennaCLIndices
+  end interface
+  interface PetscObjectDestroy
+    module procedure PetscObjectDestroyViennaCLIndices
+  end interface
+  interface PetscObjectView
+    module procedure PetscObjectViewViennaCLIndices
+  end interface
+  interface PetscObjectViewFromOptions
+    module procedure PetscObjectViewFromOptionsViennaCLIndices
+  end interface
+  interface PetscObjectTypeCompare
+    module procedure PetscObjectTypeCompareViennaCLIndices
+  end interface
+  interface PetscObjectObjectTypeCompare
+    module procedure PetscObjectObjectTypeCompareViennaCLIndices
+  end interface
+  interface PetscObjectBaseTypeCompare
+    module procedure PetscObjectBaseTypeCompareViennaCLIndices
+  end interface
+  interface PetscObjectRegisterDestroy
+    module procedure PetscObjectRegisterDestroyViennaCLIndices
+  end interface
+  interface PetscObjectGetId
+    module procedure PetscObjectGetIdViennaCLIndices
+  end interface
+  interface PetscObjectCompareId
+    module procedure PetscObjectCompareIdViennaCLIndices
+  end interface
+  interface PetscObjectGetOptions
+    module procedure PetscObjectGetOptionsViennaCLIndices
+  end interface
+  interface PetscObjectSetOptions
+    module procedure PetscObjectSetOptionsViennaCLIndices
+  end interface
+  interface PetscObjectSetOptionsPrefix
+    module procedure PetscObjectSetOptionsPrefixViennaCLIndices
+  end interface
+  interface PetscObjectAppendOptionsPrefix
+    module procedure PetscObjectAppendOptionsPrefixViennaCLIndices
+  end interface
+  interface PetscObjectGetOptionsPrefix
+    module procedure PetscObjectGetOptionsPrefixViennaCLIndices
+  end interface
+  interface PetscObjectPrependOptionsPrefix
+    module procedure PetscObjectPrependOptionsPrefixViennaCLIndices
+  end interface
+  interface PetscObjectGetComm
+    module procedure PetscObjectGetCommViennaCLIndices
+  end interface
+  interface PetscObjectGetTabLevel
+    module procedure PetscObjectGetTabLevelViennaCLIndices
+  end interface
+  interface PetscObjectSetTabLevel
+    module procedure PetscObjectSetTabLevelViennaCLIndices
+  end interface
+  interface PetscObjectIncrementTabLevel
+    module procedure PetscObjectIncrementTabLevelViennaCLIndices
+  end interface
+  interface PetscObjectGetNewTag
+    module procedure PetscObjectGetNewTagViennaCLIndices
+  end interface
+  interface PetscObjectGetClassId
+    module procedure PetscObjectGetClassIdViennaCLIndices
+  end interface
+  interface PetscObjectGetClassName
+    module procedure PetscObjectGetClassNameViennaCLIndices
+  end interface
+  interface PetscObjectSetName
+    module procedure PetscObjectSetNameViennaCLIndices
+  end interface
+  interface PetscObjectPrintClassNamePrefixType
+    module procedure PetscObjectPrintClassNamePrefixTypeViennaCLIndices
+  end interface
+  interface PetscObjectName
+    module procedure PetscObjectNameViennaCLIndices
+  end interface
+  interface PetscObjectChangeTypeName
+    module procedure PetscObjectChangeTypeNameViennaCLIndices
+  end interface
+  interface
+  subroutine VecTaggerCreate(comm,tagger, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVecTagger
+  MPIU_Comm :: comm
+  VecTagger :: tagger
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecTaggerCreate
+#endif
+  interface
+  subroutine VecTaggerSetType(tagger,type, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVecTagger
+  VecTagger :: tagger
+  character(*) :: type
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecTaggerSetType
+#endif
+  interface
+  subroutine VecTaggerGetType(tagger,type, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVecTagger
+  VecTagger :: tagger
+  character(*) :: type
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecTaggerGetType
+#endif
+  interface
+  subroutine VecTaggerDestroy(tagger, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVecTagger
+  VecTagger :: tagger
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecTaggerDestroy
+#endif
+  interface
+  subroutine VecTaggerSetUp(tagger, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVecTagger
+  VecTagger :: tagger
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecTaggerSetUp
+#endif
+  interface
+  subroutine VecTaggerSetFromOptions(tagger, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVecTagger
+  VecTagger :: tagger
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecTaggerSetFromOptions
+#endif
+  interface
+  subroutine VecTaggerSetBlockSize(tagger,blocksize, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVecTagger
+  VecTagger :: tagger
+  PetscInt :: blocksize
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecTaggerSetBlockSize
+#endif
+  interface
+  subroutine VecTaggerGetBlockSize(tagger,blocksize, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVecTagger
+  VecTagger :: tagger
+  PetscInt :: blocksize
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecTaggerGetBlockSize
+#endif
+  interface
+  subroutine VecTaggerSetInvert(tagger,invert, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVecTagger
+  VecTagger :: tagger
+  PetscBool :: invert
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecTaggerSetInvert
+#endif
+  interface
+  subroutine VecTaggerGetInvert(tagger,invert, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVecTagger
+  VecTagger :: tagger
+  PetscBool :: invert
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecTaggerGetInvert
+#endif
+  interface
+  subroutine VecTaggerView(tagger,viewer, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVecTagger,tPetscViewer
+  VecTagger :: tagger
+  PetscViewer :: viewer
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecTaggerView
+#endif
+  interface
+  subroutine VecTaggerComputeBoxes(tagger,vec,numBoxes,boxes,listed, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVecTagger,tVec,sVecTaggerBox
+  VecTagger :: tagger
+  Vec :: vec
+  PetscInt :: numBoxes
+  VecTaggerBox, pointer :: boxes(:)
+  PetscBool :: listed
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecTaggerComputeBoxes
+#endif
+  interface
+  subroutine VecTaggerComputeIS(tagger,vec,is,listed, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVecTagger,tVec,tIS
+  VecTagger :: tagger
+  Vec :: vec
+  IS :: is(*)
+  PetscBool :: listed
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecTaggerComputeIS
+#endif
+  interface
+  subroutine VecTaggerInitializePackage(ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecTaggerInitializePackage
+#endif
+  interface
+  subroutine VecTaggerFinalizePackage(ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecTaggerFinalizePackage
+#endif
+  interface
+  subroutine VecTaggerRegisterAll(ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecTaggerRegisterAll
+#endif
+  interface
+  subroutine VecTaggerRegister(sname,function, ierr)
+  use, intrinsic :: ISO_C_binding
+  character(*) :: sname
+  external :: function
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecTaggerRegister
+#endif
+  interface
+  subroutine VecTaggerOrGetSubs(tagger,nsubs,subs, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVecTagger
+  VecTagger :: tagger
+  PetscInt :: nsubs
+  VecTagger, pointer :: subs(:)
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecTaggerOrGetSubs
+#endif
+  interface
+  subroutine VecTaggerOrSetSubs(tagger,nsubs,subs,mode, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVecTagger,ePetscCopyMode
+  VecTagger :: tagger
+  PetscInt :: nsubs
+  VecTagger :: subs(*)
+  PetscCopyMode :: mode
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecTaggerOrSetSubs
+#endif
+  interface
+  subroutine VecTaggerCDFSetMethod(tagger,method, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVecTagger,eVecTaggerCDFMethod
+  VecTagger :: tagger
+  VecTaggerCDFMethod :: method
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecTaggerCDFSetMethod
+#endif
+  interface
+  subroutine VecTaggerCDFGetMethod(tagger,method, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVecTagger,eVecTaggerCDFMethod
+  VecTagger :: tagger
+  VecTaggerCDFMethod :: method
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecTaggerCDFGetMethod
+#endif
+  interface
+  subroutine VecTaggerCDFIterativeSetTolerances(tagger,maxit,rtol,atol, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVecTagger
+  VecTagger :: tagger
+  PetscInt :: maxit
+  PetscReal :: rtol
+  PetscReal :: atol
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecTaggerCDFIterativeSetTolerances
+#endif
+  interface
+  subroutine VecTaggerCDFIterativeGetTolerances(tagger,maxit,rtol,atol, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVecTagger
+  VecTagger :: tagger
+  PetscInt :: maxit
+  PetscReal :: rtol
+  PetscReal :: atol
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecTaggerCDFIterativeGetTolerances
+#endif
+  interface
+  subroutine VecTaggerCDFSetBox(tagger,box, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVecTagger,sVecTaggerBox
+  VecTagger :: tagger
+  VecTaggerBox :: box(*)
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecTaggerCDFSetBox
+#endif
+  interface
+  subroutine VecTaggerCDFGetBox(tagger,box, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVecTagger,sVecTaggerBox
+  VecTagger :: tagger
+  VecTaggerBox, pointer :: box(:)
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecTaggerCDFGetBox
+#endif
+  interface
+  subroutine VecTaggerRelativeSetBox(tagger,box, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVecTagger,sVecTaggerBox
+  VecTagger :: tagger
+  VecTaggerBox :: box(*)
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecTaggerRelativeSetBox
+#endif
+  interface
+  subroutine VecTaggerRelativeGetBox(tagger,box, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVecTagger,sVecTaggerBox
+  VecTagger :: tagger
+  VecTaggerBox, pointer :: box(:)
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecTaggerRelativeGetBox
+#endif
+  interface
+  subroutine VecTaggerAndGetSubs(tagger,nsubs,subs, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVecTagger
+  VecTagger :: tagger
+  PetscInt :: nsubs
+  VecTagger, pointer :: subs(:)
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecTaggerAndGetSubs
+#endif
+  interface
+  subroutine VecTaggerAndSetSubs(tagger,nsubs,subs,mode, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVecTagger,ePetscCopyMode
+  VecTagger :: tagger
+  PetscInt :: nsubs
+  VecTagger :: subs(*)
+  PetscCopyMode :: mode
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecTaggerAndSetSubs
+#endif
+  interface
+  subroutine VecTaggerAbsoluteSetBox(tagger,box, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVecTagger,sVecTaggerBox
+  VecTagger :: tagger
+  VecTaggerBox :: box(*)
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecTaggerAbsoluteSetBox
+#endif
+  interface
+  subroutine VecTaggerAbsoluteGetBox(tagger,box, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVecTagger,sVecTaggerBox
+  VecTagger :: tagger
+  VecTaggerBox, pointer :: box(:)
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecTaggerAbsoluteGetBox
+#endif
+  interface operator(.ne.)
+    module procedure VecTaggernotequals
+  end interface operator (.ne.)
+  interface operator(.eq.)
+    module procedure VecTaggerequals
+  end interface operator (.eq.)
+
+  interface PetscObjectCast
+    module procedure PetscObjectCastVecTagger
+  end interface
+  interface PetscBarrier
+  module procedure PetscBarrierVecTagger
+  end interface
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectSAWsTakeAccess
+    module procedure PetscObjectSAWsTakeAccessVecTagger
+  end interface
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectSAWsGrantAccess
+    module procedure PetscObjectSAWsGrantAccessVecTagger
+  end interface
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectSAWsBlock
+    module procedure PetscObjectSAWsBlockVecTagger
+  end interface
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectSAWsSetBlock
+    module procedure PetscObjectSAWsSetBlockVecTagger
+  end interface
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectSAWsViewOff
+    module procedure PetscObjectSAWsViewOffVecTagger
+  end interface
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectViewSAWs
+    module procedure PetscObjectViewSAWsVecTagger
+  end interface
+#endif
+  interface PetscObjectGetType
+    module procedure PetscObjectGetTypeVecTagger
+  end interface
+  interface PetscObjectSetPrintedOptions
+    module procedure PetscObjectSetPrintedOptionsVecTagger
+  end interface
+  interface PetscObjectInheritPrintedOptions
+    module procedure PetscObjectInheritPrintedOptionsVecTagger
+  end interface
+  interface PetscObjectAddOptionsHandler
+    module procedure PetscObjectAddOptionsHandlerVecTagger
+  end interface
+  interface PetscObjectProcessOptionsHandlers
+    module procedure PetscObjectProcessOptionsHandlersVecTagger
+  end interface
+  interface PetscObjectDestroyOptionsHandlers
+    module procedure PetscObjectDestroyOptionsHandlersVecTagger
+  end interface
+  interface PetscObjectReference
+    module procedure PetscObjectReferenceVecTagger
+  end interface
+  interface PetscObjectGetReference
+    module procedure PetscObjectGetReferenceVecTagger
+  end interface
+  interface PetscObjectDereference
+    module procedure PetscObjectDereferenceVecTagger
+  end interface
+  interface PetscObjectRemoveReference
+    module procedure PetscObjectRemoveReferenceVecTagger
+  end interface
+  interface PetscObjectHasFunction
+    module procedure PetscObjectHasFunctionVecTagger
+  end interface
+  interface PetscObjectSetFromOptions
+    module procedure PetscObjectSetFromOptionsVecTagger
+  end interface
+  interface PetscObjectSetUp
+    module procedure PetscObjectSetUpVecTagger
+  end interface
+  interface PetscObjectGetName
+    module procedure PetscObjectGetNameVecTagger
+  end interface
+  interface PetscObjectDestroy
+    module procedure PetscObjectDestroyVecTagger
+  end interface
+  interface PetscObjectView
+    module procedure PetscObjectViewVecTagger
+  end interface
+  interface PetscObjectViewFromOptions
+    module procedure PetscObjectViewFromOptionsVecTagger
+  end interface
+  interface PetscObjectTypeCompare
+    module procedure PetscObjectTypeCompareVecTagger
+  end interface
+  interface PetscObjectObjectTypeCompare
+    module procedure PetscObjectObjectTypeCompareVecTagger
+  end interface
+  interface PetscObjectBaseTypeCompare
+    module procedure PetscObjectBaseTypeCompareVecTagger
+  end interface
+  interface PetscObjectRegisterDestroy
+    module procedure PetscObjectRegisterDestroyVecTagger
+  end interface
+  interface PetscObjectGetId
+    module procedure PetscObjectGetIdVecTagger
+  end interface
+  interface PetscObjectCompareId
+    module procedure PetscObjectCompareIdVecTagger
+  end interface
+  interface PetscObjectGetOptions
+    module procedure PetscObjectGetOptionsVecTagger
+  end interface
+  interface PetscObjectSetOptions
+    module procedure PetscObjectSetOptionsVecTagger
+  end interface
+  interface PetscObjectSetOptionsPrefix
+    module procedure PetscObjectSetOptionsPrefixVecTagger
+  end interface
+  interface PetscObjectAppendOptionsPrefix
+    module procedure PetscObjectAppendOptionsPrefixVecTagger
+  end interface
+  interface PetscObjectGetOptionsPrefix
+    module procedure PetscObjectGetOptionsPrefixVecTagger
+  end interface
+  interface PetscObjectPrependOptionsPrefix
+    module procedure PetscObjectPrependOptionsPrefixVecTagger
+  end interface
+  interface PetscObjectGetComm
+    module procedure PetscObjectGetCommVecTagger
+  end interface
+  interface PetscObjectGetTabLevel
+    module procedure PetscObjectGetTabLevelVecTagger
+  end interface
+  interface PetscObjectSetTabLevel
+    module procedure PetscObjectSetTabLevelVecTagger
+  end interface
+  interface PetscObjectIncrementTabLevel
+    module procedure PetscObjectIncrementTabLevelVecTagger
+  end interface
+  interface PetscObjectGetNewTag
+    module procedure PetscObjectGetNewTagVecTagger
+  end interface
+  interface PetscObjectGetClassId
+    module procedure PetscObjectGetClassIdVecTagger
+  end interface
+  interface PetscObjectGetClassName
+    module procedure PetscObjectGetClassNameVecTagger
+  end interface
+  interface PetscObjectSetName
+    module procedure PetscObjectSetNameVecTagger
+  end interface
+  interface PetscObjectPrintClassNamePrefixType
+    module procedure PetscObjectPrintClassNamePrefixTypeVecTagger
+  end interface
+  interface PetscObjectName
+    module procedure PetscObjectNameVecTagger
+  end interface
+  interface PetscObjectChangeTypeName
+    module procedure PetscObjectChangeTypeNameVecTagger
+  end interface
+  interface
+  subroutine PetscSectionVecView(s,v,viewer, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscSection,tVec,tPetscViewer
+  PetscSection :: s
+  Vec :: v
+  PetscViewer :: viewer
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscSectionVecView
+#endif
+  interface
+  subroutine PetscSectionVecNorm(s,gs,x,type,val, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscSection,tVec,eNormType
+  PetscSection :: s
+  PetscSection :: gs
+  Vec :: x
+  NormType :: type
+  PetscReal :: val(*)
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscSectionVecNorm
+#endif
+  interface
+  subroutine PetscOptionsGetVec(options,prefix,key,v,set, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscOptions,tVec
+  PetscOptions :: options
+  character(*) :: prefix
+  character(*) :: key
+  Vec :: v
+  PetscBool :: set
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscOptionsGetVec
+#endif
+  interface
+  subroutine ISComplementVec(S,V,T, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tIS,tVec
+  IS :: S
+  Vec :: V
+  IS :: T
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::ISComplementVec
+#endif
+  interface
+  subroutine PetscCommSplitReductionBegin(comm, ierr)
+  use, intrinsic :: ISO_C_binding
+  MPIU_Comm :: comm
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscCommSplitReductionBegin
+#endif
+  interface operator(.ne.)
+    module procedure ScatterModenotequals
+  end interface operator (.ne.)
+  interface operator(.eq.)
+    module procedure ScatterModeequals
+  end interface operator (.eq.)
+
+  interface operator(.ne.)
+    module procedure NormTypenotequals
+  end interface operator (.ne.)
+  interface operator(.eq.)
+    module procedure NormTypeequals
+  end interface operator (.eq.)
+
+  interface operator(.ne.)
+    module procedure ReductionTypenotequals
+  end interface operator (.ne.)
+  interface operator(.eq.)
+    module procedure ReductionTypeequals
+  end interface operator (.eq.)
+
+  interface operator(.ne.)
+    module procedure VecSignModenotequals
+  end interface operator (.ne.)
+  interface operator(.eq.)
+    module procedure VecSignModeequals
+  end interface operator (.eq.)
+
+  interface operator(.ne.)
+    module procedure VecOptionnotequals
+  end interface operator (.ne.)
+  interface operator(.eq.)
+    module procedure VecOptionequals
+  end interface operator (.eq.)
+
+  interface operator(.ne.)
+    module procedure VecOperationnotequals
+  end interface operator (.ne.)
+  interface operator(.eq.)
+    module procedure VecOperationequals
+  end interface operator (.eq.)
+
+  interface operator(.ne.)
+    module procedure VecTaggerCDFMethodnotequals
+  end interface operator (.ne.)
+  interface operator(.eq.)
+    module procedure VecTaggerCDFMethodequals
+  end interface operator (.eq.)
+

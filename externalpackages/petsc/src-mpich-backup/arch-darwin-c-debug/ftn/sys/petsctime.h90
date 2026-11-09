@@ -1,0 +1,40 @@
+  interface
+  subroutine PetscGetCPUTime(t, ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscLogDouble :: t
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscGetCPUTime
+#endif
+  interface
+  subroutine PetscTime(v, ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscLogDouble :: v
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscTime
+#endif
+  interface
+  subroutine PetscTimeSubtract(v, ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscLogDouble :: v
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscTimeSubtract
+#endif
+  interface
+  subroutine PetscTimeAdd(v, ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscLogDouble :: v
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscTimeAdd
+#endif

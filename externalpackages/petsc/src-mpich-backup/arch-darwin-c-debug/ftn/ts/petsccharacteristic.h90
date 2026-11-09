@@ -1,0 +1,321 @@
+  interface
+  subroutine CharacteristicFinalizePackage(ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::CharacteristicFinalizePackage
+#endif
+  interface
+  subroutine CharacteristicInitializePackage(ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::CharacteristicInitializePackage
+#endif
+  interface
+  subroutine CharacteristicDestroy(c, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tCharacteristic
+  Characteristic :: c
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::CharacteristicDestroy
+#endif
+  interface
+  subroutine CharacteristicCreate(comm,c, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tCharacteristic
+  MPIU_Comm :: comm
+  Characteristic :: c
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::CharacteristicCreate
+#endif
+  interface
+  subroutine CharacteristicSetType(c,type, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tCharacteristic
+  Characteristic :: c
+  character(*) :: type
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::CharacteristicSetType
+#endif
+  interface
+  subroutine CharacteristicSetUp(c, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tCharacteristic
+  Characteristic :: c
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::CharacteristicSetUp
+#endif
+  interface
+  subroutine CharacteristicRegister(sname,function, ierr)
+  use, intrinsic :: ISO_C_binding
+  character(*) :: sname
+  external :: function
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::CharacteristicRegister
+#endif
+  interface
+  subroutine CharacteristicSetVelocityInterpolation(c,da,v,vOld,numComponents,components,interp,ctx, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tCharacteristic,tDM,tVec
+  Characteristic :: c
+  DM :: da
+  Vec :: v
+  Vec :: vOld
+  PetscInt :: numComponents
+  PetscInt :: components(*)
+  external :: interp
+  type(*) :: ctx
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::CharacteristicSetVelocityInterpolation
+#endif
+  interface
+  subroutine CharacteristicSetVelocityInterpolationLocal(c,da,v,vOld,numComponents,components,interp,ctx, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tCharacteristic,tDM,tVec
+  Characteristic :: c
+  DM :: da
+  Vec :: v
+  Vec :: vOld
+  PetscInt :: numComponents
+  PetscInt :: components(*)
+  external :: interp
+  type(*) :: ctx
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::CharacteristicSetVelocityInterpolationLocal
+#endif
+  interface
+  subroutine CharacteristicSetFieldInterpolation(c,da,v,numComponents,components,interp,ctx, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tCharacteristic,tDM,tVec
+  Characteristic :: c
+  DM :: da
+  Vec :: v
+  PetscInt :: numComponents
+  PetscInt :: components(*)
+  external :: interp
+  type(*) :: ctx
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::CharacteristicSetFieldInterpolation
+#endif
+  interface
+  subroutine CharacteristicSetFieldInterpolationLocal(c,da,v,numComponents,components,interp,ctx, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tCharacteristic,tDM,tVec
+  Characteristic :: c
+  DM :: da
+  Vec :: v
+  PetscInt :: numComponents
+  PetscInt :: components(*)
+  external :: interp
+  type(*) :: ctx
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::CharacteristicSetFieldInterpolationLocal
+#endif
+  interface
+  subroutine CharacteristicSolve(c,dt,solution, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tCharacteristic,tVec
+  Characteristic :: c
+  PetscReal :: dt
+  Vec :: solution
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::CharacteristicSolve
+#endif
+  interface operator(.ne.)
+    module procedure Characteristicnotequals
+  end interface operator (.ne.)
+  interface operator(.eq.)
+    module procedure Characteristicequals
+  end interface operator (.eq.)
+
+  interface PetscObjectCast
+    module procedure PetscObjectCastCharacteristic
+  end interface
+  interface PetscBarrier
+  module procedure PetscBarrierCharacteristic
+  end interface
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectSAWsTakeAccess
+    module procedure PetscObjectSAWsTakeAccessCharacteristic
+  end interface
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectSAWsGrantAccess
+    module procedure PetscObjectSAWsGrantAccessCharacteristic
+  end interface
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectSAWsBlock
+    module procedure PetscObjectSAWsBlockCharacteristic
+  end interface
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectSAWsSetBlock
+    module procedure PetscObjectSAWsSetBlockCharacteristic
+  end interface
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectSAWsViewOff
+    module procedure PetscObjectSAWsViewOffCharacteristic
+  end interface
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectViewSAWs
+    module procedure PetscObjectViewSAWsCharacteristic
+  end interface
+#endif
+  interface PetscObjectGetType
+    module procedure PetscObjectGetTypeCharacteristic
+  end interface
+  interface PetscObjectSetPrintedOptions
+    module procedure PetscObjectSetPrintedOptionsCharacteristic
+  end interface
+  interface PetscObjectInheritPrintedOptions
+    module procedure PetscObjectInheritPrintedOptionsCharacteristic
+  end interface
+  interface PetscObjectAddOptionsHandler
+    module procedure PetscObjectAddOptionsHandlerCharacteristic
+  end interface
+  interface PetscObjectProcessOptionsHandlers
+    module procedure PetscObjectProcessOptionsHandlersCharacteristic
+  end interface
+  interface PetscObjectDestroyOptionsHandlers
+    module procedure PetscObjectDestroyOptionsHandlersCharacteristic
+  end interface
+  interface PetscObjectReference
+    module procedure PetscObjectReferenceCharacteristic
+  end interface
+  interface PetscObjectGetReference
+    module procedure PetscObjectGetReferenceCharacteristic
+  end interface
+  interface PetscObjectDereference
+    module procedure PetscObjectDereferenceCharacteristic
+  end interface
+  interface PetscObjectRemoveReference
+    module procedure PetscObjectRemoveReferenceCharacteristic
+  end interface
+  interface PetscObjectHasFunction
+    module procedure PetscObjectHasFunctionCharacteristic
+  end interface
+  interface PetscObjectSetFromOptions
+    module procedure PetscObjectSetFromOptionsCharacteristic
+  end interface
+  interface PetscObjectSetUp
+    module procedure PetscObjectSetUpCharacteristic
+  end interface
+  interface PetscObjectGetName
+    module procedure PetscObjectGetNameCharacteristic
+  end interface
+  interface PetscObjectDestroy
+    module procedure PetscObjectDestroyCharacteristic
+  end interface
+  interface PetscObjectView
+    module procedure PetscObjectViewCharacteristic
+  end interface
+  interface PetscObjectViewFromOptions
+    module procedure PetscObjectViewFromOptionsCharacteristic
+  end interface
+  interface PetscObjectTypeCompare
+    module procedure PetscObjectTypeCompareCharacteristic
+  end interface
+  interface PetscObjectObjectTypeCompare
+    module procedure PetscObjectObjectTypeCompareCharacteristic
+  end interface
+  interface PetscObjectBaseTypeCompare
+    module procedure PetscObjectBaseTypeCompareCharacteristic
+  end interface
+  interface PetscObjectRegisterDestroy
+    module procedure PetscObjectRegisterDestroyCharacteristic
+  end interface
+  interface PetscObjectGetId
+    module procedure PetscObjectGetIdCharacteristic
+  end interface
+  interface PetscObjectCompareId
+    module procedure PetscObjectCompareIdCharacteristic
+  end interface
+  interface PetscObjectGetOptions
+    module procedure PetscObjectGetOptionsCharacteristic
+  end interface
+  interface PetscObjectSetOptions
+    module procedure PetscObjectSetOptionsCharacteristic
+  end interface
+  interface PetscObjectSetOptionsPrefix
+    module procedure PetscObjectSetOptionsPrefixCharacteristic
+  end interface
+  interface PetscObjectAppendOptionsPrefix
+    module procedure PetscObjectAppendOptionsPrefixCharacteristic
+  end interface
+  interface PetscObjectGetOptionsPrefix
+    module procedure PetscObjectGetOptionsPrefixCharacteristic
+  end interface
+  interface PetscObjectPrependOptionsPrefix
+    module procedure PetscObjectPrependOptionsPrefixCharacteristic
+  end interface
+  interface PetscObjectGetComm
+    module procedure PetscObjectGetCommCharacteristic
+  end interface
+  interface PetscObjectGetTabLevel
+    module procedure PetscObjectGetTabLevelCharacteristic
+  end interface
+  interface PetscObjectSetTabLevel
+    module procedure PetscObjectSetTabLevelCharacteristic
+  end interface
+  interface PetscObjectIncrementTabLevel
+    module procedure PetscObjectIncrementTabLevelCharacteristic
+  end interface
+  interface PetscObjectGetNewTag
+    module procedure PetscObjectGetNewTagCharacteristic
+  end interface
+  interface PetscObjectGetClassId
+    module procedure PetscObjectGetClassIdCharacteristic
+  end interface
+  interface PetscObjectGetClassName
+    module procedure PetscObjectGetClassNameCharacteristic
+  end interface
+  interface PetscObjectSetName
+    module procedure PetscObjectSetNameCharacteristic
+  end interface
+  interface PetscObjectPrintClassNamePrefixType
+    module procedure PetscObjectPrintClassNamePrefixTypeCharacteristic
+  end interface
+  interface PetscObjectName
+    module procedure PetscObjectNameCharacteristic
+  end interface
+  interface PetscObjectChangeTypeName
+    module procedure PetscObjectChangeTypeNameCharacteristic
+  end interface

@@ -1,0 +1,19 @@
+  interface
+  subroutine MatDFischer(jac,X,Con,XL,XU,T1,T2,Da,Db, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tMat,tVec
+  Mat :: jac
+  Vec :: X
+  Vec :: Con
+  Vec :: XL
+  Vec :: XU
+  Vec :: T1
+  Vec :: T2
+  Vec :: Da
+  Vec :: Db
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::MatDFischer
+#endif

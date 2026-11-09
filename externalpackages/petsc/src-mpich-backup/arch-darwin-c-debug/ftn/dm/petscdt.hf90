@@ -1,0 +1,369 @@
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT:: PetscQuadraturenotequals
+!DEC$ ATTRIBUTES DLLEXPORT:: PetscQuadratureequals
+#endif
+
+  function PetscQuadraturenotequals(A,B)
+    logical PetscQuadraturenotequals
+    type(tPetscQuadrature), intent(in) :: A,B
+    PetscQuadraturenotequals = (A%v .ne. B%v)
+  end function
+  function PetscQuadratureequals(A,B)
+    logical PetscQuadratureequals
+    type(tPetscQuadrature), intent(in) :: A,B
+    PetscQuadratureequals = (A%v .eq. B%v)
+  end function
+  function PetscObjectCastQuadrature(obj)
+    PetscQuadrature obj
+    PetscObject PetscObjectCastQuadrature
+    PetscObjectCastQuadrature%v = obj%v
+  end function 
+  subroutine PetscBarrierQuadrature(obj,ierr)
+    PetscQuadrature obj
+    PetscErrorCode ierr
+    call PetscBarrier(PetscObjectCast(obj),ierr)
+  end subroutine 
+#if defined(PETSC_HAVE_SAWS)
+  subroutine PetscObjectSAWsTakeAccessQuadrature(obj, ierr)
+  PetscQuadrature obj
+  PetscErrorCode ierr
+  call PetscObjectSAWsTakeAccess(PetscObjectCast(obj), ierr)
+  end subroutine 
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  subroutine PetscObjectSAWsGrantAccessQuadrature(obj, ierr)
+  PetscQuadrature obj
+  PetscErrorCode ierr
+  call PetscObjectSAWsGrantAccess(PetscObjectCast(obj), ierr)
+  end subroutine 
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  subroutine PetscObjectSAWsBlockQuadrature(obj, ierr)
+  PetscQuadrature obj
+  PetscErrorCode ierr
+  call PetscObjectSAWsBlock(PetscObjectCast(obj), ierr)
+  end subroutine 
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  subroutine PetscObjectSAWsSetBlockQuadrature(obj, flg, ierr)
+  PetscQuadrature obj
+  PetscBool :: flg
+  PetscErrorCode ierr
+  call PetscObjectSAWsSetBlock(PetscObjectCast(obj), flg, ierr)
+  end subroutine 
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  subroutine PetscObjectSAWsViewOffQuadrature(obj, ierr)
+  PetscQuadrature obj
+  PetscErrorCode ierr
+  call PetscObjectSAWsViewOff(PetscObjectCast(obj), ierr)
+  end subroutine 
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  subroutine PetscObjectViewSAWsQuadrature(obj, viewer, ierr)
+  PetscQuadrature obj
+  PetscViewer :: viewer
+  PetscErrorCode ierr
+  call PetscObjectViewSAWs(PetscObjectCast(obj), viewer, ierr)
+  end subroutine 
+#endif
+  subroutine PetscObjectGetTypeQuadrature(obj, type, ierr)
+  PetscQuadrature obj
+  character(*) :: type
+  PetscErrorCode ierr
+  call PetscObjectGetType(PetscObjectCast(obj), type, ierr)
+  end subroutine 
+  subroutine PetscObjectSetPrintedOptionsQuadrature(obj, ierr)
+  PetscQuadrature obj
+  PetscErrorCode ierr
+  call PetscObjectSetPrintedOptions(PetscObjectCast(obj), ierr)
+  end subroutine 
+  subroutine PetscObjectInheritPrintedOptionsQuadrature(pobj, obj, ierr)
+  PetscQuadrature pobj
+  PetscObject :: obj
+  PetscErrorCode ierr
+  call PetscObjectInheritPrintedOptions(PetscObjectCast(pobj), obj, ierr)
+  end subroutine 
+  subroutine PetscObjectAddOptionsHandlerQuadrature(obj, handle, destroy, ctx, ierr)
+  PetscQuadrature obj
+  external :: handle
+  external :: destroy
+  type(*) :: ctx
+  PetscErrorCode ierr
+  call PetscObjectAddOptionsHandler(PetscObjectCast(obj), handle, destroy, ctx, ierr)
+  end subroutine 
+  subroutine PetscObjectProcessOptionsHandlersQuadrature(obj, PetscOptionsObject, ierr)
+  PetscQuadrature obj
+  PetscOptionItems :: PetscOptionsObject
+  PetscErrorCode ierr
+  call PetscObjectProcessOptionsHandlers(PetscObjectCast(obj), PetscOptionsObject, ierr)
+  end subroutine 
+  subroutine PetscObjectDestroyOptionsHandlersQuadrature(obj, ierr)
+  PetscQuadrature obj
+  PetscErrorCode ierr
+  call PetscObjectDestroyOptionsHandlers(PetscObjectCast(obj), ierr)
+  end subroutine 
+  subroutine PetscObjectReferenceQuadrature(obj, ierr)
+  PetscQuadrature obj
+  PetscErrorCode ierr
+  call PetscObjectReference(PetscObjectCast(obj), ierr)
+  end subroutine 
+  subroutine PetscObjectGetReferenceQuadrature(obj, cnt, ierr)
+  PetscQuadrature obj
+  PetscInt :: cnt
+  PetscErrorCode ierr
+  call PetscObjectGetReference(PetscObjectCast(obj), cnt, ierr)
+  end subroutine 
+  subroutine PetscObjectDereferenceQuadrature(obj, ierr)
+  PetscQuadrature obj
+  PetscErrorCode ierr
+  call PetscObjectDereference(PetscObjectCast(obj), ierr)
+  end subroutine 
+  subroutine PetscObjectRemoveReferenceQuadrature(obj, name, ierr)
+  PetscQuadrature obj
+  character(*) :: name
+  PetscErrorCode ierr
+  call PetscObjectRemoveReference(PetscObjectCast(obj), name, ierr)
+  end subroutine 
+  subroutine PetscObjectHasFunctionQuadrature(obj, name, has, ierr)
+  PetscQuadrature obj
+  character(*) :: name
+  PetscBool :: has
+  PetscErrorCode ierr
+  call PetscObjectHasFunction(PetscObjectCast(obj), name, has, ierr)
+  end subroutine 
+  subroutine PetscObjectSetFromOptionsQuadrature(obj, ierr)
+  PetscQuadrature obj
+  PetscErrorCode ierr
+  call PetscObjectSetFromOptions(PetscObjectCast(obj), ierr)
+  end subroutine 
+  subroutine PetscObjectSetUpQuadrature(obj, ierr)
+  PetscQuadrature obj
+  PetscErrorCode ierr
+  call PetscObjectSetUp(PetscObjectCast(obj), ierr)
+  end subroutine 
+  subroutine PetscObjectGetNameQuadrature(obj, name, ierr)
+  PetscQuadrature obj
+  character(*) :: name
+  PetscErrorCode ierr
+  call PetscObjectGetName(PetscObjectCast(obj), name, ierr)
+  end subroutine 
+  subroutine PetscObjectDestroyQuadrature(obj, ierr)
+  PetscQuadrature obj
+  PetscErrorCode ierr
+  call PetscObjectDestroy(PetscObjectCast(obj), ierr)
+  end subroutine 
+  subroutine PetscObjectViewQuadrature(obj, viewer, ierr)
+  PetscQuadrature obj
+  PetscViewer :: viewer
+  PetscErrorCode ierr
+  call PetscObjectView(PetscObjectCast(obj), viewer, ierr)
+  end subroutine 
+  subroutine PetscObjectViewFromOptionsQuadrature(obj, bobj, name, ierr)
+  PetscQuadrature obj
+  PetscObject :: bobj
+  character(*) :: name
+  PetscErrorCode ierr
+  call PetscObjectViewFromOptions(PetscObjectCast(obj), bobj, name, ierr)
+  end subroutine 
+  subroutine PetscObjectTypeCompareQuadrature(obj, type_name, same, ierr)
+  PetscQuadrature obj
+  character(*) :: type_name
+  PetscBool :: same
+  PetscErrorCode ierr
+  call PetscObjectTypeCompare(PetscObjectCast(obj), type_name, same, ierr)
+  end subroutine 
+  subroutine PetscObjectObjectTypeCompareQuadrature(obj1, obj2, same, ierr)
+  PetscQuadrature obj1
+  PetscObject :: obj2
+  PetscBool :: same
+  PetscErrorCode ierr
+  call PetscObjectObjectTypeCompare(PetscObjectCast(obj1), obj2, same, ierr)
+  end subroutine 
+  subroutine PetscObjectBaseTypeCompareQuadrature(obj, type_name, same, ierr)
+  PetscQuadrature obj
+  character(*) :: type_name
+  PetscBool :: same
+  PetscErrorCode ierr
+  call PetscObjectBaseTypeCompare(PetscObjectCast(obj), type_name, same, ierr)
+  end subroutine 
+  subroutine PetscObjectRegisterDestroyQuadrature(obj, ierr)
+  PetscQuadrature obj
+  PetscErrorCode ierr
+  call PetscObjectRegisterDestroy(PetscObjectCast(obj), ierr)
+  end subroutine 
+  subroutine PetscObjectGetIdQuadrature(obj, id, ierr)
+  PetscQuadrature obj
+  PetscObjectId :: id
+  PetscErrorCode ierr
+  call PetscObjectGetId(PetscObjectCast(obj), id, ierr)
+  end subroutine 
+  subroutine PetscObjectCompareIdQuadrature(obj, id, eq, ierr)
+  PetscQuadrature obj
+  PetscObjectId :: id
+  PetscBool :: eq
+  PetscErrorCode ierr
+  call PetscObjectCompareId(PetscObjectCast(obj), id, eq, ierr)
+  end subroutine 
+  subroutine PetscObjectGetOptionsQuadrature(obj, options, ierr)
+  PetscQuadrature obj
+  PetscOptions :: options
+  PetscErrorCode ierr
+  call PetscObjectGetOptions(PetscObjectCast(obj), options, ierr)
+  end subroutine 
+  subroutine PetscObjectSetOptionsQuadrature(obj, options, ierr)
+  PetscQuadrature obj
+  PetscOptions :: options
+  PetscErrorCode ierr
+  call PetscObjectSetOptions(PetscObjectCast(obj), options, ierr)
+  end subroutine 
+  subroutine PetscObjectSetOptionsPrefixQuadrature(obj, prefix, ierr)
+  PetscQuadrature obj
+  character(*) :: prefix
+  PetscErrorCode ierr
+  call PetscObjectSetOptionsPrefix(PetscObjectCast(obj), prefix, ierr)
+  end subroutine 
+  subroutine PetscObjectAppendOptionsPrefixQuadrature(obj, prefix, ierr)
+  PetscQuadrature obj
+  character(*) :: prefix
+  PetscErrorCode ierr
+  call PetscObjectAppendOptionsPrefix(PetscObjectCast(obj), prefix, ierr)
+  end subroutine 
+  subroutine PetscObjectGetOptionsPrefixQuadrature(obj, prefix, ierr)
+  PetscQuadrature obj
+  character(*) :: prefix
+  PetscErrorCode ierr
+  call PetscObjectGetOptionsPrefix(PetscObjectCast(obj), prefix, ierr)
+  end subroutine 
+  subroutine PetscObjectPrependOptionsPrefixQuadrature(obj, prefix, ierr)
+  PetscQuadrature obj
+  character(*) :: prefix
+  PetscErrorCode ierr
+  call PetscObjectPrependOptionsPrefix(PetscObjectCast(obj), prefix, ierr)
+  end subroutine 
+  subroutine PetscObjectGetCommQuadrature(obj, comm, ierr)
+  PetscQuadrature obj
+  MPIU_Comm :: comm
+  PetscErrorCode ierr
+  call PetscObjectGetComm(PetscObjectCast(obj), comm, ierr)
+  end subroutine 
+  subroutine PetscObjectGetTabLevelQuadrature(obj, tab, ierr)
+  PetscQuadrature obj
+  PetscInt :: tab
+  PetscErrorCode ierr
+  call PetscObjectGetTabLevel(PetscObjectCast(obj), tab, ierr)
+  end subroutine 
+  subroutine PetscObjectSetTabLevelQuadrature(obj, tab, ierr)
+  PetscQuadrature obj
+  PetscInt :: tab
+  PetscErrorCode ierr
+  call PetscObjectSetTabLevel(PetscObjectCast(obj), tab, ierr)
+  end subroutine 
+  subroutine PetscObjectIncrementTabLevelQuadrature(obj, oldobj, tab, ierr)
+  PetscQuadrature obj
+  PetscObject :: oldobj
+  PetscInt :: tab
+  PetscErrorCode ierr
+  call PetscObjectIncrementTabLevel(PetscObjectCast(obj), oldobj, tab, ierr)
+  end subroutine 
+  subroutine PetscObjectGetNewTagQuadrature(obj, tag, ierr)
+  PetscQuadrature obj
+  PetscMPIInt :: tag
+  PetscErrorCode ierr
+  call PetscObjectGetNewTag(PetscObjectCast(obj), tag, ierr)
+  end subroutine 
+  subroutine PetscObjectGetClassIdQuadrature(obj, classid, ierr)
+  PetscQuadrature obj
+  PetscClassId :: classid
+  PetscErrorCode ierr
+  call PetscObjectGetClassId(PetscObjectCast(obj), classid, ierr)
+  end subroutine 
+  subroutine PetscObjectGetClassNameQuadrature(obj, classname, ierr)
+  PetscQuadrature obj
+  character(*) :: classname
+  PetscErrorCode ierr
+  call PetscObjectGetClassName(PetscObjectCast(obj), classname, ierr)
+  end subroutine 
+  subroutine PetscObjectSetNameQuadrature(obj, name, ierr)
+  PetscQuadrature obj
+  character(*) :: name
+  PetscErrorCode ierr
+  call PetscObjectSetName(PetscObjectCast(obj), name, ierr)
+  end subroutine 
+  subroutine PetscObjectPrintClassNamePrefixTypeQuadrature(obj, viewer, ierr)
+  PetscQuadrature obj
+  PetscViewer :: viewer
+  PetscErrorCode ierr
+  call PetscObjectPrintClassNamePrefixType(PetscObjectCast(obj), viewer, ierr)
+  end subroutine 
+  subroutine PetscObjectNameQuadrature(obj, ierr)
+  PetscQuadrature obj
+  PetscErrorCode ierr
+  call PetscObjectName(PetscObjectCast(obj), ierr)
+  end subroutine 
+  subroutine PetscObjectChangeTypeNameQuadrature(obj, type_name, ierr)
+  PetscQuadrature obj
+  character(*) :: type_name
+  PetscErrorCode ierr
+  call PetscObjectChangeTypeName(PetscObjectCast(obj), type_name, ierr)
+  end subroutine 
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT:: PetscGaussLobattoLegendreCreateTypenotequals
+!DEC$ ATTRIBUTES DLLEXPORT:: PetscGaussLobattoLegendreCreateTypeequals
+#endif
+
+  function PetscGaussLobattoLegendreCreateTypenotequals(A,B)
+    logical PetscGaussLobattoLegendreCreateTypenotequals
+    type(ePetscGaussLobattoLegendreCreateType), intent(in) :: A,B
+    PetscGaussLobattoLegendreCreateTypenotequals = (A%v .ne. B%v)
+  end function
+  function PetscGaussLobattoLegendreCreateTypeequals(A,B)
+    logical PetscGaussLobattoLegendreCreateTypeequals
+    type(ePetscGaussLobattoLegendreCreateType), intent(in) :: A,B
+    PetscGaussLobattoLegendreCreateTypeequals = (A%v .eq. B%v)
+  end function
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT:: PetscDTNodeTypenotequals
+!DEC$ ATTRIBUTES DLLEXPORT:: PetscDTNodeTypeequals
+#endif
+
+  function PetscDTNodeTypenotequals(A,B)
+    logical PetscDTNodeTypenotequals
+    type(ePetscDTNodeType), intent(in) :: A,B
+    PetscDTNodeTypenotequals = (A%v .ne. B%v)
+  end function
+  function PetscDTNodeTypeequals(A,B)
+    logical PetscDTNodeTypeequals
+    type(ePetscDTNodeType), intent(in) :: A,B
+    PetscDTNodeTypeequals = (A%v .eq. B%v)
+  end function
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT:: PetscDTSimplexQuadratureTypenotequals
+!DEC$ ATTRIBUTES DLLEXPORT:: PetscDTSimplexQuadratureTypeequals
+#endif
+
+  function PetscDTSimplexQuadratureTypenotequals(A,B)
+    logical PetscDTSimplexQuadratureTypenotequals
+    type(ePetscDTSimplexQuadratureType), intent(in) :: A,B
+    PetscDTSimplexQuadratureTypenotequals = (A%v .ne. B%v)
+  end function
+  function PetscDTSimplexQuadratureTypeequals(A,B)
+    logical PetscDTSimplexQuadratureTypeequals
+    type(ePetscDTSimplexQuadratureType), intent(in) :: A,B
+    PetscDTSimplexQuadratureTypeequals = (A%v .eq. B%v)
+  end function
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT:: DTProbDensityTypenotequals
+!DEC$ ATTRIBUTES DLLEXPORT:: DTProbDensityTypeequals
+#endif
+
+  function DTProbDensityTypenotequals(A,B)
+    logical DTProbDensityTypenotequals
+    type(eDTProbDensityType), intent(in) :: A,B
+    DTProbDensityTypenotequals = (A%v .ne. B%v)
+  end function
+  function DTProbDensityTypeequals(A,B)
+    logical DTProbDensityTypeequals
+    type(eDTProbDensityType), intent(in) :: A,B
+    DTProbDensityTypeequals = (A%v .eq. B%v)
+  end function

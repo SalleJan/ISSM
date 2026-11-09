@@ -1,0 +1,798 @@
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT:: KSPnotequals
+!DEC$ ATTRIBUTES DLLEXPORT:: KSPequals
+#endif
+
+  function KSPnotequals(A,B)
+    logical KSPnotequals
+    type(tKSP), intent(in) :: A,B
+    KSPnotequals = (A%v .ne. B%v)
+  end function
+  function KSPequals(A,B)
+    logical KSPequals
+    type(tKSP), intent(in) :: A,B
+    KSPequals = (A%v .eq. B%v)
+  end function
+  function PetscObjectCastKSP(obj)
+    KSP obj
+    PetscObject PetscObjectCastKSP
+    PetscObjectCastKSP%v = obj%v
+  end function 
+  subroutine PetscBarrierKSP(obj,ierr)
+    KSP obj
+    PetscErrorCode ierr
+    call PetscBarrier(PetscObjectCast(obj),ierr)
+  end subroutine 
+#if defined(PETSC_HAVE_SAWS)
+  subroutine PetscObjectSAWsTakeAccessKSP(obj, ierr)
+  KSP obj
+  PetscErrorCode ierr
+  call PetscObjectSAWsTakeAccess(PetscObjectCast(obj), ierr)
+  end subroutine 
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  subroutine PetscObjectSAWsGrantAccessKSP(obj, ierr)
+  KSP obj
+  PetscErrorCode ierr
+  call PetscObjectSAWsGrantAccess(PetscObjectCast(obj), ierr)
+  end subroutine 
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  subroutine PetscObjectSAWsBlockKSP(obj, ierr)
+  KSP obj
+  PetscErrorCode ierr
+  call PetscObjectSAWsBlock(PetscObjectCast(obj), ierr)
+  end subroutine 
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  subroutine PetscObjectSAWsSetBlockKSP(obj, flg, ierr)
+  KSP obj
+  PetscBool :: flg
+  PetscErrorCode ierr
+  call PetscObjectSAWsSetBlock(PetscObjectCast(obj), flg, ierr)
+  end subroutine 
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  subroutine PetscObjectSAWsViewOffKSP(obj, ierr)
+  KSP obj
+  PetscErrorCode ierr
+  call PetscObjectSAWsViewOff(PetscObjectCast(obj), ierr)
+  end subroutine 
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  subroutine PetscObjectViewSAWsKSP(obj, viewer, ierr)
+  KSP obj
+  PetscViewer :: viewer
+  PetscErrorCode ierr
+  call PetscObjectViewSAWs(PetscObjectCast(obj), viewer, ierr)
+  end subroutine 
+#endif
+  subroutine PetscObjectGetTypeKSP(obj, type, ierr)
+  KSP obj
+  character(*) :: type
+  PetscErrorCode ierr
+  call PetscObjectGetType(PetscObjectCast(obj), type, ierr)
+  end subroutine 
+  subroutine PetscObjectSetPrintedOptionsKSP(obj, ierr)
+  KSP obj
+  PetscErrorCode ierr
+  call PetscObjectSetPrintedOptions(PetscObjectCast(obj), ierr)
+  end subroutine 
+  subroutine PetscObjectInheritPrintedOptionsKSP(pobj, obj, ierr)
+  KSP pobj
+  PetscObject :: obj
+  PetscErrorCode ierr
+  call PetscObjectInheritPrintedOptions(PetscObjectCast(pobj), obj, ierr)
+  end subroutine 
+  subroutine PetscObjectAddOptionsHandlerKSP(obj, handle, destroy, ctx, ierr)
+  KSP obj
+  external :: handle
+  external :: destroy
+  type(*) :: ctx
+  PetscErrorCode ierr
+  call PetscObjectAddOptionsHandler(PetscObjectCast(obj), handle, destroy, ctx, ierr)
+  end subroutine 
+  subroutine PetscObjectProcessOptionsHandlersKSP(obj, PetscOptionsObject, ierr)
+  KSP obj
+  PetscOptionItems :: PetscOptionsObject
+  PetscErrorCode ierr
+  call PetscObjectProcessOptionsHandlers(PetscObjectCast(obj), PetscOptionsObject, ierr)
+  end subroutine 
+  subroutine PetscObjectDestroyOptionsHandlersKSP(obj, ierr)
+  KSP obj
+  PetscErrorCode ierr
+  call PetscObjectDestroyOptionsHandlers(PetscObjectCast(obj), ierr)
+  end subroutine 
+  subroutine PetscObjectReferenceKSP(obj, ierr)
+  KSP obj
+  PetscErrorCode ierr
+  call PetscObjectReference(PetscObjectCast(obj), ierr)
+  end subroutine 
+  subroutine PetscObjectGetReferenceKSP(obj, cnt, ierr)
+  KSP obj
+  PetscInt :: cnt
+  PetscErrorCode ierr
+  call PetscObjectGetReference(PetscObjectCast(obj), cnt, ierr)
+  end subroutine 
+  subroutine PetscObjectDereferenceKSP(obj, ierr)
+  KSP obj
+  PetscErrorCode ierr
+  call PetscObjectDereference(PetscObjectCast(obj), ierr)
+  end subroutine 
+  subroutine PetscObjectRemoveReferenceKSP(obj, name, ierr)
+  KSP obj
+  character(*) :: name
+  PetscErrorCode ierr
+  call PetscObjectRemoveReference(PetscObjectCast(obj), name, ierr)
+  end subroutine 
+  subroutine PetscObjectHasFunctionKSP(obj, name, has, ierr)
+  KSP obj
+  character(*) :: name
+  PetscBool :: has
+  PetscErrorCode ierr
+  call PetscObjectHasFunction(PetscObjectCast(obj), name, has, ierr)
+  end subroutine 
+  subroutine PetscObjectSetFromOptionsKSP(obj, ierr)
+  KSP obj
+  PetscErrorCode ierr
+  call PetscObjectSetFromOptions(PetscObjectCast(obj), ierr)
+  end subroutine 
+  subroutine PetscObjectSetUpKSP(obj, ierr)
+  KSP obj
+  PetscErrorCode ierr
+  call PetscObjectSetUp(PetscObjectCast(obj), ierr)
+  end subroutine 
+  subroutine PetscObjectGetNameKSP(obj, name, ierr)
+  KSP obj
+  character(*) :: name
+  PetscErrorCode ierr
+  call PetscObjectGetName(PetscObjectCast(obj), name, ierr)
+  end subroutine 
+  subroutine PetscObjectDestroyKSP(obj, ierr)
+  KSP obj
+  PetscErrorCode ierr
+  call PetscObjectDestroy(PetscObjectCast(obj), ierr)
+  end subroutine 
+  subroutine PetscObjectViewKSP(obj, viewer, ierr)
+  KSP obj
+  PetscViewer :: viewer
+  PetscErrorCode ierr
+  call PetscObjectView(PetscObjectCast(obj), viewer, ierr)
+  end subroutine 
+  subroutine PetscObjectViewFromOptionsKSP(obj, bobj, name, ierr)
+  KSP obj
+  PetscObject :: bobj
+  character(*) :: name
+  PetscErrorCode ierr
+  call PetscObjectViewFromOptions(PetscObjectCast(obj), bobj, name, ierr)
+  end subroutine 
+  subroutine PetscObjectTypeCompareKSP(obj, type_name, same, ierr)
+  KSP obj
+  character(*) :: type_name
+  PetscBool :: same
+  PetscErrorCode ierr
+  call PetscObjectTypeCompare(PetscObjectCast(obj), type_name, same, ierr)
+  end subroutine 
+  subroutine PetscObjectObjectTypeCompareKSP(obj1, obj2, same, ierr)
+  KSP obj1
+  PetscObject :: obj2
+  PetscBool :: same
+  PetscErrorCode ierr
+  call PetscObjectObjectTypeCompare(PetscObjectCast(obj1), obj2, same, ierr)
+  end subroutine 
+  subroutine PetscObjectBaseTypeCompareKSP(obj, type_name, same, ierr)
+  KSP obj
+  character(*) :: type_name
+  PetscBool :: same
+  PetscErrorCode ierr
+  call PetscObjectBaseTypeCompare(PetscObjectCast(obj), type_name, same, ierr)
+  end subroutine 
+  subroutine PetscObjectRegisterDestroyKSP(obj, ierr)
+  KSP obj
+  PetscErrorCode ierr
+  call PetscObjectRegisterDestroy(PetscObjectCast(obj), ierr)
+  end subroutine 
+  subroutine PetscObjectGetIdKSP(obj, id, ierr)
+  KSP obj
+  PetscObjectId :: id
+  PetscErrorCode ierr
+  call PetscObjectGetId(PetscObjectCast(obj), id, ierr)
+  end subroutine 
+  subroutine PetscObjectCompareIdKSP(obj, id, eq, ierr)
+  KSP obj
+  PetscObjectId :: id
+  PetscBool :: eq
+  PetscErrorCode ierr
+  call PetscObjectCompareId(PetscObjectCast(obj), id, eq, ierr)
+  end subroutine 
+  subroutine PetscObjectGetOptionsKSP(obj, options, ierr)
+  KSP obj
+  PetscOptions :: options
+  PetscErrorCode ierr
+  call PetscObjectGetOptions(PetscObjectCast(obj), options, ierr)
+  end subroutine 
+  subroutine PetscObjectSetOptionsKSP(obj, options, ierr)
+  KSP obj
+  PetscOptions :: options
+  PetscErrorCode ierr
+  call PetscObjectSetOptions(PetscObjectCast(obj), options, ierr)
+  end subroutine 
+  subroutine PetscObjectSetOptionsPrefixKSP(obj, prefix, ierr)
+  KSP obj
+  character(*) :: prefix
+  PetscErrorCode ierr
+  call PetscObjectSetOptionsPrefix(PetscObjectCast(obj), prefix, ierr)
+  end subroutine 
+  subroutine PetscObjectAppendOptionsPrefixKSP(obj, prefix, ierr)
+  KSP obj
+  character(*) :: prefix
+  PetscErrorCode ierr
+  call PetscObjectAppendOptionsPrefix(PetscObjectCast(obj), prefix, ierr)
+  end subroutine 
+  subroutine PetscObjectGetOptionsPrefixKSP(obj, prefix, ierr)
+  KSP obj
+  character(*) :: prefix
+  PetscErrorCode ierr
+  call PetscObjectGetOptionsPrefix(PetscObjectCast(obj), prefix, ierr)
+  end subroutine 
+  subroutine PetscObjectPrependOptionsPrefixKSP(obj, prefix, ierr)
+  KSP obj
+  character(*) :: prefix
+  PetscErrorCode ierr
+  call PetscObjectPrependOptionsPrefix(PetscObjectCast(obj), prefix, ierr)
+  end subroutine 
+  subroutine PetscObjectGetCommKSP(obj, comm, ierr)
+  KSP obj
+  MPIU_Comm :: comm
+  PetscErrorCode ierr
+  call PetscObjectGetComm(PetscObjectCast(obj), comm, ierr)
+  end subroutine 
+  subroutine PetscObjectGetTabLevelKSP(obj, tab, ierr)
+  KSP obj
+  PetscInt :: tab
+  PetscErrorCode ierr
+  call PetscObjectGetTabLevel(PetscObjectCast(obj), tab, ierr)
+  end subroutine 
+  subroutine PetscObjectSetTabLevelKSP(obj, tab, ierr)
+  KSP obj
+  PetscInt :: tab
+  PetscErrorCode ierr
+  call PetscObjectSetTabLevel(PetscObjectCast(obj), tab, ierr)
+  end subroutine 
+  subroutine PetscObjectIncrementTabLevelKSP(obj, oldobj, tab, ierr)
+  KSP obj
+  PetscObject :: oldobj
+  PetscInt :: tab
+  PetscErrorCode ierr
+  call PetscObjectIncrementTabLevel(PetscObjectCast(obj), oldobj, tab, ierr)
+  end subroutine 
+  subroutine PetscObjectGetNewTagKSP(obj, tag, ierr)
+  KSP obj
+  PetscMPIInt :: tag
+  PetscErrorCode ierr
+  call PetscObjectGetNewTag(PetscObjectCast(obj), tag, ierr)
+  end subroutine 
+  subroutine PetscObjectGetClassIdKSP(obj, classid, ierr)
+  KSP obj
+  PetscClassId :: classid
+  PetscErrorCode ierr
+  call PetscObjectGetClassId(PetscObjectCast(obj), classid, ierr)
+  end subroutine 
+  subroutine PetscObjectGetClassNameKSP(obj, classname, ierr)
+  KSP obj
+  character(*) :: classname
+  PetscErrorCode ierr
+  call PetscObjectGetClassName(PetscObjectCast(obj), classname, ierr)
+  end subroutine 
+  subroutine PetscObjectSetNameKSP(obj, name, ierr)
+  KSP obj
+  character(*) :: name
+  PetscErrorCode ierr
+  call PetscObjectSetName(PetscObjectCast(obj), name, ierr)
+  end subroutine 
+  subroutine PetscObjectPrintClassNamePrefixTypeKSP(obj, viewer, ierr)
+  KSP obj
+  PetscViewer :: viewer
+  PetscErrorCode ierr
+  call PetscObjectPrintClassNamePrefixType(PetscObjectCast(obj), viewer, ierr)
+  end subroutine 
+  subroutine PetscObjectNameKSP(obj, ierr)
+  KSP obj
+  PetscErrorCode ierr
+  call PetscObjectName(PetscObjectCast(obj), ierr)
+  end subroutine 
+  subroutine PetscObjectChangeTypeNameKSP(obj, type_name, ierr)
+  KSP obj
+  character(*) :: type_name
+  PetscErrorCode ierr
+  call PetscObjectChangeTypeName(PetscObjectCast(obj), type_name, ierr)
+  end subroutine 
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT:: KSPGuessnotequals
+!DEC$ ATTRIBUTES DLLEXPORT:: KSPGuessequals
+#endif
+
+  function KSPGuessnotequals(A,B)
+    logical KSPGuessnotequals
+    type(tKSPGuess), intent(in) :: A,B
+    KSPGuessnotequals = (A%v .ne. B%v)
+  end function
+  function KSPGuessequals(A,B)
+    logical KSPGuessequals
+    type(tKSPGuess), intent(in) :: A,B
+    KSPGuessequals = (A%v .eq. B%v)
+  end function
+  function PetscObjectCastKSPGuess(obj)
+    KSPGuess obj
+    PetscObject PetscObjectCastKSPGuess
+    PetscObjectCastKSPGuess%v = obj%v
+  end function 
+  subroutine PetscBarrierKSPGuess(obj,ierr)
+    KSPGuess obj
+    PetscErrorCode ierr
+    call PetscBarrier(PetscObjectCast(obj),ierr)
+  end subroutine 
+#if defined(PETSC_HAVE_SAWS)
+  subroutine PetscObjectSAWsTakeAccessKSPGuess(obj, ierr)
+  KSPGuess obj
+  PetscErrorCode ierr
+  call PetscObjectSAWsTakeAccess(PetscObjectCast(obj), ierr)
+  end subroutine 
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  subroutine PetscObjectSAWsGrantAccessKSPGuess(obj, ierr)
+  KSPGuess obj
+  PetscErrorCode ierr
+  call PetscObjectSAWsGrantAccess(PetscObjectCast(obj), ierr)
+  end subroutine 
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  subroutine PetscObjectSAWsBlockKSPGuess(obj, ierr)
+  KSPGuess obj
+  PetscErrorCode ierr
+  call PetscObjectSAWsBlock(PetscObjectCast(obj), ierr)
+  end subroutine 
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  subroutine PetscObjectSAWsSetBlockKSPGuess(obj, flg, ierr)
+  KSPGuess obj
+  PetscBool :: flg
+  PetscErrorCode ierr
+  call PetscObjectSAWsSetBlock(PetscObjectCast(obj), flg, ierr)
+  end subroutine 
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  subroutine PetscObjectSAWsViewOffKSPGuess(obj, ierr)
+  KSPGuess obj
+  PetscErrorCode ierr
+  call PetscObjectSAWsViewOff(PetscObjectCast(obj), ierr)
+  end subroutine 
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  subroutine PetscObjectViewSAWsKSPGuess(obj, viewer, ierr)
+  KSPGuess obj
+  PetscViewer :: viewer
+  PetscErrorCode ierr
+  call PetscObjectViewSAWs(PetscObjectCast(obj), viewer, ierr)
+  end subroutine 
+#endif
+  subroutine PetscObjectGetTypeKSPGuess(obj, type, ierr)
+  KSPGuess obj
+  character(*) :: type
+  PetscErrorCode ierr
+  call PetscObjectGetType(PetscObjectCast(obj), type, ierr)
+  end subroutine 
+  subroutine PetscObjectSetPrintedOptionsKSPGuess(obj, ierr)
+  KSPGuess obj
+  PetscErrorCode ierr
+  call PetscObjectSetPrintedOptions(PetscObjectCast(obj), ierr)
+  end subroutine 
+  subroutine PetscObjectInheritPrintedOptionsKSPGuess(pobj, obj, ierr)
+  KSPGuess pobj
+  PetscObject :: obj
+  PetscErrorCode ierr
+  call PetscObjectInheritPrintedOptions(PetscObjectCast(pobj), obj, ierr)
+  end subroutine 
+  subroutine PetscObjectAddOptionsHandlerKSPGuess(obj, handle, destroy, ctx, ierr)
+  KSPGuess obj
+  external :: handle
+  external :: destroy
+  type(*) :: ctx
+  PetscErrorCode ierr
+  call PetscObjectAddOptionsHandler(PetscObjectCast(obj), handle, destroy, ctx, ierr)
+  end subroutine 
+  subroutine PetscObjectProcessOptionsHandlersKSPGuess(obj, PetscOptionsObject, ierr)
+  KSPGuess obj
+  PetscOptionItems :: PetscOptionsObject
+  PetscErrorCode ierr
+  call PetscObjectProcessOptionsHandlers(PetscObjectCast(obj), PetscOptionsObject, ierr)
+  end subroutine 
+  subroutine PetscObjectDestroyOptionsHandlersKSPGuess(obj, ierr)
+  KSPGuess obj
+  PetscErrorCode ierr
+  call PetscObjectDestroyOptionsHandlers(PetscObjectCast(obj), ierr)
+  end subroutine 
+  subroutine PetscObjectReferenceKSPGuess(obj, ierr)
+  KSPGuess obj
+  PetscErrorCode ierr
+  call PetscObjectReference(PetscObjectCast(obj), ierr)
+  end subroutine 
+  subroutine PetscObjectGetReferenceKSPGuess(obj, cnt, ierr)
+  KSPGuess obj
+  PetscInt :: cnt
+  PetscErrorCode ierr
+  call PetscObjectGetReference(PetscObjectCast(obj), cnt, ierr)
+  end subroutine 
+  subroutine PetscObjectDereferenceKSPGuess(obj, ierr)
+  KSPGuess obj
+  PetscErrorCode ierr
+  call PetscObjectDereference(PetscObjectCast(obj), ierr)
+  end subroutine 
+  subroutine PetscObjectRemoveReferenceKSPGuess(obj, name, ierr)
+  KSPGuess obj
+  character(*) :: name
+  PetscErrorCode ierr
+  call PetscObjectRemoveReference(PetscObjectCast(obj), name, ierr)
+  end subroutine 
+  subroutine PetscObjectHasFunctionKSPGuess(obj, name, has, ierr)
+  KSPGuess obj
+  character(*) :: name
+  PetscBool :: has
+  PetscErrorCode ierr
+  call PetscObjectHasFunction(PetscObjectCast(obj), name, has, ierr)
+  end subroutine 
+  subroutine PetscObjectSetFromOptionsKSPGuess(obj, ierr)
+  KSPGuess obj
+  PetscErrorCode ierr
+  call PetscObjectSetFromOptions(PetscObjectCast(obj), ierr)
+  end subroutine 
+  subroutine PetscObjectSetUpKSPGuess(obj, ierr)
+  KSPGuess obj
+  PetscErrorCode ierr
+  call PetscObjectSetUp(PetscObjectCast(obj), ierr)
+  end subroutine 
+  subroutine PetscObjectGetNameKSPGuess(obj, name, ierr)
+  KSPGuess obj
+  character(*) :: name
+  PetscErrorCode ierr
+  call PetscObjectGetName(PetscObjectCast(obj), name, ierr)
+  end subroutine 
+  subroutine PetscObjectDestroyKSPGuess(obj, ierr)
+  KSPGuess obj
+  PetscErrorCode ierr
+  call PetscObjectDestroy(PetscObjectCast(obj), ierr)
+  end subroutine 
+  subroutine PetscObjectViewKSPGuess(obj, viewer, ierr)
+  KSPGuess obj
+  PetscViewer :: viewer
+  PetscErrorCode ierr
+  call PetscObjectView(PetscObjectCast(obj), viewer, ierr)
+  end subroutine 
+  subroutine PetscObjectViewFromOptionsKSPGuess(obj, bobj, name, ierr)
+  KSPGuess obj
+  PetscObject :: bobj
+  character(*) :: name
+  PetscErrorCode ierr
+  call PetscObjectViewFromOptions(PetscObjectCast(obj), bobj, name, ierr)
+  end subroutine 
+  subroutine PetscObjectTypeCompareKSPGuess(obj, type_name, same, ierr)
+  KSPGuess obj
+  character(*) :: type_name
+  PetscBool :: same
+  PetscErrorCode ierr
+  call PetscObjectTypeCompare(PetscObjectCast(obj), type_name, same, ierr)
+  end subroutine 
+  subroutine PetscObjectObjectTypeCompareKSPGuess(obj1, obj2, same, ierr)
+  KSPGuess obj1
+  PetscObject :: obj2
+  PetscBool :: same
+  PetscErrorCode ierr
+  call PetscObjectObjectTypeCompare(PetscObjectCast(obj1), obj2, same, ierr)
+  end subroutine 
+  subroutine PetscObjectBaseTypeCompareKSPGuess(obj, type_name, same, ierr)
+  KSPGuess obj
+  character(*) :: type_name
+  PetscBool :: same
+  PetscErrorCode ierr
+  call PetscObjectBaseTypeCompare(PetscObjectCast(obj), type_name, same, ierr)
+  end subroutine 
+  subroutine PetscObjectRegisterDestroyKSPGuess(obj, ierr)
+  KSPGuess obj
+  PetscErrorCode ierr
+  call PetscObjectRegisterDestroy(PetscObjectCast(obj), ierr)
+  end subroutine 
+  subroutine PetscObjectGetIdKSPGuess(obj, id, ierr)
+  KSPGuess obj
+  PetscObjectId :: id
+  PetscErrorCode ierr
+  call PetscObjectGetId(PetscObjectCast(obj), id, ierr)
+  end subroutine 
+  subroutine PetscObjectCompareIdKSPGuess(obj, id, eq, ierr)
+  KSPGuess obj
+  PetscObjectId :: id
+  PetscBool :: eq
+  PetscErrorCode ierr
+  call PetscObjectCompareId(PetscObjectCast(obj), id, eq, ierr)
+  end subroutine 
+  subroutine PetscObjectGetOptionsKSPGuess(obj, options, ierr)
+  KSPGuess obj
+  PetscOptions :: options
+  PetscErrorCode ierr
+  call PetscObjectGetOptions(PetscObjectCast(obj), options, ierr)
+  end subroutine 
+  subroutine PetscObjectSetOptionsKSPGuess(obj, options, ierr)
+  KSPGuess obj
+  PetscOptions :: options
+  PetscErrorCode ierr
+  call PetscObjectSetOptions(PetscObjectCast(obj), options, ierr)
+  end subroutine 
+  subroutine PetscObjectSetOptionsPrefixKSPGuess(obj, prefix, ierr)
+  KSPGuess obj
+  character(*) :: prefix
+  PetscErrorCode ierr
+  call PetscObjectSetOptionsPrefix(PetscObjectCast(obj), prefix, ierr)
+  end subroutine 
+  subroutine PetscObjectAppendOptionsPrefixKSPGuess(obj, prefix, ierr)
+  KSPGuess obj
+  character(*) :: prefix
+  PetscErrorCode ierr
+  call PetscObjectAppendOptionsPrefix(PetscObjectCast(obj), prefix, ierr)
+  end subroutine 
+  subroutine PetscObjectGetOptionsPrefixKSPGuess(obj, prefix, ierr)
+  KSPGuess obj
+  character(*) :: prefix
+  PetscErrorCode ierr
+  call PetscObjectGetOptionsPrefix(PetscObjectCast(obj), prefix, ierr)
+  end subroutine 
+  subroutine PetscObjectPrependOptionsPrefixKSPGuess(obj, prefix, ierr)
+  KSPGuess obj
+  character(*) :: prefix
+  PetscErrorCode ierr
+  call PetscObjectPrependOptionsPrefix(PetscObjectCast(obj), prefix, ierr)
+  end subroutine 
+  subroutine PetscObjectGetCommKSPGuess(obj, comm, ierr)
+  KSPGuess obj
+  MPIU_Comm :: comm
+  PetscErrorCode ierr
+  call PetscObjectGetComm(PetscObjectCast(obj), comm, ierr)
+  end subroutine 
+  subroutine PetscObjectGetTabLevelKSPGuess(obj, tab, ierr)
+  KSPGuess obj
+  PetscInt :: tab
+  PetscErrorCode ierr
+  call PetscObjectGetTabLevel(PetscObjectCast(obj), tab, ierr)
+  end subroutine 
+  subroutine PetscObjectSetTabLevelKSPGuess(obj, tab, ierr)
+  KSPGuess obj
+  PetscInt :: tab
+  PetscErrorCode ierr
+  call PetscObjectSetTabLevel(PetscObjectCast(obj), tab, ierr)
+  end subroutine 
+  subroutine PetscObjectIncrementTabLevelKSPGuess(obj, oldobj, tab, ierr)
+  KSPGuess obj
+  PetscObject :: oldobj
+  PetscInt :: tab
+  PetscErrorCode ierr
+  call PetscObjectIncrementTabLevel(PetscObjectCast(obj), oldobj, tab, ierr)
+  end subroutine 
+  subroutine PetscObjectGetNewTagKSPGuess(obj, tag, ierr)
+  KSPGuess obj
+  PetscMPIInt :: tag
+  PetscErrorCode ierr
+  call PetscObjectGetNewTag(PetscObjectCast(obj), tag, ierr)
+  end subroutine 
+  subroutine PetscObjectGetClassIdKSPGuess(obj, classid, ierr)
+  KSPGuess obj
+  PetscClassId :: classid
+  PetscErrorCode ierr
+  call PetscObjectGetClassId(PetscObjectCast(obj), classid, ierr)
+  end subroutine 
+  subroutine PetscObjectGetClassNameKSPGuess(obj, classname, ierr)
+  KSPGuess obj
+  character(*) :: classname
+  PetscErrorCode ierr
+  call PetscObjectGetClassName(PetscObjectCast(obj), classname, ierr)
+  end subroutine 
+  subroutine PetscObjectSetNameKSPGuess(obj, name, ierr)
+  KSPGuess obj
+  character(*) :: name
+  PetscErrorCode ierr
+  call PetscObjectSetName(PetscObjectCast(obj), name, ierr)
+  end subroutine 
+  subroutine PetscObjectPrintClassNamePrefixTypeKSPGuess(obj, viewer, ierr)
+  KSPGuess obj
+  PetscViewer :: viewer
+  PetscErrorCode ierr
+  call PetscObjectPrintClassNamePrefixType(PetscObjectCast(obj), viewer, ierr)
+  end subroutine 
+  subroutine PetscObjectNameKSPGuess(obj, ierr)
+  KSPGuess obj
+  PetscErrorCode ierr
+  call PetscObjectName(PetscObjectCast(obj), ierr)
+  end subroutine 
+  subroutine PetscObjectChangeTypeNameKSPGuess(obj, type_name, ierr)
+  KSPGuess obj
+  character(*) :: type_name
+  PetscErrorCode ierr
+  call PetscObjectChangeTypeName(PetscObjectCast(obj), type_name, ierr)
+  end subroutine 
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT:: KSPChebyshevKindnotequals
+!DEC$ ATTRIBUTES DLLEXPORT:: KSPChebyshevKindequals
+#endif
+
+  function KSPChebyshevKindnotequals(A,B)
+    logical KSPChebyshevKindnotequals
+    type(eKSPChebyshevKind), intent(in) :: A,B
+    KSPChebyshevKindnotequals = (A%v .ne. B%v)
+  end function
+  function KSPChebyshevKindequals(A,B)
+    logical KSPChebyshevKindequals
+    type(eKSPChebyshevKind), intent(in) :: A,B
+    KSPChebyshevKindequals = (A%v .eq. B%v)
+  end function
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT:: KSPFCDTruncationTypenotequals
+!DEC$ ATTRIBUTES DLLEXPORT:: KSPFCDTruncationTypeequals
+#endif
+
+  function KSPFCDTruncationTypenotequals(A,B)
+    logical KSPFCDTruncationTypenotequals
+    type(eKSPFCDTruncationType), intent(in) :: A,B
+    KSPFCDTruncationTypenotequals = (A%v .ne. B%v)
+  end function
+  function KSPFCDTruncationTypeequals(A,B)
+    logical KSPFCDTruncationTypeequals
+    type(eKSPFCDTruncationType), intent(in) :: A,B
+    KSPFCDTruncationTypeequals = (A%v .eq. B%v)
+  end function
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT:: KSPHPDDMTypenotequals
+!DEC$ ATTRIBUTES DLLEXPORT:: KSPHPDDMTypeequals
+#endif
+
+  function KSPHPDDMTypenotequals(A,B)
+    logical KSPHPDDMTypenotequals
+    type(eKSPHPDDMType), intent(in) :: A,B
+    KSPHPDDMTypenotequals = (A%v .ne. B%v)
+  end function
+  function KSPHPDDMTypeequals(A,B)
+    logical KSPHPDDMTypeequals
+    type(eKSPHPDDMType), intent(in) :: A,B
+    KSPHPDDMTypeequals = (A%v .eq. B%v)
+  end function
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT:: KSPGMRESCGSRefinementTypenotequals
+!DEC$ ATTRIBUTES DLLEXPORT:: KSPGMRESCGSRefinementTypeequals
+#endif
+
+  function KSPGMRESCGSRefinementTypenotequals(A,B)
+    logical KSPGMRESCGSRefinementTypenotequals
+    type(eKSPGMRESCGSRefinementType), intent(in) :: A,B
+    KSPGMRESCGSRefinementTypenotequals = (A%v .ne. B%v)
+  end function
+  function KSPGMRESCGSRefinementTypeequals(A,B)
+    logical KSPGMRESCGSRefinementTypeequals
+    type(eKSPGMRESCGSRefinementType), intent(in) :: A,B
+    KSPGMRESCGSRefinementTypeequals = (A%v .eq. B%v)
+  end function
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT:: KSPNormTypenotequals
+!DEC$ ATTRIBUTES DLLEXPORT:: KSPNormTypeequals
+#endif
+
+  function KSPNormTypenotequals(A,B)
+    logical KSPNormTypenotequals
+    type(eKSPNormType), intent(in) :: A,B
+    KSPNormTypenotequals = (A%v .ne. B%v)
+  end function
+  function KSPNormTypeequals(A,B)
+    logical KSPNormTypeequals
+    type(eKSPNormType), intent(in) :: A,B
+    KSPNormTypeequals = (A%v .eq. B%v)
+  end function
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT:: KSPConvergedReasonnotequals
+!DEC$ ATTRIBUTES DLLEXPORT:: KSPConvergedReasonequals
+#endif
+
+  function KSPConvergedReasonnotequals(A,B)
+    logical KSPConvergedReasonnotequals
+    type(eKSPConvergedReason), intent(in) :: A,B
+    KSPConvergedReasonnotequals = (A%v .ne. B%v)
+  end function
+  function KSPConvergedReasonequals(A,B)
+    logical KSPConvergedReasonequals
+    type(eKSPConvergedReason), intent(in) :: A,B
+    KSPConvergedReasonequals = (A%v .eq. B%v)
+  end function
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT:: KSPCGTypenotequals
+!DEC$ ATTRIBUTES DLLEXPORT:: KSPCGTypeequals
+#endif
+
+  function KSPCGTypenotequals(A,B)
+    logical KSPCGTypenotequals
+    type(eKSPCGType), intent(in) :: A,B
+    KSPCGTypenotequals = (A%v .ne. B%v)
+  end function
+  function KSPCGTypeequals(A,B)
+    logical KSPCGTypeequals
+    type(eKSPCGType), intent(in) :: A,B
+    KSPCGTypeequals = (A%v .eq. B%v)
+  end function
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT:: MatSchurComplementAinvTypenotequals
+!DEC$ ATTRIBUTES DLLEXPORT:: MatSchurComplementAinvTypeequals
+#endif
+
+  function MatSchurComplementAinvTypenotequals(A,B)
+    logical MatSchurComplementAinvTypenotequals
+    type(eMatSchurComplementAinvType), intent(in) :: A,B
+    MatSchurComplementAinvTypenotequals = (A%v .ne. B%v)
+  end function
+  function MatSchurComplementAinvTypeequals(A,B)
+    logical MatSchurComplementAinvTypeequals
+    type(eMatSchurComplementAinvType), intent(in) :: A,B
+    MatSchurComplementAinvTypeequals = (A%v .eq. B%v)
+  end function
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT:: MatLMVMMultAlgorithmnotequals
+!DEC$ ATTRIBUTES DLLEXPORT:: MatLMVMMultAlgorithmequals
+#endif
+
+  function MatLMVMMultAlgorithmnotequals(A,B)
+    logical MatLMVMMultAlgorithmnotequals
+    type(eMatLMVMMultAlgorithm), intent(in) :: A,B
+    MatLMVMMultAlgorithmnotequals = (A%v .ne. B%v)
+  end function
+  function MatLMVMMultAlgorithmequals(A,B)
+    logical MatLMVMMultAlgorithmequals
+    type(eMatLMVMMultAlgorithm), intent(in) :: A,B
+    MatLMVMMultAlgorithmequals = (A%v .eq. B%v)
+  end function
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT:: MatLMVMSymBroydenScaleTypenotequals
+!DEC$ ATTRIBUTES DLLEXPORT:: MatLMVMSymBroydenScaleTypeequals
+#endif
+
+  function MatLMVMSymBroydenScaleTypenotequals(A,B)
+    logical MatLMVMSymBroydenScaleTypenotequals
+    type(eMatLMVMSymBroydenScaleType), intent(in) :: A,B
+    MatLMVMSymBroydenScaleTypenotequals = (A%v .ne. B%v)
+  end function
+  function MatLMVMSymBroydenScaleTypeequals(A,B)
+    logical MatLMVMSymBroydenScaleTypeequals
+    type(eMatLMVMSymBroydenScaleType), intent(in) :: A,B
+    MatLMVMSymBroydenScaleTypeequals = (A%v .eq. B%v)
+  end function
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT:: MatLMVMDenseTypenotequals
+!DEC$ ATTRIBUTES DLLEXPORT:: MatLMVMDenseTypeequals
+#endif
+
+  function MatLMVMDenseTypenotequals(A,B)
+    logical MatLMVMDenseTypenotequals
+    type(eMatLMVMDenseType), intent(in) :: A,B
+    MatLMVMDenseTypenotequals = (A%v .ne. B%v)
+  end function
+  function MatLMVMDenseTypeequals(A,B)
+    logical MatLMVMDenseTypeequals
+    type(eMatLMVMDenseType), intent(in) :: A,B
+    MatLMVMDenseTypeequals = (A%v .eq. B%v)
+  end function
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT:: KSPDMActivenotequals
+!DEC$ ATTRIBUTES DLLEXPORT:: KSPDMActiveequals
+#endif
+
+  function KSPDMActivenotequals(A,B)
+    logical KSPDMActivenotequals
+    type(eKSPDMActive), intent(in) :: A,B
+    KSPDMActivenotequals = (A%v .ne. B%v)
+  end function
+  function KSPDMActiveequals(A,B)
+    logical KSPDMActiveequals
+    type(eKSPDMActive), intent(in) :: A,B
+    KSPDMActiveequals = (A%v .eq. B%v)
+  end function

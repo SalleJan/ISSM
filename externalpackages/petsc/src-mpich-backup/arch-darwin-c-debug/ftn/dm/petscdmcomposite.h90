@@ -1,0 +1,183 @@
+  interface
+  subroutine DMCompositeSetCoupling(dm,FormCoupleLocations, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  external :: FormCoupleLocations
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMCompositeSetCoupling
+#endif
+  interface
+  subroutine DMCompositeGetNumberDM(dm,nDM, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  PetscInt :: nDM
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMCompositeGetNumberDM
+#endif
+  interface
+  subroutine DMCompositeGetAccessArray(dm,pvec,nwanted,wanted,vecs, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM,tVec
+  DM :: dm
+  Vec :: pvec
+  PetscInt :: nwanted
+  PetscInt :: wanted(*)
+  Vec :: vecs(*)
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMCompositeGetAccessArray
+#endif
+  interface
+  subroutine DMCompositeGetLocalAccessArray(dm,pvec,nwanted,wanted,vecs, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM,tVec
+  DM :: dm
+  Vec :: pvec
+  PetscInt :: nwanted
+  PetscInt :: wanted(*)
+  Vec :: vecs(*)
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMCompositeGetLocalAccessArray
+#endif
+  interface
+  subroutine DMCompositeRestoreAccessArray(dm,pvec,nwanted,wanted,vecs, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM,tVec
+  DM :: dm
+  Vec :: pvec
+  PetscInt :: nwanted
+  PetscInt :: wanted(*)
+  Vec :: vecs(*)
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMCompositeRestoreAccessArray
+#endif
+  interface
+  subroutine DMCompositeRestoreLocalAccessArray(dm,pvec,nwanted,wanted,vecs, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM,tVec
+  DM :: dm
+  Vec :: pvec
+  PetscInt :: nwanted
+  PetscInt :: wanted(*)
+  Vec :: vecs
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMCompositeRestoreLocalAccessArray
+#endif
+  interface
+  subroutine DMCompositeScatterArray(dm,gvec,lvecs, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM,tVec
+  DM :: dm
+  Vec :: gvec
+  Vec :: lvecs
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMCompositeScatterArray
+#endif
+  interface
+  subroutine DMCompositeGatherArray(dm,imode,gvec,lvecs, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM,eInsertMode,tVec
+  DM :: dm
+  InsertMode :: imode
+  Vec :: gvec
+  Vec :: lvecs
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMCompositeGatherArray
+#endif
+  interface
+  subroutine DMCompositeAddDM(dmc,dm, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dmc
+  DM :: dm
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMCompositeAddDM
+#endif
+  interface
+  subroutine DMCompositeGetISLocalToGlobalMappings(dm,ltogs, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM,tISLocalToGlobalMapping
+  DM :: dm
+  ISLocalToGlobalMapping, pointer :: ltogs(:)
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMCompositeGetISLocalToGlobalMappings
+#endif
+  interface
+  subroutine DMCompositeGetLocalISs(dm,is, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM,tIS
+  DM :: dm
+  IS, pointer :: is(:)
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMCompositeGetLocalISs
+#endif
+  interface
+  subroutine DMCompositeGetGlobalISs(dm,is, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM,tIS
+  DM :: dm
+  IS, pointer :: is(:)
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMCompositeGetGlobalISs
+#endif
+  interface
+  subroutine DMCompositeGetEntriesArray(dm,dms, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  DM :: dms(*)
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMCompositeGetEntriesArray
+#endif
+  interface
+  subroutine DMCompositeCreate(comm,packer, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  MPIU_Comm :: comm
+  DM :: packer
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMCompositeCreate
+#endif

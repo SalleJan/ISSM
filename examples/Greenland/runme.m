@@ -8,7 +8,7 @@ if any(steps==1)
 	disp('   Step 1: Mesh creation');
 
 	%Generate initial uniform mesh (resolution = 20000 m)
-	md=triangle(model,'./DomainOutline.exp',20000);
+	md=triangle(model,'DomainOutline.exp',20000);
 
 	% Get velocities (Note: You can use ncdisp('file') to see an ncdump)
 	x1   = ncread(ncdata,'x1');
@@ -19,31 +19,46 @@ if any(steps==1)
 	vy   = InterpFromGridToMesh(x1,y1,vely',md.mesh.x,md.mesh.y,0);
 	vel  = sqrt(vx.^2+vy.^2);
 
+    h = NaN * ones(md.mesh.numberofvertices, 1);
+    in = ContourToNodes(md.mesh.x, md.mesh.y, ['PG.exp'], 1) | ...
+         ContourToNodes(md.mesh.x, md.mesh.y, ['RG.exp'], 1) | ...
+         ContourToNodes(md.mesh.x, md.mesh.y, ['79N.exp'], 1) | ...
+         ContourToNodes(md.mesh.x, md.mesh.y, ['ZI.exp'], 1) | ...
+         ContourToNodes(md.mesh.x, md.mesh.y, ['DJ.exp'], 1) ;
+    h(find(in)) = 100;
+    %plotmodel(md, 'data', in)
+
 	%Mesh Greenland
-	md=bamg(md,'hmax',400000,'hmin',5000,'gradation',1.4,'field',vel,'err',8);
+	md=bamg(md,'hmax',20000,'hmin',1000,'gradation',1.4,'field',vel,'err',3,'hVertices',h,'maxnbv',10^7);
+    vx   = InterpFromGridToMesh(x1,y1,velx',md.mesh.x,md.mesh.y,0);
+	vy   = InterpFromGridToMesh(x1,y1,vely',md.mesh.x,md.mesh.y,0);
+	vel  = sqrt(vx.^2+vy.^2);
 
 	%convert x,y coordinates (Polar stereo) to lat/lon
-	[md.mesh.lat,md.mesh.long]=xy2ll(md.mesh.x,md.mesh.y,+1,39,71);
+	[md.mesh.lat,md.mesh.long]=xy2ll(md.mesh.x,md.mesh.y,+1,45,70);
+    md.mesh.epsg=3413;
 
-	save ./Models/Greenland.Mesh_generation md;
+	save ./Models/Greenland.Mesh_generation.ROIS_BM_box md;
 
 	plotmodel (md,'data','mesh');
+    %plotmodel (md,'data',vel);
+
 end 
 
 if any(steps==2) 
 	disp('   Step 2: Parameterization');
-	md = loadmodel('./Models/Greenland.Mesh_generation');
+	md = loadmodel('./Models/Greenland.Mesh_generation.ROIS_BM_box');
 
 	md = setmask(md,'','');
 	md = parameterize(md,'./Greenland.par');
-	md = setflowequation(md,'SSA','all');
+	md = setflowequation(md,'SSA', 'all');
 
-	save ./Models/Greenland.Parameterization md;
+	save ./Models/Greenland.Parameterization_BM_box md;
 end 
 
 if any(steps==3) 
 	disp('   Step 3: Control method friction');
-	md = loadmodel('./Models/Greenland.Parameterization');
+	md = loadmodel('./Models/Greenland.Parameterization_BM_box');
 
 	%Control general
 	md.inversion.iscontrol=1;
@@ -69,7 +84,7 @@ if any(steps==3)
 	md.stressbalance.abstol=NaN;
 
 	%Go solve
-	md.cluster=generic('name',oshostname,'np',2);
+	md.cluster=generic('name',oshostname,'np',1);
 	md.toolkits=toolkits;
 	md.verbose=verbose('solution',true,'control',true);
 	md=solve(md,'Stressbalance');
@@ -77,12 +92,12 @@ if any(steps==3)
 	%Update model friction fields accordingly
 	md.friction.coefficient=md.results.StressbalanceSolution.FrictionCoefficient;
 
-	save ./Models/Greenland.Control_drag md;
+	save ./Models/Greenland.Control_drag_BM_box md;
 end 
 
 if any(steps==4) 
 	disp('   Step 4: Transient run');
-	md = loadmodel('./Models/Greenland.Control_drag');
+	md = loadmodel('./Models/Greenland.Control_drag_BM_box');
 
 	%Set surface mass balance
 	x1  = ncread(ncdata,'x1');
@@ -90,13 +105,22 @@ if any(steps==4)
 	smb = ncread(ncdata,'smb');
 	smb = InterpFromGridToMesh(x1,y1,smb',md.mesh.x,md.mesh.y,0);
 	smb = smb*md.materials.rho_freshwater/md.materials.rho_ice;
-	smb = [smb smb smb-1.0];
-	md.smb.mass_balance = [smb;1 10 20];
+	smb = [smb smb];
+	md.smb.mass_balance = [smb;1 20];
+    %calving = [10000*ones(md.mesh.numberofvertices,1), zeros(md.mesh.numberofvertices,1)];
+    %md.calving.calvingrate = [calving;1 20];
+    md.timestepping.interp_forcing = 1; % 0 means there is no interpolation in the smb mass balance, so it becomes a step-function, 1 is interpolation
+    md.levelset.kill_icebergs=1;
 
-	%Set transient options, run for 20 years, saving every timestep
-	md.timestepping.time_step=0.2;
-	md.timestepping.final_time=20;
-	md.settings.output_frequency=1;
+	%Set transient options, run for 20 years, saving every other timestep
+    md.timestepping = timesteppingadaptive();
+    md.timestepping.start_time = 0;
+    md.timestepping.final_time = 20;
+    md.timestepping.time_step_min = 0.05;           
+    md.timestepping.time_step_max = 2; 
+	%md.timestepping.time_step=0.2;
+	%md.timestepping.final_time=20;
+	md.settings.output_frequency=4;
 
 	%Additional options
 	md.inversion.iscontrol=0;
@@ -104,15 +128,15 @@ if any(steps==4)
 	md.verbose=verbose('solution',true,'module',true,'convergence',true);
 
 	%Go solve
-	md.cluster=generic('name',oshostname,'np',2);
+	md.cluster=generic('name',oshostname,'np',1);
 	md=solve(md,'Transient');
 
-	save ./Models/Greenland.Transient md;
+	save ./Models/Greenland.Transient_BM_box md;
 end 
 
 if any(steps==5) 
 	disp('   Step 5: Plotting');
-	md = loadmodel('./Models/Greenland.Transient');
+	md = loadmodel('./Models/Greenland.Transient_BM_box');
 
 	%Planview plots
 	plotmodel(md,'data',md.results.TransientSolution(end).Vel,'log#1', 10, ...
@@ -141,11 +165,14 @@ if any(steps==5)
 	volume=[]; for i=1:100; volume=[volume md.results.TransientSolution(i).IceVolume]; end
 	subplot(3,1,3); plot([0.2:0.2:20],volume); title('Ice Volume');
 	xlabel('years')
+
+    %plotmodel(md, 'data', md.results.TransientSolution(end).MaskOceanLevelset)
+    %plotmodel(md, 'data', md.results.TransientSolution(end).MaskIceLevelset, 'contourlevels', {0})
 end 
 
 if any(steps==6) 
 	disp('   Step 6: Extract Box SMB');
-	md = loadmodel('./Models/Greenland.Transient');
+	md = loadmodel('./Models/Greenland.Transient_BM');
 
 	ncbox='../Data/Box_Greenland_SMB_monthly_1840-2012_5km_cal_ver20141007.nc';
 
@@ -174,7 +201,7 @@ end
 
 if any(steps==7) 
 	disp('   Step 7: Historical Relaxation run');
-	md = loadmodel('./Models/Greenland.Control_drag');
+	md = loadmodel('./Models/Greenland.Control_drag_BM');
 
 	load smbbox
 
@@ -189,9 +216,9 @@ if any(steps==7)
 	md.smb.mass_balance = [smb;1 ];
 
 	%Set transient options, run for 20 years, saving every timestep
-	md.timestepping.time_step=0.2;
+	md.timestepping.time_step=0.1;
 	md.timestepping.final_time=20;
-	md.settings.output_frequency=1;
+	md.settings.output_frequency=2;
 
 	%Additional options
 	md.inversion.iscontrol=0;
@@ -199,43 +226,45 @@ if any(steps==7)
 	md.verbose=verbose('solution',true,'module',true);
 
 	%Go solve
-	md.cluster=generic('name',oshostname,'np',2);
+	md.cluster=generic('name',oshostname,'np',1);
 	md=solve(md,'Transient');
 
-	save ./Models/Greenland.HistoricTransient md;
+	save -v7.3 ./Models/Greenland.HistoricTransient_BM md;
 end % step 7 end
 
 if any(steps==8) 
 	disp('   Step 8: Plotting exercise');
 
 	%Load historic transient model
+    md = loadmodel('./Models/Greenland.HistoricTransient_BM')
 
 	%Create Line Plots of relaxation run. Create a figure.
+    figure
 
 	%Save surface mass balance, by looping through 200 years (1000 steps)
 	%Note, the first output will always contain output from time step 1
-
-	%Plot surface mass balance time series in first subplot
-
+    %Plot surface mass balance time series in first subplot
 	%Title this plot Mean surface mass balance
+    surfmb=[]; for i=2:100; surfmb = [surfmb, md.results.TransientSolution(i).SmbMassBalance]; end
+	subplot(3,1,1); plot([0.4:0.2:20],mean(surfmb)); title('Mean Surface mass balance');
 
 	%Save velocity by looping through 200 years
-
-	%Plot velocity time series in second subplot
-
+    %Plot velocity time series in second subplot
 	%Title this plot Mean Velocity
+    vel=[]; for i=2:100; vel = [vel, md.results.TransientSolution(i).Vel]; end
+	subplot(3,1,2); plot([0.4:0.2:20],mean(vel)); title('Mean Velocity');
 
 	%Save Ice Volume by looping through 200 years
-
-	%Plot volume time series in third subplot
-
+    %Plot volume time series in third subplot
 	%Title this plot Mean Velocity and add an x label of years
+    IceVol=[]; for i=2:100; IceVol = [IceVol, md.results.TransientSolution(i).IceVolume]; end
+	subplot(3,1,3); plot([0.4:0.2:20],IceVol); title('Ice volume');
 
 end % step 8 end
 
 if any(steps==9) 
 	disp('   Step 9: Box Transient run');
-	md = loadmodel('./Models/Greenland.HistoricTransient_200yr');
+	md = loadmodel('./Models/Greenland.HistoricTransient_BM');
 
 	%load past transient results
 	md.geometry.base=md.results.TransientSolution(end).Base;
@@ -282,15 +311,15 @@ if any(steps==9)
 	md.verbose=verbose('solution',true,'module',true);
 
 	%Go solve
-	md.cluster=generic('name',oshostname,'np',2);
+	md.cluster=generic('name',oshostname,'np',1);
 	md=solve(md,'Transient');
 
-	save ./Models/Greenland.BoxTransient md;
+	save ./Models/Greenland.BoxTransient_BM md;
 end 
 
 if any(steps==10) 
 	disp('   Step 10: Plot Box Transient');
-	md = loadmodel('./Models/Greenland.BoxTransient');
+	md = loadmodel('./Models/Greenland.BoxTransient_BM');
 
 	%Set years run
 	years_of_simulation = 2003:2012;
@@ -313,3 +342,11 @@ if any(steps==10)
 	subplot(3,1,3); plot(t,volume); title('Ice Volume');
 	xlabel('years')
 end 
+
+if any(steps==11)
+    disp('Making some figures')
+    md = loadmodel('./Models/Greenland.BoxTransient_BM');
+    plotmodel(md, 'data', md.results.TransientSolution(1).Thickness - md.results.TransientSolution(end).Thickness, 'title', 'Thickness change', ...
+              'data', md.results.TransientSolution(end).Vel, 'title', 'Velocity', 'log#2', 10, ...
+              'data', md.results.TransientSolution(end).SmbMassBalance, 'title', 'SMB')
+end

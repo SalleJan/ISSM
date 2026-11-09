@@ -1,0 +1,233 @@
+  interface
+  subroutine PetscErrorPrintfInitialize(ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscErrorPrintfInitialize
+#endif
+  interface
+  subroutine PetscTraceBackErrorHandler(comm,line,fun,file,n,p,mess,ctx, ierr)
+  use, intrinsic :: ISO_C_binding
+  import ePetscErrorType
+  MPIU_Comm :: comm
+  integer4 :: line
+  character(*) :: fun
+  character(*) :: file
+  PetscErrorCode :: n
+  PetscErrorType :: p
+  character(*) :: mess
+  type(*) :: ctx
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscTraceBackErrorHandler
+#endif
+  interface
+  subroutine PetscFPTrapPush(trap, ierr)
+  use, intrinsic :: ISO_C_binding
+  import ePetscFPTrap
+  PetscFPTrap :: trap
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscFPTrapPush
+#endif
+  interface
+  subroutine PetscFPTrapPop(ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscFPTrapPop
+#endif
+  interface
+  subroutine PetscSetFPTrap(flag, ierr)
+  use, intrinsic :: ISO_C_binding
+  import ePetscFPTrap
+  PetscFPTrap :: flag
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscSetFPTrap
+#endif
+  interface
+  subroutine PetscDetermineInitialFPTrap(ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDetermineInitialFPTrap
+#endif
+  interface
+  subroutine PetscCheckPointerSetIntensity(intensity, ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscInt :: intensity
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscCheckPointerSetIntensity
+#endif
+  interface
+  subroutine PetscAttachDebuggerErrorHandler(comm,line,fun,file,num,p,mess,ctx, ierr)
+  use, intrinsic :: ISO_C_binding
+  import ePetscErrorType
+  MPIU_Comm :: comm
+  integer4 :: line
+  character(*) :: fun
+  character(*) :: file
+  PetscErrorCode :: num
+  PetscErrorType :: p
+  character(*) :: mess
+  type(*) :: ctx
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscAttachDebuggerErrorHandler
+#endif
+  interface
+  subroutine PetscAbortErrorHandler(comm,line,fun,file,n,p,mess,ctx, ierr)
+  use, intrinsic :: ISO_C_binding
+  import ePetscErrorType
+  MPIU_Comm :: comm
+  integer4 :: line
+  character(*) :: fun
+  character(*) :: file
+  PetscErrorCode :: n
+  PetscErrorType :: p
+  character(*) :: mess
+  type(*) :: ctx
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscAbortErrorHandler
+#endif
+  interface
+  subroutine PetscEmacsClientErrorHandler(comm,line,fun,file,n,p,mess,ctx, ierr)
+  use, intrinsic :: ISO_C_binding
+  import ePetscErrorType
+  MPIU_Comm :: comm
+  integer4 :: line
+  character(*) :: fun
+  character(*) :: file
+  PetscErrorCode :: n
+  PetscErrorType :: p
+  character(*) :: mess
+  type(*) :: ctx
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscEmacsClientErrorHandler
+#endif
+  interface
+  subroutine PetscPushErrorHandler(handler,ctx, ierr)
+  use, intrinsic :: ISO_C_binding
+  external :: handler
+  type(*) :: ctx
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscPushErrorHandler
+#endif
+  interface
+  subroutine PetscPopErrorHandler(ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscPopErrorHandler
+#endif
+  interface
+  subroutine PetscReturnErrorHandler(comm,line,fun,file,n,p,mess,ctx, ierr)
+  use, intrinsic :: ISO_C_binding
+  import ePetscErrorType
+  MPIU_Comm :: comm
+  integer4 :: line
+  character(*) :: fun
+  character(*) :: file
+  PetscErrorCode :: n
+  PetscErrorType :: p
+  character(*) :: mess
+  type(*) :: ctx
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscReturnErrorHandler
+#endif
+  interface
+  subroutine PetscErrorMessage(errnum,text,specific, ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscErrorCode :: errnum
+  character(*) :: text
+  character(*) :: specific
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscErrorMessage
+#endif
+  interface
+  subroutine PetscPushSignalHandler(routine,ctx, ierr)
+  use, intrinsic :: ISO_C_binding
+  external :: routine
+  type(*) :: ctx
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscPushSignalHandler
+#endif
+  interface
+  subroutine PetscPopSignalHandler(ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscPopSignalHandler
+#endif
+  interface
+  subroutine PetscMPIAbortErrorHandler(comm,line,fun,file,n,p,mess,ctx, ierr)
+  use, intrinsic :: ISO_C_binding
+  import ePetscErrorType
+  MPIU_Comm :: comm
+  integer4 :: line
+  character(*) :: fun
+  character(*) :: file
+  PetscErrorCode :: n
+  PetscErrorType :: p
+  character(*) :: mess
+  type(*) :: ctx
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscMPIAbortErrorHandler
+#endif
+  interface operator(.ne.)
+    module procedure PetscErrorTypenotequals
+  end interface operator (.ne.)
+  interface operator(.eq.)
+    module procedure PetscErrorTypeequals
+  end interface operator (.eq.)
+
+  interface operator(.ne.)
+    module procedure PetscFPTrapnotequals
+  end interface operator (.ne.)
+  interface operator(.eq.)
+    module procedure PetscFPTrapequals
+  end interface operator (.eq.)
+

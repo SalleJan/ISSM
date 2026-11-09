@@ -1,0 +1,45 @@
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT:: DMDAStencilTypenotequals
+!DEC$ ATTRIBUTES DLLEXPORT:: DMDAStencilTypeequals
+#endif
+
+  function DMDAStencilTypenotequals(A,B)
+    logical DMDAStencilTypenotequals
+    type(eDMDAStencilType), intent(in) :: A,B
+    DMDAStencilTypenotequals = (A%v .ne. B%v)
+  end function
+  function DMDAStencilTypeequals(A,B)
+    logical DMDAStencilTypeequals
+    type(eDMDAStencilType), intent(in) :: A,B
+    DMDAStencilTypeequals = (A%v .eq. B%v)
+  end function
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT:: DMDAInterpolationTypenotequals
+!DEC$ ATTRIBUTES DLLEXPORT:: DMDAInterpolationTypeequals
+#endif
+
+  function DMDAInterpolationTypenotequals(A,B)
+    logical DMDAInterpolationTypenotequals
+    type(eDMDAInterpolationType), intent(in) :: A,B
+    DMDAInterpolationTypenotequals = (A%v .ne. B%v)
+  end function
+  function DMDAInterpolationTypeequals(A,B)
+    logical DMDAInterpolationTypeequals
+    type(eDMDAInterpolationType), intent(in) :: A,B
+    DMDAInterpolationTypeequals = (A%v .eq. B%v)
+  end function
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT:: DMDAElementTypenotequals
+!DEC$ ATTRIBUTES DLLEXPORT:: DMDAElementTypeequals
+#endif
+
+  function DMDAElementTypenotequals(A,B)
+    logical DMDAElementTypenotequals
+    type(eDMDAElementType), intent(in) :: A,B
+    DMDAElementTypenotequals = (A%v .ne. B%v)
+  end function
+  function DMDAElementTypeequals(A,B)
+    logical DMDAElementTypeequals
+    type(eDMDAElementType), intent(in) :: A,B
+    DMDAElementTypeequals = (A%v .eq. B%v)
+  end function

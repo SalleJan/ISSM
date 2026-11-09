@@ -1,0 +1,2598 @@
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT:: Matnotequals
+!DEC$ ATTRIBUTES DLLEXPORT:: Matequals
+#endif
+
+  function Matnotequals(A,B)
+    logical Matnotequals
+    type(tMat), intent(in) :: A,B
+    Matnotequals = (A%v .ne. B%v)
+  end function
+  function Matequals(A,B)
+    logical Matequals
+    type(tMat), intent(in) :: A,B
+    Matequals = (A%v .eq. B%v)
+  end function
+  function PetscObjectCastMat(obj)
+    Mat obj
+    PetscObject PetscObjectCastMat
+    PetscObjectCastMat%v = obj%v
+  end function 
+  subroutine PetscBarrierMat(obj,ierr)
+    Mat obj
+    PetscErrorCode ierr
+    call PetscBarrier(PetscObjectCast(obj),ierr)
+  end subroutine 
+#if defined(PETSC_HAVE_SAWS)
+  subroutine PetscObjectSAWsTakeAccessMat(obj, ierr)
+  Mat obj
+  PetscErrorCode ierr
+  call PetscObjectSAWsTakeAccess(PetscObjectCast(obj), ierr)
+  end subroutine 
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  subroutine PetscObjectSAWsGrantAccessMat(obj, ierr)
+  Mat obj
+  PetscErrorCode ierr
+  call PetscObjectSAWsGrantAccess(PetscObjectCast(obj), ierr)
+  end subroutine 
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  subroutine PetscObjectSAWsBlockMat(obj, ierr)
+  Mat obj
+  PetscErrorCode ierr
+  call PetscObjectSAWsBlock(PetscObjectCast(obj), ierr)
+  end subroutine 
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  subroutine PetscObjectSAWsSetBlockMat(obj, flg, ierr)
+  Mat obj
+  PetscBool :: flg
+  PetscErrorCode ierr
+  call PetscObjectSAWsSetBlock(PetscObjectCast(obj), flg, ierr)
+  end subroutine 
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  subroutine PetscObjectSAWsViewOffMat(obj, ierr)
+  Mat obj
+  PetscErrorCode ierr
+  call PetscObjectSAWsViewOff(PetscObjectCast(obj), ierr)
+  end subroutine 
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  subroutine PetscObjectViewSAWsMat(obj, viewer, ierr)
+  Mat obj
+  PetscViewer :: viewer
+  PetscErrorCode ierr
+  call PetscObjectViewSAWs(PetscObjectCast(obj), viewer, ierr)
+  end subroutine 
+#endif
+  subroutine PetscObjectGetTypeMat(obj, type, ierr)
+  Mat obj
+  character(*) :: type
+  PetscErrorCode ierr
+  call PetscObjectGetType(PetscObjectCast(obj), type, ierr)
+  end subroutine 
+  subroutine PetscObjectSetPrintedOptionsMat(obj, ierr)
+  Mat obj
+  PetscErrorCode ierr
+  call PetscObjectSetPrintedOptions(PetscObjectCast(obj), ierr)
+  end subroutine 
+  subroutine PetscObjectInheritPrintedOptionsMat(pobj, obj, ierr)
+  Mat pobj
+  PetscObject :: obj
+  PetscErrorCode ierr
+  call PetscObjectInheritPrintedOptions(PetscObjectCast(pobj), obj, ierr)
+  end subroutine 
+  subroutine PetscObjectAddOptionsHandlerMat(obj, handle, destroy, ctx, ierr)
+  Mat obj
+  external :: handle
+  external :: destroy
+  type(*) :: ctx
+  PetscErrorCode ierr
+  call PetscObjectAddOptionsHandler(PetscObjectCast(obj), handle, destroy, ctx, ierr)
+  end subroutine 
+  subroutine PetscObjectProcessOptionsHandlersMat(obj, PetscOptionsObject, ierr)
+  Mat obj
+  PetscOptionItems :: PetscOptionsObject
+  PetscErrorCode ierr
+  call PetscObjectProcessOptionsHandlers(PetscObjectCast(obj), PetscOptionsObject, ierr)
+  end subroutine 
+  subroutine PetscObjectDestroyOptionsHandlersMat(obj, ierr)
+  Mat obj
+  PetscErrorCode ierr
+  call PetscObjectDestroyOptionsHandlers(PetscObjectCast(obj), ierr)
+  end subroutine 
+  subroutine PetscObjectReferenceMat(obj, ierr)
+  Mat obj
+  PetscErrorCode ierr
+  call PetscObjectReference(PetscObjectCast(obj), ierr)
+  end subroutine 
+  subroutine PetscObjectGetReferenceMat(obj, cnt, ierr)
+  Mat obj
+  PetscInt :: cnt
+  PetscErrorCode ierr
+  call PetscObjectGetReference(PetscObjectCast(obj), cnt, ierr)
+  end subroutine 
+  subroutine PetscObjectDereferenceMat(obj, ierr)
+  Mat obj
+  PetscErrorCode ierr
+  call PetscObjectDereference(PetscObjectCast(obj), ierr)
+  end subroutine 
+  subroutine PetscObjectRemoveReferenceMat(obj, name, ierr)
+  Mat obj
+  character(*) :: name
+  PetscErrorCode ierr
+  call PetscObjectRemoveReference(PetscObjectCast(obj), name, ierr)
+  end subroutine 
+  subroutine PetscObjectHasFunctionMat(obj, name, has, ierr)
+  Mat obj
+  character(*) :: name
+  PetscBool :: has
+  PetscErrorCode ierr
+  call PetscObjectHasFunction(PetscObjectCast(obj), name, has, ierr)
+  end subroutine 
+  subroutine PetscObjectSetFromOptionsMat(obj, ierr)
+  Mat obj
+  PetscErrorCode ierr
+  call PetscObjectSetFromOptions(PetscObjectCast(obj), ierr)
+  end subroutine 
+  subroutine PetscObjectSetUpMat(obj, ierr)
+  Mat obj
+  PetscErrorCode ierr
+  call PetscObjectSetUp(PetscObjectCast(obj), ierr)
+  end subroutine 
+  subroutine PetscObjectGetNameMat(obj, name, ierr)
+  Mat obj
+  character(*) :: name
+  PetscErrorCode ierr
+  call PetscObjectGetName(PetscObjectCast(obj), name, ierr)
+  end subroutine 
+  subroutine PetscObjectDestroyMat(obj, ierr)
+  Mat obj
+  PetscErrorCode ierr
+  call PetscObjectDestroy(PetscObjectCast(obj), ierr)
+  end subroutine 
+  subroutine PetscObjectViewMat(obj, viewer, ierr)
+  Mat obj
+  PetscViewer :: viewer
+  PetscErrorCode ierr
+  call PetscObjectView(PetscObjectCast(obj), viewer, ierr)
+  end subroutine 
+  subroutine PetscObjectViewFromOptionsMat(obj, bobj, name, ierr)
+  Mat obj
+  PetscObject :: bobj
+  character(*) :: name
+  PetscErrorCode ierr
+  call PetscObjectViewFromOptions(PetscObjectCast(obj), bobj, name, ierr)
+  end subroutine 
+  subroutine PetscObjectTypeCompareMat(obj, type_name, same, ierr)
+  Mat obj
+  character(*) :: type_name
+  PetscBool :: same
+  PetscErrorCode ierr
+  call PetscObjectTypeCompare(PetscObjectCast(obj), type_name, same, ierr)
+  end subroutine 
+  subroutine PetscObjectObjectTypeCompareMat(obj1, obj2, same, ierr)
+  Mat obj1
+  PetscObject :: obj2
+  PetscBool :: same
+  PetscErrorCode ierr
+  call PetscObjectObjectTypeCompare(PetscObjectCast(obj1), obj2, same, ierr)
+  end subroutine 
+  subroutine PetscObjectBaseTypeCompareMat(obj, type_name, same, ierr)
+  Mat obj
+  character(*) :: type_name
+  PetscBool :: same
+  PetscErrorCode ierr
+  call PetscObjectBaseTypeCompare(PetscObjectCast(obj), type_name, same, ierr)
+  end subroutine 
+  subroutine PetscObjectRegisterDestroyMat(obj, ierr)
+  Mat obj
+  PetscErrorCode ierr
+  call PetscObjectRegisterDestroy(PetscObjectCast(obj), ierr)
+  end subroutine 
+  subroutine PetscObjectGetIdMat(obj, id, ierr)
+  Mat obj
+  PetscObjectId :: id
+  PetscErrorCode ierr
+  call PetscObjectGetId(PetscObjectCast(obj), id, ierr)
+  end subroutine 
+  subroutine PetscObjectCompareIdMat(obj, id, eq, ierr)
+  Mat obj
+  PetscObjectId :: id
+  PetscBool :: eq
+  PetscErrorCode ierr
+  call PetscObjectCompareId(PetscObjectCast(obj), id, eq, ierr)
+  end subroutine 
+  subroutine PetscObjectGetOptionsMat(obj, options, ierr)
+  Mat obj
+  PetscOptions :: options
+  PetscErrorCode ierr
+  call PetscObjectGetOptions(PetscObjectCast(obj), options, ierr)
+  end subroutine 
+  subroutine PetscObjectSetOptionsMat(obj, options, ierr)
+  Mat obj
+  PetscOptions :: options
+  PetscErrorCode ierr
+  call PetscObjectSetOptions(PetscObjectCast(obj), options, ierr)
+  end subroutine 
+  subroutine PetscObjectSetOptionsPrefixMat(obj, prefix, ierr)
+  Mat obj
+  character(*) :: prefix
+  PetscErrorCode ierr
+  call PetscObjectSetOptionsPrefix(PetscObjectCast(obj), prefix, ierr)
+  end subroutine 
+  subroutine PetscObjectAppendOptionsPrefixMat(obj, prefix, ierr)
+  Mat obj
+  character(*) :: prefix
+  PetscErrorCode ierr
+  call PetscObjectAppendOptionsPrefix(PetscObjectCast(obj), prefix, ierr)
+  end subroutine 
+  subroutine PetscObjectGetOptionsPrefixMat(obj, prefix, ierr)
+  Mat obj
+  character(*) :: prefix
+  PetscErrorCode ierr
+  call PetscObjectGetOptionsPrefix(PetscObjectCast(obj), prefix, ierr)
+  end subroutine 
+  subroutine PetscObjectPrependOptionsPrefixMat(obj, prefix, ierr)
+  Mat obj
+  character(*) :: prefix
+  PetscErrorCode ierr
+  call PetscObjectPrependOptionsPrefix(PetscObjectCast(obj), prefix, ierr)
+  end subroutine 
+  subroutine PetscObjectGetCommMat(obj, comm, ierr)
+  Mat obj
+  MPIU_Comm :: comm
+  PetscErrorCode ierr
+  call PetscObjectGetComm(PetscObjectCast(obj), comm, ierr)
+  end subroutine 
+  subroutine PetscObjectGetTabLevelMat(obj, tab, ierr)
+  Mat obj
+  PetscInt :: tab
+  PetscErrorCode ierr
+  call PetscObjectGetTabLevel(PetscObjectCast(obj), tab, ierr)
+  end subroutine 
+  subroutine PetscObjectSetTabLevelMat(obj, tab, ierr)
+  Mat obj
+  PetscInt :: tab
+  PetscErrorCode ierr
+  call PetscObjectSetTabLevel(PetscObjectCast(obj), tab, ierr)
+  end subroutine 
+  subroutine PetscObjectIncrementTabLevelMat(obj, oldobj, tab, ierr)
+  Mat obj
+  PetscObject :: oldobj
+  PetscInt :: tab
+  PetscErrorCode ierr
+  call PetscObjectIncrementTabLevel(PetscObjectCast(obj), oldobj, tab, ierr)
+  end subroutine 
+  subroutine PetscObjectGetNewTagMat(obj, tag, ierr)
+  Mat obj
+  PetscMPIInt :: tag
+  PetscErrorCode ierr
+  call PetscObjectGetNewTag(PetscObjectCast(obj), tag, ierr)
+  end subroutine 
+  subroutine PetscObjectGetClassIdMat(obj, classid, ierr)
+  Mat obj
+  PetscClassId :: classid
+  PetscErrorCode ierr
+  call PetscObjectGetClassId(PetscObjectCast(obj), classid, ierr)
+  end subroutine 
+  subroutine PetscObjectGetClassNameMat(obj, classname, ierr)
+  Mat obj
+  character(*) :: classname
+  PetscErrorCode ierr
+  call PetscObjectGetClassName(PetscObjectCast(obj), classname, ierr)
+  end subroutine 
+  subroutine PetscObjectSetNameMat(obj, name, ierr)
+  Mat obj
+  character(*) :: name
+  PetscErrorCode ierr
+  call PetscObjectSetName(PetscObjectCast(obj), name, ierr)
+  end subroutine 
+  subroutine PetscObjectPrintClassNamePrefixTypeMat(obj, viewer, ierr)
+  Mat obj
+  PetscViewer :: viewer
+  PetscErrorCode ierr
+  call PetscObjectPrintClassNamePrefixType(PetscObjectCast(obj), viewer, ierr)
+  end subroutine 
+  subroutine PetscObjectNameMat(obj, ierr)
+  Mat obj
+  PetscErrorCode ierr
+  call PetscObjectName(PetscObjectCast(obj), ierr)
+  end subroutine 
+  subroutine PetscObjectChangeTypeNameMat(obj, type_name, ierr)
+  Mat obj
+  character(*) :: type_name
+  PetscErrorCode ierr
+  call PetscObjectChangeTypeName(PetscObjectCast(obj), type_name, ierr)
+  end subroutine 
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT:: MatColoringnotequals
+!DEC$ ATTRIBUTES DLLEXPORT:: MatColoringequals
+#endif
+
+  function MatColoringnotequals(A,B)
+    logical MatColoringnotequals
+    type(tMatColoring), intent(in) :: A,B
+    MatColoringnotequals = (A%v .ne. B%v)
+  end function
+  function MatColoringequals(A,B)
+    logical MatColoringequals
+    type(tMatColoring), intent(in) :: A,B
+    MatColoringequals = (A%v .eq. B%v)
+  end function
+  function PetscObjectCastMatColoring(obj)
+    MatColoring obj
+    PetscObject PetscObjectCastMatColoring
+    PetscObjectCastMatColoring%v = obj%v
+  end function 
+  subroutine PetscBarrierMatColoring(obj,ierr)
+    MatColoring obj
+    PetscErrorCode ierr
+    call PetscBarrier(PetscObjectCast(obj),ierr)
+  end subroutine 
+#if defined(PETSC_HAVE_SAWS)
+  subroutine PetscObjectSAWsTakeAccessMatColoring(obj, ierr)
+  MatColoring obj
+  PetscErrorCode ierr
+  call PetscObjectSAWsTakeAccess(PetscObjectCast(obj), ierr)
+  end subroutine 
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  subroutine PetscObjectSAWsGrantAccessMatColoring(obj, ierr)
+  MatColoring obj
+  PetscErrorCode ierr
+  call PetscObjectSAWsGrantAccess(PetscObjectCast(obj), ierr)
+  end subroutine 
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  subroutine PetscObjectSAWsBlockMatColoring(obj, ierr)
+  MatColoring obj
+  PetscErrorCode ierr
+  call PetscObjectSAWsBlock(PetscObjectCast(obj), ierr)
+  end subroutine 
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  subroutine PetscObjectSAWsSetBlockMatColoring(obj, flg, ierr)
+  MatColoring obj
+  PetscBool :: flg
+  PetscErrorCode ierr
+  call PetscObjectSAWsSetBlock(PetscObjectCast(obj), flg, ierr)
+  end subroutine 
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  subroutine PetscObjectSAWsViewOffMatColoring(obj, ierr)
+  MatColoring obj
+  PetscErrorCode ierr
+  call PetscObjectSAWsViewOff(PetscObjectCast(obj), ierr)
+  end subroutine 
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  subroutine PetscObjectViewSAWsMatColoring(obj, viewer, ierr)
+  MatColoring obj
+  PetscViewer :: viewer
+  PetscErrorCode ierr
+  call PetscObjectViewSAWs(PetscObjectCast(obj), viewer, ierr)
+  end subroutine 
+#endif
+  subroutine PetscObjectGetTypeMatColoring(obj, type, ierr)
+  MatColoring obj
+  character(*) :: type
+  PetscErrorCode ierr
+  call PetscObjectGetType(PetscObjectCast(obj), type, ierr)
+  end subroutine 
+  subroutine PetscObjectSetPrintedOptionsMatColoring(obj, ierr)
+  MatColoring obj
+  PetscErrorCode ierr
+  call PetscObjectSetPrintedOptions(PetscObjectCast(obj), ierr)
+  end subroutine 
+  subroutine PetscObjectInheritPrintedOptionsMatColoring(pobj, obj, ierr)
+  MatColoring pobj
+  PetscObject :: obj
+  PetscErrorCode ierr
+  call PetscObjectInheritPrintedOptions(PetscObjectCast(pobj), obj, ierr)
+  end subroutine 
+  subroutine PetscObjectAddOptionsHandlerMatColoring(obj, handle, destroy, ctx, ierr)
+  MatColoring obj
+  external :: handle
+  external :: destroy
+  type(*) :: ctx
+  PetscErrorCode ierr
+  call PetscObjectAddOptionsHandler(PetscObjectCast(obj), handle, destroy, ctx, ierr)
+  end subroutine 
+  subroutine PetscObjectProcessOptionsHandlersMatColoring(obj, PetscOptionsObject, ierr)
+  MatColoring obj
+  PetscOptionItems :: PetscOptionsObject
+  PetscErrorCode ierr
+  call PetscObjectProcessOptionsHandlers(PetscObjectCast(obj), PetscOptionsObject, ierr)
+  end subroutine 
+  subroutine PetscObjectDestroyOptionsHandlersMatColoring(obj, ierr)
+  MatColoring obj
+  PetscErrorCode ierr
+  call PetscObjectDestroyOptionsHandlers(PetscObjectCast(obj), ierr)
+  end subroutine 
+  subroutine PetscObjectReferenceMatColoring(obj, ierr)
+  MatColoring obj
+  PetscErrorCode ierr
+  call PetscObjectReference(PetscObjectCast(obj), ierr)
+  end subroutine 
+  subroutine PetscObjectGetReferenceMatColoring(obj, cnt, ierr)
+  MatColoring obj
+  PetscInt :: cnt
+  PetscErrorCode ierr
+  call PetscObjectGetReference(PetscObjectCast(obj), cnt, ierr)
+  end subroutine 
+  subroutine PetscObjectDereferenceMatColoring(obj, ierr)
+  MatColoring obj
+  PetscErrorCode ierr
+  call PetscObjectDereference(PetscObjectCast(obj), ierr)
+  end subroutine 
+  subroutine PetscObjectRemoveReferenceMatColoring(obj, name, ierr)
+  MatColoring obj
+  character(*) :: name
+  PetscErrorCode ierr
+  call PetscObjectRemoveReference(PetscObjectCast(obj), name, ierr)
+  end subroutine 
+  subroutine PetscObjectHasFunctionMatColoring(obj, name, has, ierr)
+  MatColoring obj
+  character(*) :: name
+  PetscBool :: has
+  PetscErrorCode ierr
+  call PetscObjectHasFunction(PetscObjectCast(obj), name, has, ierr)
+  end subroutine 
+  subroutine PetscObjectSetFromOptionsMatColoring(obj, ierr)
+  MatColoring obj
+  PetscErrorCode ierr
+  call PetscObjectSetFromOptions(PetscObjectCast(obj), ierr)
+  end subroutine 
+  subroutine PetscObjectSetUpMatColoring(obj, ierr)
+  MatColoring obj
+  PetscErrorCode ierr
+  call PetscObjectSetUp(PetscObjectCast(obj), ierr)
+  end subroutine 
+  subroutine PetscObjectGetNameMatColoring(obj, name, ierr)
+  MatColoring obj
+  character(*) :: name
+  PetscErrorCode ierr
+  call PetscObjectGetName(PetscObjectCast(obj), name, ierr)
+  end subroutine 
+  subroutine PetscObjectDestroyMatColoring(obj, ierr)
+  MatColoring obj
+  PetscErrorCode ierr
+  call PetscObjectDestroy(PetscObjectCast(obj), ierr)
+  end subroutine 
+  subroutine PetscObjectViewMatColoring(obj, viewer, ierr)
+  MatColoring obj
+  PetscViewer :: viewer
+  PetscErrorCode ierr
+  call PetscObjectView(PetscObjectCast(obj), viewer, ierr)
+  end subroutine 
+  subroutine PetscObjectViewFromOptionsMatColoring(obj, bobj, name, ierr)
+  MatColoring obj
+  PetscObject :: bobj
+  character(*) :: name
+  PetscErrorCode ierr
+  call PetscObjectViewFromOptions(PetscObjectCast(obj), bobj, name, ierr)
+  end subroutine 
+  subroutine PetscObjectTypeCompareMatColoring(obj, type_name, same, ierr)
+  MatColoring obj
+  character(*) :: type_name
+  PetscBool :: same
+  PetscErrorCode ierr
+  call PetscObjectTypeCompare(PetscObjectCast(obj), type_name, same, ierr)
+  end subroutine 
+  subroutine PetscObjectObjectTypeCompareMatColoring(obj1, obj2, same, ierr)
+  MatColoring obj1
+  PetscObject :: obj2
+  PetscBool :: same
+  PetscErrorCode ierr
+  call PetscObjectObjectTypeCompare(PetscObjectCast(obj1), obj2, same, ierr)
+  end subroutine 
+  subroutine PetscObjectBaseTypeCompareMatColoring(obj, type_name, same, ierr)
+  MatColoring obj
+  character(*) :: type_name
+  PetscBool :: same
+  PetscErrorCode ierr
+  call PetscObjectBaseTypeCompare(PetscObjectCast(obj), type_name, same, ierr)
+  end subroutine 
+  subroutine PetscObjectRegisterDestroyMatColoring(obj, ierr)
+  MatColoring obj
+  PetscErrorCode ierr
+  call PetscObjectRegisterDestroy(PetscObjectCast(obj), ierr)
+  end subroutine 
+  subroutine PetscObjectGetIdMatColoring(obj, id, ierr)
+  MatColoring obj
+  PetscObjectId :: id
+  PetscErrorCode ierr
+  call PetscObjectGetId(PetscObjectCast(obj), id, ierr)
+  end subroutine 
+  subroutine PetscObjectCompareIdMatColoring(obj, id, eq, ierr)
+  MatColoring obj
+  PetscObjectId :: id
+  PetscBool :: eq
+  PetscErrorCode ierr
+  call PetscObjectCompareId(PetscObjectCast(obj), id, eq, ierr)
+  end subroutine 
+  subroutine PetscObjectGetOptionsMatColoring(obj, options, ierr)
+  MatColoring obj
+  PetscOptions :: options
+  PetscErrorCode ierr
+  call PetscObjectGetOptions(PetscObjectCast(obj), options, ierr)
+  end subroutine 
+  subroutine PetscObjectSetOptionsMatColoring(obj, options, ierr)
+  MatColoring obj
+  PetscOptions :: options
+  PetscErrorCode ierr
+  call PetscObjectSetOptions(PetscObjectCast(obj), options, ierr)
+  end subroutine 
+  subroutine PetscObjectSetOptionsPrefixMatColoring(obj, prefix, ierr)
+  MatColoring obj
+  character(*) :: prefix
+  PetscErrorCode ierr
+  call PetscObjectSetOptionsPrefix(PetscObjectCast(obj), prefix, ierr)
+  end subroutine 
+  subroutine PetscObjectAppendOptionsPrefixMatColoring(obj, prefix, ierr)
+  MatColoring obj
+  character(*) :: prefix
+  PetscErrorCode ierr
+  call PetscObjectAppendOptionsPrefix(PetscObjectCast(obj), prefix, ierr)
+  end subroutine 
+  subroutine PetscObjectGetOptionsPrefixMatColoring(obj, prefix, ierr)
+  MatColoring obj
+  character(*) :: prefix
+  PetscErrorCode ierr
+  call PetscObjectGetOptionsPrefix(PetscObjectCast(obj), prefix, ierr)
+  end subroutine 
+  subroutine PetscObjectPrependOptionsPrefixMatColoring(obj, prefix, ierr)
+  MatColoring obj
+  character(*) :: prefix
+  PetscErrorCode ierr
+  call PetscObjectPrependOptionsPrefix(PetscObjectCast(obj), prefix, ierr)
+  end subroutine 
+  subroutine PetscObjectGetCommMatColoring(obj, comm, ierr)
+  MatColoring obj
+  MPIU_Comm :: comm
+  PetscErrorCode ierr
+  call PetscObjectGetComm(PetscObjectCast(obj), comm, ierr)
+  end subroutine 
+  subroutine PetscObjectGetTabLevelMatColoring(obj, tab, ierr)
+  MatColoring obj
+  PetscInt :: tab
+  PetscErrorCode ierr
+  call PetscObjectGetTabLevel(PetscObjectCast(obj), tab, ierr)
+  end subroutine 
+  subroutine PetscObjectSetTabLevelMatColoring(obj, tab, ierr)
+  MatColoring obj
+  PetscInt :: tab
+  PetscErrorCode ierr
+  call PetscObjectSetTabLevel(PetscObjectCast(obj), tab, ierr)
+  end subroutine 
+  subroutine PetscObjectIncrementTabLevelMatColoring(obj, oldobj, tab, ierr)
+  MatColoring obj
+  PetscObject :: oldobj
+  PetscInt :: tab
+  PetscErrorCode ierr
+  call PetscObjectIncrementTabLevel(PetscObjectCast(obj), oldobj, tab, ierr)
+  end subroutine 
+  subroutine PetscObjectGetNewTagMatColoring(obj, tag, ierr)
+  MatColoring obj
+  PetscMPIInt :: tag
+  PetscErrorCode ierr
+  call PetscObjectGetNewTag(PetscObjectCast(obj), tag, ierr)
+  end subroutine 
+  subroutine PetscObjectGetClassIdMatColoring(obj, classid, ierr)
+  MatColoring obj
+  PetscClassId :: classid
+  PetscErrorCode ierr
+  call PetscObjectGetClassId(PetscObjectCast(obj), classid, ierr)
+  end subroutine 
+  subroutine PetscObjectGetClassNameMatColoring(obj, classname, ierr)
+  MatColoring obj
+  character(*) :: classname
+  PetscErrorCode ierr
+  call PetscObjectGetClassName(PetscObjectCast(obj), classname, ierr)
+  end subroutine 
+  subroutine PetscObjectSetNameMatColoring(obj, name, ierr)
+  MatColoring obj
+  character(*) :: name
+  PetscErrorCode ierr
+  call PetscObjectSetName(PetscObjectCast(obj), name, ierr)
+  end subroutine 
+  subroutine PetscObjectPrintClassNamePrefixTypeMatColoring(obj, viewer, ierr)
+  MatColoring obj
+  PetscViewer :: viewer
+  PetscErrorCode ierr
+  call PetscObjectPrintClassNamePrefixType(PetscObjectCast(obj), viewer, ierr)
+  end subroutine 
+  subroutine PetscObjectNameMatColoring(obj, ierr)
+  MatColoring obj
+  PetscErrorCode ierr
+  call PetscObjectName(PetscObjectCast(obj), ierr)
+  end subroutine 
+  subroutine PetscObjectChangeTypeNameMatColoring(obj, type_name, ierr)
+  MatColoring obj
+  character(*) :: type_name
+  PetscErrorCode ierr
+  call PetscObjectChangeTypeName(PetscObjectCast(obj), type_name, ierr)
+  end subroutine 
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT:: MatFDColoringnotequals
+!DEC$ ATTRIBUTES DLLEXPORT:: MatFDColoringequals
+#endif
+
+  function MatFDColoringnotequals(A,B)
+    logical MatFDColoringnotequals
+    type(tMatFDColoring), intent(in) :: A,B
+    MatFDColoringnotequals = (A%v .ne. B%v)
+  end function
+  function MatFDColoringequals(A,B)
+    logical MatFDColoringequals
+    type(tMatFDColoring), intent(in) :: A,B
+    MatFDColoringequals = (A%v .eq. B%v)
+  end function
+  function PetscObjectCastMatFDColoring(obj)
+    MatFDColoring obj
+    PetscObject PetscObjectCastMatFDColoring
+    PetscObjectCastMatFDColoring%v = obj%v
+  end function 
+  subroutine PetscBarrierMatFDColoring(obj,ierr)
+    MatFDColoring obj
+    PetscErrorCode ierr
+    call PetscBarrier(PetscObjectCast(obj),ierr)
+  end subroutine 
+#if defined(PETSC_HAVE_SAWS)
+  subroutine PetscObjectSAWsTakeAccessMatFDColoring(obj, ierr)
+  MatFDColoring obj
+  PetscErrorCode ierr
+  call PetscObjectSAWsTakeAccess(PetscObjectCast(obj), ierr)
+  end subroutine 
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  subroutine PetscObjectSAWsGrantAccessMatFDColoring(obj, ierr)
+  MatFDColoring obj
+  PetscErrorCode ierr
+  call PetscObjectSAWsGrantAccess(PetscObjectCast(obj), ierr)
+  end subroutine 
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  subroutine PetscObjectSAWsBlockMatFDColoring(obj, ierr)
+  MatFDColoring obj
+  PetscErrorCode ierr
+  call PetscObjectSAWsBlock(PetscObjectCast(obj), ierr)
+  end subroutine 
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  subroutine PetscObjectSAWsSetBlockMatFDColoring(obj, flg, ierr)
+  MatFDColoring obj
+  PetscBool :: flg
+  PetscErrorCode ierr
+  call PetscObjectSAWsSetBlock(PetscObjectCast(obj), flg, ierr)
+  end subroutine 
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  subroutine PetscObjectSAWsViewOffMatFDColoring(obj, ierr)
+  MatFDColoring obj
+  PetscErrorCode ierr
+  call PetscObjectSAWsViewOff(PetscObjectCast(obj), ierr)
+  end subroutine 
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  subroutine PetscObjectViewSAWsMatFDColoring(obj, viewer, ierr)
+  MatFDColoring obj
+  PetscViewer :: viewer
+  PetscErrorCode ierr
+  call PetscObjectViewSAWs(PetscObjectCast(obj), viewer, ierr)
+  end subroutine 
+#endif
+  subroutine PetscObjectGetTypeMatFDColoring(obj, type, ierr)
+  MatFDColoring obj
+  character(*) :: type
+  PetscErrorCode ierr
+  call PetscObjectGetType(PetscObjectCast(obj), type, ierr)
+  end subroutine 
+  subroutine PetscObjectSetPrintedOptionsMatFDColoring(obj, ierr)
+  MatFDColoring obj
+  PetscErrorCode ierr
+  call PetscObjectSetPrintedOptions(PetscObjectCast(obj), ierr)
+  end subroutine 
+  subroutine PetscObjectInheritPrintedOptionsMatFDColoring(pobj, obj, ierr)
+  MatFDColoring pobj
+  PetscObject :: obj
+  PetscErrorCode ierr
+  call PetscObjectInheritPrintedOptions(PetscObjectCast(pobj), obj, ierr)
+  end subroutine 
+  subroutine PetscObjectAddOptionsHandlerMatFDColoring(obj, handle, destroy, ctx, ierr)
+  MatFDColoring obj
+  external :: handle
+  external :: destroy
+  type(*) :: ctx
+  PetscErrorCode ierr
+  call PetscObjectAddOptionsHandler(PetscObjectCast(obj), handle, destroy, ctx, ierr)
+  end subroutine 
+  subroutine PetscObjectProcessOptionsHandlersMatFDColoring(obj, PetscOptionsObject, ierr)
+  MatFDColoring obj
+  PetscOptionItems :: PetscOptionsObject
+  PetscErrorCode ierr
+  call PetscObjectProcessOptionsHandlers(PetscObjectCast(obj), PetscOptionsObject, ierr)
+  end subroutine 
+  subroutine PetscObjectDestroyOptionsHandlersMatFDColoring(obj, ierr)
+  MatFDColoring obj
+  PetscErrorCode ierr
+  call PetscObjectDestroyOptionsHandlers(PetscObjectCast(obj), ierr)
+  end subroutine 
+  subroutine PetscObjectReferenceMatFDColoring(obj, ierr)
+  MatFDColoring obj
+  PetscErrorCode ierr
+  call PetscObjectReference(PetscObjectCast(obj), ierr)
+  end subroutine 
+  subroutine PetscObjectGetReferenceMatFDColoring(obj, cnt, ierr)
+  MatFDColoring obj
+  PetscInt :: cnt
+  PetscErrorCode ierr
+  call PetscObjectGetReference(PetscObjectCast(obj), cnt, ierr)
+  end subroutine 
+  subroutine PetscObjectDereferenceMatFDColoring(obj, ierr)
+  MatFDColoring obj
+  PetscErrorCode ierr
+  call PetscObjectDereference(PetscObjectCast(obj), ierr)
+  end subroutine 
+  subroutine PetscObjectRemoveReferenceMatFDColoring(obj, name, ierr)
+  MatFDColoring obj
+  character(*) :: name
+  PetscErrorCode ierr
+  call PetscObjectRemoveReference(PetscObjectCast(obj), name, ierr)
+  end subroutine 
+  subroutine PetscObjectHasFunctionMatFDColoring(obj, name, has, ierr)
+  MatFDColoring obj
+  character(*) :: name
+  PetscBool :: has
+  PetscErrorCode ierr
+  call PetscObjectHasFunction(PetscObjectCast(obj), name, has, ierr)
+  end subroutine 
+  subroutine PetscObjectSetFromOptionsMatFDColoring(obj, ierr)
+  MatFDColoring obj
+  PetscErrorCode ierr
+  call PetscObjectSetFromOptions(PetscObjectCast(obj), ierr)
+  end subroutine 
+  subroutine PetscObjectSetUpMatFDColoring(obj, ierr)
+  MatFDColoring obj
+  PetscErrorCode ierr
+  call PetscObjectSetUp(PetscObjectCast(obj), ierr)
+  end subroutine 
+  subroutine PetscObjectGetNameMatFDColoring(obj, name, ierr)
+  MatFDColoring obj
+  character(*) :: name
+  PetscErrorCode ierr
+  call PetscObjectGetName(PetscObjectCast(obj), name, ierr)
+  end subroutine 
+  subroutine PetscObjectDestroyMatFDColoring(obj, ierr)
+  MatFDColoring obj
+  PetscErrorCode ierr
+  call PetscObjectDestroy(PetscObjectCast(obj), ierr)
+  end subroutine 
+  subroutine PetscObjectViewMatFDColoring(obj, viewer, ierr)
+  MatFDColoring obj
+  PetscViewer :: viewer
+  PetscErrorCode ierr
+  call PetscObjectView(PetscObjectCast(obj), viewer, ierr)
+  end subroutine 
+  subroutine PetscObjectViewFromOptionsMatFDColoring(obj, bobj, name, ierr)
+  MatFDColoring obj
+  PetscObject :: bobj
+  character(*) :: name
+  PetscErrorCode ierr
+  call PetscObjectViewFromOptions(PetscObjectCast(obj), bobj, name, ierr)
+  end subroutine 
+  subroutine PetscObjectTypeCompareMatFDColoring(obj, type_name, same, ierr)
+  MatFDColoring obj
+  character(*) :: type_name
+  PetscBool :: same
+  PetscErrorCode ierr
+  call PetscObjectTypeCompare(PetscObjectCast(obj), type_name, same, ierr)
+  end subroutine 
+  subroutine PetscObjectObjectTypeCompareMatFDColoring(obj1, obj2, same, ierr)
+  MatFDColoring obj1
+  PetscObject :: obj2
+  PetscBool :: same
+  PetscErrorCode ierr
+  call PetscObjectObjectTypeCompare(PetscObjectCast(obj1), obj2, same, ierr)
+  end subroutine 
+  subroutine PetscObjectBaseTypeCompareMatFDColoring(obj, type_name, same, ierr)
+  MatFDColoring obj
+  character(*) :: type_name
+  PetscBool :: same
+  PetscErrorCode ierr
+  call PetscObjectBaseTypeCompare(PetscObjectCast(obj), type_name, same, ierr)
+  end subroutine 
+  subroutine PetscObjectRegisterDestroyMatFDColoring(obj, ierr)
+  MatFDColoring obj
+  PetscErrorCode ierr
+  call PetscObjectRegisterDestroy(PetscObjectCast(obj), ierr)
+  end subroutine 
+  subroutine PetscObjectGetIdMatFDColoring(obj, id, ierr)
+  MatFDColoring obj
+  PetscObjectId :: id
+  PetscErrorCode ierr
+  call PetscObjectGetId(PetscObjectCast(obj), id, ierr)
+  end subroutine 
+  subroutine PetscObjectCompareIdMatFDColoring(obj, id, eq, ierr)
+  MatFDColoring obj
+  PetscObjectId :: id
+  PetscBool :: eq
+  PetscErrorCode ierr
+  call PetscObjectCompareId(PetscObjectCast(obj), id, eq, ierr)
+  end subroutine 
+  subroutine PetscObjectGetOptionsMatFDColoring(obj, options, ierr)
+  MatFDColoring obj
+  PetscOptions :: options
+  PetscErrorCode ierr
+  call PetscObjectGetOptions(PetscObjectCast(obj), options, ierr)
+  end subroutine 
+  subroutine PetscObjectSetOptionsMatFDColoring(obj, options, ierr)
+  MatFDColoring obj
+  PetscOptions :: options
+  PetscErrorCode ierr
+  call PetscObjectSetOptions(PetscObjectCast(obj), options, ierr)
+  end subroutine 
+  subroutine PetscObjectSetOptionsPrefixMatFDColoring(obj, prefix, ierr)
+  MatFDColoring obj
+  character(*) :: prefix
+  PetscErrorCode ierr
+  call PetscObjectSetOptionsPrefix(PetscObjectCast(obj), prefix, ierr)
+  end subroutine 
+  subroutine PetscObjectAppendOptionsPrefixMatFDColoring(obj, prefix, ierr)
+  MatFDColoring obj
+  character(*) :: prefix
+  PetscErrorCode ierr
+  call PetscObjectAppendOptionsPrefix(PetscObjectCast(obj), prefix, ierr)
+  end subroutine 
+  subroutine PetscObjectGetOptionsPrefixMatFDColoring(obj, prefix, ierr)
+  MatFDColoring obj
+  character(*) :: prefix
+  PetscErrorCode ierr
+  call PetscObjectGetOptionsPrefix(PetscObjectCast(obj), prefix, ierr)
+  end subroutine 
+  subroutine PetscObjectPrependOptionsPrefixMatFDColoring(obj, prefix, ierr)
+  MatFDColoring obj
+  character(*) :: prefix
+  PetscErrorCode ierr
+  call PetscObjectPrependOptionsPrefix(PetscObjectCast(obj), prefix, ierr)
+  end subroutine 
+  subroutine PetscObjectGetCommMatFDColoring(obj, comm, ierr)
+  MatFDColoring obj
+  MPIU_Comm :: comm
+  PetscErrorCode ierr
+  call PetscObjectGetComm(PetscObjectCast(obj), comm, ierr)
+  end subroutine 
+  subroutine PetscObjectGetTabLevelMatFDColoring(obj, tab, ierr)
+  MatFDColoring obj
+  PetscInt :: tab
+  PetscErrorCode ierr
+  call PetscObjectGetTabLevel(PetscObjectCast(obj), tab, ierr)
+  end subroutine 
+  subroutine PetscObjectSetTabLevelMatFDColoring(obj, tab, ierr)
+  MatFDColoring obj
+  PetscInt :: tab
+  PetscErrorCode ierr
+  call PetscObjectSetTabLevel(PetscObjectCast(obj), tab, ierr)
+  end subroutine 
+  subroutine PetscObjectIncrementTabLevelMatFDColoring(obj, oldobj, tab, ierr)
+  MatFDColoring obj
+  PetscObject :: oldobj
+  PetscInt :: tab
+  PetscErrorCode ierr
+  call PetscObjectIncrementTabLevel(PetscObjectCast(obj), oldobj, tab, ierr)
+  end subroutine 
+  subroutine PetscObjectGetNewTagMatFDColoring(obj, tag, ierr)
+  MatFDColoring obj
+  PetscMPIInt :: tag
+  PetscErrorCode ierr
+  call PetscObjectGetNewTag(PetscObjectCast(obj), tag, ierr)
+  end subroutine 
+  subroutine PetscObjectGetClassIdMatFDColoring(obj, classid, ierr)
+  MatFDColoring obj
+  PetscClassId :: classid
+  PetscErrorCode ierr
+  call PetscObjectGetClassId(PetscObjectCast(obj), classid, ierr)
+  end subroutine 
+  subroutine PetscObjectGetClassNameMatFDColoring(obj, classname, ierr)
+  MatFDColoring obj
+  character(*) :: classname
+  PetscErrorCode ierr
+  call PetscObjectGetClassName(PetscObjectCast(obj), classname, ierr)
+  end subroutine 
+  subroutine PetscObjectSetNameMatFDColoring(obj, name, ierr)
+  MatFDColoring obj
+  character(*) :: name
+  PetscErrorCode ierr
+  call PetscObjectSetName(PetscObjectCast(obj), name, ierr)
+  end subroutine 
+  subroutine PetscObjectPrintClassNamePrefixTypeMatFDColoring(obj, viewer, ierr)
+  MatFDColoring obj
+  PetscViewer :: viewer
+  PetscErrorCode ierr
+  call PetscObjectPrintClassNamePrefixType(PetscObjectCast(obj), viewer, ierr)
+  end subroutine 
+  subroutine PetscObjectNameMatFDColoring(obj, ierr)
+  MatFDColoring obj
+  PetscErrorCode ierr
+  call PetscObjectName(PetscObjectCast(obj), ierr)
+  end subroutine 
+  subroutine PetscObjectChangeTypeNameMatFDColoring(obj, type_name, ierr)
+  MatFDColoring obj
+  character(*) :: type_name
+  PetscErrorCode ierr
+  call PetscObjectChangeTypeName(PetscObjectCast(obj), type_name, ierr)
+  end subroutine 
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT:: MatTransposeColoringnotequals
+!DEC$ ATTRIBUTES DLLEXPORT:: MatTransposeColoringequals
+#endif
+
+  function MatTransposeColoringnotequals(A,B)
+    logical MatTransposeColoringnotequals
+    type(tMatTransposeColoring), intent(in) :: A,B
+    MatTransposeColoringnotequals = (A%v .ne. B%v)
+  end function
+  function MatTransposeColoringequals(A,B)
+    logical MatTransposeColoringequals
+    type(tMatTransposeColoring), intent(in) :: A,B
+    MatTransposeColoringequals = (A%v .eq. B%v)
+  end function
+  function PetscObjectCastMatTransposeColoring(obj)
+    MatTransposeColoring obj
+    PetscObject PetscObjectCastMatTransposeColoring
+    PetscObjectCastMatTransposeColoring%v = obj%v
+  end function 
+  subroutine PetscBarrierMatTransposeColoring(obj,ierr)
+    MatTransposeColoring obj
+    PetscErrorCode ierr
+    call PetscBarrier(PetscObjectCast(obj),ierr)
+  end subroutine 
+#if defined(PETSC_HAVE_SAWS)
+  subroutine PetscObjectSAWsTakeAccessMatTransposeColoring(obj, ierr)
+  MatTransposeColoring obj
+  PetscErrorCode ierr
+  call PetscObjectSAWsTakeAccess(PetscObjectCast(obj), ierr)
+  end subroutine 
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  subroutine PetscObjectSAWsGrantAccessMatTransposeColoring(obj, ierr)
+  MatTransposeColoring obj
+  PetscErrorCode ierr
+  call PetscObjectSAWsGrantAccess(PetscObjectCast(obj), ierr)
+  end subroutine 
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  subroutine PetscObjectSAWsBlockMatTransposeColoring(obj, ierr)
+  MatTransposeColoring obj
+  PetscErrorCode ierr
+  call PetscObjectSAWsBlock(PetscObjectCast(obj), ierr)
+  end subroutine 
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  subroutine PetscObjectSAWsSetBlockMatTransposeColoring(obj, flg, ierr)
+  MatTransposeColoring obj
+  PetscBool :: flg
+  PetscErrorCode ierr
+  call PetscObjectSAWsSetBlock(PetscObjectCast(obj), flg, ierr)
+  end subroutine 
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  subroutine PetscObjectSAWsViewOffMatTransposeColoring(obj, ierr)
+  MatTransposeColoring obj
+  PetscErrorCode ierr
+  call PetscObjectSAWsViewOff(PetscObjectCast(obj), ierr)
+  end subroutine 
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  subroutine PetscObjectViewSAWsMatTransposeColoring(obj, viewer, ierr)
+  MatTransposeColoring obj
+  PetscViewer :: viewer
+  PetscErrorCode ierr
+  call PetscObjectViewSAWs(PetscObjectCast(obj), viewer, ierr)
+  end subroutine 
+#endif
+  subroutine PetscObjectGetTypeMatTransposeColoring(obj, type, ierr)
+  MatTransposeColoring obj
+  character(*) :: type
+  PetscErrorCode ierr
+  call PetscObjectGetType(PetscObjectCast(obj), type, ierr)
+  end subroutine 
+  subroutine PetscObjectSetPrintedOptionsMatTransposeColoring(obj, ierr)
+  MatTransposeColoring obj
+  PetscErrorCode ierr
+  call PetscObjectSetPrintedOptions(PetscObjectCast(obj), ierr)
+  end subroutine 
+  subroutine PetscObjectInheritPrintedOptionsMatTransposeColoring(pobj, obj, ierr)
+  MatTransposeColoring pobj
+  PetscObject :: obj
+  PetscErrorCode ierr
+  call PetscObjectInheritPrintedOptions(PetscObjectCast(pobj), obj, ierr)
+  end subroutine 
+  subroutine PetscObjectAddOptionsHandlerMatTransposeColoring(obj, handle, destroy, ctx, ierr)
+  MatTransposeColoring obj
+  external :: handle
+  external :: destroy
+  type(*) :: ctx
+  PetscErrorCode ierr
+  call PetscObjectAddOptionsHandler(PetscObjectCast(obj), handle, destroy, ctx, ierr)
+  end subroutine 
+  subroutine PetscObjectProcessOptionsHandlersMatTransposeColoring(obj, PetscOptionsObject, ierr)
+  MatTransposeColoring obj
+  PetscOptionItems :: PetscOptionsObject
+  PetscErrorCode ierr
+  call PetscObjectProcessOptionsHandlers(PetscObjectCast(obj), PetscOptionsObject, ierr)
+  end subroutine 
+  subroutine PetscObjectDestroyOptionsHandlersMatTransposeColoring(obj, ierr)
+  MatTransposeColoring obj
+  PetscErrorCode ierr
+  call PetscObjectDestroyOptionsHandlers(PetscObjectCast(obj), ierr)
+  end subroutine 
+  subroutine PetscObjectReferenceMatTransposeColoring(obj, ierr)
+  MatTransposeColoring obj
+  PetscErrorCode ierr
+  call PetscObjectReference(PetscObjectCast(obj), ierr)
+  end subroutine 
+  subroutine PetscObjectGetReferenceMatTransposeColoring(obj, cnt, ierr)
+  MatTransposeColoring obj
+  PetscInt :: cnt
+  PetscErrorCode ierr
+  call PetscObjectGetReference(PetscObjectCast(obj), cnt, ierr)
+  end subroutine 
+  subroutine PetscObjectDereferenceMatTransposeColoring(obj, ierr)
+  MatTransposeColoring obj
+  PetscErrorCode ierr
+  call PetscObjectDereference(PetscObjectCast(obj), ierr)
+  end subroutine 
+  subroutine PetscObjectRemoveReferenceMatTransposeColoring(obj, name, ierr)
+  MatTransposeColoring obj
+  character(*) :: name
+  PetscErrorCode ierr
+  call PetscObjectRemoveReference(PetscObjectCast(obj), name, ierr)
+  end subroutine 
+  subroutine PetscObjectHasFunctionMatTransposeColoring(obj, name, has, ierr)
+  MatTransposeColoring obj
+  character(*) :: name
+  PetscBool :: has
+  PetscErrorCode ierr
+  call PetscObjectHasFunction(PetscObjectCast(obj), name, has, ierr)
+  end subroutine 
+  subroutine PetscObjectSetFromOptionsMatTransposeColoring(obj, ierr)
+  MatTransposeColoring obj
+  PetscErrorCode ierr
+  call PetscObjectSetFromOptions(PetscObjectCast(obj), ierr)
+  end subroutine 
+  subroutine PetscObjectSetUpMatTransposeColoring(obj, ierr)
+  MatTransposeColoring obj
+  PetscErrorCode ierr
+  call PetscObjectSetUp(PetscObjectCast(obj), ierr)
+  end subroutine 
+  subroutine PetscObjectGetNameMatTransposeColoring(obj, name, ierr)
+  MatTransposeColoring obj
+  character(*) :: name
+  PetscErrorCode ierr
+  call PetscObjectGetName(PetscObjectCast(obj), name, ierr)
+  end subroutine 
+  subroutine PetscObjectDestroyMatTransposeColoring(obj, ierr)
+  MatTransposeColoring obj
+  PetscErrorCode ierr
+  call PetscObjectDestroy(PetscObjectCast(obj), ierr)
+  end subroutine 
+  subroutine PetscObjectViewMatTransposeColoring(obj, viewer, ierr)
+  MatTransposeColoring obj
+  PetscViewer :: viewer
+  PetscErrorCode ierr
+  call PetscObjectView(PetscObjectCast(obj), viewer, ierr)
+  end subroutine 
+  subroutine PetscObjectViewFromOptionsMatTransposeColoring(obj, bobj, name, ierr)
+  MatTransposeColoring obj
+  PetscObject :: bobj
+  character(*) :: name
+  PetscErrorCode ierr
+  call PetscObjectViewFromOptions(PetscObjectCast(obj), bobj, name, ierr)
+  end subroutine 
+  subroutine PetscObjectTypeCompareMatTransposeColoring(obj, type_name, same, ierr)
+  MatTransposeColoring obj
+  character(*) :: type_name
+  PetscBool :: same
+  PetscErrorCode ierr
+  call PetscObjectTypeCompare(PetscObjectCast(obj), type_name, same, ierr)
+  end subroutine 
+  subroutine PetscObjectObjectTypeCompareMatTransposeColoring(obj1, obj2, same, ierr)
+  MatTransposeColoring obj1
+  PetscObject :: obj2
+  PetscBool :: same
+  PetscErrorCode ierr
+  call PetscObjectObjectTypeCompare(PetscObjectCast(obj1), obj2, same, ierr)
+  end subroutine 
+  subroutine PetscObjectBaseTypeCompareMatTransposeColoring(obj, type_name, same, ierr)
+  MatTransposeColoring obj
+  character(*) :: type_name
+  PetscBool :: same
+  PetscErrorCode ierr
+  call PetscObjectBaseTypeCompare(PetscObjectCast(obj), type_name, same, ierr)
+  end subroutine 
+  subroutine PetscObjectRegisterDestroyMatTransposeColoring(obj, ierr)
+  MatTransposeColoring obj
+  PetscErrorCode ierr
+  call PetscObjectRegisterDestroy(PetscObjectCast(obj), ierr)
+  end subroutine 
+  subroutine PetscObjectGetIdMatTransposeColoring(obj, id, ierr)
+  MatTransposeColoring obj
+  PetscObjectId :: id
+  PetscErrorCode ierr
+  call PetscObjectGetId(PetscObjectCast(obj), id, ierr)
+  end subroutine 
+  subroutine PetscObjectCompareIdMatTransposeColoring(obj, id, eq, ierr)
+  MatTransposeColoring obj
+  PetscObjectId :: id
+  PetscBool :: eq
+  PetscErrorCode ierr
+  call PetscObjectCompareId(PetscObjectCast(obj), id, eq, ierr)
+  end subroutine 
+  subroutine PetscObjectGetOptionsMatTransposeColoring(obj, options, ierr)
+  MatTransposeColoring obj
+  PetscOptions :: options
+  PetscErrorCode ierr
+  call PetscObjectGetOptions(PetscObjectCast(obj), options, ierr)
+  end subroutine 
+  subroutine PetscObjectSetOptionsMatTransposeColoring(obj, options, ierr)
+  MatTransposeColoring obj
+  PetscOptions :: options
+  PetscErrorCode ierr
+  call PetscObjectSetOptions(PetscObjectCast(obj), options, ierr)
+  end subroutine 
+  subroutine PetscObjectSetOptionsPrefixMatTransposeColoring(obj, prefix, ierr)
+  MatTransposeColoring obj
+  character(*) :: prefix
+  PetscErrorCode ierr
+  call PetscObjectSetOptionsPrefix(PetscObjectCast(obj), prefix, ierr)
+  end subroutine 
+  subroutine PetscObjectAppendOptionsPrefixMatTransposeColoring(obj, prefix, ierr)
+  MatTransposeColoring obj
+  character(*) :: prefix
+  PetscErrorCode ierr
+  call PetscObjectAppendOptionsPrefix(PetscObjectCast(obj), prefix, ierr)
+  end subroutine 
+  subroutine PetscObjectGetOptionsPrefixMatTransposeColoring(obj, prefix, ierr)
+  MatTransposeColoring obj
+  character(*) :: prefix
+  PetscErrorCode ierr
+  call PetscObjectGetOptionsPrefix(PetscObjectCast(obj), prefix, ierr)
+  end subroutine 
+  subroutine PetscObjectPrependOptionsPrefixMatTransposeColoring(obj, prefix, ierr)
+  MatTransposeColoring obj
+  character(*) :: prefix
+  PetscErrorCode ierr
+  call PetscObjectPrependOptionsPrefix(PetscObjectCast(obj), prefix, ierr)
+  end subroutine 
+  subroutine PetscObjectGetCommMatTransposeColoring(obj, comm, ierr)
+  MatTransposeColoring obj
+  MPIU_Comm :: comm
+  PetscErrorCode ierr
+  call PetscObjectGetComm(PetscObjectCast(obj), comm, ierr)
+  end subroutine 
+  subroutine PetscObjectGetTabLevelMatTransposeColoring(obj, tab, ierr)
+  MatTransposeColoring obj
+  PetscInt :: tab
+  PetscErrorCode ierr
+  call PetscObjectGetTabLevel(PetscObjectCast(obj), tab, ierr)
+  end subroutine 
+  subroutine PetscObjectSetTabLevelMatTransposeColoring(obj, tab, ierr)
+  MatTransposeColoring obj
+  PetscInt :: tab
+  PetscErrorCode ierr
+  call PetscObjectSetTabLevel(PetscObjectCast(obj), tab, ierr)
+  end subroutine 
+  subroutine PetscObjectIncrementTabLevelMatTransposeColoring(obj, oldobj, tab, ierr)
+  MatTransposeColoring obj
+  PetscObject :: oldobj
+  PetscInt :: tab
+  PetscErrorCode ierr
+  call PetscObjectIncrementTabLevel(PetscObjectCast(obj), oldobj, tab, ierr)
+  end subroutine 
+  subroutine PetscObjectGetNewTagMatTransposeColoring(obj, tag, ierr)
+  MatTransposeColoring obj
+  PetscMPIInt :: tag
+  PetscErrorCode ierr
+  call PetscObjectGetNewTag(PetscObjectCast(obj), tag, ierr)
+  end subroutine 
+  subroutine PetscObjectGetClassIdMatTransposeColoring(obj, classid, ierr)
+  MatTransposeColoring obj
+  PetscClassId :: classid
+  PetscErrorCode ierr
+  call PetscObjectGetClassId(PetscObjectCast(obj), classid, ierr)
+  end subroutine 
+  subroutine PetscObjectGetClassNameMatTransposeColoring(obj, classname, ierr)
+  MatTransposeColoring obj
+  character(*) :: classname
+  PetscErrorCode ierr
+  call PetscObjectGetClassName(PetscObjectCast(obj), classname, ierr)
+  end subroutine 
+  subroutine PetscObjectSetNameMatTransposeColoring(obj, name, ierr)
+  MatTransposeColoring obj
+  character(*) :: name
+  PetscErrorCode ierr
+  call PetscObjectSetName(PetscObjectCast(obj), name, ierr)
+  end subroutine 
+  subroutine PetscObjectPrintClassNamePrefixTypeMatTransposeColoring(obj, viewer, ierr)
+  MatTransposeColoring obj
+  PetscViewer :: viewer
+  PetscErrorCode ierr
+  call PetscObjectPrintClassNamePrefixType(PetscObjectCast(obj), viewer, ierr)
+  end subroutine 
+  subroutine PetscObjectNameMatTransposeColoring(obj, ierr)
+  MatTransposeColoring obj
+  PetscErrorCode ierr
+  call PetscObjectName(PetscObjectCast(obj), ierr)
+  end subroutine 
+  subroutine PetscObjectChangeTypeNameMatTransposeColoring(obj, type_name, ierr)
+  MatTransposeColoring obj
+  character(*) :: type_name
+  PetscErrorCode ierr
+  call PetscObjectChangeTypeName(PetscObjectCast(obj), type_name, ierr)
+  end subroutine 
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT:: MatPartitioningnotequals
+!DEC$ ATTRIBUTES DLLEXPORT:: MatPartitioningequals
+#endif
+
+  function MatPartitioningnotequals(A,B)
+    logical MatPartitioningnotequals
+    type(tMatPartitioning), intent(in) :: A,B
+    MatPartitioningnotequals = (A%v .ne. B%v)
+  end function
+  function MatPartitioningequals(A,B)
+    logical MatPartitioningequals
+    type(tMatPartitioning), intent(in) :: A,B
+    MatPartitioningequals = (A%v .eq. B%v)
+  end function
+  function PetscObjectCastMatPartitioning(obj)
+    MatPartitioning obj
+    PetscObject PetscObjectCastMatPartitioning
+    PetscObjectCastMatPartitioning%v = obj%v
+  end function 
+  subroutine PetscBarrierMatPartitioning(obj,ierr)
+    MatPartitioning obj
+    PetscErrorCode ierr
+    call PetscBarrier(PetscObjectCast(obj),ierr)
+  end subroutine 
+#if defined(PETSC_HAVE_SAWS)
+  subroutine PetscObjectSAWsTakeAccessMatPartitioning(obj, ierr)
+  MatPartitioning obj
+  PetscErrorCode ierr
+  call PetscObjectSAWsTakeAccess(PetscObjectCast(obj), ierr)
+  end subroutine 
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  subroutine PetscObjectSAWsGrantAccessMatPartitioning(obj, ierr)
+  MatPartitioning obj
+  PetscErrorCode ierr
+  call PetscObjectSAWsGrantAccess(PetscObjectCast(obj), ierr)
+  end subroutine 
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  subroutine PetscObjectSAWsBlockMatPartitioning(obj, ierr)
+  MatPartitioning obj
+  PetscErrorCode ierr
+  call PetscObjectSAWsBlock(PetscObjectCast(obj), ierr)
+  end subroutine 
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  subroutine PetscObjectSAWsSetBlockMatPartitioning(obj, flg, ierr)
+  MatPartitioning obj
+  PetscBool :: flg
+  PetscErrorCode ierr
+  call PetscObjectSAWsSetBlock(PetscObjectCast(obj), flg, ierr)
+  end subroutine 
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  subroutine PetscObjectSAWsViewOffMatPartitioning(obj, ierr)
+  MatPartitioning obj
+  PetscErrorCode ierr
+  call PetscObjectSAWsViewOff(PetscObjectCast(obj), ierr)
+  end subroutine 
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  subroutine PetscObjectViewSAWsMatPartitioning(obj, viewer, ierr)
+  MatPartitioning obj
+  PetscViewer :: viewer
+  PetscErrorCode ierr
+  call PetscObjectViewSAWs(PetscObjectCast(obj), viewer, ierr)
+  end subroutine 
+#endif
+  subroutine PetscObjectGetTypeMatPartitioning(obj, type, ierr)
+  MatPartitioning obj
+  character(*) :: type
+  PetscErrorCode ierr
+  call PetscObjectGetType(PetscObjectCast(obj), type, ierr)
+  end subroutine 
+  subroutine PetscObjectSetPrintedOptionsMatPartitioning(obj, ierr)
+  MatPartitioning obj
+  PetscErrorCode ierr
+  call PetscObjectSetPrintedOptions(PetscObjectCast(obj), ierr)
+  end subroutine 
+  subroutine PetscObjectInheritPrintedOptionsMatPartitioning(pobj, obj, ierr)
+  MatPartitioning pobj
+  PetscObject :: obj
+  PetscErrorCode ierr
+  call PetscObjectInheritPrintedOptions(PetscObjectCast(pobj), obj, ierr)
+  end subroutine 
+  subroutine PetscObjectAddOptionsHandlerMatPartitioning(obj, handle, destroy, ctx, ierr)
+  MatPartitioning obj
+  external :: handle
+  external :: destroy
+  type(*) :: ctx
+  PetscErrorCode ierr
+  call PetscObjectAddOptionsHandler(PetscObjectCast(obj), handle, destroy, ctx, ierr)
+  end subroutine 
+  subroutine PetscObjectProcessOptionsHandlersMatPartitioning(obj, PetscOptionsObject, ierr)
+  MatPartitioning obj
+  PetscOptionItems :: PetscOptionsObject
+  PetscErrorCode ierr
+  call PetscObjectProcessOptionsHandlers(PetscObjectCast(obj), PetscOptionsObject, ierr)
+  end subroutine 
+  subroutine PetscObjectDestroyOptionsHandlersMatPartitioning(obj, ierr)
+  MatPartitioning obj
+  PetscErrorCode ierr
+  call PetscObjectDestroyOptionsHandlers(PetscObjectCast(obj), ierr)
+  end subroutine 
+  subroutine PetscObjectReferenceMatPartitioning(obj, ierr)
+  MatPartitioning obj
+  PetscErrorCode ierr
+  call PetscObjectReference(PetscObjectCast(obj), ierr)
+  end subroutine 
+  subroutine PetscObjectGetReferenceMatPartitioning(obj, cnt, ierr)
+  MatPartitioning obj
+  PetscInt :: cnt
+  PetscErrorCode ierr
+  call PetscObjectGetReference(PetscObjectCast(obj), cnt, ierr)
+  end subroutine 
+  subroutine PetscObjectDereferenceMatPartitioning(obj, ierr)
+  MatPartitioning obj
+  PetscErrorCode ierr
+  call PetscObjectDereference(PetscObjectCast(obj), ierr)
+  end subroutine 
+  subroutine PetscObjectRemoveReferenceMatPartitioning(obj, name, ierr)
+  MatPartitioning obj
+  character(*) :: name
+  PetscErrorCode ierr
+  call PetscObjectRemoveReference(PetscObjectCast(obj), name, ierr)
+  end subroutine 
+  subroutine PetscObjectHasFunctionMatPartitioning(obj, name, has, ierr)
+  MatPartitioning obj
+  character(*) :: name
+  PetscBool :: has
+  PetscErrorCode ierr
+  call PetscObjectHasFunction(PetscObjectCast(obj), name, has, ierr)
+  end subroutine 
+  subroutine PetscObjectSetFromOptionsMatPartitioning(obj, ierr)
+  MatPartitioning obj
+  PetscErrorCode ierr
+  call PetscObjectSetFromOptions(PetscObjectCast(obj), ierr)
+  end subroutine 
+  subroutine PetscObjectSetUpMatPartitioning(obj, ierr)
+  MatPartitioning obj
+  PetscErrorCode ierr
+  call PetscObjectSetUp(PetscObjectCast(obj), ierr)
+  end subroutine 
+  subroutine PetscObjectGetNameMatPartitioning(obj, name, ierr)
+  MatPartitioning obj
+  character(*) :: name
+  PetscErrorCode ierr
+  call PetscObjectGetName(PetscObjectCast(obj), name, ierr)
+  end subroutine 
+  subroutine PetscObjectDestroyMatPartitioning(obj, ierr)
+  MatPartitioning obj
+  PetscErrorCode ierr
+  call PetscObjectDestroy(PetscObjectCast(obj), ierr)
+  end subroutine 
+  subroutine PetscObjectViewMatPartitioning(obj, viewer, ierr)
+  MatPartitioning obj
+  PetscViewer :: viewer
+  PetscErrorCode ierr
+  call PetscObjectView(PetscObjectCast(obj), viewer, ierr)
+  end subroutine 
+  subroutine PetscObjectViewFromOptionsMatPartitioning(obj, bobj, name, ierr)
+  MatPartitioning obj
+  PetscObject :: bobj
+  character(*) :: name
+  PetscErrorCode ierr
+  call PetscObjectViewFromOptions(PetscObjectCast(obj), bobj, name, ierr)
+  end subroutine 
+  subroutine PetscObjectTypeCompareMatPartitioning(obj, type_name, same, ierr)
+  MatPartitioning obj
+  character(*) :: type_name
+  PetscBool :: same
+  PetscErrorCode ierr
+  call PetscObjectTypeCompare(PetscObjectCast(obj), type_name, same, ierr)
+  end subroutine 
+  subroutine PetscObjectObjectTypeCompareMatPartitioning(obj1, obj2, same, ierr)
+  MatPartitioning obj1
+  PetscObject :: obj2
+  PetscBool :: same
+  PetscErrorCode ierr
+  call PetscObjectObjectTypeCompare(PetscObjectCast(obj1), obj2, same, ierr)
+  end subroutine 
+  subroutine PetscObjectBaseTypeCompareMatPartitioning(obj, type_name, same, ierr)
+  MatPartitioning obj
+  character(*) :: type_name
+  PetscBool :: same
+  PetscErrorCode ierr
+  call PetscObjectBaseTypeCompare(PetscObjectCast(obj), type_name, same, ierr)
+  end subroutine 
+  subroutine PetscObjectRegisterDestroyMatPartitioning(obj, ierr)
+  MatPartitioning obj
+  PetscErrorCode ierr
+  call PetscObjectRegisterDestroy(PetscObjectCast(obj), ierr)
+  end subroutine 
+  subroutine PetscObjectGetIdMatPartitioning(obj, id, ierr)
+  MatPartitioning obj
+  PetscObjectId :: id
+  PetscErrorCode ierr
+  call PetscObjectGetId(PetscObjectCast(obj), id, ierr)
+  end subroutine 
+  subroutine PetscObjectCompareIdMatPartitioning(obj, id, eq, ierr)
+  MatPartitioning obj
+  PetscObjectId :: id
+  PetscBool :: eq
+  PetscErrorCode ierr
+  call PetscObjectCompareId(PetscObjectCast(obj), id, eq, ierr)
+  end subroutine 
+  subroutine PetscObjectGetOptionsMatPartitioning(obj, options, ierr)
+  MatPartitioning obj
+  PetscOptions :: options
+  PetscErrorCode ierr
+  call PetscObjectGetOptions(PetscObjectCast(obj), options, ierr)
+  end subroutine 
+  subroutine PetscObjectSetOptionsMatPartitioning(obj, options, ierr)
+  MatPartitioning obj
+  PetscOptions :: options
+  PetscErrorCode ierr
+  call PetscObjectSetOptions(PetscObjectCast(obj), options, ierr)
+  end subroutine 
+  subroutine PetscObjectSetOptionsPrefixMatPartitioning(obj, prefix, ierr)
+  MatPartitioning obj
+  character(*) :: prefix
+  PetscErrorCode ierr
+  call PetscObjectSetOptionsPrefix(PetscObjectCast(obj), prefix, ierr)
+  end subroutine 
+  subroutine PetscObjectAppendOptionsPrefixMatPartitioning(obj, prefix, ierr)
+  MatPartitioning obj
+  character(*) :: prefix
+  PetscErrorCode ierr
+  call PetscObjectAppendOptionsPrefix(PetscObjectCast(obj), prefix, ierr)
+  end subroutine 
+  subroutine PetscObjectGetOptionsPrefixMatPartitioning(obj, prefix, ierr)
+  MatPartitioning obj
+  character(*) :: prefix
+  PetscErrorCode ierr
+  call PetscObjectGetOptionsPrefix(PetscObjectCast(obj), prefix, ierr)
+  end subroutine 
+  subroutine PetscObjectPrependOptionsPrefixMatPartitioning(obj, prefix, ierr)
+  MatPartitioning obj
+  character(*) :: prefix
+  PetscErrorCode ierr
+  call PetscObjectPrependOptionsPrefix(PetscObjectCast(obj), prefix, ierr)
+  end subroutine 
+  subroutine PetscObjectGetCommMatPartitioning(obj, comm, ierr)
+  MatPartitioning obj
+  MPIU_Comm :: comm
+  PetscErrorCode ierr
+  call PetscObjectGetComm(PetscObjectCast(obj), comm, ierr)
+  end subroutine 
+  subroutine PetscObjectGetTabLevelMatPartitioning(obj, tab, ierr)
+  MatPartitioning obj
+  PetscInt :: tab
+  PetscErrorCode ierr
+  call PetscObjectGetTabLevel(PetscObjectCast(obj), tab, ierr)
+  end subroutine 
+  subroutine PetscObjectSetTabLevelMatPartitioning(obj, tab, ierr)
+  MatPartitioning obj
+  PetscInt :: tab
+  PetscErrorCode ierr
+  call PetscObjectSetTabLevel(PetscObjectCast(obj), tab, ierr)
+  end subroutine 
+  subroutine PetscObjectIncrementTabLevelMatPartitioning(obj, oldobj, tab, ierr)
+  MatPartitioning obj
+  PetscObject :: oldobj
+  PetscInt :: tab
+  PetscErrorCode ierr
+  call PetscObjectIncrementTabLevel(PetscObjectCast(obj), oldobj, tab, ierr)
+  end subroutine 
+  subroutine PetscObjectGetNewTagMatPartitioning(obj, tag, ierr)
+  MatPartitioning obj
+  PetscMPIInt :: tag
+  PetscErrorCode ierr
+  call PetscObjectGetNewTag(PetscObjectCast(obj), tag, ierr)
+  end subroutine 
+  subroutine PetscObjectGetClassIdMatPartitioning(obj, classid, ierr)
+  MatPartitioning obj
+  PetscClassId :: classid
+  PetscErrorCode ierr
+  call PetscObjectGetClassId(PetscObjectCast(obj), classid, ierr)
+  end subroutine 
+  subroutine PetscObjectGetClassNameMatPartitioning(obj, classname, ierr)
+  MatPartitioning obj
+  character(*) :: classname
+  PetscErrorCode ierr
+  call PetscObjectGetClassName(PetscObjectCast(obj), classname, ierr)
+  end subroutine 
+  subroutine PetscObjectSetNameMatPartitioning(obj, name, ierr)
+  MatPartitioning obj
+  character(*) :: name
+  PetscErrorCode ierr
+  call PetscObjectSetName(PetscObjectCast(obj), name, ierr)
+  end subroutine 
+  subroutine PetscObjectPrintClassNamePrefixTypeMatPartitioning(obj, viewer, ierr)
+  MatPartitioning obj
+  PetscViewer :: viewer
+  PetscErrorCode ierr
+  call PetscObjectPrintClassNamePrefixType(PetscObjectCast(obj), viewer, ierr)
+  end subroutine 
+  subroutine PetscObjectNameMatPartitioning(obj, ierr)
+  MatPartitioning obj
+  PetscErrorCode ierr
+  call PetscObjectName(PetscObjectCast(obj), ierr)
+  end subroutine 
+  subroutine PetscObjectChangeTypeNameMatPartitioning(obj, type_name, ierr)
+  MatPartitioning obj
+  character(*) :: type_name
+  PetscErrorCode ierr
+  call PetscObjectChangeTypeName(PetscObjectCast(obj), type_name, ierr)
+  end subroutine 
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT:: MatNullSpacenotequals
+!DEC$ ATTRIBUTES DLLEXPORT:: MatNullSpaceequals
+#endif
+
+  function MatNullSpacenotequals(A,B)
+    logical MatNullSpacenotequals
+    type(tMatNullSpace), intent(in) :: A,B
+    MatNullSpacenotequals = (A%v .ne. B%v)
+  end function
+  function MatNullSpaceequals(A,B)
+    logical MatNullSpaceequals
+    type(tMatNullSpace), intent(in) :: A,B
+    MatNullSpaceequals = (A%v .eq. B%v)
+  end function
+  function PetscObjectCastMatNullSpace(obj)
+    MatNullSpace obj
+    PetscObject PetscObjectCastMatNullSpace
+    PetscObjectCastMatNullSpace%v = obj%v
+  end function 
+  subroutine PetscBarrierMatNullSpace(obj,ierr)
+    MatNullSpace obj
+    PetscErrorCode ierr
+    call PetscBarrier(PetscObjectCast(obj),ierr)
+  end subroutine 
+#if defined(PETSC_HAVE_SAWS)
+  subroutine PetscObjectSAWsTakeAccessMatNullSpace(obj, ierr)
+  MatNullSpace obj
+  PetscErrorCode ierr
+  call PetscObjectSAWsTakeAccess(PetscObjectCast(obj), ierr)
+  end subroutine 
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  subroutine PetscObjectSAWsGrantAccessMatNullSpace(obj, ierr)
+  MatNullSpace obj
+  PetscErrorCode ierr
+  call PetscObjectSAWsGrantAccess(PetscObjectCast(obj), ierr)
+  end subroutine 
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  subroutine PetscObjectSAWsBlockMatNullSpace(obj, ierr)
+  MatNullSpace obj
+  PetscErrorCode ierr
+  call PetscObjectSAWsBlock(PetscObjectCast(obj), ierr)
+  end subroutine 
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  subroutine PetscObjectSAWsSetBlockMatNullSpace(obj, flg, ierr)
+  MatNullSpace obj
+  PetscBool :: flg
+  PetscErrorCode ierr
+  call PetscObjectSAWsSetBlock(PetscObjectCast(obj), flg, ierr)
+  end subroutine 
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  subroutine PetscObjectSAWsViewOffMatNullSpace(obj, ierr)
+  MatNullSpace obj
+  PetscErrorCode ierr
+  call PetscObjectSAWsViewOff(PetscObjectCast(obj), ierr)
+  end subroutine 
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  subroutine PetscObjectViewSAWsMatNullSpace(obj, viewer, ierr)
+  MatNullSpace obj
+  PetscViewer :: viewer
+  PetscErrorCode ierr
+  call PetscObjectViewSAWs(PetscObjectCast(obj), viewer, ierr)
+  end subroutine 
+#endif
+  subroutine PetscObjectGetTypeMatNullSpace(obj, type, ierr)
+  MatNullSpace obj
+  character(*) :: type
+  PetscErrorCode ierr
+  call PetscObjectGetType(PetscObjectCast(obj), type, ierr)
+  end subroutine 
+  subroutine PetscObjectSetPrintedOptionsMatNullSpace(obj, ierr)
+  MatNullSpace obj
+  PetscErrorCode ierr
+  call PetscObjectSetPrintedOptions(PetscObjectCast(obj), ierr)
+  end subroutine 
+  subroutine PetscObjectInheritPrintedOptionsMatNullSpace(pobj, obj, ierr)
+  MatNullSpace pobj
+  PetscObject :: obj
+  PetscErrorCode ierr
+  call PetscObjectInheritPrintedOptions(PetscObjectCast(pobj), obj, ierr)
+  end subroutine 
+  subroutine PetscObjectAddOptionsHandlerMatNullSpace(obj, handle, destroy, ctx, ierr)
+  MatNullSpace obj
+  external :: handle
+  external :: destroy
+  type(*) :: ctx
+  PetscErrorCode ierr
+  call PetscObjectAddOptionsHandler(PetscObjectCast(obj), handle, destroy, ctx, ierr)
+  end subroutine 
+  subroutine PetscObjectProcessOptionsHandlersMatNullSpace(obj, PetscOptionsObject, ierr)
+  MatNullSpace obj
+  PetscOptionItems :: PetscOptionsObject
+  PetscErrorCode ierr
+  call PetscObjectProcessOptionsHandlers(PetscObjectCast(obj), PetscOptionsObject, ierr)
+  end subroutine 
+  subroutine PetscObjectDestroyOptionsHandlersMatNullSpace(obj, ierr)
+  MatNullSpace obj
+  PetscErrorCode ierr
+  call PetscObjectDestroyOptionsHandlers(PetscObjectCast(obj), ierr)
+  end subroutine 
+  subroutine PetscObjectReferenceMatNullSpace(obj, ierr)
+  MatNullSpace obj
+  PetscErrorCode ierr
+  call PetscObjectReference(PetscObjectCast(obj), ierr)
+  end subroutine 
+  subroutine PetscObjectGetReferenceMatNullSpace(obj, cnt, ierr)
+  MatNullSpace obj
+  PetscInt :: cnt
+  PetscErrorCode ierr
+  call PetscObjectGetReference(PetscObjectCast(obj), cnt, ierr)
+  end subroutine 
+  subroutine PetscObjectDereferenceMatNullSpace(obj, ierr)
+  MatNullSpace obj
+  PetscErrorCode ierr
+  call PetscObjectDereference(PetscObjectCast(obj), ierr)
+  end subroutine 
+  subroutine PetscObjectRemoveReferenceMatNullSpace(obj, name, ierr)
+  MatNullSpace obj
+  character(*) :: name
+  PetscErrorCode ierr
+  call PetscObjectRemoveReference(PetscObjectCast(obj), name, ierr)
+  end subroutine 
+  subroutine PetscObjectHasFunctionMatNullSpace(obj, name, has, ierr)
+  MatNullSpace obj
+  character(*) :: name
+  PetscBool :: has
+  PetscErrorCode ierr
+  call PetscObjectHasFunction(PetscObjectCast(obj), name, has, ierr)
+  end subroutine 
+  subroutine PetscObjectSetFromOptionsMatNullSpace(obj, ierr)
+  MatNullSpace obj
+  PetscErrorCode ierr
+  call PetscObjectSetFromOptions(PetscObjectCast(obj), ierr)
+  end subroutine 
+  subroutine PetscObjectSetUpMatNullSpace(obj, ierr)
+  MatNullSpace obj
+  PetscErrorCode ierr
+  call PetscObjectSetUp(PetscObjectCast(obj), ierr)
+  end subroutine 
+  subroutine PetscObjectGetNameMatNullSpace(obj, name, ierr)
+  MatNullSpace obj
+  character(*) :: name
+  PetscErrorCode ierr
+  call PetscObjectGetName(PetscObjectCast(obj), name, ierr)
+  end subroutine 
+  subroutine PetscObjectDestroyMatNullSpace(obj, ierr)
+  MatNullSpace obj
+  PetscErrorCode ierr
+  call PetscObjectDestroy(PetscObjectCast(obj), ierr)
+  end subroutine 
+  subroutine PetscObjectViewMatNullSpace(obj, viewer, ierr)
+  MatNullSpace obj
+  PetscViewer :: viewer
+  PetscErrorCode ierr
+  call PetscObjectView(PetscObjectCast(obj), viewer, ierr)
+  end subroutine 
+  subroutine PetscObjectViewFromOptionsMatNullSpace(obj, bobj, name, ierr)
+  MatNullSpace obj
+  PetscObject :: bobj
+  character(*) :: name
+  PetscErrorCode ierr
+  call PetscObjectViewFromOptions(PetscObjectCast(obj), bobj, name, ierr)
+  end subroutine 
+  subroutine PetscObjectTypeCompareMatNullSpace(obj, type_name, same, ierr)
+  MatNullSpace obj
+  character(*) :: type_name
+  PetscBool :: same
+  PetscErrorCode ierr
+  call PetscObjectTypeCompare(PetscObjectCast(obj), type_name, same, ierr)
+  end subroutine 
+  subroutine PetscObjectObjectTypeCompareMatNullSpace(obj1, obj2, same, ierr)
+  MatNullSpace obj1
+  PetscObject :: obj2
+  PetscBool :: same
+  PetscErrorCode ierr
+  call PetscObjectObjectTypeCompare(PetscObjectCast(obj1), obj2, same, ierr)
+  end subroutine 
+  subroutine PetscObjectBaseTypeCompareMatNullSpace(obj, type_name, same, ierr)
+  MatNullSpace obj
+  character(*) :: type_name
+  PetscBool :: same
+  PetscErrorCode ierr
+  call PetscObjectBaseTypeCompare(PetscObjectCast(obj), type_name, same, ierr)
+  end subroutine 
+  subroutine PetscObjectRegisterDestroyMatNullSpace(obj, ierr)
+  MatNullSpace obj
+  PetscErrorCode ierr
+  call PetscObjectRegisterDestroy(PetscObjectCast(obj), ierr)
+  end subroutine 
+  subroutine PetscObjectGetIdMatNullSpace(obj, id, ierr)
+  MatNullSpace obj
+  PetscObjectId :: id
+  PetscErrorCode ierr
+  call PetscObjectGetId(PetscObjectCast(obj), id, ierr)
+  end subroutine 
+  subroutine PetscObjectCompareIdMatNullSpace(obj, id, eq, ierr)
+  MatNullSpace obj
+  PetscObjectId :: id
+  PetscBool :: eq
+  PetscErrorCode ierr
+  call PetscObjectCompareId(PetscObjectCast(obj), id, eq, ierr)
+  end subroutine 
+  subroutine PetscObjectGetOptionsMatNullSpace(obj, options, ierr)
+  MatNullSpace obj
+  PetscOptions :: options
+  PetscErrorCode ierr
+  call PetscObjectGetOptions(PetscObjectCast(obj), options, ierr)
+  end subroutine 
+  subroutine PetscObjectSetOptionsMatNullSpace(obj, options, ierr)
+  MatNullSpace obj
+  PetscOptions :: options
+  PetscErrorCode ierr
+  call PetscObjectSetOptions(PetscObjectCast(obj), options, ierr)
+  end subroutine 
+  subroutine PetscObjectSetOptionsPrefixMatNullSpace(obj, prefix, ierr)
+  MatNullSpace obj
+  character(*) :: prefix
+  PetscErrorCode ierr
+  call PetscObjectSetOptionsPrefix(PetscObjectCast(obj), prefix, ierr)
+  end subroutine 
+  subroutine PetscObjectAppendOptionsPrefixMatNullSpace(obj, prefix, ierr)
+  MatNullSpace obj
+  character(*) :: prefix
+  PetscErrorCode ierr
+  call PetscObjectAppendOptionsPrefix(PetscObjectCast(obj), prefix, ierr)
+  end subroutine 
+  subroutine PetscObjectGetOptionsPrefixMatNullSpace(obj, prefix, ierr)
+  MatNullSpace obj
+  character(*) :: prefix
+  PetscErrorCode ierr
+  call PetscObjectGetOptionsPrefix(PetscObjectCast(obj), prefix, ierr)
+  end subroutine 
+  subroutine PetscObjectPrependOptionsPrefixMatNullSpace(obj, prefix, ierr)
+  MatNullSpace obj
+  character(*) :: prefix
+  PetscErrorCode ierr
+  call PetscObjectPrependOptionsPrefix(PetscObjectCast(obj), prefix, ierr)
+  end subroutine 
+  subroutine PetscObjectGetCommMatNullSpace(obj, comm, ierr)
+  MatNullSpace obj
+  MPIU_Comm :: comm
+  PetscErrorCode ierr
+  call PetscObjectGetComm(PetscObjectCast(obj), comm, ierr)
+  end subroutine 
+  subroutine PetscObjectGetTabLevelMatNullSpace(obj, tab, ierr)
+  MatNullSpace obj
+  PetscInt :: tab
+  PetscErrorCode ierr
+  call PetscObjectGetTabLevel(PetscObjectCast(obj), tab, ierr)
+  end subroutine 
+  subroutine PetscObjectSetTabLevelMatNullSpace(obj, tab, ierr)
+  MatNullSpace obj
+  PetscInt :: tab
+  PetscErrorCode ierr
+  call PetscObjectSetTabLevel(PetscObjectCast(obj), tab, ierr)
+  end subroutine 
+  subroutine PetscObjectIncrementTabLevelMatNullSpace(obj, oldobj, tab, ierr)
+  MatNullSpace obj
+  PetscObject :: oldobj
+  PetscInt :: tab
+  PetscErrorCode ierr
+  call PetscObjectIncrementTabLevel(PetscObjectCast(obj), oldobj, tab, ierr)
+  end subroutine 
+  subroutine PetscObjectGetNewTagMatNullSpace(obj, tag, ierr)
+  MatNullSpace obj
+  PetscMPIInt :: tag
+  PetscErrorCode ierr
+  call PetscObjectGetNewTag(PetscObjectCast(obj), tag, ierr)
+  end subroutine 
+  subroutine PetscObjectGetClassIdMatNullSpace(obj, classid, ierr)
+  MatNullSpace obj
+  PetscClassId :: classid
+  PetscErrorCode ierr
+  call PetscObjectGetClassId(PetscObjectCast(obj), classid, ierr)
+  end subroutine 
+  subroutine PetscObjectGetClassNameMatNullSpace(obj, classname, ierr)
+  MatNullSpace obj
+  character(*) :: classname
+  PetscErrorCode ierr
+  call PetscObjectGetClassName(PetscObjectCast(obj), classname, ierr)
+  end subroutine 
+  subroutine PetscObjectSetNameMatNullSpace(obj, name, ierr)
+  MatNullSpace obj
+  character(*) :: name
+  PetscErrorCode ierr
+  call PetscObjectSetName(PetscObjectCast(obj), name, ierr)
+  end subroutine 
+  subroutine PetscObjectPrintClassNamePrefixTypeMatNullSpace(obj, viewer, ierr)
+  MatNullSpace obj
+  PetscViewer :: viewer
+  PetscErrorCode ierr
+  call PetscObjectPrintClassNamePrefixType(PetscObjectCast(obj), viewer, ierr)
+  end subroutine 
+  subroutine PetscObjectNameMatNullSpace(obj, ierr)
+  MatNullSpace obj
+  PetscErrorCode ierr
+  call PetscObjectName(PetscObjectCast(obj), ierr)
+  end subroutine 
+  subroutine PetscObjectChangeTypeNameMatNullSpace(obj, type_name, ierr)
+  MatNullSpace obj
+  character(*) :: type_name
+  PetscErrorCode ierr
+  call PetscObjectChangeTypeName(PetscObjectCast(obj), type_name, ierr)
+  end subroutine 
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT:: MatMFFDnotequals
+!DEC$ ATTRIBUTES DLLEXPORT:: MatMFFDequals
+#endif
+
+  function MatMFFDnotequals(A,B)
+    logical MatMFFDnotequals
+    type(tMatMFFD), intent(in) :: A,B
+    MatMFFDnotequals = (A%v .ne. B%v)
+  end function
+  function MatMFFDequals(A,B)
+    logical MatMFFDequals
+    type(tMatMFFD), intent(in) :: A,B
+    MatMFFDequals = (A%v .eq. B%v)
+  end function
+  function PetscObjectCastMatMFFD(obj)
+    MatMFFD obj
+    PetscObject PetscObjectCastMatMFFD
+    PetscObjectCastMatMFFD%v = obj%v
+  end function 
+  subroutine PetscBarrierMatMFFD(obj,ierr)
+    MatMFFD obj
+    PetscErrorCode ierr
+    call PetscBarrier(PetscObjectCast(obj),ierr)
+  end subroutine 
+#if defined(PETSC_HAVE_SAWS)
+  subroutine PetscObjectSAWsTakeAccessMatMFFD(obj, ierr)
+  MatMFFD obj
+  PetscErrorCode ierr
+  call PetscObjectSAWsTakeAccess(PetscObjectCast(obj), ierr)
+  end subroutine 
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  subroutine PetscObjectSAWsGrantAccessMatMFFD(obj, ierr)
+  MatMFFD obj
+  PetscErrorCode ierr
+  call PetscObjectSAWsGrantAccess(PetscObjectCast(obj), ierr)
+  end subroutine 
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  subroutine PetscObjectSAWsBlockMatMFFD(obj, ierr)
+  MatMFFD obj
+  PetscErrorCode ierr
+  call PetscObjectSAWsBlock(PetscObjectCast(obj), ierr)
+  end subroutine 
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  subroutine PetscObjectSAWsSetBlockMatMFFD(obj, flg, ierr)
+  MatMFFD obj
+  PetscBool :: flg
+  PetscErrorCode ierr
+  call PetscObjectSAWsSetBlock(PetscObjectCast(obj), flg, ierr)
+  end subroutine 
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  subroutine PetscObjectSAWsViewOffMatMFFD(obj, ierr)
+  MatMFFD obj
+  PetscErrorCode ierr
+  call PetscObjectSAWsViewOff(PetscObjectCast(obj), ierr)
+  end subroutine 
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  subroutine PetscObjectViewSAWsMatMFFD(obj, viewer, ierr)
+  MatMFFD obj
+  PetscViewer :: viewer
+  PetscErrorCode ierr
+  call PetscObjectViewSAWs(PetscObjectCast(obj), viewer, ierr)
+  end subroutine 
+#endif
+  subroutine PetscObjectGetTypeMatMFFD(obj, type, ierr)
+  MatMFFD obj
+  character(*) :: type
+  PetscErrorCode ierr
+  call PetscObjectGetType(PetscObjectCast(obj), type, ierr)
+  end subroutine 
+  subroutine PetscObjectSetPrintedOptionsMatMFFD(obj, ierr)
+  MatMFFD obj
+  PetscErrorCode ierr
+  call PetscObjectSetPrintedOptions(PetscObjectCast(obj), ierr)
+  end subroutine 
+  subroutine PetscObjectInheritPrintedOptionsMatMFFD(pobj, obj, ierr)
+  MatMFFD pobj
+  PetscObject :: obj
+  PetscErrorCode ierr
+  call PetscObjectInheritPrintedOptions(PetscObjectCast(pobj), obj, ierr)
+  end subroutine 
+  subroutine PetscObjectAddOptionsHandlerMatMFFD(obj, handle, destroy, ctx, ierr)
+  MatMFFD obj
+  external :: handle
+  external :: destroy
+  type(*) :: ctx
+  PetscErrorCode ierr
+  call PetscObjectAddOptionsHandler(PetscObjectCast(obj), handle, destroy, ctx, ierr)
+  end subroutine 
+  subroutine PetscObjectProcessOptionsHandlersMatMFFD(obj, PetscOptionsObject, ierr)
+  MatMFFD obj
+  PetscOptionItems :: PetscOptionsObject
+  PetscErrorCode ierr
+  call PetscObjectProcessOptionsHandlers(PetscObjectCast(obj), PetscOptionsObject, ierr)
+  end subroutine 
+  subroutine PetscObjectDestroyOptionsHandlersMatMFFD(obj, ierr)
+  MatMFFD obj
+  PetscErrorCode ierr
+  call PetscObjectDestroyOptionsHandlers(PetscObjectCast(obj), ierr)
+  end subroutine 
+  subroutine PetscObjectReferenceMatMFFD(obj, ierr)
+  MatMFFD obj
+  PetscErrorCode ierr
+  call PetscObjectReference(PetscObjectCast(obj), ierr)
+  end subroutine 
+  subroutine PetscObjectGetReferenceMatMFFD(obj, cnt, ierr)
+  MatMFFD obj
+  PetscInt :: cnt
+  PetscErrorCode ierr
+  call PetscObjectGetReference(PetscObjectCast(obj), cnt, ierr)
+  end subroutine 
+  subroutine PetscObjectDereferenceMatMFFD(obj, ierr)
+  MatMFFD obj
+  PetscErrorCode ierr
+  call PetscObjectDereference(PetscObjectCast(obj), ierr)
+  end subroutine 
+  subroutine PetscObjectRemoveReferenceMatMFFD(obj, name, ierr)
+  MatMFFD obj
+  character(*) :: name
+  PetscErrorCode ierr
+  call PetscObjectRemoveReference(PetscObjectCast(obj), name, ierr)
+  end subroutine 
+  subroutine PetscObjectHasFunctionMatMFFD(obj, name, has, ierr)
+  MatMFFD obj
+  character(*) :: name
+  PetscBool :: has
+  PetscErrorCode ierr
+  call PetscObjectHasFunction(PetscObjectCast(obj), name, has, ierr)
+  end subroutine 
+  subroutine PetscObjectSetFromOptionsMatMFFD(obj, ierr)
+  MatMFFD obj
+  PetscErrorCode ierr
+  call PetscObjectSetFromOptions(PetscObjectCast(obj), ierr)
+  end subroutine 
+  subroutine PetscObjectSetUpMatMFFD(obj, ierr)
+  MatMFFD obj
+  PetscErrorCode ierr
+  call PetscObjectSetUp(PetscObjectCast(obj), ierr)
+  end subroutine 
+  subroutine PetscObjectGetNameMatMFFD(obj, name, ierr)
+  MatMFFD obj
+  character(*) :: name
+  PetscErrorCode ierr
+  call PetscObjectGetName(PetscObjectCast(obj), name, ierr)
+  end subroutine 
+  subroutine PetscObjectDestroyMatMFFD(obj, ierr)
+  MatMFFD obj
+  PetscErrorCode ierr
+  call PetscObjectDestroy(PetscObjectCast(obj), ierr)
+  end subroutine 
+  subroutine PetscObjectViewMatMFFD(obj, viewer, ierr)
+  MatMFFD obj
+  PetscViewer :: viewer
+  PetscErrorCode ierr
+  call PetscObjectView(PetscObjectCast(obj), viewer, ierr)
+  end subroutine 
+  subroutine PetscObjectViewFromOptionsMatMFFD(obj, bobj, name, ierr)
+  MatMFFD obj
+  PetscObject :: bobj
+  character(*) :: name
+  PetscErrorCode ierr
+  call PetscObjectViewFromOptions(PetscObjectCast(obj), bobj, name, ierr)
+  end subroutine 
+  subroutine PetscObjectTypeCompareMatMFFD(obj, type_name, same, ierr)
+  MatMFFD obj
+  character(*) :: type_name
+  PetscBool :: same
+  PetscErrorCode ierr
+  call PetscObjectTypeCompare(PetscObjectCast(obj), type_name, same, ierr)
+  end subroutine 
+  subroutine PetscObjectObjectTypeCompareMatMFFD(obj1, obj2, same, ierr)
+  MatMFFD obj1
+  PetscObject :: obj2
+  PetscBool :: same
+  PetscErrorCode ierr
+  call PetscObjectObjectTypeCompare(PetscObjectCast(obj1), obj2, same, ierr)
+  end subroutine 
+  subroutine PetscObjectBaseTypeCompareMatMFFD(obj, type_name, same, ierr)
+  MatMFFD obj
+  character(*) :: type_name
+  PetscBool :: same
+  PetscErrorCode ierr
+  call PetscObjectBaseTypeCompare(PetscObjectCast(obj), type_name, same, ierr)
+  end subroutine 
+  subroutine PetscObjectRegisterDestroyMatMFFD(obj, ierr)
+  MatMFFD obj
+  PetscErrorCode ierr
+  call PetscObjectRegisterDestroy(PetscObjectCast(obj), ierr)
+  end subroutine 
+  subroutine PetscObjectGetIdMatMFFD(obj, id, ierr)
+  MatMFFD obj
+  PetscObjectId :: id
+  PetscErrorCode ierr
+  call PetscObjectGetId(PetscObjectCast(obj), id, ierr)
+  end subroutine 
+  subroutine PetscObjectCompareIdMatMFFD(obj, id, eq, ierr)
+  MatMFFD obj
+  PetscObjectId :: id
+  PetscBool :: eq
+  PetscErrorCode ierr
+  call PetscObjectCompareId(PetscObjectCast(obj), id, eq, ierr)
+  end subroutine 
+  subroutine PetscObjectGetOptionsMatMFFD(obj, options, ierr)
+  MatMFFD obj
+  PetscOptions :: options
+  PetscErrorCode ierr
+  call PetscObjectGetOptions(PetscObjectCast(obj), options, ierr)
+  end subroutine 
+  subroutine PetscObjectSetOptionsMatMFFD(obj, options, ierr)
+  MatMFFD obj
+  PetscOptions :: options
+  PetscErrorCode ierr
+  call PetscObjectSetOptions(PetscObjectCast(obj), options, ierr)
+  end subroutine 
+  subroutine PetscObjectSetOptionsPrefixMatMFFD(obj, prefix, ierr)
+  MatMFFD obj
+  character(*) :: prefix
+  PetscErrorCode ierr
+  call PetscObjectSetOptionsPrefix(PetscObjectCast(obj), prefix, ierr)
+  end subroutine 
+  subroutine PetscObjectAppendOptionsPrefixMatMFFD(obj, prefix, ierr)
+  MatMFFD obj
+  character(*) :: prefix
+  PetscErrorCode ierr
+  call PetscObjectAppendOptionsPrefix(PetscObjectCast(obj), prefix, ierr)
+  end subroutine 
+  subroutine PetscObjectGetOptionsPrefixMatMFFD(obj, prefix, ierr)
+  MatMFFD obj
+  character(*) :: prefix
+  PetscErrorCode ierr
+  call PetscObjectGetOptionsPrefix(PetscObjectCast(obj), prefix, ierr)
+  end subroutine 
+  subroutine PetscObjectPrependOptionsPrefixMatMFFD(obj, prefix, ierr)
+  MatMFFD obj
+  character(*) :: prefix
+  PetscErrorCode ierr
+  call PetscObjectPrependOptionsPrefix(PetscObjectCast(obj), prefix, ierr)
+  end subroutine 
+  subroutine PetscObjectGetCommMatMFFD(obj, comm, ierr)
+  MatMFFD obj
+  MPIU_Comm :: comm
+  PetscErrorCode ierr
+  call PetscObjectGetComm(PetscObjectCast(obj), comm, ierr)
+  end subroutine 
+  subroutine PetscObjectGetTabLevelMatMFFD(obj, tab, ierr)
+  MatMFFD obj
+  PetscInt :: tab
+  PetscErrorCode ierr
+  call PetscObjectGetTabLevel(PetscObjectCast(obj), tab, ierr)
+  end subroutine 
+  subroutine PetscObjectSetTabLevelMatMFFD(obj, tab, ierr)
+  MatMFFD obj
+  PetscInt :: tab
+  PetscErrorCode ierr
+  call PetscObjectSetTabLevel(PetscObjectCast(obj), tab, ierr)
+  end subroutine 
+  subroutine PetscObjectIncrementTabLevelMatMFFD(obj, oldobj, tab, ierr)
+  MatMFFD obj
+  PetscObject :: oldobj
+  PetscInt :: tab
+  PetscErrorCode ierr
+  call PetscObjectIncrementTabLevel(PetscObjectCast(obj), oldobj, tab, ierr)
+  end subroutine 
+  subroutine PetscObjectGetNewTagMatMFFD(obj, tag, ierr)
+  MatMFFD obj
+  PetscMPIInt :: tag
+  PetscErrorCode ierr
+  call PetscObjectGetNewTag(PetscObjectCast(obj), tag, ierr)
+  end subroutine 
+  subroutine PetscObjectGetClassIdMatMFFD(obj, classid, ierr)
+  MatMFFD obj
+  PetscClassId :: classid
+  PetscErrorCode ierr
+  call PetscObjectGetClassId(PetscObjectCast(obj), classid, ierr)
+  end subroutine 
+  subroutine PetscObjectGetClassNameMatMFFD(obj, classname, ierr)
+  MatMFFD obj
+  character(*) :: classname
+  PetscErrorCode ierr
+  call PetscObjectGetClassName(PetscObjectCast(obj), classname, ierr)
+  end subroutine 
+  subroutine PetscObjectSetNameMatMFFD(obj, name, ierr)
+  MatMFFD obj
+  character(*) :: name
+  PetscErrorCode ierr
+  call PetscObjectSetName(PetscObjectCast(obj), name, ierr)
+  end subroutine 
+  subroutine PetscObjectPrintClassNamePrefixTypeMatMFFD(obj, viewer, ierr)
+  MatMFFD obj
+  PetscViewer :: viewer
+  PetscErrorCode ierr
+  call PetscObjectPrintClassNamePrefixType(PetscObjectCast(obj), viewer, ierr)
+  end subroutine 
+  subroutine PetscObjectNameMatMFFD(obj, ierr)
+  MatMFFD obj
+  PetscErrorCode ierr
+  call PetscObjectName(PetscObjectCast(obj), ierr)
+  end subroutine 
+  subroutine PetscObjectChangeTypeNameMatMFFD(obj, type_name, ierr)
+  MatMFFD obj
+  character(*) :: type_name
+  PetscErrorCode ierr
+  call PetscObjectChangeTypeName(PetscObjectCast(obj), type_name, ierr)
+  end subroutine 
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT:: MatFactorTypenotequals
+!DEC$ ATTRIBUTES DLLEXPORT:: MatFactorTypeequals
+#endif
+
+  function MatFactorTypenotequals(A,B)
+    logical MatFactorTypenotequals
+    type(eMatFactorType), intent(in) :: A,B
+    MatFactorTypenotequals = (A%v .ne. B%v)
+  end function
+  function MatFactorTypeequals(A,B)
+    logical MatFactorTypeequals
+    type(eMatFactorType), intent(in) :: A,B
+    MatFactorTypeequals = (A%v .eq. B%v)
+  end function
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT:: MatProductTypenotequals
+!DEC$ ATTRIBUTES DLLEXPORT:: MatProductTypeequals
+#endif
+
+  function MatProductTypenotequals(A,B)
+    logical MatProductTypenotequals
+    type(eMatProductType), intent(in) :: A,B
+    MatProductTypenotequals = (A%v .ne. B%v)
+  end function
+  function MatProductTypeequals(A,B)
+    logical MatProductTypeequals
+    type(eMatProductType), intent(in) :: A,B
+    MatProductTypeequals = (A%v .eq. B%v)
+  end function
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT:: MatReusenotequals
+!DEC$ ATTRIBUTES DLLEXPORT:: MatReuseequals
+#endif
+
+  function MatReusenotequals(A,B)
+    logical MatReusenotequals
+    type(eMatReuse), intent(in) :: A,B
+    MatReusenotequals = (A%v .ne. B%v)
+  end function
+  function MatReuseequals(A,B)
+    logical MatReuseequals
+    type(eMatReuse), intent(in) :: A,B
+    MatReuseequals = (A%v .eq. B%v)
+  end function
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT:: MatCreateSubMatrixOptionnotequals
+!DEC$ ATTRIBUTES DLLEXPORT:: MatCreateSubMatrixOptionequals
+#endif
+
+  function MatCreateSubMatrixOptionnotequals(A,B)
+    logical MatCreateSubMatrixOptionnotequals
+    type(eMatCreateSubMatrixOption), intent(in) :: A,B
+    MatCreateSubMatrixOptionnotequals = (A%v .ne. B%v)
+  end function
+  function MatCreateSubMatrixOptionequals(A,B)
+    logical MatCreateSubMatrixOptionequals
+    type(eMatCreateSubMatrixOption), intent(in) :: A,B
+    MatCreateSubMatrixOptionequals = (A%v .eq. B%v)
+  end function
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT:: MatStructurenotequals
+!DEC$ ATTRIBUTES DLLEXPORT:: MatStructureequals
+#endif
+
+  function MatStructurenotequals(A,B)
+    logical MatStructurenotequals
+    type(eMatStructure), intent(in) :: A,B
+    MatStructurenotequals = (A%v .ne. B%v)
+  end function
+  function MatStructureequals(A,B)
+    logical MatStructureequals
+    type(eMatStructure), intent(in) :: A,B
+    MatStructureequals = (A%v .eq. B%v)
+  end function
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT:: MatCompositeMergeTypenotequals
+!DEC$ ATTRIBUTES DLLEXPORT:: MatCompositeMergeTypeequals
+#endif
+
+  function MatCompositeMergeTypenotequals(A,B)
+    logical MatCompositeMergeTypenotequals
+    type(eMatCompositeMergeType), intent(in) :: A,B
+    MatCompositeMergeTypenotequals = (A%v .ne. B%v)
+  end function
+  function MatCompositeMergeTypeequals(A,B)
+    logical MatCompositeMergeTypeequals
+    type(eMatCompositeMergeType), intent(in) :: A,B
+    MatCompositeMergeTypeequals = (A%v .eq. B%v)
+  end function
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT:: MatCompositeTypenotequals
+!DEC$ ATTRIBUTES DLLEXPORT:: MatCompositeTypeequals
+#endif
+
+  function MatCompositeTypenotequals(A,B)
+    logical MatCompositeTypenotequals
+    type(eMatCompositeType), intent(in) :: A,B
+    MatCompositeTypenotequals = (A%v .ne. B%v)
+  end function
+  function MatCompositeTypeequals(A,B)
+    logical MatCompositeTypeequals
+    type(eMatCompositeType), intent(in) :: A,B
+    MatCompositeTypeequals = (A%v .eq. B%v)
+  end function
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT:: MatAssemblyTypenotequals
+!DEC$ ATTRIBUTES DLLEXPORT:: MatAssemblyTypeequals
+#endif
+
+  function MatAssemblyTypenotequals(A,B)
+    logical MatAssemblyTypenotequals
+    type(eMatAssemblyType), intent(in) :: A,B
+    MatAssemblyTypenotequals = (A%v .ne. B%v)
+  end function
+  function MatAssemblyTypeequals(A,B)
+    logical MatAssemblyTypeequals
+    type(eMatAssemblyType), intent(in) :: A,B
+    MatAssemblyTypeequals = (A%v .eq. B%v)
+  end function
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT:: MatOptionnotequals
+!DEC$ ATTRIBUTES DLLEXPORT:: MatOptionequals
+#endif
+
+  function MatOptionnotequals(A,B)
+    logical MatOptionnotequals
+    type(eMatOption), intent(in) :: A,B
+    MatOptionnotequals = (A%v .ne. B%v)
+  end function
+  function MatOptionequals(A,B)
+    logical MatOptionequals
+    type(eMatOption), intent(in) :: A,B
+    MatOptionequals = (A%v .eq. B%v)
+  end function
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT:: MatDuplicateOptionnotequals
+!DEC$ ATTRIBUTES DLLEXPORT:: MatDuplicateOptionequals
+#endif
+
+  function MatDuplicateOptionnotequals(A,B)
+    logical MatDuplicateOptionnotequals
+    type(eMatDuplicateOption), intent(in) :: A,B
+    MatDuplicateOptionnotequals = (A%v .ne. B%v)
+  end function
+  function MatDuplicateOptionequals(A,B)
+    logical MatDuplicateOptionequals
+    type(eMatDuplicateOption), intent(in) :: A,B
+    MatDuplicateOptionequals = (A%v .eq. B%v)
+  end function
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT:: MatInfoTypenotequals
+!DEC$ ATTRIBUTES DLLEXPORT:: MatInfoTypeequals
+#endif
+
+  function MatInfoTypenotequals(A,B)
+    logical MatInfoTypenotequals
+    type(eMatInfoType), intent(in) :: A,B
+    MatInfoTypenotequals = (A%v .ne. B%v)
+  end function
+  function MatInfoTypeequals(A,B)
+    logical MatInfoTypeequals
+    type(eMatInfoType), intent(in) :: A,B
+    MatInfoTypeequals = (A%v .eq. B%v)
+  end function
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT:: MatFactorShiftTypenotequals
+!DEC$ ATTRIBUTES DLLEXPORT:: MatFactorShiftTypeequals
+#endif
+
+  function MatFactorShiftTypenotequals(A,B)
+    logical MatFactorShiftTypenotequals
+    type(eMatFactorShiftType), intent(in) :: A,B
+    MatFactorShiftTypenotequals = (A%v .ne. B%v)
+  end function
+  function MatFactorShiftTypeequals(A,B)
+    logical MatFactorShiftTypeequals
+    type(eMatFactorShiftType), intent(in) :: A,B
+    MatFactorShiftTypeequals = (A%v .eq. B%v)
+  end function
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT:: MatFactorErrornotequals
+!DEC$ ATTRIBUTES DLLEXPORT:: MatFactorErrorequals
+#endif
+
+  function MatFactorErrornotequals(A,B)
+    logical MatFactorErrornotequals
+    type(eMatFactorError), intent(in) :: A,B
+    MatFactorErrornotequals = (A%v .ne. B%v)
+  end function
+  function MatFactorErrorequals(A,B)
+    logical MatFactorErrorequals
+    type(eMatFactorError), intent(in) :: A,B
+    MatFactorErrorequals = (A%v .eq. B%v)
+  end function
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT:: MatFactorSchurStatusnotequals
+!DEC$ ATTRIBUTES DLLEXPORT:: MatFactorSchurStatusequals
+#endif
+
+  function MatFactorSchurStatusnotequals(A,B)
+    logical MatFactorSchurStatusnotequals
+    type(eMatFactorSchurStatus), intent(in) :: A,B
+    MatFactorSchurStatusnotequals = (A%v .ne. B%v)
+  end function
+  function MatFactorSchurStatusequals(A,B)
+    logical MatFactorSchurStatusequals
+    type(eMatFactorSchurStatus), intent(in) :: A,B
+    MatFactorSchurStatusequals = (A%v .eq. B%v)
+  end function
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT:: MatSORTypenotequals
+!DEC$ ATTRIBUTES DLLEXPORT:: MatSORTypeequals
+#endif
+
+  function MatSORTypenotequals(A,B)
+    logical MatSORTypenotequals
+    type(eMatSORType), intent(in) :: A,B
+    MatSORTypenotequals = (A%v .ne. B%v)
+  end function
+  function MatSORTypeequals(A,B)
+    logical MatSORTypeequals
+    type(eMatSORType), intent(in) :: A,B
+    MatSORTypeequals = (A%v .eq. B%v)
+  end function
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT:: MatColoringWeightTypenotequals
+!DEC$ ATTRIBUTES DLLEXPORT:: MatColoringWeightTypeequals
+#endif
+
+  function MatColoringWeightTypenotequals(A,B)
+    logical MatColoringWeightTypenotequals
+    type(eMatColoringWeightType), intent(in) :: A,B
+    MatColoringWeightTypenotequals = (A%v .ne. B%v)
+  end function
+  function MatColoringWeightTypeequals(A,B)
+    logical MatColoringWeightTypeequals
+    type(eMatColoringWeightType), intent(in) :: A,B
+    MatColoringWeightTypeequals = (A%v .eq. B%v)
+  end function
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT:: MPChacoGlobalTypenotequals
+!DEC$ ATTRIBUTES DLLEXPORT:: MPChacoGlobalTypeequals
+#endif
+
+  function MPChacoGlobalTypenotequals(A,B)
+    logical MPChacoGlobalTypenotequals
+    type(eMPChacoGlobalType), intent(in) :: A,B
+    MPChacoGlobalTypenotequals = (A%v .ne. B%v)
+  end function
+  function MPChacoGlobalTypeequals(A,B)
+    logical MPChacoGlobalTypeequals
+    type(eMPChacoGlobalType), intent(in) :: A,B
+    MPChacoGlobalTypeequals = (A%v .eq. B%v)
+  end function
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT:: MPChacoLocalTypenotequals
+!DEC$ ATTRIBUTES DLLEXPORT:: MPChacoLocalTypeequals
+#endif
+
+  function MPChacoLocalTypenotequals(A,B)
+    logical MPChacoLocalTypenotequals
+    type(eMPChacoLocalType), intent(in) :: A,B
+    MPChacoLocalTypenotequals = (A%v .ne. B%v)
+  end function
+  function MPChacoLocalTypeequals(A,B)
+    logical MPChacoLocalTypeequals
+    type(eMPChacoLocalType), intent(in) :: A,B
+    MPChacoLocalTypeequals = (A%v .eq. B%v)
+  end function
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT:: MPChacoEigenTypenotequals
+!DEC$ ATTRIBUTES DLLEXPORT:: MPChacoEigenTypeequals
+#endif
+
+  function MPChacoEigenTypenotequals(A,B)
+    logical MPChacoEigenTypenotequals
+    type(eMPChacoEigenType), intent(in) :: A,B
+    MPChacoEigenTypenotequals = (A%v .ne. B%v)
+  end function
+  function MPChacoEigenTypeequals(A,B)
+    logical MPChacoEigenTypeequals
+    type(eMPChacoEigenType), intent(in) :: A,B
+    MPChacoEigenTypeequals = (A%v .eq. B%v)
+  end function
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT:: MPPTScotchStrategyTypenotequals
+!DEC$ ATTRIBUTES DLLEXPORT:: MPPTScotchStrategyTypeequals
+#endif
+
+  function MPPTScotchStrategyTypenotequals(A,B)
+    logical MPPTScotchStrategyTypenotequals
+    type(eMPPTScotchStrategyType), intent(in) :: A,B
+    MPPTScotchStrategyTypenotequals = (A%v .ne. B%v)
+  end function
+  function MPPTScotchStrategyTypeequals(A,B)
+    logical MPPTScotchStrategyTypeequals
+    type(eMPPTScotchStrategyType), intent(in) :: A,B
+    MPPTScotchStrategyTypeequals = (A%v .eq. B%v)
+  end function
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT:: MatOperationnotequals
+!DEC$ ATTRIBUTES DLLEXPORT:: MatOperationequals
+#endif
+
+  function MatOperationnotequals(A,B)
+    logical MatOperationnotequals
+    type(eMatOperation), intent(in) :: A,B
+    MatOperationnotequals = (A%v .ne. B%v)
+  end function
+  function MatOperationequals(A,B)
+    logical MatOperationequals
+    type(eMatOperation), intent(in) :: A,B
+    MatOperationequals = (A%v .eq. B%v)
+  end function
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT:: MatHtoolCompressorTypenotequals
+!DEC$ ATTRIBUTES DLLEXPORT:: MatHtoolCompressorTypeequals
+#endif
+
+  function MatHtoolCompressorTypenotequals(A,B)
+    logical MatHtoolCompressorTypenotequals
+    type(eMatHtoolCompressorType), intent(in) :: A,B
+    MatHtoolCompressorTypenotequals = (A%v .ne. B%v)
+  end function
+  function MatHtoolCompressorTypeequals(A,B)
+    logical MatHtoolCompressorTypeequals
+    type(eMatHtoolCompressorType), intent(in) :: A,B
+    MatHtoolCompressorTypeequals = (A%v .eq. B%v)
+  end function
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT:: MatHtoolClusteringTypenotequals
+!DEC$ ATTRIBUTES DLLEXPORT:: MatHtoolClusteringTypeequals
+#endif
+
+  function MatHtoolClusteringTypenotequals(A,B)
+    logical MatHtoolClusteringTypenotequals
+    type(eMatHtoolClusteringType), intent(in) :: A,B
+    MatHtoolClusteringTypenotequals = (A%v .ne. B%v)
+  end function
+  function MatHtoolClusteringTypeequals(A,B)
+    logical MatHtoolClusteringTypeequals
+    type(eMatHtoolClusteringType), intent(in) :: A,B
+    MatHtoolClusteringTypeequals = (A%v .eq. B%v)
+  end function
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT:: MatSTRUMPACKReorderingnotequals
+!DEC$ ATTRIBUTES DLLEXPORT:: MatSTRUMPACKReorderingequals
+#endif
+
+  function MatSTRUMPACKReorderingnotequals(A,B)
+    logical MatSTRUMPACKReorderingnotequals
+    type(eMatSTRUMPACKReordering), intent(in) :: A,B
+    MatSTRUMPACKReorderingnotequals = (A%v .ne. B%v)
+  end function
+  function MatSTRUMPACKReorderingequals(A,B)
+    logical MatSTRUMPACKReorderingequals
+    type(eMatSTRUMPACKReordering), intent(in) :: A,B
+    MatSTRUMPACKReorderingequals = (A%v .eq. B%v)
+  end function
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT:: MatSTRUMPACKCompressionTypenotequals
+!DEC$ ATTRIBUTES DLLEXPORT:: MatSTRUMPACKCompressionTypeequals
+#endif
+
+  function MatSTRUMPACKCompressionTypenotequals(A,B)
+    logical MatSTRUMPACKCompressionTypenotequals
+    type(eMatSTRUMPACKCompressionType), intent(in) :: A,B
+    MatSTRUMPACKCompressionTypenotequals = (A%v .ne. B%v)
+  end function
+  function MatSTRUMPACKCompressionTypeequals(A,B)
+    logical MatSTRUMPACKCompressionTypeequals
+    type(eMatSTRUMPACKCompressionType), intent(in) :: A,B
+    MatSTRUMPACKCompressionTypeequals = (A%v .eq. B%v)
+  end function
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT:: MatCUSPARSEStorageFormatnotequals
+!DEC$ ATTRIBUTES DLLEXPORT:: MatCUSPARSEStorageFormatequals
+#endif
+
+  function MatCUSPARSEStorageFormatnotequals(A,B)
+    logical MatCUSPARSEStorageFormatnotequals
+    type(eMatCUSPARSEStorageFormat), intent(in) :: A,B
+    MatCUSPARSEStorageFormatnotequals = (A%v .ne. B%v)
+  end function
+  function MatCUSPARSEStorageFormatequals(A,B)
+    logical MatCUSPARSEStorageFormatequals
+    type(eMatCUSPARSEStorageFormat), intent(in) :: A,B
+    MatCUSPARSEStorageFormatequals = (A%v .eq. B%v)
+  end function
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT:: MatCUSPARSEFormatOperationnotequals
+!DEC$ ATTRIBUTES DLLEXPORT:: MatCUSPARSEFormatOperationequals
+#endif
+
+  function MatCUSPARSEFormatOperationnotequals(A,B)
+    logical MatCUSPARSEFormatOperationnotequals
+    type(eMatCUSPARSEFormatOperation), intent(in) :: A,B
+    MatCUSPARSEFormatOperationnotequals = (A%v .ne. B%v)
+  end function
+  function MatCUSPARSEFormatOperationequals(A,B)
+    logical MatCUSPARSEFormatOperationequals
+    type(eMatCUSPARSEFormatOperation), intent(in) :: A,B
+    MatCUSPARSEFormatOperationequals = (A%v .eq. B%v)
+  end function
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT:: MatHIPSPARSEStorageFormatnotequals
+!DEC$ ATTRIBUTES DLLEXPORT:: MatHIPSPARSEStorageFormatequals
+#endif
+
+  function MatHIPSPARSEStorageFormatnotequals(A,B)
+    logical MatHIPSPARSEStorageFormatnotequals
+    type(eMatHIPSPARSEStorageFormat), intent(in) :: A,B
+    MatHIPSPARSEStorageFormatnotequals = (A%v .ne. B%v)
+  end function
+  function MatHIPSPARSEStorageFormatequals(A,B)
+    logical MatHIPSPARSEStorageFormatequals
+    type(eMatHIPSPARSEStorageFormat), intent(in) :: A,B
+    MatHIPSPARSEStorageFormatequals = (A%v .eq. B%v)
+  end function
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT:: MatHIPSPARSEFormatOperationnotequals
+!DEC$ ATTRIBUTES DLLEXPORT:: MatHIPSPARSEFormatOperationequals
+#endif
+
+  function MatHIPSPARSEFormatOperationnotequals(A,B)
+    logical MatHIPSPARSEFormatOperationnotequals
+    type(eMatHIPSPARSEFormatOperation), intent(in) :: A,B
+    MatHIPSPARSEFormatOperationnotequals = (A%v .ne. B%v)
+  end function
+  function MatHIPSPARSEFormatOperationequals(A,B)
+    logical MatHIPSPARSEFormatOperationequals
+    type(eMatHIPSPARSEFormatOperation), intent(in) :: A,B
+    MatHIPSPARSEFormatOperationequals = (A%v .eq. B%v)
+  end function

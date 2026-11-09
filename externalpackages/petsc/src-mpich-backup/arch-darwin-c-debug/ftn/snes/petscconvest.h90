@@ -1,0 +1,310 @@
+  interface
+  subroutine PetscConvEstDestroy(ce, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscConvEst
+  PetscConvEst :: ce
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscConvEstDestroy
+#endif
+  interface
+  subroutine PetscConvEstSetFromOptions(ce, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscConvEst
+  PetscConvEst :: ce
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscConvEstSetFromOptions
+#endif
+  interface
+  subroutine PetscConvEstView(ce,viewer, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscConvEst,tPetscViewer
+  PetscConvEst :: ce
+  PetscViewer :: viewer
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscConvEstView
+#endif
+  interface
+  subroutine PetscConvEstGetSolver(ce,solver, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscConvEst,tPetscObject
+  PetscConvEst :: ce
+  PetscObject :: solver
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscConvEstGetSolver
+#endif
+  interface
+  subroutine PetscConvEstSetSolver(ce,solver, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscConvEst,tPetscObject
+  PetscConvEst :: ce
+  PetscObject :: solver
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscConvEstSetSolver
+#endif
+  interface
+  subroutine PetscConvEstSetUp(ce, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscConvEst
+  PetscConvEst :: ce
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscConvEstSetUp
+#endif
+  interface
+  subroutine PetscConvEstComputeInitialGuess(ce,r,dm,u, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscConvEst,tDM,tVec
+  PetscConvEst :: ce
+  PetscInt :: r
+  DM :: dm
+  Vec :: u
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscConvEstComputeInitialGuess
+#endif
+  interface
+  subroutine PetscConvEstComputeError(ce,r,dm,u,errors, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscConvEst,tDM,tVec
+  PetscConvEst :: ce
+  PetscInt :: r
+  DM :: dm
+  Vec :: u
+  PetscReal :: errors(*)
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscConvEstComputeError
+#endif
+  interface
+  subroutine PetscConvEstMonitorDefault(ce,r, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscConvEst
+  PetscConvEst :: ce
+  PetscInt :: r
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscConvEstMonitorDefault
+#endif
+  interface
+  subroutine PetscConvEstGetConvRate(ce,alpha, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscConvEst
+  PetscConvEst :: ce
+  PetscReal :: alpha(*)
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscConvEstGetConvRate
+#endif
+  interface
+  subroutine PetscConvEstRateView(ce,alpha,viewer, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscConvEst,tPetscViewer
+  PetscConvEst :: ce
+  PetscReal :: alpha(*)
+  PetscViewer :: viewer
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscConvEstRateView
+#endif
+  interface
+  subroutine PetscConvEstCreate(comm,ce, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscConvEst
+  MPIU_Comm :: comm
+  PetscConvEst :: ce
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscConvEstCreate
+#endif
+  interface operator(.ne.)
+    module procedure PetscConvEstnotequals
+  end interface operator (.ne.)
+  interface operator(.eq.)
+    module procedure PetscConvEstequals
+  end interface operator (.eq.)
+
+  interface PetscObjectCast
+    module procedure PetscObjectCastConvEst
+  end interface
+  interface PetscBarrier
+  module procedure PetscBarrierConvEst
+  end interface
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectSAWsTakeAccess
+    module procedure PetscObjectSAWsTakeAccessConvEst
+  end interface
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectSAWsGrantAccess
+    module procedure PetscObjectSAWsGrantAccessConvEst
+  end interface
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectSAWsBlock
+    module procedure PetscObjectSAWsBlockConvEst
+  end interface
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectSAWsSetBlock
+    module procedure PetscObjectSAWsSetBlockConvEst
+  end interface
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectSAWsViewOff
+    module procedure PetscObjectSAWsViewOffConvEst
+  end interface
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectViewSAWs
+    module procedure PetscObjectViewSAWsConvEst
+  end interface
+#endif
+  interface PetscObjectGetType
+    module procedure PetscObjectGetTypeConvEst
+  end interface
+  interface PetscObjectSetPrintedOptions
+    module procedure PetscObjectSetPrintedOptionsConvEst
+  end interface
+  interface PetscObjectInheritPrintedOptions
+    module procedure PetscObjectInheritPrintedOptionsConvEst
+  end interface
+  interface PetscObjectAddOptionsHandler
+    module procedure PetscObjectAddOptionsHandlerConvEst
+  end interface
+  interface PetscObjectProcessOptionsHandlers
+    module procedure PetscObjectProcessOptionsHandlersConvEst
+  end interface
+  interface PetscObjectDestroyOptionsHandlers
+    module procedure PetscObjectDestroyOptionsHandlersConvEst
+  end interface
+  interface PetscObjectReference
+    module procedure PetscObjectReferenceConvEst
+  end interface
+  interface PetscObjectGetReference
+    module procedure PetscObjectGetReferenceConvEst
+  end interface
+  interface PetscObjectDereference
+    module procedure PetscObjectDereferenceConvEst
+  end interface
+  interface PetscObjectRemoveReference
+    module procedure PetscObjectRemoveReferenceConvEst
+  end interface
+  interface PetscObjectHasFunction
+    module procedure PetscObjectHasFunctionConvEst
+  end interface
+  interface PetscObjectSetFromOptions
+    module procedure PetscObjectSetFromOptionsConvEst
+  end interface
+  interface PetscObjectSetUp
+    module procedure PetscObjectSetUpConvEst
+  end interface
+  interface PetscObjectGetName
+    module procedure PetscObjectGetNameConvEst
+  end interface
+  interface PetscObjectDestroy
+    module procedure PetscObjectDestroyConvEst
+  end interface
+  interface PetscObjectView
+    module procedure PetscObjectViewConvEst
+  end interface
+  interface PetscObjectViewFromOptions
+    module procedure PetscObjectViewFromOptionsConvEst
+  end interface
+  interface PetscObjectTypeCompare
+    module procedure PetscObjectTypeCompareConvEst
+  end interface
+  interface PetscObjectObjectTypeCompare
+    module procedure PetscObjectObjectTypeCompareConvEst
+  end interface
+  interface PetscObjectBaseTypeCompare
+    module procedure PetscObjectBaseTypeCompareConvEst
+  end interface
+  interface PetscObjectRegisterDestroy
+    module procedure PetscObjectRegisterDestroyConvEst
+  end interface
+  interface PetscObjectGetId
+    module procedure PetscObjectGetIdConvEst
+  end interface
+  interface PetscObjectCompareId
+    module procedure PetscObjectCompareIdConvEst
+  end interface
+  interface PetscObjectGetOptions
+    module procedure PetscObjectGetOptionsConvEst
+  end interface
+  interface PetscObjectSetOptions
+    module procedure PetscObjectSetOptionsConvEst
+  end interface
+  interface PetscObjectSetOptionsPrefix
+    module procedure PetscObjectSetOptionsPrefixConvEst
+  end interface
+  interface PetscObjectAppendOptionsPrefix
+    module procedure PetscObjectAppendOptionsPrefixConvEst
+  end interface
+  interface PetscObjectGetOptionsPrefix
+    module procedure PetscObjectGetOptionsPrefixConvEst
+  end interface
+  interface PetscObjectPrependOptionsPrefix
+    module procedure PetscObjectPrependOptionsPrefixConvEst
+  end interface
+  interface PetscObjectGetComm
+    module procedure PetscObjectGetCommConvEst
+  end interface
+  interface PetscObjectGetTabLevel
+    module procedure PetscObjectGetTabLevelConvEst
+  end interface
+  interface PetscObjectSetTabLevel
+    module procedure PetscObjectSetTabLevelConvEst
+  end interface
+  interface PetscObjectIncrementTabLevel
+    module procedure PetscObjectIncrementTabLevelConvEst
+  end interface
+  interface PetscObjectGetNewTag
+    module procedure PetscObjectGetNewTagConvEst
+  end interface
+  interface PetscObjectGetClassId
+    module procedure PetscObjectGetClassIdConvEst
+  end interface
+  interface PetscObjectGetClassName
+    module procedure PetscObjectGetClassNameConvEst
+  end interface
+  interface PetscObjectSetName
+    module procedure PetscObjectSetNameConvEst
+  end interface
+  interface PetscObjectPrintClassNamePrefixType
+    module procedure PetscObjectPrintClassNamePrefixTypeConvEst
+  end interface
+  interface PetscObjectName
+    module procedure PetscObjectNameConvEst
+  end interface
+  interface PetscObjectChangeTypeName
+    module procedure PetscObjectChangeTypeNameConvEst
+  end interface

@@ -1,0 +1,1417 @@
+  interface
+  subroutine PetscSectionCreate(comm,s, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscSection
+  MPIU_Comm :: comm
+  PetscSection :: s
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscSectionCreate
+#endif
+  interface
+  subroutine PetscSectionCopy(section,newSection, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscSection
+  PetscSection :: section
+  PetscSection :: newSection
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscSectionCopy
+#endif
+  interface
+  subroutine PetscSectionClone(section,newSection, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscSection
+  PetscSection :: section
+  PetscSection :: newSection
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscSectionClone
+#endif
+  interface
+  subroutine PetscSectionSetFromOptions(s, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscSection
+  PetscSection :: s
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscSectionSetFromOptions
+#endif
+  interface
+  subroutine PetscSectionCompare(s1,s2,congruent, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscSection
+  PetscSection :: s1
+  PetscSection :: s2
+  PetscBool :: congruent
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscSectionCompare
+#endif
+  interface
+  subroutine PetscSectionGetNumFields(s,numFields, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscSection
+  PetscSection :: s
+  PetscInt :: numFields
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscSectionGetNumFields
+#endif
+  interface
+  subroutine PetscSectionSetNumFields(s,numFields, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscSection
+  PetscSection :: s
+  PetscInt :: numFields
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscSectionSetNumFields
+#endif
+  interface
+  subroutine PetscSectionGetFieldName(s,field,fieldName, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscSection
+  PetscSection :: s
+  PetscInt :: field
+  character(*) :: fieldName
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscSectionGetFieldName
+#endif
+  interface
+  subroutine PetscSectionSetFieldName(s,field,fieldName, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscSection
+  PetscSection :: s
+  PetscInt :: field
+  character(*) :: fieldName
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscSectionSetFieldName
+#endif
+  interface
+  subroutine PetscSectionGetComponentName(s,field,comp,compName, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscSection
+  PetscSection :: s
+  PetscInt :: field
+  PetscInt :: comp
+  character(*) :: compName
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscSectionGetComponentName
+#endif
+  interface
+  subroutine PetscSectionSetComponentName(s,field,comp,compName, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscSection
+  PetscSection :: s
+  PetscInt :: field
+  PetscInt :: comp
+  character(*) :: compName
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscSectionSetComponentName
+#endif
+  interface
+  subroutine PetscSectionGetFieldComponents(s,field,numComp, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscSection
+  PetscSection :: s
+  PetscInt :: field
+  PetscInt :: numComp
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscSectionGetFieldComponents
+#endif
+  interface
+  subroutine PetscSectionSetFieldComponents(s,field,numComp, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscSection
+  PetscSection :: s
+  PetscInt :: field
+  PetscInt :: numComp
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscSectionSetFieldComponents
+#endif
+  interface
+  subroutine PetscSectionGetChart(s,pStart,pEnd, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscSection
+  PetscSection :: s
+  PetscInt :: pStart
+  PetscInt :: pEnd
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscSectionGetChart
+#endif
+  interface
+  subroutine PetscSectionSetChart(s,pStart,pEnd, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscSection
+  PetscSection :: s
+  PetscInt :: pStart
+  PetscInt :: pEnd
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscSectionSetChart
+#endif
+  interface
+  subroutine PetscSectionGetPermutation(s,perm, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscSection,tIS
+  PetscSection :: s
+  IS :: perm
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscSectionGetPermutation
+#endif
+  interface
+  subroutine PetscSectionSetPermutation(s,perm, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscSection,tIS
+  PetscSection :: s
+  IS :: perm
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscSectionSetPermutation
+#endif
+  interface
+  subroutine PetscSectionGetPointMajor(s,pm, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscSection
+  PetscSection :: s
+  PetscBool :: pm
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscSectionGetPointMajor
+#endif
+  interface
+  subroutine PetscSectionSetPointMajor(s,pm, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscSection
+  PetscSection :: s
+  PetscBool :: pm
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscSectionSetPointMajor
+#endif
+  interface
+  subroutine PetscSectionGetIncludesConstraints(s,includesConstraints, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscSection
+  PetscSection :: s
+  PetscBool :: includesConstraints
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscSectionGetIncludesConstraints
+#endif
+  interface
+  subroutine PetscSectionSetIncludesConstraints(s,includesConstraints, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscSection
+  PetscSection :: s
+  PetscBool :: includesConstraints
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscSectionSetIncludesConstraints
+#endif
+  interface
+  subroutine PetscSectionGetDof(s,point,numDof, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscSection
+  PetscSection :: s
+  PetscInt :: point
+  PetscInt :: numDof
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscSectionGetDof
+#endif
+  interface
+  subroutine PetscSectionSetDof(s,point,numDof, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscSection
+  PetscSection :: s
+  PetscInt :: point
+  PetscInt :: numDof
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscSectionSetDof
+#endif
+  interface
+  subroutine PetscSectionAddDof(s,point,numDof, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscSection
+  PetscSection :: s
+  PetscInt :: point
+  PetscInt :: numDof
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscSectionAddDof
+#endif
+  interface
+  subroutine PetscSectionGetFieldDof(s,point,field,numDof, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscSection
+  PetscSection :: s
+  PetscInt :: point
+  PetscInt :: field
+  PetscInt :: numDof
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscSectionGetFieldDof
+#endif
+  interface
+  subroutine PetscSectionSetFieldDof(s,point,field,numDof, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscSection
+  PetscSection :: s
+  PetscInt :: point
+  PetscInt :: field
+  PetscInt :: numDof
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscSectionSetFieldDof
+#endif
+  interface
+  subroutine PetscSectionAddFieldDof(s,point,field,numDof, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscSection
+  PetscSection :: s
+  PetscInt :: point
+  PetscInt :: field
+  PetscInt :: numDof
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscSectionAddFieldDof
+#endif
+  interface
+  subroutine PetscSectionGetConstraintDof(s,point,numDof, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscSection
+  PetscSection :: s
+  PetscInt :: point
+  PetscInt :: numDof
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscSectionGetConstraintDof
+#endif
+  interface
+  subroutine PetscSectionSetConstraintDof(s,point,numDof, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscSection
+  PetscSection :: s
+  PetscInt :: point
+  PetscInt :: numDof
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscSectionSetConstraintDof
+#endif
+  interface
+  subroutine PetscSectionAddConstraintDof(s,point,numDof, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscSection
+  PetscSection :: s
+  PetscInt :: point
+  PetscInt :: numDof
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscSectionAddConstraintDof
+#endif
+  interface
+  subroutine PetscSectionGetFieldConstraintDof(s,point,field,numDof, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscSection
+  PetscSection :: s
+  PetscInt :: point
+  PetscInt :: field
+  PetscInt :: numDof
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscSectionGetFieldConstraintDof
+#endif
+  interface
+  subroutine PetscSectionSetFieldConstraintDof(s,point,field,numDof, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscSection
+  PetscSection :: s
+  PetscInt :: point
+  PetscInt :: field
+  PetscInt :: numDof
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscSectionSetFieldConstraintDof
+#endif
+  interface
+  subroutine PetscSectionAddFieldConstraintDof(s,point,field,numDof, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscSection
+  PetscSection :: s
+  PetscInt :: point
+  PetscInt :: field
+  PetscInt :: numDof
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscSectionAddFieldConstraintDof
+#endif
+  interface
+  subroutine PetscSectionSetUpBC(s, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscSection
+  PetscSection :: s
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscSectionSetUpBC
+#endif
+  interface
+  subroutine PetscSectionSetUp(s, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscSection
+  PetscSection :: s
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscSectionSetUp
+#endif
+  interface
+  subroutine PetscSectionGetMaxDof(s,maxDof, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscSection
+  PetscSection :: s
+  PetscInt :: maxDof
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscSectionGetMaxDof
+#endif
+  interface
+  subroutine PetscSectionGetStorageSize(s,size, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscSection
+  PetscSection :: s
+  PetscInt :: size
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscSectionGetStorageSize
+#endif
+  interface
+  subroutine PetscSectionGetConstrainedStorageSize(s,size, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscSection
+  PetscSection :: s
+  PetscInt :: size
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscSectionGetConstrainedStorageSize
+#endif
+  interface
+  subroutine PetscSectionCreateGlobalSection(s,sf,usePermutation,includeConstraints,localOffsets,gsection, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscSection,tPetscSF
+  PetscSection :: s
+  PetscSF :: sf
+  PetscBool :: usePermutation
+  PetscBool :: includeConstraints
+  PetscBool :: localOffsets
+  PetscSection :: gsection
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscSectionCreateGlobalSection
+#endif
+  interface
+  subroutine PetscSectionCreateGlobalSectionCensored(s,sf,includeConstraints,numExcludes,excludes,gsection, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscSection,tPetscSF
+  PetscSection :: s
+  PetscSF :: sf
+  PetscBool :: includeConstraints
+  PetscInt :: numExcludes
+  PetscInt :: excludes(*)
+  PetscSection :: gsection
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscSectionCreateGlobalSectionCensored
+#endif
+  interface
+  subroutine PetscSectionGetPointLayout(comm,s,layout, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscSection,tPetscLayout
+  MPIU_Comm :: comm
+  PetscSection :: s
+  PetscLayout :: layout
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscSectionGetPointLayout
+#endif
+  interface
+  subroutine PetscSectionGetValueLayout(comm,s,layout, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscSection,tPetscLayout
+  MPIU_Comm :: comm
+  PetscSection :: s
+  PetscLayout :: layout
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscSectionGetValueLayout
+#endif
+  interface
+  subroutine PetscSectionGetOffset(s,point,offset, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscSection
+  PetscSection :: s
+  PetscInt :: point
+  PetscInt :: offset
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscSectionGetOffset
+#endif
+  interface
+  subroutine PetscSectionSetOffset(s,point,offset, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscSection
+  PetscSection :: s
+  PetscInt :: point
+  PetscInt :: offset
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscSectionSetOffset
+#endif
+  interface
+  subroutine PetscSectionGetFieldOffset(s,point,field,offset, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscSection
+  PetscSection :: s
+  PetscInt :: point
+  PetscInt :: field
+  PetscInt :: offset
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscSectionGetFieldOffset
+#endif
+  interface
+  subroutine PetscSectionSetFieldOffset(s,point,field,offset, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscSection
+  PetscSection :: s
+  PetscInt :: point
+  PetscInt :: field
+  PetscInt :: offset
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscSectionSetFieldOffset
+#endif
+  interface
+  subroutine PetscSectionGetFieldPointOffset(s,point,field,offset, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscSection
+  PetscSection :: s
+  PetscInt :: point
+  PetscInt :: field
+  PetscInt :: offset
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscSectionGetFieldPointOffset
+#endif
+  interface
+  subroutine PetscSectionGetOffsetRange(s,start,end, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscSection
+  PetscSection :: s
+  PetscInt :: start
+  PetscInt :: end
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscSectionGetOffsetRange
+#endif
+  interface
+  subroutine PetscSectionCreateSubsection(s,len,fields,subs, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscSection
+  PetscSection :: s
+  PetscInt :: len
+  PetscInt :: fields(*)
+  PetscSection :: subs
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscSectionCreateSubsection
+#endif
+  interface
+  subroutine PetscSectionCreateComponentSubsection(s,len,comps,subs, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscSection
+  PetscSection :: s
+  PetscInt :: len
+  PetscInt :: comps(*)
+  PetscSection :: subs
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscSectionCreateComponentSubsection
+#endif
+  interface
+  subroutine PetscSectionCreateSupersection(s,len,supers, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscSection
+  PetscSection :: s(*)
+  PetscInt :: len
+  PetscSection :: supers
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscSectionCreateSupersection
+#endif
+  interface
+  subroutine PetscSectionCreateSubmeshSection(s,subpointIS,subs, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscSection,tIS
+  PetscSection :: s
+  IS :: subpointIS
+  PetscSection :: subs
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscSectionCreateSubmeshSection
+#endif
+  interface
+  subroutine PetscSectionCreateSubdomainSection(s,subpointMap,subs, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscSection,tIS
+  PetscSection :: s
+  IS :: subpointMap
+  PetscSection :: subs
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscSectionCreateSubdomainSection
+#endif
+  interface
+  subroutine PetscSectionViewFromOptions(A,obj,name, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscSection,tPetscObject
+  PetscSection :: A
+  PetscObject :: obj
+  character(*) :: name
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscSectionViewFromOptions
+#endif
+  interface
+  subroutine PetscSectionView(s,viewer, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscSection,tPetscViewer
+  PetscSection :: s
+  PetscViewer :: viewer
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscSectionView
+#endif
+  interface
+  subroutine PetscSectionLoad(s,viewer, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscSection,tPetscViewer
+  PetscSection :: s
+  PetscViewer :: viewer
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscSectionLoad
+#endif
+  interface
+  subroutine PetscSectionResetClosurePermutation(section, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscSection
+  PetscSection :: section
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscSectionResetClosurePermutation
+#endif
+  interface
+  subroutine PetscSectionReset(s, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscSection
+  PetscSection :: s
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscSectionReset
+#endif
+  interface
+  subroutine PetscSectionDestroy(s, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscSection
+  PetscSection :: s
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscSectionDestroy
+#endif
+  interface
+  subroutine PetscSectionHasConstraints(s,hasConstraints, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscSection
+  PetscSection :: s
+  PetscBool :: hasConstraints
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscSectionHasConstraints
+#endif
+  interface
+  subroutine PetscSectionGetConstraintIndices(s,point,indices, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscSection
+  PetscSection :: s
+  PetscInt :: point
+  PetscInt, pointer :: indices(:)
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscSectionGetConstraintIndices
+#endif
+  interface
+  subroutine PetscSectionSetConstraintIndices(s,point,indices, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscSection
+  PetscSection :: s
+  PetscInt :: point
+  PetscInt :: indices(*)
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscSectionSetConstraintIndices
+#endif
+  interface
+  subroutine PetscSectionGetFieldConstraintIndices(s,point,field,indices, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscSection
+  PetscSection :: s
+  PetscInt :: point
+  PetscInt :: field
+  PetscInt, pointer :: indices(:)
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscSectionGetFieldConstraintIndices
+#endif
+  interface
+  subroutine PetscSectionSetFieldConstraintIndices(s,point,field,indices, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscSection
+  PetscSection :: s
+  PetscInt :: point
+  PetscInt :: field
+  PetscInt :: indices(*)
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscSectionSetFieldConstraintIndices
+#endif
+  interface
+  subroutine PetscSectionPermute(section,permutation,sectionNew, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscSection,tIS
+  PetscSection :: section
+  IS :: permutation
+  PetscSection :: sectionNew
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscSectionPermute
+#endif
+  interface
+  subroutine PetscSectionSetClosureIndex(section,obj,clSection,clPoints, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscSection,tPetscObject,tIS
+  PetscSection :: section
+  PetscObject :: obj
+  PetscSection :: clSection
+  IS :: clPoints
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscSectionSetClosureIndex
+#endif
+  interface
+  subroutine PetscSectionGetClosureIndex(section,obj,clSection,clPoints, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscSection,tPetscObject,tIS
+  PetscSection :: section
+  PetscObject :: obj
+  PetscSection :: clSection
+  IS :: clPoints
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscSectionGetClosureIndex
+#endif
+  interface
+  subroutine PetscSectionSetClosurePermutation(section,obj,depth,perm, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscSection,tPetscObject,tIS
+  PetscSection :: section
+  PetscObject :: obj
+  PetscInt :: depth
+  IS :: perm
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscSectionSetClosurePermutation
+#endif
+  interface
+  subroutine PetscSectionGetClosurePermutation(section,obj,depth,clSize,perm, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscSection,tPetscObject,tIS
+  PetscSection :: section
+  PetscObject :: obj
+  PetscInt :: depth
+  PetscInt :: clSize
+  IS :: perm
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscSectionGetClosurePermutation
+#endif
+  interface
+  subroutine PetscSectionGetClosureInversePermutation(section,obj,depth,clSize,perm, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscSection,tPetscObject,tIS
+  PetscSection :: section
+  PetscObject :: obj
+  PetscInt :: depth
+  PetscInt :: clSize
+  IS :: perm
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscSectionGetClosureInversePermutation
+#endif
+  interface
+  subroutine PetscSectionGetField(s,field,subs, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscSection
+  PetscSection :: s
+  PetscInt :: field
+  PetscSection :: subs
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscSectionGetField
+#endif
+  interface
+  subroutine PetscSectionSetSym(section,sym, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscSection,tPetscSectionSym
+  PetscSection :: section
+  PetscSectionSym :: sym
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscSectionSetSym
+#endif
+  interface
+  subroutine PetscSectionGetSym(section,sym, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscSection,tPetscSectionSym
+  PetscSection :: section
+  PetscSectionSym :: sym
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscSectionGetSym
+#endif
+  interface
+  subroutine PetscSectionSetFieldSym(section,field,sym, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscSection,tPetscSectionSym
+  PetscSection :: section
+  PetscInt :: field
+  PetscSectionSym :: sym
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscSectionSetFieldSym
+#endif
+  interface
+  subroutine PetscSectionGetFieldSym(section,field,sym, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscSection,tPetscSectionSym
+  PetscSection :: section
+  PetscInt :: field
+  PetscSectionSym :: sym
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscSectionGetFieldSym
+#endif
+  interface
+  subroutine PetscSectionGetUseFieldOffsets(s,flg, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscSection
+  PetscSection :: s
+  PetscBool :: flg
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscSectionGetUseFieldOffsets
+#endif
+  interface
+  subroutine PetscSectionSetUseFieldOffsets(s,flg, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscSection
+  PetscSection :: s
+  PetscBool :: flg
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscSectionSetUseFieldOffsets
+#endif
+  interface operator(.ne.)
+    module procedure PetscSectionnotequals
+  end interface operator (.ne.)
+  interface operator(.eq.)
+    module procedure PetscSectionequals
+  end interface operator (.eq.)
+
+  interface PetscObjectCast
+    module procedure PetscObjectCastSection
+  end interface
+  interface PetscBarrier
+  module procedure PetscBarrierSection
+  end interface
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectSAWsTakeAccess
+    module procedure PetscObjectSAWsTakeAccessSection
+  end interface
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectSAWsGrantAccess
+    module procedure PetscObjectSAWsGrantAccessSection
+  end interface
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectSAWsBlock
+    module procedure PetscObjectSAWsBlockSection
+  end interface
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectSAWsSetBlock
+    module procedure PetscObjectSAWsSetBlockSection
+  end interface
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectSAWsViewOff
+    module procedure PetscObjectSAWsViewOffSection
+  end interface
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectViewSAWs
+    module procedure PetscObjectViewSAWsSection
+  end interface
+#endif
+  interface PetscObjectGetType
+    module procedure PetscObjectGetTypeSection
+  end interface
+  interface PetscObjectSetPrintedOptions
+    module procedure PetscObjectSetPrintedOptionsSection
+  end interface
+  interface PetscObjectInheritPrintedOptions
+    module procedure PetscObjectInheritPrintedOptionsSection
+  end interface
+  interface PetscObjectAddOptionsHandler
+    module procedure PetscObjectAddOptionsHandlerSection
+  end interface
+  interface PetscObjectProcessOptionsHandlers
+    module procedure PetscObjectProcessOptionsHandlersSection
+  end interface
+  interface PetscObjectDestroyOptionsHandlers
+    module procedure PetscObjectDestroyOptionsHandlersSection
+  end interface
+  interface PetscObjectReference
+    module procedure PetscObjectReferenceSection
+  end interface
+  interface PetscObjectGetReference
+    module procedure PetscObjectGetReferenceSection
+  end interface
+  interface PetscObjectDereference
+    module procedure PetscObjectDereferenceSection
+  end interface
+  interface PetscObjectRemoveReference
+    module procedure PetscObjectRemoveReferenceSection
+  end interface
+  interface PetscObjectHasFunction
+    module procedure PetscObjectHasFunctionSection
+  end interface
+  interface PetscObjectSetFromOptions
+    module procedure PetscObjectSetFromOptionsSection
+  end interface
+  interface PetscObjectSetUp
+    module procedure PetscObjectSetUpSection
+  end interface
+  interface PetscObjectGetName
+    module procedure PetscObjectGetNameSection
+  end interface
+  interface PetscObjectDestroy
+    module procedure PetscObjectDestroySection
+  end interface
+  interface PetscObjectView
+    module procedure PetscObjectViewSection
+  end interface
+  interface PetscObjectViewFromOptions
+    module procedure PetscObjectViewFromOptionsSection
+  end interface
+  interface PetscObjectTypeCompare
+    module procedure PetscObjectTypeCompareSection
+  end interface
+  interface PetscObjectObjectTypeCompare
+    module procedure PetscObjectObjectTypeCompareSection
+  end interface
+  interface PetscObjectBaseTypeCompare
+    module procedure PetscObjectBaseTypeCompareSection
+  end interface
+  interface PetscObjectRegisterDestroy
+    module procedure PetscObjectRegisterDestroySection
+  end interface
+  interface PetscObjectGetId
+    module procedure PetscObjectGetIdSection
+  end interface
+  interface PetscObjectCompareId
+    module procedure PetscObjectCompareIdSection
+  end interface
+  interface PetscObjectGetOptions
+    module procedure PetscObjectGetOptionsSection
+  end interface
+  interface PetscObjectSetOptions
+    module procedure PetscObjectSetOptionsSection
+  end interface
+  interface PetscObjectSetOptionsPrefix
+    module procedure PetscObjectSetOptionsPrefixSection
+  end interface
+  interface PetscObjectAppendOptionsPrefix
+    module procedure PetscObjectAppendOptionsPrefixSection
+  end interface
+  interface PetscObjectGetOptionsPrefix
+    module procedure PetscObjectGetOptionsPrefixSection
+  end interface
+  interface PetscObjectPrependOptionsPrefix
+    module procedure PetscObjectPrependOptionsPrefixSection
+  end interface
+  interface PetscObjectGetComm
+    module procedure PetscObjectGetCommSection
+  end interface
+  interface PetscObjectGetTabLevel
+    module procedure PetscObjectGetTabLevelSection
+  end interface
+  interface PetscObjectSetTabLevel
+    module procedure PetscObjectSetTabLevelSection
+  end interface
+  interface PetscObjectIncrementTabLevel
+    module procedure PetscObjectIncrementTabLevelSection
+  end interface
+  interface PetscObjectGetNewTag
+    module procedure PetscObjectGetNewTagSection
+  end interface
+  interface PetscObjectGetClassId
+    module procedure PetscObjectGetClassIdSection
+  end interface
+  interface PetscObjectGetClassName
+    module procedure PetscObjectGetClassNameSection
+  end interface
+  interface PetscObjectSetName
+    module procedure PetscObjectSetNameSection
+  end interface
+  interface PetscObjectPrintClassNamePrefixType
+    module procedure PetscObjectPrintClassNamePrefixTypeSection
+  end interface
+  interface PetscObjectName
+    module procedure PetscObjectNameSection
+  end interface
+  interface PetscObjectChangeTypeName
+    module procedure PetscObjectChangeTypeNameSection
+  end interface
+  interface
+  subroutine PetscSectionSymCreate(comm,sym, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscSectionSym
+  MPIU_Comm :: comm
+  PetscSectionSym :: sym
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscSectionSymCreate
+#endif
+  interface
+  subroutine PetscSectionSymSetType(sym,method, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscSectionSym
+  PetscSectionSym :: sym
+  character(*) :: method
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscSectionSymSetType
+#endif
+  interface
+  subroutine PetscSectionSymGetType(sym,type, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscSectionSym
+  PetscSectionSym :: sym
+  character(*) :: type
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscSectionSymGetType
+#endif
+  interface
+  subroutine PetscSectionSymRegister(sname,function, ierr)
+  use, intrinsic :: ISO_C_binding
+  character(*) :: sname
+  external :: function
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscSectionSymRegister
+#endif
+  interface
+  subroutine PetscSectionSymDestroy(sym, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscSectionSym
+  PetscSectionSym :: sym
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscSectionSymDestroy
+#endif
+  interface
+  subroutine PetscSectionSymView(sym,viewer, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscSectionSym,tPetscViewer
+  PetscSectionSym :: sym
+  PetscViewer :: viewer
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscSectionSymView
+#endif
+  interface
+  subroutine PetscSectionSymCopy(sym,nsym, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscSectionSym
+  PetscSectionSym :: sym
+  PetscSectionSym :: nsym
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscSectionSymCopy
+#endif
+  interface
+  subroutine PetscSectionSymDistribute(sym,migrationSF,dsym, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscSectionSym,tPetscSF
+  PetscSectionSym :: sym
+  PetscSF :: migrationSF
+  PetscSectionSym :: dsym
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscSectionSymDistribute
+#endif
+  interface operator(.ne.)
+    module procedure PetscSectionSymnotequals
+  end interface operator (.ne.)
+  interface operator(.eq.)
+    module procedure PetscSectionSymequals
+  end interface operator (.eq.)
+
+  interface PetscObjectCast
+    module procedure PetscObjectCastSectionSym
+  end interface
+  interface PetscBarrier
+  module procedure PetscBarrierSectionSym
+  end interface
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectSAWsTakeAccess
+    module procedure PetscObjectSAWsTakeAccessSectionSym
+  end interface
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectSAWsGrantAccess
+    module procedure PetscObjectSAWsGrantAccessSectionSym
+  end interface
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectSAWsBlock
+    module procedure PetscObjectSAWsBlockSectionSym
+  end interface
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectSAWsSetBlock
+    module procedure PetscObjectSAWsSetBlockSectionSym
+  end interface
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectSAWsViewOff
+    module procedure PetscObjectSAWsViewOffSectionSym
+  end interface
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectViewSAWs
+    module procedure PetscObjectViewSAWsSectionSym
+  end interface
+#endif
+  interface PetscObjectGetType
+    module procedure PetscObjectGetTypeSectionSym
+  end interface
+  interface PetscObjectSetPrintedOptions
+    module procedure PetscObjectSetPrintedOptionsSectionSym
+  end interface
+  interface PetscObjectInheritPrintedOptions
+    module procedure PetscObjectInheritPrintedOptionsSectionSym
+  end interface
+  interface PetscObjectAddOptionsHandler
+    module procedure PetscObjectAddOptionsHandlerSectionSym
+  end interface
+  interface PetscObjectProcessOptionsHandlers
+    module procedure PetscObjectProcessOptionsHandlersSectionSym
+  end interface
+  interface PetscObjectDestroyOptionsHandlers
+    module procedure PetscObjectDestroyOptionsHandlersSectionSym
+  end interface
+  interface PetscObjectReference
+    module procedure PetscObjectReferenceSectionSym
+  end interface
+  interface PetscObjectGetReference
+    module procedure PetscObjectGetReferenceSectionSym
+  end interface
+  interface PetscObjectDereference
+    module procedure PetscObjectDereferenceSectionSym
+  end interface
+  interface PetscObjectRemoveReference
+    module procedure PetscObjectRemoveReferenceSectionSym
+  end interface
+  interface PetscObjectHasFunction
+    module procedure PetscObjectHasFunctionSectionSym
+  end interface
+  interface PetscObjectSetFromOptions
+    module procedure PetscObjectSetFromOptionsSectionSym
+  end interface
+  interface PetscObjectSetUp
+    module procedure PetscObjectSetUpSectionSym
+  end interface
+  interface PetscObjectGetName
+    module procedure PetscObjectGetNameSectionSym
+  end interface
+  interface PetscObjectDestroy
+    module procedure PetscObjectDestroySectionSym
+  end interface
+  interface PetscObjectView
+    module procedure PetscObjectViewSectionSym
+  end interface
+  interface PetscObjectViewFromOptions
+    module procedure PetscObjectViewFromOptionsSectionSym
+  end interface
+  interface PetscObjectTypeCompare
+    module procedure PetscObjectTypeCompareSectionSym
+  end interface
+  interface PetscObjectObjectTypeCompare
+    module procedure PetscObjectObjectTypeCompareSectionSym
+  end interface
+  interface PetscObjectBaseTypeCompare
+    module procedure PetscObjectBaseTypeCompareSectionSym
+  end interface
+  interface PetscObjectRegisterDestroy
+    module procedure PetscObjectRegisterDestroySectionSym
+  end interface
+  interface PetscObjectGetId
+    module procedure PetscObjectGetIdSectionSym
+  end interface
+  interface PetscObjectCompareId
+    module procedure PetscObjectCompareIdSectionSym
+  end interface
+  interface PetscObjectGetOptions
+    module procedure PetscObjectGetOptionsSectionSym
+  end interface
+  interface PetscObjectSetOptions
+    module procedure PetscObjectSetOptionsSectionSym
+  end interface
+  interface PetscObjectSetOptionsPrefix
+    module procedure PetscObjectSetOptionsPrefixSectionSym
+  end interface
+  interface PetscObjectAppendOptionsPrefix
+    module procedure PetscObjectAppendOptionsPrefixSectionSym
+  end interface
+  interface PetscObjectGetOptionsPrefix
+    module procedure PetscObjectGetOptionsPrefixSectionSym
+  end interface
+  interface PetscObjectPrependOptionsPrefix
+    module procedure PetscObjectPrependOptionsPrefixSectionSym
+  end interface
+  interface PetscObjectGetComm
+    module procedure PetscObjectGetCommSectionSym
+  end interface
+  interface PetscObjectGetTabLevel
+    module procedure PetscObjectGetTabLevelSectionSym
+  end interface
+  interface PetscObjectSetTabLevel
+    module procedure PetscObjectSetTabLevelSectionSym
+  end interface
+  interface PetscObjectIncrementTabLevel
+    module procedure PetscObjectIncrementTabLevelSectionSym
+  end interface
+  interface PetscObjectGetNewTag
+    module procedure PetscObjectGetNewTagSectionSym
+  end interface
+  interface PetscObjectGetClassId
+    module procedure PetscObjectGetClassIdSectionSym
+  end interface
+  interface PetscObjectGetClassName
+    module procedure PetscObjectGetClassNameSectionSym
+  end interface
+  interface PetscObjectSetName
+    module procedure PetscObjectSetNameSectionSym
+  end interface
+  interface PetscObjectPrintClassNamePrefixType
+    module procedure PetscObjectPrintClassNamePrefixTypeSectionSym
+  end interface
+  interface PetscObjectName
+    module procedure PetscObjectNameSectionSym
+  end interface
+  interface PetscObjectChangeTypeName
+    module procedure PetscObjectChangeTypeNameSectionSym
+  end interface

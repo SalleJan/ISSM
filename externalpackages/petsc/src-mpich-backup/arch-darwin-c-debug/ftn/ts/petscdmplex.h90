@@ -1,0 +1,79 @@
+  interface
+  subroutine DMPlexTSComputeRHSFunctionFVM(dm,time,locX,F,ctx, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM,tVec
+  DM :: dm
+  PetscReal :: time
+  Vec :: locX
+  Vec :: F
+  type(*) :: ctx
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMPlexTSComputeRHSFunctionFVM
+#endif
+  interface
+  subroutine DMPlexTSComputeBoundary(dm,time,locX,locX_t,ctx, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM,tVec
+  DM :: dm
+  PetscReal :: time
+  Vec :: locX
+  Vec :: locX_t
+  type(*) :: ctx
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMPlexTSComputeBoundary
+#endif
+  interface
+  subroutine DMPlexTSComputeIFunctionFEM(dm,time,locX,locX_t,locF,ctx, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM,tVec
+  DM :: dm
+  PetscReal :: time
+  Vec :: locX
+  Vec :: locX_t
+  Vec :: locF
+  type(*) :: ctx
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMPlexTSComputeIFunctionFEM
+#endif
+  interface
+  subroutine DMPlexTSComputeIJacobianFEM(dm,time,locX,locX_t,X_tShift,Jac,JacP,ctx, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM,tVec,tMat
+  DM :: dm
+  PetscReal :: time
+  Vec :: locX
+  Vec :: locX_t
+  PetscReal :: X_tShift
+  Mat :: Jac
+  Mat :: JacP
+  type(*) :: ctx
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMPlexTSComputeIJacobianFEM
+#endif
+  interface
+  subroutine DMPlexTSComputeRHSFunctionFEM(dm,time,locX,locG,ctx, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM,tVec
+  DM :: dm
+  PetscReal :: time
+  Vec :: locX
+  Vec :: locG
+  type(*) :: ctx
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMPlexTSComputeRHSFunctionFEM
+#endif

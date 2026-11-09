@@ -1,0 +1,865 @@
+  interface
+  subroutine PetscLimiterRegister(sname,function, ierr)
+  use, intrinsic :: ISO_C_binding
+  character(*) :: sname
+  external :: function
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscLimiterRegister
+#endif
+  interface
+  subroutine PetscLimiterSetType(lim,name, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscLimiter
+  PetscLimiter :: lim
+  character(*) :: name
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscLimiterSetType
+#endif
+  interface
+  subroutine PetscLimiterGetType(lim,name, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscLimiter
+  PetscLimiter :: lim
+  character(*) :: name
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscLimiterGetType
+#endif
+  interface
+  subroutine PetscLimiterViewFromOptions(A,obj,name, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscLimiter,tPetscObject
+  PetscLimiter :: A
+  PetscObject :: obj
+  character(*) :: name
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscLimiterViewFromOptions
+#endif
+  interface
+  subroutine PetscLimiterView(lim,v, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscLimiter,tPetscViewer
+  PetscLimiter :: lim
+  PetscViewer :: v
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscLimiterView
+#endif
+  interface
+  subroutine PetscLimiterSetFromOptions(lim, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscLimiter
+  PetscLimiter :: lim
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscLimiterSetFromOptions
+#endif
+  interface
+  subroutine PetscLimiterSetUp(lim, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscLimiter
+  PetscLimiter :: lim
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscLimiterSetUp
+#endif
+  interface
+  subroutine PetscLimiterDestroy(lim, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscLimiter
+  PetscLimiter :: lim
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscLimiterDestroy
+#endif
+  interface
+  subroutine PetscLimiterCreate(comm,lim, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscLimiter
+  MPIU_Comm :: comm
+  PetscLimiter :: lim
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscLimiterCreate
+#endif
+  interface
+  subroutine PetscLimiterLimit(lim,flim,phi, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscLimiter
+  PetscLimiter :: lim
+  PetscReal :: flim
+  PetscReal :: phi
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscLimiterLimit
+#endif
+  interface operator(.ne.)
+    module procedure PetscLimiternotequals
+  end interface operator (.ne.)
+  interface operator(.eq.)
+    module procedure PetscLimiterequals
+  end interface operator (.eq.)
+
+  interface PetscObjectCast
+    module procedure PetscObjectCastLimiter
+  end interface
+  interface PetscBarrier
+  module procedure PetscBarrierLimiter
+  end interface
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectSAWsTakeAccess
+    module procedure PetscObjectSAWsTakeAccessLimiter
+  end interface
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectSAWsGrantAccess
+    module procedure PetscObjectSAWsGrantAccessLimiter
+  end interface
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectSAWsBlock
+    module procedure PetscObjectSAWsBlockLimiter
+  end interface
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectSAWsSetBlock
+    module procedure PetscObjectSAWsSetBlockLimiter
+  end interface
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectSAWsViewOff
+    module procedure PetscObjectSAWsViewOffLimiter
+  end interface
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectViewSAWs
+    module procedure PetscObjectViewSAWsLimiter
+  end interface
+#endif
+  interface PetscObjectGetType
+    module procedure PetscObjectGetTypeLimiter
+  end interface
+  interface PetscObjectSetPrintedOptions
+    module procedure PetscObjectSetPrintedOptionsLimiter
+  end interface
+  interface PetscObjectInheritPrintedOptions
+    module procedure PetscObjectInheritPrintedOptionsLimiter
+  end interface
+  interface PetscObjectAddOptionsHandler
+    module procedure PetscObjectAddOptionsHandlerLimiter
+  end interface
+  interface PetscObjectProcessOptionsHandlers
+    module procedure PetscObjectProcessOptionsHandlersLimiter
+  end interface
+  interface PetscObjectDestroyOptionsHandlers
+    module procedure PetscObjectDestroyOptionsHandlersLimiter
+  end interface
+  interface PetscObjectReference
+    module procedure PetscObjectReferenceLimiter
+  end interface
+  interface PetscObjectGetReference
+    module procedure PetscObjectGetReferenceLimiter
+  end interface
+  interface PetscObjectDereference
+    module procedure PetscObjectDereferenceLimiter
+  end interface
+  interface PetscObjectRemoveReference
+    module procedure PetscObjectRemoveReferenceLimiter
+  end interface
+  interface PetscObjectHasFunction
+    module procedure PetscObjectHasFunctionLimiter
+  end interface
+  interface PetscObjectSetFromOptions
+    module procedure PetscObjectSetFromOptionsLimiter
+  end interface
+  interface PetscObjectSetUp
+    module procedure PetscObjectSetUpLimiter
+  end interface
+  interface PetscObjectGetName
+    module procedure PetscObjectGetNameLimiter
+  end interface
+  interface PetscObjectDestroy
+    module procedure PetscObjectDestroyLimiter
+  end interface
+  interface PetscObjectView
+    module procedure PetscObjectViewLimiter
+  end interface
+  interface PetscObjectViewFromOptions
+    module procedure PetscObjectViewFromOptionsLimiter
+  end interface
+  interface PetscObjectTypeCompare
+    module procedure PetscObjectTypeCompareLimiter
+  end interface
+  interface PetscObjectObjectTypeCompare
+    module procedure PetscObjectObjectTypeCompareLimiter
+  end interface
+  interface PetscObjectBaseTypeCompare
+    module procedure PetscObjectBaseTypeCompareLimiter
+  end interface
+  interface PetscObjectRegisterDestroy
+    module procedure PetscObjectRegisterDestroyLimiter
+  end interface
+  interface PetscObjectGetId
+    module procedure PetscObjectGetIdLimiter
+  end interface
+  interface PetscObjectCompareId
+    module procedure PetscObjectCompareIdLimiter
+  end interface
+  interface PetscObjectGetOptions
+    module procedure PetscObjectGetOptionsLimiter
+  end interface
+  interface PetscObjectSetOptions
+    module procedure PetscObjectSetOptionsLimiter
+  end interface
+  interface PetscObjectSetOptionsPrefix
+    module procedure PetscObjectSetOptionsPrefixLimiter
+  end interface
+  interface PetscObjectAppendOptionsPrefix
+    module procedure PetscObjectAppendOptionsPrefixLimiter
+  end interface
+  interface PetscObjectGetOptionsPrefix
+    module procedure PetscObjectGetOptionsPrefixLimiter
+  end interface
+  interface PetscObjectPrependOptionsPrefix
+    module procedure PetscObjectPrependOptionsPrefixLimiter
+  end interface
+  interface PetscObjectGetComm
+    module procedure PetscObjectGetCommLimiter
+  end interface
+  interface PetscObjectGetTabLevel
+    module procedure PetscObjectGetTabLevelLimiter
+  end interface
+  interface PetscObjectSetTabLevel
+    module procedure PetscObjectSetTabLevelLimiter
+  end interface
+  interface PetscObjectIncrementTabLevel
+    module procedure PetscObjectIncrementTabLevelLimiter
+  end interface
+  interface PetscObjectGetNewTag
+    module procedure PetscObjectGetNewTagLimiter
+  end interface
+  interface PetscObjectGetClassId
+    module procedure PetscObjectGetClassIdLimiter
+  end interface
+  interface PetscObjectGetClassName
+    module procedure PetscObjectGetClassNameLimiter
+  end interface
+  interface PetscObjectSetName
+    module procedure PetscObjectSetNameLimiter
+  end interface
+  interface PetscObjectPrintClassNamePrefixType
+    module procedure PetscObjectPrintClassNamePrefixTypeLimiter
+  end interface
+  interface PetscObjectName
+    module procedure PetscObjectNameLimiter
+  end interface
+  interface PetscObjectChangeTypeName
+    module procedure PetscObjectChangeTypeNameLimiter
+  end interface
+  interface
+  subroutine PetscFVFinalizePackage(ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscFVFinalizePackage
+#endif
+  interface
+  subroutine PetscFVInitializePackage(ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscFVInitializePackage
+#endif
+  interface
+  subroutine PetscFVRegister(sname,function, ierr)
+  use, intrinsic :: ISO_C_binding
+  character(*) :: sname
+  external :: function
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscFVRegister
+#endif
+  interface
+  subroutine PetscFVSetType(fvm,name, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscFV
+  PetscFV :: fvm
+  character(*) :: name
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscFVSetType
+#endif
+  interface
+  subroutine PetscFVGetType(fvm,name, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscFV
+  PetscFV :: fvm
+  character(*) :: name
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscFVGetType
+#endif
+  interface
+  subroutine PetscFVViewFromOptions(A,obj,name, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscFV,tPetscObject
+  PetscFV :: A
+  PetscObject :: obj
+  character(*) :: name
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscFVViewFromOptions
+#endif
+  interface
+  subroutine PetscFVView(fvm,v, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscFV,tPetscViewer
+  PetscFV :: fvm
+  PetscViewer :: v
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscFVView
+#endif
+  interface
+  subroutine PetscFVSetFromOptions(fvm, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscFV
+  PetscFV :: fvm
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscFVSetFromOptions
+#endif
+  interface
+  subroutine PetscFVSetUp(fvm, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscFV
+  PetscFV :: fvm
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscFVSetUp
+#endif
+  interface
+  subroutine PetscFVDestroy(fvm, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscFV
+  PetscFV :: fvm
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscFVDestroy
+#endif
+  interface
+  subroutine PetscFVCreate(comm,fvm, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscFV
+  MPIU_Comm :: comm
+  PetscFV :: fvm
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscFVCreate
+#endif
+  interface
+  subroutine PetscFVSetLimiter(fvm,lim, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscFV,tPetscLimiter
+  PetscFV :: fvm
+  PetscLimiter :: lim
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscFVSetLimiter
+#endif
+  interface
+  subroutine PetscFVGetLimiter(fvm,lim, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscFV,tPetscLimiter
+  PetscFV :: fvm
+  PetscLimiter :: lim
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscFVGetLimiter
+#endif
+  interface
+  subroutine PetscFVSetNumComponents(fvm,comp, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscFV
+  PetscFV :: fvm
+  PetscInt :: comp
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscFVSetNumComponents
+#endif
+  interface
+  subroutine PetscFVGetNumComponents(fvm,comp, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscFV
+  PetscFV :: fvm
+  PetscInt :: comp
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscFVGetNumComponents
+#endif
+  interface
+  subroutine PetscFVSetComponentName(fvm,comp,name, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscFV
+  PetscFV :: fvm
+  PetscInt :: comp
+  character(*) :: name
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscFVSetComponentName
+#endif
+  interface
+  subroutine PetscFVGetComponentName(fvm,comp,name, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscFV
+  PetscFV :: fvm
+  PetscInt :: comp
+  character(*) :: name
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscFVGetComponentName
+#endif
+  interface
+  subroutine PetscFVSetSpatialDimension(fvm,dim, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscFV
+  PetscFV :: fvm
+  PetscInt :: dim
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscFVSetSpatialDimension
+#endif
+  interface
+  subroutine PetscFVGetSpatialDimension(fvm,dim, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscFV
+  PetscFV :: fvm
+  PetscInt :: dim
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscFVGetSpatialDimension
+#endif
+  interface
+  subroutine PetscFVSetComputeGradients(fvm,computeGradients, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscFV
+  PetscFV :: fvm
+  PetscBool :: computeGradients
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscFVSetComputeGradients
+#endif
+  interface
+  subroutine PetscFVGetComputeGradients(fvm,computeGradients, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscFV
+  PetscFV :: fvm
+  PetscBool :: computeGradients
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscFVGetComputeGradients
+#endif
+  interface
+  subroutine PetscFVSetQuadrature(fvm,q, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscFV,tPetscQuadrature
+  PetscFV :: fvm
+  PetscQuadrature :: q
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscFVSetQuadrature
+#endif
+  interface
+  subroutine PetscFVGetQuadrature(fvm,q, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscFV,tPetscQuadrature
+  PetscFV :: fvm
+  PetscQuadrature :: q
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscFVGetQuadrature
+#endif
+  interface
+  subroutine PetscFVCreateDualSpace(fvm,ct, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscFV,eDMPolytopeType
+  PetscFV :: fvm
+  DMPolytopeType :: ct
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscFVCreateDualSpace
+#endif
+  interface
+  subroutine PetscFVGetDualSpace(fvm,sp, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscFV,tPetscDualSpace
+  PetscFV :: fvm
+  PetscDualSpace :: sp
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscFVGetDualSpace
+#endif
+  interface
+  subroutine PetscFVSetDualSpace(fvm,sp, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscFV,tPetscDualSpace
+  PetscFV :: fvm
+  PetscDualSpace :: sp
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscFVSetDualSpace
+#endif
+  interface
+  subroutine PetscFVGetCellTabulation(fvm,T, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscFV,tPetscTabulation
+  PetscFV :: fvm
+  PetscTabulation :: T
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscFVGetCellTabulation
+#endif
+  interface
+  subroutine PetscFVCreateTabulation(fvm,nrepl,npoints,points,K,T, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscFV,tPetscTabulation
+  PetscFV :: fvm
+  PetscInt :: nrepl
+  PetscInt :: npoints
+  PetscReal :: points(*)
+  PetscInt :: K
+  PetscTabulation :: T
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscFVCreateTabulation
+#endif
+  interface
+  subroutine PetscFVComputeGradient(fvm,numFaces,dx,grad, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscFV
+  PetscFV :: fvm
+  PetscInt :: numFaces
+  PetscScalar :: dx(*)
+  PetscScalar :: grad(*)
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscFVComputeGradient
+#endif
+  interface
+  subroutine PetscFVIntegrateRHSFunction(fvm,prob,field,Nf,fgeom,neighborVol,uL,uR,fluxL,fluxR, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscFV,tPetscDS
+  PetscFV :: fvm
+  PetscDS :: prob
+  PetscInt :: field
+  PetscInt :: Nf
+  PetscFVFaceGeom :: fgeom
+  PetscReal :: neighborVol
+  PetscScalar :: uL(*)
+  PetscScalar :: uR(*)
+  PetscScalar :: fluxL(*)
+  PetscScalar :: fluxR(*)
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscFVIntegrateRHSFunction
+#endif
+  interface
+  subroutine PetscFVClone(fv,fvNew, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscFV
+  PetscFV :: fv
+  PetscFV :: fvNew
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscFVClone
+#endif
+  interface
+  subroutine PetscFVRefine(fv,fvRef, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscFV
+  PetscFV :: fv
+  PetscFV :: fvRef
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscFVRefine
+#endif
+  interface
+  subroutine PetscFVLeastSquaresSetMaxFaces(fvm,maxFaces, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscFV
+  PetscFV :: fvm
+  PetscInt :: maxFaces
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscFVLeastSquaresSetMaxFaces
+#endif
+  interface operator(.ne.)
+    module procedure PetscFVnotequals
+  end interface operator (.ne.)
+  interface operator(.eq.)
+    module procedure PetscFVequals
+  end interface operator (.eq.)
+
+  interface PetscObjectCast
+    module procedure PetscObjectCastFV
+  end interface
+  interface PetscBarrier
+  module procedure PetscBarrierFV
+  end interface
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectSAWsTakeAccess
+    module procedure PetscObjectSAWsTakeAccessFV
+  end interface
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectSAWsGrantAccess
+    module procedure PetscObjectSAWsGrantAccessFV
+  end interface
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectSAWsBlock
+    module procedure PetscObjectSAWsBlockFV
+  end interface
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectSAWsSetBlock
+    module procedure PetscObjectSAWsSetBlockFV
+  end interface
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectSAWsViewOff
+    module procedure PetscObjectSAWsViewOffFV
+  end interface
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectViewSAWs
+    module procedure PetscObjectViewSAWsFV
+  end interface
+#endif
+  interface PetscObjectGetType
+    module procedure PetscObjectGetTypeFV
+  end interface
+  interface PetscObjectSetPrintedOptions
+    module procedure PetscObjectSetPrintedOptionsFV
+  end interface
+  interface PetscObjectInheritPrintedOptions
+    module procedure PetscObjectInheritPrintedOptionsFV
+  end interface
+  interface PetscObjectAddOptionsHandler
+    module procedure PetscObjectAddOptionsHandlerFV
+  end interface
+  interface PetscObjectProcessOptionsHandlers
+    module procedure PetscObjectProcessOptionsHandlersFV
+  end interface
+  interface PetscObjectDestroyOptionsHandlers
+    module procedure PetscObjectDestroyOptionsHandlersFV
+  end interface
+  interface PetscObjectReference
+    module procedure PetscObjectReferenceFV
+  end interface
+  interface PetscObjectGetReference
+    module procedure PetscObjectGetReferenceFV
+  end interface
+  interface PetscObjectDereference
+    module procedure PetscObjectDereferenceFV
+  end interface
+  interface PetscObjectRemoveReference
+    module procedure PetscObjectRemoveReferenceFV
+  end interface
+  interface PetscObjectHasFunction
+    module procedure PetscObjectHasFunctionFV
+  end interface
+  interface PetscObjectSetFromOptions
+    module procedure PetscObjectSetFromOptionsFV
+  end interface
+  interface PetscObjectSetUp
+    module procedure PetscObjectSetUpFV
+  end interface
+  interface PetscObjectGetName
+    module procedure PetscObjectGetNameFV
+  end interface
+  interface PetscObjectDestroy
+    module procedure PetscObjectDestroyFV
+  end interface
+  interface PetscObjectView
+    module procedure PetscObjectViewFV
+  end interface
+  interface PetscObjectViewFromOptions
+    module procedure PetscObjectViewFromOptionsFV
+  end interface
+  interface PetscObjectTypeCompare
+    module procedure PetscObjectTypeCompareFV
+  end interface
+  interface PetscObjectObjectTypeCompare
+    module procedure PetscObjectObjectTypeCompareFV
+  end interface
+  interface PetscObjectBaseTypeCompare
+    module procedure PetscObjectBaseTypeCompareFV
+  end interface
+  interface PetscObjectRegisterDestroy
+    module procedure PetscObjectRegisterDestroyFV
+  end interface
+  interface PetscObjectGetId
+    module procedure PetscObjectGetIdFV
+  end interface
+  interface PetscObjectCompareId
+    module procedure PetscObjectCompareIdFV
+  end interface
+  interface PetscObjectGetOptions
+    module procedure PetscObjectGetOptionsFV
+  end interface
+  interface PetscObjectSetOptions
+    module procedure PetscObjectSetOptionsFV
+  end interface
+  interface PetscObjectSetOptionsPrefix
+    module procedure PetscObjectSetOptionsPrefixFV
+  end interface
+  interface PetscObjectAppendOptionsPrefix
+    module procedure PetscObjectAppendOptionsPrefixFV
+  end interface
+  interface PetscObjectGetOptionsPrefix
+    module procedure PetscObjectGetOptionsPrefixFV
+  end interface
+  interface PetscObjectPrependOptionsPrefix
+    module procedure PetscObjectPrependOptionsPrefixFV
+  end interface
+  interface PetscObjectGetComm
+    module procedure PetscObjectGetCommFV
+  end interface
+  interface PetscObjectGetTabLevel
+    module procedure PetscObjectGetTabLevelFV
+  end interface
+  interface PetscObjectSetTabLevel
+    module procedure PetscObjectSetTabLevelFV
+  end interface
+  interface PetscObjectIncrementTabLevel
+    module procedure PetscObjectIncrementTabLevelFV
+  end interface
+  interface PetscObjectGetNewTag
+    module procedure PetscObjectGetNewTagFV
+  end interface
+  interface PetscObjectGetClassId
+    module procedure PetscObjectGetClassIdFV
+  end interface
+  interface PetscObjectGetClassName
+    module procedure PetscObjectGetClassNameFV
+  end interface
+  interface PetscObjectSetName
+    module procedure PetscObjectSetNameFV
+  end interface
+  interface PetscObjectPrintClassNamePrefixType
+    module procedure PetscObjectPrintClassNamePrefixTypeFV
+  end interface
+  interface PetscObjectName
+    module procedure PetscObjectNameFV
+  end interface
+  interface PetscObjectChangeTypeName
+    module procedure PetscObjectChangeTypeNameFV
+  end interface
+  interface
+  subroutine PetscDualSpaceApplyFVM(sp,f,time,cgeom,Nc,func,ctx,value, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDualSpace,sPetscFVCellGeom
+  PetscDualSpace :: sp
+  PetscInt :: f
+  PetscReal :: time
+  PetscFVCellGeom :: cgeom
+  PetscInt :: Nc
+  external :: func
+  type(*) :: ctx
+  PetscScalar :: value
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDualSpaceApplyFVM
+#endif

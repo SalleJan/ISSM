@@ -1,0 +1,1646 @@
+  interface
+  subroutine PetscLogHandlerStart(h, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscLogHandler
+  PetscLogHandler :: h
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscLogHandlerStart
+#endif
+  interface
+  subroutine PetscLogHandlerStop(h, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscLogHandler
+  PetscLogHandler :: h
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscLogHandlerStop
+#endif
+  interface
+  subroutine PetscLogHandlerRegister(sname,function, ierr)
+  use, intrinsic :: ISO_C_binding
+  character(*) :: sname
+  external :: function
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscLogHandlerRegister
+#endif
+  interface
+  subroutine PetscLogHandlerSetType(handler,name, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscLogHandler
+  PetscLogHandler :: handler
+  character(*) :: name
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscLogHandlerSetType
+#endif
+  interface
+  subroutine PetscLogHandlerGetType(handler,name, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscLogHandler
+  PetscLogHandler :: handler
+  character(*) :: name
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscLogHandlerGetType
+#endif
+  interface
+  subroutine PetscLogHandlerCreate(comm,handler, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscLogHandler
+  MPIU_Comm :: comm
+  PetscLogHandler :: handler
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscLogHandlerCreate
+#endif
+  interface
+  subroutine PetscLogHandlerDestroy(handler, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscLogHandler
+  PetscLogHandler :: handler
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscLogHandlerDestroy
+#endif
+  interface
+  subroutine PetscLogHandlerSetState(h,state, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscLogHandler,tPetscLogState
+  PetscLogHandler :: h
+  PetscLogState :: state
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscLogHandlerSetState
+#endif
+  interface
+  subroutine PetscLogHandlerGetState(h,state, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscLogHandler,tPetscLogState
+  PetscLogHandler :: h
+  PetscLogState :: state
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscLogHandlerGetState
+#endif
+  interface
+  subroutine PetscLogHandlerEventBegin(h,e,o1,o2,o3,o4, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscLogHandler,tPetscObject
+  PetscLogHandler :: h
+  PetscLogEvent :: e
+  PetscObject :: o1
+  PetscObject :: o2
+  PetscObject :: o3
+  PetscObject :: o4
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscLogHandlerEventBegin
+#endif
+  interface
+  subroutine PetscLogHandlerEventEnd(h,e,o1,o2,o3,o4, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscLogHandler,tPetscObject
+  PetscLogHandler :: h
+  PetscLogEvent :: e
+  PetscObject :: o1
+  PetscObject :: o2
+  PetscObject :: o3
+  PetscObject :: o4
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscLogHandlerEventEnd
+#endif
+  interface
+  subroutine PetscLogHandlerEventSync(h,e,comm, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscLogHandler
+  PetscLogHandler :: h
+  PetscLogEvent :: e
+  MPIU_Comm :: comm
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscLogHandlerEventSync
+#endif
+  interface
+  subroutine PetscLogHandlerObjectCreate(h,obj, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscLogHandler,tPetscObject
+  PetscLogHandler :: h
+  PetscObject :: obj
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscLogHandlerObjectCreate
+#endif
+  interface
+  subroutine PetscLogHandlerObjectDestroy(h,obj, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscLogHandler,tPetscObject
+  PetscLogHandler :: h
+  PetscObject :: obj
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscLogHandlerObjectDestroy
+#endif
+  interface
+  subroutine PetscLogHandlerStagePush(h,stage, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscLogHandler
+  PetscLogHandler :: h
+  PetscLogStage :: stage
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscLogHandlerStagePush
+#endif
+  interface
+  subroutine PetscLogHandlerStagePop(h,stage, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscLogHandler
+  PetscLogHandler :: h
+  PetscLogStage :: stage
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscLogHandlerStagePop
+#endif
+  interface
+  subroutine PetscLogHandlerView(h,viewer, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscLogHandler,tPetscViewer
+  PetscLogHandler :: h
+  PetscViewer :: viewer
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscLogHandlerView
+#endif
+  interface
+  subroutine PetscLogHandlerSetLogActions(handler,flag, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscLogHandler
+  PetscLogHandler :: handler
+  PetscBool :: flag
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscLogHandlerSetLogActions
+#endif
+  interface
+  subroutine PetscLogHandlerSetLogObjects(handler,flag, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscLogHandler
+  PetscLogHandler :: handler
+  PetscBool :: flag
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscLogHandlerSetLogObjects
+#endif
+  interface
+  subroutine PetscLogHandlerGetNumObjects(handler,num_objects, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscLogHandler
+  PetscLogHandler :: handler
+  PetscInt :: num_objects
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscLogHandlerGetNumObjects
+#endif
+  interface
+  subroutine PetscLogHandlerEventDeactivatePush(handler,stage,event, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscLogHandler
+  PetscLogHandler :: handler
+  PetscLogStage :: stage
+  PetscLogEvent :: event
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscLogHandlerEventDeactivatePush
+#endif
+  interface
+  subroutine PetscLogHandlerEventDeactivatePop(handler,stage,event, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscLogHandler
+  PetscLogHandler :: handler
+  PetscLogStage :: stage
+  PetscLogEvent :: event
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscLogHandlerEventDeactivatePop
+#endif
+  interface
+  subroutine PetscLogHandlerEventsPause(handler, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscLogHandler
+  PetscLogHandler :: handler
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscLogHandlerEventsPause
+#endif
+  interface
+  subroutine PetscLogHandlerEventsResume(handler, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscLogHandler
+  PetscLogHandler :: handler
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscLogHandlerEventsResume
+#endif
+  interface
+  subroutine PetscLogHandlerDump(handler,sname, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscLogHandler
+  PetscLogHandler :: handler
+  character(*) :: sname
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscLogHandlerDump
+#endif
+  interface
+  subroutine PetscLogHandlerStageSetVisible(handler,stage,isVisible, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscLogHandler
+  PetscLogHandler :: handler
+  PetscLogStage :: stage
+  PetscBool :: isVisible
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscLogHandlerStageSetVisible
+#endif
+  interface
+  subroutine PetscLogHandlerStageGetVisible(handler,stage,isVisible, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscLogHandler
+  PetscLogHandler :: handler
+  PetscLogStage :: stage
+  PetscBool :: isVisible
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscLogHandlerStageGetVisible
+#endif
+  interface
+  subroutine PetscLogHandlerCreateLegacy(comm,PetscLogPLB,PetscLogPLE,PetscLogPHC,PetscLogPHD,handler, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscLogHandler
+  MPIU_Comm :: comm
+  external :: PetscLogPLB
+  external :: PetscLogPLE
+  external :: PetscLogPHC
+  external :: PetscLogPHD
+  PetscLogHandler :: handler
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscLogHandlerCreateLegacy
+#endif
+  interface operator(.ne.)
+    module procedure PetscLogHandlernotequals
+  end interface operator (.ne.)
+  interface operator(.eq.)
+    module procedure PetscLogHandlerequals
+  end interface operator (.eq.)
+
+  interface PetscObjectCast
+    module procedure PetscObjectCastLogHandler
+  end interface
+  interface PetscBarrier
+  module procedure PetscBarrierLogHandler
+  end interface
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectSAWsTakeAccess
+    module procedure PetscObjectSAWsTakeAccessLogHandler
+  end interface
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectSAWsGrantAccess
+    module procedure PetscObjectSAWsGrantAccessLogHandler
+  end interface
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectSAWsBlock
+    module procedure PetscObjectSAWsBlockLogHandler
+  end interface
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectSAWsSetBlock
+    module procedure PetscObjectSAWsSetBlockLogHandler
+  end interface
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectSAWsViewOff
+    module procedure PetscObjectSAWsViewOffLogHandler
+  end interface
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectViewSAWs
+    module procedure PetscObjectViewSAWsLogHandler
+  end interface
+#endif
+  interface PetscObjectGetType
+    module procedure PetscObjectGetTypeLogHandler
+  end interface
+  interface PetscObjectSetPrintedOptions
+    module procedure PetscObjectSetPrintedOptionsLogHandler
+  end interface
+  interface PetscObjectInheritPrintedOptions
+    module procedure PetscObjectInheritPrintedOptionsLogHandler
+  end interface
+  interface PetscObjectAddOptionsHandler
+    module procedure PetscObjectAddOptionsHandlerLogHandler
+  end interface
+  interface PetscObjectProcessOptionsHandlers
+    module procedure PetscObjectProcessOptionsHandlersLogHandler
+  end interface
+  interface PetscObjectDestroyOptionsHandlers
+    module procedure PetscObjectDestroyOptionsHandlersLogHandler
+  end interface
+  interface PetscObjectReference
+    module procedure PetscObjectReferenceLogHandler
+  end interface
+  interface PetscObjectGetReference
+    module procedure PetscObjectGetReferenceLogHandler
+  end interface
+  interface PetscObjectDereference
+    module procedure PetscObjectDereferenceLogHandler
+  end interface
+  interface PetscObjectRemoveReference
+    module procedure PetscObjectRemoveReferenceLogHandler
+  end interface
+  interface PetscObjectHasFunction
+    module procedure PetscObjectHasFunctionLogHandler
+  end interface
+  interface PetscObjectSetFromOptions
+    module procedure PetscObjectSetFromOptionsLogHandler
+  end interface
+  interface PetscObjectSetUp
+    module procedure PetscObjectSetUpLogHandler
+  end interface
+  interface PetscObjectGetName
+    module procedure PetscObjectGetNameLogHandler
+  end interface
+  interface PetscObjectDestroy
+    module procedure PetscObjectDestroyLogHandler
+  end interface
+  interface PetscObjectView
+    module procedure PetscObjectViewLogHandler
+  end interface
+  interface PetscObjectViewFromOptions
+    module procedure PetscObjectViewFromOptionsLogHandler
+  end interface
+  interface PetscObjectTypeCompare
+    module procedure PetscObjectTypeCompareLogHandler
+  end interface
+  interface PetscObjectObjectTypeCompare
+    module procedure PetscObjectObjectTypeCompareLogHandler
+  end interface
+  interface PetscObjectBaseTypeCompare
+    module procedure PetscObjectBaseTypeCompareLogHandler
+  end interface
+  interface PetscObjectRegisterDestroy
+    module procedure PetscObjectRegisterDestroyLogHandler
+  end interface
+  interface PetscObjectGetId
+    module procedure PetscObjectGetIdLogHandler
+  end interface
+  interface PetscObjectCompareId
+    module procedure PetscObjectCompareIdLogHandler
+  end interface
+  interface PetscObjectGetOptions
+    module procedure PetscObjectGetOptionsLogHandler
+  end interface
+  interface PetscObjectSetOptions
+    module procedure PetscObjectSetOptionsLogHandler
+  end interface
+  interface PetscObjectSetOptionsPrefix
+    module procedure PetscObjectSetOptionsPrefixLogHandler
+  end interface
+  interface PetscObjectAppendOptionsPrefix
+    module procedure PetscObjectAppendOptionsPrefixLogHandler
+  end interface
+  interface PetscObjectGetOptionsPrefix
+    module procedure PetscObjectGetOptionsPrefixLogHandler
+  end interface
+  interface PetscObjectPrependOptionsPrefix
+    module procedure PetscObjectPrependOptionsPrefixLogHandler
+  end interface
+  interface PetscObjectGetComm
+    module procedure PetscObjectGetCommLogHandler
+  end interface
+  interface PetscObjectGetTabLevel
+    module procedure PetscObjectGetTabLevelLogHandler
+  end interface
+  interface PetscObjectSetTabLevel
+    module procedure PetscObjectSetTabLevelLogHandler
+  end interface
+  interface PetscObjectIncrementTabLevel
+    module procedure PetscObjectIncrementTabLevelLogHandler
+  end interface
+  interface PetscObjectGetNewTag
+    module procedure PetscObjectGetNewTagLogHandler
+  end interface
+  interface PetscObjectGetClassId
+    module procedure PetscObjectGetClassIdLogHandler
+  end interface
+  interface PetscObjectGetClassName
+    module procedure PetscObjectGetClassNameLogHandler
+  end interface
+  interface PetscObjectSetName
+    module procedure PetscObjectSetNameLogHandler
+  end interface
+  interface PetscObjectPrintClassNamePrefixType
+    module procedure PetscObjectPrintClassNamePrefixTypeLogHandler
+  end interface
+  interface PetscObjectName
+    module procedure PetscObjectNameLogHandler
+  end interface
+  interface PetscObjectChangeTypeName
+    module procedure PetscObjectChangeTypeNameLogHandler
+  end interface
+  interface operator(.ne.)
+    module procedure PetscLogRegistrynotequals
+  end interface operator (.ne.)
+  interface operator(.eq.)
+    module procedure PetscLogRegistryequals
+  end interface operator (.eq.)
+
+  interface
+  subroutine PetscLogStateCreate(state, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscLogState
+  PetscLogState :: state
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscLogStateCreate
+#endif
+  interface
+  subroutine PetscLogStateDestroy(state, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscLogState
+  PetscLogState :: state
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscLogStateDestroy
+#endif
+  interface
+  subroutine PetscLogStateStagePush(state,stage, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscLogState
+  PetscLogState :: state
+  PetscLogStage :: stage
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscLogStateStagePush
+#endif
+  interface
+  subroutine PetscLogStateStagePop(state, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscLogState
+  PetscLogState :: state
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscLogStateStagePop
+#endif
+  interface
+  subroutine PetscLogStateGetCurrentStage(state,current, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscLogState
+  PetscLogState :: state
+  PetscLogStage :: current
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscLogStateGetCurrentStage
+#endif
+  interface
+  subroutine PetscLogStateStageRegister(state,sname,stage, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscLogState
+  PetscLogState :: state
+  character(*) :: sname
+  PetscLogStage :: stage
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscLogStateStageRegister
+#endif
+  interface
+  subroutine PetscLogStateEventRegister(state,sname,id,event, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscLogState
+  PetscLogState :: state
+  character(*) :: sname
+  PetscClassId :: id
+  PetscLogEvent :: event
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscLogStateEventRegister
+#endif
+  interface
+  subroutine PetscLogStateEventSetCollective(state,event,collective, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscLogState
+  PetscLogState :: state
+  PetscLogEvent :: event
+  PetscBool :: collective
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscLogStateEventSetCollective
+#endif
+  interface
+  subroutine PetscLogStateStageSetActive(state,stage,isActive, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscLogState
+  PetscLogState :: state
+  PetscLogStage :: stage
+  PetscBool :: isActive
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscLogStateStageSetActive
+#endif
+  interface
+  subroutine PetscLogStateStageGetActive(state,stage,isActive, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscLogState
+  PetscLogState :: state
+  PetscLogStage :: stage
+  PetscBool :: isActive
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscLogStateStageGetActive
+#endif
+  interface
+  subroutine PetscLogStateEventSetActive(state,stage,event,isActive, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscLogState
+  PetscLogState :: state
+  PetscLogStage :: stage
+  PetscLogEvent :: event
+  PetscBool :: isActive
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscLogStateEventSetActive
+#endif
+  interface
+  subroutine PetscLogStateEventSetActiveAll(state,event,isActive, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscLogState
+  PetscLogState :: state
+  PetscLogEvent :: event
+  PetscBool :: isActive
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscLogStateEventSetActiveAll
+#endif
+  interface
+  subroutine PetscLogStateClassSetActive(state,stage,classid,isActive, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscLogState
+  PetscLogState :: state
+  PetscLogStage :: stage
+  PetscClassId :: classid
+  PetscBool :: isActive
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscLogStateClassSetActive
+#endif
+  interface
+  subroutine PetscLogStateClassSetActiveAll(state,classid,isActive, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscLogState
+  PetscLogState :: state
+  PetscClassId :: classid
+  PetscBool :: isActive
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscLogStateClassSetActiveAll
+#endif
+  interface
+  subroutine PetscLogStateEventGetActive(state,stage,event,isActive, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscLogState
+  PetscLogState :: state
+  PetscLogStage :: stage
+  PetscLogEvent :: event
+  PetscBool :: isActive
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscLogStateEventGetActive
+#endif
+  interface
+  subroutine PetscLogStateGetEventFromName(state,name,event, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscLogState
+  PetscLogState :: state
+  character(*) :: name
+  PetscLogEvent :: event
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscLogStateGetEventFromName
+#endif
+  interface
+  subroutine PetscLogStateGetStageFromName(state,name,stage, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscLogState
+  PetscLogState :: state
+  character(*) :: name
+  PetscLogStage :: stage
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscLogStateGetStageFromName
+#endif
+  interface
+  subroutine PetscLogStateGetClassFromName(state,name,clss, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscLogState
+  PetscLogState :: state
+  character(*) :: name
+  PetscLogClass :: clss
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscLogStateGetClassFromName
+#endif
+  interface
+  subroutine PetscLogStateGetClassFromClassId(state,classid,clss, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscLogState
+  PetscLogState :: state
+  PetscClassId :: classid
+  PetscLogClass :: clss
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscLogStateGetClassFromClassId
+#endif
+  interface
+  subroutine PetscLogStateGetNumEvents(state,numEvents, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscLogState
+  PetscLogState :: state
+  PetscInt :: numEvents
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscLogStateGetNumEvents
+#endif
+  interface
+  subroutine PetscLogStateGetNumStages(state,numStages, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscLogState
+  PetscLogState :: state
+  PetscInt :: numStages
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscLogStateGetNumStages
+#endif
+  interface
+  subroutine PetscLogStateGetNumClasses(state,numClasses, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscLogState
+  PetscLogState :: state
+  PetscInt :: numClasses
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscLogStateGetNumClasses
+#endif
+  interface
+  subroutine PetscLogStateEventGetInfo(state,event,info, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscLogState
+  PetscLogState :: state
+  PetscLogEvent :: event
+  PetscLogEventInfo :: info
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscLogStateEventGetInfo
+#endif
+  interface
+  subroutine PetscLogStateStageGetInfo(state,stage,info, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscLogState
+  PetscLogState :: state
+  PetscLogStage :: stage
+  PetscLogStageInfo :: info
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscLogStateStageGetInfo
+#endif
+  interface
+  subroutine PetscLogStateClassRegister(state,name,id,logclass, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscLogState
+  PetscLogState :: state
+  character(*) :: name
+  PetscClassId :: id
+  PetscLogClass :: logclass
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscLogStateClassRegister
+#endif
+  interface
+  subroutine PetscLogStateClassGetInfo(state,clss,info, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscLogState
+  PetscLogState :: state
+  PetscLogClass :: clss
+  PetscLogClassInfo :: info
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscLogStateClassGetInfo
+#endif
+  interface operator(.ne.)
+    module procedure PetscLogStatenotequals
+  end interface operator (.ne.)
+  interface operator(.eq.)
+    module procedure PetscLogStateequals
+  end interface operator (.eq.)
+
+  interface
+  subroutine PetscInfoEnabled(classid,enabled, ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscClassId :: classid
+  PetscBool :: enabled
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscInfoEnabled
+#endif
+  interface
+  subroutine PetscInfoAllow(flag, ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscBool :: flag
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscInfoAllow
+#endif
+  interface
+  subroutine PetscInfoSetFile(filename,mode, ierr)
+  use, intrinsic :: ISO_C_binding
+  character(*) :: filename
+  character(*) :: mode
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscInfoSetFile
+#endif
+  interface
+  subroutine PetscInfoGetClass(classname,found, ierr)
+  use, intrinsic :: ISO_C_binding
+  character(*) :: classname
+  PetscBool :: found
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscInfoGetClass
+#endif
+  interface
+  subroutine PetscInfoGetInfo(infoEnabled,classesSet,exclude,locked,commSelfFlag, ierr)
+  use, intrinsic :: ISO_C_binding
+  import ePetscInfoCommFlag
+  PetscBool :: infoEnabled
+  PetscBool :: classesSet
+  PetscBool :: exclude
+  PetscBool :: locked
+  PetscInfoCommFlag :: commSelfFlag
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscInfoGetInfo
+#endif
+  interface
+  subroutine PetscInfoProcessClass(classname,numClassID,classIDs, ierr)
+  use, intrinsic :: ISO_C_binding
+  character(*) :: classname
+  PetscInt :: numClassID
+  PetscClassId :: classIDs(*)
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscInfoProcessClass
+#endif
+  interface
+  subroutine PetscInfoSetFilterCommSelf(commSelfFlag, ierr)
+  use, intrinsic :: ISO_C_binding
+  import ePetscInfoCommFlag
+  PetscInfoCommFlag :: commSelfFlag
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscInfoSetFilterCommSelf
+#endif
+  interface
+  subroutine PetscInfoSetFromOptions(options, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscOptions
+  PetscOptions :: options
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscInfoSetFromOptions
+#endif
+  interface
+  subroutine PetscInfoDestroy(ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscInfoDestroy
+#endif
+  interface
+  subroutine PetscInfoDeactivateClass(classid, ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscClassId :: classid
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscInfoDeactivateClass
+#endif
+  interface
+  subroutine PetscInfoActivateClass(classid, ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscClassId :: classid
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscInfoActivateClass
+#endif
+  interface
+  subroutine PetscAddLogDouble(tot,tot_th,tmp, ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscLogDouble :: tot
+  PetscLogDouble :: tot_th
+  PetscLogDouble :: tmp
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscAddLogDouble
+#endif
+  interface
+  subroutine PetscAddLogDoubleCnt(cnt,tot,cnt_th,tot_th,tmp, ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscLogDouble :: cnt
+  PetscLogDouble :: tot
+  PetscLogDouble :: cnt_th
+  PetscLogDouble :: tot_th
+  PetscLogDouble :: tmp
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscAddLogDoubleCnt
+#endif
+  interface
+  subroutine PetscLogGetDefaultHandler(handler, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscLogHandler
+  PetscLogHandler :: handler
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscLogGetDefaultHandler
+#endif
+  interface
+  subroutine PetscLogGetState(state, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscLogState
+  PetscLogState :: state
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscLogGetState
+#endif
+  interface
+  subroutine PetscLogIsActive(isActive, ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscBool :: isActive
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscLogIsActive
+#endif
+  interface
+  subroutine PetscLogDefaultBegin(ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscLogDefaultBegin
+#endif
+  interface
+  subroutine PetscLogNestedBegin(ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscLogNestedBegin
+#endif
+  interface
+  subroutine PetscLogLegacyCallbacksBegin(PetscLogPLB,PetscLogPLE,PetscLogPHC,PetscLogPHD, ierr)
+  use, intrinsic :: ISO_C_binding
+  external :: PetscLogPLB
+  external :: PetscLogPLE
+  external :: PetscLogPHC
+  external :: PetscLogPHD
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscLogLegacyCallbacksBegin
+#endif
+  interface
+  subroutine PetscLogMPEBegin(ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscLogMPEBegin
+#endif
+  interface
+  subroutine PetscLogPerfstubsBegin(ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscLogPerfstubsBegin
+#endif
+  interface
+  subroutine PetscLogActions(flag, ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscBool :: flag
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscLogActions
+#endif
+  interface
+  subroutine PetscLogObjects(flag, ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscBool :: flag
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscLogObjects
+#endif
+  interface
+  subroutine PetscLogStageRegister(sname,stage, ierr)
+  use, intrinsic :: ISO_C_binding
+  character(*) :: sname
+  PetscLogStage :: stage
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscLogStageRegister
+#endif
+  interface
+  subroutine PetscLogStagePush(stage, ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscLogStage :: stage
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscLogStagePush
+#endif
+  interface
+  subroutine PetscLogStagePop(ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscLogStagePop
+#endif
+  interface
+  subroutine PetscLogStageSetActive(stage,isActive, ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscLogStage :: stage
+  PetscBool :: isActive
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscLogStageSetActive
+#endif
+  interface
+  subroutine PetscLogStageGetActive(stage,isActive, ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscLogStage :: stage
+  PetscBool :: isActive
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscLogStageGetActive
+#endif
+  interface
+  subroutine PetscLogStageSetVisible(stage,isVisible, ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscLogStage :: stage
+  PetscBool :: isVisible
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscLogStageSetVisible
+#endif
+  interface
+  subroutine PetscLogStageGetVisible(stage,isVisible, ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscLogStage :: stage
+  PetscBool :: isVisible
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscLogStageGetVisible
+#endif
+  interface
+  subroutine PetscLogStageGetId(name,stage, ierr)
+  use, intrinsic :: ISO_C_binding
+  character(*) :: name
+  PetscLogStage :: stage
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscLogStageGetId
+#endif
+  interface
+  subroutine PetscLogStageGetName(stage,name, ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscLogStage :: stage
+  character(*) :: name
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscLogStageGetName
+#endif
+  interface
+  subroutine PetscLogEventRegister(name,classid,event, ierr)
+  use, intrinsic :: ISO_C_binding
+  character(*) :: name
+  PetscClassId :: classid
+  PetscLogEvent :: event
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscLogEventRegister
+#endif
+  interface
+  subroutine PetscLogEventSetCollective(event,collective, ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscLogEvent :: event
+  PetscBool :: collective
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscLogEventSetCollective
+#endif
+  interface
+  subroutine PetscLogEventIncludeClass(classid, ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscClassId :: classid
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscLogEventIncludeClass
+#endif
+  interface
+  subroutine PetscLogEventExcludeClass(classid, ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscClassId :: classid
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscLogEventExcludeClass
+#endif
+  interface
+  subroutine PetscLogEventActivate(event, ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscLogEvent :: event
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscLogEventActivate
+#endif
+  interface
+  subroutine PetscLogEventDeactivate(event, ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscLogEvent :: event
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscLogEventDeactivate
+#endif
+  interface
+  subroutine PetscLogEventDeactivatePush(event, ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscLogEvent :: event
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscLogEventDeactivatePush
+#endif
+  interface
+  subroutine PetscLogEventDeactivatePop(event, ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscLogEvent :: event
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscLogEventDeactivatePop
+#endif
+  interface
+  subroutine PetscLogEventSetActiveAll(event,isActive, ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscLogEvent :: event
+  PetscBool :: isActive
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscLogEventSetActiveAll
+#endif
+  interface
+  subroutine PetscLogEventActivateClass(classid, ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscClassId :: classid
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscLogEventActivateClass
+#endif
+  interface
+  subroutine PetscLogEventDeactivateClass(classid, ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscClassId :: classid
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscLogEventDeactivateClass
+#endif
+  interface
+  subroutine PetscLogEventSync(e,comm, ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscLogEvent :: e
+  MPIU_Comm :: comm
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscLogEventSync
+#endif
+  interface
+  subroutine PetscLogStageGetPerfInfo(stage,info, ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscLogStage :: stage
+  PetscEventPerfInfo :: info
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscLogStageGetPerfInfo
+#endif
+  interface
+  subroutine PetscLogEventGetPerfInfo(stage,event,info, ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscLogStage :: stage
+  PetscLogEvent :: event
+  PetscEventPerfInfo :: info
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscLogEventGetPerfInfo
+#endif
+  interface
+  subroutine PetscLogEventSetDof(event,n,dof, ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscLogEvent :: event
+  PetscInt :: n
+  PetscLogDouble :: dof
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscLogEventSetDof
+#endif
+  interface
+  subroutine PetscLogEventSetError(event,n,error, ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscLogEvent :: event
+  PetscInt :: n
+  PetscLogDouble :: error
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscLogEventSetError
+#endif
+  interface
+  subroutine PetscLogEventGetId(name,event, ierr)
+  use, intrinsic :: ISO_C_binding
+  character(*) :: name
+  PetscLogEvent :: event
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscLogEventGetId
+#endif
+  interface
+  subroutine PetscLogEventGetName(event,name, ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscLogEvent :: event
+  character(*) :: name
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscLogEventGetName
+#endif
+  interface
+  subroutine PetscLogEventsPause(ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscLogEventsPause
+#endif
+  interface
+  subroutine PetscLogEventsResume(ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscLogEventsResume
+#endif
+  interface
+  subroutine PetscLogObjectCreate(h, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscObject
+  PetscObject :: h
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscLogObjectCreate
+#endif
+  interface
+  subroutine PetscLogObjectDestroy(h, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscObject
+  PetscObject :: h
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscLogObjectDestroy
+#endif
+  interface
+  subroutine PetscLogClassGetClassId(name,classid, ierr)
+  use, intrinsic :: ISO_C_binding
+  character(*) :: name
+  PetscClassId :: classid
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscLogClassGetClassId
+#endif
+  interface
+  subroutine PetscLogDump(sname, ierr)
+  use, intrinsic :: ISO_C_binding
+  character(*) :: sname
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscLogDump
+#endif
+  interface
+  subroutine PetscLogMPEDump(sname, ierr)
+  use, intrinsic :: ISO_C_binding
+  character(*) :: sname
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscLogMPEDump
+#endif
+  interface
+  subroutine PetscLogView(viewer, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscViewer
+  PetscViewer :: viewer
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscLogView
+#endif
+  interface
+  subroutine PetscLogViewFromOptions(ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscLogViewFromOptions
+#endif
+  interface
+  subroutine PetscLogSetThreshold(newThresh,oldThresh, ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscLogDouble :: newThresh
+  PetscLogDouble :: oldThresh
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscLogSetThreshold
+#endif
+  interface
+  subroutine PetscGetFlops(flops, ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscLogDouble :: flops
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscGetFlops
+#endif
+  interface
+  subroutine PetscLogFlops(f, ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscLogDouble :: f
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscLogFlops
+#endif
+  interface
+  subroutine PetscLogGpuTime(ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscLogGpuTime
+#endif
+  interface
+  subroutine PetscLogGpuTimeBegin(ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscLogGpuTimeBegin
+#endif
+  interface
+  subroutine PetscLogGpuTimeEnd(ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscLogGpuTimeEnd
+#endif
+  interface
+  subroutine PetscLogGpuEnergy(ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscLogGpuEnergy
+#endif
+  interface
+  subroutine PetscLogGpuEnergyMeter(ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscLogGpuEnergyMeter
+#endif
+  interface
+  subroutine PetscLogGpuEnergyMeterBegin(ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscLogGpuEnergyMeterBegin
+#endif
+  interface
+  subroutine PetscLogGpuEnergyMeterEnd(ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscLogGpuEnergyMeterEnd
+#endif
+  interface
+  subroutine PetscLogGpuFlops(n, ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscLogDouble :: n
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscLogGpuFlops
+#endif
+  interface
+  subroutine PetscLogGpuTimeAdd(t, ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscLogDouble :: t
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscLogGpuTimeAdd
+#endif
+  interface
+  subroutine PetscLogCpuToGpu(size, ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscLogDouble :: size
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscLogCpuToGpu
+#endif
+  interface
+  subroutine PetscLogGpuToCpu(size, ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscLogDouble :: size
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscLogGpuToCpu
+#endif
+  interface
+  subroutine PetscLogCpuToGpuScalar(size, ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscLogDouble :: size
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscLogCpuToGpuScalar
+#endif
+  interface
+  subroutine PetscLogGpuToCpuScalar(size, ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscLogDouble :: size
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscLogGpuToCpuScalar
+#endif
+  interface operator(.ne.)
+    module procedure PetscInfoCommFlagnotequals
+  end interface operator (.ne.)
+  interface operator(.eq.)
+    module procedure PetscInfoCommFlagequals
+  end interface operator (.eq.)
+

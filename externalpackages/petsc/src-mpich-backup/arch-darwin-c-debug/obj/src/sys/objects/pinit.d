@@ -1,0 +1,74 @@
+arch-darwin-c-debug/obj/src/sys/objects/pinit.o: \
+  /Users/7092946/Desktop/GitHub/ISSM/externalpackages/petsc/src/src/sys/objects/pinit.c \
+  /Users/7092946/Desktop/GitHub/ISSM/externalpackages/petsc/src/include/petsc/private/petscimpl.h \
+  /Users/7092946/Desktop/GitHub/ISSM/externalpackages/petsc/src/include/petscsys.h \
+  /Users/7092946/Desktop/GitHub/ISSM/externalpackages/petsc/src/arch-darwin-c-debug/include/petscconf.h \
+  /Users/7092946/Desktop/GitHub/ISSM/externalpackages/petsc/src/arch-darwin-c-debug/include/petscpkg_version.h \
+  /Users/7092946/Desktop/GitHub/ISSM/externalpackages/petsc/src/arch-darwin-c-debug/include/petscconf_poison.h \
+  /Users/7092946/Desktop/GitHub/ISSM/externalpackages/petsc/src/arch-darwin-c-debug/include/petscfix.h \
+  /Users/7092946/Desktop/GitHub/ISSM/externalpackages/petsc/src/include/petscmacros.h \
+  /Users/7092946/Desktop/GitHub/ISSM/externalpackages/petsc/src/include/petscversion.h \
+  /Users/7092946/Desktop/GitHub/ISSM/externalpackages/petsc/src/include/petsc/private/petscadvancedmacros.h \
+  /Users/7092946/Desktop/GitHub/ISSM/externalpackages/petsc/src/include/petscsystypes.h \
+  /Users/7092946/Desktop/GitHub/ISSM/externalpackages/petsc/install/include/mpi.h \
+  /Users/7092946/Desktop/GitHub/ISSM/externalpackages/petsc/install/include/mpi_proto.h \
+  /Users/7092946/Desktop/GitHub/ISSM/externalpackages/petsc/src/include/petscmath.h \
+  /Users/7092946/Desktop/GitHub/ISSM/externalpackages/petsc/src/include/petscerror.h \
+  /Users/7092946/Desktop/GitHub/ISSM/externalpackages/petsc/src/include/petscviewertypes.h \
+  /Users/7092946/Desktop/GitHub/ISSM/externalpackages/petsc/src/include/petscoptions.h \
+  /Users/7092946/Desktop/GitHub/ISSM/externalpackages/petsc/src/include/petsclog.h \
+  /Users/7092946/Desktop/GitHub/ISSM/externalpackages/petsc/src/include/petsctime.h \
+  /Users/7092946/Desktop/GitHub/ISSM/externalpackages/petsc/src/include/petscbt.h \
+  /Users/7092946/Desktop/GitHub/ISSM/externalpackages/petsc/src/include/petscstring.h \
+  /Users/7092946/Desktop/GitHub/ISSM/externalpackages/petsc/src/include/petsclogtypes.h \
+  /Users/7092946/Desktop/GitHub/ISSM/externalpackages/petsc/src/include/petsclogdeprecated.h \
+  /Users/7092946/Desktop/GitHub/ISSM/externalpackages/petsc/src/include/petscdevicetypes.h \
+  /Users/7092946/Desktop/GitHub/ISSM/externalpackages/petsc/src/include/petsc/private/logimpl.h \
+  /Users/7092946/Desktop/GitHub/ISSM/externalpackages/petsc/src/include/petsc/private/logimpldeprecated.h \
+  /Users/7092946/Desktop/GitHub/ISSM/externalpackages/petsc/src/include/petscviewer.h \
+  /Users/7092946/Desktop/GitHub/ISSM/externalpackages/petsc/src/include/petscdrawtypes.h \
+  /Users/7092946/Desktop/GitHub/ISSM/externalpackages/petsc/src/include/petsc/private/garbagecollector.h \
+  /Users/7092946/Desktop/GitHub/ISSM/externalpackages/petsc/src/include/petsc/private/hashmapobj.h \
+  /Users/7092946/Desktop/GitHub/ISSM/externalpackages/petsc/src/include/petsc/private/hashmap.h \
+  /Users/7092946/Desktop/GitHub/ISSM/externalpackages/petsc/src/include/petsc/private/hashtable.h \
+  /Users/7092946/Desktop/GitHub/ISSM/externalpackages/petsc/src/include/petsc/private/khash/khash.h \
+  /Users/7092946/Desktop/GitHub/ISSM/externalpackages/petsc/src/include/petsc/private/valgrind/valgrind.h \
+  /Users/7092946/Desktop/GitHub/ISSM/externalpackages/petsc/src/include/petsc/private/ftnimpl.h \
+  /Users/7092946/Desktop/GitHub/ISSM/externalpackages/petsc/src/include/petsc/private/deviceimpl.h \
+  /Users/7092946/Desktop/GitHub/ISSM/externalpackages/petsc/src/include/petscdevice.h
+/Users/7092946/Desktop/GitHub/ISSM/externalpackages/petsc/src/include/petsc/private/petscimpl.h:
+/Users/7092946/Desktop/GitHub/ISSM/externalpackages/petsc/src/include/petscsys.h:
+/Users/7092946/Desktop/GitHub/ISSM/externalpackages/petsc/src/arch-darwin-c-debug/include/petscconf.h:
+/Users/7092946/Desktop/GitHub/ISSM/externalpackages/petsc/src/arch-darwin-c-debug/include/petscpkg_version.h:
+/Users/7092946/Desktop/GitHub/ISSM/externalpackages/petsc/src/arch-darwin-c-debug/include/petscconf_poison.h:
+/Users/7092946/Desktop/GitHub/ISSM/externalpackages/petsc/src/arch-darwin-c-debug/include/petscfix.h:
+/Users/7092946/Desktop/GitHub/ISSM/externalpackages/petsc/src/include/petscmacros.h:
+/Users/7092946/Desktop/GitHub/ISSM/externalpackages/petsc/src/include/petscversion.h:
+/Users/7092946/Desktop/GitHub/ISSM/externalpackages/petsc/src/include/petsc/private/petscadvancedmacros.h:
+/Users/7092946/Desktop/GitHub/ISSM/externalpackages/petsc/src/include/petscsystypes.h:
+/Users/7092946/Desktop/GitHub/ISSM/externalpackages/petsc/install/include/mpi.h:
+/Users/7092946/Desktop/GitHub/ISSM/externalpackages/petsc/install/include/mpi_proto.h:
+/Users/7092946/Desktop/GitHub/ISSM/externalpackages/petsc/src/include/petscmath.h:
+/Users/7092946/Desktop/GitHub/ISSM/externalpackages/petsc/src/include/petscerror.h:
+/Users/7092946/Desktop/GitHub/ISSM/externalpackages/petsc/src/include/petscviewertypes.h:
+/Users/7092946/Desktop/GitHub/ISSM/externalpackages/petsc/src/include/petscoptions.h:
+/Users/7092946/Desktop/GitHub/ISSM/externalpackages/petsc/src/include/petsclog.h:
+/Users/7092946/Desktop/GitHub/ISSM/externalpackages/petsc/src/include/petsctime.h:
+/Users/7092946/Desktop/GitHub/ISSM/externalpackages/petsc/src/include/petscbt.h:
+/Users/7092946/Desktop/GitHub/ISSM/externalpackages/petsc/src/include/petscstring.h:
+/Users/7092946/Desktop/GitHub/ISSM/externalpackages/petsc/src/include/petsclogtypes.h:
+/Users/7092946/Desktop/GitHub/ISSM/externalpackages/petsc/src/include/petsclogdeprecated.h:
+/Users/7092946/Desktop/GitHub/ISSM/externalpackages/petsc/src/include/petscdevicetypes.h:
+/Users/7092946/Desktop/GitHub/ISSM/externalpackages/petsc/src/include/petsc/private/logimpl.h:
+/Users/7092946/Desktop/GitHub/ISSM/externalpackages/petsc/src/include/petsc/private/logimpldeprecated.h:
+/Users/7092946/Desktop/GitHub/ISSM/externalpackages/petsc/src/include/petscviewer.h:
+/Users/7092946/Desktop/GitHub/ISSM/externalpackages/petsc/src/include/petscdrawtypes.h:
+/Users/7092946/Desktop/GitHub/ISSM/externalpackages/petsc/src/include/petsc/private/garbagecollector.h:
+/Users/7092946/Desktop/GitHub/ISSM/externalpackages/petsc/src/include/petsc/private/hashmapobj.h:
+/Users/7092946/Desktop/GitHub/ISSM/externalpackages/petsc/src/include/petsc/private/hashmap.h:
+/Users/7092946/Desktop/GitHub/ISSM/externalpackages/petsc/src/include/petsc/private/hashtable.h:
+/Users/7092946/Desktop/GitHub/ISSM/externalpackages/petsc/src/include/petsc/private/khash/khash.h:
+/Users/7092946/Desktop/GitHub/ISSM/externalpackages/petsc/src/include/petsc/private/valgrind/valgrind.h:
+/Users/7092946/Desktop/GitHub/ISSM/externalpackages/petsc/src/include/petsc/private/ftnimpl.h:
+/Users/7092946/Desktop/GitHub/ISSM/externalpackages/petsc/src/include/petsc/private/deviceimpl.h:
+/Users/7092946/Desktop/GitHub/ISSM/externalpackages/petsc/src/include/petscdevice.h:

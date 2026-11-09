@@ -1,0 +1,6 @@
+    Loaded configure to cache: size 542835
+Executing: ['otool', '-D', '/Users/7092946/Desktop/GitHub/ISSM/externalpackages/petsc/src/arch-darwin-c-debug/lib/libpetsc.3.25.1.dylib']
+stdout:
+/Users/7092946/Desktop/GitHub/ISSM/externalpackages/petsc/src/arch-darwin-c-debug/lib/libpetsc.3.25.1.dylib:
+/Users/7092946/Desktop/GitHub/ISSM/externalpackages/petsc/src/arch-darwin-c-debug/lib/libpetsc.3.25.dylib
+Executing: ['install_name_tool', '-id', '/Users/7092946/Desktop/GitHub/ISSM/externalpackages/petsc/install/lib/libpetsc.3.25.dylib', '/Users/7092946/Desktop/GitHub/ISSM/externalpackages/petsc/install/lib/libpetsc.3.25.1.dylib']

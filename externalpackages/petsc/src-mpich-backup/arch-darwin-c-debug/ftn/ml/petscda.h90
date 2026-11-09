@@ -1,0 +1,708 @@
+  interface
+  subroutine PetscDAInitializePackage(ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDAInitializePackage
+#endif
+  interface
+  subroutine PetscDAFinalizePackage(ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDAFinalizePackage
+#endif
+  interface
+  subroutine PetscDARegister(sname,function, ierr)
+  use, intrinsic :: ISO_C_binding
+  character(*) :: sname
+  external :: function
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDARegister
+#endif
+  interface
+  subroutine PetscDARegisterAll(ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDARegisterAll
+#endif
+  interface
+  subroutine PetscDASetOptionsPrefix(das,p, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDA
+  PetscDA :: das
+  character(*) :: p
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDASetOptionsPrefix
+#endif
+  interface
+  subroutine PetscDAAppendOptionsPrefix(das,p, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDA
+  PetscDA :: das
+  character(*) :: p
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDAAppendOptionsPrefix
+#endif
+  interface
+  subroutine PetscDAGetOptionsPrefix(das,p, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDA
+  PetscDA :: das
+  character(*) :: p
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDAGetOptionsPrefix
+#endif
+  interface
+  subroutine PetscDACreate(comm,da_out, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDA
+  MPIU_Comm :: comm
+  PetscDA :: da_out
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDACreate
+#endif
+  interface
+  subroutine PetscDADestroy(da, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDA
+  PetscDA :: da
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDADestroy
+#endif
+  interface
+  subroutine PetscDASetType(da,type, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDA
+  PetscDA :: da
+  character(*) :: type
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDASetType
+#endif
+  interface
+  subroutine PetscDAGetType(da,type, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDA
+  PetscDA :: da
+  character(*) :: type
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDAGetType
+#endif
+  interface
+  subroutine PetscDASetFromOptions(da, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDA
+  PetscDA :: da
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDASetFromOptions
+#endif
+  interface
+  subroutine PetscDASetNDOF(da,ndof, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDA
+  PetscDA :: da
+  PetscInt :: ndof
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDASetNDOF
+#endif
+  interface
+  subroutine PetscDAGetNDOF(da,ndof, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDA
+  PetscDA :: da
+  PetscInt :: ndof
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDAGetNDOF
+#endif
+  interface
+  subroutine PetscDASetUp(da, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDA
+  PetscDA :: da
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDASetUp
+#endif
+  interface
+  subroutine PetscDAView(da,viewer, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDA,tPetscViewer
+  PetscDA :: da
+  PetscViewer :: viewer
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDAView
+#endif
+  interface
+  subroutine PetscDAViewFromOptions(da,obj,name, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDA,tPetscObject
+  PetscDA :: da
+  PetscObject :: obj
+  character(*) :: name
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDAViewFromOptions
+#endif
+  interface
+  subroutine PetscDASetObsErrorVariance(da,obs_error_var, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDA,tVec
+  PetscDA :: da
+  Vec :: obs_error_var
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDASetObsErrorVariance
+#endif
+  interface
+  subroutine PetscDAGetObsErrorVariance(da,obs_error_var, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDA,tVec
+  PetscDA :: da
+  Vec :: obs_error_var
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDAGetObsErrorVariance
+#endif
+  interface
+  subroutine PetscDASetSizes(da,state_size,obs_size, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDA
+  PetscDA :: da
+  PetscInt :: state_size
+  PetscInt :: obs_size
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDASetSizes
+#endif
+  interface
+  subroutine PetscDASetLocalSizes(da,local_state_size,local_obs_size, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDA
+  PetscDA :: da
+  PetscInt :: local_state_size
+  PetscInt :: local_obs_size
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDASetLocalSizes
+#endif
+  interface
+  subroutine PetscDAGetSizes(da,state_size,obs_size, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDA
+  PetscDA :: da
+  PetscInt :: state_size
+  PetscInt :: obs_size
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDAGetSizes
+#endif
+  interface
+  subroutine PetscDAEnsembleTFactor(da,S, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDA,tMat
+  PetscDA :: da
+  Mat :: S
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDAEnsembleTFactor
+#endif
+  interface
+  subroutine PetscDAEnsembleApplyTInverse(da,sdel,w, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDA,tVec
+  PetscDA :: da
+  Vec :: sdel
+  Vec :: w
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDAEnsembleApplyTInverse
+#endif
+  interface
+  subroutine PetscDAEnsembleApplySqrtTInverse(da,U,Y, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDA,tMat
+  PetscDA :: da
+  Mat :: U
+  Mat :: Y
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDAEnsembleApplySqrtTInverse
+#endif
+  interface
+  subroutine PetscDAEnsembleSetSqrtType(da,type, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDA,ePetscDASqrtType
+  PetscDA :: da
+  PetscDASqrtType :: type
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDAEnsembleSetSqrtType
+#endif
+  interface
+  subroutine PetscDAEnsembleGetSqrtType(da,type, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDA,ePetscDASqrtType
+  PetscDA :: da
+  PetscDASqrtType :: type
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDAEnsembleGetSqrtType
+#endif
+  interface
+  subroutine PetscDAEnsembleSetInflation(da,inflation, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDA
+  PetscDA :: da
+  PetscReal :: inflation
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDAEnsembleSetInflation
+#endif
+  interface
+  subroutine PetscDAEnsembleGetInflation(da,inflation, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDA
+  PetscDA :: da
+  PetscReal :: inflation
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDAEnsembleGetInflation
+#endif
+  interface
+  subroutine PetscDAEnsembleGetMember(da,member_idx,member, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDA,tVec
+  PetscDA :: da
+  PetscInt :: member_idx
+  Vec :: member
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDAEnsembleGetMember
+#endif
+  interface
+  subroutine PetscDAEnsembleRestoreMember(da,member_idx,member, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDA,tVec
+  PetscDA :: da
+  PetscInt :: member_idx
+  Vec :: member
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDAEnsembleRestoreMember
+#endif
+  interface
+  subroutine PetscDAEnsembleSetMember(da,member_idx,member, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDA,tVec
+  PetscDA :: da
+  PetscInt :: member_idx
+  Vec :: member
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDAEnsembleSetMember
+#endif
+  interface
+  subroutine PetscDAEnsembleComputeMean(da,mean, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDA,tVec
+  PetscDA :: da
+  Vec :: mean
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDAEnsembleComputeMean
+#endif
+  interface
+  subroutine PetscDAEnsembleInitialize(da,x0,obs_error_std,rng, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDA,tVec,tPetscRandom
+  PetscDA :: da
+  Vec :: x0
+  PetscReal :: obs_error_std
+  PetscRandom :: rng
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDAEnsembleInitialize
+#endif
+  interface
+  subroutine PetscDAEnsembleComputeAnomalies(da,mean_in,anomalies_out, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDA,tVec,tMat
+  PetscDA :: da
+  Vec :: mean_in
+  Mat :: anomalies_out
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDAEnsembleComputeAnomalies
+#endif
+  interface
+  subroutine PetscDAEnsembleAnalysis(da,observation,H, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDA,tVec,tMat
+  PetscDA :: da
+  Vec :: observation
+  Mat :: H
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDAEnsembleAnalysis
+#endif
+  interface
+  subroutine PetscDAEnsembleForecast(da,model,ctx, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDA
+  PetscDA :: da
+  external :: model
+  type(*) :: ctx
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDAEnsembleForecast
+#endif
+  interface
+  subroutine PetscDAEnsembleSetSize(da,ensemble_size, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDA
+  PetscDA :: da
+  PetscInt :: ensemble_size
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDAEnsembleSetSize
+#endif
+  interface
+  subroutine PetscDAEnsembleGetSize(da,ensemble_size, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDA
+  PetscDA :: da
+  PetscInt :: ensemble_size
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDAEnsembleGetSize
+#endif
+  interface
+  subroutine PetscDAEnsembleComputeNormalizedInnovationMatrix(Z,y_mean,r_inv_sqrt,m,scale,S, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tMat,tVec
+  Mat :: Z
+  Vec :: y_mean
+  Vec :: r_inv_sqrt
+  PetscInt :: m
+  PetscScalar :: scale
+  Mat :: S
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDAEnsembleComputeNormalizedInnovationMatrix
+#endif
+  interface
+  subroutine PetscDALETKFSetObsPerVertex(da,n_obs_vertex, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDA
+  PetscDA :: da
+  PetscInt :: n_obs_vertex
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDALETKFSetObsPerVertex
+#endif
+  interface
+  subroutine PetscDALETKFGetObsPerVertex(da,n_obs_vertex, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDA
+  PetscDA :: da
+  PetscInt :: n_obs_vertex
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDALETKFGetObsPerVertex
+#endif
+  interface
+  subroutine PetscDALETKFSetLocalization(da,Q,H, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDA,tMat
+  PetscDA :: da
+  Mat :: Q
+  Mat :: H
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDALETKFSetLocalization
+#endif
+  interface
+  subroutine PetscDALETKFGetLocalizationMatrix(n_obs_vertex,n_dof,Vecxyz,bd,H,Q, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVec,tMat
+  PetscInt :: n_obs_vertex
+  PetscInt :: n_dof
+  Vec :: Vecxyz(*)
+  PetscReal :: bd(*)
+  Mat :: H
+  Mat :: Q
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDALETKFGetLocalizationMatrix
+#endif
+  interface operator(.ne.)
+    module procedure PetscDAnotequals
+  end interface operator (.ne.)
+  interface operator(.eq.)
+    module procedure PetscDAequals
+  end interface operator (.eq.)
+
+  interface PetscObjectCast
+    module procedure PetscObjectCastDA
+  end interface
+  interface PetscBarrier
+  module procedure PetscBarrierDA
+  end interface
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectSAWsTakeAccess
+    module procedure PetscObjectSAWsTakeAccessDA
+  end interface
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectSAWsGrantAccess
+    module procedure PetscObjectSAWsGrantAccessDA
+  end interface
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectSAWsBlock
+    module procedure PetscObjectSAWsBlockDA
+  end interface
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectSAWsSetBlock
+    module procedure PetscObjectSAWsSetBlockDA
+  end interface
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectSAWsViewOff
+    module procedure PetscObjectSAWsViewOffDA
+  end interface
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectViewSAWs
+    module procedure PetscObjectViewSAWsDA
+  end interface
+#endif
+  interface PetscObjectGetType
+    module procedure PetscObjectGetTypeDA
+  end interface
+  interface PetscObjectSetPrintedOptions
+    module procedure PetscObjectSetPrintedOptionsDA
+  end interface
+  interface PetscObjectInheritPrintedOptions
+    module procedure PetscObjectInheritPrintedOptionsDA
+  end interface
+  interface PetscObjectAddOptionsHandler
+    module procedure PetscObjectAddOptionsHandlerDA
+  end interface
+  interface PetscObjectProcessOptionsHandlers
+    module procedure PetscObjectProcessOptionsHandlersDA
+  end interface
+  interface PetscObjectDestroyOptionsHandlers
+    module procedure PetscObjectDestroyOptionsHandlersDA
+  end interface
+  interface PetscObjectReference
+    module procedure PetscObjectReferenceDA
+  end interface
+  interface PetscObjectGetReference
+    module procedure PetscObjectGetReferenceDA
+  end interface
+  interface PetscObjectDereference
+    module procedure PetscObjectDereferenceDA
+  end interface
+  interface PetscObjectRemoveReference
+    module procedure PetscObjectRemoveReferenceDA
+  end interface
+  interface PetscObjectHasFunction
+    module procedure PetscObjectHasFunctionDA
+  end interface
+  interface PetscObjectSetFromOptions
+    module procedure PetscObjectSetFromOptionsDA
+  end interface
+  interface PetscObjectSetUp
+    module procedure PetscObjectSetUpDA
+  end interface
+  interface PetscObjectGetName
+    module procedure PetscObjectGetNameDA
+  end interface
+  interface PetscObjectDestroy
+    module procedure PetscObjectDestroyDA
+  end interface
+  interface PetscObjectView
+    module procedure PetscObjectViewDA
+  end interface
+  interface PetscObjectViewFromOptions
+    module procedure PetscObjectViewFromOptionsDA
+  end interface
+  interface PetscObjectTypeCompare
+    module procedure PetscObjectTypeCompareDA
+  end interface
+  interface PetscObjectObjectTypeCompare
+    module procedure PetscObjectObjectTypeCompareDA
+  end interface
+  interface PetscObjectBaseTypeCompare
+    module procedure PetscObjectBaseTypeCompareDA
+  end interface
+  interface PetscObjectRegisterDestroy
+    module procedure PetscObjectRegisterDestroyDA
+  end interface
+  interface PetscObjectGetId
+    module procedure PetscObjectGetIdDA
+  end interface
+  interface PetscObjectCompareId
+    module procedure PetscObjectCompareIdDA
+  end interface
+  interface PetscObjectGetOptions
+    module procedure PetscObjectGetOptionsDA
+  end interface
+  interface PetscObjectSetOptions
+    module procedure PetscObjectSetOptionsDA
+  end interface
+  interface PetscObjectSetOptionsPrefix
+    module procedure PetscObjectSetOptionsPrefixDA
+  end interface
+  interface PetscObjectAppendOptionsPrefix
+    module procedure PetscObjectAppendOptionsPrefixDA
+  end interface
+  interface PetscObjectGetOptionsPrefix
+    module procedure PetscObjectGetOptionsPrefixDA
+  end interface
+  interface PetscObjectPrependOptionsPrefix
+    module procedure PetscObjectPrependOptionsPrefixDA
+  end interface
+  interface PetscObjectGetComm
+    module procedure PetscObjectGetCommDA
+  end interface
+  interface PetscObjectGetTabLevel
+    module procedure PetscObjectGetTabLevelDA
+  end interface
+  interface PetscObjectSetTabLevel
+    module procedure PetscObjectSetTabLevelDA
+  end interface
+  interface PetscObjectIncrementTabLevel
+    module procedure PetscObjectIncrementTabLevelDA
+  end interface
+  interface PetscObjectGetNewTag
+    module procedure PetscObjectGetNewTagDA
+  end interface
+  interface PetscObjectGetClassId
+    module procedure PetscObjectGetClassIdDA
+  end interface
+  interface PetscObjectGetClassName
+    module procedure PetscObjectGetClassNameDA
+  end interface
+  interface PetscObjectSetName
+    module procedure PetscObjectSetNameDA
+  end interface
+  interface PetscObjectPrintClassNamePrefixType
+    module procedure PetscObjectPrintClassNamePrefixTypeDA
+  end interface
+  interface PetscObjectName
+    module procedure PetscObjectNameDA
+  end interface
+  interface PetscObjectChangeTypeName
+    module procedure PetscObjectChangeTypeNameDA
+  end interface
+  interface operator(.ne.)
+    module procedure PetscDASqrtTypenotequals
+  end interface operator (.ne.)
+  interface operator(.eq.)
+    module procedure PetscDASqrtTypeequals
+  end interface operator (.eq.)
+

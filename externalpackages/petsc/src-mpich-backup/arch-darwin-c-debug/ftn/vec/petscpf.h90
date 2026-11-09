@@ -1,0 +1,333 @@
+  interface
+  subroutine PFSet(pf,apply,applyvec,view,destroy,ctx, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPF
+  PF :: pf
+  external :: apply
+  external :: applyvec
+  external :: view
+  external :: destroy
+  type(*) :: ctx
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PFSet
+#endif
+  interface
+  subroutine PFDestroy(pf, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPF
+  PF :: pf
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PFDestroy
+#endif
+  interface
+  subroutine PFCreate(comm,dimin,dimout,pf, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPF
+  MPIU_Comm :: comm
+  PetscInt :: dimin
+  PetscInt :: dimout
+  PF :: pf
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PFCreate
+#endif
+  interface
+  subroutine PFApplyVec(pf,x,y, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPF,tVec
+  PF :: pf
+  Vec :: x
+  Vec :: y
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PFApplyVec
+#endif
+  interface
+  subroutine PFApply(pf,n,x,y, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPF
+  PF :: pf
+  PetscInt :: n
+  PetscScalar :: x
+  PetscScalar :: y
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PFApply
+#endif
+  interface
+  subroutine PFViewFromOptions(A,obj,name, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPF,tPetscObject
+  PF :: A
+  PetscObject :: obj
+  character(*) :: name
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PFViewFromOptions
+#endif
+  interface
+  subroutine PFView(pf,viewer, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPF,tPetscViewer
+  PF :: pf
+  PetscViewer :: viewer
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PFView
+#endif
+  interface
+  subroutine PFRegister(sname,function, ierr)
+  use, intrinsic :: ISO_C_binding
+  character(*) :: sname
+  external :: function
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PFRegister
+#endif
+  interface
+  subroutine PFGetType(pf,type, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPF
+  PF :: pf
+  character(*) :: type
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PFGetType
+#endif
+  interface
+  subroutine PFSetType(pf,type,ctx, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPF
+  PF :: pf
+  character(*) :: type
+  type(*) :: ctx
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PFSetType
+#endif
+  interface
+  subroutine PFSetFromOptions(pf, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPF
+  PF :: pf
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PFSetFromOptions
+#endif
+  interface
+  subroutine PFFinalizePackage(ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PFFinalizePackage
+#endif
+  interface
+  subroutine PFInitializePackage(ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PFInitializePackage
+#endif
+  interface
+  subroutine PFStringSetFunction(pf,string, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPF
+  PF :: pf
+  character(*) :: string
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PFStringSetFunction
+#endif
+  interface operator(.ne.)
+    module procedure PFnotequals
+  end interface operator (.ne.)
+  interface operator(.eq.)
+    module procedure PFequals
+  end interface operator (.eq.)
+
+  interface PetscObjectCast
+    module procedure PetscObjectCastPF
+  end interface
+  interface PetscBarrier
+  module procedure PetscBarrierPF
+  end interface
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectSAWsTakeAccess
+    module procedure PetscObjectSAWsTakeAccessPF
+  end interface
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectSAWsGrantAccess
+    module procedure PetscObjectSAWsGrantAccessPF
+  end interface
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectSAWsBlock
+    module procedure PetscObjectSAWsBlockPF
+  end interface
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectSAWsSetBlock
+    module procedure PetscObjectSAWsSetBlockPF
+  end interface
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectSAWsViewOff
+    module procedure PetscObjectSAWsViewOffPF
+  end interface
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectViewSAWs
+    module procedure PetscObjectViewSAWsPF
+  end interface
+#endif
+  interface PetscObjectGetType
+    module procedure PetscObjectGetTypePF
+  end interface
+  interface PetscObjectSetPrintedOptions
+    module procedure PetscObjectSetPrintedOptionsPF
+  end interface
+  interface PetscObjectInheritPrintedOptions
+    module procedure PetscObjectInheritPrintedOptionsPF
+  end interface
+  interface PetscObjectAddOptionsHandler
+    module procedure PetscObjectAddOptionsHandlerPF
+  end interface
+  interface PetscObjectProcessOptionsHandlers
+    module procedure PetscObjectProcessOptionsHandlersPF
+  end interface
+  interface PetscObjectDestroyOptionsHandlers
+    module procedure PetscObjectDestroyOptionsHandlersPF
+  end interface
+  interface PetscObjectReference
+    module procedure PetscObjectReferencePF
+  end interface
+  interface PetscObjectGetReference
+    module procedure PetscObjectGetReferencePF
+  end interface
+  interface PetscObjectDereference
+    module procedure PetscObjectDereferencePF
+  end interface
+  interface PetscObjectRemoveReference
+    module procedure PetscObjectRemoveReferencePF
+  end interface
+  interface PetscObjectHasFunction
+    module procedure PetscObjectHasFunctionPF
+  end interface
+  interface PetscObjectSetFromOptions
+    module procedure PetscObjectSetFromOptionsPF
+  end interface
+  interface PetscObjectSetUp
+    module procedure PetscObjectSetUpPF
+  end interface
+  interface PetscObjectGetName
+    module procedure PetscObjectGetNamePF
+  end interface
+  interface PetscObjectDestroy
+    module procedure PetscObjectDestroyPF
+  end interface
+  interface PetscObjectView
+    module procedure PetscObjectViewPF
+  end interface
+  interface PetscObjectViewFromOptions
+    module procedure PetscObjectViewFromOptionsPF
+  end interface
+  interface PetscObjectTypeCompare
+    module procedure PetscObjectTypeComparePF
+  end interface
+  interface PetscObjectObjectTypeCompare
+    module procedure PetscObjectObjectTypeComparePF
+  end interface
+  interface PetscObjectBaseTypeCompare
+    module procedure PetscObjectBaseTypeComparePF
+  end interface
+  interface PetscObjectRegisterDestroy
+    module procedure PetscObjectRegisterDestroyPF
+  end interface
+  interface PetscObjectGetId
+    module procedure PetscObjectGetIdPF
+  end interface
+  interface PetscObjectCompareId
+    module procedure PetscObjectCompareIdPF
+  end interface
+  interface PetscObjectGetOptions
+    module procedure PetscObjectGetOptionsPF
+  end interface
+  interface PetscObjectSetOptions
+    module procedure PetscObjectSetOptionsPF
+  end interface
+  interface PetscObjectSetOptionsPrefix
+    module procedure PetscObjectSetOptionsPrefixPF
+  end interface
+  interface PetscObjectAppendOptionsPrefix
+    module procedure PetscObjectAppendOptionsPrefixPF
+  end interface
+  interface PetscObjectGetOptionsPrefix
+    module procedure PetscObjectGetOptionsPrefixPF
+  end interface
+  interface PetscObjectPrependOptionsPrefix
+    module procedure PetscObjectPrependOptionsPrefixPF
+  end interface
+  interface PetscObjectGetComm
+    module procedure PetscObjectGetCommPF
+  end interface
+  interface PetscObjectGetTabLevel
+    module procedure PetscObjectGetTabLevelPF
+  end interface
+  interface PetscObjectSetTabLevel
+    module procedure PetscObjectSetTabLevelPF
+  end interface
+  interface PetscObjectIncrementTabLevel
+    module procedure PetscObjectIncrementTabLevelPF
+  end interface
+  interface PetscObjectGetNewTag
+    module procedure PetscObjectGetNewTagPF
+  end interface
+  interface PetscObjectGetClassId
+    module procedure PetscObjectGetClassIdPF
+  end interface
+  interface PetscObjectGetClassName
+    module procedure PetscObjectGetClassNamePF
+  end interface
+  interface PetscObjectSetName
+    module procedure PetscObjectSetNamePF
+  end interface
+  interface PetscObjectPrintClassNamePrefixType
+    module procedure PetscObjectPrintClassNamePrefixTypePF
+  end interface
+  interface PetscObjectName
+    module procedure PetscObjectNamePF
+  end interface
+  interface PetscObjectChangeTypeName
+    module procedure PetscObjectChangeTypeNamePF
+  end interface

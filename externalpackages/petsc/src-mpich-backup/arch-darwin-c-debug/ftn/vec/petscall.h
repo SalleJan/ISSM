@@ -1,0 +1,9 @@
+#include <petsc/finclude/petscsys.h>
+#include <petsc/finclude/petscsf.h>
+#include <../ftn/vec/petscsf.h>
+#include <petsc/finclude/petscis.h>
+#include <../ftn/vec/petscis.h>
+#include <petsc/finclude/petscdevice.h>
+#include <petsc/finclude/petscviewer.h>
+#include <petsc/finclude/petscvec.h>
+#include <../ftn/vec/petscvec.h>

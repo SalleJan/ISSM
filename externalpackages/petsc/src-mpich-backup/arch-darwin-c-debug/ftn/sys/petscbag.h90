@@ -1,0 +1,135 @@
+  interface
+  subroutine PetscBagDestroy(bag, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscBag
+  PetscBag :: bag
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscBagDestroy
+#endif
+  interface
+  subroutine PetscBagSetFromOptions(bag, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscBag
+  PetscBag :: bag
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscBagSetFromOptions
+#endif
+  interface
+  subroutine PetscBagView(bag,view, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscBag,tPetscViewer
+  PetscBag :: bag
+  PetscViewer :: view
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscBagView
+#endif
+  interface
+  subroutine PetscBagViewFromOptions(bag,bobj,name, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscBag,tPetscObject
+  PetscBag :: bag
+  PetscObject :: bobj
+  character(*) :: name
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscBagViewFromOptions
+#endif
+  interface
+  subroutine PetscBagLoad(view,bag, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscViewer,tPetscBag
+  PetscViewer :: view
+  PetscBag :: bag
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscBagLoad
+#endif
+  interface
+  subroutine PetscBagCreate(comm,bagsize,bag, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscBag
+  MPIU_Comm :: comm
+  PetscSizeT :: bagsize
+  PetscBag :: bag
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscBagCreate
+#endif
+  interface
+  subroutine PetscBagSetName(bag,name,help, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscBag
+  PetscBag :: bag
+  character(*) :: name
+  character(*) :: help
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscBagSetName
+#endif
+  interface
+  subroutine PetscBagGetDatacptr(bag,data, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscBag
+  PetscBag :: bag
+  type(c_ptr) :: data
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscBagGetDatacptr
+#endif
+  interface
+  subroutine PetscBagSetOptionsPrefix(bag,pre, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscBag
+  PetscBag :: bag
+  character(*) :: pre
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscBagSetOptionsPrefix
+#endif
+  interface
+  subroutine PetscBagGetNames(bag,names, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscBag
+  PetscBag :: bag
+  character(*) :: names
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscBagGetNames
+#endif
+  interface operator(.ne.)
+    module procedure PetscBagnotequals
+  end interface operator (.ne.)
+  interface operator(.eq.)
+    module procedure PetscBagequals
+  end interface operator (.eq.)
+
+  interface operator(.ne.)
+    module procedure PetscBagItemnotequals
+  end interface operator (.ne.)
+  interface operator(.eq.)
+    module procedure PetscBagItemequals
+  end interface operator (.eq.)
+

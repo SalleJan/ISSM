@@ -1,0 +1,798 @@
+  interface PetscObjectAddOptionsHandler
+  subroutine PetscObjectAddOptionsHandler(obj,handle,destroy,ctx, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscObject
+  PetscObject :: obj
+  external :: handle
+  external :: destroy
+  type(*) :: ctx
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscObjectAddOptionsHandler
+#endif
+  interface PetscObjectProcessOptionsHandlers
+  subroutine PetscObjectProcessOptionsHandlers(obj,PetscOptionsObject, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscObject,tPetscOptionItems
+  PetscObject :: obj
+  PetscOptionItems :: PetscOptionsObject
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscObjectProcessOptionsHandlers
+#endif
+  interface PetscObjectDestroyOptionsHandlers
+  subroutine PetscObjectDestroyOptionsHandlers(obj, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscObject
+  PetscObject :: obj
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscObjectDestroyOptionsHandlers
+#endif
+  interface PetscObjectGetOptions
+  subroutine PetscObjectGetOptions(obj,options, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscObject,tPetscOptions
+  PetscObject :: obj
+  PetscOptions :: options
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscObjectGetOptions
+#endif
+  interface PetscObjectSetOptions
+  subroutine PetscObjectSetOptions(obj,options, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscObject,tPetscOptions
+  PetscObject :: obj
+  PetscOptions :: options
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscObjectSetOptions
+#endif
+  interface
+  subroutine PetscOptionsInsertStringYAML(options,in_str, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscOptions
+  PetscOptions :: options
+  character(*) :: in_str
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscOptionsInsertStringYAML
+#endif
+  interface
+  subroutine PetscOptionsInsertFileYAML(comm,options,file,require, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscOptions
+  MPIU_Comm :: comm
+  PetscOptions :: options
+  character(*) :: file
+  PetscBool :: require
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscOptionsInsertFileYAML
+#endif
+  interface
+  subroutine PetscOptionsCreate(options, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscOptions
+  PetscOptions :: options
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscOptionsCreate
+#endif
+  interface
+  subroutine PetscOptionsDestroy(options, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscOptions
+  PetscOptions :: options
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscOptionsDestroy
+#endif
+  interface
+  subroutine PetscOptionsCreateDefault(ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscOptionsCreateDefault
+#endif
+  interface
+  subroutine PetscOptionsPush(opt, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscOptions
+  PetscOptions :: opt
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscOptionsPush
+#endif
+  interface
+  subroutine PetscOptionsPop(ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscOptionsPop
+#endif
+  interface
+  subroutine PetscOptionsDestroyDefault(ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscOptionsDestroyDefault
+#endif
+  interface
+  subroutine PetscOptionsValidKey(key,valid, ierr)
+  use, intrinsic :: ISO_C_binding
+  character(*) :: key
+  PetscBool :: valid
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscOptionsValidKey
+#endif
+  interface
+  subroutine PetscOptionsInsertString(options,in_str, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscOptions
+  PetscOptions :: options
+  character(*) :: in_str
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscOptionsInsertString
+#endif
+  interface
+  subroutine PetscOptionsInsertFile(comm,options,file,require, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscOptions
+  MPIU_Comm :: comm
+  PetscOptions :: options
+  character(*) :: file
+  PetscBool :: require
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscOptionsInsertFile
+#endif
+  interface
+  subroutine PetscOptionsView(options,viewer, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscOptions,tPetscViewer
+  PetscOptions :: options
+  PetscViewer :: viewer
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscOptionsView
+#endif
+  interface
+  subroutine PetscOptionsLeftError(ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscOptionsLeftError
+#endif
+  interface
+  subroutine PetscOptionsPrefixPush(options,prefix, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscOptions
+  PetscOptions :: options
+  character(*) :: prefix
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscOptionsPrefixPush
+#endif
+  interface
+  subroutine PetscOptionsPrefixPop(options, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscOptions
+  PetscOptions :: options
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscOptionsPrefixPop
+#endif
+  interface
+  subroutine PetscOptionsClear(options, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscOptions
+  PetscOptions :: options
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscOptionsClear
+#endif
+  interface
+  subroutine PetscOptionsSetAlias(options,newname,oldname, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscOptions
+  PetscOptions :: options
+  character(*) :: newname
+  character(*) :: oldname
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscOptionsSetAlias
+#endif
+  interface
+  subroutine PetscOptionsSetValue(options,name,value, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscOptions
+  PetscOptions :: options
+  character(*) :: name
+  character(*) :: value
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscOptionsSetValue
+#endif
+  interface
+  subroutine PetscOptionsClearValue(options,name, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscOptions
+  PetscOptions :: options
+  character(*) :: name
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscOptionsClearValue
+#endif
+  interface
+  subroutine PetscOptionsFindPair(options,pre,name,value,set, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscOptions
+  PetscOptions :: options
+  character(*) :: pre
+  character(*) :: name
+  character(*) :: value
+  PetscBool :: set
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscOptionsFindPair
+#endif
+  interface
+  subroutine PetscOptionsReject(options,pre,name,mess, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscOptions
+  PetscOptions :: options
+  character(*) :: pre
+  character(*) :: name
+  character(*) :: mess
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscOptionsReject
+#endif
+  interface
+  subroutine PetscOptionsHasHelp(options,set, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscOptions
+  PetscOptions :: options
+  PetscBool :: set
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscOptionsHasHelp
+#endif
+  interface
+  subroutine PetscOptionsHasName(options,pre,name,set, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscOptions
+  PetscOptions :: options
+  character(*) :: pre
+  character(*) :: name
+  PetscBool :: set
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscOptionsHasName
+#endif
+  interface
+  subroutine PetscOptionsUsed(options,name,used, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscOptions
+  PetscOptions :: options
+  character(*) :: name
+  PetscBool :: used
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscOptionsUsed
+#endif
+  interface
+  subroutine PetscOptionsAllUsed(options,N, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscOptions
+  PetscOptions :: options
+  PetscInt :: N
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscOptionsAllUsed
+#endif
+  interface
+  subroutine PetscOptionsLeft(options, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscOptions
+  PetscOptions :: options
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscOptionsLeft
+#endif
+  interface
+  subroutine PetscOptionsMonitorDefault(name,value,source,ctx, ierr)
+  use, intrinsic :: ISO_C_binding
+  import ePetscOptionSource
+  character(*) :: name
+  character(*) :: value
+  PetscOptionSource :: source
+  type(*) :: ctx
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscOptionsMonitorDefault
+#endif
+  interface
+  subroutine PetscOptionsMonitorSet(monitor,mctx,monitordestroy, ierr)
+  use, intrinsic :: ISO_C_binding
+  external :: monitor
+  type(*) :: mctx
+  external monitordestroy
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscOptionsMonitorSet
+#endif
+  interface
+  subroutine PetscOptionsStringToBool(value,a, ierr)
+  use, intrinsic :: ISO_C_binding
+  character(*) :: value
+  PetscBool :: a
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscOptionsStringToBool
+#endif
+  interface
+  subroutine PetscOptionsStringToInt(name,a, ierr)
+  use, intrinsic :: ISO_C_binding
+  character(*) :: name
+  PetscInt :: a
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscOptionsStringToInt
+#endif
+  interface
+  subroutine PetscOptionsStringToReal(name,a, ierr)
+  use, intrinsic :: ISO_C_binding
+  character(*) :: name
+  PetscReal :: a
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscOptionsStringToReal
+#endif
+  interface
+  subroutine PetscOptionsStringToScalar(name,a, ierr)
+  use, intrinsic :: ISO_C_binding
+  character(*) :: name
+  PetscScalar :: a
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscOptionsStringToScalar
+#endif
+  interface
+  subroutine PetscOptionsGetBool(options,pre,name,ivalue,set, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscOptions
+  PetscOptions :: options
+  character(*) :: pre
+  character(*) :: name
+  PetscBool :: ivalue
+  PetscBool :: set
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscOptionsGetBool
+#endif
+  interface
+  subroutine PetscOptionsGetBool3(options,pre,name,ivalue,set, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscOptions,ePetscBool3
+  PetscOptions :: options
+  character(*) :: pre
+  character(*) :: name
+  PetscBool3 :: ivalue
+  PetscBool :: set
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscOptionsGetBool3
+#endif
+  interface
+  subroutine PetscOptionsGetInt(options,pre,name,ivalue,set, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscOptions
+  PetscOptions :: options
+  character(*) :: pre
+  character(*) :: name
+  PetscInt :: ivalue
+  PetscBool :: set
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscOptionsGetInt
+#endif
+  interface
+  subroutine PetscOptionsGetMPIInt(options,pre,name,ivalue,set, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscOptions
+  PetscOptions :: options
+  character(*) :: pre
+  character(*) :: name
+  PetscMPIInt :: ivalue
+  PetscBool :: set
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscOptionsGetMPIInt
+#endif
+  interface
+  subroutine PetscOptionsGetReal(options,pre,name,dvalue,set, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscOptions
+  PetscOptions :: options
+  character(*) :: pre
+  character(*) :: name
+  PetscReal :: dvalue
+  PetscBool :: set
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscOptionsGetReal
+#endif
+  interface
+  subroutine PetscOptionsGetScalar(options,pre,name,dvalue,set, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscOptions
+  PetscOptions :: options
+  character(*) :: pre
+  character(*) :: name
+  PetscScalar :: dvalue
+  PetscBool :: set
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscOptionsGetScalar
+#endif
+  interface
+  subroutine PetscOptionsGetBoolArray(options,pre,name,dvalue,nmax,set, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscOptions
+  PetscOptions :: options
+  character(*) :: pre
+  character(*) :: name
+  PetscBool :: dvalue(*)
+  PetscInt :: nmax
+  PetscBool :: set
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscOptionsGetBoolArray
+#endif
+  interface
+  subroutine PetscOptionsGetIntArray(options,pre,name,ivalue,nmax,set, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscOptions
+  PetscOptions :: options
+  character(*) :: pre
+  character(*) :: name
+  PetscInt :: ivalue(*)
+  PetscInt :: nmax
+  PetscBool :: set
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscOptionsGetIntArray
+#endif
+  interface
+  subroutine PetscOptionsGetRealArray(options,pre,name,dvalue,nmax,set, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscOptions
+  PetscOptions :: options
+  character(*) :: pre
+  character(*) :: name
+  PetscReal :: dvalue(*)
+  PetscInt :: nmax
+  PetscBool :: set
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscOptionsGetRealArray
+#endif
+  interface
+  subroutine PetscOptionsGetScalarArray(options,pre,name,dvalue,nmax,set, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscOptions
+  PetscOptions :: options
+  character(*) :: pre
+  character(*) :: name
+  PetscScalar :: dvalue(*)
+  PetscInt :: nmax
+  PetscBool :: set
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscOptionsGetScalarArray
+#endif
+  interface
+  subroutine PetscOptionsGetenv(comm,name,env,flag, ierr)
+  use, intrinsic :: ISO_C_binding
+  MPIU_Comm :: comm
+  character(*) :: name
+  character(*) :: env
+  PetscBool :: flag
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscOptionsGetenv
+#endif
+  interface operator(.ne.)
+    module procedure PetscOptionsnotequals
+  end interface operator (.ne.)
+  interface operator(.eq.)
+    module procedure PetscOptionsequals
+  end interface operator (.eq.)
+
+  interface operator(.ne.)
+    module procedure PetscOptionItemnotequals
+  end interface operator (.ne.)
+  interface operator(.eq.)
+    module procedure PetscOptionItemequals
+  end interface operator (.eq.)
+
+  interface operator(.ne.)
+    module procedure PetscOptionItemsnotequals
+  end interface operator (.ne.)
+  interface operator(.eq.)
+    module procedure PetscOptionItemsequals
+  end interface operator (.eq.)
+
+  interface
+  subroutine PetscOptionsBegin(comm,prefix,mess,sec, ierr)
+  use, intrinsic :: ISO_C_binding
+  MPIU_Comm :: comm
+  character(*) :: prefix
+  character(*) :: mess
+  character(*) :: sec
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscOptionsBegin
+#endif
+  interface
+  subroutine PetscOptionsEnd(ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscOptionsEnd
+#endif
+  interface
+  subroutine PetscOptionsBool(opt,text,man,currentvalue,value,set, ierr)
+  use, intrinsic :: ISO_C_binding
+  character(*) :: opt
+  character(*) :: text
+  character(*) :: man
+  PetscBool :: currentvalue
+  PetscBool :: value
+  PetscBool :: set
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscOptionsBool
+#endif
+  interface
+  subroutine PetscOptionsBool3(opt,text,man,currentvalue,value,set, ierr)
+  use, intrinsic :: ISO_C_binding
+  import ePetscBool3
+  character(*) :: opt
+  character(*) :: text
+  character(*) :: man
+  PetscBool3 :: currentvalue
+  PetscBool3 :: value
+  PetscBool3 :: set
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscOptionsBool3
+#endif
+  interface
+  subroutine PetscOptionsInt(opt,text,man,currentvalue,value,set, ierr)
+  use, intrinsic :: ISO_C_binding
+  character(*) :: opt
+  character(*) :: text
+  character(*) :: man
+  PetscInt :: currentvalue
+  PetscInt :: value
+  PetscBool :: set
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscOptionsInt
+#endif
+  interface
+  subroutine PetscOptionsReal(opt,text,man,currentvalue,value,set, ierr)
+  use, intrinsic :: ISO_C_binding
+  character(*) :: opt
+  character(*) :: text
+  character(*) :: man
+  PetscReal :: currentvalue
+  PetscReal :: value
+  PetscBool :: set
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscOptionsReal
+#endif
+  interface
+  subroutine PetscOptionsScalar(opt,text,man,currentvalue,value,set, ierr)
+  use, intrinsic :: ISO_C_binding
+  character(*) :: opt
+  character(*) :: text
+  character(*) :: man
+  PetscScalar :: currentvalue
+  PetscScalar :: value
+  PetscBool :: set
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscOptionsScalar
+#endif
+  interface
+  subroutine PetscOptionsScalarArray(opt,text,man,value,n,set, ierr)
+  use, intrinsic :: ISO_C_binding
+  character(*) :: opt
+  character(*) :: text
+  character(*) :: man
+  PetscScalar :: value(*)
+  PetscInt :: n
+  PetscBool :: set
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscOptionsScalarArray
+#endif
+  interface
+  subroutine PetscOptionsIntArray(opt,text,man,value,n,set, ierr)
+  use, intrinsic :: ISO_C_binding
+  character(*) :: opt
+  character(*) :: text
+  character(*) :: man
+  PetscInt :: value(*)
+  PetscInt :: n
+  PetscBool :: set
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscOptionsIntArray
+#endif
+  interface
+  subroutine PetscOptionsRealArray(opt,text,man,value,n,set, ierr)
+  use, intrinsic :: ISO_C_binding
+  character(*) :: opt
+  character(*) :: text
+  character(*) :: man
+  PetscReal :: value(*)
+  PetscInt :: n
+  PetscBool :: set
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscOptionsRealArray
+#endif
+  interface
+  subroutine PetscOptionsBoolArray(opt,text,man,value,n,set, ierr)
+  use, intrinsic :: ISO_C_binding
+  character(*) :: opt
+  character(*) :: text
+  character(*) :: man
+  PetscBool :: value(*)
+  PetscInt :: n
+  PetscBool :: set
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscOptionsBoolArray
+#endif
+  interface operator(.ne.)
+    module procedure PetscOptionSourcenotequals
+  end interface operator (.ne.)
+  interface operator(.eq.)
+    module procedure PetscOptionSourceequals
+  end interface operator (.eq.)
+
+  interface operator(.ne.)
+    module procedure PetscOptionTypenotequals
+  end interface operator (.ne.)
+  interface operator(.eq.)
+    module procedure PetscOptionTypeequals
+  end interface operator (.eq.)
+

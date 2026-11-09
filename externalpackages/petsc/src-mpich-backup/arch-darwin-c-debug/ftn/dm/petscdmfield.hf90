@@ -1,0 +1,15 @@
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT:: DMFieldContinuitynotequals
+!DEC$ ATTRIBUTES DLLEXPORT:: DMFieldContinuityequals
+#endif
+
+  function DMFieldContinuitynotequals(A,B)
+    logical DMFieldContinuitynotequals
+    type(eDMFieldContinuity), intent(in) :: A,B
+    DMFieldContinuitynotequals = (A%v .ne. B%v)
+  end function
+  function DMFieldContinuityequals(A,B)
+    logical DMFieldContinuityequals
+    type(eDMFieldContinuity), intent(in) :: A,B
+    DMFieldContinuityequals = (A%v .eq. B%v)
+  end function

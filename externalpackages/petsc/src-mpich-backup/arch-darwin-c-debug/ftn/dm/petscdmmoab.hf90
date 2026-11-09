@@ -1,0 +1,30 @@
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT:: MoabReadModenotequals
+!DEC$ ATTRIBUTES DLLEXPORT:: MoabReadModeequals
+#endif
+
+  function MoabReadModenotequals(A,B)
+    logical MoabReadModenotequals
+    type(eMoabReadMode), intent(in) :: A,B
+    MoabReadModenotequals = (A%v .ne. B%v)
+  end function
+  function MoabReadModeequals(A,B)
+    logical MoabReadModeequals
+    type(eMoabReadMode), intent(in) :: A,B
+    MoabReadModeequals = (A%v .eq. B%v)
+  end function
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT:: MoabWriteModenotequals
+!DEC$ ATTRIBUTES DLLEXPORT:: MoabWriteModeequals
+#endif
+
+  function MoabWriteModenotequals(A,B)
+    logical MoabWriteModenotequals
+    type(eMoabWriteMode), intent(in) :: A,B
+    MoabWriteModenotequals = (A%v .ne. B%v)
+  end function
+  function MoabWriteModeequals(A,B)
+    logical MoabWriteModeequals
+    type(eMoabWriteMode), intent(in) :: A,B
+    MoabWriteModeequals = (A%v .eq. B%v)
+  end function

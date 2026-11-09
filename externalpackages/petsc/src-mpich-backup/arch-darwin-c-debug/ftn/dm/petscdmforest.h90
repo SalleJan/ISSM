@@ -1,0 +1,524 @@
+  interface
+  subroutine DMForestRegisterType(name, ierr)
+  use, intrinsic :: ISO_C_binding
+  character(*) :: name
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMForestRegisterType
+#endif
+  interface
+  subroutine DMIsForest(dm,isForest, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  PetscBool :: isForest
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMIsForest
+#endif
+  interface
+  subroutine DMForestTemplate(dm,comm,tedm, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  MPIU_Comm :: comm
+  DM :: tedm
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMForestTemplate
+#endif
+  interface
+  subroutine DMForestSetTopology(dm,topology, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  character(*) :: topology
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMForestSetTopology
+#endif
+  interface
+  subroutine DMForestGetTopology(dm,topology, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  character(*) :: topology
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMForestGetTopology
+#endif
+  interface
+  subroutine DMForestSetBaseDM(dm,base, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  DM :: base
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMForestSetBaseDM
+#endif
+  interface
+  subroutine DMForestGetBaseDM(dm,base, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  DM :: base
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMForestGetBaseDM
+#endif
+  interface
+  subroutine DMForestSetBaseCoordinateMapping(dm,func,ctx, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  external :: func
+  type(*) :: ctx
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMForestSetBaseCoordinateMapping
+#endif
+  interface
+  subroutine DMForestSetAdaptivityForest(dm,adapt, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  DM :: adapt
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMForestSetAdaptivityForest
+#endif
+  interface
+  subroutine DMForestGetAdaptivityForest(dm,adapt, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  DM :: adapt
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMForestGetAdaptivityForest
+#endif
+  interface
+  subroutine DMForestSetAdaptivityPurpose(dm,purpose, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM,eDMAdaptFlag
+  DM :: dm
+  DMAdaptFlag :: purpose
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMForestSetAdaptivityPurpose
+#endif
+  interface
+  subroutine DMForestGetAdaptivityPurpose(dm,purpose, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM,eDMAdaptFlag
+  DM :: dm
+  DMAdaptFlag :: purpose
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMForestGetAdaptivityPurpose
+#endif
+  interface
+  subroutine DMForestSetAdjacencyDimension(dm,adjDim, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  PetscInt :: adjDim
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMForestSetAdjacencyDimension
+#endif
+  interface
+  subroutine DMForestSetAdjacencyCodimension(dm,adjCodim, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  PetscInt :: adjCodim
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMForestSetAdjacencyCodimension
+#endif
+  interface
+  subroutine DMForestGetAdjacencyDimension(dm,adjDim, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  PetscInt :: adjDim
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMForestGetAdjacencyDimension
+#endif
+  interface
+  subroutine DMForestGetAdjacencyCodimension(dm,adjCodim, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  PetscInt :: adjCodim
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMForestGetAdjacencyCodimension
+#endif
+  interface
+  subroutine DMForestSetPartitionOverlap(dm,overlap, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  PetscInt :: overlap
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMForestSetPartitionOverlap
+#endif
+  interface
+  subroutine DMForestGetPartitionOverlap(dm,overlap, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  PetscInt :: overlap
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMForestGetPartitionOverlap
+#endif
+  interface
+  subroutine DMForestSetMinimumRefinement(dm,minRefinement, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  PetscInt :: minRefinement
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMForestSetMinimumRefinement
+#endif
+  interface
+  subroutine DMForestGetMinimumRefinement(dm,minRefinement, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  PetscInt :: minRefinement
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMForestGetMinimumRefinement
+#endif
+  interface
+  subroutine DMForestSetInitialRefinement(dm,initRefinement, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  PetscInt :: initRefinement
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMForestSetInitialRefinement
+#endif
+  interface
+  subroutine DMForestGetInitialRefinement(dm,initRefinement, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  PetscInt :: initRefinement
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMForestGetInitialRefinement
+#endif
+  interface
+  subroutine DMForestSetMaximumRefinement(dm,maxRefinement, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  PetscInt :: maxRefinement
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMForestSetMaximumRefinement
+#endif
+  interface
+  subroutine DMForestGetMaximumRefinement(dm,maxRefinement, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  PetscInt :: maxRefinement
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMForestGetMaximumRefinement
+#endif
+  interface
+  subroutine DMForestSetAdaptivityStrategy(dm,adaptStrategy, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  character(*) :: adaptStrategy
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMForestSetAdaptivityStrategy
+#endif
+  interface
+  subroutine DMForestGetAdaptivityStrategy(dm,adaptStrategy, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  character(*) :: adaptStrategy
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMForestGetAdaptivityStrategy
+#endif
+  interface
+  subroutine DMForestGetAdaptivitySuccess(dm,success, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  PetscBool :: success
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMForestGetAdaptivitySuccess
+#endif
+  interface
+  subroutine DMForestSetComputeAdaptivitySF(dm,computeSF, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  PetscBool :: computeSF
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMForestSetComputeAdaptivitySF
+#endif
+  interface
+  subroutine DMForestTransferVec(dmIn,vecIn,dmOut,vecOut,useBCs,time, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM,tVec
+  DM :: dmIn
+  Vec :: vecIn
+  DM :: dmOut
+  Vec :: vecOut
+  PetscBool :: useBCs
+  PetscReal :: time
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMForestTransferVec
+#endif
+  interface
+  subroutine DMForestTransferVecFromBase(dm,vecIn,vecOut, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM,tVec
+  DM :: dm
+  Vec :: vecIn
+  Vec :: vecOut
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMForestTransferVecFromBase
+#endif
+  interface
+  subroutine DMForestGetComputeAdaptivitySF(dm,computeSF, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  PetscBool :: computeSF
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMForestGetComputeAdaptivitySF
+#endif
+  interface
+  subroutine DMForestGetAdaptivitySF(dm,preCoarseToFine,coarseToPreFine, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM,tPetscSF
+  DM :: dm
+  PetscSF :: preCoarseToFine
+  PetscSF :: coarseToPreFine
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMForestGetAdaptivitySF
+#endif
+  interface
+  subroutine DMForestSetGradeFactor(dm,grade, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  PetscInt :: grade
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMForestSetGradeFactor
+#endif
+  interface
+  subroutine DMForestGetGradeFactor(dm,grade, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  PetscInt :: grade
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMForestGetGradeFactor
+#endif
+  interface
+  subroutine DMForestSetCellWeightFactor(dm,weightsFactor, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  PetscReal :: weightsFactor
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMForestSetCellWeightFactor
+#endif
+  interface
+  subroutine DMForestGetCellWeightFactor(dm,weightsFactor, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  PetscReal :: weightsFactor
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMForestGetCellWeightFactor
+#endif
+  interface
+  subroutine DMForestGetCellChart(dm,cStart,cEnd, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  PetscInt :: cStart
+  PetscInt :: cEnd
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMForestGetCellChart
+#endif
+  interface
+  subroutine DMForestGetCellSF(dm,cellSF, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM,tPetscSF
+  DM :: dm
+  PetscSF :: cellSF
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMForestGetCellSF
+#endif
+  interface
+  subroutine DMForestSetAdaptivityLabel(dm,adaptLabel, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM,tDMLabel
+  DM :: dm
+  DMLabel :: adaptLabel
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMForestSetAdaptivityLabel
+#endif
+  interface
+  subroutine DMForestGetAdaptivityLabel(dm,adaptLabel, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM,tDMLabel
+  DM :: dm
+  DMLabel :: adaptLabel
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMForestGetAdaptivityLabel
+#endif
+  interface
+  subroutine DMForestSetCellWeights(dm,weights,copyMode, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM,ePetscCopyMode
+  DM :: dm
+  PetscReal :: weights(*)
+  PetscCopyMode :: copyMode
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMForestSetCellWeights
+#endif
+  interface
+  subroutine DMForestSetWeightCapacity(dm,capacity, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  PetscReal :: capacity
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMForestSetWeightCapacity
+#endif
+  interface
+  subroutine DMForestGetWeightCapacity(dm,capacity, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  PetscReal :: capacity
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMForestGetWeightCapacity
+#endif

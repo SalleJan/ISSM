@@ -1,0 +1,843 @@
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT:: SNESLineSearchnotequals
+!DEC$ ATTRIBUTES DLLEXPORT:: SNESLineSearchequals
+#endif
+
+  function SNESLineSearchnotequals(A,B)
+    logical SNESLineSearchnotequals
+    type(tSNESLineSearch), intent(in) :: A,B
+    SNESLineSearchnotequals = (A%v .ne. B%v)
+  end function
+  function SNESLineSearchequals(A,B)
+    logical SNESLineSearchequals
+    type(tSNESLineSearch), intent(in) :: A,B
+    SNESLineSearchequals = (A%v .eq. B%v)
+  end function
+  function PetscObjectCastSNESLineSearch(obj)
+    SNESLineSearch obj
+    PetscObject PetscObjectCastSNESLineSearch
+    PetscObjectCastSNESLineSearch%v = obj%v
+  end function 
+  subroutine PetscBarrierSNESLineSearch(obj,ierr)
+    SNESLineSearch obj
+    PetscErrorCode ierr
+    call PetscBarrier(PetscObjectCast(obj),ierr)
+  end subroutine 
+#if defined(PETSC_HAVE_SAWS)
+  subroutine PetscObjectSAWsTakeAccessSNESLineSearch(obj, ierr)
+  SNESLineSearch obj
+  PetscErrorCode ierr
+  call PetscObjectSAWsTakeAccess(PetscObjectCast(obj), ierr)
+  end subroutine 
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  subroutine PetscObjectSAWsGrantAccessSNESLineSearch(obj, ierr)
+  SNESLineSearch obj
+  PetscErrorCode ierr
+  call PetscObjectSAWsGrantAccess(PetscObjectCast(obj), ierr)
+  end subroutine 
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  subroutine PetscObjectSAWsBlockSNESLineSearch(obj, ierr)
+  SNESLineSearch obj
+  PetscErrorCode ierr
+  call PetscObjectSAWsBlock(PetscObjectCast(obj), ierr)
+  end subroutine 
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  subroutine PetscObjectSAWsSetBlockSNESLineSearch(obj, flg, ierr)
+  SNESLineSearch obj
+  PetscBool :: flg
+  PetscErrorCode ierr
+  call PetscObjectSAWsSetBlock(PetscObjectCast(obj), flg, ierr)
+  end subroutine 
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  subroutine PetscObjectSAWsViewOffSNESLineSearch(obj, ierr)
+  SNESLineSearch obj
+  PetscErrorCode ierr
+  call PetscObjectSAWsViewOff(PetscObjectCast(obj), ierr)
+  end subroutine 
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  subroutine PetscObjectViewSAWsSNESLineSearch(obj, viewer, ierr)
+  SNESLineSearch obj
+  PetscViewer :: viewer
+  PetscErrorCode ierr
+  call PetscObjectViewSAWs(PetscObjectCast(obj), viewer, ierr)
+  end subroutine 
+#endif
+  subroutine PetscObjectGetTypeSNESLineSearch(obj, type, ierr)
+  SNESLineSearch obj
+  character(*) :: type
+  PetscErrorCode ierr
+  call PetscObjectGetType(PetscObjectCast(obj), type, ierr)
+  end subroutine 
+  subroutine PetscObjectSetPrintedOptionsSNESLineSearch(obj, ierr)
+  SNESLineSearch obj
+  PetscErrorCode ierr
+  call PetscObjectSetPrintedOptions(PetscObjectCast(obj), ierr)
+  end subroutine 
+  subroutine PetscObjectInheritPrintedOptionsSNESLineSearch(pobj, obj, ierr)
+  SNESLineSearch pobj
+  PetscObject :: obj
+  PetscErrorCode ierr
+  call PetscObjectInheritPrintedOptions(PetscObjectCast(pobj), obj, ierr)
+  end subroutine 
+  subroutine PetscObjectAddOptionsHandlerSNESLineSearch(obj, handle, destroy, ctx, ierr)
+  SNESLineSearch obj
+  external :: handle
+  external :: destroy
+  type(*) :: ctx
+  PetscErrorCode ierr
+  call PetscObjectAddOptionsHandler(PetscObjectCast(obj), handle, destroy, ctx, ierr)
+  end subroutine 
+  subroutine PetscObjectProcessOptionsHandlersSNESLineSearch(obj, PetscOptionsObject, ierr)
+  SNESLineSearch obj
+  PetscOptionItems :: PetscOptionsObject
+  PetscErrorCode ierr
+  call PetscObjectProcessOptionsHandlers(PetscObjectCast(obj), PetscOptionsObject, ierr)
+  end subroutine 
+  subroutine PetscObjectDestroyOptionsHandlersSNESLineSearch(obj, ierr)
+  SNESLineSearch obj
+  PetscErrorCode ierr
+  call PetscObjectDestroyOptionsHandlers(PetscObjectCast(obj), ierr)
+  end subroutine 
+  subroutine PetscObjectReferenceSNESLineSearch(obj, ierr)
+  SNESLineSearch obj
+  PetscErrorCode ierr
+  call PetscObjectReference(PetscObjectCast(obj), ierr)
+  end subroutine 
+  subroutine PetscObjectGetReferenceSNESLineSearch(obj, cnt, ierr)
+  SNESLineSearch obj
+  PetscInt :: cnt
+  PetscErrorCode ierr
+  call PetscObjectGetReference(PetscObjectCast(obj), cnt, ierr)
+  end subroutine 
+  subroutine PetscObjectDereferenceSNESLineSearch(obj, ierr)
+  SNESLineSearch obj
+  PetscErrorCode ierr
+  call PetscObjectDereference(PetscObjectCast(obj), ierr)
+  end subroutine 
+  subroutine PetscObjectRemoveReferenceSNESLineSearch(obj, name, ierr)
+  SNESLineSearch obj
+  character(*) :: name
+  PetscErrorCode ierr
+  call PetscObjectRemoveReference(PetscObjectCast(obj), name, ierr)
+  end subroutine 
+  subroutine PetscObjectHasFunctionSNESLineSearch(obj, name, has, ierr)
+  SNESLineSearch obj
+  character(*) :: name
+  PetscBool :: has
+  PetscErrorCode ierr
+  call PetscObjectHasFunction(PetscObjectCast(obj), name, has, ierr)
+  end subroutine 
+  subroutine PetscObjectSetFromOptionsSNESLineSearch(obj, ierr)
+  SNESLineSearch obj
+  PetscErrorCode ierr
+  call PetscObjectSetFromOptions(PetscObjectCast(obj), ierr)
+  end subroutine 
+  subroutine PetscObjectSetUpSNESLineSearch(obj, ierr)
+  SNESLineSearch obj
+  PetscErrorCode ierr
+  call PetscObjectSetUp(PetscObjectCast(obj), ierr)
+  end subroutine 
+  subroutine PetscObjectGetNameSNESLineSearch(obj, name, ierr)
+  SNESLineSearch obj
+  character(*) :: name
+  PetscErrorCode ierr
+  call PetscObjectGetName(PetscObjectCast(obj), name, ierr)
+  end subroutine 
+  subroutine PetscObjectDestroySNESLineSearch(obj, ierr)
+  SNESLineSearch obj
+  PetscErrorCode ierr
+  call PetscObjectDestroy(PetscObjectCast(obj), ierr)
+  end subroutine 
+  subroutine PetscObjectViewSNESLineSearch(obj, viewer, ierr)
+  SNESLineSearch obj
+  PetscViewer :: viewer
+  PetscErrorCode ierr
+  call PetscObjectView(PetscObjectCast(obj), viewer, ierr)
+  end subroutine 
+  subroutine PetscObjectViewFromOptionsSNESLineSearch(obj, bobj, name, ierr)
+  SNESLineSearch obj
+  PetscObject :: bobj
+  character(*) :: name
+  PetscErrorCode ierr
+  call PetscObjectViewFromOptions(PetscObjectCast(obj), bobj, name, ierr)
+  end subroutine 
+  subroutine PetscObjectTypeCompareSNESLineSearch(obj, type_name, same, ierr)
+  SNESLineSearch obj
+  character(*) :: type_name
+  PetscBool :: same
+  PetscErrorCode ierr
+  call PetscObjectTypeCompare(PetscObjectCast(obj), type_name, same, ierr)
+  end subroutine 
+  subroutine PetscObjectObjectTypeCompareSNESLineSearch(obj1, obj2, same, ierr)
+  SNESLineSearch obj1
+  PetscObject :: obj2
+  PetscBool :: same
+  PetscErrorCode ierr
+  call PetscObjectObjectTypeCompare(PetscObjectCast(obj1), obj2, same, ierr)
+  end subroutine 
+  subroutine PetscObjectBaseTypeCompareSNESLineSearch(obj, type_name, same, ierr)
+  SNESLineSearch obj
+  character(*) :: type_name
+  PetscBool :: same
+  PetscErrorCode ierr
+  call PetscObjectBaseTypeCompare(PetscObjectCast(obj), type_name, same, ierr)
+  end subroutine 
+  subroutine PetscObjectRegisterDestroySNESLineSearch(obj, ierr)
+  SNESLineSearch obj
+  PetscErrorCode ierr
+  call PetscObjectRegisterDestroy(PetscObjectCast(obj), ierr)
+  end subroutine 
+  subroutine PetscObjectGetIdSNESLineSearch(obj, id, ierr)
+  SNESLineSearch obj
+  PetscObjectId :: id
+  PetscErrorCode ierr
+  call PetscObjectGetId(PetscObjectCast(obj), id, ierr)
+  end subroutine 
+  subroutine PetscObjectCompareIdSNESLineSearch(obj, id, eq, ierr)
+  SNESLineSearch obj
+  PetscObjectId :: id
+  PetscBool :: eq
+  PetscErrorCode ierr
+  call PetscObjectCompareId(PetscObjectCast(obj), id, eq, ierr)
+  end subroutine 
+  subroutine PetscObjectGetOptionsSNESLineSearch(obj, options, ierr)
+  SNESLineSearch obj
+  PetscOptions :: options
+  PetscErrorCode ierr
+  call PetscObjectGetOptions(PetscObjectCast(obj), options, ierr)
+  end subroutine 
+  subroutine PetscObjectSetOptionsSNESLineSearch(obj, options, ierr)
+  SNESLineSearch obj
+  PetscOptions :: options
+  PetscErrorCode ierr
+  call PetscObjectSetOptions(PetscObjectCast(obj), options, ierr)
+  end subroutine 
+  subroutine PetscObjectSetOptionsPrefixSNESLineSearch(obj, prefix, ierr)
+  SNESLineSearch obj
+  character(*) :: prefix
+  PetscErrorCode ierr
+  call PetscObjectSetOptionsPrefix(PetscObjectCast(obj), prefix, ierr)
+  end subroutine 
+  subroutine PetscObjectAppendOptionsPrefixSNESLineSearch(obj, prefix, ierr)
+  SNESLineSearch obj
+  character(*) :: prefix
+  PetscErrorCode ierr
+  call PetscObjectAppendOptionsPrefix(PetscObjectCast(obj), prefix, ierr)
+  end subroutine 
+  subroutine PetscObjectGetOptionsPrefixSNESLineSearch(obj, prefix, ierr)
+  SNESLineSearch obj
+  character(*) :: prefix
+  PetscErrorCode ierr
+  call PetscObjectGetOptionsPrefix(PetscObjectCast(obj), prefix, ierr)
+  end subroutine 
+  subroutine PetscObjectPrependOptionsPrefixSNESLineSearch(obj, prefix, ierr)
+  SNESLineSearch obj
+  character(*) :: prefix
+  PetscErrorCode ierr
+  call PetscObjectPrependOptionsPrefix(PetscObjectCast(obj), prefix, ierr)
+  end subroutine 
+  subroutine PetscObjectGetCommSNESLineSearch(obj, comm, ierr)
+  SNESLineSearch obj
+  MPIU_Comm :: comm
+  PetscErrorCode ierr
+  call PetscObjectGetComm(PetscObjectCast(obj), comm, ierr)
+  end subroutine 
+  subroutine PetscObjectGetTabLevelSNESLineSearch(obj, tab, ierr)
+  SNESLineSearch obj
+  PetscInt :: tab
+  PetscErrorCode ierr
+  call PetscObjectGetTabLevel(PetscObjectCast(obj), tab, ierr)
+  end subroutine 
+  subroutine PetscObjectSetTabLevelSNESLineSearch(obj, tab, ierr)
+  SNESLineSearch obj
+  PetscInt :: tab
+  PetscErrorCode ierr
+  call PetscObjectSetTabLevel(PetscObjectCast(obj), tab, ierr)
+  end subroutine 
+  subroutine PetscObjectIncrementTabLevelSNESLineSearch(obj, oldobj, tab, ierr)
+  SNESLineSearch obj
+  PetscObject :: oldobj
+  PetscInt :: tab
+  PetscErrorCode ierr
+  call PetscObjectIncrementTabLevel(PetscObjectCast(obj), oldobj, tab, ierr)
+  end subroutine 
+  subroutine PetscObjectGetNewTagSNESLineSearch(obj, tag, ierr)
+  SNESLineSearch obj
+  PetscMPIInt :: tag
+  PetscErrorCode ierr
+  call PetscObjectGetNewTag(PetscObjectCast(obj), tag, ierr)
+  end subroutine 
+  subroutine PetscObjectGetClassIdSNESLineSearch(obj, classid, ierr)
+  SNESLineSearch obj
+  PetscClassId :: classid
+  PetscErrorCode ierr
+  call PetscObjectGetClassId(PetscObjectCast(obj), classid, ierr)
+  end subroutine 
+  subroutine PetscObjectGetClassNameSNESLineSearch(obj, classname, ierr)
+  SNESLineSearch obj
+  character(*) :: classname
+  PetscErrorCode ierr
+  call PetscObjectGetClassName(PetscObjectCast(obj), classname, ierr)
+  end subroutine 
+  subroutine PetscObjectSetNameSNESLineSearch(obj, name, ierr)
+  SNESLineSearch obj
+  character(*) :: name
+  PetscErrorCode ierr
+  call PetscObjectSetName(PetscObjectCast(obj), name, ierr)
+  end subroutine 
+  subroutine PetscObjectPrintClassNamePrefixTypeSNESLineSearch(obj, viewer, ierr)
+  SNESLineSearch obj
+  PetscViewer :: viewer
+  PetscErrorCode ierr
+  call PetscObjectPrintClassNamePrefixType(PetscObjectCast(obj), viewer, ierr)
+  end subroutine 
+  subroutine PetscObjectNameSNESLineSearch(obj, ierr)
+  SNESLineSearch obj
+  PetscErrorCode ierr
+  call PetscObjectName(PetscObjectCast(obj), ierr)
+  end subroutine 
+  subroutine PetscObjectChangeTypeNameSNESLineSearch(obj, type_name, ierr)
+  SNESLineSearch obj
+  character(*) :: type_name
+  PetscErrorCode ierr
+  call PetscObjectChangeTypeName(PetscObjectCast(obj), type_name, ierr)
+  end subroutine 
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT:: SNESnotequals
+!DEC$ ATTRIBUTES DLLEXPORT:: SNESequals
+#endif
+
+  function SNESnotequals(A,B)
+    logical SNESnotequals
+    type(tSNES), intent(in) :: A,B
+    SNESnotequals = (A%v .ne. B%v)
+  end function
+  function SNESequals(A,B)
+    logical SNESequals
+    type(tSNES), intent(in) :: A,B
+    SNESequals = (A%v .eq. B%v)
+  end function
+  function PetscObjectCastSNES(obj)
+    SNES obj
+    PetscObject PetscObjectCastSNES
+    PetscObjectCastSNES%v = obj%v
+  end function 
+  subroutine PetscBarrierSNES(obj,ierr)
+    SNES obj
+    PetscErrorCode ierr
+    call PetscBarrier(PetscObjectCast(obj),ierr)
+  end subroutine 
+#if defined(PETSC_HAVE_SAWS)
+  subroutine PetscObjectSAWsTakeAccessSNES(obj, ierr)
+  SNES obj
+  PetscErrorCode ierr
+  call PetscObjectSAWsTakeAccess(PetscObjectCast(obj), ierr)
+  end subroutine 
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  subroutine PetscObjectSAWsGrantAccessSNES(obj, ierr)
+  SNES obj
+  PetscErrorCode ierr
+  call PetscObjectSAWsGrantAccess(PetscObjectCast(obj), ierr)
+  end subroutine 
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  subroutine PetscObjectSAWsBlockSNES(obj, ierr)
+  SNES obj
+  PetscErrorCode ierr
+  call PetscObjectSAWsBlock(PetscObjectCast(obj), ierr)
+  end subroutine 
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  subroutine PetscObjectSAWsSetBlockSNES(obj, flg, ierr)
+  SNES obj
+  PetscBool :: flg
+  PetscErrorCode ierr
+  call PetscObjectSAWsSetBlock(PetscObjectCast(obj), flg, ierr)
+  end subroutine 
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  subroutine PetscObjectSAWsViewOffSNES(obj, ierr)
+  SNES obj
+  PetscErrorCode ierr
+  call PetscObjectSAWsViewOff(PetscObjectCast(obj), ierr)
+  end subroutine 
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  subroutine PetscObjectViewSAWsSNES(obj, viewer, ierr)
+  SNES obj
+  PetscViewer :: viewer
+  PetscErrorCode ierr
+  call PetscObjectViewSAWs(PetscObjectCast(obj), viewer, ierr)
+  end subroutine 
+#endif
+  subroutine PetscObjectGetTypeSNES(obj, type, ierr)
+  SNES obj
+  character(*) :: type
+  PetscErrorCode ierr
+  call PetscObjectGetType(PetscObjectCast(obj), type, ierr)
+  end subroutine 
+  subroutine PetscObjectSetPrintedOptionsSNES(obj, ierr)
+  SNES obj
+  PetscErrorCode ierr
+  call PetscObjectSetPrintedOptions(PetscObjectCast(obj), ierr)
+  end subroutine 
+  subroutine PetscObjectInheritPrintedOptionsSNES(pobj, obj, ierr)
+  SNES pobj
+  PetscObject :: obj
+  PetscErrorCode ierr
+  call PetscObjectInheritPrintedOptions(PetscObjectCast(pobj), obj, ierr)
+  end subroutine 
+  subroutine PetscObjectAddOptionsHandlerSNES(obj, handle, destroy, ctx, ierr)
+  SNES obj
+  external :: handle
+  external :: destroy
+  type(*) :: ctx
+  PetscErrorCode ierr
+  call PetscObjectAddOptionsHandler(PetscObjectCast(obj), handle, destroy, ctx, ierr)
+  end subroutine 
+  subroutine PetscObjectProcessOptionsHandlersSNES(obj, PetscOptionsObject, ierr)
+  SNES obj
+  PetscOptionItems :: PetscOptionsObject
+  PetscErrorCode ierr
+  call PetscObjectProcessOptionsHandlers(PetscObjectCast(obj), PetscOptionsObject, ierr)
+  end subroutine 
+  subroutine PetscObjectDestroyOptionsHandlersSNES(obj, ierr)
+  SNES obj
+  PetscErrorCode ierr
+  call PetscObjectDestroyOptionsHandlers(PetscObjectCast(obj), ierr)
+  end subroutine 
+  subroutine PetscObjectReferenceSNES(obj, ierr)
+  SNES obj
+  PetscErrorCode ierr
+  call PetscObjectReference(PetscObjectCast(obj), ierr)
+  end subroutine 
+  subroutine PetscObjectGetReferenceSNES(obj, cnt, ierr)
+  SNES obj
+  PetscInt :: cnt
+  PetscErrorCode ierr
+  call PetscObjectGetReference(PetscObjectCast(obj), cnt, ierr)
+  end subroutine 
+  subroutine PetscObjectDereferenceSNES(obj, ierr)
+  SNES obj
+  PetscErrorCode ierr
+  call PetscObjectDereference(PetscObjectCast(obj), ierr)
+  end subroutine 
+  subroutine PetscObjectRemoveReferenceSNES(obj, name, ierr)
+  SNES obj
+  character(*) :: name
+  PetscErrorCode ierr
+  call PetscObjectRemoveReference(PetscObjectCast(obj), name, ierr)
+  end subroutine 
+  subroutine PetscObjectHasFunctionSNES(obj, name, has, ierr)
+  SNES obj
+  character(*) :: name
+  PetscBool :: has
+  PetscErrorCode ierr
+  call PetscObjectHasFunction(PetscObjectCast(obj), name, has, ierr)
+  end subroutine 
+  subroutine PetscObjectSetFromOptionsSNES(obj, ierr)
+  SNES obj
+  PetscErrorCode ierr
+  call PetscObjectSetFromOptions(PetscObjectCast(obj), ierr)
+  end subroutine 
+  subroutine PetscObjectSetUpSNES(obj, ierr)
+  SNES obj
+  PetscErrorCode ierr
+  call PetscObjectSetUp(PetscObjectCast(obj), ierr)
+  end subroutine 
+  subroutine PetscObjectGetNameSNES(obj, name, ierr)
+  SNES obj
+  character(*) :: name
+  PetscErrorCode ierr
+  call PetscObjectGetName(PetscObjectCast(obj), name, ierr)
+  end subroutine 
+  subroutine PetscObjectDestroySNES(obj, ierr)
+  SNES obj
+  PetscErrorCode ierr
+  call PetscObjectDestroy(PetscObjectCast(obj), ierr)
+  end subroutine 
+  subroutine PetscObjectViewSNES(obj, viewer, ierr)
+  SNES obj
+  PetscViewer :: viewer
+  PetscErrorCode ierr
+  call PetscObjectView(PetscObjectCast(obj), viewer, ierr)
+  end subroutine 
+  subroutine PetscObjectViewFromOptionsSNES(obj, bobj, name, ierr)
+  SNES obj
+  PetscObject :: bobj
+  character(*) :: name
+  PetscErrorCode ierr
+  call PetscObjectViewFromOptions(PetscObjectCast(obj), bobj, name, ierr)
+  end subroutine 
+  subroutine PetscObjectTypeCompareSNES(obj, type_name, same, ierr)
+  SNES obj
+  character(*) :: type_name
+  PetscBool :: same
+  PetscErrorCode ierr
+  call PetscObjectTypeCompare(PetscObjectCast(obj), type_name, same, ierr)
+  end subroutine 
+  subroutine PetscObjectObjectTypeCompareSNES(obj1, obj2, same, ierr)
+  SNES obj1
+  PetscObject :: obj2
+  PetscBool :: same
+  PetscErrorCode ierr
+  call PetscObjectObjectTypeCompare(PetscObjectCast(obj1), obj2, same, ierr)
+  end subroutine 
+  subroutine PetscObjectBaseTypeCompareSNES(obj, type_name, same, ierr)
+  SNES obj
+  character(*) :: type_name
+  PetscBool :: same
+  PetscErrorCode ierr
+  call PetscObjectBaseTypeCompare(PetscObjectCast(obj), type_name, same, ierr)
+  end subroutine 
+  subroutine PetscObjectRegisterDestroySNES(obj, ierr)
+  SNES obj
+  PetscErrorCode ierr
+  call PetscObjectRegisterDestroy(PetscObjectCast(obj), ierr)
+  end subroutine 
+  subroutine PetscObjectGetIdSNES(obj, id, ierr)
+  SNES obj
+  PetscObjectId :: id
+  PetscErrorCode ierr
+  call PetscObjectGetId(PetscObjectCast(obj), id, ierr)
+  end subroutine 
+  subroutine PetscObjectCompareIdSNES(obj, id, eq, ierr)
+  SNES obj
+  PetscObjectId :: id
+  PetscBool :: eq
+  PetscErrorCode ierr
+  call PetscObjectCompareId(PetscObjectCast(obj), id, eq, ierr)
+  end subroutine 
+  subroutine PetscObjectGetOptionsSNES(obj, options, ierr)
+  SNES obj
+  PetscOptions :: options
+  PetscErrorCode ierr
+  call PetscObjectGetOptions(PetscObjectCast(obj), options, ierr)
+  end subroutine 
+  subroutine PetscObjectSetOptionsSNES(obj, options, ierr)
+  SNES obj
+  PetscOptions :: options
+  PetscErrorCode ierr
+  call PetscObjectSetOptions(PetscObjectCast(obj), options, ierr)
+  end subroutine 
+  subroutine PetscObjectSetOptionsPrefixSNES(obj, prefix, ierr)
+  SNES obj
+  character(*) :: prefix
+  PetscErrorCode ierr
+  call PetscObjectSetOptionsPrefix(PetscObjectCast(obj), prefix, ierr)
+  end subroutine 
+  subroutine PetscObjectAppendOptionsPrefixSNES(obj, prefix, ierr)
+  SNES obj
+  character(*) :: prefix
+  PetscErrorCode ierr
+  call PetscObjectAppendOptionsPrefix(PetscObjectCast(obj), prefix, ierr)
+  end subroutine 
+  subroutine PetscObjectGetOptionsPrefixSNES(obj, prefix, ierr)
+  SNES obj
+  character(*) :: prefix
+  PetscErrorCode ierr
+  call PetscObjectGetOptionsPrefix(PetscObjectCast(obj), prefix, ierr)
+  end subroutine 
+  subroutine PetscObjectPrependOptionsPrefixSNES(obj, prefix, ierr)
+  SNES obj
+  character(*) :: prefix
+  PetscErrorCode ierr
+  call PetscObjectPrependOptionsPrefix(PetscObjectCast(obj), prefix, ierr)
+  end subroutine 
+  subroutine PetscObjectGetCommSNES(obj, comm, ierr)
+  SNES obj
+  MPIU_Comm :: comm
+  PetscErrorCode ierr
+  call PetscObjectGetComm(PetscObjectCast(obj), comm, ierr)
+  end subroutine 
+  subroutine PetscObjectGetTabLevelSNES(obj, tab, ierr)
+  SNES obj
+  PetscInt :: tab
+  PetscErrorCode ierr
+  call PetscObjectGetTabLevel(PetscObjectCast(obj), tab, ierr)
+  end subroutine 
+  subroutine PetscObjectSetTabLevelSNES(obj, tab, ierr)
+  SNES obj
+  PetscInt :: tab
+  PetscErrorCode ierr
+  call PetscObjectSetTabLevel(PetscObjectCast(obj), tab, ierr)
+  end subroutine 
+  subroutine PetscObjectIncrementTabLevelSNES(obj, oldobj, tab, ierr)
+  SNES obj
+  PetscObject :: oldobj
+  PetscInt :: tab
+  PetscErrorCode ierr
+  call PetscObjectIncrementTabLevel(PetscObjectCast(obj), oldobj, tab, ierr)
+  end subroutine 
+  subroutine PetscObjectGetNewTagSNES(obj, tag, ierr)
+  SNES obj
+  PetscMPIInt :: tag
+  PetscErrorCode ierr
+  call PetscObjectGetNewTag(PetscObjectCast(obj), tag, ierr)
+  end subroutine 
+  subroutine PetscObjectGetClassIdSNES(obj, classid, ierr)
+  SNES obj
+  PetscClassId :: classid
+  PetscErrorCode ierr
+  call PetscObjectGetClassId(PetscObjectCast(obj), classid, ierr)
+  end subroutine 
+  subroutine PetscObjectGetClassNameSNES(obj, classname, ierr)
+  SNES obj
+  character(*) :: classname
+  PetscErrorCode ierr
+  call PetscObjectGetClassName(PetscObjectCast(obj), classname, ierr)
+  end subroutine 
+  subroutine PetscObjectSetNameSNES(obj, name, ierr)
+  SNES obj
+  character(*) :: name
+  PetscErrorCode ierr
+  call PetscObjectSetName(PetscObjectCast(obj), name, ierr)
+  end subroutine 
+  subroutine PetscObjectPrintClassNamePrefixTypeSNES(obj, viewer, ierr)
+  SNES obj
+  PetscViewer :: viewer
+  PetscErrorCode ierr
+  call PetscObjectPrintClassNamePrefixType(PetscObjectCast(obj), viewer, ierr)
+  end subroutine 
+  subroutine PetscObjectNameSNES(obj, ierr)
+  SNES obj
+  PetscErrorCode ierr
+  call PetscObjectName(PetscObjectCast(obj), ierr)
+  end subroutine 
+  subroutine PetscObjectChangeTypeNameSNES(obj, type_name, ierr)
+  SNES obj
+  character(*) :: type_name
+  PetscErrorCode ierr
+  call PetscObjectChangeTypeName(PetscObjectCast(obj), type_name, ierr)
+  end subroutine 
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT:: SNESNewtonTRFallbackTypenotequals
+!DEC$ ATTRIBUTES DLLEXPORT:: SNESNewtonTRFallbackTypeequals
+#endif
+
+  function SNESNewtonTRFallbackTypenotequals(A,B)
+    logical SNESNewtonTRFallbackTypenotequals
+    type(eSNESNewtonTRFallbackType), intent(in) :: A,B
+    SNESNewtonTRFallbackTypenotequals = (A%v .ne. B%v)
+  end function
+  function SNESNewtonTRFallbackTypeequals(A,B)
+    logical SNESNewtonTRFallbackTypeequals
+    type(eSNESNewtonTRFallbackType), intent(in) :: A,B
+    SNESNewtonTRFallbackTypeequals = (A%v .eq. B%v)
+  end function
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT:: SNESNewtonTRQNTypenotequals
+!DEC$ ATTRIBUTES DLLEXPORT:: SNESNewtonTRQNTypeequals
+#endif
+
+  function SNESNewtonTRQNTypenotequals(A,B)
+    logical SNESNewtonTRQNTypenotequals
+    type(eSNESNewtonTRQNType), intent(in) :: A,B
+    SNESNewtonTRQNTypenotequals = (A%v .ne. B%v)
+  end function
+  function SNESNewtonTRQNTypeequals(A,B)
+    logical SNESNewtonTRQNTypeequals
+    type(eSNESNewtonTRQNType), intent(in) :: A,B
+    SNESNewtonTRQNTypeequals = (A%v .eq. B%v)
+  end function
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT:: SNESConvergedReasonnotequals
+!DEC$ ATTRIBUTES DLLEXPORT:: SNESConvergedReasonequals
+#endif
+
+  function SNESConvergedReasonnotequals(A,B)
+    logical SNESConvergedReasonnotequals
+    type(eSNESConvergedReason), intent(in) :: A,B
+    SNESConvergedReasonnotequals = (A%v .ne. B%v)
+  end function
+  function SNESConvergedReasonequals(A,B)
+    logical SNESConvergedReasonequals
+    type(eSNESConvergedReason), intent(in) :: A,B
+    SNESConvergedReasonequals = (A%v .eq. B%v)
+  end function
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT:: SNESNormSchedulenotequals
+!DEC$ ATTRIBUTES DLLEXPORT:: SNESNormScheduleequals
+#endif
+
+  function SNESNormSchedulenotequals(A,B)
+    logical SNESNormSchedulenotequals
+    type(eSNESNormSchedule), intent(in) :: A,B
+    SNESNormSchedulenotequals = (A%v .ne. B%v)
+  end function
+  function SNESNormScheduleequals(A,B)
+    logical SNESNormScheduleequals
+    type(eSNESNormSchedule), intent(in) :: A,B
+    SNESNormScheduleequals = (A%v .eq. B%v)
+  end function
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT:: SNESFunctionTypenotequals
+!DEC$ ATTRIBUTES DLLEXPORT:: SNESFunctionTypeequals
+#endif
+
+  function SNESFunctionTypenotequals(A,B)
+    logical SNESFunctionTypenotequals
+    type(eSNESFunctionType), intent(in) :: A,B
+    SNESFunctionTypenotequals = (A%v .ne. B%v)
+  end function
+  function SNESFunctionTypeequals(A,B)
+    logical SNESFunctionTypeequals
+    type(eSNESFunctionType), intent(in) :: A,B
+    SNESFunctionTypeequals = (A%v .eq. B%v)
+  end function
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT:: SNESLineSearchReasonnotequals
+!DEC$ ATTRIBUTES DLLEXPORT:: SNESLineSearchReasonequals
+#endif
+
+  function SNESLineSearchReasonnotequals(A,B)
+    logical SNESLineSearchReasonnotequals
+    type(eSNESLineSearchReason), intent(in) :: A,B
+    SNESLineSearchReasonnotequals = (A%v .ne. B%v)
+  end function
+  function SNESLineSearchReasonequals(A,B)
+    logical SNESLineSearchReasonequals
+    type(eSNESLineSearchReason), intent(in) :: A,B
+    SNESLineSearchReasonequals = (A%v .eq. B%v)
+  end function
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT:: SNESNGMRESRestartTypenotequals
+!DEC$ ATTRIBUTES DLLEXPORT:: SNESNGMRESRestartTypeequals
+#endif
+
+  function SNESNGMRESRestartTypenotequals(A,B)
+    logical SNESNGMRESRestartTypenotequals
+    type(eSNESNGMRESRestartType), intent(in) :: A,B
+    SNESNGMRESRestartTypenotequals = (A%v .ne. B%v)
+  end function
+  function SNESNGMRESRestartTypeequals(A,B)
+    logical SNESNGMRESRestartTypeequals
+    type(eSNESNGMRESRestartType), intent(in) :: A,B
+    SNESNGMRESRestartTypeequals = (A%v .eq. B%v)
+  end function
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT:: SNESNGMRESSelectTypenotequals
+!DEC$ ATTRIBUTES DLLEXPORT:: SNESNGMRESSelectTypeequals
+#endif
+
+  function SNESNGMRESSelectTypenotequals(A,B)
+    logical SNESNGMRESSelectTypenotequals
+    type(eSNESNGMRESSelectType), intent(in) :: A,B
+    SNESNGMRESSelectTypenotequals = (A%v .ne. B%v)
+  end function
+  function SNESNGMRESSelectTypeequals(A,B)
+    logical SNESNGMRESSelectTypeequals
+    type(eSNESNGMRESSelectType), intent(in) :: A,B
+    SNESNGMRESSelectTypeequals = (A%v .eq. B%v)
+  end function
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT:: SNESNCGTypenotequals
+!DEC$ ATTRIBUTES DLLEXPORT:: SNESNCGTypeequals
+#endif
+
+  function SNESNCGTypenotequals(A,B)
+    logical SNESNCGTypenotequals
+    type(eSNESNCGType), intent(in) :: A,B
+    SNESNCGTypenotequals = (A%v .ne. B%v)
+  end function
+  function SNESNCGTypeequals(A,B)
+    logical SNESNCGTypeequals
+    type(eSNESNCGType), intent(in) :: A,B
+    SNESNCGTypeequals = (A%v .eq. B%v)
+  end function
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT:: SNESQNScaleTypenotequals
+!DEC$ ATTRIBUTES DLLEXPORT:: SNESQNScaleTypeequals
+#endif
+
+  function SNESQNScaleTypenotequals(A,B)
+    logical SNESQNScaleTypenotequals
+    type(eSNESQNScaleType), intent(in) :: A,B
+    SNESQNScaleTypenotequals = (A%v .ne. B%v)
+  end function
+  function SNESQNScaleTypeequals(A,B)
+    logical SNESQNScaleTypeequals
+    type(eSNESQNScaleType), intent(in) :: A,B
+    SNESQNScaleTypeequals = (A%v .eq. B%v)
+  end function
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT:: SNESQNRestartTypenotequals
+!DEC$ ATTRIBUTES DLLEXPORT:: SNESQNRestartTypeequals
+#endif
+
+  function SNESQNRestartTypenotequals(A,B)
+    logical SNESQNRestartTypenotequals
+    type(eSNESQNRestartType), intent(in) :: A,B
+    SNESQNRestartTypenotequals = (A%v .ne. B%v)
+  end function
+  function SNESQNRestartTypeequals(A,B)
+    logical SNESQNRestartTypeequals
+    type(eSNESQNRestartType), intent(in) :: A,B
+    SNESQNRestartTypeequals = (A%v .eq. B%v)
+  end function
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT:: SNESQNTypenotequals
+!DEC$ ATTRIBUTES DLLEXPORT:: SNESQNTypeequals
+#endif
+
+  function SNESQNTypenotequals(A,B)
+    logical SNESQNTypenotequals
+    type(eSNESQNType), intent(in) :: A,B
+    SNESQNTypenotequals = (A%v .ne. B%v)
+  end function
+  function SNESQNTypeequals(A,B)
+    logical SNESQNTypeequals
+    type(eSNESQNType), intent(in) :: A,B
+    SNESQNTypeequals = (A%v .eq. B%v)
+  end function
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT:: SNESCompositeTypenotequals
+!DEC$ ATTRIBUTES DLLEXPORT:: SNESCompositeTypeequals
+#endif
+
+  function SNESCompositeTypenotequals(A,B)
+    logical SNESCompositeTypenotequals
+    type(eSNESCompositeType), intent(in) :: A,B
+    SNESCompositeTypenotequals = (A%v .ne. B%v)
+  end function
+  function SNESCompositeTypeequals(A,B)
+    logical SNESCompositeTypeequals
+    type(eSNESCompositeType), intent(in) :: A,B
+    SNESCompositeTypeequals = (A%v .eq. B%v)
+  end function
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT:: SNESFASTypenotequals
+!DEC$ ATTRIBUTES DLLEXPORT:: SNESFASTypeequals
+#endif
+
+  function SNESFASTypenotequals(A,B)
+    logical SNESFASTypenotequals
+    type(eSNESFASType), intent(in) :: A,B
+    SNESFASTypenotequals = (A%v .ne. B%v)
+  end function
+  function SNESFASTypeequals(A,B)
+    logical SNESFASTypeequals
+    type(eSNESFASType), intent(in) :: A,B
+    SNESFASTypeequals = (A%v .eq. B%v)
+  end function
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT:: SNESNewtonALCorrectionTypenotequals
+!DEC$ ATTRIBUTES DLLEXPORT:: SNESNewtonALCorrectionTypeequals
+#endif
+
+  function SNESNewtonALCorrectionTypenotequals(A,B)
+    logical SNESNewtonALCorrectionTypenotequals
+    type(eSNESNewtonALCorrectionType), intent(in) :: A,B
+    SNESNewtonALCorrectionTypenotequals = (A%v .ne. B%v)
+  end function
+  function SNESNewtonALCorrectionTypeequals(A,B)
+    logical SNESNewtonALCorrectionTypeequals
+    type(eSNESNewtonALCorrectionType), intent(in) :: A,B
+    SNESNewtonALCorrectionTypeequals = (A%v .eq. B%v)
+  end function

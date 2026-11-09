@@ -1,0 +1,200 @@
+--------------------
+./configure
+Fri Sep 11 14:30:59 CEST 2026
+=== ztest20348.c ===
+extern int getchar();
+int hello() {return getchar();}
+===
+/Users/7092946/Desktop/GitHub/ISSM/externalpackages/petsc/install/bin/mpicc -c ztest20348.c
+... using gcc
+
+Checking for compiler...
+=== ztest20348.c ===
+int foo() { return 0; }
+===
+/Users/7092946/Desktop/GitHub/ISSM/externalpackages/petsc/install/bin/mpicc -c ztest20348.c
+Checking for obsessive-compulsive compiler options...
+=== ztest20348.c ===
+int foo() { return 0; }
+===
+/Users/7092946/Desktop/GitHub/ISSM/externalpackages/petsc/install/bin/mpicc -c -Wno-sign-conversion -Wno-float-conversion -Wno-implicit-float-conversion -Qunused-arguments -fno-stack-check -O0 -g -fPIC ztest20348.c
+
+Checking for shared library support...
+=== ztest20348.c ===
+extern int getchar();
+int hello() {return getchar();}
+===
+/Users/7092946/Desktop/GitHub/ISSM/externalpackages/petsc/install/bin/mpicc -c -Wno-sign-conversion -Wno-float-conversion -Wno-implicit-float-conversion -Qunused-arguments -fno-stack-check -O0 -g -fPIC ztest20348.c
+/Users/7092946/Desktop/GitHub/ISSM/externalpackages/petsc/install/bin/mpicc -dynamiclib -install_name ${exec_prefix}/lib/libz.1.dylib -compatibility_version 1 -current_version 1.3.2 -Wno-sign-conversion -Wno-float-conversion -Wno-implicit-float-conversion -Qunused-arguments -fno-stack-check -O0 -g -fPIC -o ztest20348.dylib ztest20348.o
+Building shared library libz.1.3.2.dylib with /Users/7092946/Desktop/GitHub/ISSM/externalpackages/petsc/install/bin/mpicc.
+
+=== ztest20348.c ===
+#include <stdio.h>
+#include <stdlib.h>
+size_t dummy = 0;
+===
+/Users/7092946/Desktop/GitHub/ISSM/externalpackages/petsc/install/bin/mpicc -c -Wno-sign-conversion -Wno-float-conversion -Wno-implicit-float-conversion -Qunused-arguments -fno-stack-check -O0 -g -fPIC ztest20348.c
+Checking for size_t... Yes.
+
+=== ztest20348.c ===
+#include <sys/types.h>
+off64_t dummy = 0;
+===
+/Users/7092946/Desktop/GitHub/ISSM/externalpackages/petsc/install/bin/mpicc -c -Wno-sign-conversion -Wno-float-conversion -Wno-implicit-float-conversion -Qunused-arguments -fno-stack-check -O0 -g -fPIC -D_LARGEFILE64_SOURCE=1 ztest20348.c
+ztest20348.c:2:1: error: unknown type name 'off64_t'; did you mean 'off_t'?
+    2 | off64_t dummy = 0;
+      | ^~~~~~~
+      | off_t
+/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_off_t.h:31:33: note: 'off_t' declared here
+   31 | typedef __darwin_off_t          off_t;
+      |                                 ^
+1 error generated.
+(exit code 1)
+Checking for off64_t... No.
+
+=== ztest20348.c ===
+#include <stdio.h>
+int main(void) {
+  fseeko(NULL, 0, 0);
+  return 0;
+}
+===
+/Users/7092946/Desktop/GitHub/ISSM/externalpackages/petsc/install/bin/mpicc -Wno-sign-conversion -Wno-float-conversion -Wno-implicit-float-conversion -Qunused-arguments -fno-stack-check -O0 -g -fPIC -o ztest20348 ztest20348.c
+Checking for fseeko... Yes.
+
+=== ztest20348.c ===
+#include <string.h>
+#include <errno.h>
+int main() { return strlen(strerror(errno)); }
+===
+/Users/7092946/Desktop/GitHub/ISSM/externalpackages/petsc/install/bin/mpicc -Wno-sign-conversion -Wno-float-conversion -Wno-implicit-float-conversion -Qunused-arguments -fno-stack-check -O0 -g -fPIC -o ztest20348 ztest20348.c
+Checking for strerror... Yes.
+
+=== ztest20348.c ===
+#include <unistd.h>
+int main() { return 0; }
+===
+/Users/7092946/Desktop/GitHub/ISSM/externalpackages/petsc/install/bin/mpicc -c -Wno-sign-conversion -Wno-float-conversion -Wno-implicit-float-conversion -Qunused-arguments -fno-stack-check -O0 -g -fPIC ztest20348.c
+Checking for unistd.h... Yes.
+
+=== ztest20348.c ===
+#include <stdarg.h>
+int main() { return 0; }
+===
+/Users/7092946/Desktop/GitHub/ISSM/externalpackages/petsc/install/bin/mpicc -c -Wno-sign-conversion -Wno-float-conversion -Wno-implicit-float-conversion -Qunused-arguments -fno-stack-check -O0 -g -fPIC ztest20348.c
+Checking for stdarg.h... Yes.
+
+=== ztest20348.c ===
+#include <stdio.h>
+#include <stdarg.h>
+#include "zconf.h"
+int main()
+{
+#ifndef STDC
+  choke me
+#endif
+  return 0;
+}
+===
+/Users/7092946/Desktop/GitHub/ISSM/externalpackages/petsc/install/bin/mpicc -c -Wno-sign-conversion -Wno-float-conversion -Wno-implicit-float-conversion -Qunused-arguments -fno-stack-check -O0 -g -fPIC ztest20348.c
+Checking whether to use vs[n]printf() or s[n]printf()... using vs[n]printf().
+
+=== ztest20348.c ===
+#include <stdio.h>
+#include <stdarg.h>
+int mytest(const char *fmt, ...)
+{
+  char buf[20];
+  va_list ap;
+  va_start(ap, fmt);
+  vsnprintf(buf, sizeof(buf), fmt, ap);
+  va_end(ap);
+  return 0;
+}
+int main()
+{
+  return (mytest("Hello%d\n", 1));
+}
+===
+/Users/7092946/Desktop/GitHub/ISSM/externalpackages/petsc/install/bin/mpicc -Wno-sign-conversion -Wno-float-conversion -Wno-implicit-float-conversion -Qunused-arguments -fno-stack-check -O0 -g -fPIC -o ztest20348 ztest20348.c
+Checking for vsnprintf() in stdio.h... Yes.
+
+=== ztest20348.c ===
+#include <stdio.h>
+#include <stdarg.h>
+int mytest(const char *fmt, ...)
+{
+  int n;
+  char buf[20];
+  va_list ap;
+  va_start(ap, fmt);
+  n = vsnprintf(buf, sizeof(buf), fmt, ap);
+  va_end(ap);
+  return n;
+}
+int main()
+{
+  return (mytest("Hello%d\n", 1));
+}
+===
+/Users/7092946/Desktop/GitHub/ISSM/externalpackages/petsc/install/bin/mpicc -c -Wno-sign-conversion -Wno-float-conversion -Wno-implicit-float-conversion -Qunused-arguments -fno-stack-check -O0 -g -fPIC ztest20348.c
+Checking for return value of vsnprintf()... Yes.
+
+=== ztest20348.c ===
+#define ZLIB_INTERNAL __attribute__((visibility ("hidden")))
+int ZLIB_INTERNAL foo;
+int main()
+{
+  return 0;
+}
+===
+/Users/7092946/Desktop/GitHub/ISSM/externalpackages/petsc/install/bin/mpicc -c -Wno-sign-conversion -Wno-float-conversion -Wno-implicit-float-conversion -Qunused-arguments -fno-stack-check -O0 -g -fPIC ztest20348.c
+Checking for attribute(visibility) support... Yes.
+=== ztest20348.c ===
+#ifndef __s390x__
+    #error
+#endif
+===
+/Users/7092946/Desktop/GitHub/ISSM/externalpackages/petsc/install/bin/mpicc -c -Wno-sign-conversion -Wno-float-conversion -Wno-implicit-float-conversion -Qunused-arguments -fno-stack-check -O0 -g -fPIC -DHAVE_HIDDEN ztest20348.c
+ztest20348.c:2:6: error: 
+    2 |     #error
+      |      ^
+1 error generated.
+(exit code 1)
+Checking for s390x build ... No.
+
+ALL = static shared
+AR = libtool
+ARFLAGS = -o
+CC = /Users/7092946/Desktop/GitHub/ISSM/externalpackages/petsc/install/bin/mpicc
+CFLAGS = -Wno-sign-conversion -Wno-float-conversion -Wno-implicit-float-conversion -Qunused-arguments -fno-stack-check -O0 -g -fPIC -DHAVE_HIDDEN
+CPP =
+EXE =
+LDCONFIG = ldconfig
+LDFLAGS =
+LDSHARED = /Users/7092946/Desktop/GitHub/ISSM/externalpackages/petsc/install/bin/mpicc -dynamiclib -install_name ${exec_prefix}/lib/libz.1.dylib -compatibility_version 1 -current_version 1.3.2
+LDSHAREDLIBC = -lc
+OBJC = $(OBJZ) $(OBJG)
+PIC_OBJC = $(PIC_OBJZ) $(PIC_OBJG)
+RANLIB = ranlib
+SFLAGS = -Wno-sign-conversion -Wno-float-conversion -Wno-implicit-float-conversion -Qunused-arguments -fno-stack-check -O0 -g -fPIC -DHAVE_HIDDEN
+SHAREDLIB = libz.dylib
+SHAREDLIBM = libz.1.dylib
+SHAREDLIBV = libz.1.3.2.dylib
+STATICLIB = libz.a
+TEST = all teststatic testshared
+VER = 1.3.2
+SRCDIR =
+exec_prefix = ${prefix}
+includedir = ${prefix}/include
+libdir = ${exec_prefix}/lib
+mandir = ${prefix}/share/man
+prefix = /Users/7092946/Desktop/GitHub/ISSM/externalpackages/petsc/install
+sharedlibdir = ${libdir}
+uname = Darwin
+HAVE_S390X = 0
+HAVE_S390X_VX = 0
+VGFMAFLAG =
+--------------------
+
+

@@ -1,0 +1,339 @@
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT:: PetscDualSpacenotequals
+!DEC$ ATTRIBUTES DLLEXPORT:: PetscDualSpaceequals
+#endif
+
+  function PetscDualSpacenotequals(A,B)
+    logical PetscDualSpacenotequals
+    type(tPetscDualSpace), intent(in) :: A,B
+    PetscDualSpacenotequals = (A%v .ne. B%v)
+  end function
+  function PetscDualSpaceequals(A,B)
+    logical PetscDualSpaceequals
+    type(tPetscDualSpace), intent(in) :: A,B
+    PetscDualSpaceequals = (A%v .eq. B%v)
+  end function
+  function PetscObjectCastDualSpace(obj)
+    PetscDualSpace obj
+    PetscObject PetscObjectCastDualSpace
+    PetscObjectCastDualSpace%v = obj%v
+  end function 
+  subroutine PetscBarrierDualSpace(obj,ierr)
+    PetscDualSpace obj
+    PetscErrorCode ierr
+    call PetscBarrier(PetscObjectCast(obj),ierr)
+  end subroutine 
+#if defined(PETSC_HAVE_SAWS)
+  subroutine PetscObjectSAWsTakeAccessDualSpace(obj, ierr)
+  PetscDualSpace obj
+  PetscErrorCode ierr
+  call PetscObjectSAWsTakeAccess(PetscObjectCast(obj), ierr)
+  end subroutine 
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  subroutine PetscObjectSAWsGrantAccessDualSpace(obj, ierr)
+  PetscDualSpace obj
+  PetscErrorCode ierr
+  call PetscObjectSAWsGrantAccess(PetscObjectCast(obj), ierr)
+  end subroutine 
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  subroutine PetscObjectSAWsBlockDualSpace(obj, ierr)
+  PetscDualSpace obj
+  PetscErrorCode ierr
+  call PetscObjectSAWsBlock(PetscObjectCast(obj), ierr)
+  end subroutine 
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  subroutine PetscObjectSAWsSetBlockDualSpace(obj, flg, ierr)
+  PetscDualSpace obj
+  PetscBool :: flg
+  PetscErrorCode ierr
+  call PetscObjectSAWsSetBlock(PetscObjectCast(obj), flg, ierr)
+  end subroutine 
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  subroutine PetscObjectSAWsViewOffDualSpace(obj, ierr)
+  PetscDualSpace obj
+  PetscErrorCode ierr
+  call PetscObjectSAWsViewOff(PetscObjectCast(obj), ierr)
+  end subroutine 
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  subroutine PetscObjectViewSAWsDualSpace(obj, viewer, ierr)
+  PetscDualSpace obj
+  PetscViewer :: viewer
+  PetscErrorCode ierr
+  call PetscObjectViewSAWs(PetscObjectCast(obj), viewer, ierr)
+  end subroutine 
+#endif
+  subroutine PetscObjectGetTypeDualSpace(obj, type, ierr)
+  PetscDualSpace obj
+  character(*) :: type
+  PetscErrorCode ierr
+  call PetscObjectGetType(PetscObjectCast(obj), type, ierr)
+  end subroutine 
+  subroutine PetscObjectSetPrintedOptionsDualSpace(obj, ierr)
+  PetscDualSpace obj
+  PetscErrorCode ierr
+  call PetscObjectSetPrintedOptions(PetscObjectCast(obj), ierr)
+  end subroutine 
+  subroutine PetscObjectInheritPrintedOptionsDualSpace(pobj, obj, ierr)
+  PetscDualSpace pobj
+  PetscObject :: obj
+  PetscErrorCode ierr
+  call PetscObjectInheritPrintedOptions(PetscObjectCast(pobj), obj, ierr)
+  end subroutine 
+  subroutine PetscObjectAddOptionsHandlerDualSpace(obj, handle, destroy, ctx, ierr)
+  PetscDualSpace obj
+  external :: handle
+  external :: destroy
+  type(*) :: ctx
+  PetscErrorCode ierr
+  call PetscObjectAddOptionsHandler(PetscObjectCast(obj), handle, destroy, ctx, ierr)
+  end subroutine 
+  subroutine PetscObjectProcessOptionsHandlersDualSpace(obj, PetscOptionsObject, ierr)
+  PetscDualSpace obj
+  PetscOptionItems :: PetscOptionsObject
+  PetscErrorCode ierr
+  call PetscObjectProcessOptionsHandlers(PetscObjectCast(obj), PetscOptionsObject, ierr)
+  end subroutine 
+  subroutine PetscObjectDestroyOptionsHandlersDualSpace(obj, ierr)
+  PetscDualSpace obj
+  PetscErrorCode ierr
+  call PetscObjectDestroyOptionsHandlers(PetscObjectCast(obj), ierr)
+  end subroutine 
+  subroutine PetscObjectReferenceDualSpace(obj, ierr)
+  PetscDualSpace obj
+  PetscErrorCode ierr
+  call PetscObjectReference(PetscObjectCast(obj), ierr)
+  end subroutine 
+  subroutine PetscObjectGetReferenceDualSpace(obj, cnt, ierr)
+  PetscDualSpace obj
+  PetscInt :: cnt
+  PetscErrorCode ierr
+  call PetscObjectGetReference(PetscObjectCast(obj), cnt, ierr)
+  end subroutine 
+  subroutine PetscObjectDereferenceDualSpace(obj, ierr)
+  PetscDualSpace obj
+  PetscErrorCode ierr
+  call PetscObjectDereference(PetscObjectCast(obj), ierr)
+  end subroutine 
+  subroutine PetscObjectRemoveReferenceDualSpace(obj, name, ierr)
+  PetscDualSpace obj
+  character(*) :: name
+  PetscErrorCode ierr
+  call PetscObjectRemoveReference(PetscObjectCast(obj), name, ierr)
+  end subroutine 
+  subroutine PetscObjectHasFunctionDualSpace(obj, name, has, ierr)
+  PetscDualSpace obj
+  character(*) :: name
+  PetscBool :: has
+  PetscErrorCode ierr
+  call PetscObjectHasFunction(PetscObjectCast(obj), name, has, ierr)
+  end subroutine 
+  subroutine PetscObjectSetFromOptionsDualSpace(obj, ierr)
+  PetscDualSpace obj
+  PetscErrorCode ierr
+  call PetscObjectSetFromOptions(PetscObjectCast(obj), ierr)
+  end subroutine 
+  subroutine PetscObjectSetUpDualSpace(obj, ierr)
+  PetscDualSpace obj
+  PetscErrorCode ierr
+  call PetscObjectSetUp(PetscObjectCast(obj), ierr)
+  end subroutine 
+  subroutine PetscObjectGetNameDualSpace(obj, name, ierr)
+  PetscDualSpace obj
+  character(*) :: name
+  PetscErrorCode ierr
+  call PetscObjectGetName(PetscObjectCast(obj), name, ierr)
+  end subroutine 
+  subroutine PetscObjectDestroyDualSpace(obj, ierr)
+  PetscDualSpace obj
+  PetscErrorCode ierr
+  call PetscObjectDestroy(PetscObjectCast(obj), ierr)
+  end subroutine 
+  subroutine PetscObjectViewDualSpace(obj, viewer, ierr)
+  PetscDualSpace obj
+  PetscViewer :: viewer
+  PetscErrorCode ierr
+  call PetscObjectView(PetscObjectCast(obj), viewer, ierr)
+  end subroutine 
+  subroutine PetscObjectViewFromOptionsDualSpace(obj, bobj, name, ierr)
+  PetscDualSpace obj
+  PetscObject :: bobj
+  character(*) :: name
+  PetscErrorCode ierr
+  call PetscObjectViewFromOptions(PetscObjectCast(obj), bobj, name, ierr)
+  end subroutine 
+  subroutine PetscObjectTypeCompareDualSpace(obj, type_name, same, ierr)
+  PetscDualSpace obj
+  character(*) :: type_name
+  PetscBool :: same
+  PetscErrorCode ierr
+  call PetscObjectTypeCompare(PetscObjectCast(obj), type_name, same, ierr)
+  end subroutine 
+  subroutine PetscObjectObjectTypeCompareDualSpace(obj1, obj2, same, ierr)
+  PetscDualSpace obj1
+  PetscObject :: obj2
+  PetscBool :: same
+  PetscErrorCode ierr
+  call PetscObjectObjectTypeCompare(PetscObjectCast(obj1), obj2, same, ierr)
+  end subroutine 
+  subroutine PetscObjectBaseTypeCompareDualSpace(obj, type_name, same, ierr)
+  PetscDualSpace obj
+  character(*) :: type_name
+  PetscBool :: same
+  PetscErrorCode ierr
+  call PetscObjectBaseTypeCompare(PetscObjectCast(obj), type_name, same, ierr)
+  end subroutine 
+  subroutine PetscObjectRegisterDestroyDualSpace(obj, ierr)
+  PetscDualSpace obj
+  PetscErrorCode ierr
+  call PetscObjectRegisterDestroy(PetscObjectCast(obj), ierr)
+  end subroutine 
+  subroutine PetscObjectGetIdDualSpace(obj, id, ierr)
+  PetscDualSpace obj
+  PetscObjectId :: id
+  PetscErrorCode ierr
+  call PetscObjectGetId(PetscObjectCast(obj), id, ierr)
+  end subroutine 
+  subroutine PetscObjectCompareIdDualSpace(obj, id, eq, ierr)
+  PetscDualSpace obj
+  PetscObjectId :: id
+  PetscBool :: eq
+  PetscErrorCode ierr
+  call PetscObjectCompareId(PetscObjectCast(obj), id, eq, ierr)
+  end subroutine 
+  subroutine PetscObjectGetOptionsDualSpace(obj, options, ierr)
+  PetscDualSpace obj
+  PetscOptions :: options
+  PetscErrorCode ierr
+  call PetscObjectGetOptions(PetscObjectCast(obj), options, ierr)
+  end subroutine 
+  subroutine PetscObjectSetOptionsDualSpace(obj, options, ierr)
+  PetscDualSpace obj
+  PetscOptions :: options
+  PetscErrorCode ierr
+  call PetscObjectSetOptions(PetscObjectCast(obj), options, ierr)
+  end subroutine 
+  subroutine PetscObjectSetOptionsPrefixDualSpace(obj, prefix, ierr)
+  PetscDualSpace obj
+  character(*) :: prefix
+  PetscErrorCode ierr
+  call PetscObjectSetOptionsPrefix(PetscObjectCast(obj), prefix, ierr)
+  end subroutine 
+  subroutine PetscObjectAppendOptionsPrefixDualSpace(obj, prefix, ierr)
+  PetscDualSpace obj
+  character(*) :: prefix
+  PetscErrorCode ierr
+  call PetscObjectAppendOptionsPrefix(PetscObjectCast(obj), prefix, ierr)
+  end subroutine 
+  subroutine PetscObjectGetOptionsPrefixDualSpace(obj, prefix, ierr)
+  PetscDualSpace obj
+  character(*) :: prefix
+  PetscErrorCode ierr
+  call PetscObjectGetOptionsPrefix(PetscObjectCast(obj), prefix, ierr)
+  end subroutine 
+  subroutine PetscObjectPrependOptionsPrefixDualSpace(obj, prefix, ierr)
+  PetscDualSpace obj
+  character(*) :: prefix
+  PetscErrorCode ierr
+  call PetscObjectPrependOptionsPrefix(PetscObjectCast(obj), prefix, ierr)
+  end subroutine 
+  subroutine PetscObjectGetCommDualSpace(obj, comm, ierr)
+  PetscDualSpace obj
+  MPIU_Comm :: comm
+  PetscErrorCode ierr
+  call PetscObjectGetComm(PetscObjectCast(obj), comm, ierr)
+  end subroutine 
+  subroutine PetscObjectGetTabLevelDualSpace(obj, tab, ierr)
+  PetscDualSpace obj
+  PetscInt :: tab
+  PetscErrorCode ierr
+  call PetscObjectGetTabLevel(PetscObjectCast(obj), tab, ierr)
+  end subroutine 
+  subroutine PetscObjectSetTabLevelDualSpace(obj, tab, ierr)
+  PetscDualSpace obj
+  PetscInt :: tab
+  PetscErrorCode ierr
+  call PetscObjectSetTabLevel(PetscObjectCast(obj), tab, ierr)
+  end subroutine 
+  subroutine PetscObjectIncrementTabLevelDualSpace(obj, oldobj, tab, ierr)
+  PetscDualSpace obj
+  PetscObject :: oldobj
+  PetscInt :: tab
+  PetscErrorCode ierr
+  call PetscObjectIncrementTabLevel(PetscObjectCast(obj), oldobj, tab, ierr)
+  end subroutine 
+  subroutine PetscObjectGetNewTagDualSpace(obj, tag, ierr)
+  PetscDualSpace obj
+  PetscMPIInt :: tag
+  PetscErrorCode ierr
+  call PetscObjectGetNewTag(PetscObjectCast(obj), tag, ierr)
+  end subroutine 
+  subroutine PetscObjectGetClassIdDualSpace(obj, classid, ierr)
+  PetscDualSpace obj
+  PetscClassId :: classid
+  PetscErrorCode ierr
+  call PetscObjectGetClassId(PetscObjectCast(obj), classid, ierr)
+  end subroutine 
+  subroutine PetscObjectGetClassNameDualSpace(obj, classname, ierr)
+  PetscDualSpace obj
+  character(*) :: classname
+  PetscErrorCode ierr
+  call PetscObjectGetClassName(PetscObjectCast(obj), classname, ierr)
+  end subroutine 
+  subroutine PetscObjectSetNameDualSpace(obj, name, ierr)
+  PetscDualSpace obj
+  character(*) :: name
+  PetscErrorCode ierr
+  call PetscObjectSetName(PetscObjectCast(obj), name, ierr)
+  end subroutine 
+  subroutine PetscObjectPrintClassNamePrefixTypeDualSpace(obj, viewer, ierr)
+  PetscDualSpace obj
+  PetscViewer :: viewer
+  PetscErrorCode ierr
+  call PetscObjectPrintClassNamePrefixType(PetscObjectCast(obj), viewer, ierr)
+  end subroutine 
+  subroutine PetscObjectNameDualSpace(obj, ierr)
+  PetscDualSpace obj
+  PetscErrorCode ierr
+  call PetscObjectName(PetscObjectCast(obj), ierr)
+  end subroutine 
+  subroutine PetscObjectChangeTypeNameDualSpace(obj, type_name, ierr)
+  PetscDualSpace obj
+  character(*) :: type_name
+  PetscErrorCode ierr
+  call PetscObjectChangeTypeName(PetscObjectCast(obj), type_name, ierr)
+  end subroutine 
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT:: PetscDualSpaceReferenceCellnotequals
+!DEC$ ATTRIBUTES DLLEXPORT:: PetscDualSpaceReferenceCellequals
+#endif
+
+  function PetscDualSpaceReferenceCellnotequals(A,B)
+    logical PetscDualSpaceReferenceCellnotequals
+    type(ePetscDualSpaceReferenceCell), intent(in) :: A,B
+    PetscDualSpaceReferenceCellnotequals = (A%v .ne. B%v)
+  end function
+  function PetscDualSpaceReferenceCellequals(A,B)
+    logical PetscDualSpaceReferenceCellequals
+    type(ePetscDualSpaceReferenceCell), intent(in) :: A,B
+    PetscDualSpaceReferenceCellequals = (A%v .eq. B%v)
+  end function
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT:: PetscDualSpaceTransformTypenotequals
+!DEC$ ATTRIBUTES DLLEXPORT:: PetscDualSpaceTransformTypeequals
+#endif
+
+  function PetscDualSpaceTransformTypenotequals(A,B)
+    logical PetscDualSpaceTransformTypenotequals
+    type(ePetscDualSpaceTransformType), intent(in) :: A,B
+    PetscDualSpaceTransformTypenotequals = (A%v .ne. B%v)
+  end function
+  function PetscDualSpaceTransformTypeequals(A,B)
+    logical PetscDualSpaceTransformTypeequals
+    type(ePetscDualSpaceTransformType), intent(in) :: A,B
+    PetscDualSpaceTransformTypeequals = (A%v .eq. B%v)
+  end function

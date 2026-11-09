@@ -1,0 +1,543 @@
+  interface
+  subroutine PetscDeviceCreate(type,devid,device, ierr)
+  use, intrinsic :: ISO_C_binding
+  import ePetscDeviceType,tPetscDevice
+  PetscDeviceType :: type
+  PetscInt :: devid
+  PetscDevice :: device
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDeviceCreate
+#endif
+  interface
+  subroutine PetscDeviceDestroy(device, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDevice
+  PetscDevice :: device
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDeviceDestroy
+#endif
+  interface
+  subroutine PetscDeviceConfigure(device, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDevice
+  PetscDevice :: device
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDeviceConfigure
+#endif
+  interface
+  subroutine PetscDeviceView(device,viewer, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDevice,tPetscViewer
+  PetscDevice :: device
+  PetscViewer :: viewer
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDeviceView
+#endif
+  interface
+  subroutine PetscDeviceGetType(device,type, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDevice,ePetscDeviceType
+  PetscDevice :: device
+  PetscDeviceType :: type
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDeviceGetType
+#endif
+  interface
+  subroutine PetscDeviceGetDeviceId(device,id, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDevice
+  PetscDevice :: device
+  PetscInt :: id
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDeviceGetDeviceId
+#endif
+  interface
+  subroutine PetscDeviceSetDefaultDeviceType(type, ierr)
+  use, intrinsic :: ISO_C_binding
+  import ePetscDeviceType
+  PetscDeviceType :: type
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDeviceSetDefaultDeviceType
+#endif
+  interface
+  subroutine PetscDeviceInitialize(type, ierr)
+  use, intrinsic :: ISO_C_binding
+  import ePetscDeviceType
+  PetscDeviceType :: type
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDeviceInitialize
+#endif
+  interface
+  subroutine PetscDeviceFinalizePackage(ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDeviceFinalizePackage
+#endif
+  interface
+  subroutine PetscDeviceInitializePackage(ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDeviceInitializePackage
+#endif
+  interface operator(.ne.)
+    module procedure PetscDevicenotequals
+  end interface operator (.ne.)
+  interface operator(.eq.)
+    module procedure PetscDeviceequals
+  end interface operator (.eq.)
+
+  interface
+  subroutine PetscDeviceContextGetCurrentContext(dctx, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDeviceContext
+  PetscDeviceContext :: dctx
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDeviceContextGetCurrentContext
+#endif
+  interface
+  subroutine PetscDeviceContextSetCurrentContext(dctx, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDeviceContext
+  PetscDeviceContext :: dctx
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDeviceContextSetCurrentContext
+#endif
+  interface
+  subroutine PetscDeviceContextCreate(dctx, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDeviceContext
+  PetscDeviceContext :: dctx
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDeviceContextCreate
+#endif
+  interface
+  subroutine PetscDeviceContextDestroy(dctx, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDeviceContext
+  PetscDeviceContext :: dctx
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDeviceContextDestroy
+#endif
+  interface
+  subroutine PetscDeviceContextSetStreamType(dctx,type, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDeviceContext,ePetscStreamType
+  PetscDeviceContext :: dctx
+  PetscStreamType :: type
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDeviceContextSetStreamType
+#endif
+  interface
+  subroutine PetscDeviceContextGetStreamType(dctx,type, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDeviceContext,ePetscStreamType
+  PetscDeviceContext :: dctx
+  PetscStreamType :: type
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDeviceContextGetStreamType
+#endif
+  interface
+  subroutine PetscDeviceContextSetDevice(dctx,device, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDeviceContext,tPetscDevice
+  PetscDeviceContext :: dctx
+  PetscDevice :: device
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDeviceContextSetDevice
+#endif
+  interface
+  subroutine PetscDeviceContextGetDevice(dctx,device, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDeviceContext,tPetscDevice
+  PetscDeviceContext :: dctx
+  PetscDevice :: device
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDeviceContextGetDevice
+#endif
+  interface
+  subroutine PetscDeviceContextGetDeviceType(dctx,type, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDeviceContext,ePetscDeviceType
+  PetscDeviceContext :: dctx
+  PetscDeviceType :: type
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDeviceContextGetDeviceType
+#endif
+  interface
+  subroutine PetscDeviceContextSetUp(dctx, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDeviceContext
+  PetscDeviceContext :: dctx
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDeviceContextSetUp
+#endif
+  interface
+  subroutine PetscDeviceContextDuplicate(dctx,dctxdup, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDeviceContext
+  PetscDeviceContext :: dctx
+  PetscDeviceContext :: dctxdup
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDeviceContextDuplicate
+#endif
+  interface
+  subroutine PetscDeviceContextQueryIdle(dctx,idle, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDeviceContext
+  PetscDeviceContext :: dctx
+  PetscBool :: idle
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDeviceContextQueryIdle
+#endif
+  interface
+  subroutine PetscDeviceContextWaitForContext(dctxa,dctxb, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDeviceContext
+  PetscDeviceContext :: dctxa
+  PetscDeviceContext :: dctxb
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDeviceContextWaitForContext
+#endif
+  interface
+  subroutine PetscDeviceContextSynchronize(dctx, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDeviceContext
+  PetscDeviceContext :: dctx
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDeviceContextSynchronize
+#endif
+  interface
+  subroutine PetscDeviceContextSetFromOptions(comm,dctx, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDeviceContext
+  MPIU_Comm :: comm
+  PetscDeviceContext :: dctx
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDeviceContextSetFromOptions
+#endif
+  interface
+  subroutine PetscDeviceContextView(dctx,viewer, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDeviceContext,tPetscViewer
+  PetscDeviceContext :: dctx
+  PetscViewer :: viewer
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDeviceContextView
+#endif
+  interface
+  subroutine PetscDeviceContextViewFromOptions(dctx,obj,name, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDeviceContext,tPetscObject
+  PetscDeviceContext :: dctx
+  PetscObject :: obj
+  character(*) :: name
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDeviceContextViewFromOptions
+#endif
+  interface operator(.ne.)
+    module procedure PetscDeviceContextnotequals
+  end interface operator (.ne.)
+  interface operator(.eq.)
+    module procedure PetscDeviceContextequals
+  end interface operator (.eq.)
+
+  interface PetscObjectCast
+    module procedure PetscObjectCastDeviceContext
+  end interface
+  interface PetscBarrier
+  module procedure PetscBarrierDeviceContext
+  end interface
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectSAWsTakeAccess
+    module procedure PetscObjectSAWsTakeAccessDeviceContext
+  end interface
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectSAWsGrantAccess
+    module procedure PetscObjectSAWsGrantAccessDeviceContext
+  end interface
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectSAWsBlock
+    module procedure PetscObjectSAWsBlockDeviceContext
+  end interface
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectSAWsSetBlock
+    module procedure PetscObjectSAWsSetBlockDeviceContext
+  end interface
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectSAWsViewOff
+    module procedure PetscObjectSAWsViewOffDeviceContext
+  end interface
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectViewSAWs
+    module procedure PetscObjectViewSAWsDeviceContext
+  end interface
+#endif
+  interface PetscObjectGetType
+    module procedure PetscObjectGetTypeDeviceContext
+  end interface
+  interface PetscObjectSetPrintedOptions
+    module procedure PetscObjectSetPrintedOptionsDeviceContext
+  end interface
+  interface PetscObjectInheritPrintedOptions
+    module procedure PetscObjectInheritPrintedOptionsDeviceContext
+  end interface
+  interface PetscObjectAddOptionsHandler
+    module procedure PetscObjectAddOptionsHandlerDeviceContext
+  end interface
+  interface PetscObjectProcessOptionsHandlers
+    module procedure PetscObjectProcessOptionsHandlersDeviceContext
+  end interface
+  interface PetscObjectDestroyOptionsHandlers
+    module procedure PetscObjectDestroyOptionsHandlersDeviceContext
+  end interface
+  interface PetscObjectReference
+    module procedure PetscObjectReferenceDeviceContext
+  end interface
+  interface PetscObjectGetReference
+    module procedure PetscObjectGetReferenceDeviceContext
+  end interface
+  interface PetscObjectDereference
+    module procedure PetscObjectDereferenceDeviceContext
+  end interface
+  interface PetscObjectRemoveReference
+    module procedure PetscObjectRemoveReferenceDeviceContext
+  end interface
+  interface PetscObjectHasFunction
+    module procedure PetscObjectHasFunctionDeviceContext
+  end interface
+  interface PetscObjectSetFromOptions
+    module procedure PetscObjectSetFromOptionsDeviceContext
+  end interface
+  interface PetscObjectSetUp
+    module procedure PetscObjectSetUpDeviceContext
+  end interface
+  interface PetscObjectGetName
+    module procedure PetscObjectGetNameDeviceContext
+  end interface
+  interface PetscObjectDestroy
+    module procedure PetscObjectDestroyDeviceContext
+  end interface
+  interface PetscObjectView
+    module procedure PetscObjectViewDeviceContext
+  end interface
+  interface PetscObjectViewFromOptions
+    module procedure PetscObjectViewFromOptionsDeviceContext
+  end interface
+  interface PetscObjectTypeCompare
+    module procedure PetscObjectTypeCompareDeviceContext
+  end interface
+  interface PetscObjectObjectTypeCompare
+    module procedure PetscObjectObjectTypeCompareDeviceContext
+  end interface
+  interface PetscObjectBaseTypeCompare
+    module procedure PetscObjectBaseTypeCompareDeviceContext
+  end interface
+  interface PetscObjectRegisterDestroy
+    module procedure PetscObjectRegisterDestroyDeviceContext
+  end interface
+  interface PetscObjectGetId
+    module procedure PetscObjectGetIdDeviceContext
+  end interface
+  interface PetscObjectCompareId
+    module procedure PetscObjectCompareIdDeviceContext
+  end interface
+  interface PetscObjectGetOptions
+    module procedure PetscObjectGetOptionsDeviceContext
+  end interface
+  interface PetscObjectSetOptions
+    module procedure PetscObjectSetOptionsDeviceContext
+  end interface
+  interface PetscObjectSetOptionsPrefix
+    module procedure PetscObjectSetOptionsPrefixDeviceContext
+  end interface
+  interface PetscObjectAppendOptionsPrefix
+    module procedure PetscObjectAppendOptionsPrefixDeviceContext
+  end interface
+  interface PetscObjectGetOptionsPrefix
+    module procedure PetscObjectGetOptionsPrefixDeviceContext
+  end interface
+  interface PetscObjectPrependOptionsPrefix
+    module procedure PetscObjectPrependOptionsPrefixDeviceContext
+  end interface
+  interface PetscObjectGetComm
+    module procedure PetscObjectGetCommDeviceContext
+  end interface
+  interface PetscObjectGetTabLevel
+    module procedure PetscObjectGetTabLevelDeviceContext
+  end interface
+  interface PetscObjectSetTabLevel
+    module procedure PetscObjectSetTabLevelDeviceContext
+  end interface
+  interface PetscObjectIncrementTabLevel
+    module procedure PetscObjectIncrementTabLevelDeviceContext
+  end interface
+  interface PetscObjectGetNewTag
+    module procedure PetscObjectGetNewTagDeviceContext
+  end interface
+  interface PetscObjectGetClassId
+    module procedure PetscObjectGetClassIdDeviceContext
+  end interface
+  interface PetscObjectGetClassName
+    module procedure PetscObjectGetClassNameDeviceContext
+  end interface
+  interface PetscObjectSetName
+    module procedure PetscObjectSetNameDeviceContext
+  end interface
+  interface PetscObjectPrintClassNamePrefixType
+    module procedure PetscObjectPrintClassNamePrefixTypeDeviceContext
+  end interface
+  interface PetscObjectName
+    module procedure PetscObjectNameDeviceContext
+  end interface
+  interface PetscObjectChangeTypeName
+    module procedure PetscObjectChangeTypeNameDeviceContext
+  end interface
+  interface operator(.ne.)
+    module procedure PetscMemTypenotequals
+  end interface operator (.ne.)
+  interface operator(.eq.)
+    module procedure PetscMemTypeequals
+  end interface operator (.eq.)
+
+  interface operator(.ne.)
+    module procedure PetscOffloadMasknotequals
+  end interface operator (.ne.)
+  interface operator(.eq.)
+    module procedure PetscOffloadMaskequals
+  end interface operator (.eq.)
+
+  interface operator(.ne.)
+    module procedure PetscDeviceInitTypenotequals
+  end interface operator (.ne.)
+  interface operator(.eq.)
+    module procedure PetscDeviceInitTypeequals
+  end interface operator (.eq.)
+
+  interface operator(.ne.)
+    module procedure PetscDeviceTypenotequals
+  end interface operator (.ne.)
+  interface operator(.eq.)
+    module procedure PetscDeviceTypeequals
+  end interface operator (.eq.)
+
+  interface operator(.ne.)
+    module procedure PetscDeviceAttributenotequals
+  end interface operator (.ne.)
+  interface operator(.eq.)
+    module procedure PetscDeviceAttributeequals
+  end interface operator (.eq.)
+
+  interface operator(.ne.)
+    module procedure PetscStreamTypenotequals
+  end interface operator (.ne.)
+  interface operator(.eq.)
+    module procedure PetscStreamTypeequals
+  end interface operator (.eq.)
+
+  interface operator(.ne.)
+    module procedure PetscDeviceContextJoinModenotequals
+  end interface operator (.ne.)
+  interface operator(.eq.)
+    module procedure PetscDeviceContextJoinModeequals
+  end interface operator (.eq.)
+
+  interface operator(.ne.)
+    module procedure PetscDeviceCopyModenotequals
+  end interface operator (.ne.)
+  interface operator(.eq.)
+    module procedure PetscDeviceCopyModeequals
+  end interface operator (.eq.)
+
+  interface operator(.ne.)
+    module procedure PetscMemoryAccessModenotequals
+  end interface operator (.ne.)
+  interface operator(.eq.)
+    module procedure PetscMemoryAccessModeequals
+  end interface operator (.eq.)
+

@@ -1,0 +1,30 @@
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT:: DMNetworkMonitorListnotequals
+!DEC$ ATTRIBUTES DLLEXPORT:: DMNetworkMonitorListequals
+#endif
+
+  function DMNetworkMonitorListnotequals(A,B)
+    logical DMNetworkMonitorListnotequals
+    type(tDMNetworkMonitorList), intent(in) :: A,B
+    DMNetworkMonitorListnotequals = (A%v .ne. B%v)
+  end function
+  function DMNetworkMonitorListequals(A,B)
+    logical DMNetworkMonitorListequals
+    type(tDMNetworkMonitorList), intent(in) :: A,B
+    DMNetworkMonitorListequals = (A%v .eq. B%v)
+  end function
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT:: DMNetworkMonitornotequals
+!DEC$ ATTRIBUTES DLLEXPORT:: DMNetworkMonitorequals
+#endif
+
+  function DMNetworkMonitornotequals(A,B)
+    logical DMNetworkMonitornotequals
+    type(tDMNetworkMonitor), intent(in) :: A,B
+    DMNetworkMonitornotequals = (A%v .ne. B%v)
+  end function
+  function DMNetworkMonitorequals(A,B)
+    logical DMNetworkMonitorequals
+    type(tDMNetworkMonitor), intent(in) :: A,B
+    DMNetworkMonitorequals = (A%v .eq. B%v)
+  end function

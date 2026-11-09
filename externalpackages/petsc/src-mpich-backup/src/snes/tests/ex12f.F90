@@ -1,0 +1,288 @@
+!
+!
+!  This example demonstrates basic use of the SNES Fortran interface.
+!
+!
+#include <petsc/finclude/petscsnes.h>
+module ex12fmodule
+  use petscsnes
+  implicit none
+  type User
+    DM da
+    Vec F
+    Vec xl
+    MPIU_Comm comm
+    PetscInt N
+  end type User
+  type monctx
+    PetscInt :: its, lag
+  end type monctx
+
+contains
+! --------------------  Evaluate Function F(x) ---------------------
+
+  subroutine FormFunction(snes, x, f, ctx, ierr)
+    SNES snes
+    Vec x, f
+    type(User) ctx
+    PetscMPIInt, parameter :: zero = 0
+    PetscMPIInt rank, size
+    PetscInt i, s, n
+    PetscErrorCode ierr
+    PetscScalar h, d
+    PetscScalar, pointer :: vf2(:), vxx(:), vff(:)
+
+    PetscCallMPI(MPI_Comm_rank(ctx%comm, rank, ierr))
+    PetscCallMPI(MPI_Comm_size(ctx%comm, size, ierr))
+    h = 1.0/(real(ctx%N) - 1.0)
+    PetscCall(DMGlobalToLocalBegin(ctx%da, x, INSERT_VALUES, ctx%xl, ierr))
+    PetscCall(DMGlobalToLocalEnd(ctx%da, x, INSERT_VALUES, ctx%xl, ierr))
+
+    PetscCall(VecGetLocalSize(ctx%xl, n, ierr))
+    if (n > 1000) then
+      print *, 'Local work array not big enough'
+      call MPI_Abort(PETSC_COMM_WORLD, zero, ierr)
+    end if
+
+    PetscCall(VecGetArrayRead(ctx%xl, vxx, ierr))
+    PetscCall(VecGetArray(f, vff, ierr))
+    PetscCall(VecGetArray(ctx%F, vF2, ierr))
+
+    d = h**2
+
+!
+!  Note that the array vxx() was obtained from a ghosted local vector
+!  ctx%xl while the array vff() was obtained from the non-ghosted parallel
+!  vector F. This is why there is a need for shift variable s. Since vff()
+!  does not have locations for the ghost variables we need to index in it
+!  slightly different then indexing into vxx(). For example on processor
+!  1 (the second processor)
+!
+!        xx(1)        xx(2)             xx(3)             .....
+!      ^^^^^^^        ^^^^^             ^^^^^
+!      ghost value   1st local value   2nd local value
+!
+!                      ff(1)             ff(2)
+!                     ^^^^^^^           ^^^^^^^
+!                    1st local value   2nd local value
+!
+    if (rank == 0) then
+      s = 0
+      vff(1) = vxx(1)
+    else
+      s = 1
+    end if
+
+    do i = 1, n - 2
+      vff(i - s + 1) = d*(vxx(i) - 2.0*vxx(i + 1) + vxx(i + 2)) + vxx(i + 1)*vxx(i + 1) - vF2(i - s + 1)
+    end do
+
+    if (rank == size - 1) then
+      vff(n - s) = vxx(n) - 1.0
+    end if
+
+    PetscCall(VecRestoreArray(f, vff, ierr))
+    PetscCall(VecRestoreArrayRead(ctx%xl, vxx, ierr))
+    PetscCall(VecRestoreArray(ctx%F, vF2, ierr))
+  end
+
+! ---------------------------------------------------------------------
+!  Subroutine FormMonitor
+!  This function lets up keep track of the SNES progress at each step
+!  In this routine, we determine when the Jacobian is rebuilt with the parameter 'jag'
+!
+!  Input Parameters:
+!    snes    - SNES nonlinear solver context
+!    its     - current nonlinear iteration, starting from a call of SNESSolve()
+!    norm    - 2-norm of current residual (may be approximate)
+!    snesm - monctx designed module (included in Snesmmod)
+! ---------------------------------------------------------------------
+  subroutine FormMonitor(snes, its, norm, snesm, ierr)
+
+    SNES ::           snes
+    PetscInt ::       its, one, mone
+    PetscScalar ::    norm
+    type(monctx) ::   snesm
+    PetscErrorCode :: ierr
+
+!      write(6,*) ' '
+!      write(6,*) '    its ',its,snesm%its,'lag',
+!     &            snesm%lag
+!      call flush(6)
+    if (mod(snesm%its, snesm%lag) == 0) then
+      one = 1
+      PetscCall(SNESSetLagJacobian(snes, one, ierr))  ! build jacobian
+    else
+      mone = -1
+      PetscCall(SNESSetLagJacobian(snes, mone, ierr)) ! do NOT build jacobian
+    end if
+    snesm%its = snesm%its + 1
+  end subroutine FormMonitor
+
+! --------------------  Form initial approximation -----------------
+
+  subroutine FormInitialGuess(snes, x, ierr)
+
+    PetscErrorCode ierr
+    Vec x
+    SNES snes
+    PetscScalar five
+
+    five = .5
+    PetscCall(VecSet(x, five, ierr))
+  end
+
+! --------------------  Evaluate Jacobian --------------------
+
+  subroutine FormJacobian(snes, x, jac, B, ctx, ierr)
+
+    SNES snes
+    Vec x
+    Mat jac, B
+    type(User) ctx
+    PetscInt ii, istart, iend
+    PetscInt i, j, n, end, start
+    PetscErrorCode, intent(out) :: ierr
+    PetscMPIInt rank, size
+    PetscScalar d, A, h
+    PetscScalar, pointer :: vxx(:)
+
+    h = 1.0/(real(ctx%N) - 1.0)
+    d = h**2
+    PetscCallMPI(MPI_Comm_rank(ctx%comm, rank, ierr))
+    PetscCallMPI(MPI_Comm_size(ctx%comm, size, ierr))
+
+    PetscCall(VecGetArrayRead(x, vxx, ierr))
+    PetscCall(VecGetOwnershipRange(x, start, end, ierr))
+    n = end - start
+
+    if (rank == 0) then
+      A = 1.0
+      PetscCall(MatSetValues(jac, 1_PETSC_INT_KIND, [start], 1_PETSC_INT_KIND, [start], [A], INSERT_VALUES, ierr))
+      istart = 1
+    else
+      istart = 0
+    end if
+    if (rank == size - 1) then
+      i = INT(ctx%N - 1)
+      A = 1.0
+      PetscCall(MatSetValues(jac, 1_PETSC_INT_KIND, [i], 1_PETSC_INT_KIND, [i], [A], INSERT_VALUES, ierr))
+      iend = n - 1
+    else
+      iend = n
+    end if
+    do i = istart, iend - 1
+      ii = i + start
+      j = start + i - 1
+      PetscCall(MatSetValues(jac, 1_PETSC_INT_KIND, [ii], 1_PETSC_INT_KIND, [j], [d], INSERT_VALUES, ierr))
+      j = start + i + 1
+      PetscCall(MatSetValues(jac, 1_PETSC_INT_KIND, [ii], 1_PETSC_INT_KIND, [j], [d], INSERT_VALUES, ierr))
+      A = -2.0*d + 2.0*vxx(i + 1)
+      PetscCall(MatSetValues(jac, 1_PETSC_INT_KIND, [ii], 1_PETSC_INT_KIND, [ii], [A], INSERT_VALUES, ierr))
+    end do
+    PetscCall(VecRestoreArrayRead(x, vxx, ierr))
+    PetscCall(MatAssemblyBegin(jac, MAT_FINAL_ASSEMBLY, ierr))
+    PetscCall(MatAssemblyEnd(jac, MAT_FINAL_ASSEMBLY, ierr))
+  end
+
+end module
+
+program main
+  use ex12fmodule
+  implicit none
+  type(User) ctx
+  PetscMPIInt rank, size
+  PetscErrorCode ierr
+  PetscInt N, start, end, nn, i
+  PetscInt ii, its
+  PetscBool flg
+  SNES snes
+  Mat J
+  Vec x, r, u
+  PetscScalar xp, FF, UU, h
+  character(len=10) matrixname
+  type(monctx) :: snesm
+
+  PetscCallA(PetscInitialize(ierr))
+  N = 10
+  PetscCallA(PetscOptionsGetInt(PETSC_NULL_OPTIONS, PETSC_NULL_CHARACTER, '-n', N, flg, ierr))
+  h = 1.0/real(N - 1)
+  ctx%N = N
+  ctx%comm = PETSC_COMM_WORLD
+
+  PetscCallMPIA(MPI_Comm_rank(PETSC_COMM_WORLD, rank, ierr))
+  PetscCallMPIA(MPI_Comm_size(PETSC_COMM_WORLD, size, ierr))
+
+! Set up data structures
+  PetscCallA(DMDACreate1d(PETSC_COMM_WORLD, DM_BOUNDARY_NONE, N, 1_PETSC_INT_KIND, 1_PETSC_INT_KIND, PETSC_NULL_INTEGER_ARRAY, ctx%da, ierr))
+  PetscCallA(DMSetFromOptions(ctx%da, ierr))
+  PetscCallA(DMSetUp(ctx%da, ierr))
+  PetscCallA(DMCreateGlobalVector(ctx%da, x, ierr))
+  PetscCallA(DMCreateLocalVector(ctx%da, ctx%xl, ierr))
+
+  PetscCallA(PetscObjectSetName(x, 'Approximate Solution', ierr))
+  PetscCallA(VecDuplicate(x, r, ierr))
+  PetscCallA(VecDuplicate(x, ctx%F, ierr))
+  PetscCallA(VecDuplicate(x, U, ierr))
+  PetscCallA(PetscObjectSetName(U, 'Exact Solution', ierr))
+
+  PetscCallA(MatCreateAIJ(PETSC_COMM_WORLD, PETSC_DECIDE, PETSC_DECIDE, N, N, 3_PETSC_INT_KIND, PETSC_NULL_INTEGER_ARRAY, 0_PETSC_INT_KIND, PETSC_NULL_INTEGER_ARRAY, J, ierr))
+  PetscCallA(MatSetOption(J, MAT_NEW_NONZERO_LOCATION_ERR, PETSC_FALSE, ierr))
+  PetscCallA(MatGetType(J, matrixname, ierr))
+
+! Store right-hand side of PDE and exact solution
+  PetscCallA(VecGetOwnershipRange(x, start, end, ierr))
+  xp = h*start
+  nn = end - start
+  ii = start
+  do i = 0, nn - 1
+    FF = 6.0*xp + (xp + 1.e-12)**6.e0
+    UU = xp*xp*xp
+    PetscCallA(VecSetValues(ctx%F, 1_PETSC_INT_KIND, [ii], [FF], INSERT_VALUES, ierr))
+    PetscCallA(VecSetValues(U, 1_PETSC_INT_KIND, [ii], [UU], INSERT_VALUES, ierr))
+    xp = xp + h
+    ii = ii + 1
+  end do
+  PetscCallA(VecAssemblyBegin(ctx%F, ierr))
+  PetscCallA(VecAssemblyEnd(ctx%F, ierr))
+  PetscCallA(VecAssemblyBegin(U, ierr))
+  PetscCallA(VecAssemblyEnd(U, ierr))
+
+! Create nonlinear solver
+  PetscCallA(SNESCreate(PETSC_COMM_WORLD, snes, ierr))
+
+! Set various routines and options
+  PetscCallA(SNESSetFunction(snes, r, FormFunction, ctx, ierr))
+  PetscCallA(SNESSetJacobian(snes, J, J, FormJacobian, ctx, ierr))
+
+  snesm%its = 0
+  PetscCallA(SNESGetLagJacobian(snes, snesm%lag, ierr))
+  PetscCallA(SNESMonitorSet(snes, FormMonitor, snesm, PETSC_NULL_FUNCTION, ierr))
+  PetscCallA(SNESSetFromOptions(snes, ierr))
+
+! Solve nonlinear system
+  PetscCallA(FormInitialGuess(snes, x, ierr))
+  PetscCallA(SNESSolve(snes, PETSC_NULL_VEC, x, ierr))
+  PetscCallA(SNESGetIterationNumber(snes, its, ierr))
+
+!  Free work space.  All PETSc objects should be destroyed when they
+!  are no longer needed.
+  PetscCallA(VecDestroy(x, ierr))
+  PetscCallA(VecDestroy(ctx%xl, ierr))
+  PetscCallA(VecDestroy(r, ierr))
+  PetscCallA(VecDestroy(U, ierr))
+  PetscCallA(VecDestroy(ctx%F, ierr))
+  PetscCallA(MatDestroy(J, ierr))
+  PetscCallA(SNESDestroy(snes, ierr))
+  PetscCallA(DMDestroy(ctx%da, ierr))
+  PetscCallA(PetscFinalize(ierr))
+end
+
+!/*TEST
+!
+!   test:
+!      nsize: 2
+!      args: -ksp_gmres_cgs_refinement_type refine_always -n 10 -snes_monitor_short
+!      output_file: output/ex12_1.out
+!
+!TEST*/

@@ -1,0 +1,54 @@
+#include <petsc/finclude/petscvec.h>
+program main
+  use petscvec
+  implicit none
+
+  PetscErrorCode ierr
+  Vec v, s
+  PetscInt :: n
+  PetscScalar, parameter :: one = 1.0
+  PetscBool :: flg
+
+  PetscCallA(PetscInitialize(ierr))
+
+  n = 20
+  PetscCallA(PetscOptionsGetInt(PETSC_NULL_OPTIONS, PETSC_NULL_CHARACTER, '-n', n, flg, ierr))
+
+  ! Create multi-component vector with 2 components
+  PetscCallA(VecCreate(PETSC_COMM_WORLD, v, ierr))
+  PetscCallA(VecSetSizes(v, PETSC_DECIDE, n, ierr))
+  PetscCallA(VecSetBlockSize(v, 2_PETSC_INT_KIND, ierr))
+  PetscCallA(VecSetFromOptions(v, ierr))
+
+  ! Create single-component vector
+  PetscCallA(VecCreate(PETSC_COMM_WORLD, s, ierr))
+  PetscCallA(VecSetSizes(s, PETSC_DECIDE, n/2, ierr))
+  PetscCallA(VecSetFromOptions(s, ierr))
+
+  !Set the vectors to entries to a constant value.
+  PetscCallA(VecSet(v, one, ierr))
+
+  !Get the first component from the multi-component vector to the single vector
+  PetscCallA(VecStrideGather(v, 0_PETSC_INT_KIND, s, INSERT_VALUES, ierr))
+
+  PetscCallA(VecView(s, PETSC_VIEWER_STDOUT_WORLD, ierr))
+
+  !Put the values back into the second component
+  PetscCallA(VecStrideScatter(s, 1_PETSC_INT_KIND, v, ADD_VALUES, ierr))
+
+  PetscCallA(VecView(v, PETSC_VIEWER_STDOUT_WORLD, ierr))
+
+  ! Free work space.All PETSc objects should be destroyed when they are no longer needed.
+  PetscCallA(VecDestroy(v, ierr))
+  PetscCallA(VecDestroy(s, ierr))
+  PetscCallA(PetscFinalize(ierr))
+
+end program
+
+!/*TEST
+!
+!     test:
+!       nsize: 2
+!       output_file: output/ex12_1.out
+!
+!TEST*/

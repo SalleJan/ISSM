@@ -1,0 +1,649 @@
+  interface
+  subroutine DMNetworkGetPlex(dm,plexdm, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  DM :: plexdm
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMNetworkGetPlex
+#endif
+  interface
+  subroutine DMNetworkGetNumSubNetworks(dm,nsubnet,M_Nsubnet, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  PetscInt :: nsubnet
+  PetscInt :: M_Nsubnet
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMNetworkGetNumSubNetworks
+#endif
+  interface
+  subroutine DMNetworkSetNumSubNetworks(dm,nsubnet,M_Nsubnet, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  PetscInt :: nsubnet
+  PetscInt :: M_Nsubnet
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMNetworkSetNumSubNetworks
+#endif
+  interface
+  subroutine DMNetworkAddSubnetwork(dm,name,ne,edgelist,netnum, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  character(*) :: name
+  PetscInt :: ne
+  PetscInt :: edgelist(*)
+  PetscInt :: netnum
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMNetworkAddSubnetwork
+#endif
+  interface
+  subroutine DMNetworkSharedVertexGetInfo(dm,v,gidx,n,sv, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  PetscInt :: v
+  PetscInt :: gidx
+  PetscInt :: n
+  PetscInt, pointer :: sv(:)
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMNetworkSharedVertexGetInfo
+#endif
+  interface
+  subroutine DMNetworkLayoutSetUp(dm, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMNetworkLayoutSetUp
+#endif
+  interface
+  subroutine DMNetworkGetSubnetwork(dm,netnum,nv,ne,vtx,edge, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  PetscInt :: netnum
+  PetscInt :: nv
+  PetscInt :: ne
+  PetscInt, pointer :: vtx(:)
+  PetscInt, pointer :: edge(:)
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMNetworkGetSubnetwork
+#endif
+  interface
+  subroutine DMNetworkAddSharedVertices(dm,anetnum,bnetnum,nsvtx,asvtx,bsvtx, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  PetscInt :: anetnum
+  PetscInt :: bnetnum
+  PetscInt :: nsvtx
+  PetscInt :: asvtx(*)
+  PetscInt :: bsvtx(*)
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMNetworkAddSharedVertices
+#endif
+  interface
+  subroutine DMNetworkGetSharedVertices(dm,nsv,svtx, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  PetscInt :: nsv
+  PetscInt, pointer :: svtx(:)
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMNetworkGetSharedVertices
+#endif
+  interface
+  subroutine DMNetworkRegisterComponent(dm,name,size,key, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  character(*) :: name
+  PetscSizeT :: size
+  PetscInt :: key
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMNetworkRegisterComponent
+#endif
+  interface
+  subroutine DMNetworkGetNumVertices(dm,nVertices,M_NVertices, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  PetscInt :: nVertices
+  PetscInt :: M_NVertices
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMNetworkGetNumVertices
+#endif
+  interface
+  subroutine DMNetworkGetNumEdges(dm,nEdges,M_NEdges, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  PetscInt :: nEdges
+  PetscInt :: M_NEdges
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMNetworkGetNumEdges
+#endif
+  interface
+  subroutine DMNetworkGetVertexRange(dm,vStart,vEnd, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  PetscInt :: vStart
+  PetscInt :: vEnd
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMNetworkGetVertexRange
+#endif
+  interface
+  subroutine DMNetworkGetEdgeRange(dm,eStart,eEnd, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  PetscInt :: eStart
+  PetscInt :: eEnd
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMNetworkGetEdgeRange
+#endif
+  interface
+  subroutine DMNetworkGetGlobalEdgeIndex(dm,p,index, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  PetscInt :: p
+  PetscInt :: index
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMNetworkGetGlobalEdgeIndex
+#endif
+  interface
+  subroutine DMNetworkGetGlobalVertexIndex(dm,p,index, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  PetscInt :: p
+  PetscInt :: index
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMNetworkGetGlobalVertexIndex
+#endif
+  interface
+  subroutine DMNetworkGetNumComponents(dm,p,numcomponents, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  PetscInt :: p
+  PetscInt :: numcomponents
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMNetworkGetNumComponents
+#endif
+  interface
+  subroutine DMNetworkGetLocalVecOffset(dm,p,compnum,offset, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  PetscInt :: p
+  PetscInt :: compnum
+  PetscInt :: offset
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMNetworkGetLocalVecOffset
+#endif
+  interface
+  subroutine DMNetworkGetGlobalVecOffset(dm,p,compnum,offsetg, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  PetscInt :: p
+  PetscInt :: compnum
+  PetscInt :: offsetg
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMNetworkGetGlobalVecOffset
+#endif
+  interface
+  subroutine DMNetworkGetEdgeOffset(dm,p,offset, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  PetscInt :: p
+  PetscInt :: offset
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMNetworkGetEdgeOffset
+#endif
+  interface
+  subroutine DMNetworkGetVertexOffset(dm,p,offset, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  PetscInt :: p
+  PetscInt :: offset
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMNetworkGetVertexOffset
+#endif
+  interface
+  subroutine DMNetworkGetComponentcptr(dm,p,compnum,compkey,component,nvar, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  PetscInt :: p
+  PetscInt :: compnum
+  PetscInt :: compkey
+  type(c_ptr) :: component
+  PetscInt :: nvar
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMNetworkGetComponentcptr
+#endif
+  interface
+  subroutine DMNetworkAssembleGraphStructures(dm, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMNetworkAssembleGraphStructures
+#endif
+  interface
+  subroutine DMNetworkDistribute(dm,overlap, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  PetscInt :: overlap
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMNetworkDistribute
+#endif
+  interface
+  subroutine DMNetworkGetSupportingEdges(dm,vertex,nedges,edges, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  PetscInt :: vertex
+  PetscInt :: nedges
+  PetscInt, pointer :: edges(:)
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMNetworkGetSupportingEdges
+#endif
+  interface
+  subroutine DMNetworkGetConnectedVertices(dm,edge,vertices, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  PetscInt :: edge
+  PetscInt, pointer :: vertices(:)
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMNetworkGetConnectedVertices
+#endif
+  interface
+  subroutine DMNetworkIsSharedVertex(dm,p,flag, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  PetscInt :: p
+  PetscBool :: flag
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMNetworkIsSharedVertex
+#endif
+  interface
+  subroutine DMNetworkIsGhostVertex(dm,p,isghost, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  PetscInt :: p
+  PetscBool :: isghost
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMNetworkIsGhostVertex
+#endif
+  interface
+  subroutine DMNetworkHasJacobian(dm,eflg,vflg, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  PetscBool :: eflg
+  PetscBool :: vflg
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMNetworkHasJacobian
+#endif
+  interface
+  subroutine DMNetworkEdgeSetMatrix(dm,p,J, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM,tMat
+  DM :: dm
+  PetscInt :: p
+  Mat :: J(*)
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMNetworkEdgeSetMatrix
+#endif
+  interface
+  subroutine DMNetworkVertexSetMatrix(dm,p,J, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM,tMat
+  DM :: dm
+  PetscInt :: p
+  Mat :: J(*)
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMNetworkVertexSetMatrix
+#endif
+  interface
+  subroutine DMNetworkGetVertexLocalToGlobalOrdering(dm,vloc,vg, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  PetscInt :: vloc
+  PetscInt :: vg
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMNetworkGetVertexLocalToGlobalOrdering
+#endif
+  interface
+  subroutine DMNetworkSetVertexLocalToGlobalOrdering(dm, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMNetworkSetVertexLocalToGlobalOrdering
+#endif
+  interface
+  subroutine DMNetworkCreateIS(dm,numkeys,keys,blocksize,nselectedvar,selectedvar,is, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM,tIS
+  DM :: dm
+  PetscInt :: numkeys
+  PetscInt :: keys(*)
+  PetscInt :: blocksize(*)
+  PetscInt :: nselectedvar(*)
+  PetscInt, pointer :: selectedvar(:)
+  IS :: is
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMNetworkCreateIS
+#endif
+  interface
+  subroutine DMNetworkCreateLocalIS(dm,numkeys,keys,blocksize,nselectedvar,selectedvar,is, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM,tIS
+  DM :: dm
+  PetscInt :: numkeys
+  PetscInt :: keys(*)
+  PetscInt :: blocksize(*)
+  PetscInt :: nselectedvar(*)
+  PetscInt, pointer :: selectedvar(:)
+  IS :: is
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMNetworkCreateLocalIS
+#endif
+  interface
+  subroutine DMNetworkFinalizeComponents(dm, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMNetworkFinalizeComponents
+#endif
+  interface
+  subroutine DMNetworkCreate(comm,network, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  MPIU_Comm :: comm
+  DM :: network
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMNetworkCreate
+#endif
+  interface
+  subroutine DMNetworkViewSetShowRanks(dm,showranks, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  PetscBool :: showranks
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMNetworkViewSetShowRanks
+#endif
+  interface
+  subroutine DMNetworkViewSetShowGlobal(dm,showglobal, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  PetscBool :: showglobal
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMNetworkViewSetShowGlobal
+#endif
+  interface
+  subroutine DMNetworkViewSetShowVertices(dm,showvertices, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  PetscBool :: showvertices
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMNetworkViewSetShowVertices
+#endif
+  interface
+  subroutine DMNetworkViewSetShowNumbering(dm,shownumbering, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  PetscBool :: shownumbering
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMNetworkViewSetShowNumbering
+#endif
+  interface
+  subroutine DMNetworkViewSetViewRanks(dm,viewranks, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM,tIS
+  DM :: dm
+  IS :: viewranks
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMNetworkViewSetViewRanks
+#endif
+  interface operator(.ne.)
+    module procedure DMNetworkMonitorListnotequals
+  end interface operator (.ne.)
+  interface operator(.eq.)
+    module procedure DMNetworkMonitorListequals
+  end interface operator (.eq.)
+
+  interface
+  subroutine DMNetworkMonitorCreate(network,monitorptr, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM,tDMNetworkMonitor
+  DM :: network
+  DMNetworkMonitor :: monitorptr
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMNetworkMonitorCreate
+#endif
+  interface
+  subroutine DMNetworkMonitorDestroy(monitor, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDMNetworkMonitor
+  DMNetworkMonitor :: monitor
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMNetworkMonitorDestroy
+#endif
+  interface
+  subroutine DMNetworkMonitorPop(monitor, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDMNetworkMonitor
+  DMNetworkMonitor :: monitor
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMNetworkMonitorPop
+#endif
+  interface
+  subroutine DMNetworkMonitorAdd(monitor,name,element,nodes,start,blocksize,xmin,xmax,ymin,ymax,hold, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDMNetworkMonitor
+  DMNetworkMonitor :: monitor
+  character(*) :: name
+  PetscInt :: element
+  PetscInt :: nodes
+  PetscInt :: start
+  PetscInt :: blocksize
+  PetscReal :: xmin
+  PetscReal :: xmax
+  PetscReal :: ymin
+  PetscReal :: ymax
+  PetscBool :: hold
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMNetworkMonitorAdd
+#endif
+  interface
+  subroutine DMNetworkMonitorView(monitor,x, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDMNetworkMonitor,tVec
+  DMNetworkMonitor :: monitor
+  Vec :: x
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMNetworkMonitorView
+#endif
+  interface operator(.ne.)
+    module procedure DMNetworkMonitornotequals
+  end interface operator (.ne.)
+  interface operator(.eq.)
+    module procedure DMNetworkMonitorequals
+  end interface operator (.eq.)
+
+  interface
+  subroutine PetscSFGetSubSF(mainsf,map,subSF, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscSF,tISLocalToGlobalMapping
+  PetscSF :: mainsf
+  ISLocalToGlobalMapping :: map
+  PetscSF :: subSF
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscSFGetSubSF
+#endif

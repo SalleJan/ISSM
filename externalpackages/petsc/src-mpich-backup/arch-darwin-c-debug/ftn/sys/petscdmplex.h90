@@ -1,0 +1,76 @@
+  interface
+  subroutine PetscViewerCGNSOpen(comm,name,type,viewer, ierr)
+  use, intrinsic :: ISO_C_binding
+  import ePetscFileMode,tPetscViewer
+  MPIU_Comm :: comm
+  character(*) :: name
+  PetscFileMode :: type
+  PetscViewer :: viewer
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscViewerCGNSOpen
+#endif
+  interface
+  subroutine PetscViewerCGNSSetSolutionIndex(viewer,solution_id, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscViewer
+  PetscViewer :: viewer
+  PetscInt :: solution_id
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscViewerCGNSSetSolutionIndex
+#endif
+  interface
+  subroutine PetscViewerCGNSGetSolutionIndex(viewer,solution_id, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscViewer
+  PetscViewer :: viewer
+  PetscInt :: solution_id
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscViewerCGNSGetSolutionIndex
+#endif
+  interface
+  subroutine PetscViewerCGNSGetSolutionTime(viewer,time,set, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscViewer
+  PetscViewer :: viewer
+  PetscReal :: time
+  PetscBool :: set
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscViewerCGNSGetSolutionTime
+#endif
+  interface
+  subroutine PetscViewerCGNSGetSolutionIteration(viewer,iteration,set, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscViewer
+  PetscViewer :: viewer
+  PetscInt :: iteration
+  PetscBool :: set
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscViewerCGNSGetSolutionIteration
+#endif
+  interface
+  subroutine PetscViewerCGNSGetSolutionName(viewer,name, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscViewer
+  PetscViewer :: viewer
+  character(*) :: name
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscViewerCGNSGetSolutionName
+#endif

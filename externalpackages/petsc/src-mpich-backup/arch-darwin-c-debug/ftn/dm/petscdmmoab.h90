@@ -1,0 +1,611 @@
+  interface
+  subroutine DMMoabOutput(dm,filename,usrwriteopts, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  character(*) :: filename
+  character(*) :: usrwriteopts
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMMoabOutput
+#endif
+  interface
+  subroutine DMMoabFEMCreateQuadratureDefault(dim,nverts,quadrature, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscQuadrature
+  PetscInt :: dim
+  PetscInt :: nverts
+  PetscQuadrature :: quadrature
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMMoabFEMCreateQuadratureDefault
+#endif
+  interface
+  subroutine DMMoabPToRMapping(dim,nverts,coordinates,xphy,natparam,phi, ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscInt :: dim
+  PetscInt :: nverts
+  PetscReal :: coordinates
+  PetscReal :: xphy
+  PetscReal :: natparam
+  PetscReal :: phi
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMMoabPToRMapping
+#endif
+  interface
+  subroutine DMMoabCreateVector(dm,tag,range,is_global_vec,destroy_tag,vec, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM,tVec
+  DM :: dm
+  moab::Tag :: tag
+  moab::Range :: range
+  PetscBool :: is_global_vec
+  PetscBool :: destroy_tag
+  Vec :: vec
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMMoabCreateVector
+#endif
+  interface
+  subroutine DMMoabGetVecTag(vec,tag, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVec
+  Vec :: vec
+  moab::Tag :: tag
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMMoabGetVecTag
+#endif
+  interface
+  subroutine DMMoabGetVecRange(vec,range, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVec
+  Vec :: vec
+  moab::Range :: range
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMMoabGetVecRange
+#endif
+  interface
+  subroutine DMMoabGenerateHierarchy(dm,nlevels,ldegrees, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  PetscInt :: nlevels
+  PetscInt :: ldegrees
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMMoabGenerateHierarchy
+#endif
+  interface
+  subroutine DMMoabCreateBoxMesh(comm,dim,useSimplex,bounds,nele,nghost,dm, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  MPIU_Comm :: comm
+  PetscInt :: dim
+  PetscBool :: useSimplex
+  PetscReal :: bounds
+  PetscInt :: nele
+  PetscInt :: nghost
+  DM :: dm
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMMoabCreateBoxMesh
+#endif
+  interface
+  subroutine DMMoabLoadFromFile(comm,dim,nghost,filename,usrreadopts,dm, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  MPIU_Comm :: comm
+  PetscInt :: dim
+  PetscInt :: nghost
+  character(*) :: filename
+  character(*) :: usrreadopts
+  DM :: dm
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMMoabLoadFromFile
+#endif
+  interface
+  subroutine DMMoabRenumberMeshEntities(dm, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMMoabRenumberMeshEntities
+#endif
+  interface
+  subroutine DMMoabSetFieldVector(dm,ifield,fvec, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM,tVec
+  DM :: dm
+  PetscInt :: ifield
+  Vec :: fvec
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMMoabSetFieldVector
+#endif
+  interface
+  subroutine DMMoabSetGlobalFieldVector(dm,fvec, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM,tVec
+  DM :: dm
+  Vec :: fvec
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMMoabSetGlobalFieldVector
+#endif
+  interface
+  subroutine DMMoabSetFieldNames(dm,numFields,fields, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  PetscInt :: numFields
+  character(*) :: fields
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMMoabSetFieldNames
+#endif
+  interface
+  subroutine DMMoabGetFieldName(dm,field,fieldName, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  PetscInt :: field
+  character(*) :: fieldName
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMMoabGetFieldName
+#endif
+  interface
+  subroutine DMMoabSetFieldName(dm,field,fieldName, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  PetscInt :: field
+  character(*) :: fieldName
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMMoabSetFieldName
+#endif
+  interface
+  subroutine DMMoabGetFieldDof(dm,point,field,dof, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  moab::EntityHandle :: point
+  PetscInt :: field
+  PetscInt :: dof
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMMoabGetFieldDof
+#endif
+  interface
+  subroutine DMMoabGetFieldDofs(dm,npoints,points,field,dof, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  PetscInt :: npoints
+  moab::EntityHandle :: points
+  PetscInt :: field
+  PetscInt :: dof
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMMoabGetFieldDofs
+#endif
+  interface
+  subroutine DMMoabGetFieldDofsLocal(dm,npoints,points,field,dof, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  PetscInt :: npoints
+  moab::EntityHandle :: points
+  PetscInt :: field
+  PetscInt :: dof
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMMoabGetFieldDofsLocal
+#endif
+  interface
+  subroutine DMMoabGetDofs(dm,npoints,points,dof, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  PetscInt :: npoints
+  moab::EntityHandle :: points
+  PetscInt :: dof
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMMoabGetDofs
+#endif
+  interface
+  subroutine DMMoabGetDofsLocal(dm,npoints,points,dof, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  PetscInt :: npoints
+  moab::EntityHandle :: points
+  PetscInt :: dof
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMMoabGetDofsLocal
+#endif
+  interface
+  subroutine DMMoabGetDofsBlocked(dm,npoints,points,dof, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  PetscInt :: npoints
+  moab::EntityHandle :: points
+  PetscInt :: dof
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMMoabGetDofsBlocked
+#endif
+  interface
+  subroutine DMMoabGetDofsBlockedLocal(dm,npoints,points,dof, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  PetscInt :: npoints
+  moab::EntityHandle :: points
+  PetscInt :: dof
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMMoabGetDofsBlockedLocal
+#endif
+  interface
+  subroutine DMMoabCreate(comm,dmb, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  MPIU_Comm :: comm
+  DM :: dmb
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMMoabCreate
+#endif
+  interface
+  subroutine DMMoabCreateMoab(comm,mbiface,ltog_tag,range,dmb, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  MPIU_Comm :: comm
+  moab::Interface :: mbiface
+  moab::Tag :: ltog_tag
+  moab::Range :: range
+  DM :: dmb
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMMoabCreateMoab
+#endif
+  interface
+  subroutine DMMoabSetInterface(dm,mbiface, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  moab::Interface :: mbiface
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMMoabSetInterface
+#endif
+  interface
+  subroutine DMMoabSetLocalVertices(dm,range, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  moab::Range :: range
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMMoabSetLocalVertices
+#endif
+  interface
+  subroutine DMMoabGetAllVertices(dm,local, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  moab::Range :: local
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMMoabGetAllVertices
+#endif
+  interface
+  subroutine DMMoabSetLocalElements(dm,range, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  moab::Range :: range
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMMoabSetLocalElements
+#endif
+  interface
+  subroutine DMMoabSetLocalToGlobalTag(dm,ltogtag, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  moab::Tag :: ltogtag
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMMoabSetLocalToGlobalTag
+#endif
+  interface
+  subroutine DMMoabGetLocalToGlobalTag(dm,ltog_tag, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  moab::Tag :: ltog_tag
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMMoabGetLocalToGlobalTag
+#endif
+  interface
+  subroutine DMMoabSetBlockSize(dm,bs, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  PetscInt :: bs
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMMoabSetBlockSize
+#endif
+  interface
+  subroutine DMMoabGetBlockSize(dm,bs, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  PetscInt :: bs
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMMoabGetBlockSize
+#endif
+  interface
+  subroutine DMMoabGetSize(dm,neg,nvg, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  PetscInt :: neg
+  PetscInt :: nvg
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMMoabGetSize
+#endif
+  interface
+  subroutine DMMoabGetLocalSize(dm,nel,neg,nvl,nvg, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  PetscInt :: nel
+  PetscInt :: neg
+  PetscInt :: nvl
+  PetscInt :: nvg
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMMoabGetLocalSize
+#endif
+  interface
+  subroutine DMMoabGetOffset(dm,offset, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  PetscInt :: offset
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMMoabGetOffset
+#endif
+  interface
+  subroutine DMMoabGetDimension(dm,dim, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  PetscInt :: dim
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMMoabGetDimension
+#endif
+  interface
+  subroutine DMMoabGetHierarchyLevel(dm,nlevel, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  PetscInt :: nlevel
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMMoabGetHierarchyLevel
+#endif
+  interface
+  subroutine DMMoabGetMaterialBlock(dm,ehandle,mat, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  moab::EntityHandle :: ehandle
+  PetscInt :: mat
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMMoabGetMaterialBlock
+#endif
+  interface
+  subroutine DMMoabGetVertexCoordinates(dm,nconn,conn,vpos, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  PetscInt :: nconn
+  moab::EntityHandle :: conn
+  PetscReal :: vpos
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMMoabGetVertexCoordinates
+#endif
+  interface
+  subroutine DMMoabIsEntityOnBoundary(dm,ent,ent_on_boundary, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  moab::EntityHandle :: ent
+  PetscBool :: ent_on_boundary
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMMoabIsEntityOnBoundary
+#endif
+  interface
+  subroutine DMMoabCheckBoundaryVertices(dm,nconn,cnt,isbdvtx, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  PetscInt :: nconn
+  moab::EntityHandle :: cnt
+  PetscBool :: isbdvtx
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMMoabCheckBoundaryVertices
+#endif
+  interface
+  subroutine DMMoabCreateVertices(dm,coords,nverts,overts, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  PetscReal :: coords
+  PetscInt :: nverts
+  moab::Range :: overts
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMMoabCreateVertices
+#endif
+  interface
+  subroutine DMMoabCreateElement(dm,type,conn,nverts,oelem, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  moab::EntityType :: type
+  moab::EntityHandle :: conn
+  PetscInt :: nverts
+  moab::EntityHandle :: oelem
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMMoabCreateElement
+#endif
+  interface
+  subroutine DMMoabCreateSubmesh(dm,newdm, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  DM :: newdm
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMMoabCreateSubmesh
+#endif
+  interface
+  subroutine DMMoabSetBlockFills(dm,dfill,ofill, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  PetscInt :: dfill
+  PetscInt :: ofill
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMMoabSetBlockFills
+#endif
+  interface operator(.ne.)
+    module procedure MoabReadModenotequals
+  end interface operator (.ne.)
+  interface operator(.eq.)
+    module procedure MoabReadModeequals
+  end interface operator (.eq.)
+
+  interface operator(.ne.)
+    module procedure MoabWriteModenotequals
+  end interface operator (.ne.)
+  interface operator(.eq.)
+    module procedure MoabWriteModeequals
+  end interface operator (.eq.)
+

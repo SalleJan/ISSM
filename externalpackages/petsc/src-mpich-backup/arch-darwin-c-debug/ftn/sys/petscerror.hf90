@@ -1,0 +1,30 @@
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT:: PetscErrorTypenotequals
+!DEC$ ATTRIBUTES DLLEXPORT:: PetscErrorTypeequals
+#endif
+
+  function PetscErrorTypenotequals(A,B)
+    logical PetscErrorTypenotequals
+    type(ePetscErrorType), intent(in) :: A,B
+    PetscErrorTypenotequals = (A%v .ne. B%v)
+  end function
+  function PetscErrorTypeequals(A,B)
+    logical PetscErrorTypeequals
+    type(ePetscErrorType), intent(in) :: A,B
+    PetscErrorTypeequals = (A%v .eq. B%v)
+  end function
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT:: PetscFPTrapnotequals
+!DEC$ ATTRIBUTES DLLEXPORT:: PetscFPTrapequals
+#endif
+
+  function PetscFPTrapnotequals(A,B)
+    logical PetscFPTrapnotequals
+    type(ePetscFPTrap), intent(in) :: A,B
+    PetscFPTrapnotequals = (A%v .ne. B%v)
+  end function
+  function PetscFPTrapequals(A,B)
+    logical PetscFPTrapequals
+    type(ePetscFPTrap), intent(in) :: A,B
+    PetscFPTrapequals = (A%v .eq. B%v)
+  end function

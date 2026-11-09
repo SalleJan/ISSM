@@ -1,0 +1,2561 @@
+  interface
+  subroutine MatDSFischer(jac,X,Con,XL,XU,mu,T1,T2,Da,Db,Dm, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tMat,tVec
+  Mat :: jac
+  Vec :: X
+  Vec :: Con
+  Vec :: XL
+  Vec :: XU
+  PetscReal :: mu
+  Vec :: T1
+  Vec :: T2
+  Vec :: Da
+  Vec :: Db
+  Vec :: Dm
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::MatDSFischer
+#endif
+  interface
+  subroutine MatCreateSubMatrixFree(mat,Rows,Cols,J, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tMat,tIS
+  Mat :: mat
+  IS :: Rows
+  IS :: Cols
+  Mat :: J
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::MatCreateSubMatrixFree
+#endif
+  interface
+  subroutine TaoFinalizePackage(ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoFinalizePackage
+#endif
+  interface
+  subroutine TaoInitializePackage(ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoInitializePackage
+#endif
+  interface
+  subroutine TaoSetSolution(tao,x0, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTao,tVec
+  Tao :: tao
+  Vec :: x0
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoSetSolution
+#endif
+  interface
+  subroutine TaoTestGradient(tao,x,g1, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTao,tVec
+  Tao :: tao
+  Vec :: x
+  Vec :: g1
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoTestGradient
+#endif
+  interface
+  subroutine TaoComputeGradient(tao,X,G, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTao,tVec
+  Tao :: tao
+  Vec :: X
+  Vec :: G
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoComputeGradient
+#endif
+  interface
+  subroutine TaoComputeObjective(tao,X,f, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTao,tVec
+  Tao :: tao
+  Vec :: X
+  PetscReal :: f
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoComputeObjective
+#endif
+  interface
+  subroutine TaoComputeObjectiveAndGradient(tao,X,f,G, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTao,tVec
+  Tao :: tao
+  Vec :: X
+  PetscReal :: f
+  Vec :: G
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoComputeObjectiveAndGradient
+#endif
+  interface
+  subroutine TaoSetObjective(tao,func,ctx, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTao
+  Tao :: tao
+  external :: func
+  type(*) :: ctx
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoSetObjective
+#endif
+  interface
+  subroutine TaoSetResidualRoutine(tao,res,func,ctx, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTao,tVec
+  Tao :: tao
+  Vec :: res
+  external :: func
+  type(*) :: ctx
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoSetResidualRoutine
+#endif
+  interface
+  subroutine TaoSetResidualWeights(tao,sigma_v,n,rows,cols,vals, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTao,tVec
+  Tao :: tao
+  Vec :: sigma_v
+  PetscInt :: n
+  PetscInt :: rows
+  PetscInt :: cols
+  PetscReal :: vals
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoSetResidualWeights
+#endif
+  interface
+  subroutine TaoComputeResidual(tao,X,F, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTao,tVec
+  Tao :: tao
+  Vec :: X
+  Vec :: F
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoComputeResidual
+#endif
+  interface
+  subroutine TaoSetGradient(tao,g,func,ctx, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTao,tVec
+  Tao :: tao
+  Vec :: g
+  external :: func
+  type(*) :: ctx
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoSetGradient
+#endif
+  interface
+  subroutine TaoSetObjectiveAndGradient(tao,g,func,ctx, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTao,tVec
+  Tao :: tao
+  Vec :: g
+  external :: func
+  type(*) :: ctx
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoSetObjectiveAndGradient
+#endif
+  interface
+  subroutine TaoIsObjectiveDefined(tao,flg, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTao
+  Tao :: tao
+  PetscBool :: flg
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoIsObjectiveDefined
+#endif
+  interface
+  subroutine TaoIsGradientDefined(tao,flg, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTao
+  Tao :: tao
+  PetscBool :: flg
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoIsGradientDefined
+#endif
+  interface
+  subroutine TaoIsObjectiveAndGradientDefined(tao,flg, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTao
+  Tao :: tao
+  PetscBool :: flg
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoIsObjectiveAndGradientDefined
+#endif
+  interface
+  subroutine TaoSetHessian(tao,H,Hpre,func,ctx, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTao,tMat
+  Tao :: tao
+  Mat :: H
+  Mat :: Hpre
+  external :: func
+  type(*) :: ctx
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoSetHessian
+#endif
+  interface
+  subroutine TaoGetHessianMatrices(tao,H,Hpre, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTao,tMat
+  Tao :: tao
+  Mat :: H
+  Mat :: Hpre
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoGetHessianMatrices
+#endif
+  interface
+  subroutine TaoTestHessian(tao, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTao
+  Tao :: tao
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoTestHessian
+#endif
+  interface
+  subroutine TaoComputeHessian(tao,X,H,Hpre, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTao,tVec,tMat
+  Tao :: tao
+  Vec :: X
+  Mat :: H
+  Mat :: Hpre
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoComputeHessian
+#endif
+  interface
+  subroutine TaoComputeJacobian(tao,X,J,Jpre, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTao,tVec,tMat
+  Tao :: tao
+  Vec :: X
+  Mat :: J
+  Mat :: Jpre
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoComputeJacobian
+#endif
+  interface
+  subroutine TaoComputeResidualJacobian(tao,X,J,Jpre, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTao,tVec,tMat
+  Tao :: tao
+  Vec :: X
+  Mat :: J
+  Mat :: Jpre
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoComputeResidualJacobian
+#endif
+  interface
+  subroutine TaoComputeJacobianState(tao,X,J,Jpre,Jinv, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTao,tVec,tMat
+  Tao :: tao
+  Vec :: X
+  Mat :: J
+  Mat :: Jpre
+  Mat :: Jinv
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoComputeJacobianState
+#endif
+  interface
+  subroutine TaoComputeJacobianDesign(tao,X,J, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTao,tVec,tMat
+  Tao :: tao
+  Vec :: X
+  Mat :: J
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoComputeJacobianDesign
+#endif
+  interface
+  subroutine TaoSetJacobianRoutine(tao,J,Jpre,func,ctx, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTao,tMat
+  Tao :: tao
+  Mat :: J
+  Mat :: Jpre
+  external :: func
+  type(*) :: ctx
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoSetJacobianRoutine
+#endif
+  interface
+  subroutine TaoSetJacobianResidualRoutine(tao,J,Jpre,func,ctx, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTao,tMat
+  Tao :: tao
+  Mat :: J
+  Mat :: Jpre
+  external :: func
+  type(*) :: ctx
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoSetJacobianResidualRoutine
+#endif
+  interface
+  subroutine TaoSetJacobianStateRoutine(tao,J,Jpre,Jinv,func,ctx, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTao,tMat
+  Tao :: tao
+  Mat :: J
+  Mat :: Jpre
+  Mat :: Jinv
+  external :: func
+  type(*) :: ctx
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoSetJacobianStateRoutine
+#endif
+  interface
+  subroutine TaoSetJacobianDesignRoutine(tao,J,func,ctx, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTao,tMat
+  Tao :: tao
+  Mat :: J
+  external :: func
+  type(*) :: ctx
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoSetJacobianDesignRoutine
+#endif
+  interface
+  subroutine TaoSetStateDesignIS(tao,s_is,d_is, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTao,tIS
+  Tao :: tao
+  IS :: s_is
+  IS :: d_is
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoSetStateDesignIS
+#endif
+  interface
+  subroutine TaoComputeJacobianEquality(tao,X,J,Jpre, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTao,tVec,tMat
+  Tao :: tao
+  Vec :: X
+  Mat :: J
+  Mat :: Jpre
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoComputeJacobianEquality
+#endif
+  interface
+  subroutine TaoComputeJacobianInequality(tao,X,J,Jpre, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTao,tVec,tMat
+  Tao :: tao
+  Vec :: X
+  Mat :: J
+  Mat :: Jpre
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoComputeJacobianInequality
+#endif
+  interface
+  subroutine TaoSetJacobianEqualityRoutine(tao,J,Jpre,func,ctx, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTao,tMat
+  Tao :: tao
+  Mat :: J
+  Mat :: Jpre
+  external :: func
+  type(*) :: ctx
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoSetJacobianEqualityRoutine
+#endif
+  interface
+  subroutine TaoSetJacobianInequalityRoutine(tao,J,Jpre,func,ctx, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTao,tMat
+  Tao :: tao
+  Mat :: J
+  Mat :: Jpre
+  external :: func
+  type(*) :: ctx
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoSetJacobianInequalityRoutine
+#endif
+  interface
+  subroutine TaoSetVariableBounds(tao,XL,XU, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTao,tVec
+  Tao :: tao
+  Vec :: XL
+  Vec :: XU
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoSetVariableBounds
+#endif
+  interface
+  subroutine TaoSetVariableBoundsRoutine(tao,func,ctx, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTao
+  Tao :: tao
+  external :: func
+  type(*) :: ctx
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoSetVariableBoundsRoutine
+#endif
+  interface
+  subroutine TaoGetVariableBounds(tao,XL,XU, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTao,tVec
+  Tao :: tao
+  Vec :: XL
+  Vec :: XU
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoGetVariableBounds
+#endif
+  interface
+  subroutine TaoComputeVariableBounds(tao, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTao
+  Tao :: tao
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoComputeVariableBounds
+#endif
+  interface
+  subroutine TaoSetInequalityBounds(tao,IL,IU, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTao,tVec
+  Tao :: tao
+  Vec :: IL
+  Vec :: IU
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoSetInequalityBounds
+#endif
+  interface
+  subroutine TaoGetInequalityBounds(tao,IL,IU, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTao,tVec
+  Tao :: tao
+  Vec :: IL
+  Vec :: IU
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoGetInequalityBounds
+#endif
+  interface
+  subroutine TaoComputeConstraints(tao,X,C, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTao,tVec
+  Tao :: tao
+  Vec :: X
+  Vec :: C
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoComputeConstraints
+#endif
+  interface
+  subroutine TaoSetConstraintsRoutine(tao,c,func,ctx, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTao,tVec
+  Tao :: tao
+  Vec :: c
+  external :: func
+  type(*) :: ctx
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoSetConstraintsRoutine
+#endif
+  interface
+  subroutine TaoComputeDualVariables(tao,DL,DU, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTao,tVec
+  Tao :: tao
+  Vec :: DL
+  Vec :: DU
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoComputeDualVariables
+#endif
+  interface
+  subroutine TaoGetDualVariables(tao,DE,DI, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTao,tVec
+  Tao :: tao
+  Vec :: DE
+  Vec :: DI
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoGetDualVariables
+#endif
+  interface
+  subroutine TaoSetEqualityConstraintsRoutine(tao,ce,func,ctx, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTao,tVec
+  Tao :: tao
+  Vec :: ce
+  external :: func
+  type(*) :: ctx
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoSetEqualityConstraintsRoutine
+#endif
+  interface
+  subroutine TaoSetInequalityConstraintsRoutine(tao,ci,func,ctx, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTao,tVec
+  Tao :: tao
+  Vec :: ci
+  external :: func
+  type(*) :: ctx
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoSetInequalityConstraintsRoutine
+#endif
+  interface
+  subroutine TaoComputeEqualityConstraints(tao,X,CE, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTao,tVec
+  Tao :: tao
+  Vec :: X
+  Vec :: CE
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoComputeEqualityConstraints
+#endif
+  interface
+  subroutine TaoComputeInequalityConstraints(tao,X,CI, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTao,tVec
+  Tao :: tao
+  Vec :: X
+  Vec :: CI
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoComputeInequalityConstraints
+#endif
+  interface
+  subroutine TaoDefaultComputeHessianColor(tao,V,H,B,ctx, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTao,tVec,tMat
+  Tao :: tao
+  Vec :: V
+  Mat :: H
+  Mat :: B
+  type(*) :: ctx
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoDefaultComputeHessianColor
+#endif
+  interface
+  subroutine TaoDefaultComputeHessianMFFD(tao,X,H,B,ctx, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTao,tVec,tMat
+  Tao :: tao
+  Vec :: X
+  Mat :: H
+  Mat :: B
+  type(*) :: ctx
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoDefaultComputeHessianMFFD
+#endif
+  interface
+  subroutine TaoParametersInitialize(tao, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTao
+  Tao :: tao
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoParametersInitialize
+#endif
+  interface
+  subroutine TaoCreate(comm,newtao, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTao
+  MPIU_Comm :: comm
+  Tao :: newtao
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoCreate
+#endif
+  interface
+  subroutine TaoSolve(tao, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTao
+  Tao :: tao
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoSolve
+#endif
+  interface
+  subroutine TaoSetUp(tao, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTao
+  Tao :: tao
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoSetUp
+#endif
+  interface
+  subroutine TaoDestroy(tao, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTao
+  Tao :: tao
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoDestroy
+#endif
+  interface
+  subroutine TaoKSPSetUseEW(tao,flag, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTao
+  Tao :: tao
+  PetscBool :: flag
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoKSPSetUseEW
+#endif
+  interface
+  subroutine TaoMonitorSetFromOptions(tao,name,help,manual,monitor, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTao
+  Tao :: tao
+  character(*) :: name
+  character(*) :: help
+  character(*) :: manual
+  external :: monitor
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoMonitorSetFromOptions
+#endif
+  interface
+  subroutine TaoSetFromOptions(tao, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTao
+  Tao :: tao
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoSetFromOptions
+#endif
+  interface
+  subroutine TaoViewFromOptions(A,obj,name, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTao,tPetscObject
+  Tao :: A
+  PetscObject :: obj
+  character(*) :: name
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoViewFromOptions
+#endif
+  interface
+  subroutine TaoView(tao,viewer, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTao,tPetscViewer
+  Tao :: tao
+  PetscViewer :: viewer
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoView
+#endif
+  interface
+  subroutine TaoSetRecycleHistory(tao,recycle, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTao
+  Tao :: tao
+  PetscBool :: recycle
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoSetRecycleHistory
+#endif
+  interface
+  subroutine TaoGetRecycleHistory(tao,recycle, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTao
+  Tao :: tao
+  PetscBool :: recycle
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoGetRecycleHistory
+#endif
+  interface
+  subroutine TaoSetTolerances(tao,gatol,grtol,gttol, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTao
+  Tao :: tao
+  PetscReal :: gatol
+  PetscReal :: grtol
+  PetscReal :: gttol
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoSetTolerances
+#endif
+  interface
+  subroutine TaoSetConstraintTolerances(tao,catol,crtol, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTao
+  Tao :: tao
+  PetscReal :: catol
+  PetscReal :: crtol
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoSetConstraintTolerances
+#endif
+  interface
+  subroutine TaoGetConstraintTolerances(tao,catol,crtol, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTao
+  Tao :: tao
+  PetscReal :: catol
+  PetscReal :: crtol
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoGetConstraintTolerances
+#endif
+  interface
+  subroutine TaoSetFunctionLowerBound(tao,fmin, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTao
+  Tao :: tao
+  PetscReal :: fmin
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoSetFunctionLowerBound
+#endif
+  interface
+  subroutine TaoGetFunctionLowerBound(tao,fmin, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTao
+  Tao :: tao
+  PetscReal :: fmin
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoGetFunctionLowerBound
+#endif
+  interface
+  subroutine TaoSetMaximumFunctionEvaluations(tao,nfcn, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTao
+  Tao :: tao
+  PetscInt :: nfcn
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoSetMaximumFunctionEvaluations
+#endif
+  interface
+  subroutine TaoGetMaximumFunctionEvaluations(tao,nfcn, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTao
+  Tao :: tao
+  PetscInt :: nfcn
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoGetMaximumFunctionEvaluations
+#endif
+  interface
+  subroutine TaoGetCurrentFunctionEvaluations(tao,nfuncs, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTao
+  Tao :: tao
+  PetscInt :: nfuncs
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoGetCurrentFunctionEvaluations
+#endif
+  interface
+  subroutine TaoSetMaximumIterations(tao,maxits, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTao
+  Tao :: tao
+  PetscInt :: maxits
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoSetMaximumIterations
+#endif
+  interface
+  subroutine TaoGetMaximumIterations(tao,maxits, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTao
+  Tao :: tao
+  PetscInt :: maxits
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoGetMaximumIterations
+#endif
+  interface
+  subroutine TaoSetInitialTrustRegionRadius(tao,radius, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTao
+  Tao :: tao
+  PetscReal :: radius
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoSetInitialTrustRegionRadius
+#endif
+  interface
+  subroutine TaoGetInitialTrustRegionRadius(tao,radius, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTao
+  Tao :: tao
+  PetscReal :: radius
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoGetInitialTrustRegionRadius
+#endif
+  interface
+  subroutine TaoGetCurrentTrustRegionRadius(tao,radius, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTao
+  Tao :: tao
+  PetscReal :: radius
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoGetCurrentTrustRegionRadius
+#endif
+  interface
+  subroutine TaoGetTolerances(tao,gatol,grtol,gttol, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTao
+  Tao :: tao
+  PetscReal :: gatol
+  PetscReal :: grtol
+  PetscReal :: gttol
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoGetTolerances
+#endif
+  interface
+  subroutine TaoGetKSP(tao,ksp, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTao,tKSP
+  Tao :: tao
+  KSP :: ksp
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoGetKSP
+#endif
+  interface
+  subroutine TaoGetLinearSolveIterations(tao,lits, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTao
+  Tao :: tao
+  PetscInt :: lits
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoGetLinearSolveIterations
+#endif
+  interface
+  subroutine TaoGetLineSearch(tao,ls, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTao,tTaoLineSearch
+  Tao :: tao
+  TaoLineSearch :: ls
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoGetLineSearch
+#endif
+  interface
+  subroutine TaoAddLineSearchCounts(tao, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTao
+  Tao :: tao
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoAddLineSearchCounts
+#endif
+  interface
+  subroutine TaoGetSolution(tao,X, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTao,tVec
+  Tao :: tao
+  Vec :: X
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoGetSolution
+#endif
+  interface
+  subroutine TaoResetStatistics(tao, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTao
+  Tao :: tao
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoResetStatistics
+#endif
+  interface
+  subroutine TaoSetUpdate(tao,func,ctx, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTao
+  Tao :: tao
+  external :: func
+  type(*) :: ctx
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoSetUpdate
+#endif
+  interface
+  subroutine TaoSetConvergenceTest(tao,conv,ctx, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTao
+  Tao :: tao
+  external :: conv
+  type(*) :: ctx
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoSetConvergenceTest
+#endif
+  interface
+  subroutine TaoMonitorSet(tao,func,ctx,dest, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTao
+  Tao :: tao
+  external :: func
+  type(*) :: ctx
+  external dest
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoMonitorSet
+#endif
+  interface
+  subroutine TaoMonitorCancel(tao, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTao
+  Tao :: tao
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoMonitorCancel
+#endif
+  interface
+  subroutine TaoMonitorDefault(tao,vf, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTao
+  Tao :: tao
+  PetscViewerAndFormat :: vf
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoMonitorDefault
+#endif
+  interface
+  subroutine TaoMonitorGlobalization(tao,vf, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTao
+  Tao :: tao
+  PetscViewerAndFormat :: vf
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoMonitorGlobalization
+#endif
+  interface
+  subroutine TaoMonitorDefaultShort(tao,vf, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTao
+  Tao :: tao
+  PetscViewerAndFormat :: vf
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoMonitorDefaultShort
+#endif
+  interface
+  subroutine TaoMonitorConstraintNorm(tao,vf, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTao
+  Tao :: tao
+  PetscViewerAndFormat :: vf
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoMonitorConstraintNorm
+#endif
+  interface
+  subroutine TaoMonitorSolution(tao,vf, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTao
+  Tao :: tao
+  PetscViewerAndFormat :: vf
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoMonitorSolution
+#endif
+  interface
+  subroutine TaoMonitorGradient(tao,vf, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTao
+  Tao :: tao
+  PetscViewerAndFormat :: vf
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoMonitorGradient
+#endif
+  interface
+  subroutine TaoMonitorStep(tao,vf, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTao
+  Tao :: tao
+  PetscViewerAndFormat :: vf
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoMonitorStep
+#endif
+  interface
+  subroutine TaoMonitorSolutionDraw(tao,ctx, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTao
+  Tao :: tao
+  type(*) :: ctx
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoMonitorSolutionDraw
+#endif
+  interface
+  subroutine TaoMonitorGradientDraw(tao,ctx, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTao
+  Tao :: tao
+  type(*) :: ctx
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoMonitorGradientDraw
+#endif
+  interface
+  subroutine TaoMonitorStepDraw(tao,ctx, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTao
+  Tao :: tao
+  type(*) :: ctx
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoMonitorStepDraw
+#endif
+  interface
+  subroutine TaoMonitorResidual(tao,vf, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTao
+  Tao :: tao
+  PetscViewerAndFormat :: vf
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoMonitorResidual
+#endif
+  interface
+  subroutine TaoSetOptionsPrefix(tao,p, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTao
+  Tao :: tao
+  character(*) :: p
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoSetOptionsPrefix
+#endif
+  interface
+  subroutine TaoAppendOptionsPrefix(tao,p, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTao
+  Tao :: tao
+  character(*) :: p
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoAppendOptionsPrefix
+#endif
+  interface
+  subroutine TaoGetOptionsPrefix(tao,p, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTao
+  Tao :: tao
+  character(*) :: p
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoGetOptionsPrefix
+#endif
+  interface
+  subroutine TaoSetType(tao,type, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTao
+  Tao :: tao
+  character(*) :: type
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoSetType
+#endif
+  interface
+  subroutine TaoRegister(sname,func, ierr)
+  use, intrinsic :: ISO_C_binding
+  character(*) :: sname
+  external :: func
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoRegister
+#endif
+  interface
+  subroutine TaoRegisterDestroy(ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoRegisterDestroy
+#endif
+  interface
+  subroutine TaoGetIterationNumber(tao,iter, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTao
+  Tao :: tao
+  PetscInt :: iter
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoGetIterationNumber
+#endif
+  interface
+  subroutine TaoGetResidualNorm(tao,value, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTao
+  Tao :: tao
+  PetscReal :: value
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoGetResidualNorm
+#endif
+  interface
+  subroutine TaoSetIterationNumber(tao,iter, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTao
+  Tao :: tao
+  PetscInt :: iter
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoSetIterationNumber
+#endif
+  interface
+  subroutine TaoGetTotalIterationNumber(tao,iter, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTao
+  Tao :: tao
+  PetscInt :: iter
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoGetTotalIterationNumber
+#endif
+  interface
+  subroutine TaoSetTotalIterationNumber(tao,iter, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTao
+  Tao :: tao
+  PetscInt :: iter
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoSetTotalIterationNumber
+#endif
+  interface
+  subroutine TaoSetConvergedReason(tao,reason, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTao,eTaoConvergedReason
+  Tao :: tao
+  TaoConvergedReason :: reason
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoSetConvergedReason
+#endif
+  interface
+  subroutine TaoGetConvergedReason(tao,reason, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTao,eTaoConvergedReason
+  Tao :: tao
+  TaoConvergedReason :: reason
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoGetConvergedReason
+#endif
+  interface
+  subroutine TaoGetSolutionStatus(tao,its,f,gnorm,cnorm,xdiff,reason, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTao,eTaoConvergedReason
+  Tao :: tao
+  PetscInt :: its
+  PetscReal :: f
+  PetscReal :: gnorm
+  PetscReal :: cnorm
+  PetscReal :: xdiff
+  TaoConvergedReason :: reason
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoGetSolutionStatus
+#endif
+  interface
+  subroutine TaoGetType(tao,type, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTao
+  Tao :: tao
+  character(*) :: type
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoGetType
+#endif
+  interface
+  subroutine TaoMonitor(tao,its,f,res,cnorm,steplength, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTao
+  Tao :: tao
+  PetscInt :: its
+  PetscReal :: f
+  PetscReal :: res
+  PetscReal :: cnorm
+  PetscReal :: steplength
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoMonitor
+#endif
+  interface
+  subroutine TaoSetConvergenceHistory(tao,obj,resid,cnorm,lits,na,reset, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTao
+  Tao :: tao
+  PetscReal :: obj(*)
+  PetscReal :: resid(*)
+  PetscReal :: cnorm(*)
+  PetscInt :: lits(*)
+  PetscInt :: na
+  PetscBool :: reset
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoSetConvergenceHistory
+#endif
+  interface
+  subroutine TaoSetApplicationContext(tao,ctx, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTao
+  Tao :: tao
+  type(*) :: ctx
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoSetApplicationContext
+#endif
+  interface
+  subroutine TaoGetApplicationContextcptr(tao,ctx, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTao
+  Tao :: tao
+  type(c_ptr) :: ctx
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoGetApplicationContextcptr
+#endif
+  interface
+  subroutine TaoSetGradientNorm(tao,M, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTao,tMat
+  Tao :: tao
+  Mat :: M
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoSetGradientNorm
+#endif
+  interface
+  subroutine TaoGetGradientNorm(tao,M, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTao,tMat
+  Tao :: tao
+  Mat :: M
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoGetGradientNorm
+#endif
+  interface
+  subroutine TaoGradientNorm(tao,gradient,type,gnorm, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTao,tVec,eNormType
+  Tao :: tao
+  Vec :: gradient
+  NormType :: type
+  PetscReal :: gnorm
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoGradientNorm
+#endif
+  interface
+  subroutine TaoGetTerm(tao,scale,term,params,map, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTao,tTaoTerm,tVec,tMat
+  Tao :: tao
+  PetscReal :: scale
+  TaoTerm :: term
+  Vec :: params
+  Mat :: map
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoGetTerm
+#endif
+  interface
+  subroutine TaoAddTerm(tao,prefix,scale,term,params,map, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTao,tTaoTerm,tVec,tMat
+  Tao :: tao
+  character(*) :: prefix
+  PetscReal :: scale
+  TaoTerm :: term
+  Vec :: params
+  Mat :: map
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoAddTerm
+#endif
+  interface
+  subroutine TaoSoftThreshold(in,lb,ub,out, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVec
+  Vec :: in
+  PetscReal :: lb
+  PetscReal :: ub
+  Vec :: out
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoSoftThreshold
+#endif
+  interface
+  subroutine TaoPythonSetType(tao,pyname, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTao
+  Tao :: tao
+  character(*) :: pyname
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoPythonSetType
+#endif
+  interface
+  subroutine TaoPythonGetType(tao,pyname, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTao
+  Tao :: tao
+  character(*) :: pyname
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoPythonGetType
+#endif
+  interface
+  subroutine TaoShellSetSolve(tao,solve, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTao
+  Tao :: tao
+  external :: solve
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoShellSetSolve
+#endif
+  interface
+  subroutine TaoShellGetContextcptr(tao,ctx, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTao
+  Tao :: tao
+  type(c_ptr) :: ctx
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoShellGetContextcptr
+#endif
+  interface
+  subroutine TaoShellSetContext(tao,ctx, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTao
+  Tao :: tao
+  type(*) :: ctx
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoShellSetContext
+#endif
+  interface
+  subroutine TaoBRGNGetDampingVector(tao,d, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTao,tVec
+  Tao :: tao
+  Vec :: d
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoBRGNGetDampingVector
+#endif
+  interface
+  subroutine TaoBRGNGetRegularizationType(tao,type, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTao,eTaoBRGNRegularizationType
+  Tao :: tao
+  TaoBRGNRegularizationType :: type
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoBRGNGetRegularizationType
+#endif
+  interface
+  subroutine TaoBRGNSetRegularizationType(tao,type, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTao,eTaoBRGNRegularizationType
+  Tao :: tao
+  TaoBRGNRegularizationType :: type
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoBRGNSetRegularizationType
+#endif
+  interface
+  subroutine TaoBRGNGetSubsolver(tao,subsolver, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTao
+  Tao :: tao
+  Tao :: subsolver
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoBRGNGetSubsolver
+#endif
+  interface
+  subroutine TaoBRGNSetRegularizerWeight(tao,lambda, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTao
+  Tao :: tao
+  PetscReal :: lambda
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoBRGNSetRegularizerWeight
+#endif
+  interface
+  subroutine TaoBRGNSetL1SmoothEpsilon(tao,epsilon, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTao
+  Tao :: tao
+  PetscReal :: epsilon
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoBRGNSetL1SmoothEpsilon
+#endif
+  interface
+  subroutine TaoBRGNSetDictionaryMatrix(tao,dict, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTao,tMat
+  Tao :: tao
+  Mat :: dict
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoBRGNSetDictionaryMatrix
+#endif
+  interface
+  subroutine TaoBRGNSetRegularizerObjectiveAndGradientRoutine(tao,func,ctx, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTao
+  Tao :: tao
+  external :: func
+  type(*) :: ctx
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoBRGNSetRegularizerObjectiveAndGradientRoutine
+#endif
+  interface
+  subroutine TaoBRGNSetRegularizerHessianRoutine(tao,Hreg,func,ctx, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTao,tMat
+  Tao :: tao
+  Mat :: Hreg
+  external :: func
+  type(*) :: ctx
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoBRGNSetRegularizerHessianRoutine
+#endif
+  interface
+  subroutine TaoADMMSetMisfitHessianChangeStatus(tao,b, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTao
+  Tao :: tao
+  PetscBool :: b
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoADMMSetMisfitHessianChangeStatus
+#endif
+  interface
+  subroutine TaoADMMSetRegHessianChangeStatus(tao,b, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTao
+  Tao :: tao
+  PetscBool :: b
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoADMMSetRegHessianChangeStatus
+#endif
+  interface
+  subroutine TaoADMMSetSpectralPenalty(tao,mu, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTao
+  Tao :: tao
+  PetscReal :: mu
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoADMMSetSpectralPenalty
+#endif
+  interface
+  subroutine TaoADMMGetSpectralPenalty(tao,mu, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTao
+  Tao :: tao
+  PetscReal :: mu
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoADMMGetSpectralPenalty
+#endif
+  interface
+  subroutine TaoADMMGetMisfitSubsolver(tao,misfit, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTao
+  Tao :: tao
+  Tao :: misfit
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoADMMGetMisfitSubsolver
+#endif
+  interface
+  subroutine TaoADMMGetRegularizationSubsolver(tao,reg, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTao
+  Tao :: tao
+  Tao :: reg
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoADMMGetRegularizationSubsolver
+#endif
+  interface
+  subroutine TaoADMMSetConstraintVectorRHS(tao,c, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTao,tVec
+  Tao :: tao
+  Vec :: c
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoADMMSetConstraintVectorRHS
+#endif
+  interface
+  subroutine TaoADMMSetMinimumSpectralPenalty(tao,mu, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTao
+  Tao :: tao
+  PetscReal :: mu
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoADMMSetMinimumSpectralPenalty
+#endif
+  interface
+  subroutine TaoADMMSetRegularizerCoefficient(tao,lambda, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTao
+  Tao :: tao
+  PetscReal :: lambda
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoADMMSetRegularizerCoefficient
+#endif
+  interface
+  subroutine TaoADMMGetRegularizerCoefficient(tao,lambda, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTao
+  Tao :: tao
+  PetscReal :: lambda
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoADMMGetRegularizerCoefficient
+#endif
+  interface
+  subroutine TaoADMMSetMisfitConstraintJacobian(tao,J,Jpre,func,ctx, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTao,tMat
+  Tao :: tao
+  Mat :: J
+  Mat :: Jpre
+  external :: func
+  type(*) :: ctx
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoADMMSetMisfitConstraintJacobian
+#endif
+  interface
+  subroutine TaoADMMSetRegularizerConstraintJacobian(tao,J,Jpre,func,ctx, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTao,tMat
+  Tao :: tao
+  Mat :: J
+  Mat :: Jpre
+  external :: func
+  type(*) :: ctx
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoADMMSetRegularizerConstraintJacobian
+#endif
+  interface
+  subroutine TaoADMMSetMisfitObjectiveAndGradientRoutine(tao,func,ctx, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTao
+  Tao :: tao
+  external :: func
+  type(*) :: ctx
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoADMMSetMisfitObjectiveAndGradientRoutine
+#endif
+  interface
+  subroutine TaoADMMSetMisfitHessianRoutine(tao,H,Hpre,func,ctx, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTao,tMat
+  Tao :: tao
+  Mat :: H
+  Mat :: Hpre
+  external :: func
+  type(*) :: ctx
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoADMMSetMisfitHessianRoutine
+#endif
+  interface
+  subroutine TaoADMMSetRegularizerObjectiveAndGradientRoutine(tao,func,ctx, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTao
+  Tao :: tao
+  external :: func
+  type(*) :: ctx
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoADMMSetRegularizerObjectiveAndGradientRoutine
+#endif
+  interface
+  subroutine TaoADMMSetRegularizerHessianRoutine(tao,H,Hpre,func,ctx, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTao,tMat
+  Tao :: tao
+  Mat :: H
+  Mat :: Hpre
+  external :: func
+  type(*) :: ctx
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoADMMSetRegularizerHessianRoutine
+#endif
+  interface
+  subroutine TaoGetADMMParentTao(tao,admm_tao, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTao
+  Tao :: tao
+  Tao :: admm_tao
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoGetADMMParentTao
+#endif
+  interface
+  subroutine TaoADMMGetDualVector(tao,Y, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTao,tVec
+  Tao :: tao
+  Vec :: Y
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoADMMGetDualVector
+#endif
+  interface
+  subroutine TaoADMMSetRegularizerType(tao,type, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTao,eTaoADMMRegularizerType
+  Tao :: tao
+  TaoADMMRegularizerType :: type
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoADMMSetRegularizerType
+#endif
+  interface
+  subroutine TaoADMMGetRegularizerType(tao,type, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTao,eTaoADMMRegularizerType
+  Tao :: tao
+  TaoADMMRegularizerType :: type
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoADMMGetRegularizerType
+#endif
+  interface
+  subroutine TaoADMMSetUpdateType(tao,type, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTao,eTaoADMMUpdateType
+  Tao :: tao
+  TaoADMMUpdateType :: type
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoADMMSetUpdateType
+#endif
+  interface
+  subroutine TaoADMMGetUpdateType(tao,type, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTao,eTaoADMMUpdateType
+  Tao :: tao
+  TaoADMMUpdateType :: type
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoADMMGetUpdateType
+#endif
+  interface
+  subroutine TaoALMMGetType(tao,type, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTao,eTaoALMMType
+  Tao :: tao
+  TaoALMMType :: type
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoALMMGetType
+#endif
+  interface
+  subroutine TaoALMMSetType(tao,type, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTao,eTaoALMMType
+  Tao :: tao
+  TaoALMMType :: type
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoALMMSetType
+#endif
+  interface
+  subroutine TaoALMMGetSubsolver(tao,subsolver, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTao
+  Tao :: tao
+  Tao :: subsolver
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoALMMGetSubsolver
+#endif
+  interface
+  subroutine TaoALMMSetSubsolver(tao,subsolver, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTao
+  Tao :: tao
+  Tao :: subsolver
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoALMMSetSubsolver
+#endif
+  interface
+  subroutine TaoALMMGetMultipliers(tao,Y, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTao,tVec
+  Tao :: tao
+  Vec :: Y
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoALMMGetMultipliers
+#endif
+  interface
+  subroutine TaoALMMSetMultipliers(tao,Y, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTao,tVec
+  Tao :: tao
+  Vec :: Y
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoALMMSetMultipliers
+#endif
+  interface
+  subroutine TaoALMMGetPrimalIS(tao,opt_is,slack_is, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTao,tIS
+  Tao :: tao
+  IS :: opt_is
+  IS :: slack_is
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoALMMGetPrimalIS
+#endif
+  interface
+  subroutine TaoALMMGetDualIS(tao,eq_is,ineq_is, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTao,tIS
+  Tao :: tao
+  IS :: eq_is
+  IS :: ineq_is
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoALMMGetDualIS
+#endif
+  interface
+  subroutine TaoLMVMRecycle(tao,flg, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTao
+  Tao :: tao
+  PetscBool :: flg
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoLMVMRecycle
+#endif
+  interface
+  subroutine TaoLMVMSetH0(tao,H0, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTao,tMat
+  Tao :: tao
+  Mat :: H0
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoLMVMSetH0
+#endif
+  interface
+  subroutine TaoLMVMGetH0(tao,H0, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTao,tMat
+  Tao :: tao
+  Mat :: H0
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoLMVMGetH0
+#endif
+  interface
+  subroutine TaoLMVMGetH0KSP(tao,ksp, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTao,tKSP
+  Tao :: tao
+  KSP :: ksp
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoLMVMGetH0KSP
+#endif
+  interface
+  subroutine TaoBNCGGetType(tao,type, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTao,eTaoBNCGType
+  Tao :: tao
+  TaoBNCGType :: type
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoBNCGGetType
+#endif
+  interface
+  subroutine TaoBNCGSetType(tao,type, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTao,eTaoBNCGType
+  Tao :: tao
+  TaoBNCGType :: type
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoBNCGSetType
+#endif
+  interface
+  subroutine TaoGetLMVMMatrix(tao,B, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTao,tMat
+  Tao :: tao
+  Mat :: B
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoGetLMVMMatrix
+#endif
+  interface
+  subroutine TaoSetLMVMMatrix(tao,B, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTao,tMat
+  Tao :: tao
+  Mat :: B
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoSetLMVMMatrix
+#endif
+  interface
+  subroutine TaoVecGetSubVec(vfull,is,reduced_type,maskvalue,vreduced, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVec,tIS,eTaoSubsetType
+  Vec :: vfull
+  IS :: is
+  TaoSubsetType :: reduced_type
+  PetscReal :: maskvalue
+  Vec :: vreduced
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoVecGetSubVec
+#endif
+  interface
+  subroutine TaoMatGetSubMat(M,is,v1,subset_type,Msub, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tMat,tIS,tVec,eTaoSubsetType
+  Mat :: M
+  IS :: is
+  Vec :: v1
+  TaoSubsetType :: subset_type
+  Mat :: Msub
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoMatGetSubMat
+#endif
+  interface
+  subroutine TaoEstimateActiveBounds(X,XL,XU,G,S,W,steplen,bound_tol,active_lower,active_upper,active_fixed,active,inactive, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVec,tIS
+  Vec :: X
+  Vec :: XL
+  Vec :: XU
+  Vec :: G
+  Vec :: S
+  Vec :: W
+  PetscReal :: steplen
+  PetscReal :: bound_tol
+  IS :: active_lower
+  IS :: active_upper
+  IS :: active_fixed
+  IS :: active
+  IS :: inactive
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoEstimateActiveBounds
+#endif
+  interface
+  subroutine TaoBoundStep(X,XL,XU,active_lower,active_upper,active_fixed,scale,S, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVec,tIS
+  Vec :: X
+  Vec :: XL
+  Vec :: XU
+  IS :: active_lower
+  IS :: active_upper
+  IS :: active_fixed
+  PetscReal :: scale
+  Vec :: S
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoBoundStep
+#endif
+  interface
+  subroutine TaoBoundSolution(X,XL,XU,bound_tol,nDiff,Xout, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVec
+  Vec :: X
+  Vec :: XL
+  Vec :: XU
+  PetscReal :: bound_tol
+  PetscInt :: nDiff
+  Vec :: Xout
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoBoundSolution
+#endif
+  interface operator(.ne.)
+    module procedure Taonotequals
+  end interface operator (.ne.)
+  interface operator(.eq.)
+    module procedure Taoequals
+  end interface operator (.eq.)
+
+  interface PetscObjectCast
+    module procedure PetscObjectCastTao
+  end interface
+  interface PetscBarrier
+  module procedure PetscBarrierTao
+  end interface
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectSAWsTakeAccess
+    module procedure PetscObjectSAWsTakeAccessTao
+  end interface
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectSAWsGrantAccess
+    module procedure PetscObjectSAWsGrantAccessTao
+  end interface
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectSAWsBlock
+    module procedure PetscObjectSAWsBlockTao
+  end interface
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectSAWsSetBlock
+    module procedure PetscObjectSAWsSetBlockTao
+  end interface
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectSAWsViewOff
+    module procedure PetscObjectSAWsViewOffTao
+  end interface
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectViewSAWs
+    module procedure PetscObjectViewSAWsTao
+  end interface
+#endif
+  interface PetscObjectGetType
+    module procedure PetscObjectGetTypeTao
+  end interface
+  interface PetscObjectSetPrintedOptions
+    module procedure PetscObjectSetPrintedOptionsTao
+  end interface
+  interface PetscObjectInheritPrintedOptions
+    module procedure PetscObjectInheritPrintedOptionsTao
+  end interface
+  interface PetscObjectAddOptionsHandler
+    module procedure PetscObjectAddOptionsHandlerTao
+  end interface
+  interface PetscObjectProcessOptionsHandlers
+    module procedure PetscObjectProcessOptionsHandlersTao
+  end interface
+  interface PetscObjectDestroyOptionsHandlers
+    module procedure PetscObjectDestroyOptionsHandlersTao
+  end interface
+  interface PetscObjectReference
+    module procedure PetscObjectReferenceTao
+  end interface
+  interface PetscObjectGetReference
+    module procedure PetscObjectGetReferenceTao
+  end interface
+  interface PetscObjectDereference
+    module procedure PetscObjectDereferenceTao
+  end interface
+  interface PetscObjectRemoveReference
+    module procedure PetscObjectRemoveReferenceTao
+  end interface
+  interface PetscObjectHasFunction
+    module procedure PetscObjectHasFunctionTao
+  end interface
+  interface PetscObjectSetFromOptions
+    module procedure PetscObjectSetFromOptionsTao
+  end interface
+  interface PetscObjectSetUp
+    module procedure PetscObjectSetUpTao
+  end interface
+  interface PetscObjectGetName
+    module procedure PetscObjectGetNameTao
+  end interface
+  interface PetscObjectDestroy
+    module procedure PetscObjectDestroyTao
+  end interface
+  interface PetscObjectView
+    module procedure PetscObjectViewTao
+  end interface
+  interface PetscObjectViewFromOptions
+    module procedure PetscObjectViewFromOptionsTao
+  end interface
+  interface PetscObjectTypeCompare
+    module procedure PetscObjectTypeCompareTao
+  end interface
+  interface PetscObjectObjectTypeCompare
+    module procedure PetscObjectObjectTypeCompareTao
+  end interface
+  interface PetscObjectBaseTypeCompare
+    module procedure PetscObjectBaseTypeCompareTao
+  end interface
+  interface PetscObjectRegisterDestroy
+    module procedure PetscObjectRegisterDestroyTao
+  end interface
+  interface PetscObjectGetId
+    module procedure PetscObjectGetIdTao
+  end interface
+  interface PetscObjectCompareId
+    module procedure PetscObjectCompareIdTao
+  end interface
+  interface PetscObjectGetOptions
+    module procedure PetscObjectGetOptionsTao
+  end interface
+  interface PetscObjectSetOptions
+    module procedure PetscObjectSetOptionsTao
+  end interface
+  interface PetscObjectSetOptionsPrefix
+    module procedure PetscObjectSetOptionsPrefixTao
+  end interface
+  interface PetscObjectAppendOptionsPrefix
+    module procedure PetscObjectAppendOptionsPrefixTao
+  end interface
+  interface PetscObjectGetOptionsPrefix
+    module procedure PetscObjectGetOptionsPrefixTao
+  end interface
+  interface PetscObjectPrependOptionsPrefix
+    module procedure PetscObjectPrependOptionsPrefixTao
+  end interface
+  interface PetscObjectGetComm
+    module procedure PetscObjectGetCommTao
+  end interface
+  interface PetscObjectGetTabLevel
+    module procedure PetscObjectGetTabLevelTao
+  end interface
+  interface PetscObjectSetTabLevel
+    module procedure PetscObjectSetTabLevelTao
+  end interface
+  interface PetscObjectIncrementTabLevel
+    module procedure PetscObjectIncrementTabLevelTao
+  end interface
+  interface PetscObjectGetNewTag
+    module procedure PetscObjectGetNewTagTao
+  end interface
+  interface PetscObjectGetClassId
+    module procedure PetscObjectGetClassIdTao
+  end interface
+  interface PetscObjectGetClassName
+    module procedure PetscObjectGetClassNameTao
+  end interface
+  interface PetscObjectSetName
+    module procedure PetscObjectSetNameTao
+  end interface
+  interface PetscObjectPrintClassNamePrefixType
+    module procedure PetscObjectPrintClassNamePrefixTypeTao
+  end interface
+  interface PetscObjectName
+    module procedure PetscObjectNameTao
+  end interface
+  interface PetscObjectChangeTypeName
+    module procedure PetscObjectChangeTypeNameTao
+  end interface
+  interface
+  subroutine TaoMonitorDrawCtxCreate(comm,host,label,x,y,m,n,howoften,ctx, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTaoMonitorDrawCtx
+  MPIU_Comm :: comm
+  character(*) :: host
+  character(*) :: label
+  integer4 :: x
+  integer4 :: y
+  integer4 :: m
+  integer4 :: n
+  PetscInt :: howoften
+  TaoMonitorDrawCtx :: ctx
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoMonitorDrawCtxCreate
+#endif
+  interface
+  subroutine TaoMonitorDrawCtxDestroy(ictx, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTaoMonitorDrawCtx
+  TaoMonitorDrawCtx :: ictx
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoMonitorDrawCtxDestroy
+#endif
+  interface operator(.ne.)
+    module procedure TaoMonitorDrawCtxnotequals
+  end interface operator (.ne.)
+  interface operator(.eq.)
+    module procedure TaoMonitorDrawCtxequals
+  end interface operator (.eq.)
+
+  interface operator(.ne.)
+    module procedure TaoSubsetTypenotequals
+  end interface operator (.ne.)
+  interface operator(.eq.)
+    module procedure TaoSubsetTypeequals
+  end interface operator (.eq.)
+
+  interface operator(.ne.)
+    module procedure TaoADMMUpdateTypenotequals
+  end interface operator (.ne.)
+  interface operator(.eq.)
+    module procedure TaoADMMUpdateTypeequals
+  end interface operator (.eq.)
+
+  interface operator(.ne.)
+    module procedure TaoADMMRegularizerTypenotequals
+  end interface operator (.ne.)
+  interface operator(.eq.)
+    module procedure TaoADMMRegularizerTypeequals
+  end interface operator (.eq.)
+
+  interface operator(.ne.)
+    module procedure TaoALMMTypenotequals
+  end interface operator (.ne.)
+  interface operator(.eq.)
+    module procedure TaoALMMTypeequals
+  end interface operator (.eq.)
+
+  interface operator(.ne.)
+    module procedure TaoBNCGTypenotequals
+  end interface operator (.ne.)
+  interface operator(.eq.)
+    module procedure TaoBNCGTypeequals
+  end interface operator (.eq.)
+
+  interface operator(.ne.)
+    module procedure TaoConvergedReasonnotequals
+  end interface operator (.ne.)
+  interface operator(.eq.)
+    module procedure TaoConvergedReasonequals
+  end interface operator (.eq.)
+
+  interface operator(.ne.)
+    module procedure TaoBRGNRegularizationTypenotequals
+  end interface operator (.ne.)
+  interface operator(.eq.)
+    module procedure TaoBRGNRegularizationTypeequals
+  end interface operator (.eq.)
+

@@ -1,0 +1,60 @@
+  interface
+  subroutine DMGlobalToLocalSolve(dm,x,y, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM,tVec
+  DM :: dm
+  Vec :: x
+  Vec :: y
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMGlobalToLocalSolve
+#endif
+  interface
+  subroutine DMCheckInterpolator(dmf,In,MC,MF,tol, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM,tMat
+  DM :: dmf
+  Mat :: In
+  Mat :: MC
+  Mat :: MF
+  PetscReal :: tol
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMCheckInterpolator
+#endif
+  interface
+  subroutine DMSwarmProjectFields(sw,dm,nfields,fieldnames,fields,mode, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM,tVec,eScatterMode
+  DM :: sw
+  DM :: dm
+  PetscInt :: nfields
+  character(*) :: fieldnames
+  Vec :: fields(*)
+  ScatterMode :: mode
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMSwarmProjectFields
+#endif
+  interface
+  subroutine DMSwarmProjectGradientFields(sw,dm,nfields,fieldnames,fields,mode, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM,tVec,eScatterMode
+  DM :: sw
+  DM :: dm
+  PetscInt :: nfields
+  character(*) :: fieldnames
+  Vec :: fields(*)
+  ScatterMode :: mode
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMSwarmProjectGradientFields
+#endif

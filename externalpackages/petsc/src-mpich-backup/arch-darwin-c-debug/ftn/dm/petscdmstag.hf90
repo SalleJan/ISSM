@@ -1,0 +1,30 @@
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT:: DMStagStencilLocationnotequals
+!DEC$ ATTRIBUTES DLLEXPORT:: DMStagStencilLocationequals
+#endif
+
+  function DMStagStencilLocationnotequals(A,B)
+    logical DMStagStencilLocationnotequals
+    type(eDMStagStencilLocation), intent(in) :: A,B
+    DMStagStencilLocationnotequals = (A%v .ne. B%v)
+  end function
+  function DMStagStencilLocationequals(A,B)
+    logical DMStagStencilLocationequals
+    type(eDMStagStencilLocation), intent(in) :: A,B
+    DMStagStencilLocationequals = (A%v .eq. B%v)
+  end function
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT:: DMStagStencilTypenotequals
+!DEC$ ATTRIBUTES DLLEXPORT:: DMStagStencilTypeequals
+#endif
+
+  function DMStagStencilTypenotequals(A,B)
+    logical DMStagStencilTypenotequals
+    type(eDMStagStencilType), intent(in) :: A,B
+    DMStagStencilTypenotequals = (A%v .ne. B%v)
+  end function
+  function DMStagStencilTypeequals(A,B)
+    logical DMStagStencilTypeequals
+    type(eDMStagStencilType), intent(in) :: A,B
+    DMStagStencilTypeequals = (A%v .eq. B%v)
+  end function

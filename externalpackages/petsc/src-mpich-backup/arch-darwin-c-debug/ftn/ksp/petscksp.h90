@@ -1,0 +1,4466 @@
+  interface
+  subroutine MatLMVMSetMultAlgorithm(B,alg, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tMat,eMatLMVMMultAlgorithm
+  Mat :: B
+  MatLMVMMultAlgorithm :: alg
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::MatLMVMSetMultAlgorithm
+#endif
+  interface
+  subroutine MatLMVMGetMultAlgorithm(B,alg, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tMat,eMatLMVMMultAlgorithm
+  Mat :: B
+  MatLMVMMultAlgorithm :: alg
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::MatLMVMGetMultAlgorithm
+#endif
+  interface
+  subroutine MatLMVMGetLastUpdate(B,x_prev,f_prev, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tMat,tVec
+  Mat :: B
+  Vec :: x_prev
+  Vec :: f_prev
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::MatLMVMGetLastUpdate
+#endif
+  interface
+  subroutine MatLMVMUpdate(B,X,F, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tMat,tVec
+  Mat :: B
+  Vec :: X
+  Vec :: F
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::MatLMVMUpdate
+#endif
+  interface
+  subroutine MatLMVMClearJ0(B, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tMat
+  Mat :: B
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::MatLMVMClearJ0
+#endif
+  interface
+  subroutine MatLMVMSetJ0Scale(B,scale, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tMat
+  Mat :: B
+  PetscReal :: scale
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::MatLMVMSetJ0Scale
+#endif
+  interface
+  subroutine MatLMVMSetJ0Diag(B,V, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tMat,tVec
+  Mat :: B
+  Vec :: V
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::MatLMVMSetJ0Diag
+#endif
+  interface
+  subroutine MatLMVMSetJ0(B,J0, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tMat
+  Mat :: B
+  Mat :: J0
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::MatLMVMSetJ0
+#endif
+  interface
+  subroutine MatLMVMSetJ0PC(B,J0pc, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tMat,tPC
+  Mat :: B
+  PC :: J0pc
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::MatLMVMSetJ0PC
+#endif
+  interface
+  subroutine MatLMVMSetJ0KSP(B,J0ksp, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tMat,tKSP
+  Mat :: B
+  KSP :: J0ksp
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::MatLMVMSetJ0KSP
+#endif
+  interface
+  subroutine MatLMVMGetJ0(B,J0, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tMat
+  Mat :: B
+  Mat :: J0
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::MatLMVMGetJ0
+#endif
+  interface
+  subroutine MatLMVMGetJ0PC(B,J0pc, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tMat,tPC
+  Mat :: B
+  PC :: J0pc
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::MatLMVMGetJ0PC
+#endif
+  interface
+  subroutine MatLMVMGetJ0KSP(B,J0ksp, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tMat,tKSP
+  Mat :: B
+  KSP :: J0ksp
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::MatLMVMGetJ0KSP
+#endif
+  interface
+  subroutine MatLMVMApplyJ0Fwd(B,X,Y, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tMat,tVec
+  Mat :: B
+  Vec :: X
+  Vec :: Y
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::MatLMVMApplyJ0Fwd
+#endif
+  interface
+  subroutine MatLMVMApplyJ0Inv(B,X,Y, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tMat,tVec
+  Mat :: B
+  Vec :: X
+  Vec :: Y
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::MatLMVMApplyJ0Inv
+#endif
+  interface
+  subroutine MatLMVMIsAllocated(B,flg, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tMat
+  Mat :: B
+  PetscBool :: flg
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::MatLMVMIsAllocated
+#endif
+  interface
+  subroutine MatLMVMAllocate(B,X,F, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tMat,tVec
+  Mat :: B
+  Vec :: X
+  Vec :: F
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::MatLMVMAllocate
+#endif
+  interface
+  subroutine MatLMVMResetShift(B, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tMat
+  Mat :: B
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::MatLMVMResetShift
+#endif
+  interface
+  subroutine MatLMVMReset(B,destructive, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tMat
+  Mat :: B
+  PetscBool :: destructive
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::MatLMVMReset
+#endif
+  interface
+  subroutine MatLMVMSetHistorySize(B,hist_size, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tMat
+  Mat :: B
+  PetscInt :: hist_size
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::MatLMVMSetHistorySize
+#endif
+  interface
+  subroutine MatLMVMGetHistorySize(B,hist_size, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tMat
+  Mat :: B
+  PetscInt :: hist_size
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::MatLMVMGetHistorySize
+#endif
+  interface
+  subroutine MatLMVMGetUpdateCount(B,nupdates, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tMat
+  Mat :: B
+  PetscInt :: nupdates
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::MatLMVMGetUpdateCount
+#endif
+  interface
+  subroutine MatLMVMGetRejectCount(B,nrejects, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tMat
+  Mat :: B
+  PetscInt :: nrejects
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::MatLMVMGetRejectCount
+#endif
+  interface
+  subroutine MatCreateLMVMDiagBroyden(comm,n,M_N,B, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tMat
+  MPIU_Comm :: comm
+  PetscInt :: n
+  PetscInt :: M_N
+  Mat :: B
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::MatCreateLMVMDiagBroyden
+#endif
+  interface
+  subroutine MatCreateLMVMBadBroyden(comm,n,M_N,B, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tMat
+  MPIU_Comm :: comm
+  PetscInt :: n
+  PetscInt :: M_N
+  Mat :: B
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::MatCreateLMVMBadBroyden
+#endif
+  interface
+  subroutine MatCreateLMVMBroyden(comm,n,M_N,B, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tMat
+  MPIU_Comm :: comm
+  PetscInt :: n
+  PetscInt :: M_N
+  Mat :: B
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::MatCreateLMVMBroyden
+#endif
+  interface
+  subroutine MatCreateLMVMDQN(comm,n,M_N,B, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tMat
+  MPIU_Comm :: comm
+  PetscInt :: n
+  PetscInt :: M_N
+  Mat :: B
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::MatCreateLMVMDQN
+#endif
+  interface
+  subroutine MatCreateLMVMDBFGS(comm,n,M_N,B, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tMat
+  MPIU_Comm :: comm
+  PetscInt :: n
+  PetscInt :: M_N
+  Mat :: B
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::MatCreateLMVMDBFGS
+#endif
+  interface
+  subroutine MatCreateLMVMDDFP(comm,n,M_N,B, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tMat
+  MPIU_Comm :: comm
+  PetscInt :: n
+  PetscInt :: M_N
+  Mat :: B
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::MatCreateLMVMDDFP
+#endif
+  interface
+  subroutine MatLMVMDenseSetType(B,type, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tMat,eMatLMVMDenseType
+  Mat :: B
+  MatLMVMDenseType :: type
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::MatLMVMDenseSetType
+#endif
+  interface
+  subroutine MatCreateLMVMSR1(comm,n,M_N,B, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tMat
+  MPIU_Comm :: comm
+  PetscInt :: n
+  PetscInt :: M_N
+  Mat :: B
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::MatCreateLMVMSR1
+#endif
+  interface
+  subroutine MatCreateLMVMBFGS(comm,n,M_N,B, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tMat
+  MPIU_Comm :: comm
+  PetscInt :: n
+  PetscInt :: M_N
+  Mat :: B
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::MatCreateLMVMBFGS
+#endif
+  interface
+  subroutine MatLMVMSymBroydenGetPhi(B,phi, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tMat
+  Mat :: B
+  PetscReal :: phi
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::MatLMVMSymBroydenGetPhi
+#endif
+  interface
+  subroutine MatLMVMSymBroydenSetPhi(B,phi, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tMat
+  Mat :: B
+  PetscReal :: phi
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::MatLMVMSymBroydenSetPhi
+#endif
+  interface
+  subroutine MatLMVMSymBadBroydenGetPsi(B,psi, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tMat
+  Mat :: B
+  PetscReal :: psi
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::MatLMVMSymBadBroydenGetPsi
+#endif
+  interface
+  subroutine MatLMVMSymBadBroydenSetPsi(B,psi, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tMat
+  Mat :: B
+  PetscReal :: psi
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::MatLMVMSymBadBroydenSetPsi
+#endif
+  interface
+  subroutine MatLMVMSymBroydenSetDelta(B,delta, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tMat
+  Mat :: B
+  PetscScalar :: delta
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::MatLMVMSymBroydenSetDelta
+#endif
+  interface
+  subroutine MatLMVMSymBroydenSetScaleType(B,stype, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tMat,eMatLMVMSymBroydenScaleType
+  Mat :: B
+  MatLMVMSymBroydenScaleType :: stype
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::MatLMVMSymBroydenSetScaleType
+#endif
+  interface
+  subroutine MatCreateLMVMSymBroyden(comm,n,M_N,B, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tMat
+  MPIU_Comm :: comm
+  PetscInt :: n
+  PetscInt :: M_N
+  Mat :: B
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::MatCreateLMVMSymBroyden
+#endif
+  interface
+  subroutine MatCreateLMVMSymBadBroyden(comm,n,M_N,B, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tMat
+  MPIU_Comm :: comm
+  PetscInt :: n
+  PetscInt :: M_N
+  Mat :: B
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::MatCreateLMVMSymBadBroyden
+#endif
+  interface
+  subroutine MatCreateLMVMDFP(comm,n,M_N,B, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tMat
+  MPIU_Comm :: comm
+  PetscInt :: n
+  PetscInt :: M_N
+  Mat :: B
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::MatCreateLMVMDFP
+#endif
+  interface
+  subroutine MatCreateSchurComplement(A00,Ap00,A01,A10,A11,S, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tMat
+  Mat :: A00
+  Mat :: Ap00
+  Mat :: A01
+  Mat :: A10
+  Mat :: A11
+  Mat :: S
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::MatCreateSchurComplement
+#endif
+  interface
+  subroutine MatSchurComplementSetSubMatrices(S,A00,Ap00,A01,A10,A11, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tMat
+  Mat :: S
+  Mat :: A00
+  Mat :: Ap00
+  Mat :: A01
+  Mat :: A10
+  Mat :: A11
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::MatSchurComplementSetSubMatrices
+#endif
+  interface
+  subroutine MatSchurComplementGetKSP(S,ksp, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tMat,tKSP
+  Mat :: S
+  KSP :: ksp
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::MatSchurComplementGetKSP
+#endif
+  interface
+  subroutine MatSchurComplementSetKSP(S,ksp, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tMat,tKSP
+  Mat :: S
+  KSP :: ksp
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::MatSchurComplementSetKSP
+#endif
+  interface
+  subroutine MatSchurComplementUpdateSubMatrices(S,A00,Ap00,A01,A10,A11, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tMat
+  Mat :: S
+  Mat :: A00
+  Mat :: Ap00
+  Mat :: A01
+  Mat :: A10
+  Mat :: A11
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::MatSchurComplementUpdateSubMatrices
+#endif
+  interface
+  subroutine MatSchurComplementGetSubMatrices(S,A00,Ap00,A01,A10,A11, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tMat
+  Mat :: S
+  Mat :: A00
+  Mat :: Ap00
+  Mat :: A01
+  Mat :: A10
+  Mat :: A11
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::MatSchurComplementGetSubMatrices
+#endif
+  interface
+  subroutine MatSchurComplementComputeExplicitOperator(A,S, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tMat
+  Mat :: A
+  Mat :: S
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::MatSchurComplementComputeExplicitOperator
+#endif
+  interface
+  subroutine MatGetSchurComplement(A,isrow0,iscol0,isrow1,iscol1,mreuse,S,ainvtype,preuse,Sp, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tMat,tIS,eMatReuse,eMatSchurComplementAinvType
+  Mat :: A
+  IS :: isrow0
+  IS :: iscol0
+  IS :: isrow1
+  IS :: iscol1
+  MatReuse :: mreuse
+  Mat :: S
+  MatSchurComplementAinvType :: ainvtype
+  MatReuse :: preuse
+  Mat :: Sp
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::MatGetSchurComplement
+#endif
+  interface
+  subroutine MatSchurComplementSetAinvType(S,ainvtype, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tMat,eMatSchurComplementAinvType
+  Mat :: S
+  MatSchurComplementAinvType :: ainvtype
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::MatSchurComplementSetAinvType
+#endif
+  interface
+  subroutine MatSchurComplementGetAinvType(S,ainvtype, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tMat,eMatSchurComplementAinvType
+  Mat :: S
+  MatSchurComplementAinvType :: ainvtype
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::MatSchurComplementGetAinvType
+#endif
+  interface
+  subroutine MatCreateSchurComplementPmat(A00,A01,A10,A11,ainvtype,preuse,Sp, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tMat,eMatSchurComplementAinvType,eMatReuse
+  Mat :: A00
+  Mat :: A01
+  Mat :: A10
+  Mat :: A11
+  MatSchurComplementAinvType :: ainvtype
+  MatReuse :: preuse
+  Mat :: Sp
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::MatCreateSchurComplementPmat
+#endif
+  interface
+  subroutine MatSchurComplementGetPmat(S,preuse,Sp, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tMat,eMatReuse
+  Mat :: S
+  MatReuse :: preuse
+  Mat :: Sp
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::MatSchurComplementGetPmat
+#endif
+  interface
+  subroutine KSPComputeOperator(ksp,mattype,mat, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tKSP,tMat
+  KSP :: ksp
+  character(*) :: mattype
+  Mat :: mat
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::KSPComputeOperator
+#endif
+  interface
+  subroutine KSPComputeEigenvaluesExplicitly(ksp,nmax,r,c, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tKSP
+  KSP :: ksp
+  PetscInt :: nmax
+  PetscReal :: r(*)
+  PetscReal :: c(*)
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::KSPComputeEigenvaluesExplicitly
+#endif
+  interface
+  subroutine KSPComputeExtremeSingularValues(ksp,emax,emin, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tKSP
+  KSP :: ksp
+  PetscReal :: emax
+  PetscReal :: emin
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::KSPComputeExtremeSingularValues
+#endif
+  interface
+  subroutine KSPComputeEigenvalues(ksp,n,r,c,neig, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tKSP
+  KSP :: ksp
+  PetscInt :: n
+  PetscReal :: r(*)
+  PetscReal :: c(*)
+  PetscInt :: neig
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::KSPComputeEigenvalues
+#endif
+  interface
+  subroutine KSPComputeRitz(ksp,ritz,small,nrit,S,tetar,tetai, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tKSP,tVec
+  KSP :: ksp
+  PetscBool :: ritz
+  PetscBool :: small
+  PetscInt :: nrit
+  Vec :: S(*)
+  PetscReal :: tetar(*)
+  PetscReal :: tetai(*)
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::KSPComputeRitz
+#endif
+  interface
+  subroutine KSPSetUpOnBlocks(ksp, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tKSP
+  KSP :: ksp
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::KSPSetUpOnBlocks
+#endif
+  interface
+  subroutine KSPSetReusePreconditioner(ksp,flag, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tKSP
+  KSP :: ksp
+  PetscBool :: flag
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::KSPSetReusePreconditioner
+#endif
+  interface
+  subroutine KSPGetReusePreconditioner(ksp,flag, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tKSP
+  KSP :: ksp
+  PetscBool :: flag
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::KSPGetReusePreconditioner
+#endif
+  interface
+  subroutine KSPSetSkipPCSetFromOptions(ksp,flag, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tKSP
+  KSP :: ksp
+  PetscBool :: flag
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::KSPSetSkipPCSetFromOptions
+#endif
+  interface
+  subroutine KSPSetUp(ksp, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tKSP
+  KSP :: ksp
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::KSPSetUp
+#endif
+  interface
+  subroutine KSPConvergedReasonView(ksp,viewer, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tKSP,tPetscViewer
+  KSP :: ksp
+  PetscViewer :: viewer
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::KSPConvergedReasonView
+#endif
+  interface
+  subroutine KSPConvergedReasonViewSet(ksp,f,ctx,reasonviewdestroy, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tKSP
+  KSP :: ksp
+  external f
+  type(*) :: ctx
+  external reasonviewdestroy
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::KSPConvergedReasonViewSet
+#endif
+  interface
+  subroutine KSPConvergedReasonViewCancel(ksp, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tKSP
+  KSP :: ksp
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::KSPConvergedReasonViewCancel
+#endif
+  interface
+  subroutine KSPConvergedReasonViewFromOptions(ksp, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tKSP
+  KSP :: ksp
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::KSPConvergedReasonViewFromOptions
+#endif
+  interface
+  subroutine KSPConvergedRateView(ksp,viewer, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tKSP,tPetscViewer
+  KSP :: ksp
+  PetscViewer :: viewer
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::KSPConvergedRateView
+#endif
+  interface
+  subroutine KSPSolve(ksp,b,x, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tKSP,tVec
+  KSP :: ksp
+  Vec :: b
+  Vec :: x
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::KSPSolve
+#endif
+  interface
+  subroutine KSPSolveTranspose(ksp,b,x, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tKSP,tVec
+  KSP :: ksp
+  Vec :: b
+  Vec :: x
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::KSPSolveTranspose
+#endif
+  interface
+  subroutine KSPMatSolve(ksp,B,X, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tKSP,tMat
+  KSP :: ksp
+  Mat :: B
+  Mat :: X
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::KSPMatSolve
+#endif
+  interface
+  subroutine KSPMatSolveTranspose(ksp,B,X, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tKSP,tMat
+  KSP :: ksp
+  Mat :: B
+  Mat :: X
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::KSPMatSolveTranspose
+#endif
+  interface
+  subroutine KSPSetMatSolveBatchSize(ksp,bs, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tKSP
+  KSP :: ksp
+  PetscInt :: bs
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::KSPSetMatSolveBatchSize
+#endif
+  interface
+  subroutine KSPGetMatSolveBatchSize(ksp,bs, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tKSP
+  KSP :: ksp
+  PetscInt :: bs
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::KSPGetMatSolveBatchSize
+#endif
+  interface
+  subroutine KSPResetViewers(ksp, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tKSP
+  KSP :: ksp
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::KSPResetViewers
+#endif
+  interface
+  subroutine KSPReset(ksp, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tKSP
+  KSP :: ksp
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::KSPReset
+#endif
+  interface
+  subroutine KSPDestroy(ksp, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tKSP
+  KSP :: ksp
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::KSPDestroy
+#endif
+  interface
+  subroutine KSPSetPCSide(ksp,side, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tKSP,ePCSide
+  KSP :: ksp
+  PCSide :: side
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::KSPSetPCSide
+#endif
+  interface
+  subroutine KSPGetPCSide(ksp,side, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tKSP,ePCSide
+  KSP :: ksp
+  PCSide :: side
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::KSPGetPCSide
+#endif
+  interface
+  subroutine KSPGetTolerances(ksp,rtol,abstol,dtol,maxits, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tKSP
+  KSP :: ksp
+  PetscReal :: rtol
+  PetscReal :: abstol
+  PetscReal :: dtol
+  PetscInt :: maxits
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::KSPGetTolerances
+#endif
+  interface
+  subroutine KSPSetTolerances(ksp,rtol,abstol,dtol,maxits, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tKSP
+  KSP :: ksp
+  PetscReal :: rtol
+  PetscReal :: abstol
+  PetscReal :: dtol
+  PetscInt :: maxits
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::KSPSetTolerances
+#endif
+  interface
+  subroutine KSPSetMinimumIterations(ksp,minit, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tKSP
+  KSP :: ksp
+  PetscInt :: minit
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::KSPSetMinimumIterations
+#endif
+  interface
+  subroutine KSPGetMinimumIterations(ksp,minit, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tKSP
+  KSP :: ksp
+  PetscInt :: minit
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::KSPGetMinimumIterations
+#endif
+  interface
+  subroutine KSPSetInitialGuessNonzero(ksp,flg, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tKSP
+  KSP :: ksp
+  PetscBool :: flg
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::KSPSetInitialGuessNonzero
+#endif
+  interface
+  subroutine KSPGetInitialGuessNonzero(ksp,flag, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tKSP
+  KSP :: ksp
+  PetscBool :: flag
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::KSPGetInitialGuessNonzero
+#endif
+  interface
+  subroutine KSPSetErrorIfNotConverged(ksp,flg, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tKSP
+  KSP :: ksp
+  PetscBool :: flg
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::KSPSetErrorIfNotConverged
+#endif
+  interface
+  subroutine KSPGetErrorIfNotConverged(ksp,flag, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tKSP
+  KSP :: ksp
+  PetscBool :: flag
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::KSPGetErrorIfNotConverged
+#endif
+  interface
+  subroutine KSPSetInitialGuessKnoll(ksp,flg, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tKSP
+  KSP :: ksp
+  PetscBool :: flg
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::KSPSetInitialGuessKnoll
+#endif
+  interface
+  subroutine KSPGetInitialGuessKnoll(ksp,flag, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tKSP
+  KSP :: ksp
+  PetscBool :: flag
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::KSPGetInitialGuessKnoll
+#endif
+  interface
+  subroutine KSPGetComputeSingularValues(ksp,flg, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tKSP
+  KSP :: ksp
+  PetscBool :: flg
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::KSPGetComputeSingularValues
+#endif
+  interface
+  subroutine KSPSetComputeSingularValues(ksp,flg, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tKSP
+  KSP :: ksp
+  PetscBool :: flg
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::KSPSetComputeSingularValues
+#endif
+  interface
+  subroutine KSPGetComputeEigenvalues(ksp,flg, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tKSP
+  KSP :: ksp
+  PetscBool :: flg
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::KSPGetComputeEigenvalues
+#endif
+  interface
+  subroutine KSPSetComputeEigenvalues(ksp,flg, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tKSP
+  KSP :: ksp
+  PetscBool :: flg
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::KSPSetComputeEigenvalues
+#endif
+  interface
+  subroutine KSPSetComputeRitz(ksp,flg, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tKSP
+  KSP :: ksp
+  PetscBool :: flg
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::KSPSetComputeRitz
+#endif
+  interface
+  subroutine KSPGetRhs(ksp,r, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tKSP,tVec
+  KSP :: ksp
+  Vec :: r
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::KSPGetRhs
+#endif
+  interface
+  subroutine KSPGetSolution(ksp,v, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tKSP,tVec
+  KSP :: ksp
+  Vec :: v
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::KSPGetSolution
+#endif
+  interface
+  subroutine KSPSetPC(ksp,pc, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tKSP,tPC
+  KSP :: ksp
+  PC :: pc
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::KSPSetPC
+#endif
+  interface
+  subroutine KSPGetPC(ksp,pc, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tKSP,tPC
+  KSP :: ksp
+  PC :: pc
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::KSPGetPC
+#endif
+  interface
+  subroutine KSPMonitor(ksp,it,rnorm, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tKSP
+  KSP :: ksp
+  PetscInt :: it
+  PetscReal :: rnorm
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::KSPMonitor
+#endif
+  interface
+  subroutine KSPMonitorSet(ksp,monitor,ctx,monitordestroy, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tKSP
+  KSP :: ksp
+  external monitor
+  type(*) :: ctx
+  external monitordestroy
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::KSPMonitorSet
+#endif
+  interface
+  subroutine KSPMonitorCancel(ksp, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tKSP
+  KSP :: ksp
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::KSPMonitorCancel
+#endif
+  interface
+  subroutine KSPGetMonitorContextcptr(ksp,ctx, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tKSP
+  KSP :: ksp
+  type(c_ptr) :: ctx
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::KSPGetMonitorContextcptr
+#endif
+  interface
+  subroutine KSPSetResidualHistory(ksp,a,na,reset, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tKSP
+  KSP :: ksp
+  PetscReal :: a(*)
+  PetscCount :: na
+  PetscBool :: reset
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::KSPSetResidualHistory
+#endif
+  interface
+  subroutine KSPGetResidualHistory(ksp,a,na, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tKSP
+  KSP :: ksp
+  PetscReal, pointer :: a(:)
+  PetscInt :: na
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::KSPGetResidualHistory
+#endif
+  interface
+  subroutine KSPSetErrorHistory(ksp,a,na,reset, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tKSP
+  KSP :: ksp
+  PetscReal :: a(*)
+  PetscCount :: na
+  PetscBool :: reset
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::KSPSetErrorHistory
+#endif
+  interface
+  subroutine KSPGetErrorHistory(ksp,a,na, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tKSP
+  KSP :: ksp
+  PetscReal, pointer :: a(:)
+  PetscInt :: na
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::KSPGetErrorHistory
+#endif
+  interface
+  subroutine KSPComputeConvergenceRate(ksp,cr,rRsq,ce,eRsq, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tKSP
+  KSP :: ksp
+  PetscReal :: cr
+  PetscReal :: rRsq
+  PetscReal :: ce
+  PetscReal :: eRsq
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::KSPComputeConvergenceRate
+#endif
+  interface
+  subroutine KSPSetConvergenceTest(ksp,converge,ctx,destroy, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tKSP
+  KSP :: ksp
+  external converge
+  type(*) :: ctx
+  external destroy
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::KSPSetConvergenceTest
+#endif
+  interface
+  subroutine KSPGetConvergenceContextcptr(ksp,ctx, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tKSP
+  KSP :: ksp
+  type(c_ptr) :: ctx
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::KSPGetConvergenceContextcptr
+#endif
+  interface
+  subroutine KSPBuildSolution(ksp,v,M_V, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tKSP,tVec
+  KSP :: ksp
+  Vec :: v
+  Vec :: M_V
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::KSPBuildSolution
+#endif
+  interface
+  subroutine KSPBuildResidual(ksp,t,v,M_V, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tKSP,tVec
+  KSP :: ksp
+  Vec :: t
+  Vec :: v
+  Vec :: M_V
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::KSPBuildResidual
+#endif
+  interface
+  subroutine KSPSetDiagonalScale(ksp,scale, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tKSP
+  KSP :: ksp
+  PetscBool :: scale
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::KSPSetDiagonalScale
+#endif
+  interface
+  subroutine KSPGetDiagonalScale(ksp,scale, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tKSP
+  KSP :: ksp
+  PetscBool :: scale
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::KSPGetDiagonalScale
+#endif
+  interface
+  subroutine KSPSetDiagonalScaleFix(ksp,fix, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tKSP
+  KSP :: ksp
+  PetscBool :: fix
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::KSPSetDiagonalScaleFix
+#endif
+  interface
+  subroutine KSPGetDiagonalScaleFix(ksp,fix, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tKSP
+  KSP :: ksp
+  PetscBool :: fix
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::KSPGetDiagonalScaleFix
+#endif
+  interface
+  subroutine KSPSetComputeOperators(ksp,func,ctx, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tKSP
+  KSP :: ksp
+  external func
+  type(*) :: ctx
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::KSPSetComputeOperators
+#endif
+  interface
+  subroutine KSPSetComputeRHS(ksp,func,ctx, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tKSP
+  KSP :: ksp
+  external func
+  type(*) :: ctx
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::KSPSetComputeRHS
+#endif
+  interface
+  subroutine KSPSetComputeInitialGuess(ksp,func,ctx, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tKSP
+  KSP :: ksp
+  external func
+  type(*) :: ctx
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::KSPSetComputeInitialGuess
+#endif
+  interface
+  subroutine KSPSetUseExplicitTranspose(ksp,flg, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tKSP
+  KSP :: ksp
+  PetscBool :: flg
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::KSPSetUseExplicitTranspose
+#endif
+  interface
+  subroutine KSPGetResidualNorm(ksp,rnorm, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tKSP
+  KSP :: ksp
+  PetscReal :: rnorm
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::KSPGetResidualNorm
+#endif
+  interface
+  subroutine KSPGetIterationNumber(ksp,its, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tKSP
+  KSP :: ksp
+  PetscInt :: its
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::KSPGetIterationNumber
+#endif
+  interface
+  subroutine KSPGetTotalIterations(ksp,its, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tKSP
+  KSP :: ksp
+  PetscInt :: its
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::KSPGetTotalIterations
+#endif
+  interface
+  subroutine KSPMonitorResidual(ksp,n,rnorm,vf, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tKSP
+  KSP :: ksp
+  PetscInt :: n
+  PetscReal :: rnorm
+  PetscViewerAndFormat :: vf
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::KSPMonitorResidual
+#endif
+  interface
+  subroutine KSPMonitorResidualView(ksp,n,rnorm,vf, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tKSP
+  KSP :: ksp
+  PetscInt :: n
+  PetscReal :: rnorm
+  PetscViewerAndFormat :: vf
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::KSPMonitorResidualView
+#endif
+  interface
+  subroutine KSPMonitorResidualDrawLG(ksp,n,rnorm,vf, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tKSP
+  KSP :: ksp
+  PetscInt :: n
+  PetscReal :: rnorm
+  PetscViewerAndFormat :: vf
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::KSPMonitorResidualDrawLG
+#endif
+  interface
+  subroutine KSPMonitorResidualShort(ksp,its,fnorm,vf, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tKSP
+  KSP :: ksp
+  PetscInt :: its
+  PetscReal :: fnorm
+  PetscViewerAndFormat :: vf
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::KSPMonitorResidualShort
+#endif
+  interface
+  subroutine KSPMonitorResidualRange(ksp,it,rnorm,vf, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tKSP
+  KSP :: ksp
+  PetscInt :: it
+  PetscReal :: rnorm
+  PetscViewerAndFormat :: vf
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::KSPMonitorResidualRange
+#endif
+  interface
+  subroutine KSPMonitorTrueResidual(ksp,n,rnorm,vf, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tKSP
+  KSP :: ksp
+  PetscInt :: n
+  PetscReal :: rnorm
+  PetscViewerAndFormat :: vf
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::KSPMonitorTrueResidual
+#endif
+  interface
+  subroutine KSPMonitorTrueResidualView(ksp,n,rnorm,vf, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tKSP
+  KSP :: ksp
+  PetscInt :: n
+  PetscReal :: rnorm
+  PetscViewerAndFormat :: vf
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::KSPMonitorTrueResidualView
+#endif
+  interface
+  subroutine KSPMonitorTrueResidualDrawLG(ksp,n,rnorm,vf, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tKSP
+  KSP :: ksp
+  PetscInt :: n
+  PetscReal :: rnorm
+  PetscViewerAndFormat :: vf
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::KSPMonitorTrueResidualDrawLG
+#endif
+  interface
+  subroutine KSPMonitorTrueResidualMax(ksp,n,rnorm,vf, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tKSP
+  KSP :: ksp
+  PetscInt :: n
+  PetscReal :: rnorm
+  PetscViewerAndFormat :: vf
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::KSPMonitorTrueResidualMax
+#endif
+  interface
+  subroutine KSPMonitorError(ksp,n,rnorm,vf, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tKSP
+  KSP :: ksp
+  PetscInt :: n
+  PetscReal :: rnorm
+  PetscViewerAndFormat :: vf
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::KSPMonitorError
+#endif
+  interface
+  subroutine KSPMonitorErrorDraw(ksp,n,rnorm,vf, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tKSP
+  KSP :: ksp
+  PetscInt :: n
+  PetscReal :: rnorm
+  PetscViewerAndFormat :: vf
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::KSPMonitorErrorDraw
+#endif
+  interface
+  subroutine KSPMonitorErrorDrawLG(ksp,n,rnorm,vf, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tKSP
+  KSP :: ksp
+  PetscInt :: n
+  PetscReal :: rnorm
+  PetscViewerAndFormat :: vf
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::KSPMonitorErrorDrawLG
+#endif
+  interface
+  subroutine KSPMonitorSolution(ksp,n,rnorm,vf, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tKSP
+  KSP :: ksp
+  PetscInt :: n
+  PetscReal :: rnorm
+  PetscViewerAndFormat :: vf
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::KSPMonitorSolution
+#endif
+  interface
+  subroutine KSPMonitorSolutionDraw(ksp,n,rnorm,vf, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tKSP
+  KSP :: ksp
+  PetscInt :: n
+  PetscReal :: rnorm
+  PetscViewerAndFormat :: vf
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::KSPMonitorSolutionDraw
+#endif
+  interface
+  subroutine KSPMonitorSolutionDrawLG(ksp,n,rnorm,vf, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tKSP
+  KSP :: ksp
+  PetscInt :: n
+  PetscReal :: rnorm
+  PetscViewerAndFormat :: vf
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::KSPMonitorSolutionDrawLG
+#endif
+  interface
+  subroutine KSPMonitorSingularValue(ksp,n,rnorm,vf, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tKSP
+  KSP :: ksp
+  PetscInt :: n
+  PetscReal :: rnorm
+  PetscViewerAndFormat :: vf
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::KSPMonitorSingularValue
+#endif
+  interface
+  subroutine KSPMonitorDynamicToleranceCreate(ctx, ierr)
+  use, intrinsic :: ISO_C_binding
+  type(*) :: ctx
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::KSPMonitorDynamicToleranceCreate
+#endif
+  interface
+  subroutine KSPMonitorDynamicToleranceSetCoefficient(ctx,coeff, ierr)
+  use, intrinsic :: ISO_C_binding
+  type(*) :: ctx
+  PetscReal :: coeff
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::KSPMonitorDynamicToleranceSetCoefficient
+#endif
+  interface
+  subroutine KSPMonitorDynamicTolerance(ksp,its,fnorm,ctx, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tKSP
+  KSP :: ksp
+  PetscInt :: its
+  PetscReal :: fnorm
+  type(*) :: ctx
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::KSPMonitorDynamicTolerance
+#endif
+  interface
+  subroutine KSPMonitorDynamicToleranceDestroycptr(ctx, ierr)
+  use, intrinsic :: ISO_C_binding
+  type(c_ptr) :: ctx
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::KSPMonitorDynamicToleranceDestroycptr
+#endif
+  interface
+  subroutine KSPConvergedSkip(ksp,n,rnorm,reason,dtx, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tKSP,eKSPConvergedReason
+  KSP :: ksp
+  PetscInt :: n
+  PetscReal :: rnorm
+  KSPConvergedReason :: reason
+  type(*) :: dtx
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::KSPConvergedSkip
+#endif
+  interface
+  subroutine KSPSetConvergedNegativeCurvature(ksp,flg, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tKSP
+  KSP :: ksp
+  PetscBool :: flg
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::KSPSetConvergedNegativeCurvature
+#endif
+  interface
+  subroutine KSPGetConvergedNegativeCurvature(ksp,flg, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tKSP
+  KSP :: ksp
+  PetscBool :: flg
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::KSPGetConvergedNegativeCurvature
+#endif
+  interface
+  subroutine KSPConvergedDefaultSetUIRNorm(ksp, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tKSP
+  KSP :: ksp
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::KSPConvergedDefaultSetUIRNorm
+#endif
+  interface
+  subroutine KSPConvergedDefaultSetUMIRNorm(ksp, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tKSP
+  KSP :: ksp
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::KSPConvergedDefaultSetUMIRNorm
+#endif
+  interface
+  subroutine KSPConvergedDefaultSetConvergedMaxits(ksp,flg, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tKSP
+  KSP :: ksp
+  PetscBool :: flg
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::KSPConvergedDefaultSetConvergedMaxits
+#endif
+  interface
+  subroutine KSPConvergedDefault(ksp,n,rnorm,reason,ctx, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tKSP,eKSPConvergedReason
+  KSP :: ksp
+  PetscInt :: n
+  PetscReal :: rnorm
+  KSPConvergedReason :: reason
+  type(*) :: ctx
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::KSPConvergedDefault
+#endif
+  interface
+  subroutine KSPConvergedDefaultDestroycptr(ctx, ierr)
+  use, intrinsic :: ISO_C_binding
+  type(c_ptr) :: ctx
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::KSPConvergedDefaultDestroycptr
+#endif
+  interface
+  subroutine KSPBuildSolutionDefault(ksp,v,M_V, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tKSP,tVec
+  KSP :: ksp
+  Vec :: v
+  Vec :: M_V
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::KSPBuildSolutionDefault
+#endif
+  interface
+  subroutine KSPBuildResidualDefault(ksp,t,v,M_V, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tKSP,tVec
+  KSP :: ksp
+  Vec :: t
+  Vec :: v
+  Vec :: M_V
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::KSPBuildResidualDefault
+#endif
+  interface
+  subroutine KSPCreateVecs(ksp,rightn,right,leftn,left, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tKSP,tVec
+  KSP :: ksp
+  PetscInt :: rightn
+  Vec, pointer :: right(:)
+  PetscInt :: leftn
+  Vec, pointer :: left(:)
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::KSPCreateVecs
+#endif
+  interface
+  subroutine KSPSetWorkVecs(ksp,nw, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tKSP
+  KSP :: ksp
+  PetscInt :: nw
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::KSPSetWorkVecs
+#endif
+  interface
+  subroutine KSPDestroyDefault(ksp, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tKSP
+  KSP :: ksp
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::KSPDestroyDefault
+#endif
+  interface
+  subroutine KSPGetConvergedReason(ksp,reason, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tKSP,eKSPConvergedReason
+  KSP :: ksp
+  KSPConvergedReason :: reason
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::KSPGetConvergedReason
+#endif
+  interface
+  subroutine KSPGetConvergedReasonString(ksp,strreason, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tKSP
+  KSP :: ksp
+  character(*) :: strreason
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::KSPGetConvergedReasonString
+#endif
+  interface
+  subroutine KSPSetDM(ksp,dm, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tKSP,tDM
+  KSP :: ksp
+  DM :: dm
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::KSPSetDM
+#endif
+  interface
+  subroutine KSPSetDMActive(ksp,active,flg, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tKSP,eKSPDMActive
+  KSP :: ksp
+  KSPDMActive :: active
+  PetscBool :: flg
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::KSPSetDMActive
+#endif
+  interface
+  subroutine KSPGetDM(ksp,dm, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tKSP,tDM
+  KSP :: ksp
+  DM :: dm
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::KSPGetDM
+#endif
+  interface
+  subroutine KSPSetApplicationContext(ksp,ctx, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tKSP
+  KSP :: ksp
+  type(*) :: ctx
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::KSPSetApplicationContext
+#endif
+  interface
+  subroutine KSPGetApplicationContextcptr(ksp,ctx, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tKSP
+  KSP :: ksp
+  type(c_ptr) :: ctx
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::KSPGetApplicationContextcptr
+#endif
+  interface
+  subroutine KSPCheckSolve(ksp,pc,vec, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tKSP,tPC,tVec
+  KSP :: ksp
+  PC :: pc
+  Vec :: vec
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::KSPCheckSolve
+#endif
+  interface
+  subroutine KSPInitialResidual(ksp,vsoln,vt1,vt2,vres,vb, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tKSP,tVec
+  KSP :: ksp
+  Vec :: vsoln
+  Vec :: vt1
+  Vec :: vt2
+  Vec :: vres
+  Vec :: vb
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::KSPInitialResidual
+#endif
+  interface
+  subroutine KSPUnwindPreconditioner(ksp,vsoln,vt1, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tKSP,tVec
+  KSP :: ksp
+  Vec :: vsoln
+  Vec :: vt1
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::KSPUnwindPreconditioner
+#endif
+  interface
+  subroutine KSPLoad(newdm,viewer, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tKSP,tPetscViewer
+  KSP :: newdm
+  PetscViewer :: viewer
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::KSPLoad
+#endif
+  interface
+  subroutine KSPView(ksp,viewer, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tKSP,tPetscViewer
+  KSP :: ksp
+  PetscViewer :: viewer
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::KSPView
+#endif
+  interface
+  subroutine KSPViewFromOptions(A,obj,name, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tKSP,tPetscObject
+  KSP :: A
+  PetscObject :: obj
+  character(*) :: name
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::KSPViewFromOptions
+#endif
+  interface
+  subroutine KSPSetNormType(ksp,normtype, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tKSP,eKSPNormType
+  KSP :: ksp
+  KSPNormType :: normtype
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::KSPSetNormType
+#endif
+  interface
+  subroutine KSPSetCheckNormIteration(ksp,it, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tKSP
+  KSP :: ksp
+  PetscInt :: it
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::KSPSetCheckNormIteration
+#endif
+  interface
+  subroutine KSPSetLagNorm(ksp,flg, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tKSP
+  KSP :: ksp
+  PetscBool :: flg
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::KSPSetLagNorm
+#endif
+  interface
+  subroutine KSPSetSupportedNorm(ksp,normtype,pcside,priority, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tKSP,eKSPNormType,ePCSide
+  KSP :: ksp
+  KSPNormType :: normtype
+  PCSide :: pcside
+  PetscInt :: priority
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::KSPSetSupportedNorm
+#endif
+  interface
+  subroutine KSPGetNormType(ksp,normtype, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tKSP,eKSPNormType
+  KSP :: ksp
+  KSPNormType :: normtype
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::KSPGetNormType
+#endif
+  interface
+  subroutine KSPSetOperators(ksp,Amat,Pmat, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tKSP,tMat
+  KSP :: ksp
+  Mat :: Amat
+  Mat :: Pmat
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::KSPSetOperators
+#endif
+  interface
+  subroutine KSPGetOperators(ksp,Amat,Pmat, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tKSP,tMat
+  KSP :: ksp
+  Mat :: Amat
+  Mat :: Pmat
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::KSPGetOperators
+#endif
+  interface
+  subroutine KSPGetOperatorsSet(ksp,mat,pmat, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tKSP
+  KSP :: ksp
+  PetscBool :: mat
+  PetscBool :: pmat
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::KSPGetOperatorsSet
+#endif
+  interface
+  subroutine KSPSetPreSolve(ksp,presolve,ctx, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tKSP
+  KSP :: ksp
+  external presolve
+  type(*) :: ctx
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::KSPSetPreSolve
+#endif
+  interface
+  subroutine KSPSetPostSolve(ksp,postsolve,ctx, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tKSP
+  KSP :: ksp
+  external postsolve
+  type(*) :: ctx
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::KSPSetPostSolve
+#endif
+  interface
+  subroutine KSPSetNestLevel(ksp,level, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tKSP
+  KSP :: ksp
+  PetscInt :: level
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::KSPSetNestLevel
+#endif
+  interface
+  subroutine KSPGetNestLevel(ksp,level, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tKSP
+  KSP :: ksp
+  PetscInt :: level
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::KSPGetNestLevel
+#endif
+  interface
+  subroutine KSPCreate(comm,inksp, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tKSP
+  MPIU_Comm :: comm
+  KSP :: inksp
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::KSPCreate
+#endif
+  interface
+  subroutine KSPSetType(ksp,type, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tKSP
+  KSP :: ksp
+  character(*) :: type
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::KSPSetType
+#endif
+  interface
+  subroutine KSPGetType(ksp,type, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tKSP
+  KSP :: ksp
+  character(*) :: type
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::KSPGetType
+#endif
+  interface
+  subroutine KSPRegister(sname,function, ierr)
+  use, intrinsic :: ISO_C_binding
+  character(*) :: sname
+  external :: function
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::KSPRegister
+#endif
+  interface
+  subroutine KSPMonitorRegister(name,vtype,format,monitor,create,destroy, ierr)
+  use, intrinsic :: ISO_C_binding
+  import ePetscViewerFormat
+  character(*) :: name
+  character(*) :: vtype
+  PetscViewerFormat :: format
+  external monitor
+  external create
+  external destroy
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::KSPMonitorRegister
+#endif
+  interface
+  subroutine KSPSetOptionsPrefix(ksp,prefix, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tKSP
+  KSP :: ksp
+  character(*) :: prefix
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::KSPSetOptionsPrefix
+#endif
+  interface
+  subroutine KSPAppendOptionsPrefix(ksp,prefix, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tKSP
+  KSP :: ksp
+  character(*) :: prefix
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::KSPAppendOptionsPrefix
+#endif
+  interface
+  subroutine KSPSetUseFischerGuess(ksp,model,size, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tKSP
+  KSP :: ksp
+  PetscInt :: model
+  PetscInt :: size
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::KSPSetUseFischerGuess
+#endif
+  interface
+  subroutine KSPSetGuess(ksp,guess, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tKSP,tKSPGuess
+  KSP :: ksp
+  KSPGuess :: guess
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::KSPSetGuess
+#endif
+  interface
+  subroutine KSPGetGuess(ksp,guess, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tKSP,tKSPGuess
+  KSP :: ksp
+  KSPGuess :: guess
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::KSPGetGuess
+#endif
+  interface
+  subroutine KSPGetOptionsPrefix(ksp,prefix, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tKSP
+  KSP :: ksp
+  character(*) :: prefix
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::KSPGetOptionsPrefix
+#endif
+  interface
+  subroutine KSPMonitorSetFromOptions(ksp,opt,name,ctx, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tKSP
+  KSP :: ksp
+  character(*) :: opt
+  character(*) :: name
+  type(*) :: ctx
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::KSPMonitorSetFromOptions
+#endif
+  interface
+  subroutine KSPSetFromOptions(ksp, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tKSP
+  KSP :: ksp
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::KSPSetFromOptions
+#endif
+  interface
+  subroutine KSPResetFromOptions(ksp, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tKSP
+  KSP :: ksp
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::KSPResetFromOptions
+#endif
+  interface
+  subroutine KSPFinalizePackage(ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::KSPFinalizePackage
+#endif
+  interface
+  subroutine KSPInitializePackage(ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::KSPInitializePackage
+#endif
+  interface
+  subroutine KSPMonitorSAWsDestroycptr(ctx, ierr)
+  use, intrinsic :: ISO_C_binding
+  type(c_ptr) :: ctx
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::KSPMonitorSAWsDestroycptr
+#endif
+  interface
+  subroutine KSPMonitorSAWs(ksp,n,rnorm,ctx, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tKSP
+  KSP :: ksp
+  PetscInt :: n
+  PetscReal :: rnorm
+  type(*) :: ctx
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::KSPMonitorSAWs
+#endif
+  interface
+  subroutine KSPGMRESSetPreAllocateVectors(ksp, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tKSP
+  KSP :: ksp
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::KSPGMRESSetPreAllocateVectors
+#endif
+  interface
+  subroutine KSPGMRESClassicalGramSchmidtOrthogonalization(ksp,it, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tKSP
+  KSP :: ksp
+  PetscInt :: it
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::KSPGMRESClassicalGramSchmidtOrthogonalization
+#endif
+  interface
+  subroutine KSPGMRESSetOrthogonalization(ksp,fcn, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tKSP
+  KSP :: ksp
+  external :: fcn
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::KSPGMRESSetOrthogonalization
+#endif
+  interface
+  subroutine KSPGMRESSetCGSRefinementType(ksp,type, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tKSP,eKSPGMRESCGSRefinementType
+  KSP :: ksp
+  KSPGMRESCGSRefinementType :: type
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::KSPGMRESSetCGSRefinementType
+#endif
+  interface
+  subroutine KSPGMRESGetCGSRefinementType(ksp,type, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tKSP,eKSPGMRESCGSRefinementType
+  KSP :: ksp
+  KSPGMRESCGSRefinementType :: type
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::KSPGMRESGetCGSRefinementType
+#endif
+  interface
+  subroutine KSPGMRESSetRestart(ksp,restart, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tKSP
+  KSP :: ksp
+  PetscInt :: restart
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::KSPGMRESSetRestart
+#endif
+  interface
+  subroutine KSPGMRESGetRestart(ksp,restart, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tKSP
+  KSP :: ksp
+  PetscInt :: restart
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::KSPGMRESGetRestart
+#endif
+  interface
+  subroutine KSPGMRESSetHapTol(ksp,tol, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tKSP
+  KSP :: ksp
+  PetscReal :: tol
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::KSPGMRESSetHapTol
+#endif
+  interface
+  subroutine KSPGMRESSetBreakdownTolerance(ksp,tol, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tKSP
+  KSP :: ksp
+  PetscReal :: tol
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::KSPGMRESSetBreakdownTolerance
+#endif
+  interface
+  subroutine KSPGMRESModifiedGramSchmidtOrthogonalization(ksp,it, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tKSP
+  KSP :: ksp
+  PetscInt :: it
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::KSPGMRESModifiedGramSchmidtOrthogonalization
+#endif
+  interface
+  subroutine KSPPIPEFGMRESSetShift(ksp,shift, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tKSP
+  KSP :: ksp
+  PetscScalar :: shift
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::KSPPIPEFGMRESSetShift
+#endif
+  interface
+  subroutine KSPFlexibleSetModifyPC(ksp,fcn,ctx,destroy, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tKSP
+  KSP :: ksp
+  external fcn
+  type(*) :: ctx
+  external destroy
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::KSPFlexibleSetModifyPC
+#endif
+  interface
+  subroutine KSPFlexibleModifyPCNoChange(ksp,total_its,loc_its,res_norm,ctx, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tKSP
+  KSP :: ksp
+  PetscInt :: total_its
+  PetscInt :: loc_its
+  PetscReal :: res_norm
+  type(*) :: ctx
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::KSPFlexibleModifyPCNoChange
+#endif
+  interface
+  subroutine KSPFlexibleModifyPCKSP(ksp,total_its,loc_its,res_norm,ctx, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tKSP
+  KSP :: ksp
+  PetscInt :: total_its
+  PetscInt :: loc_its
+  PetscReal :: res_norm
+  type(*) :: ctx
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::KSPFlexibleModifyPCKSP
+#endif
+  interface
+  subroutine KSPLGMRESSetAugDim(ksp,dim, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tKSP
+  KSP :: ksp
+  PetscInt :: dim
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::KSPLGMRESSetAugDim
+#endif
+  interface
+  subroutine KSPLGMRESSetConstant(ksp, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tKSP
+  KSP :: ksp
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::KSPLGMRESSetConstant
+#endif
+  interface
+  subroutine KSPChebyshevSetEigenvalues(ksp,emax,emin, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tKSP
+  KSP :: ksp
+  PetscReal :: emax
+  PetscReal :: emin
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::KSPChebyshevSetEigenvalues
+#endif
+  interface
+  subroutine KSPChebyshevEstEigSet(ksp,a,b,c,d, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tKSP
+  KSP :: ksp
+  PetscReal :: a
+  PetscReal :: b
+  PetscReal :: c
+  PetscReal :: d
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::KSPChebyshevEstEigSet
+#endif
+  interface
+  subroutine KSPChebyshevEstEigSetUseNoisy(ksp,use, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tKSP
+  KSP :: ksp
+  PetscBool :: use
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::KSPChebyshevEstEigSetUseNoisy
+#endif
+  interface
+  subroutine KSPChebyshevEstEigGetKSP(ksp,kspest, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tKSP
+  KSP :: ksp
+  KSP :: kspest
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::KSPChebyshevEstEigGetKSP
+#endif
+  interface
+  subroutine KSPChebyshevSetKind(ksp,kind, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tKSP,eKSPChebyshevKind
+  KSP :: ksp
+  KSPChebyshevKind :: kind
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::KSPChebyshevSetKind
+#endif
+  interface
+  subroutine KSPChebyshevGetKind(ksp,kind, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tKSP,eKSPChebyshevKind
+  KSP :: ksp
+  KSPChebyshevKind :: kind
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::KSPChebyshevGetKind
+#endif
+  interface
+  subroutine KSPFCGSetMmax(ksp,mmax, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tKSP
+  KSP :: ksp
+  PetscInt :: mmax
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::KSPFCGSetMmax
+#endif
+  interface
+  subroutine KSPFCGGetMmax(ksp,mmax, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tKSP
+  KSP :: ksp
+  PetscInt :: mmax
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::KSPFCGGetMmax
+#endif
+  interface
+  subroutine KSPFCGSetNprealloc(ksp,nprealloc, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tKSP
+  KSP :: ksp
+  PetscInt :: nprealloc
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::KSPFCGSetNprealloc
+#endif
+  interface
+  subroutine KSPFCGGetNprealloc(ksp,nprealloc, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tKSP
+  KSP :: ksp
+  PetscInt :: nprealloc
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::KSPFCGGetNprealloc
+#endif
+  interface
+  subroutine KSPFCGSetTruncationType(ksp,truncstrat, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tKSP,eKSPFCDTruncationType
+  KSP :: ksp
+  KSPFCDTruncationType :: truncstrat
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::KSPFCGSetTruncationType
+#endif
+  interface
+  subroutine KSPFCGGetTruncationType(ksp,truncstrat, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tKSP,eKSPFCDTruncationType
+  KSP :: ksp
+  KSPFCDTruncationType :: truncstrat
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::KSPFCGGetTruncationType
+#endif
+  interface
+  subroutine KSPPIPEFCGSetMmax(ksp,mmax, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tKSP
+  KSP :: ksp
+  PetscInt :: mmax
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::KSPPIPEFCGSetMmax
+#endif
+  interface
+  subroutine KSPPIPEFCGGetMmax(ksp,mmax, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tKSP
+  KSP :: ksp
+  PetscInt :: mmax
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::KSPPIPEFCGGetMmax
+#endif
+  interface
+  subroutine KSPPIPEFCGSetNprealloc(ksp,nprealloc, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tKSP
+  KSP :: ksp
+  PetscInt :: nprealloc
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::KSPPIPEFCGSetNprealloc
+#endif
+  interface
+  subroutine KSPPIPEFCGGetNprealloc(ksp,nprealloc, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tKSP
+  KSP :: ksp
+  PetscInt :: nprealloc
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::KSPPIPEFCGGetNprealloc
+#endif
+  interface
+  subroutine KSPPIPEFCGSetTruncationType(ksp,truncstrat, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tKSP,eKSPFCDTruncationType
+  KSP :: ksp
+  KSPFCDTruncationType :: truncstrat
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::KSPPIPEFCGSetTruncationType
+#endif
+  interface
+  subroutine KSPPIPEFCGGetTruncationType(ksp,truncstrat, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tKSP,eKSPFCDTruncationType
+  KSP :: ksp
+  KSPFCDTruncationType :: truncstrat
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::KSPPIPEFCGGetTruncationType
+#endif
+  interface
+  subroutine KSPPythonSetType(ksp,pyname, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tKSP
+  KSP :: ksp
+  character(*) :: pyname
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::KSPPythonSetType
+#endif
+  interface
+  subroutine KSPPythonGetType(ksp,pyname, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tKSP
+  KSP :: ksp
+  character(*) :: pyname
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::KSPPythonGetType
+#endif
+  interface
+  subroutine KSPCGSetType(ksp,type, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tKSP,eKSPCGType
+  KSP :: ksp
+  KSPCGType :: type
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::KSPCGSetType
+#endif
+  interface
+  subroutine KSPCGUseSingleReduction(ksp,flg, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tKSP
+  KSP :: ksp
+  PetscBool :: flg
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::KSPCGUseSingleReduction
+#endif
+  interface
+  subroutine KSPCGSetRadius(ksp,radius, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tKSP
+  KSP :: ksp
+  PetscReal :: radius
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::KSPCGSetRadius
+#endif
+  interface
+  subroutine KSPCGSetObjectiveTarget(ksp,obj, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tKSP
+  KSP :: ksp
+  PetscReal :: obj
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::KSPCGSetObjectiveTarget
+#endif
+  interface
+  subroutine KSPCGGetNormD(ksp,norm_d, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tKSP
+  KSP :: ksp
+  PetscReal :: norm_d
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::KSPCGGetNormD
+#endif
+  interface
+  subroutine KSPCGGetObjFcn(ksp,o_fcn, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tKSP
+  KSP :: ksp
+  PetscReal :: o_fcn
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::KSPCGGetObjFcn
+#endif
+  interface
+  subroutine KSPGLTRGetMinEig(ksp,e_min, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tKSP
+  KSP :: ksp
+  PetscReal :: e_min
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::KSPGLTRGetMinEig
+#endif
+  interface
+  subroutine KSPGLTRGetLambda(ksp,lambda, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tKSP
+  KSP :: ksp
+  PetscReal :: lambda
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::KSPGLTRGetLambda
+#endif
+  interface
+  subroutine KSPHPDDMSetDeflationMat(ksp,U, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tKSP,tMat
+  KSP :: ksp
+  Mat :: U
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::KSPHPDDMSetDeflationMat
+#endif
+  interface
+  subroutine KSPHPDDMGetDeflationMat(ksp,U, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tKSP,tMat
+  KSP :: ksp
+  Mat :: U
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::KSPHPDDMGetDeflationMat
+#endif
+  interface
+  subroutine KSPHPDDMSetType(ksp,type, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tKSP,eKSPHPDDMType
+  KSP :: ksp
+  KSPHPDDMType :: type
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::KSPHPDDMSetType
+#endif
+  interface
+  subroutine KSPHPDDMGetType(ksp,type, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tKSP,eKSPHPDDMType
+  KSP :: ksp
+  KSPHPDDMType :: type
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::KSPHPDDMGetType
+#endif
+  interface
+  subroutine KSPRichardsonSetScale(ksp,scale, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tKSP
+  KSP :: ksp
+  PetscReal :: scale
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::KSPRichardsonSetScale
+#endif
+  interface
+  subroutine KSPRichardsonSetSelfScale(ksp,scale, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tKSP
+  KSP :: ksp
+  PetscBool :: scale
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::KSPRichardsonSetSelfScale
+#endif
+  interface
+  subroutine KSPFETIDPSetPressureOperator(ksp,P, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tKSP,tMat
+  KSP :: ksp
+  Mat :: P
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::KSPFETIDPSetPressureOperator
+#endif
+  interface
+  subroutine KSPFETIDPGetInnerKSP(ksp,innerksp, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tKSP
+  KSP :: ksp
+  KSP :: innerksp
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::KSPFETIDPGetInnerKSP
+#endif
+  interface
+  subroutine KSPFETIDPGetInnerBDDC(ksp,pc, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tKSP,tPC
+  KSP :: ksp
+  PC :: pc
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::KSPFETIDPGetInnerBDDC
+#endif
+  interface
+  subroutine KSPFETIDPSetInnerBDDC(ksp,pc, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tKSP,tPC
+  KSP :: ksp
+  PC :: pc
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::KSPFETIDPSetInnerBDDC
+#endif
+  interface
+  subroutine KSPBCGSLSetXRes(ksp,delta, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tKSP
+  KSP :: ksp
+  PetscReal :: delta
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::KSPBCGSLSetXRes
+#endif
+  interface
+  subroutine KSPBCGSLSetUsePseudoinverse(ksp,use_pinv, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tKSP
+  KSP :: ksp
+  PetscBool :: use_pinv
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::KSPBCGSLSetUsePseudoinverse
+#endif
+  interface
+  subroutine KSPBCGSLSetPol(ksp,uMROR, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tKSP
+  KSP :: ksp
+  PetscBool :: uMROR
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::KSPBCGSLSetPol
+#endif
+  interface
+  subroutine KSPBCGSLSetEll(ksp,ell, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tKSP
+  KSP :: ksp
+  PetscInt :: ell
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::KSPBCGSLSetEll
+#endif
+  interface
+  subroutine KSPQCGSetTrustRegionRadius(ksp,delta, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tKSP
+  KSP :: ksp
+  PetscReal :: delta
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::KSPQCGSetTrustRegionRadius
+#endif
+  interface
+  subroutine KSPQCGGetTrialStepNorm(ksp,tsnorm, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tKSP
+  KSP :: ksp
+  PetscReal :: tsnorm
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::KSPQCGGetTrialStepNorm
+#endif
+  interface
+  subroutine KSPQCGGetQuadratic(ksp,quadratic, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tKSP
+  KSP :: ksp
+  PetscReal :: quadratic
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::KSPQCGGetQuadratic
+#endif
+  interface
+  subroutine KSPGCRSetRestart(ksp,restart, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tKSP
+  KSP :: ksp
+  PetscInt :: restart
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::KSPGCRSetRestart
+#endif
+  interface
+  subroutine KSPGCRGetRestart(ksp,restart, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tKSP
+  KSP :: ksp
+  PetscInt :: restart
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::KSPGCRGetRestart
+#endif
+  interface
+  subroutine KSPPIPEGCRSetUnrollW(ksp,unroll_w, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tKSP
+  KSP :: ksp
+  PetscBool :: unroll_w
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::KSPPIPEGCRSetUnrollW
+#endif
+  interface
+  subroutine KSPPIPEGCRGetUnrollW(ksp,unroll_w, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tKSP
+  KSP :: ksp
+  PetscBool :: unroll_w
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::KSPPIPEGCRGetUnrollW
+#endif
+  interface
+  subroutine KSPPIPEGCRSetMmax(ksp,mmax, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tKSP
+  KSP :: ksp
+  PetscInt :: mmax
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::KSPPIPEGCRSetMmax
+#endif
+  interface
+  subroutine KSPPIPEGCRGetMmax(ksp,mmax, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tKSP
+  KSP :: ksp
+  PetscInt :: mmax
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::KSPPIPEGCRGetMmax
+#endif
+  interface
+  subroutine KSPPIPEGCRSetNprealloc(ksp,nprealloc, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tKSP
+  KSP :: ksp
+  PetscInt :: nprealloc
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::KSPPIPEGCRSetNprealloc
+#endif
+  interface
+  subroutine KSPPIPEGCRGetNprealloc(ksp,nprealloc, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tKSP
+  KSP :: ksp
+  PetscInt :: nprealloc
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::KSPPIPEGCRGetNprealloc
+#endif
+  interface
+  subroutine KSPPIPEGCRSetTruncationType(ksp,truncstrat, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tKSP,eKSPFCDTruncationType
+  KSP :: ksp
+  KSPFCDTruncationType :: truncstrat
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::KSPPIPEGCRSetTruncationType
+#endif
+  interface
+  subroutine KSPPIPEGCRGetTruncationType(ksp,truncstrat, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tKSP,eKSPFCDTruncationType
+  KSP :: ksp
+  KSPFCDTruncationType :: truncstrat
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::KSPPIPEGCRGetTruncationType
+#endif
+  interface
+  subroutine KSPMINRESSetUseQLP(ksp,qlp, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tKSP
+  KSP :: ksp
+  PetscBool :: qlp
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::KSPMINRESSetUseQLP
+#endif
+  interface
+  subroutine KSPMINRESSetRadius(ksp,radius, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tKSP
+  KSP :: ksp
+  PetscReal :: radius
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::KSPMINRESSetRadius
+#endif
+  interface
+  subroutine KSPMINRESGetUseQLP(ksp,qlp, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tKSP
+  KSP :: ksp
+  PetscBool :: qlp
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::KSPMINRESGetUseQLP
+#endif
+  interface
+  subroutine KSPLSQRSetComputeStandardErrorVec(ksp,flg, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tKSP
+  KSP :: ksp
+  PetscBool :: flg
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::KSPLSQRSetComputeStandardErrorVec
+#endif
+  interface
+  subroutine KSPLSQRSetExactMatNorm(ksp,flg, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tKSP
+  KSP :: ksp
+  PetscBool :: flg
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::KSPLSQRSetExactMatNorm
+#endif
+  interface
+  subroutine KSPLSQRGetStandardErrorVec(ksp,se, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tKSP,tVec
+  KSP :: ksp
+  Vec :: se
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::KSPLSQRGetStandardErrorVec
+#endif
+  interface
+  subroutine KSPLSQRGetNorms(ksp,arnorm,anorm, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tKSP
+  KSP :: ksp
+  PetscReal :: arnorm
+  PetscReal :: anorm
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::KSPLSQRGetNorms
+#endif
+  interface
+  subroutine KSPLSQRMonitorResidual(ksp,n,rnorm,vf, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tKSP
+  KSP :: ksp
+  PetscInt :: n
+  PetscReal :: rnorm
+  PetscViewerAndFormat :: vf
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::KSPLSQRMonitorResidual
+#endif
+  interface
+  subroutine KSPLSQRMonitorResidualDrawLG(ksp,n,rnorm,vf, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tKSP
+  KSP :: ksp
+  PetscInt :: n
+  PetscReal :: rnorm
+  PetscViewerAndFormat :: vf
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::KSPLSQRMonitorResidualDrawLG
+#endif
+  interface
+  subroutine KSPLSQRConvergedDefault(ksp,n,rnorm,reason,ctx, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tKSP,eKSPConvergedReason
+  KSP :: ksp
+  PetscInt :: n
+  PetscReal :: rnorm
+  KSPConvergedReason :: reason
+  type(*) :: ctx
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::KSPLSQRConvergedDefault
+#endif
+  interface
+  subroutine KSPPIPEGCRSetModifyPC(ksp,fun,ctx,dfun, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tKSP
+  KSP :: ksp
+  external fun
+  type(*) :: ctx
+  external dfun
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::KSPPIPEGCRSetModifyPC
+#endif
+  interface
+  subroutine KSPGCRSetModifyPC(ksp,fun,ctx,dfun, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tKSP
+  KSP :: ksp
+  external fun
+  type(*) :: ctx
+  external dfun
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::KSPGCRSetModifyPC
+#endif
+  interface
+  subroutine KSPFGMRESModifyPCNoChange(ksp,total_its,loc_its,res_norm,ctx, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tKSP
+  KSP :: ksp
+  PetscInt :: total_its
+  PetscInt :: loc_its
+  PetscReal :: res_norm
+  type(*) :: ctx
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::KSPFGMRESModifyPCNoChange
+#endif
+  interface
+  subroutine KSPFGMRESModifyPCKSP(ksp,total_its,loc_its,res_norm,ctx, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tKSP
+  KSP :: ksp
+  PetscInt :: total_its
+  PetscInt :: loc_its
+  PetscReal :: res_norm
+  type(*) :: ctx
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::KSPFGMRESModifyPCKSP
+#endif
+  interface operator(.ne.)
+    module procedure KSPnotequals
+  end interface operator (.ne.)
+  interface operator(.eq.)
+    module procedure KSPequals
+  end interface operator (.eq.)
+
+  interface PetscObjectCast
+    module procedure PetscObjectCastKSP
+  end interface
+  interface PetscBarrier
+  module procedure PetscBarrierKSP
+  end interface
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectSAWsTakeAccess
+    module procedure PetscObjectSAWsTakeAccessKSP
+  end interface
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectSAWsGrantAccess
+    module procedure PetscObjectSAWsGrantAccessKSP
+  end interface
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectSAWsBlock
+    module procedure PetscObjectSAWsBlockKSP
+  end interface
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectSAWsSetBlock
+    module procedure PetscObjectSAWsSetBlockKSP
+  end interface
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectSAWsViewOff
+    module procedure PetscObjectSAWsViewOffKSP
+  end interface
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectViewSAWs
+    module procedure PetscObjectViewSAWsKSP
+  end interface
+#endif
+  interface PetscObjectGetType
+    module procedure PetscObjectGetTypeKSP
+  end interface
+  interface PetscObjectSetPrintedOptions
+    module procedure PetscObjectSetPrintedOptionsKSP
+  end interface
+  interface PetscObjectInheritPrintedOptions
+    module procedure PetscObjectInheritPrintedOptionsKSP
+  end interface
+  interface PetscObjectAddOptionsHandler
+    module procedure PetscObjectAddOptionsHandlerKSP
+  end interface
+  interface PetscObjectProcessOptionsHandlers
+    module procedure PetscObjectProcessOptionsHandlersKSP
+  end interface
+  interface PetscObjectDestroyOptionsHandlers
+    module procedure PetscObjectDestroyOptionsHandlersKSP
+  end interface
+  interface PetscObjectReference
+    module procedure PetscObjectReferenceKSP
+  end interface
+  interface PetscObjectGetReference
+    module procedure PetscObjectGetReferenceKSP
+  end interface
+  interface PetscObjectDereference
+    module procedure PetscObjectDereferenceKSP
+  end interface
+  interface PetscObjectRemoveReference
+    module procedure PetscObjectRemoveReferenceKSP
+  end interface
+  interface PetscObjectHasFunction
+    module procedure PetscObjectHasFunctionKSP
+  end interface
+  interface PetscObjectSetFromOptions
+    module procedure PetscObjectSetFromOptionsKSP
+  end interface
+  interface PetscObjectSetUp
+    module procedure PetscObjectSetUpKSP
+  end interface
+  interface PetscObjectGetName
+    module procedure PetscObjectGetNameKSP
+  end interface
+  interface PetscObjectDestroy
+    module procedure PetscObjectDestroyKSP
+  end interface
+  interface PetscObjectView
+    module procedure PetscObjectViewKSP
+  end interface
+  interface PetscObjectViewFromOptions
+    module procedure PetscObjectViewFromOptionsKSP
+  end interface
+  interface PetscObjectTypeCompare
+    module procedure PetscObjectTypeCompareKSP
+  end interface
+  interface PetscObjectObjectTypeCompare
+    module procedure PetscObjectObjectTypeCompareKSP
+  end interface
+  interface PetscObjectBaseTypeCompare
+    module procedure PetscObjectBaseTypeCompareKSP
+  end interface
+  interface PetscObjectRegisterDestroy
+    module procedure PetscObjectRegisterDestroyKSP
+  end interface
+  interface PetscObjectGetId
+    module procedure PetscObjectGetIdKSP
+  end interface
+  interface PetscObjectCompareId
+    module procedure PetscObjectCompareIdKSP
+  end interface
+  interface PetscObjectGetOptions
+    module procedure PetscObjectGetOptionsKSP
+  end interface
+  interface PetscObjectSetOptions
+    module procedure PetscObjectSetOptionsKSP
+  end interface
+  interface PetscObjectSetOptionsPrefix
+    module procedure PetscObjectSetOptionsPrefixKSP
+  end interface
+  interface PetscObjectAppendOptionsPrefix
+    module procedure PetscObjectAppendOptionsPrefixKSP
+  end interface
+  interface PetscObjectGetOptionsPrefix
+    module procedure PetscObjectGetOptionsPrefixKSP
+  end interface
+  interface PetscObjectPrependOptionsPrefix
+    module procedure PetscObjectPrependOptionsPrefixKSP
+  end interface
+  interface PetscObjectGetComm
+    module procedure PetscObjectGetCommKSP
+  end interface
+  interface PetscObjectGetTabLevel
+    module procedure PetscObjectGetTabLevelKSP
+  end interface
+  interface PetscObjectSetTabLevel
+    module procedure PetscObjectSetTabLevelKSP
+  end interface
+  interface PetscObjectIncrementTabLevel
+    module procedure PetscObjectIncrementTabLevelKSP
+  end interface
+  interface PetscObjectGetNewTag
+    module procedure PetscObjectGetNewTagKSP
+  end interface
+  interface PetscObjectGetClassId
+    module procedure PetscObjectGetClassIdKSP
+  end interface
+  interface PetscObjectGetClassName
+    module procedure PetscObjectGetClassNameKSP
+  end interface
+  interface PetscObjectSetName
+    module procedure PetscObjectSetNameKSP
+  end interface
+  interface PetscObjectPrintClassNamePrefixType
+    module procedure PetscObjectPrintClassNamePrefixTypeKSP
+  end interface
+  interface PetscObjectName
+    module procedure PetscObjectNameKSP
+  end interface
+  interface PetscObjectChangeTypeName
+    module procedure PetscObjectChangeTypeNameKSP
+  end interface
+  interface
+  subroutine KSPGuessRegister(sname,function, ierr)
+  use, intrinsic :: ISO_C_binding
+  character(*) :: sname
+  external :: function
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::KSPGuessRegister
+#endif
+  interface
+  subroutine KSPGuessSetFromOptions(guess, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tKSPGuess
+  KSPGuess :: guess
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::KSPGuessSetFromOptions
+#endif
+  interface
+  subroutine KSPGuessSetTolerance(guess,tol, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tKSPGuess
+  KSPGuess :: guess
+  PetscReal :: tol
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::KSPGuessSetTolerance
+#endif
+  interface
+  subroutine KSPGuessDestroy(guess, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tKSPGuess
+  KSPGuess :: guess
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::KSPGuessDestroy
+#endif
+  interface
+  subroutine KSPGuessView(guess,view, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tKSPGuess,tPetscViewer
+  KSPGuess :: guess
+  PetscViewer :: view
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::KSPGuessView
+#endif
+  interface
+  subroutine KSPGuessCreate(comm,guess, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tKSPGuess
+  MPIU_Comm :: comm
+  KSPGuess :: guess
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::KSPGuessCreate
+#endif
+  interface
+  subroutine KSPGuessSetType(guess,type, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tKSPGuess
+  KSPGuess :: guess
+  character(*) :: type
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::KSPGuessSetType
+#endif
+  interface
+  subroutine KSPGuessGetType(guess,type, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tKSPGuess
+  KSPGuess :: guess
+  character(*) :: type
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::KSPGuessGetType
+#endif
+  interface
+  subroutine KSPGuessUpdate(guess,rhs,sol, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tKSPGuess,tVec
+  KSPGuess :: guess
+  Vec :: rhs
+  Vec :: sol
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::KSPGuessUpdate
+#endif
+  interface
+  subroutine KSPGuessFormGuess(guess,rhs,sol, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tKSPGuess,tVec
+  KSPGuess :: guess
+  Vec :: rhs
+  Vec :: sol
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::KSPGuessFormGuess
+#endif
+  interface
+  subroutine KSPGuessSetUp(guess, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tKSPGuess
+  KSPGuess :: guess
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::KSPGuessSetUp
+#endif
+  interface
+  subroutine KSPGuessFischerSetModel(guess,model,size, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tKSPGuess
+  KSPGuess :: guess
+  PetscInt :: model
+  PetscInt :: size
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::KSPGuessFischerSetModel
+#endif
+  interface operator(.ne.)
+    module procedure KSPGuessnotequals
+  end interface operator (.ne.)
+  interface operator(.eq.)
+    module procedure KSPGuessequals
+  end interface operator (.eq.)
+
+  interface PetscObjectCast
+    module procedure PetscObjectCastKSPGuess
+  end interface
+  interface PetscBarrier
+  module procedure PetscBarrierKSPGuess
+  end interface
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectSAWsTakeAccess
+    module procedure PetscObjectSAWsTakeAccessKSPGuess
+  end interface
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectSAWsGrantAccess
+    module procedure PetscObjectSAWsGrantAccessKSPGuess
+  end interface
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectSAWsBlock
+    module procedure PetscObjectSAWsBlockKSPGuess
+  end interface
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectSAWsSetBlock
+    module procedure PetscObjectSAWsSetBlockKSPGuess
+  end interface
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectSAWsViewOff
+    module procedure PetscObjectSAWsViewOffKSPGuess
+  end interface
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectViewSAWs
+    module procedure PetscObjectViewSAWsKSPGuess
+  end interface
+#endif
+  interface PetscObjectGetType
+    module procedure PetscObjectGetTypeKSPGuess
+  end interface
+  interface PetscObjectSetPrintedOptions
+    module procedure PetscObjectSetPrintedOptionsKSPGuess
+  end interface
+  interface PetscObjectInheritPrintedOptions
+    module procedure PetscObjectInheritPrintedOptionsKSPGuess
+  end interface
+  interface PetscObjectAddOptionsHandler
+    module procedure PetscObjectAddOptionsHandlerKSPGuess
+  end interface
+  interface PetscObjectProcessOptionsHandlers
+    module procedure PetscObjectProcessOptionsHandlersKSPGuess
+  end interface
+  interface PetscObjectDestroyOptionsHandlers
+    module procedure PetscObjectDestroyOptionsHandlersKSPGuess
+  end interface
+  interface PetscObjectReference
+    module procedure PetscObjectReferenceKSPGuess
+  end interface
+  interface PetscObjectGetReference
+    module procedure PetscObjectGetReferenceKSPGuess
+  end interface
+  interface PetscObjectDereference
+    module procedure PetscObjectDereferenceKSPGuess
+  end interface
+  interface PetscObjectRemoveReference
+    module procedure PetscObjectRemoveReferenceKSPGuess
+  end interface
+  interface PetscObjectHasFunction
+    module procedure PetscObjectHasFunctionKSPGuess
+  end interface
+  interface PetscObjectSetFromOptions
+    module procedure PetscObjectSetFromOptionsKSPGuess
+  end interface
+  interface PetscObjectSetUp
+    module procedure PetscObjectSetUpKSPGuess
+  end interface
+  interface PetscObjectGetName
+    module procedure PetscObjectGetNameKSPGuess
+  end interface
+  interface PetscObjectDestroy
+    module procedure PetscObjectDestroyKSPGuess
+  end interface
+  interface PetscObjectView
+    module procedure PetscObjectViewKSPGuess
+  end interface
+  interface PetscObjectViewFromOptions
+    module procedure PetscObjectViewFromOptionsKSPGuess
+  end interface
+  interface PetscObjectTypeCompare
+    module procedure PetscObjectTypeCompareKSPGuess
+  end interface
+  interface PetscObjectObjectTypeCompare
+    module procedure PetscObjectObjectTypeCompareKSPGuess
+  end interface
+  interface PetscObjectBaseTypeCompare
+    module procedure PetscObjectBaseTypeCompareKSPGuess
+  end interface
+  interface PetscObjectRegisterDestroy
+    module procedure PetscObjectRegisterDestroyKSPGuess
+  end interface
+  interface PetscObjectGetId
+    module procedure PetscObjectGetIdKSPGuess
+  end interface
+  interface PetscObjectCompareId
+    module procedure PetscObjectCompareIdKSPGuess
+  end interface
+  interface PetscObjectGetOptions
+    module procedure PetscObjectGetOptionsKSPGuess
+  end interface
+  interface PetscObjectSetOptions
+    module procedure PetscObjectSetOptionsKSPGuess
+  end interface
+  interface PetscObjectSetOptionsPrefix
+    module procedure PetscObjectSetOptionsPrefixKSPGuess
+  end interface
+  interface PetscObjectAppendOptionsPrefix
+    module procedure PetscObjectAppendOptionsPrefixKSPGuess
+  end interface
+  interface PetscObjectGetOptionsPrefix
+    module procedure PetscObjectGetOptionsPrefixKSPGuess
+  end interface
+  interface PetscObjectPrependOptionsPrefix
+    module procedure PetscObjectPrependOptionsPrefixKSPGuess
+  end interface
+  interface PetscObjectGetComm
+    module procedure PetscObjectGetCommKSPGuess
+  end interface
+  interface PetscObjectGetTabLevel
+    module procedure PetscObjectGetTabLevelKSPGuess
+  end interface
+  interface PetscObjectSetTabLevel
+    module procedure PetscObjectSetTabLevelKSPGuess
+  end interface
+  interface PetscObjectIncrementTabLevel
+    module procedure PetscObjectIncrementTabLevelKSPGuess
+  end interface
+  interface PetscObjectGetNewTag
+    module procedure PetscObjectGetNewTagKSPGuess
+  end interface
+  interface PetscObjectGetClassId
+    module procedure PetscObjectGetClassIdKSPGuess
+  end interface
+  interface PetscObjectGetClassName
+    module procedure PetscObjectGetClassNameKSPGuess
+  end interface
+  interface PetscObjectSetName
+    module procedure PetscObjectSetNameKSPGuess
+  end interface
+  interface PetscObjectPrintClassNamePrefixType
+    module procedure PetscObjectPrintClassNamePrefixTypeKSPGuess
+  end interface
+  interface PetscObjectName
+    module procedure PetscObjectNameKSPGuess
+  end interface
+  interface PetscObjectChangeTypeName
+    module procedure PetscObjectChangeTypeNameKSPGuess
+  end interface
+  interface
+  subroutine DMCopyDMKSP(dmsrc,dmdest, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dmsrc
+  DM :: dmdest
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMCopyDMKSP
+#endif
+  interface
+  subroutine DMKSPSetComputeOperators(dm,func,ctx, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  external func
+  type(*) :: ctx
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMKSPSetComputeOperators
+#endif
+  interface
+  subroutine DMKSPSetComputeRHS(dm,func,ctx, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  external func
+  type(*) :: ctx
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMKSPSetComputeRHS
+#endif
+  interface
+  subroutine DMKSPSetComputeInitialGuess(dm,func,ctx, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  external func
+  type(*) :: ctx
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMKSPSetComputeInitialGuess
+#endif
+  interface
+  subroutine PCPreSolve(pc,ksp, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC,tKSP
+  PC :: pc
+  KSP :: ksp
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCPreSolve
+#endif
+  interface
+  subroutine PCPostSolve(pc,ksp, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC,tKSP
+  PC :: pc
+  KSP :: ksp
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCPostSolve
+#endif
+  interface
+  subroutine PCASMGetSubKSP(pc,n_local,first_local,ksp, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC,tKSP
+  PC :: pc
+  PetscInt :: n_local
+  PetscInt :: first_local
+  KSP, pointer :: ksp(:)
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCASMGetSubKSP
+#endif
+  interface
+  subroutine PCMPIGetKSP(pc,innerksp, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC,tKSP
+  PC :: pc
+  KSP :: innerksp
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCMPIGetKSP
+#endif
+  interface
+  subroutine PCKSPSetKSP(pc,ksp, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC,tKSP
+  PC :: pc
+  KSP :: ksp
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCKSPSetKSP
+#endif
+  interface
+  subroutine PCKSPGetKSP(pc,ksp, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC,tKSP
+  PC :: pc
+  KSP :: ksp
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCKSPGetKSP
+#endif
+  interface
+  subroutine PCMGGetCoarseSolve(pc,ksp, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC,tKSP
+  PC :: pc
+  KSP :: ksp
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCMGGetCoarseSolve
+#endif
+  interface
+  subroutine PCMGGetSmoother(pc,l,ksp, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC,tKSP
+  PC :: pc
+  PetscInt :: l
+  KSP :: ksp
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCMGGetSmoother
+#endif
+  interface
+  subroutine PCMGGetSmootherUp(pc,l,ksp, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC,tKSP
+  PC :: pc
+  PetscInt :: l
+  KSP :: ksp
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCMGGetSmootherUp
+#endif
+  interface
+  subroutine PCMGGetSmootherDown(pc,l,ksp, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC,tKSP
+  PC :: pc
+  PetscInt :: l
+  KSP :: ksp
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCMGGetSmootherDown
+#endif
+  interface
+  subroutine PCMGRegisterCoarseSpaceConstructor(name,function, ierr)
+  use, intrinsic :: ISO_C_binding
+  character(*) :: name
+  external function
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCMGRegisterCoarseSpaceConstructor
+#endif
+  interface
+  subroutine PCTelescopeGetKSP(pc,subksp, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC,tKSP
+  PC :: pc
+  KSP :: subksp
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCTelescopeGetKSP
+#endif
+  interface
+  subroutine PCShellSetPreSolve(pc,presolve, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC
+  PC :: pc
+  external presolve
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCShellSetPreSolve
+#endif
+  interface
+  subroutine PCShellSetPostSolve(pc,postsolve, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC
+  PC :: pc
+  external postsolve
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCShellSetPostSolve
+#endif
+  interface
+  subroutine PCGalerkinGetKSP(pc,ksp, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC,tKSP
+  PC :: pc
+  KSP :: ksp
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCGalerkinGetKSP
+#endif
+  interface
+  subroutine PCBJacobiGetSubKSP(pc,n_local,first_local,ksp, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC,tKSP
+  PC :: pc
+  PetscInt :: n_local
+  PetscInt :: first_local
+  KSP, pointer :: ksp(:)
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCBJacobiGetSubKSP
+#endif
+  interface
+  subroutine PCBJKOKKOSSetKSP(pc,ksp, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC,tKSP
+  PC :: pc
+  KSP :: ksp
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCBJKOKKOSSetKSP
+#endif
+  interface
+  subroutine PCBJKOKKOSGetKSP(pc,ksp, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC,tKSP
+  PC :: pc
+  KSP :: ksp
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCBJKOKKOSGetKSP
+#endif
+  interface
+  subroutine PCRedundantGetKSP(pc,innerksp, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC,tKSP
+  PC :: pc
+  KSP :: innerksp
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCRedundantGetKSP
+#endif
+  interface
+  subroutine PCRedistributeGetKSP(pc,innerksp, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC,tKSP
+  PC :: pc
+  KSP :: innerksp
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCRedistributeGetKSP
+#endif
+  interface
+  subroutine PCFieldSplitGetSubKSP(pc,n,subksp, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC,tKSP
+  PC :: pc
+  PetscInt :: n
+  KSP, pointer :: subksp(:)
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCFieldSplitGetSubKSP
+#endif
+  interface
+  subroutine PCFieldSplitSchurGetSubKSP(pc,n,subksp, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC,tKSP
+  PC :: pc
+  PetscInt :: n
+  KSP, pointer :: subksp(:)
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCFieldSplitSchurGetSubKSP
+#endif
+  interface
+  subroutine PCGASMGetSubKSP(pc,n_local,first_local,ksp, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC,tKSP
+  PC :: pc
+  PetscInt :: n_local
+  PetscInt :: first_local
+  KSP, pointer :: ksp(:)
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCGASMGetSubKSP
+#endif
+  interface
+  subroutine PCDeflationGetCoarseKSP(pc,ksp, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC,tKSP
+  PC :: pc
+  KSP :: ksp
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCDeflationGetCoarseKSP
+#endif
+  interface operator(.ne.)
+    module procedure KSPChebyshevKindnotequals
+  end interface operator (.ne.)
+  interface operator(.eq.)
+    module procedure KSPChebyshevKindequals
+  end interface operator (.eq.)
+
+  interface operator(.ne.)
+    module procedure KSPFCDTruncationTypenotequals
+  end interface operator (.ne.)
+  interface operator(.eq.)
+    module procedure KSPFCDTruncationTypeequals
+  end interface operator (.eq.)
+
+  interface operator(.ne.)
+    module procedure KSPHPDDMTypenotequals
+  end interface operator (.ne.)
+  interface operator(.eq.)
+    module procedure KSPHPDDMTypeequals
+  end interface operator (.eq.)
+
+  interface operator(.ne.)
+    module procedure KSPGMRESCGSRefinementTypenotequals
+  end interface operator (.ne.)
+  interface operator(.eq.)
+    module procedure KSPGMRESCGSRefinementTypeequals
+  end interface operator (.eq.)
+
+  interface operator(.ne.)
+    module procedure KSPNormTypenotequals
+  end interface operator (.ne.)
+  interface operator(.eq.)
+    module procedure KSPNormTypeequals
+  end interface operator (.eq.)
+
+  interface operator(.ne.)
+    module procedure KSPConvergedReasonnotequals
+  end interface operator (.ne.)
+  interface operator(.eq.)
+    module procedure KSPConvergedReasonequals
+  end interface operator (.eq.)
+
+  interface operator(.ne.)
+    module procedure KSPCGTypenotequals
+  end interface operator (.ne.)
+  interface operator(.eq.)
+    module procedure KSPCGTypeequals
+  end interface operator (.eq.)
+
+  interface operator(.ne.)
+    module procedure MatSchurComplementAinvTypenotequals
+  end interface operator (.ne.)
+  interface operator(.eq.)
+    module procedure MatSchurComplementAinvTypeequals
+  end interface operator (.eq.)
+
+  interface operator(.ne.)
+    module procedure MatLMVMMultAlgorithmnotequals
+  end interface operator (.ne.)
+  interface operator(.eq.)
+    module procedure MatLMVMMultAlgorithmequals
+  end interface operator (.eq.)
+
+  interface operator(.ne.)
+    module procedure MatLMVMSymBroydenScaleTypenotequals
+  end interface operator (.ne.)
+  interface operator(.eq.)
+    module procedure MatLMVMSymBroydenScaleTypeequals
+  end interface operator (.eq.)
+
+  interface operator(.ne.)
+    module procedure MatLMVMDenseTypenotequals
+  end interface operator (.ne.)
+  interface operator(.eq.)
+    module procedure MatLMVMDenseTypeequals
+  end interface operator (.eq.)
+
+  interface operator(.ne.)
+    module procedure KSPDMActivenotequals
+  end interface operator (.ne.)
+  interface operator(.eq.)
+    module procedure KSPDMActiveequals
+  end interface operator (.eq.)
+

@@ -1,0 +1,38 @@
+!
+!     Test for bug with ISGetIndices() when length of indices is 0
+!
+!     Contributed by: Jakub Fabian
+!
+#include <petsc/finclude/petscis.h>
+program main
+  use petscis
+  implicit none
+
+  PetscErrorCode ierr
+  PetscInt, parameter :: n = 0, bs = 2
+  PetscInt, pointer :: indices(:) => NULL()
+  PetscInt, pointer :: idx(:) => NULL()
+  IS is
+
+  allocate (indices(n), source=n)
+
+  PetscCallA(PetscInitialize(ierr))
+
+  PetscCallA(ISCreateGeneral(PETSC_COMM_SELF, n, indices, PETSC_USE_POINTER, is, ierr))
+  PetscCallA(ISGetIndices(is, idx, ierr))
+  PetscCallA(ISRestoreIndices(is, idx, ierr))
+  PetscCallA(ISDestroy(is, ierr))
+
+  PetscCallA(ISCreateBlock(PETSC_COMM_SELF, bs, n, indices, PETSC_USE_POINTER, is, ierr))
+  PetscCallA(ISGetIndices(is, idx, ierr))
+  PetscCallA(ISRestoreIndices(is, idx, ierr))
+  PetscCallA(ISDestroy(is, ierr))
+  PetscCallA(PetscFinalize(ierr))
+end
+
+!/*TEST
+!
+!   test:
+!      output_file: output/empty.out
+!
+!TEST*/

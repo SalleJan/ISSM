@@ -1,0 +1,119 @@
+! Example program demonstrating projection between particle and finite element spaces
+#include <petsc/finclude/petscdmplex.h>
+#include <petsc/finclude/petscdmswarm.h>
+#include <petsc/finclude/petscksp.h>
+program DMSwarmTestProjection
+  use petscdmplex
+  use petscdmswarm
+  use petscksp
+  implicit none
+
+  DM ::       dm, sw
+  PetscFE ::  fe
+  KSP ::      ksp
+  Mat ::      M_p, M
+  Vec ::      f, rho, rhs
+  PetscInt :: dim
+  PetscInt :: p, bs
+  PetscInt, parameter :: Np = 100, field = 0, Nc = 1, degree = 1, timestep = 0
+  PetscReal, parameter :: time = 0.0
+  PetscReal :: norm
+  PetscBool :: removePoints = PETSC_TRUE
+  PetscDataType :: dtype
+  PetscReal, pointer :: coords(:)
+  PetscReal, pointer :: wq(:)
+  PetscErrorCode :: ierr
+
+  PetscCallA(PetscInitialize(PETSC_NULL_CHARACTER, ierr))
+  PetscCallA(DMCreate(PETSC_COMM_WORLD, dm, ierr))
+  PetscCallA(DMSetType(dm, DMPLEX, ierr))
+  PetscCallA(DMSetFromOptions(dm, ierr))
+  PetscCallA(DMGetDimension(dm, dim, ierr))
+  PetscCallA(DMViewFromOptions(dm, PETSC_NULL_OBJECT, '-dm_view', ierr))
+
+! Create finite element space
+  PetscCallA(PetscFECreateLagrange(PETSC_COMM_SELF, dim, Nc, PETSC_FALSE, degree, PETSC_DETERMINE, fe, ierr))
+  PetscCallA(DMSetField(dm, field, PETSC_NULL_DMLABEL, PetscObjectCast(fe), ierr))
+  PetscCallA(DMCreateDS(dm, ierr))
+  PetscCallA(PetscFEDestroy(fe, ierr))
+
+! Create particle swarm
+  PetscCallA(DMCreate(PETSC_COMM_WORLD, sw, ierr))
+  PetscCallA(DMSetType(sw, DMSWARM, ierr))
+  PetscCallA(DMSetDimension(sw, dim, ierr))
+  PetscCallA(DMSwarmSetType(sw, DMSWARM_PIC, ierr))
+  PetscCallA(DMSwarmSetCellDM(sw, dm, ierr))
+  PetscCallA(DMSwarmRegisterPetscDatatypeField(sw, 'w_q', Nc, PETSC_REAL, ierr))
+  PetscCallA(DMSwarmFinalizeFieldRegister(sw, ierr))
+  PetscCallA(DMSwarmSetLocalSizes(sw, Np, 0_PETSC_INT_KIND, ierr))
+  PetscCallA(DMSetFromOptions(sw, ierr))
+  PetscCallA(DMSwarmGetField(sw, 'w_q', bs, dtype, wq, ierr))
+  PetscCallA(DMSwarmGetField(sw, 'DMSwarmPIC_coor', bs, dtype, coords, ierr))
+  do p = 1, Np
+    coords(p*2 - 1) = -cos(real(p, PETSC_REAL_KIND)/real(Np + 1, PETSC_REAL_KIND)*PETSC_PI)
+    coords(p*2 - 0) = sin(real(p, PETSC_REAL_KIND)/real(Np + 1, PETSC_REAL_KIND)*PETSC_PI)
+    wq(p) = 1.0
+  end do
+  PetscCallA(DMSwarmRestoreField(sw, 'DMSwarmPIC_coor', bs, dtype, coords, ierr))
+  PetscCallA(DMSwarmRestoreField(sw, 'w_q', bs, dtype, wq, ierr))
+  PetscCallA(DMSwarmMigrate(sw, removePoints, ierr))
+  PetscCallA(DMSwarmVectorDefineField(sw, 'w_q', ierr))
+  PetscCallA(DMViewFromOptions(sw, PETSC_NULL_OBJECT, '-swarm_view', ierr))
+
+! Project particles to field
+!   This gives M f = \int_\Omega \phi f, which looks like a rhs for a PDE
+  PetscCallA(DMCreateMassMatrix(sw, dm, M_p, ierr))
+  PetscCallA(DMCreateGlobalVector(dm, rho, ierr))
+  PetscCallA(DMSwarmCreateGlobalVectorFromField(sw, 'w_q', f, ierr))
+  PetscCallA(MatMultTranspose(M_p, f, rho, ierr))
+
+! Visualize mesh field
+  PetscCallA(DMSetOutputSequenceNumber(dm, timestep, time, ierr))
+  PetscCallA(PetscObjectViewFromOptions(PetscObjectCast(rho), PETSC_NULL_OBJECT, '-rho_view', ierr))
+
+! Project field to particles
+!   This gives f_p = M_p^+ M f
+  PetscCallA(DMCreateMassMatrix(dm, dm, M, ierr))
+  PetscCallA(DMCreateGlobalVector(dm, rhs, ierr))
+  if (.false.) then
+    PetscCallA(MatMult(M, rho, rhs, ierr)) ! this is what you would do for and FE solve
+  else
+    PetscCallA(VecCopy(rho, rhs, ierr)) ! Identity: M^1 M rho
+  end if
+  PetscCallA(KSPCreate(PETSC_COMM_WORLD, ksp, ierr))
+  PetscCallA(KSPSetOptionsPrefix(ksp, 'ftop_', ierr))
+  PetscCallA(KSPSetFromOptions(ksp, ierr))
+  PetscCallA(KSPSetOperators(ksp, M_p, M_p, ierr))
+  PetscCallA(KSPSolveTranspose(ksp, rhs, f, ierr))
+  PetscCallA(KSPDestroy(ksp, ierr))
+  PetscCallA(VecDestroy(rhs, ierr))
+  PetscCallA(MatDestroy(M_p, ierr))
+  PetscCallA(MatDestroy(M, ierr))
+
+! Visualize particle field
+  PetscCallA(DMSetOutputSequenceNumber(sw, timestep, time, ierr))
+  PetscCallA(PetscObjectViewFromOptions(PetscObjectCast(f), PETSC_NULL_OBJECT, '-weights_view', ierr))
+  PetscCallA(VecNorm(f, NORM_1, norm, ierr))
+  print *, 'Total number density = ', norm
+! Cleanup
+  PetscCallA(DMSwarmDestroyGlobalVectorFromField(sw, 'w_q', f, ierr))
+  PetscCallA(VecDestroy(rho, ierr))
+  PetscCallA(DMDestroy(sw, ierr))
+  PetscCallA(DMDestroy(dm, ierr))
+
+  PetscCallA(PetscFinalize(ierr))
+end program DMSwarmTestProjection
+
+!/*TEST
+!
+!  build:
+!    requires: double !complex
+!
+!  test:
+!    suffix: 0
+!    requires: double
+!    args: -dm_plex_simplex 0 -dm_plex_box_faces 40,20 -dm_plex_box_lower -2.0,0.0 -dm_plex_box_upper 2.0,2.0 -ftop_ksp_type lsqr -ftop_pc_type none -dm_view -swarm_view
+!    filter: grep -v DM_ | grep -v atomic
+!    filter_output: grep -v atomic
+!
+!TEST*/

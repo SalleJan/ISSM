@@ -1,0 +1,30 @@
+  interface
+  subroutine PetscViewerMathematicaPutMatrix(viewer,m,n,a, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscViewer
+  PetscViewer :: viewer
+  integer4 :: m
+  integer4 :: n
+  PetscReal :: a
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscViewerMathematicaPutMatrix
+#endif
+  interface
+  subroutine PetscViewerMathematicaPutCSRMatrix(viewer,m,n,i,j,a, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscViewer
+  PetscViewer :: viewer
+  integer4 :: m
+  integer4 :: n
+  integer4 :: i
+  integer4 :: j
+  PetscReal :: a
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscViewerMathematicaPutCSRMatrix
+#endif

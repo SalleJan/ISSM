@@ -1,0 +1,48 @@
+  interface
+  subroutine DMLabelEphemeralGetLabel(label,olabel, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDMLabel
+  DMLabel :: label
+  DMLabel :: olabel
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMLabelEphemeralGetLabel
+#endif
+  interface
+  subroutine DMLabelEphemeralSetLabel(label,olabel, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDMLabel
+  DMLabel :: label
+  DMLabel :: olabel
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMLabelEphemeralSetLabel
+#endif
+  interface
+  subroutine DMLabelEphemeralGetTransform(label,tr, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDMLabel,tDMPlexTransform
+  DMLabel :: label
+  DMPlexTransform :: tr
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMLabelEphemeralGetTransform
+#endif
+  interface
+  subroutine DMLabelEphemeralSetTransform(label,tr, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDMLabel,tDMPlexTransform
+  DMLabel :: label
+  DMPlexTransform :: tr
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMLabelEphemeralSetTransform
+#endif

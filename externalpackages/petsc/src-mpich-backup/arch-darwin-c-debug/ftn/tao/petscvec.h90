@@ -1,0 +1,31 @@
+  interface
+  subroutine VecFischer(X,F,L,U,FB, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVec
+  Vec :: X
+  Vec :: F
+  Vec :: L
+  Vec :: U
+  Vec :: FB
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecFischer
+#endif
+  interface
+  subroutine VecSFischer(X,F,L,U,mu,FB, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVec
+  Vec :: X
+  Vec :: F
+  Vec :: L
+  Vec :: U
+  PetscReal :: mu
+  Vec :: FB
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecSFischer
+#endif

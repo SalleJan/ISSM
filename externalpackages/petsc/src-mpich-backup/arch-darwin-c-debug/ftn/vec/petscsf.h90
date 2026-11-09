@@ -1,0 +1,862 @@
+  interface
+  subroutine PetscSFCreate(comm,sf, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscSF
+  MPIU_Comm :: comm
+  PetscSF :: sf
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscSFCreate
+#endif
+  interface
+  subroutine PetscSFReset(sf, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscSF
+  PetscSF :: sf
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscSFReset
+#endif
+  interface
+  subroutine PetscSFSetType(sf,type, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscSF
+  PetscSF :: sf
+  character(*) :: type
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscSFSetType
+#endif
+  interface
+  subroutine PetscSFGetType(sf,type, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscSF
+  PetscSF :: sf
+  character(*) :: type
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscSFGetType
+#endif
+  interface
+  subroutine PetscSFDestroy(sf, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscSF
+  PetscSF :: sf
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscSFDestroy
+#endif
+  interface
+  subroutine PetscSFSetUp(sf, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscSF
+  PetscSF :: sf
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscSFSetUp
+#endif
+  interface
+  subroutine PetscSFSetFromOptions(sf, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscSF
+  PetscSF :: sf
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscSFSetFromOptions
+#endif
+  interface
+  subroutine PetscSFSetRankOrder(sf,flg, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscSF
+  PetscSF :: sf
+  PetscBool :: flg
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscSFSetRankOrder
+#endif
+  interface
+  subroutine PetscSFSetGraph(sf,nroots,nleaves,ilocal,localmode,iremote,remotemode, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscSF,ePetscCopyMode,sPetscSFNode
+  PetscSF :: sf
+  PetscInt :: nroots
+  PetscInt :: nleaves
+  PetscInt :: ilocal(*)
+  PetscCopyMode :: localmode
+  PetscSFNode :: iremote(*)
+  PetscCopyMode :: remotemode
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscSFSetGraph
+#endif
+  interface
+  subroutine PetscSFSetGraphWithPattern(sf,map,pattern, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscSF,tPetscLayout,ePetscSFPattern
+  PetscSF :: sf
+  PetscLayout :: map
+  PetscSFPattern :: pattern
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscSFSetGraphWithPattern
+#endif
+  interface
+  subroutine PetscSFCreateInverseSF(sf,isf, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscSF
+  PetscSF :: sf
+  PetscSF :: isf
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscSFCreateInverseSF
+#endif
+  interface
+  subroutine PetscSFDuplicate(sf,opt,newsf, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscSF,ePetscSFDuplicateOption
+  PetscSF :: sf
+  PetscSFDuplicateOption :: opt
+  PetscSF :: newsf
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscSFDuplicate
+#endif
+  interface
+  subroutine PetscSFGetGraph(sf,nroots,nleaves,ilocal,iremote, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscSF,sPetscSFNode
+  PetscSF :: sf
+  PetscInt :: nroots
+  PetscInt :: nleaves
+  PetscInt, pointer :: ilocal(:)
+  PetscSFNode, pointer :: iremote(:)
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscSFGetGraph
+#endif
+  interface
+  subroutine PetscSFGetLeafRange(sf,minleaf,maxleaf, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscSF
+  PetscSF :: sf
+  PetscInt :: minleaf
+  PetscInt :: maxleaf
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscSFGetLeafRange
+#endif
+  interface
+  subroutine PetscSFViewFromOptions(A,obj,name, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscSF,tPetscObject
+  PetscSF :: A
+  PetscObject :: obj
+  character(*) :: name
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscSFViewFromOptions
+#endif
+  interface
+  subroutine PetscSFView(sf,viewer, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscSF,tPetscViewer
+  PetscSF :: sf
+  PetscViewer :: viewer
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscSFView
+#endif
+  interface
+  subroutine PetscSFGetRootRanks(sf,nranks,ranks,roffset,rmine,rremote, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscSF
+  PetscSF :: sf
+  PetscMPIInt :: nranks
+  PetscMPIInt, pointer :: ranks(:)
+  PetscInt, pointer :: roffset(:)
+  PetscInt, pointer :: rmine(:)
+  PetscInt, pointer :: rremote(:)
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscSFGetRootRanks
+#endif
+  interface
+  subroutine PetscSFGetLeafRanks(sf,niranks,iranks,ioffset,irootloc, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscSF
+  PetscSF :: sf
+  PetscMPIInt :: niranks
+  PetscMPIInt, pointer :: iranks(:)
+  PetscInt, pointer :: ioffset(:)
+  PetscInt, pointer :: irootloc(:)
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscSFGetLeafRanks
+#endif
+  interface
+  subroutine PetscSFGetRanksSF(sf,rsf, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscSF
+  PetscSF :: sf
+  PetscSF :: rsf
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscSFGetRanksSF
+#endif
+  interface
+  subroutine PetscSFGetMultiSF(sf,multi, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscSF
+  PetscSF :: sf
+  PetscSF :: multi
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscSFGetMultiSF
+#endif
+  interface
+  subroutine PetscSFCreateEmbeddedRootSF(sf,nselected,selected,esf, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscSF
+  PetscSF :: sf
+  PetscInt :: nselected
+  PetscInt :: selected(*)
+  PetscSF :: esf
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscSFCreateEmbeddedRootSF
+#endif
+  interface
+  subroutine PetscSFCreateEmbeddedLeafSF(sf,nselected,selected,newsf, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscSF
+  PetscSF :: sf
+  PetscInt :: nselected
+  PetscInt :: selected(*)
+  PetscSF :: newsf
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscSFCreateEmbeddedLeafSF
+#endif
+  interface
+  subroutine PetscSFComputeDegreeBegin(sf,degree, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscSF
+  PetscSF :: sf
+  PetscInt, pointer :: degree(:)
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscSFComputeDegreeBegin
+#endif
+  interface
+  subroutine PetscSFComputeDegreeEnd(sf,degree, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscSF
+  PetscSF :: sf
+  PetscInt, pointer :: degree(:)
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscSFComputeDegreeEnd
+#endif
+  interface
+  subroutine PetscSFComputeMultiRootOriginalNumbering(sf,degree,nMultiRoots,multiRootsOrigNumbering, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscSF
+  PetscSF :: sf
+  PetscInt :: degree(*)
+  PetscInt :: nMultiRoots
+  PetscInt, pointer :: multiRootsOrigNumbering(:)
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscSFComputeMultiRootOriginalNumbering
+#endif
+  interface
+  subroutine PetscSFCompose(sfA,sfB,sfBA, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscSF
+  PetscSF :: sfA
+  PetscSF :: sfB
+  PetscSF :: sfBA
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscSFCompose
+#endif
+  interface
+  subroutine PetscSFComposeInverse(sfA,sfB,sfBA, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscSF
+  PetscSF :: sfA
+  PetscSF :: sfB
+  PetscSF :: sfBA
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscSFComposeInverse
+#endif
+  interface
+  subroutine PetscSFConcatenate(comm,nsfs,sfs,rootMode,leafOffsets,newsf, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscSF,ePetscSFConcatenateRootMode
+  MPIU_Comm :: comm
+  PetscInt :: nsfs
+  PetscSF :: sfs(*)
+  PetscSFConcatenateRootMode :: rootMode
+  PetscInt :: leafOffsets(*)
+  PetscSF :: newsf
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscSFConcatenate
+#endif
+  interface
+  subroutine PetscSFRegister(name,create, ierr)
+  use, intrinsic :: ISO_C_binding
+  character(*) :: name
+  external :: create
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscSFRegister
+#endif
+  interface
+  subroutine PetscSFInitializePackage(ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscSFInitializePackage
+#endif
+  interface
+  subroutine PetscSFFinalizePackage(ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscSFFinalizePackage
+#endif
+  interface
+  subroutine PetscSFWindowSetFlavorType(sf,flavor, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscSF,ePetscSFWindowFlavorType
+  PetscSF :: sf
+  PetscSFWindowFlavorType :: flavor
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscSFWindowSetFlavorType
+#endif
+  interface
+  subroutine PetscSFWindowGetFlavorType(sf,flavor, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscSF,ePetscSFWindowFlavorType
+  PetscSF :: sf
+  PetscSFWindowFlavorType :: flavor
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscSFWindowGetFlavorType
+#endif
+  interface
+  subroutine PetscSFWindowSetSyncType(sf,sync, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscSF,ePetscSFWindowSyncType
+  PetscSF :: sf
+  PetscSFWindowSyncType :: sync
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscSFWindowSetSyncType
+#endif
+  interface
+  subroutine PetscSFWindowGetSyncType(sf,sync, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscSF,ePetscSFWindowSyncType
+  PetscSF :: sf
+  PetscSFWindowSyncType :: sync
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscSFWindowGetSyncType
+#endif
+  interface
+  subroutine PetscSFSetGraphFromCoordinates(sf,nroots,nleaves,dim,tol,rootcoords,leafcoords, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscSF
+  PetscSF :: sf
+  PetscInt :: nroots
+  PetscInt :: nleaves
+  PetscInt :: dim
+  PetscReal :: tol
+  PetscReal :: rootcoords(*)
+  PetscReal :: leafcoords(*)
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscSFSetGraphFromCoordinates
+#endif
+  interface
+  subroutine PetscSFSetGraphLayout(sf,layout,nleaves,ilocal,localmode,gremote, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscSF,tPetscLayout,ePetscCopyMode
+  PetscSF :: sf
+  PetscLayout :: layout
+  PetscInt :: nleaves
+  PetscInt :: ilocal(*)
+  PetscCopyMode :: localmode
+  PetscInt :: gremote(*)
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscSFSetGraphLayout
+#endif
+  interface
+  subroutine PetscSFGetGraphLayout(sf,layout,nleaves,ilocal,gremote, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscSF,tPetscLayout
+  PetscSF :: sf
+  PetscLayout :: layout
+  PetscInt :: nleaves
+  PetscInt, pointer :: ilocal(:)
+  PetscInt, pointer :: gremote(:)
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscSFGetGraphLayout
+#endif
+  interface
+  subroutine PetscSFSetGraphSection(sf,localSection,globalSection, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscSF,tPetscSection
+  PetscSF :: sf
+  PetscSection :: localSection
+  PetscSection :: globalSection
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscSFSetGraphSection
+#endif
+  interface
+  subroutine PetscSFDistributeSection(sf,rootSection,remoteOffsets,leafSection, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscSF,tPetscSection
+  PetscSF :: sf
+  PetscSection :: rootSection
+  PetscInt, pointer :: remoteOffsets(:)
+  PetscSection :: leafSection
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscSFDistributeSection
+#endif
+  interface
+  subroutine PetscSFCreateRemoteOffsets(sf,rootSection,leafSection,remoteOffsets, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscSF,tPetscSection
+  PetscSF :: sf
+  PetscSection :: rootSection
+  PetscSection :: leafSection
+  PetscInt, pointer :: remoteOffsets(:)
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscSFCreateRemoteOffsets
+#endif
+  interface
+  subroutine PetscSFCreateSectionSF(sf,rootSection,remoteOffsets,leafSection,sectionSF, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscSF,tPetscSection
+  PetscSF :: sf
+  PetscSection :: rootSection
+  PetscInt :: remoteOffsets(*)
+  PetscSection :: leafSection
+  PetscSF :: sectionSF
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscSFCreateSectionSF
+#endif
+  interface
+  subroutine PetscSFCreateFromLayouts(rmap,lmap,sf, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscLayout,tPetscSF
+  PetscLayout :: rmap
+  PetscLayout :: lmap
+  PetscSF :: sf
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscSFCreateFromLayouts
+#endif
+  interface
+  subroutine PetscSFCreateByMatchingIndices(layout,numRootIndices,rootIndices,rootLocalIndices,rootLocalOffset,numLeafIndices,leafIndices,leafLocalIndices,leafLocalOffset,sfA,sf, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscLayout,tPetscSF
+  PetscLayout :: layout
+  PetscInt :: numRootIndices
+  PetscInt :: rootIndices(*)
+  PetscInt :: rootLocalIndices(*)
+  PetscInt :: rootLocalOffset
+  PetscInt :: numLeafIndices
+  PetscInt :: leafIndices(*)
+  PetscInt :: leafLocalIndices(*)
+  PetscInt :: leafLocalOffset
+  PetscSF :: sfA
+  PetscSF :: sf
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscSFCreateByMatchingIndices
+#endif
+  interface
+  subroutine PetscSFMerge(sfa,sfb,merged, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscSF
+  PetscSF :: sfa
+  PetscSF :: sfb
+  PetscSF :: merged
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscSFMerge
+#endif
+  interface
+  subroutine PetscSFCreateStridedSF(sf,bs,ldr,ldl,vsf, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscSF
+  PetscSF :: sf
+  PetscInt :: bs
+  PetscInt :: ldr
+  PetscInt :: ldl
+  PetscSF :: vsf
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscSFCreateStridedSF
+#endif
+  interface
+  subroutine PetscSFGetRanks(sf,nranks,ranks,roffset,rmine,rremote, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscSF
+  PetscSF :: sf
+  PetscMPIInt :: nranks
+  PetscMPIInt, pointer :: ranks(:)
+  PetscInt, pointer :: roffset(:)
+  PetscInt, pointer :: rmine(:)
+  PetscInt, pointer :: rremote(:)
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscSFGetRanks
+#endif
+  interface
+  subroutine PetscSFCreateEmbeddedSF(sf,nselected,selected,esf, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscSF
+  PetscSF :: sf
+  PetscInt :: nselected
+  PetscInt :: selected(*)
+  PetscSF :: esf
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscSFCreateEmbeddedSF
+#endif
+  interface operator(.ne.)
+    module procedure PetscSFnotequals
+  end interface operator (.ne.)
+  interface operator(.eq.)
+    module procedure PetscSFequals
+  end interface operator (.eq.)
+
+  interface PetscObjectCast
+    module procedure PetscObjectCastSF
+  end interface
+  interface PetscBarrier
+  module procedure PetscBarrierSF
+  end interface
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectSAWsTakeAccess
+    module procedure PetscObjectSAWsTakeAccessSF
+  end interface
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectSAWsGrantAccess
+    module procedure PetscObjectSAWsGrantAccessSF
+  end interface
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectSAWsBlock
+    module procedure PetscObjectSAWsBlockSF
+  end interface
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectSAWsSetBlock
+    module procedure PetscObjectSAWsSetBlockSF
+  end interface
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectSAWsViewOff
+    module procedure PetscObjectSAWsViewOffSF
+  end interface
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectViewSAWs
+    module procedure PetscObjectViewSAWsSF
+  end interface
+#endif
+  interface PetscObjectGetType
+    module procedure PetscObjectGetTypeSF
+  end interface
+  interface PetscObjectSetPrintedOptions
+    module procedure PetscObjectSetPrintedOptionsSF
+  end interface
+  interface PetscObjectInheritPrintedOptions
+    module procedure PetscObjectInheritPrintedOptionsSF
+  end interface
+  interface PetscObjectAddOptionsHandler
+    module procedure PetscObjectAddOptionsHandlerSF
+  end interface
+  interface PetscObjectProcessOptionsHandlers
+    module procedure PetscObjectProcessOptionsHandlersSF
+  end interface
+  interface PetscObjectDestroyOptionsHandlers
+    module procedure PetscObjectDestroyOptionsHandlersSF
+  end interface
+  interface PetscObjectReference
+    module procedure PetscObjectReferenceSF
+  end interface
+  interface PetscObjectGetReference
+    module procedure PetscObjectGetReferenceSF
+  end interface
+  interface PetscObjectDereference
+    module procedure PetscObjectDereferenceSF
+  end interface
+  interface PetscObjectRemoveReference
+    module procedure PetscObjectRemoveReferenceSF
+  end interface
+  interface PetscObjectHasFunction
+    module procedure PetscObjectHasFunctionSF
+  end interface
+  interface PetscObjectSetFromOptions
+    module procedure PetscObjectSetFromOptionsSF
+  end interface
+  interface PetscObjectSetUp
+    module procedure PetscObjectSetUpSF
+  end interface
+  interface PetscObjectGetName
+    module procedure PetscObjectGetNameSF
+  end interface
+  interface PetscObjectDestroy
+    module procedure PetscObjectDestroySF
+  end interface
+  interface PetscObjectView
+    module procedure PetscObjectViewSF
+  end interface
+  interface PetscObjectViewFromOptions
+    module procedure PetscObjectViewFromOptionsSF
+  end interface
+  interface PetscObjectTypeCompare
+    module procedure PetscObjectTypeCompareSF
+  end interface
+  interface PetscObjectObjectTypeCompare
+    module procedure PetscObjectObjectTypeCompareSF
+  end interface
+  interface PetscObjectBaseTypeCompare
+    module procedure PetscObjectBaseTypeCompareSF
+  end interface
+  interface PetscObjectRegisterDestroy
+    module procedure PetscObjectRegisterDestroySF
+  end interface
+  interface PetscObjectGetId
+    module procedure PetscObjectGetIdSF
+  end interface
+  interface PetscObjectCompareId
+    module procedure PetscObjectCompareIdSF
+  end interface
+  interface PetscObjectGetOptions
+    module procedure PetscObjectGetOptionsSF
+  end interface
+  interface PetscObjectSetOptions
+    module procedure PetscObjectSetOptionsSF
+  end interface
+  interface PetscObjectSetOptionsPrefix
+    module procedure PetscObjectSetOptionsPrefixSF
+  end interface
+  interface PetscObjectAppendOptionsPrefix
+    module procedure PetscObjectAppendOptionsPrefixSF
+  end interface
+  interface PetscObjectGetOptionsPrefix
+    module procedure PetscObjectGetOptionsPrefixSF
+  end interface
+  interface PetscObjectPrependOptionsPrefix
+    module procedure PetscObjectPrependOptionsPrefixSF
+  end interface
+  interface PetscObjectGetComm
+    module procedure PetscObjectGetCommSF
+  end interface
+  interface PetscObjectGetTabLevel
+    module procedure PetscObjectGetTabLevelSF
+  end interface
+  interface PetscObjectSetTabLevel
+    module procedure PetscObjectSetTabLevelSF
+  end interface
+  interface PetscObjectIncrementTabLevel
+    module procedure PetscObjectIncrementTabLevelSF
+  end interface
+  interface PetscObjectGetNewTag
+    module procedure PetscObjectGetNewTagSF
+  end interface
+  interface PetscObjectGetClassId
+    module procedure PetscObjectGetClassIdSF
+  end interface
+  interface PetscObjectGetClassName
+    module procedure PetscObjectGetClassNameSF
+  end interface
+  interface PetscObjectSetName
+    module procedure PetscObjectSetNameSF
+  end interface
+  interface PetscObjectPrintClassNamePrefixType
+    module procedure PetscObjectPrintClassNamePrefixTypeSF
+  end interface
+  interface PetscObjectName
+    module procedure PetscObjectNameSF
+  end interface
+  interface PetscObjectChangeTypeName
+    module procedure PetscObjectChangeTypeNameSF
+  end interface
+  interface operator(.ne.)
+    module procedure PetscSFLinknotequals
+  end interface operator (.ne.)
+  interface operator(.eq.)
+    module procedure PetscSFLinkequals
+  end interface operator (.eq.)
+
+  interface operator(.ne.)
+    module procedure PetscSFDirectionnotequals
+  end interface operator (.ne.)
+  interface operator(.eq.)
+    module procedure PetscSFDirectionequals
+  end interface operator (.eq.)
+
+  interface operator(.ne.)
+    module procedure PetscSFOperationnotequals
+  end interface operator (.ne.)
+  interface operator(.eq.)
+    module procedure PetscSFOperationequals
+  end interface operator (.eq.)
+
+  interface operator(.ne.)
+    module procedure PetscSFBackendnotequals
+  end interface operator (.ne.)
+  interface operator(.eq.)
+    module procedure PetscSFBackendequals
+  end interface operator (.eq.)
+
+  interface operator(.ne.)
+    module procedure PetscSFPatternnotequals
+  end interface operator (.ne.)
+  interface operator(.eq.)
+    module procedure PetscSFPatternequals
+  end interface operator (.eq.)
+
+  interface operator(.ne.)
+    module procedure PetscSFWindowSyncTypenotequals
+  end interface operator (.ne.)
+  interface operator(.eq.)
+    module procedure PetscSFWindowSyncTypeequals
+  end interface operator (.eq.)
+
+  interface operator(.ne.)
+    module procedure PetscSFWindowFlavorTypenotequals
+  end interface operator (.ne.)
+  interface operator(.eq.)
+    module procedure PetscSFWindowFlavorTypeequals
+  end interface operator (.eq.)
+
+  interface operator(.ne.)
+    module procedure PetscSFDuplicateOptionnotequals
+  end interface operator (.ne.)
+  interface operator(.eq.)
+    module procedure PetscSFDuplicateOptionequals
+  end interface operator (.eq.)
+
+  interface operator(.ne.)
+    module procedure PetscSFConcatenateRootModenotequals
+  end interface operator (.ne.)
+  interface operator(.eq.)
+    module procedure PetscSFConcatenateRootModeequals
+  end interface operator (.eq.)
+

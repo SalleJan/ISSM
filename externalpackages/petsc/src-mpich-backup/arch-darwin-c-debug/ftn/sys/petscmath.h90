@@ -1,0 +1,21 @@
+  interface
+  subroutine PetscLinearRegression(n,x,y,slope,intercept, ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscInt :: n
+  PetscReal :: x(*)
+  PetscReal :: y(*)
+  PetscReal :: slope
+  PetscReal :: intercept
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscLinearRegression
+#endif
+  interface operator(.ne.)
+    module procedure PetscScalarPrecisionnotequals
+  end interface operator (.ne.)
+  interface operator(.eq.)
+    module procedure PetscScalarPrecisionequals
+  end interface operator (.eq.)
+

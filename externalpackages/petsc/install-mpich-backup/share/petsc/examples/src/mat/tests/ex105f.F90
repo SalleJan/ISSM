@@ -1,0 +1,41 @@
+!
+!
+#include <petsc/finclude/petscmat.h>
+program main
+  use petscmat
+  implicit none
+
+  PetscErrorCode ierr
+  PetscInt :: i, j
+  PetscInt, parameter :: one = 1, twelve = 12
+  Mat m
+  PetscScalar, parameter :: value = 3.0
+
+  PetscCallA(PetscInitialize(ierr))
+  PetscCallA(MatCreate(PETSC_COMM_WORLD, m, ierr))
+  PetscCallA(MatSetSizes(m, PETSC_DECIDE, PETSC_DECIDE, twelve, twelve, ierr))
+  PetscCallA(MatSetFromOptions(m, ierr))
+  PetscCallA(MatMPIAIJSetPreallocation(m, PETSC_DEFAULT_INTEGER, PETSC_NULL_INTEGER_ARRAY, PETSC_DEFAULT_INTEGER, PETSC_NULL_INTEGER_ARRAY, ierr))
+
+  i = 4
+  PetscCallA(MatSetValuesMPIAIJ(m, one, [i], one, [i], [value], ADD_VALUES, ierr))
+  i = 5
+  j = 7
+  PetscCallA(MatSetValuesMPIAIJ(m, one, [i], one, [j], [value], ADD_VALUES, ierr))
+  i = 10
+  j = 9
+  PetscCallA(MatSetValuesMPIAIJ(m, one, [i], one, [j], [value], ADD_VALUES, ierr))
+  PetscCallA(MatAssemblyBegin(m, MAT_FINAL_ASSEMBLY, ierr))
+  PetscCallA(MatAssemblyEnd(m, MAT_FINAL_ASSEMBLY, ierr))
+
+  PetscCallA(MatDestroy(m, ierr))
+  PetscCallA(PetscFinalize(ierr))
+end
+
+!/*TEST
+!
+!   test:
+!      nsize: 2
+!      output_file: output/empty.out
+!
+!TEST*/

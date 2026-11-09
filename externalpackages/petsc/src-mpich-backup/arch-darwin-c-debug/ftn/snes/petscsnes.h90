@@ -1,0 +1,4906 @@
+  interface
+  subroutine MatCreateSNESMFMore(snes,x,J, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES,tVec,tMat
+  SNES :: snes
+  Vec :: x
+  Mat :: J
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::MatCreateSNESMFMore
+#endif
+  interface
+  subroutine MatSNESMFMoreSetParameters(mat,error,umin,h, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tMat
+  Mat :: mat
+  PetscReal :: error
+  PetscReal :: umin
+  PetscReal :: h
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::MatSNESMFMoreSetParameters
+#endif
+  interface
+  subroutine MatSNESMFGetSNES(J,snes, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tMat,tSNES
+  Mat :: J
+  SNES :: snes
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::MatSNESMFGetSNES
+#endif
+  interface
+  subroutine MatSNESMFSetReuseBase(J,use, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tMat
+  Mat :: J
+  PetscBool :: use
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::MatSNESMFSetReuseBase
+#endif
+  interface
+  subroutine MatSNESMFGetReuseBase(J,use, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tMat
+  Mat :: J
+  PetscBool :: use
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::MatSNESMFGetReuseBase
+#endif
+  interface
+  subroutine MatCreateSNESMF(snes,J, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES,tMat
+  SNES :: snes
+  Mat :: J
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::MatCreateSNESMF
+#endif
+  interface
+  subroutine SNESLineSearchMonitorCancel(ls, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNESLineSearch
+  SNESLineSearch :: ls
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESLineSearchMonitorCancel
+#endif
+  interface
+  subroutine SNESLineSearchMonitor(ls, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNESLineSearch
+  SNESLineSearch :: ls
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESLineSearchMonitor
+#endif
+  interface
+  subroutine SNESLineSearchMonitorSet(ls,f,mctx,monitordestroy, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNESLineSearch
+  SNESLineSearch :: ls
+  external :: f
+  type(*) :: mctx
+  external monitordestroy
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESLineSearchMonitorSet
+#endif
+  interface
+  subroutine SNESLineSearchMonitorSolutionUpdate(ls,vf, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNESLineSearch
+  SNESLineSearch :: ls
+  PetscViewerAndFormat :: vf
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESLineSearchMonitorSolutionUpdate
+#endif
+  interface
+  subroutine SNESLineSearchCreate(comm,outlinesearch, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNESLineSearch
+  MPIU_Comm :: comm
+  SNESLineSearch :: outlinesearch
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESLineSearchCreate
+#endif
+  interface
+  subroutine SNESLineSearchSetUp(linesearch, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNESLineSearch
+  SNESLineSearch :: linesearch
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESLineSearchSetUp
+#endif
+  interface
+  subroutine SNESLineSearchReset(linesearch, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNESLineSearch
+  SNESLineSearch :: linesearch
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESLineSearchReset
+#endif
+  interface
+  subroutine SNESLineSearchSetFunction(linesearch,func, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNESLineSearch
+  SNESLineSearch :: linesearch
+  external :: func
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESLineSearchSetFunction
+#endif
+  interface
+  subroutine SNESLineSearchSetPreCheck(linesearch,func,ctx, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNESLineSearch
+  SNESLineSearch :: linesearch
+  external :: func
+  type(*) :: ctx
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESLineSearchSetPreCheck
+#endif
+  interface
+  subroutine SNESLineSearchSetPostCheck(linesearch,func,ctx, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNESLineSearch
+  SNESLineSearch :: linesearch
+  external :: func
+  type(*) :: ctx
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESLineSearchSetPostCheck
+#endif
+  interface
+  subroutine SNESLineSearchPreCheck(linesearch,X,Y,changed, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNESLineSearch,tVec
+  SNESLineSearch :: linesearch
+  Vec :: X
+  Vec :: Y
+  PetscBool :: changed
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESLineSearchPreCheck
+#endif
+  interface
+  subroutine SNESLineSearchPostCheck(linesearch,X,Y,W,changed_Y,changed_W, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNESLineSearch,tVec
+  SNESLineSearch :: linesearch
+  Vec :: X
+  Vec :: Y
+  Vec :: W
+  PetscBool :: changed_Y
+  PetscBool :: changed_W
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESLineSearchPostCheck
+#endif
+  interface
+  subroutine SNESLineSearchPreCheckPicard(linesearch,X,Y,changed,ctx, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNESLineSearch,tVec
+  SNESLineSearch :: linesearch
+  Vec :: X
+  Vec :: Y
+  PetscBool :: changed
+  type(*) :: ctx
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESLineSearchPreCheckPicard
+#endif
+  interface
+  subroutine SNESLineSearchApply(linesearch,X,F,fnorm,Y, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNESLineSearch,tVec
+  SNESLineSearch :: linesearch
+  Vec :: X
+  Vec :: F
+  PetscReal :: fnorm
+  Vec :: Y
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESLineSearchApply
+#endif
+  interface
+  subroutine SNESLineSearchDestroy(linesearch, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNESLineSearch
+  SNESLineSearch :: linesearch
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESLineSearchDestroy
+#endif
+  interface
+  subroutine SNESLineSearchSetDefaultMonitor(linesearch,viewer, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNESLineSearch,tPetscViewer
+  SNESLineSearch :: linesearch
+  PetscViewer :: viewer
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESLineSearchSetDefaultMonitor
+#endif
+  interface
+  subroutine SNESLineSearchGetDefaultMonitor(linesearch,monitor, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNESLineSearch,tPetscViewer
+  SNESLineSearch :: linesearch
+  PetscViewer :: monitor
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESLineSearchGetDefaultMonitor
+#endif
+  interface
+  subroutine SNESLineSearchMonitorSetFromOptions(ls,name,help,manual,monitor,monitorsetup, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNESLineSearch
+  SNESLineSearch :: ls
+  character(*) :: name
+  character(*) :: help
+  character(*) :: manual
+  external :: monitor
+  external :: monitorsetup
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESLineSearchMonitorSetFromOptions
+#endif
+  interface
+  subroutine SNESLineSearchSetFromOptions(linesearch, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNESLineSearch
+  SNESLineSearch :: linesearch
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESLineSearchSetFromOptions
+#endif
+  interface
+  subroutine SNESLineSearchView(linesearch,viewer, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNESLineSearch,tPetscViewer
+  SNESLineSearch :: linesearch
+  PetscViewer :: viewer
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESLineSearchView
+#endif
+  interface
+  subroutine SNESLineSearchGetType(linesearch,type, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNESLineSearch
+  SNESLineSearch :: linesearch
+  character(*) :: type
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESLineSearchGetType
+#endif
+  interface
+  subroutine SNESLineSearchSetType(linesearch,type, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNESLineSearch
+  SNESLineSearch :: linesearch
+  character(*) :: type
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESLineSearchSetType
+#endif
+  interface
+  subroutine SNESLineSearchSetSNES(linesearch,snes, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNESLineSearch,tSNES
+  SNESLineSearch :: linesearch
+  SNES :: snes
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESLineSearchSetSNES
+#endif
+  interface
+  subroutine SNESLineSearchGetSNES(linesearch,snes, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNESLineSearch,tSNES
+  SNESLineSearch :: linesearch
+  SNES :: snes
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESLineSearchGetSNES
+#endif
+  interface
+  subroutine SNESLineSearchGetLambda(linesearch,lambda, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNESLineSearch
+  SNESLineSearch :: linesearch
+  PetscReal :: lambda
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESLineSearchGetLambda
+#endif
+  interface
+  subroutine SNESLineSearchSetLambda(linesearch,lambda, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNESLineSearch
+  SNESLineSearch :: linesearch
+  PetscReal :: lambda
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESLineSearchSetLambda
+#endif
+  interface
+  subroutine SNESLineSearchGetTolerances(linesearch,minlambda,maxlambda,rtol,atol,ltol,max_it, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNESLineSearch
+  SNESLineSearch :: linesearch
+  PetscReal :: minlambda
+  PetscReal :: maxlambda
+  PetscReal :: rtol
+  PetscReal :: atol
+  PetscReal :: ltol
+  PetscInt :: max_it
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESLineSearchGetTolerances
+#endif
+  interface
+  subroutine SNESLineSearchSetTolerances(linesearch,minlambda,maxlambda,rtol,atol,ltol,max_it, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNESLineSearch
+  SNESLineSearch :: linesearch
+  PetscReal :: minlambda
+  PetscReal :: maxlambda
+  PetscReal :: rtol
+  PetscReal :: atol
+  PetscReal :: ltol
+  PetscInt :: max_it
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESLineSearchSetTolerances
+#endif
+  interface
+  subroutine SNESLineSearchGetDamping(linesearch,damping, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNESLineSearch
+  SNESLineSearch :: linesearch
+  PetscReal :: damping
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESLineSearchGetDamping
+#endif
+  interface
+  subroutine SNESLineSearchSetDamping(linesearch,damping, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNESLineSearch
+  SNESLineSearch :: linesearch
+  PetscReal :: damping
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESLineSearchSetDamping
+#endif
+  interface
+  subroutine SNESLineSearchGetOrder(linesearch,order, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNESLineSearch
+  SNESLineSearch :: linesearch
+  PetscInt :: order
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESLineSearchGetOrder
+#endif
+  interface
+  subroutine SNESLineSearchSetOrder(linesearch,order, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNESLineSearch
+  SNESLineSearch :: linesearch
+  PetscInt :: order
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESLineSearchSetOrder
+#endif
+  interface
+  subroutine SNESLineSearchGetNorms(linesearch,xnorm,fnorm,ynorm, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNESLineSearch
+  SNESLineSearch :: linesearch
+  PetscReal :: xnorm
+  PetscReal :: fnorm
+  PetscReal :: ynorm
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESLineSearchGetNorms
+#endif
+  interface
+  subroutine SNESLineSearchSetNorms(linesearch,xnorm,fnorm,ynorm, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNESLineSearch
+  SNESLineSearch :: linesearch
+  PetscReal :: xnorm
+  PetscReal :: fnorm
+  PetscReal :: ynorm
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESLineSearchSetNorms
+#endif
+  interface
+  subroutine SNESLineSearchComputeNorms(linesearch, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNESLineSearch
+  SNESLineSearch :: linesearch
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESLineSearchComputeNorms
+#endif
+  interface
+  subroutine SNESLineSearchSetComputeNorms(linesearch,flg, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNESLineSearch
+  SNESLineSearch :: linesearch
+  PetscBool :: flg
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESLineSearchSetComputeNorms
+#endif
+  interface
+  subroutine SNESLineSearchGetVecs(linesearch,X,F,Y,W,G, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNESLineSearch,tVec
+  SNESLineSearch :: linesearch
+  Vec :: X
+  Vec :: F
+  Vec :: Y
+  Vec :: W
+  Vec :: G
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESLineSearchGetVecs
+#endif
+  interface
+  subroutine SNESLineSearchSetVecs(linesearch,X,F,Y,W,G, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNESLineSearch,tVec
+  SNESLineSearch :: linesearch
+  Vec :: X
+  Vec :: F
+  Vec :: Y
+  Vec :: W
+  Vec :: G
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESLineSearchSetVecs
+#endif
+  interface
+  subroutine SNESLineSearchAppendOptionsPrefix(linesearch,prefix, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNESLineSearch
+  SNESLineSearch :: linesearch
+  character(*) :: prefix
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESLineSearchAppendOptionsPrefix
+#endif
+  interface
+  subroutine SNESLineSearchGetOptionsPrefix(linesearch,prefix, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNESLineSearch
+  SNESLineSearch :: linesearch
+  character(*) :: prefix
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESLineSearchGetOptionsPrefix
+#endif
+  interface
+  subroutine SNESLineSearchSetWorkVecs(linesearch,nwork, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNESLineSearch
+  SNESLineSearch :: linesearch
+  PetscInt :: nwork
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESLineSearchSetWorkVecs
+#endif
+  interface
+  subroutine SNESLineSearchGetReason(linesearch,reason, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNESLineSearch,eSNESLineSearchReason
+  SNESLineSearch :: linesearch
+  SNESLineSearchReason :: reason
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESLineSearchGetReason
+#endif
+  interface
+  subroutine SNESLineSearchSetReason(linesearch,reason, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNESLineSearch,eSNESLineSearchReason
+  SNESLineSearch :: linesearch
+  SNESLineSearchReason :: reason
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESLineSearchSetReason
+#endif
+  interface
+  subroutine SNESLineSearchSetVIFunctions(linesearch,projectfunc,normfunc,dirderivfunc, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNESLineSearch
+  SNESLineSearch :: linesearch
+  external projectfunc
+  external normfunc
+  external dirderivfunc
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESLineSearchSetVIFunctions
+#endif
+  interface
+  subroutine SNESLineSearchRegister(sname,function, ierr)
+  use, intrinsic :: ISO_C_binding
+  character(*) :: sname
+  external :: function
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESLineSearchRegister
+#endif
+  interface
+  subroutine SNESLineSearchShellSetApply(linesearch,func,ctx, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNESLineSearch
+  SNESLineSearch :: linesearch
+  external func
+  type(*) :: ctx
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESLineSearchShellSetApply
+#endif
+  interface
+  subroutine SNESLineSearchBTSetAlpha(linesearch,alpha, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNESLineSearch
+  SNESLineSearch :: linesearch
+  PetscReal :: alpha
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESLineSearchBTSetAlpha
+#endif
+  interface
+  subroutine SNESLineSearchBTGetAlpha(linesearch,alpha, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNESLineSearch
+  SNESLineSearch :: linesearch
+  PetscReal :: alpha
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESLineSearchBTGetAlpha
+#endif
+  interface operator(.ne.)
+    module procedure SNESLineSearchnotequals
+  end interface operator (.ne.)
+  interface operator(.eq.)
+    module procedure SNESLineSearchequals
+  end interface operator (.eq.)
+
+  interface PetscObjectCast
+    module procedure PetscObjectCastSNESLineSearch
+  end interface
+  interface PetscBarrier
+  module procedure PetscBarrierSNESLineSearch
+  end interface
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectSAWsTakeAccess
+    module procedure PetscObjectSAWsTakeAccessSNESLineSearch
+  end interface
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectSAWsGrantAccess
+    module procedure PetscObjectSAWsGrantAccessSNESLineSearch
+  end interface
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectSAWsBlock
+    module procedure PetscObjectSAWsBlockSNESLineSearch
+  end interface
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectSAWsSetBlock
+    module procedure PetscObjectSAWsSetBlockSNESLineSearch
+  end interface
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectSAWsViewOff
+    module procedure PetscObjectSAWsViewOffSNESLineSearch
+  end interface
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectViewSAWs
+    module procedure PetscObjectViewSAWsSNESLineSearch
+  end interface
+#endif
+  interface PetscObjectGetType
+    module procedure PetscObjectGetTypeSNESLineSearch
+  end interface
+  interface PetscObjectSetPrintedOptions
+    module procedure PetscObjectSetPrintedOptionsSNESLineSearch
+  end interface
+  interface PetscObjectInheritPrintedOptions
+    module procedure PetscObjectInheritPrintedOptionsSNESLineSearch
+  end interface
+  interface PetscObjectAddOptionsHandler
+    module procedure PetscObjectAddOptionsHandlerSNESLineSearch
+  end interface
+  interface PetscObjectProcessOptionsHandlers
+    module procedure PetscObjectProcessOptionsHandlersSNESLineSearch
+  end interface
+  interface PetscObjectDestroyOptionsHandlers
+    module procedure PetscObjectDestroyOptionsHandlersSNESLineSearch
+  end interface
+  interface PetscObjectReference
+    module procedure PetscObjectReferenceSNESLineSearch
+  end interface
+  interface PetscObjectGetReference
+    module procedure PetscObjectGetReferenceSNESLineSearch
+  end interface
+  interface PetscObjectDereference
+    module procedure PetscObjectDereferenceSNESLineSearch
+  end interface
+  interface PetscObjectRemoveReference
+    module procedure PetscObjectRemoveReferenceSNESLineSearch
+  end interface
+  interface PetscObjectHasFunction
+    module procedure PetscObjectHasFunctionSNESLineSearch
+  end interface
+  interface PetscObjectSetFromOptions
+    module procedure PetscObjectSetFromOptionsSNESLineSearch
+  end interface
+  interface PetscObjectSetUp
+    module procedure PetscObjectSetUpSNESLineSearch
+  end interface
+  interface PetscObjectGetName
+    module procedure PetscObjectGetNameSNESLineSearch
+  end interface
+  interface PetscObjectDestroy
+    module procedure PetscObjectDestroySNESLineSearch
+  end interface
+  interface PetscObjectView
+    module procedure PetscObjectViewSNESLineSearch
+  end interface
+  interface PetscObjectViewFromOptions
+    module procedure PetscObjectViewFromOptionsSNESLineSearch
+  end interface
+  interface PetscObjectTypeCompare
+    module procedure PetscObjectTypeCompareSNESLineSearch
+  end interface
+  interface PetscObjectObjectTypeCompare
+    module procedure PetscObjectObjectTypeCompareSNESLineSearch
+  end interface
+  interface PetscObjectBaseTypeCompare
+    module procedure PetscObjectBaseTypeCompareSNESLineSearch
+  end interface
+  interface PetscObjectRegisterDestroy
+    module procedure PetscObjectRegisterDestroySNESLineSearch
+  end interface
+  interface PetscObjectGetId
+    module procedure PetscObjectGetIdSNESLineSearch
+  end interface
+  interface PetscObjectCompareId
+    module procedure PetscObjectCompareIdSNESLineSearch
+  end interface
+  interface PetscObjectGetOptions
+    module procedure PetscObjectGetOptionsSNESLineSearch
+  end interface
+  interface PetscObjectSetOptions
+    module procedure PetscObjectSetOptionsSNESLineSearch
+  end interface
+  interface PetscObjectSetOptionsPrefix
+    module procedure PetscObjectSetOptionsPrefixSNESLineSearch
+  end interface
+  interface PetscObjectAppendOptionsPrefix
+    module procedure PetscObjectAppendOptionsPrefixSNESLineSearch
+  end interface
+  interface PetscObjectGetOptionsPrefix
+    module procedure PetscObjectGetOptionsPrefixSNESLineSearch
+  end interface
+  interface PetscObjectPrependOptionsPrefix
+    module procedure PetscObjectPrependOptionsPrefixSNESLineSearch
+  end interface
+  interface PetscObjectGetComm
+    module procedure PetscObjectGetCommSNESLineSearch
+  end interface
+  interface PetscObjectGetTabLevel
+    module procedure PetscObjectGetTabLevelSNESLineSearch
+  end interface
+  interface PetscObjectSetTabLevel
+    module procedure PetscObjectSetTabLevelSNESLineSearch
+  end interface
+  interface PetscObjectIncrementTabLevel
+    module procedure PetscObjectIncrementTabLevelSNESLineSearch
+  end interface
+  interface PetscObjectGetNewTag
+    module procedure PetscObjectGetNewTagSNESLineSearch
+  end interface
+  interface PetscObjectGetClassId
+    module procedure PetscObjectGetClassIdSNESLineSearch
+  end interface
+  interface PetscObjectGetClassName
+    module procedure PetscObjectGetClassNameSNESLineSearch
+  end interface
+  interface PetscObjectSetName
+    module procedure PetscObjectSetNameSNESLineSearch
+  end interface
+  interface PetscObjectPrintClassNamePrefixType
+    module procedure PetscObjectPrintClassNamePrefixTypeSNESLineSearch
+  end interface
+  interface PetscObjectName
+    module procedure PetscObjectNameSNESLineSearch
+  end interface
+  interface PetscObjectChangeTypeName
+    module procedure PetscObjectChangeTypeNameSNESLineSearch
+  end interface
+  interface
+  subroutine KSPMonitorSNESResidual(ksp,n,rnorm,vf, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tKSP
+  KSP :: ksp
+  PetscInt :: n
+  PetscReal :: rnorm
+  PetscViewerAndFormat :: vf
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::KSPMonitorSNESResidual
+#endif
+  interface
+  subroutine KSPMonitorSNESResidualDrawLG(ksp,n,rnorm,vf, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tKSP
+  KSP :: ksp
+  PetscInt :: n
+  PetscReal :: rnorm
+  PetscViewerAndFormat :: vf
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::KSPMonitorSNESResidualDrawLG
+#endif
+  interface
+  subroutine DMSetVI(dm,inactive, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM,tIS
+  DM :: dm
+  IS :: inactive
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMSetVI
+#endif
+  interface
+  subroutine DMDestroyVI(dm, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMDestroyVI
+#endif
+  interface
+  subroutine DMCopyDMSNES(dmsrc,dmdest, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dmsrc
+  DM :: dmdest
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMCopyDMSNES
+#endif
+  interface
+  subroutine DMSNESSetFunction(dm,f,ctx, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  external f
+  type(*) :: ctx
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMSNESSetFunction
+#endif
+  interface
+  subroutine DMSNESSetFunctionContextDestroy(dm,f, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  external f
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMSNESSetFunctionContextDestroy
+#endif
+  interface
+  subroutine DMSNESSetMFFunction(dm,func,ctx, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  external func
+  type(*) :: ctx
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMSNESSetMFFunction
+#endif
+  interface
+  subroutine DMSNESSetObjective(dm,obj,ctx, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  external obj
+  type(*) :: ctx
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMSNESSetObjective
+#endif
+  interface
+  subroutine DMSNESSetNGS(dm,f,ctx, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  external :: f
+  type(*) :: ctx
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMSNESSetNGS
+#endif
+  interface
+  subroutine DMSNESSetJacobian(dm,J,ctx, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  external J
+  type(*) :: ctx
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMSNESSetJacobian
+#endif
+  interface
+  subroutine DMSNESSetJacobianContextDestroy(dm,f, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  external f
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMSNESSetJacobianContextDestroy
+#endif
+  interface
+  subroutine DMSNESSetPicard(dm,b,J,ctx, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  external b
+  external J
+  type(*) :: ctx
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMSNESSetPicard
+#endif
+  interface
+  subroutine DMSNESSetObjectiveLocal(dm,func,ctx, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  external :: func
+  type(*) :: ctx
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMSNESSetObjectiveLocal
+#endif
+  interface
+  subroutine DMSNESSetFunctionLocal(dm,func,ctx, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  external :: func
+  type(*) :: ctx
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMSNESSetFunctionLocal
+#endif
+  interface
+  subroutine DMSNESSetBoundaryLocal(dm,func,ctx, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  external :: func
+  type(*) :: ctx
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMSNESSetBoundaryLocal
+#endif
+  interface
+  subroutine DMSNESSetJacobianLocal(dm,func,ctx, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  external :: func
+  type(*) :: ctx
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMSNESSetJacobianLocal
+#endif
+  interface
+  subroutine DMDASNESSetFunctionLocal(dm,imode,func,ctx, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM,eInsertMode
+  DM :: dm
+  InsertMode :: imode
+  external func
+  type(*) :: ctx
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMDASNESSetFunctionLocal
+#endif
+  interface
+  subroutine DMDASNESSetFunctionLocalVec(dm,imode,func,ctx, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM,eInsertMode
+  DM :: dm
+  InsertMode :: imode
+  external func
+  type(*) :: ctx
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMDASNESSetFunctionLocalVec
+#endif
+  interface
+  subroutine DMDASNESSetJacobianLocal(dm,func,ctx, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  external func
+  type(*) :: ctx
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMDASNESSetJacobianLocal
+#endif
+  interface
+  subroutine DMDASNESSetJacobianLocalVec(dm,func,ctx, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  external func
+  type(*) :: ctx
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMDASNESSetJacobianLocalVec
+#endif
+  interface
+  subroutine DMDASNESSetObjectiveLocal(dm,func,ctx, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  external func
+  type(*) :: ctx
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMDASNESSetObjectiveLocal
+#endif
+  interface
+  subroutine DMDASNESSetObjectiveLocalVec(dm,func,ctx, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  external func
+  type(*) :: ctx
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMDASNESSetObjectiveLocalVec
+#endif
+  interface
+  subroutine DMDASNESSetPicardLocal(dm,imode,func,jac,ctx, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM,eInsertMode
+  DM :: dm
+  InsertMode :: imode
+  external func
+  external jac
+  type(*) :: ctx
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMDASNESSetPicardLocal
+#endif
+  interface
+  subroutine DMSNESComputeJacobianAction(dm,X,Y,F,ctx, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM,tVec
+  DM :: dm
+  Vec :: X
+  Vec :: Y
+  Vec :: F
+  type(*) :: ctx
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMSNESComputeJacobianAction
+#endif
+  interface
+  subroutine DMSNESCreateJacobianMF(dm,X,ctx,J, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM,tVec,tMat
+  DM :: dm
+  Vec :: X
+  type(*) :: ctx
+  Mat :: J
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMSNESCreateJacobianMF
+#endif
+  interface
+  subroutine DMSNESCheckDiscretization(snes,dm,t,u,tol,error, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES,tDM,tVec
+  SNES :: snes
+  DM :: dm
+  PetscReal :: t
+  Vec :: u
+  PetscReal :: tol
+  PetscReal :: error(*)
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMSNESCheckDiscretization
+#endif
+  interface
+  subroutine DMSNESCheckResidual(snes,dm,u,tol,residual, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES,tDM,tVec
+  SNES :: snes
+  DM :: dm
+  Vec :: u
+  PetscReal :: tol
+  PetscReal :: residual
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMSNESCheckResidual
+#endif
+  interface
+  subroutine DMSNESCheckJacobian(snes,dm,u,tol,isLinear,convRate, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES,tDM,tVec
+  SNES :: snes
+  DM :: dm
+  Vec :: u
+  PetscReal :: tol
+  PetscBool :: isLinear
+  PetscReal :: convRate
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMSNESCheckJacobian
+#endif
+  interface
+  subroutine DMSNESCheckFromOptions(snes,u, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES,tVec
+  SNES :: snes
+  Vec :: u
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMSNESCheckFromOptions
+#endif
+  interface
+  subroutine DMPlexSetSNESVariableBounds(dm,snes, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM,tSNES
+  DM :: dm
+  SNES :: snes
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMPlexSetSNESVariableBounds
+#endif
+  interface
+  subroutine SNESMonitorSolution(snes,its,fgnorm,vf, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES
+  SNES :: snes
+  PetscInt :: its
+  PetscReal :: fgnorm
+  PetscViewerAndFormat :: vf
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESMonitorSolution
+#endif
+  interface
+  subroutine SNESMonitorResidual(snes,its,fgnorm,vf, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES
+  SNES :: snes
+  PetscInt :: its
+  PetscReal :: fgnorm
+  PetscViewerAndFormat :: vf
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESMonitorResidual
+#endif
+  interface
+  subroutine SNESMonitorSolutionUpdate(snes,its,fgnorm,vf, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES
+  SNES :: snes
+  PetscInt :: its
+  PetscReal :: fgnorm
+  PetscViewerAndFormat :: vf
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESMonitorSolutionUpdate
+#endif
+  interface
+  subroutine SNESMonitorDefaultSetUp(snes,vf, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES
+  SNES :: snes
+  PetscViewerAndFormat :: vf
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESMonitorDefaultSetUp
+#endif
+  interface
+  subroutine SNESMonitorDefault(snes,its,fgnorm,vf, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES
+  SNES :: snes
+  PetscInt :: its
+  PetscReal :: fgnorm
+  PetscViewerAndFormat :: vf
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESMonitorDefault
+#endif
+  interface
+  subroutine SNESMonitorScaling(snes,its,fgnorm,vf, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES
+  SNES :: snes
+  PetscInt :: its
+  PetscReal :: fgnorm
+  PetscViewerAndFormat :: vf
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESMonitorScaling
+#endif
+  interface
+  subroutine SNESMonitorJacUpdateSpectrum(snes,it,fnorm,vf, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES
+  SNES :: snes
+  PetscInt :: it
+  PetscReal :: fnorm
+  PetscViewerAndFormat :: vf
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESMonitorJacUpdateSpectrum
+#endif
+  interface
+  subroutine SNESMonitorRange(snes,it,rnorm,vf, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES
+  SNES :: snes
+  PetscInt :: it
+  PetscReal :: rnorm
+  PetscViewerAndFormat :: vf
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESMonitorRange
+#endif
+  interface
+  subroutine SNESMonitorRatio(snes,its,fgnorm,vf, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES
+  SNES :: snes
+  PetscInt :: its
+  PetscReal :: fgnorm
+  PetscViewerAndFormat :: vf
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESMonitorRatio
+#endif
+  interface
+  subroutine SNESMonitorRatioSetUp(snes,vf, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES
+  SNES :: snes
+  PetscViewerAndFormat :: vf
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESMonitorRatioSetUp
+#endif
+  interface
+  subroutine SNESMonitorDefaultShort(snes,its,fgnorm,vf, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES
+  SNES :: snes
+  PetscInt :: its
+  PetscReal :: fgnorm
+  PetscViewerAndFormat :: vf
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESMonitorDefaultShort
+#endif
+  interface
+  subroutine SNESMonitorDefaultField(snes,its,fgnorm,vf, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES
+  SNES :: snes
+  PetscInt :: its
+  PetscReal :: fgnorm
+  PetscViewerAndFormat :: vf
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESMonitorDefaultField
+#endif
+  interface
+  subroutine SNESConvergedDefault(snes,it,xnorm,snorm,fnorm,reason,ctx, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES,eSNESConvergedReason
+  SNES :: snes
+  PetscInt :: it
+  PetscReal :: xnorm
+  PetscReal :: snorm
+  PetscReal :: fnorm
+  SNESConvergedReason :: reason
+  type(*) :: ctx
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESConvergedDefault
+#endif
+  interface
+  subroutine SNESConvergedSkip(snes,it,xnorm,snorm,fnorm,reason,ctx, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES,eSNESConvergedReason
+  SNES :: snes
+  PetscInt :: it
+  PetscReal :: xnorm
+  PetscReal :: snorm
+  PetscReal :: fnorm
+  SNESConvergedReason :: reason
+  type(*) :: ctx
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESConvergedSkip
+#endif
+  interface
+  subroutine SNESSetWorkVecs(snes,nw, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES
+  SNES :: snes
+  PetscInt :: nw
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESSetWorkVecs
+#endif
+  interface
+  subroutine SNESFinalizePackage(ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESFinalizePackage
+#endif
+  interface
+  subroutine SNESInitializePackage(ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESInitializePackage
+#endif
+  interface
+  subroutine SNESSetErrorIfNotConverged(snes,flg, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES
+  SNES :: snes
+  PetscBool :: flg
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESSetErrorIfNotConverged
+#endif
+  interface
+  subroutine SNESGetErrorIfNotConverged(snes,flag, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES
+  SNES :: snes
+  PetscBool :: flag
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESGetErrorIfNotConverged
+#endif
+  interface
+  subroutine SNESSetAlwaysComputesFinalResidual(snes,flg, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES
+  SNES :: snes
+  PetscBool :: flg
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESSetAlwaysComputesFinalResidual
+#endif
+  interface
+  subroutine SNESGetAlwaysComputesFinalResidual(snes,flg, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES
+  SNES :: snes
+  PetscBool :: flg
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESGetAlwaysComputesFinalResidual
+#endif
+  interface
+  subroutine SNESSetFunctionDomainError(snes, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES
+  SNES :: snes
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESSetFunctionDomainError
+#endif
+  interface
+  subroutine SNESSetObjectiveDomainError(snes, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES
+  SNES :: snes
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESSetObjectiveDomainError
+#endif
+  interface
+  subroutine SNESSetJacobianDomainError(snes, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES
+  SNES :: snes
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESSetJacobianDomainError
+#endif
+  interface
+  subroutine SNESSetCheckJacobianDomainError(snes,flg, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES
+  SNES :: snes
+  PetscBool :: flg
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESSetCheckJacobianDomainError
+#endif
+  interface
+  subroutine SNESGetCheckJacobianDomainError(snes,flg, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES
+  SNES :: snes
+  PetscBool :: flg
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESGetCheckJacobianDomainError
+#endif
+  interface
+  subroutine SNESLoad(snes,viewer, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES,tPetscViewer
+  SNES :: snes
+  PetscViewer :: viewer
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESLoad
+#endif
+  interface
+  subroutine SNESViewFromOptions(A,obj,name, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES,tPetscObject
+  SNES :: A
+  PetscObject :: obj
+  character(*) :: name
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESViewFromOptions
+#endif
+  interface
+  subroutine SNESView(snes,viewer, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES,tPetscViewer
+  SNES :: snes
+  PetscViewer :: viewer
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESView
+#endif
+  interface
+  subroutine SNESAddOptionsChecker(snescheck, ierr)
+  use, intrinsic :: ISO_C_binding
+  external :: snescheck
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESAddOptionsChecker
+#endif
+  interface
+  subroutine SNESSetUpMatrices(snes, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES
+  SNES :: snes
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESSetUpMatrices
+#endif
+  interface
+  subroutine SNESMonitorSetFromOptions(snes,name,help,manual,monitor,monitorsetup, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES
+  SNES :: snes
+  character(*) :: name
+  character(*) :: help
+  character(*) :: manual
+  external :: monitor
+  external :: monitorsetup
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESMonitorSetFromOptions
+#endif
+  interface
+  subroutine SNESSetFromOptions(snes, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES
+  SNES :: snes
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESSetFromOptions
+#endif
+  interface
+  subroutine SNESResetFromOptions(snes, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES
+  SNES :: snes
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESResetFromOptions
+#endif
+  interface
+  subroutine SNESSetComputeApplicationContext(snes,compute,destroy, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES
+  SNES :: snes
+  external :: compute
+  external destroy
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESSetComputeApplicationContext
+#endif
+  interface
+  subroutine SNESSetApplicationContext(snes,ctx, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES
+  SNES :: snes
+  type(*) :: ctx
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESSetApplicationContext
+#endif
+  interface
+  subroutine SNESGetApplicationContextcptr(snes,ctx, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES
+  SNES :: snes
+  type(c_ptr) :: ctx
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESGetApplicationContextcptr
+#endif
+  interface
+  subroutine SNESSetUseMatrixFree(snes,mf_operator,mf, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES
+  SNES :: snes
+  PetscBool :: mf_operator
+  PetscBool :: mf
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESSetUseMatrixFree
+#endif
+  interface
+  subroutine SNESGetUseMatrixFree(snes,mf_operator,mf, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES
+  SNES :: snes
+  PetscBool :: mf_operator
+  PetscBool :: mf
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESGetUseMatrixFree
+#endif
+  interface
+  subroutine SNESGetIterationNumber(snes,iter, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES
+  SNES :: snes
+  PetscInt :: iter
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESGetIterationNumber
+#endif
+  interface
+  subroutine SNESSetIterationNumber(snes,iter, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES
+  SNES :: snes
+  PetscInt :: iter
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESSetIterationNumber
+#endif
+  interface
+  subroutine SNESGetNonlinearStepFailures(snes,nfails, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES
+  SNES :: snes
+  PetscInt :: nfails
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESGetNonlinearStepFailures
+#endif
+  interface
+  subroutine SNESSetMaxNonlinearStepFailures(snes,maxFails, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES
+  SNES :: snes
+  PetscInt :: maxFails
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESSetMaxNonlinearStepFailures
+#endif
+  interface
+  subroutine SNESGetMaxNonlinearStepFailures(snes,maxFails, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES
+  SNES :: snes
+  PetscInt :: maxFails
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESGetMaxNonlinearStepFailures
+#endif
+  interface
+  subroutine SNESGetNumberFunctionEvals(snes,nfuncs, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES
+  SNES :: snes
+  PetscInt :: nfuncs
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESGetNumberFunctionEvals
+#endif
+  interface
+  subroutine SNESGetLinearSolveFailures(snes,nfails, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES
+  SNES :: snes
+  PetscInt :: nfails
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESGetLinearSolveFailures
+#endif
+  interface
+  subroutine SNESSetMaxLinearSolveFailures(snes,maxFails, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES
+  SNES :: snes
+  PetscInt :: maxFails
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESSetMaxLinearSolveFailures
+#endif
+  interface
+  subroutine SNESGetMaxLinearSolveFailures(snes,maxFails, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES
+  SNES :: snes
+  PetscInt :: maxFails
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESGetMaxLinearSolveFailures
+#endif
+  interface
+  subroutine SNESGetLinearSolveIterations(snes,lits, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES
+  SNES :: snes
+  PetscInt :: lits
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESGetLinearSolveIterations
+#endif
+  interface
+  subroutine SNESSetCountersReset(snes,reset, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES
+  SNES :: snes
+  PetscBool :: reset
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESSetCountersReset
+#endif
+  interface
+  subroutine SNESResetCounters(snes, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES
+  SNES :: snes
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESResetCounters
+#endif
+  interface
+  subroutine SNESSetKSP(snes,ksp, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES,tKSP
+  SNES :: snes
+  KSP :: ksp
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESSetKSP
+#endif
+  interface
+  subroutine SNESParametersInitialize(snes, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES
+  SNES :: snes
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESParametersInitialize
+#endif
+  interface
+  subroutine SNESCreate(comm,outsnes, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES
+  MPIU_Comm :: comm
+  SNES :: outsnes
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESCreate
+#endif
+  interface
+  subroutine SNESSetFunction(snes,r,f,ctx, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES,tVec
+  SNES :: snes
+  Vec :: r
+  external f
+  type(*) :: ctx
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESSetFunction
+#endif
+  interface
+  subroutine SNESSetInitialFunction(snes,f, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES,tVec
+  SNES :: snes
+  Vec :: f
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESSetInitialFunction
+#endif
+  interface
+  subroutine SNESSetNormSchedule(snes,normschedule, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES,eSNESNormSchedule
+  SNES :: snes
+  SNESNormSchedule :: normschedule
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESSetNormSchedule
+#endif
+  interface
+  subroutine SNESGetNormSchedule(snes,normschedule, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES,eSNESNormSchedule
+  SNES :: snes
+  SNESNormSchedule :: normschedule
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESGetNormSchedule
+#endif
+  interface
+  subroutine SNESSetFunctionNorm(snes,norm, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES
+  SNES :: snes
+  PetscReal :: norm
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESSetFunctionNorm
+#endif
+  interface
+  subroutine SNESGetFunctionNorm(snes,norm, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES
+  SNES :: snes
+  PetscReal :: norm
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESGetFunctionNorm
+#endif
+  interface
+  subroutine SNESGetUpdateNorm(snes,ynorm, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES
+  SNES :: snes
+  PetscReal :: ynorm
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESGetUpdateNorm
+#endif
+  interface
+  subroutine SNESGetSolutionNorm(snes,xnorm, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES
+  SNES :: snes
+  PetscReal :: xnorm
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESGetSolutionNorm
+#endif
+  interface
+  subroutine SNESSetFunctionType(snes,type, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES,eSNESFunctionType
+  SNES :: snes
+  SNESFunctionType :: type
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESSetFunctionType
+#endif
+  interface
+  subroutine SNESGetFunctionType(snes,type, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES,eSNESFunctionType
+  SNES :: snes
+  SNESFunctionType :: type
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESGetFunctionType
+#endif
+  interface
+  subroutine SNESSetNGS(snes,f,ctx, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES
+  SNES :: snes
+  external f
+  type(*) :: ctx
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESSetNGS
+#endif
+  interface
+  subroutine SNESPicardComputeMFFunction(snes,x,f,ctx, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES,tVec
+  SNES :: snes
+  Vec :: x
+  Vec :: f
+  type(*) :: ctx
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESPicardComputeMFFunction
+#endif
+  interface
+  subroutine SNESPicardComputeFunction(snes,x,f,ctx, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES,tVec
+  SNES :: snes
+  Vec :: x
+  Vec :: f
+  type(*) :: ctx
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESPicardComputeFunction
+#endif
+  interface
+  subroutine SNESPicardComputeJacobian(snes,x1,J,B,ctx, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES,tVec,tMat
+  SNES :: snes
+  Vec :: x1
+  Mat :: J
+  Mat :: B
+  type(*) :: ctx
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESPicardComputeJacobian
+#endif
+  interface
+  subroutine SNESSetPicard(snes,r,bp,Amat,Pmat,J,ctx, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES,tVec,tMat
+  SNES :: snes
+  Vec :: r
+  external bp
+  Mat :: Amat
+  Mat :: Pmat
+  external J
+  type(*) :: ctx
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESSetPicard
+#endif
+  interface
+  subroutine SNESSetComputeInitialGuess(snes,func,ctx, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES
+  SNES :: snes
+  external func
+  type(*) :: ctx
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESSetComputeInitialGuess
+#endif
+  interface
+  subroutine SNESGetRhs(snes,rhs, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES,tVec
+  SNES :: snes
+  Vec :: rhs
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESGetRhs
+#endif
+  interface
+  subroutine SNESComputeFunction(snes,x,f, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES,tVec
+  SNES :: snes
+  Vec :: x
+  Vec :: f
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESComputeFunction
+#endif
+  interface
+  subroutine SNESComputeMFFunction(snes,x,y, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES,tVec
+  SNES :: snes
+  Vec :: x
+  Vec :: y
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESComputeMFFunction
+#endif
+  interface
+  subroutine SNESComputeNGS(snes,b,x, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES,tVec
+  SNES :: snes
+  Vec :: b
+  Vec :: x
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESComputeNGS
+#endif
+  interface
+  subroutine SNESTestFunction(snes, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES
+  SNES :: snes
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESTestFunction
+#endif
+  interface
+  subroutine SNESTestJacobian(snes,Jnorm,diffNorm, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES
+  SNES :: snes
+  PetscReal :: Jnorm
+  PetscReal :: diffNorm
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESTestJacobian
+#endif
+  interface
+  subroutine SNESComputeJacobian(snes,X,A,B, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES,tVec,tMat
+  SNES :: snes
+  Vec :: X
+  Mat :: A
+  Mat :: B
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESComputeJacobian
+#endif
+  interface
+  subroutine SNESSetJacobian(snes,Amat,Pmat,J,ctx, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES,tMat
+  SNES :: snes
+  Mat :: Amat
+  Mat :: Pmat
+  external J
+  type(*) :: ctx
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESSetJacobian
+#endif
+  interface
+  subroutine SNESSetUp(snes, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES
+  SNES :: snes
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESSetUp
+#endif
+  interface
+  subroutine SNESReset(snes, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES
+  SNES :: snes
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESReset
+#endif
+  interface
+  subroutine SNESConvergedReasonViewCancel(snes, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES
+  SNES :: snes
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESConvergedReasonViewCancel
+#endif
+  interface
+  subroutine SNESDestroy(snes, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES
+  SNES :: snes
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESDestroy
+#endif
+  interface
+  subroutine SNESSetLagPreconditioner(snes,lag, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES
+  SNES :: snes
+  PetscInt :: lag
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESSetLagPreconditioner
+#endif
+  interface
+  subroutine SNESSetGridSequence(snes,steps, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES
+  SNES :: snes
+  PetscInt :: steps
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESSetGridSequence
+#endif
+  interface
+  subroutine SNESGetGridSequence(snes,steps, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES
+  SNES :: snes
+  PetscInt :: steps
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESGetGridSequence
+#endif
+  interface
+  subroutine SNESGetLagPreconditioner(snes,lag, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES
+  SNES :: snes
+  PetscInt :: lag
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESGetLagPreconditioner
+#endif
+  interface
+  subroutine SNESSetLagJacobian(snes,lag, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES
+  SNES :: snes
+  PetscInt :: lag
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESSetLagJacobian
+#endif
+  interface
+  subroutine SNESGetLagJacobian(snes,lag, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES
+  SNES :: snes
+  PetscInt :: lag
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESGetLagJacobian
+#endif
+  interface
+  subroutine SNESSetLagJacobianPersists(snes,flg, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES
+  SNES :: snes
+  PetscBool :: flg
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESSetLagJacobianPersists
+#endif
+  interface
+  subroutine SNESSetLagPreconditionerPersists(snes,flg, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES
+  SNES :: snes
+  PetscBool :: flg
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESSetLagPreconditionerPersists
+#endif
+  interface
+  subroutine SNESSetForceIteration(snes,force, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES
+  SNES :: snes
+  PetscBool :: force
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESSetForceIteration
+#endif
+  interface
+  subroutine SNESGetForceIteration(snes,force, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES
+  SNES :: snes
+  PetscBool :: force
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESGetForceIteration
+#endif
+  interface
+  subroutine SNESSetTolerances(snes,abstol,rtol,stol,maxit,maxf, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES
+  SNES :: snes
+  PetscReal :: abstol
+  PetscReal :: rtol
+  PetscReal :: stol
+  PetscInt :: maxit
+  PetscInt :: maxf
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESSetTolerances
+#endif
+  interface
+  subroutine SNESSetDivergenceTolerance(snes,divtol, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES
+  SNES :: snes
+  PetscReal :: divtol
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESSetDivergenceTolerance
+#endif
+  interface
+  subroutine SNESGetTolerances(snes,atol,rtol,stol,maxit,maxf, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES
+  SNES :: snes
+  PetscReal :: atol
+  PetscReal :: rtol
+  PetscReal :: stol
+  PetscInt :: maxit
+  PetscInt :: maxf
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESGetTolerances
+#endif
+  interface
+  subroutine SNESGetDivergenceTolerance(snes,divtol, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES
+  SNES :: snes
+  PetscReal :: divtol
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESGetDivergenceTolerance
+#endif
+  interface
+  subroutine SNESMonitorLGRange(snes,n,rnorm,monctx, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES
+  SNES :: snes
+  PetscInt :: n
+  PetscReal :: rnorm
+  type(*) :: monctx
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESMonitorLGRange
+#endif
+  interface
+  subroutine SNESConverged(snes,it,xnorm,snorm,fnorm, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES
+  SNES :: snes
+  PetscInt :: it
+  PetscReal :: xnorm
+  PetscReal :: snorm
+  PetscReal :: fnorm
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESConverged
+#endif
+  interface
+  subroutine SNESMonitor(snes,iter,rnorm, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES
+  SNES :: snes
+  PetscInt :: iter
+  PetscReal :: rnorm
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESMonitor
+#endif
+  interface
+  subroutine SNESMonitorSet(snes,f,mctx,monitordestroy, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES
+  SNES :: snes
+  external :: f
+  type(*) :: mctx
+  external monitordestroy
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESMonitorSet
+#endif
+  interface
+  subroutine SNESMonitorCancel(snes, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES
+  SNES :: snes
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESMonitorCancel
+#endif
+  interface
+  subroutine SNESSetConvergenceTest(snes,func,ctx,destroy, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES
+  SNES :: snes
+  external :: func
+  type(*) :: ctx
+  external destroy
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESSetConvergenceTest
+#endif
+  interface
+  subroutine SNESGetConvergedReason(snes,reason, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES,eSNESConvergedReason
+  SNES :: snes
+  SNESConvergedReason :: reason
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESGetConvergedReason
+#endif
+  interface
+  subroutine SNESSetConvergedReason(snes,reason, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES,eSNESConvergedReason
+  SNES :: snes
+  SNESConvergedReason :: reason
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESSetConvergedReason
+#endif
+  interface
+  subroutine SNESSetConvergenceHistory(snes,a,its,na,reset, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES
+  SNES :: snes
+  PetscReal :: a(*)
+  PetscInt :: its(*)
+  PetscInt :: na
+  PetscBool :: reset
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESSetConvergenceHistory
+#endif
+  interface
+  subroutine SNESGetConvergenceHistory(snes,a,its,na, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES
+  SNES :: snes
+  PetscReal, pointer :: a(:)
+  PetscInt, pointer :: its(:)
+  PetscInt :: na
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESGetConvergenceHistory
+#endif
+  interface
+  subroutine SNESSetUpdate(snes,func, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES
+  SNES :: snes
+  external func
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESSetUpdate
+#endif
+  interface
+  subroutine SNESConvergedReasonView(snes,viewer, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES,tPetscViewer
+  SNES :: snes
+  PetscViewer :: viewer
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESConvergedReasonView
+#endif
+  interface
+  subroutine SNESConvergedReasonViewSet(snes,f,vctx,reasonviewdestroy, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES
+  SNES :: snes
+  external :: f
+  type(*) :: vctx
+  external reasonviewdestroy
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESConvergedReasonViewSet
+#endif
+  interface
+  subroutine SNESConvergedReasonViewFromOptions(snes, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES
+  SNES :: snes
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESConvergedReasonViewFromOptions
+#endif
+  interface
+  subroutine SNESSolve(snes,b,x, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES,tVec
+  SNES :: snes
+  Vec :: b
+  Vec :: x
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESSolve
+#endif
+  interface
+  subroutine SNESSetType(snes,type, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES
+  SNES :: snes
+  character(*) :: type
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESSetType
+#endif
+  interface
+  subroutine SNESGetType(snes,type, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES
+  SNES :: snes
+  character(*) :: type
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESGetType
+#endif
+  interface
+  subroutine SNESSetSolution(snes,u, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES,tVec
+  SNES :: snes
+  Vec :: u
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESSetSolution
+#endif
+  interface
+  subroutine SNESGetSolution(snes,x, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES,tVec
+  SNES :: snes
+  Vec :: x
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESGetSolution
+#endif
+  interface
+  subroutine SNESGetSolutionUpdate(snes,x, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES,tVec
+  SNES :: snes
+  Vec :: x
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESGetSolutionUpdate
+#endif
+  interface
+  subroutine SNESSetOptionsPrefix(snes,prefix, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES
+  SNES :: snes
+  character(*) :: prefix
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESSetOptionsPrefix
+#endif
+  interface
+  subroutine SNESAppendOptionsPrefix(snes,prefix, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES
+  SNES :: snes
+  character(*) :: prefix
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESAppendOptionsPrefix
+#endif
+  interface
+  subroutine SNESGetOptionsPrefix(snes,prefix, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES
+  SNES :: snes
+  character(*) :: prefix
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESGetOptionsPrefix
+#endif
+  interface
+  subroutine SNESRegister(sname,function, ierr)
+  use, intrinsic :: ISO_C_binding
+  character(*) :: sname
+  external :: function
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESRegister
+#endif
+  interface
+  subroutine SNESTestLocalMin(snes, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES
+  SNES :: snes
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESTestLocalMin
+#endif
+  interface
+  subroutine SNESGetLineSearch(snes,linesearch, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES,tSNESLineSearch
+  SNES :: snes
+  SNESLineSearch :: linesearch
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESGetLineSearch
+#endif
+  interface
+  subroutine SNESKSPSetUseEW(snes,flag, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES
+  SNES :: snes
+  PetscBool :: flag
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESKSPSetUseEW
+#endif
+  interface
+  subroutine SNESKSPGetUseEW(snes,flag, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES
+  SNES :: snes
+  PetscBool :: flag
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESKSPGetUseEW
+#endif
+  interface
+  subroutine SNESKSPSetParametersEW(snes,version,rtol_0,rtol_max,gamma,alpha,alpha2,threshold, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES
+  SNES :: snes
+  PetscInt :: version
+  PetscReal :: rtol_0
+  PetscReal :: rtol_max
+  PetscReal :: gamma
+  PetscReal :: alpha
+  PetscReal :: alpha2
+  PetscReal :: threshold
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESKSPSetParametersEW
+#endif
+  interface
+  subroutine SNESKSPGetParametersEW(snes,version,rtol_0,rtol_max,gamma,alpha,alpha2,threshold, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES
+  SNES :: snes
+  PetscInt :: version
+  PetscReal :: rtol_0
+  PetscReal :: rtol_max
+  PetscReal :: gamma
+  PetscReal :: alpha
+  PetscReal :: alpha2
+  PetscReal :: threshold
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESKSPGetParametersEW
+#endif
+  interface
+  subroutine SNESGetKSP(snes,ksp, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES,tKSP
+  SNES :: snes
+  KSP :: ksp
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESGetKSP
+#endif
+  interface
+  subroutine SNESSetDM(snes,dm, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES,tDM
+  SNES :: snes
+  DM :: dm
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESSetDM
+#endif
+  interface
+  subroutine SNESGetDM(snes,dm, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES,tDM
+  SNES :: snes
+  DM :: dm
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESGetDM
+#endif
+  interface
+  subroutine SNESSetNPC(snes,npc, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES
+  SNES :: snes
+  SNES :: npc
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESSetNPC
+#endif
+  interface
+  subroutine SNESGetNPC(snes,pc, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES
+  SNES :: snes
+  SNES :: pc
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESGetNPC
+#endif
+  interface
+  subroutine SNESHasNPC(snes,has_npc, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES
+  SNES :: snes
+  PetscBool :: has_npc
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESHasNPC
+#endif
+  interface
+  subroutine SNESSetNPCSide(snes,side, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES,ePCSide
+  SNES :: snes
+  PCSide :: side
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESSetNPCSide
+#endif
+  interface
+  subroutine SNESGetNPCSide(snes,side, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES,ePCSide
+  SNES :: snes
+  PCSide :: side
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESGetNPCSide
+#endif
+  interface
+  subroutine SNESSetLineSearch(snes,linesearch, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES,tSNESLineSearch
+  SNES :: snes
+  SNESLineSearch :: linesearch
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESSetLineSearch
+#endif
+  interface
+  subroutine SNESComputeJacobianDefault(snes,x1,J,B,ctx, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES,tVec,tMat
+  SNES :: snes
+  Vec :: x1
+  Mat :: J
+  Mat :: B
+  type(*) :: ctx
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESComputeJacobianDefault
+#endif
+  interface
+  subroutine SNESApplyNPC(snes,x,f,y, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES,tVec
+  SNES :: snes
+  Vec :: x
+  Vec :: f
+  Vec :: y
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESApplyNPC
+#endif
+  interface
+  subroutine SNESComputeFunctionDefaultNPC(snes,X,F, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES,tVec
+  SNES :: snes
+  Vec :: X
+  Vec :: F
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESComputeFunctionDefaultNPC
+#endif
+  interface
+  subroutine SNESGetNPCFunction(snes,F,fnorm, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES,tVec
+  SNES :: snes
+  Vec :: F
+  PetscReal :: fnorm
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESGetNPCFunction
+#endif
+  interface
+  subroutine SNESSetObjective(snes,obj,ctx, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES
+  SNES :: snes
+  external obj
+  type(*) :: ctx
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESSetObjective
+#endif
+  interface
+  subroutine SNESComputeObjective(snes,X,ob, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES,tVec
+  SNES :: snes
+  Vec :: X
+  PetscReal :: ob
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESComputeObjective
+#endif
+  interface
+  subroutine SNESObjectiveComputeFunctionDefaultFD(snes,X,F,ctx, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES,tVec
+  SNES :: snes
+  Vec :: X
+  Vec :: F
+  type(*) :: ctx
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESObjectiveComputeFunctionDefaultFD
+#endif
+  interface
+  subroutine SNESComputeJacobianDefaultColor(snes,x1,J,B,ctx, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES,tVec,tMat
+  SNES :: snes
+  Vec :: x1
+  Mat :: J
+  Mat :: B
+  type(*) :: ctx
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESComputeJacobianDefaultColor
+#endif
+  interface
+  subroutine SNESPruneJacobianColor(snes,J,B, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES,tMat
+  SNES :: snes
+  Mat :: J
+  Mat :: B
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESPruneJacobianColor
+#endif
+  interface
+  subroutine SNESMonitorSAWsDestroycptr(ctx, ierr)
+  use, intrinsic :: ISO_C_binding
+  type(c_ptr) :: ctx
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESMonitorSAWsDestroycptr
+#endif
+  interface
+  subroutine SNESMonitorSAWs(snes,n,rnorm,ctx, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES
+  SNES :: snes
+  PetscInt :: n
+  PetscReal :: rnorm
+  type(*) :: ctx
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESMonitorSAWs
+#endif
+  interface
+  subroutine SNESNGMRESSetRestartFmRise(snes,flg, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES
+  SNES :: snes
+  PetscBool :: flg
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESNGMRESSetRestartFmRise
+#endif
+  interface
+  subroutine SNESNGMRESGetRestartFmRise(snes,flg, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES
+  SNES :: snes
+  PetscBool :: flg
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESNGMRESGetRestartFmRise
+#endif
+  interface
+  subroutine SNESNGMRESSetRestartType(snes,rtype, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES,eSNESNGMRESRestartType
+  SNES :: snes
+  SNESNGMRESRestartType :: rtype
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESNGMRESSetRestartType
+#endif
+  interface
+  subroutine SNESNGMRESSetSelectType(snes,stype, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES,eSNESNGMRESSelectType
+  SNES :: snes
+  SNESNGMRESSelectType :: stype
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESNGMRESSetSelectType
+#endif
+  interface
+  subroutine SNESVISetComputeVariableBounds(snes,compute, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES
+  SNES :: snes
+  external :: compute
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESVISetComputeVariableBounds
+#endif
+  interface
+  subroutine SNESVIGetActiveSetIS(snes,X,F,ISact, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES,tVec,tIS
+  SNES :: snes
+  Vec :: X
+  Vec :: F
+  IS :: ISact
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESVIGetActiveSetIS
+#endif
+  interface
+  subroutine SNESVIComputeInactiveSetFnorm(snes,F,X,fnorm, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES,tVec
+  SNES :: snes
+  Vec :: F
+  Vec :: X
+  PetscReal :: fnorm
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESVIComputeInactiveSetFnorm
+#endif
+  interface
+  subroutine SNESVIComputeInactiveSetFtY(snes,F,X,Y,fty, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES,tVec
+  SNES :: snes
+  Vec :: F
+  Vec :: X
+  Vec :: Y
+  PetscScalar :: fty
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESVIComputeInactiveSetFtY
+#endif
+  interface
+  subroutine SNESVISetVariableBounds(snes,xl,xu, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES,tVec
+  SNES :: snes
+  Vec :: xl
+  Vec :: xu
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESVISetVariableBounds
+#endif
+  interface
+  subroutine SNESVIGetVariableBounds(snes,xl,xu, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES,tVec
+  SNES :: snes
+  Vec :: xl
+  Vec :: xu
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESVIGetVariableBounds
+#endif
+  interface
+  subroutine SNESVIGetInactiveSet(snes,inact, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES,tIS
+  SNES :: snes
+  IS :: inact
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESVIGetInactiveSet
+#endif
+  interface
+  subroutine SNESVISetRedundancyCheck(snes,func,ctx, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES
+  SNES :: snes
+  external :: func
+  type(*) :: ctx
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESVISetRedundancyCheck
+#endif
+  interface
+  subroutine SNESVIComputeMeritFunction(phi,merit,phinorm, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVec
+  Vec :: phi
+  PetscReal :: merit
+  PetscReal :: phinorm
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESVIComputeMeritFunction
+#endif
+  interface
+  subroutine SNESMSRegisterAll(ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESMSRegisterAll
+#endif
+  interface
+  subroutine SNESMSRegisterDestroy(ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESMSRegisterDestroy
+#endif
+  interface
+  subroutine SNESMSInitializePackage(ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESMSInitializePackage
+#endif
+  interface
+  subroutine SNESMSFinalizePackage(ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESMSFinalizePackage
+#endif
+  interface
+  subroutine SNESMSRegister(name,nstages,nregisters,stability,gamma,delta,betasub, ierr)
+  use, intrinsic :: ISO_C_binding
+  character(*) :: name
+  PetscInt :: nstages
+  PetscInt :: nregisters
+  PetscReal :: stability
+  PetscReal :: gamma(*)
+  PetscReal :: delta(*)
+  PetscReal :: betasub(*)
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESMSRegister
+#endif
+  interface
+  subroutine SNESMSGetType(snes,mstype, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES
+  SNES :: snes
+  character(*) :: mstype
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESMSGetType
+#endif
+  interface
+  subroutine SNESMSSetType(snes,mstype, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES
+  SNES :: snes
+  character(*) :: mstype
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESMSSetType
+#endif
+  interface
+  subroutine SNESMSGetDamping(snes,damping, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES
+  SNES :: snes
+  PetscReal :: damping
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESMSGetDamping
+#endif
+  interface
+  subroutine SNESMSSetDamping(snes,damping, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES
+  SNES :: snes
+  PetscReal :: damping
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESMSSetDamping
+#endif
+  interface
+  subroutine SNESNGSSetTolerances(snes,abstol,rtol,stol,maxit, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES
+  SNES :: snes
+  PetscReal :: abstol
+  PetscReal :: rtol
+  PetscReal :: stol
+  PetscInt :: maxit
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESNGSSetTolerances
+#endif
+  interface
+  subroutine SNESNGSGetTolerances(snes,atol,rtol,stol,maxit, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES
+  SNES :: snes
+  PetscReal :: atol
+  PetscReal :: rtol
+  PetscReal :: stol
+  PetscInt :: maxit
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESNGSGetTolerances
+#endif
+  interface
+  subroutine SNESNGSSetSweeps(snes,sweeps, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES
+  SNES :: snes
+  PetscInt :: sweeps
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESNGSSetSweeps
+#endif
+  interface
+  subroutine SNESNGSGetSweeps(snes,sweeps, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES
+  SNES :: snes
+  PetscInt :: sweeps
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESNGSGetSweeps
+#endif
+  interface
+  subroutine SNESNewtonALSetCorrectionType(snes,ctype, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES,eSNESNewtonALCorrectionType
+  SNES :: snes
+  SNESNewtonALCorrectionType :: ctype
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESNewtonALSetCorrectionType
+#endif
+  interface
+  subroutine SNESNewtonALSetFunction(snes,func,ctx, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES
+  SNES :: snes
+  external func
+  type(*) :: ctx
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESNewtonALSetFunction
+#endif
+  interface
+  subroutine SNESNewtonALSetDiagonalScaling(snes,v, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES,tVec
+  SNES :: snes
+  Vec :: v
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESNewtonALSetDiagonalScaling
+#endif
+  interface
+  subroutine SNESNewtonALGetLoadParameter(snes,lambda, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES
+  SNES :: snes
+  PetscReal :: lambda
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESNewtonALGetLoadParameter
+#endif
+  interface
+  subroutine SNESNewtonALComputeFunction(snes,X,Q, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES,tVec
+  SNES :: snes
+  Vec :: X
+  Vec :: Q
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESNewtonALComputeFunction
+#endif
+  interface
+  subroutine SNESPythonSetType(snes,pyname, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES
+  SNES :: snes
+  character(*) :: pyname
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESPythonSetType
+#endif
+  interface
+  subroutine SNESPythonGetType(snes,pyname, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES
+  SNES :: snes
+  character(*) :: pyname
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESPythonGetType
+#endif
+  interface
+  subroutine SNESShellSetSolve(snes,solve, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES
+  SNES :: snes
+  external :: solve
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESShellSetSolve
+#endif
+  interface
+  subroutine SNESShellGetContextcptr(snes,ctx, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES
+  SNES :: snes
+  type(c_ptr) :: ctx
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESShellGetContextcptr
+#endif
+  interface
+  subroutine SNESShellSetContext(snes,ctx, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES
+  SNES :: snes
+  type(*) :: ctx
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESShellSetContext
+#endif
+  interface
+  subroutine SNESNASMSetType(snes,type, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES,ePCASMType
+  SNES :: snes
+  PCASMType :: type
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESNASMSetType
+#endif
+  interface
+  subroutine SNESNASMGetType(snes,type, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES,ePCASMType
+  SNES :: snes
+  PCASMType :: type
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESNASMGetType
+#endif
+  interface
+  subroutine SNESNASMSetSubdomains(snes,n,subsnes,iscatter,oscatter,gscatter, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES,tVecScatter
+  SNES :: snes
+  PetscInt :: n
+  SNES :: subsnes(*)
+  VecScatter :: iscatter(*)
+  VecScatter :: oscatter(*)
+  VecScatter :: gscatter(*)
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESNASMSetSubdomains
+#endif
+  interface
+  subroutine SNESNASMGetSubdomains(snes,n,subsnes,iscatter,oscatter,gscatter, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES,tVecScatter
+  SNES :: snes
+  PetscInt :: n
+  SNES, pointer :: subsnes(:)
+  VecScatter, pointer :: iscatter(:)
+  VecScatter, pointer :: oscatter(:)
+  VecScatter, pointer :: gscatter(:)
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESNASMGetSubdomains
+#endif
+  interface
+  subroutine SNESNASMGetSubdomainVecs(snes,n,x,y,b,xl, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES,tVec
+  SNES :: snes
+  PetscInt :: n
+  Vec, pointer :: x(:)
+  Vec, pointer :: y(:)
+  Vec, pointer :: b(:)
+  Vec, pointer :: xl(:)
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESNASMGetSubdomainVecs
+#endif
+  interface
+  subroutine SNESNASMSetComputeFinalJacobian(snes,flg, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES
+  SNES :: snes
+  PetscBool :: flg
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESNASMSetComputeFinalJacobian
+#endif
+  interface
+  subroutine SNESNASMSetDamping(snes,dmp, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES
+  SNES :: snes
+  PetscReal :: dmp
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESNASMSetDamping
+#endif
+  interface
+  subroutine SNESNASMGetDamping(snes,dmp, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES
+  SNES :: snes
+  PetscReal :: dmp
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESNASMGetDamping
+#endif
+  interface
+  subroutine SNESNASMGetSNES(snes,i,subsnes, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES
+  SNES :: snes
+  PetscInt :: i
+  SNES :: subsnes
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESNASMGetSNES
+#endif
+  interface
+  subroutine SNESNASMGetNumber(snes,n, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES
+  SNES :: snes
+  PetscInt :: n
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESNASMGetNumber
+#endif
+  interface
+  subroutine SNESNASMSetWeight(snes,weight, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES,tVec
+  SNES :: snes
+  Vec :: weight
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESNASMSetWeight
+#endif
+  interface
+  subroutine SNESQNSetRestartType(snes,rtype, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES,eSNESQNRestartType
+  SNES :: snes
+  SNESQNRestartType :: rtype
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESQNSetRestartType
+#endif
+  interface
+  subroutine SNESQNSetScaleType(snes,stype, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES,eSNESQNScaleType
+  SNES :: snes
+  SNESQNScaleType :: stype
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESQNSetScaleType
+#endif
+  interface
+  subroutine SNESQNSetType(snes,qtype, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES,eSNESQNType
+  SNES :: snes
+  SNESQNType :: qtype
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESQNSetType
+#endif
+  interface
+  subroutine SNESCompositeSetType(snes,type, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES,eSNESCompositeType
+  SNES :: snes
+  SNESCompositeType :: type
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESCompositeSetType
+#endif
+  interface
+  subroutine SNESCompositeAddSNES(snes,type, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES
+  SNES :: snes
+  character(*) :: type
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESCompositeAddSNES
+#endif
+  interface
+  subroutine SNESCompositeGetSNES(snes,n,subsnes, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES
+  SNES :: snes
+  PetscInt :: n
+  SNES :: subsnes
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESCompositeGetSNES
+#endif
+  interface
+  subroutine SNESCompositeGetNumber(snes,n, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES
+  SNES :: snes
+  PetscInt :: n
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESCompositeGetNumber
+#endif
+  interface
+  subroutine SNESCompositeSetDamping(snes,n,dmp, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES
+  SNES :: snes
+  PetscInt :: n
+  PetscReal :: dmp
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESCompositeSetDamping
+#endif
+  interface
+  subroutine SNESNewtonTRDCGetRhoFlag(snes,rho_flag, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES
+  SNES :: snes
+  PetscBool :: rho_flag
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESNewtonTRDCGetRhoFlag
+#endif
+  interface
+  subroutine SNESNewtonTRDCSetPreCheck(snes,func,ctx, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES
+  SNES :: snes
+  external :: func
+  type(*) :: ctx
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESNewtonTRDCSetPreCheck
+#endif
+  interface
+  subroutine SNESNewtonTRDCSetPostCheck(snes,func,ctx, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES
+  SNES :: snes
+  external :: func
+  type(*) :: ctx
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESNewtonTRDCSetPostCheck
+#endif
+  interface
+  subroutine SNESPatchSetComputeOperator(snes,func,ctx, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES
+  SNES :: snes
+  external :: func
+  type(*) :: ctx
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESPatchSetComputeOperator
+#endif
+  interface
+  subroutine SNESPatchSetComputeFunction(snes,func,ctx, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES
+  SNES :: snes
+  external :: func
+  type(*) :: ctx
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESPatchSetComputeFunction
+#endif
+  interface
+  subroutine SNESPatchSetConstructType(snes,ctype,func,ctx, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES,ePCPatchConstructType
+  SNES :: snes
+  PCPatchConstructType :: ctype
+  external :: func
+  type(*) :: ctx
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESPatchSetConstructType
+#endif
+  interface
+  subroutine SNESPatchSetCellNumbering(snes,cellNumbering, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES,tPetscSection
+  SNES :: snes
+  PetscSection :: cellNumbering
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESPatchSetCellNumbering
+#endif
+  interface
+  subroutine SNESMultiblockSetFields(snes,name,n,fields, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES
+  SNES :: snes
+  character(*) :: name
+  PetscInt :: n
+  PetscInt :: fields
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESMultiblockSetFields
+#endif
+  interface
+  subroutine SNESMultiblockSetIS(snes,name,is, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES,tIS
+  SNES :: snes
+  character(*) :: name
+  IS :: is
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESMultiblockSetIS
+#endif
+  interface
+  subroutine SNESMultiblockSetType(snes,type, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES,ePCCompositeType
+  SNES :: snes
+  PCCompositeType :: type
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESMultiblockSetType
+#endif
+  interface
+  subroutine SNESMultiblockSetBlockSize(snes,bs, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES
+  SNES :: snes
+  PetscInt :: bs
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESMultiblockSetBlockSize
+#endif
+  interface
+  subroutine SNESMultiblockGetSubSNES(snes,n,subsnes, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES
+  SNES :: snes
+  PetscInt :: n
+  SNES, pointer :: subsnes(:)
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESMultiblockGetSubSNES
+#endif
+  interface
+  subroutine SNESNCGSetType(snes,btype, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES,eSNESNCGType
+  SNES :: snes
+  SNESNCGType :: btype
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESNCGSetType
+#endif
+  interface
+  subroutine SNESFASCreateCoarseVec(snes,Xcoarse, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES,tVec
+  SNES :: snes
+  Vec :: Xcoarse
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESFASCreateCoarseVec
+#endif
+  interface
+  subroutine SNESFASRestrict(fine,Xfine,Xcoarse, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES,tVec
+  SNES :: fine
+  Vec :: Xfine
+  Vec :: Xcoarse
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESFASRestrict
+#endif
+  interface
+  subroutine SNESFASGetGalerkin(snes,flg, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES
+  SNES :: snes
+  PetscBool :: flg
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESFASGetGalerkin
+#endif
+  interface
+  subroutine SNESFASSetGalerkin(snes,flg, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES
+  SNES :: snes
+  PetscBool :: flg
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESFASSetGalerkin
+#endif
+  interface
+  subroutine SNESFASGalerkinFunctionDefault(snes,X,F,ctx, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES,tVec
+  SNES :: snes
+  Vec :: X
+  Vec :: F
+  type(*) :: ctx
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESFASGalerkinFunctionDefault
+#endif
+  interface
+  subroutine SNESFASSetType(snes,fastype, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES,eSNESFASType
+  SNES :: snes
+  SNESFASType :: fastype
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESFASSetType
+#endif
+  interface
+  subroutine SNESFASGetType(snes,fastype, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES,eSNESFASType
+  SNES :: snes
+  SNESFASType :: fastype
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESFASGetType
+#endif
+  interface
+  subroutine SNESFASSetLevels(snes,levels,comms, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES
+  SNES :: snes
+  PetscInt :: levels
+  MPIU_Comm :: comms
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESFASSetLevels
+#endif
+  interface
+  subroutine SNESFASGetLevels(snes,levels, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES
+  SNES :: snes
+  PetscInt :: levels
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESFASGetLevels
+#endif
+  interface
+  subroutine SNESFASGetCycleSNES(snes,level,lsnes, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES
+  SNES :: snes
+  PetscInt :: level
+  SNES :: lsnes
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESFASGetCycleSNES
+#endif
+  interface
+  subroutine SNESFASSetNumberSmoothUp(snes,n, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES
+  SNES :: snes
+  PetscInt :: n
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESFASSetNumberSmoothUp
+#endif
+  interface
+  subroutine SNESFASSetNumberSmoothDown(snes,n, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES
+  SNES :: snes
+  PetscInt :: n
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESFASSetNumberSmoothDown
+#endif
+  interface
+  subroutine SNESFASSetContinuation(snes,continuation, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES
+  SNES :: snes
+  PetscBool :: continuation
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESFASSetContinuation
+#endif
+  interface
+  subroutine SNESFASSetCycles(snes,cycles, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES
+  SNES :: snes
+  PetscInt :: cycles
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESFASSetCycles
+#endif
+  interface
+  subroutine SNESFASSetMonitor(snes,vf,flg, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES
+  SNES :: snes
+  PetscViewerAndFormat :: vf
+  PetscBool :: flg
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESFASSetMonitor
+#endif
+  interface
+  subroutine SNESFASSetLog(snes,flg, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES
+  SNES :: snes
+  PetscBool :: flg
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESFASSetLog
+#endif
+  interface
+  subroutine SNESFASCycleSetCycles(snes,cycles, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES
+  SNES :: snes
+  PetscInt :: cycles
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESFASCycleSetCycles
+#endif
+  interface
+  subroutine SNESFASCycleGetSmoother(snes,smooth, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES
+  SNES :: snes
+  SNES :: smooth
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESFASCycleGetSmoother
+#endif
+  interface
+  subroutine SNESFASCycleGetSmootherUp(snes,smoothu, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES
+  SNES :: snes
+  SNES :: smoothu
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESFASCycleGetSmootherUp
+#endif
+  interface
+  subroutine SNESFASCycleGetSmootherDown(snes,smoothd, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES
+  SNES :: snes
+  SNES :: smoothd
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESFASCycleGetSmootherDown
+#endif
+  interface
+  subroutine SNESFASCycleGetCorrection(snes,correction, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES
+  SNES :: snes
+  SNES :: correction
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESFASCycleGetCorrection
+#endif
+  interface
+  subroutine SNESFASCycleGetInterpolation(snes,mat, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES,tMat
+  SNES :: snes
+  Mat :: mat
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESFASCycleGetInterpolation
+#endif
+  interface
+  subroutine SNESFASCycleGetRestriction(snes,mat, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES,tMat
+  SNES :: snes
+  Mat :: mat
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESFASCycleGetRestriction
+#endif
+  interface
+  subroutine SNESFASCycleGetInjection(snes,mat, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES,tMat
+  SNES :: snes
+  Mat :: mat
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESFASCycleGetInjection
+#endif
+  interface
+  subroutine SNESFASCycleGetRScale(snes,vec, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES,tVec
+  SNES :: snes
+  Vec :: vec
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESFASCycleGetRScale
+#endif
+  interface
+  subroutine SNESFASCycleIsFine(snes,flg, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES
+  SNES :: snes
+  PetscBool :: flg
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESFASCycleIsFine
+#endif
+  interface
+  subroutine SNESFASSetInterpolation(snes,level,mat, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES,tMat
+  SNES :: snes
+  PetscInt :: level
+  Mat :: mat
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESFASSetInterpolation
+#endif
+  interface
+  subroutine SNESFASGetInterpolation(snes,level,mat, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES,tMat
+  SNES :: snes
+  PetscInt :: level
+  Mat :: mat
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESFASGetInterpolation
+#endif
+  interface
+  subroutine SNESFASSetRestriction(snes,level,mat, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES,tMat
+  SNES :: snes
+  PetscInt :: level
+  Mat :: mat
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESFASSetRestriction
+#endif
+  interface
+  subroutine SNESFASGetRestriction(snes,level,mat, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES,tMat
+  SNES :: snes
+  PetscInt :: level
+  Mat :: mat
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESFASGetRestriction
+#endif
+  interface
+  subroutine SNESFASSetInjection(snes,level,mat, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES,tMat
+  SNES :: snes
+  PetscInt :: level
+  Mat :: mat
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESFASSetInjection
+#endif
+  interface
+  subroutine SNESFASGetInjection(snes,level,mat, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES,tMat
+  SNES :: snes
+  PetscInt :: level
+  Mat :: mat
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESFASGetInjection
+#endif
+  interface
+  subroutine SNESFASSetRScale(snes,level,rscale, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES,tVec
+  SNES :: snes
+  PetscInt :: level
+  Vec :: rscale
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESFASSetRScale
+#endif
+  interface
+  subroutine SNESFASGetSmoother(snes,level,smooth, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES
+  SNES :: snes
+  PetscInt :: level
+  SNES :: smooth
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESFASGetSmoother
+#endif
+  interface
+  subroutine SNESFASGetSmootherDown(snes,level,smooth, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES
+  SNES :: snes
+  PetscInt :: level
+  SNES :: smooth
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESFASGetSmootherDown
+#endif
+  interface
+  subroutine SNESFASGetSmootherUp(snes,level,smooth, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES
+  SNES :: snes
+  PetscInt :: level
+  SNES :: smooth
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESFASGetSmootherUp
+#endif
+  interface
+  subroutine SNESFASGetCoarseSolve(snes,coarse, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES
+  SNES :: snes
+  SNES :: coarse
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESFASGetCoarseSolve
+#endif
+  interface
+  subroutine SNESFASFullSetDownSweep(snes,swp, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES
+  SNES :: snes
+  PetscBool :: swp
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESFASFullSetDownSweep
+#endif
+  interface
+  subroutine SNESFASFullSetTotal(snes,total, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES
+  SNES :: snes
+  PetscBool :: total
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESFASFullSetTotal
+#endif
+  interface
+  subroutine SNESFASFullGetTotal(snes,total, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES
+  SNES :: snes
+  PetscBool :: total
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESFASFullGetTotal
+#endif
+  interface
+  subroutine SNESNewtonTRSetNormType(snes,norm, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES,eNormType
+  SNES :: snes
+  NormType :: norm
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESNewtonTRSetNormType
+#endif
+  interface
+  subroutine SNESNewtonTRSetQNType(snes,use, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES,eSNESNewtonTRQNType
+  SNES :: snes
+  SNESNewtonTRQNType :: use
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESNewtonTRSetQNType
+#endif
+  interface
+  subroutine SNESNewtonTRSetFallbackType(snes,ftype, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES,eSNESNewtonTRFallbackType
+  SNES :: snes
+  SNESNewtonTRFallbackType :: ftype
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESNewtonTRSetFallbackType
+#endif
+  interface
+  subroutine SNESNewtonTRSetPreCheck(snes,func,ctx, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES
+  SNES :: snes
+  external :: func
+  type(*) :: ctx
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESNewtonTRSetPreCheck
+#endif
+  interface
+  subroutine SNESNewtonTRSetPostCheck(snes,func,ctx, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES
+  SNES :: snes
+  external :: func
+  type(*) :: ctx
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESNewtonTRSetPostCheck
+#endif
+  interface
+  subroutine SNESNewtonTRPreCheck(snes,X,Y,changed_Y, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES,tVec
+  SNES :: snes
+  Vec :: X
+  Vec :: Y
+  PetscBool :: changed_Y
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESNewtonTRPreCheck
+#endif
+  interface
+  subroutine SNESNewtonTRPostCheck(snes,X,Y,W,changed_Y,changed_W, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES,tVec
+  SNES :: snes
+  Vec :: X
+  Vec :: Y
+  Vec :: W
+  PetscBool :: changed_Y
+  PetscBool :: changed_W
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESNewtonTRPostCheck
+#endif
+  interface
+  subroutine SNESNewtonTRSetTolerances(snes,delta_min,delta_max,delta_0, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES
+  SNES :: snes
+  PetscReal :: delta_min
+  PetscReal :: delta_max
+  PetscReal :: delta_0
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESNewtonTRSetTolerances
+#endif
+  interface
+  subroutine SNESNewtonTRGetTolerances(snes,delta_min,delta_max,delta_0, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES
+  SNES :: snes
+  PetscReal :: delta_min
+  PetscReal :: delta_max
+  PetscReal :: delta_0
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESNewtonTRGetTolerances
+#endif
+  interface
+  subroutine SNESNewtonTRSetUpdateParameters(snes,eta1,eta2,eta3,t1,t2, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES
+  SNES :: snes
+  PetscReal :: eta1
+  PetscReal :: eta2
+  PetscReal :: eta3
+  PetscReal :: t1
+  PetscReal :: t2
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESNewtonTRSetUpdateParameters
+#endif
+  interface
+  subroutine SNESNewtonTRGetUpdateParameters(snes,eta1,eta2,eta3,t1,t2, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES
+  SNES :: snes
+  PetscReal :: eta1
+  PetscReal :: eta2
+  PetscReal :: eta3
+  PetscReal :: t1
+  PetscReal :: t2
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESNewtonTRGetUpdateParameters
+#endif
+  interface
+  subroutine SNESConvergedCorrectPressure(snes,it,xnorm,gnorm,f,reason,ctx, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES,eSNESConvergedReason
+  SNES :: snes
+  PetscInt :: it
+  PetscReal :: xnorm
+  PetscReal :: gnorm
+  PetscReal :: f
+  SNESConvergedReason :: reason
+  type(*) :: ctx
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESConvergedCorrectPressure
+#endif
+  interface
+  subroutine SNESMonitorFields(snes,its,fgnorm,vf, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tSNES
+  SNES :: snes
+  PetscInt :: its
+  PetscReal :: fgnorm
+  PetscViewerAndFormat :: vf
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::SNESMonitorFields
+#endif
+  interface operator(.ne.)
+    module procedure SNESnotequals
+  end interface operator (.ne.)
+  interface operator(.eq.)
+    module procedure SNESequals
+  end interface operator (.eq.)
+
+  interface PetscObjectCast
+    module procedure PetscObjectCastSNES
+  end interface
+  interface PetscBarrier
+  module procedure PetscBarrierSNES
+  end interface
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectSAWsTakeAccess
+    module procedure PetscObjectSAWsTakeAccessSNES
+  end interface
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectSAWsGrantAccess
+    module procedure PetscObjectSAWsGrantAccessSNES
+  end interface
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectSAWsBlock
+    module procedure PetscObjectSAWsBlockSNES
+  end interface
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectSAWsSetBlock
+    module procedure PetscObjectSAWsSetBlockSNES
+  end interface
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectSAWsViewOff
+    module procedure PetscObjectSAWsViewOffSNES
+  end interface
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectViewSAWs
+    module procedure PetscObjectViewSAWsSNES
+  end interface
+#endif
+  interface PetscObjectGetType
+    module procedure PetscObjectGetTypeSNES
+  end interface
+  interface PetscObjectSetPrintedOptions
+    module procedure PetscObjectSetPrintedOptionsSNES
+  end interface
+  interface PetscObjectInheritPrintedOptions
+    module procedure PetscObjectInheritPrintedOptionsSNES
+  end interface
+  interface PetscObjectAddOptionsHandler
+    module procedure PetscObjectAddOptionsHandlerSNES
+  end interface
+  interface PetscObjectProcessOptionsHandlers
+    module procedure PetscObjectProcessOptionsHandlersSNES
+  end interface
+  interface PetscObjectDestroyOptionsHandlers
+    module procedure PetscObjectDestroyOptionsHandlersSNES
+  end interface
+  interface PetscObjectReference
+    module procedure PetscObjectReferenceSNES
+  end interface
+  interface PetscObjectGetReference
+    module procedure PetscObjectGetReferenceSNES
+  end interface
+  interface PetscObjectDereference
+    module procedure PetscObjectDereferenceSNES
+  end interface
+  interface PetscObjectRemoveReference
+    module procedure PetscObjectRemoveReferenceSNES
+  end interface
+  interface PetscObjectHasFunction
+    module procedure PetscObjectHasFunctionSNES
+  end interface
+  interface PetscObjectSetFromOptions
+    module procedure PetscObjectSetFromOptionsSNES
+  end interface
+  interface PetscObjectSetUp
+    module procedure PetscObjectSetUpSNES
+  end interface
+  interface PetscObjectGetName
+    module procedure PetscObjectGetNameSNES
+  end interface
+  interface PetscObjectDestroy
+    module procedure PetscObjectDestroySNES
+  end interface
+  interface PetscObjectView
+    module procedure PetscObjectViewSNES
+  end interface
+  interface PetscObjectViewFromOptions
+    module procedure PetscObjectViewFromOptionsSNES
+  end interface
+  interface PetscObjectTypeCompare
+    module procedure PetscObjectTypeCompareSNES
+  end interface
+  interface PetscObjectObjectTypeCompare
+    module procedure PetscObjectObjectTypeCompareSNES
+  end interface
+  interface PetscObjectBaseTypeCompare
+    module procedure PetscObjectBaseTypeCompareSNES
+  end interface
+  interface PetscObjectRegisterDestroy
+    module procedure PetscObjectRegisterDestroySNES
+  end interface
+  interface PetscObjectGetId
+    module procedure PetscObjectGetIdSNES
+  end interface
+  interface PetscObjectCompareId
+    module procedure PetscObjectCompareIdSNES
+  end interface
+  interface PetscObjectGetOptions
+    module procedure PetscObjectGetOptionsSNES
+  end interface
+  interface PetscObjectSetOptions
+    module procedure PetscObjectSetOptionsSNES
+  end interface
+  interface PetscObjectSetOptionsPrefix
+    module procedure PetscObjectSetOptionsPrefixSNES
+  end interface
+  interface PetscObjectAppendOptionsPrefix
+    module procedure PetscObjectAppendOptionsPrefixSNES
+  end interface
+  interface PetscObjectGetOptionsPrefix
+    module procedure PetscObjectGetOptionsPrefixSNES
+  end interface
+  interface PetscObjectPrependOptionsPrefix
+    module procedure PetscObjectPrependOptionsPrefixSNES
+  end interface
+  interface PetscObjectGetComm
+    module procedure PetscObjectGetCommSNES
+  end interface
+  interface PetscObjectGetTabLevel
+    module procedure PetscObjectGetTabLevelSNES
+  end interface
+  interface PetscObjectSetTabLevel
+    module procedure PetscObjectSetTabLevelSNES
+  end interface
+  interface PetscObjectIncrementTabLevel
+    module procedure PetscObjectIncrementTabLevelSNES
+  end interface
+  interface PetscObjectGetNewTag
+    module procedure PetscObjectGetNewTagSNES
+  end interface
+  interface PetscObjectGetClassId
+    module procedure PetscObjectGetClassIdSNES
+  end interface
+  interface PetscObjectGetClassName
+    module procedure PetscObjectGetClassNameSNES
+  end interface
+  interface PetscObjectSetName
+    module procedure PetscObjectSetNameSNES
+  end interface
+  interface PetscObjectPrintClassNamePrefixType
+    module procedure PetscObjectPrintClassNamePrefixTypeSNES
+  end interface
+  interface PetscObjectName
+    module procedure PetscObjectNameSNES
+  end interface
+  interface PetscObjectChangeTypeName
+    module procedure PetscObjectChangeTypeNameSNES
+  end interface
+  interface operator(.ne.)
+    module procedure SNESNewtonTRFallbackTypenotequals
+  end interface operator (.ne.)
+  interface operator(.eq.)
+    module procedure SNESNewtonTRFallbackTypeequals
+  end interface operator (.eq.)
+
+  interface operator(.ne.)
+    module procedure SNESNewtonTRQNTypenotequals
+  end interface operator (.ne.)
+  interface operator(.eq.)
+    module procedure SNESNewtonTRQNTypeequals
+  end interface operator (.eq.)
+
+  interface operator(.ne.)
+    module procedure SNESConvergedReasonnotequals
+  end interface operator (.ne.)
+  interface operator(.eq.)
+    module procedure SNESConvergedReasonequals
+  end interface operator (.eq.)
+
+  interface operator(.ne.)
+    module procedure SNESNormSchedulenotequals
+  end interface operator (.ne.)
+  interface operator(.eq.)
+    module procedure SNESNormScheduleequals
+  end interface operator (.eq.)
+
+  interface operator(.ne.)
+    module procedure SNESFunctionTypenotequals
+  end interface operator (.ne.)
+  interface operator(.eq.)
+    module procedure SNESFunctionTypeequals
+  end interface operator (.eq.)
+
+  interface operator(.ne.)
+    module procedure SNESLineSearchReasonnotequals
+  end interface operator (.ne.)
+  interface operator(.eq.)
+    module procedure SNESLineSearchReasonequals
+  end interface operator (.eq.)
+
+  interface operator(.ne.)
+    module procedure SNESNGMRESRestartTypenotequals
+  end interface operator (.ne.)
+  interface operator(.eq.)
+    module procedure SNESNGMRESRestartTypeequals
+  end interface operator (.eq.)
+
+  interface operator(.ne.)
+    module procedure SNESNGMRESSelectTypenotequals
+  end interface operator (.ne.)
+  interface operator(.eq.)
+    module procedure SNESNGMRESSelectTypeequals
+  end interface operator (.eq.)
+
+  interface operator(.ne.)
+    module procedure SNESNCGTypenotequals
+  end interface operator (.ne.)
+  interface operator(.eq.)
+    module procedure SNESNCGTypeequals
+  end interface operator (.eq.)
+
+  interface operator(.ne.)
+    module procedure SNESQNScaleTypenotequals
+  end interface operator (.ne.)
+  interface operator(.eq.)
+    module procedure SNESQNScaleTypeequals
+  end interface operator (.eq.)
+
+  interface operator(.ne.)
+    module procedure SNESQNRestartTypenotequals
+  end interface operator (.ne.)
+  interface operator(.eq.)
+    module procedure SNESQNRestartTypeequals
+  end interface operator (.eq.)
+
+  interface operator(.ne.)
+    module procedure SNESQNTypenotequals
+  end interface operator (.ne.)
+  interface operator(.eq.)
+    module procedure SNESQNTypeequals
+  end interface operator (.eq.)
+
+  interface operator(.ne.)
+    module procedure SNESCompositeTypenotequals
+  end interface operator (.ne.)
+  interface operator(.eq.)
+    module procedure SNESCompositeTypeequals
+  end interface operator (.eq.)
+
+  interface operator(.ne.)
+    module procedure SNESFASTypenotequals
+  end interface operator (.ne.)
+  interface operator(.eq.)
+    module procedure SNESFASTypeequals
+  end interface operator (.eq.)
+
+  interface operator(.ne.)
+    module procedure SNESNewtonALCorrectionTypenotequals
+  end interface operator (.ne.)
+  interface operator(.eq.)
+    module procedure SNESNewtonALCorrectionTypeequals
+  end interface operator (.eq.)
+

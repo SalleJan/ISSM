@@ -1,0 +1,723 @@
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT:: PetscKDTreenotequals
+!DEC$ ATTRIBUTES DLLEXPORT:: PetscKDTreeequals
+#endif
+
+  function PetscKDTreenotequals(A,B)
+    logical PetscKDTreenotequals
+    type(tPetscKDTree), intent(in) :: A,B
+    PetscKDTreenotequals = (A%v .ne. B%v)
+  end function
+  function PetscKDTreeequals(A,B)
+    logical PetscKDTreeequals
+    type(tPetscKDTree), intent(in) :: A,B
+    PetscKDTreeequals = (A%v .eq. B%v)
+  end function
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT:: ISnotequals
+!DEC$ ATTRIBUTES DLLEXPORT:: ISequals
+#endif
+
+  function ISnotequals(A,B)
+    logical ISnotequals
+    type(tIS), intent(in) :: A,B
+    ISnotequals = (A%v .ne. B%v)
+  end function
+  function ISequals(A,B)
+    logical ISequals
+    type(tIS), intent(in) :: A,B
+    ISequals = (A%v .eq. B%v)
+  end function
+  function PetscObjectCastIS(obj)
+    IS obj
+    PetscObject PetscObjectCastIS
+    PetscObjectCastIS%v = obj%v
+  end function 
+  subroutine PetscBarrierIS(obj,ierr)
+    IS obj
+    PetscErrorCode ierr
+    call PetscBarrier(PetscObjectCast(obj),ierr)
+  end subroutine 
+#if defined(PETSC_HAVE_SAWS)
+  subroutine PetscObjectSAWsTakeAccessIS(obj, ierr)
+  IS obj
+  PetscErrorCode ierr
+  call PetscObjectSAWsTakeAccess(PetscObjectCast(obj), ierr)
+  end subroutine 
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  subroutine PetscObjectSAWsGrantAccessIS(obj, ierr)
+  IS obj
+  PetscErrorCode ierr
+  call PetscObjectSAWsGrantAccess(PetscObjectCast(obj), ierr)
+  end subroutine 
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  subroutine PetscObjectSAWsBlockIS(obj, ierr)
+  IS obj
+  PetscErrorCode ierr
+  call PetscObjectSAWsBlock(PetscObjectCast(obj), ierr)
+  end subroutine 
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  subroutine PetscObjectSAWsSetBlockIS(obj, flg, ierr)
+  IS obj
+  PetscBool :: flg
+  PetscErrorCode ierr
+  call PetscObjectSAWsSetBlock(PetscObjectCast(obj), flg, ierr)
+  end subroutine 
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  subroutine PetscObjectSAWsViewOffIS(obj, ierr)
+  IS obj
+  PetscErrorCode ierr
+  call PetscObjectSAWsViewOff(PetscObjectCast(obj), ierr)
+  end subroutine 
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  subroutine PetscObjectViewSAWsIS(obj, viewer, ierr)
+  IS obj
+  PetscViewer :: viewer
+  PetscErrorCode ierr
+  call PetscObjectViewSAWs(PetscObjectCast(obj), viewer, ierr)
+  end subroutine 
+#endif
+  subroutine PetscObjectGetTypeIS(obj, type, ierr)
+  IS obj
+  character(*) :: type
+  PetscErrorCode ierr
+  call PetscObjectGetType(PetscObjectCast(obj), type, ierr)
+  end subroutine 
+  subroutine PetscObjectSetPrintedOptionsIS(obj, ierr)
+  IS obj
+  PetscErrorCode ierr
+  call PetscObjectSetPrintedOptions(PetscObjectCast(obj), ierr)
+  end subroutine 
+  subroutine PetscObjectInheritPrintedOptionsIS(pobj, obj, ierr)
+  IS pobj
+  PetscObject :: obj
+  PetscErrorCode ierr
+  call PetscObjectInheritPrintedOptions(PetscObjectCast(pobj), obj, ierr)
+  end subroutine 
+  subroutine PetscObjectAddOptionsHandlerIS(obj, handle, destroy, ctx, ierr)
+  IS obj
+  external :: handle
+  external :: destroy
+  type(*) :: ctx
+  PetscErrorCode ierr
+  call PetscObjectAddOptionsHandler(PetscObjectCast(obj), handle, destroy, ctx, ierr)
+  end subroutine 
+  subroutine PetscObjectProcessOptionsHandlersIS(obj, PetscOptionsObject, ierr)
+  IS obj
+  PetscOptionItems :: PetscOptionsObject
+  PetscErrorCode ierr
+  call PetscObjectProcessOptionsHandlers(PetscObjectCast(obj), PetscOptionsObject, ierr)
+  end subroutine 
+  subroutine PetscObjectDestroyOptionsHandlersIS(obj, ierr)
+  IS obj
+  PetscErrorCode ierr
+  call PetscObjectDestroyOptionsHandlers(PetscObjectCast(obj), ierr)
+  end subroutine 
+  subroutine PetscObjectReferenceIS(obj, ierr)
+  IS obj
+  PetscErrorCode ierr
+  call PetscObjectReference(PetscObjectCast(obj), ierr)
+  end subroutine 
+  subroutine PetscObjectGetReferenceIS(obj, cnt, ierr)
+  IS obj
+  PetscInt :: cnt
+  PetscErrorCode ierr
+  call PetscObjectGetReference(PetscObjectCast(obj), cnt, ierr)
+  end subroutine 
+  subroutine PetscObjectDereferenceIS(obj, ierr)
+  IS obj
+  PetscErrorCode ierr
+  call PetscObjectDereference(PetscObjectCast(obj), ierr)
+  end subroutine 
+  subroutine PetscObjectRemoveReferenceIS(obj, name, ierr)
+  IS obj
+  character(*) :: name
+  PetscErrorCode ierr
+  call PetscObjectRemoveReference(PetscObjectCast(obj), name, ierr)
+  end subroutine 
+  subroutine PetscObjectHasFunctionIS(obj, name, has, ierr)
+  IS obj
+  character(*) :: name
+  PetscBool :: has
+  PetscErrorCode ierr
+  call PetscObjectHasFunction(PetscObjectCast(obj), name, has, ierr)
+  end subroutine 
+  subroutine PetscObjectSetFromOptionsIS(obj, ierr)
+  IS obj
+  PetscErrorCode ierr
+  call PetscObjectSetFromOptions(PetscObjectCast(obj), ierr)
+  end subroutine 
+  subroutine PetscObjectSetUpIS(obj, ierr)
+  IS obj
+  PetscErrorCode ierr
+  call PetscObjectSetUp(PetscObjectCast(obj), ierr)
+  end subroutine 
+  subroutine PetscObjectGetNameIS(obj, name, ierr)
+  IS obj
+  character(*) :: name
+  PetscErrorCode ierr
+  call PetscObjectGetName(PetscObjectCast(obj), name, ierr)
+  end subroutine 
+  subroutine PetscObjectDestroyIS(obj, ierr)
+  IS obj
+  PetscErrorCode ierr
+  call PetscObjectDestroy(PetscObjectCast(obj), ierr)
+  end subroutine 
+  subroutine PetscObjectViewIS(obj, viewer, ierr)
+  IS obj
+  PetscViewer :: viewer
+  PetscErrorCode ierr
+  call PetscObjectView(PetscObjectCast(obj), viewer, ierr)
+  end subroutine 
+  subroutine PetscObjectViewFromOptionsIS(obj, bobj, name, ierr)
+  IS obj
+  PetscObject :: bobj
+  character(*) :: name
+  PetscErrorCode ierr
+  call PetscObjectViewFromOptions(PetscObjectCast(obj), bobj, name, ierr)
+  end subroutine 
+  subroutine PetscObjectTypeCompareIS(obj, type_name, same, ierr)
+  IS obj
+  character(*) :: type_name
+  PetscBool :: same
+  PetscErrorCode ierr
+  call PetscObjectTypeCompare(PetscObjectCast(obj), type_name, same, ierr)
+  end subroutine 
+  subroutine PetscObjectObjectTypeCompareIS(obj1, obj2, same, ierr)
+  IS obj1
+  PetscObject :: obj2
+  PetscBool :: same
+  PetscErrorCode ierr
+  call PetscObjectObjectTypeCompare(PetscObjectCast(obj1), obj2, same, ierr)
+  end subroutine 
+  subroutine PetscObjectBaseTypeCompareIS(obj, type_name, same, ierr)
+  IS obj
+  character(*) :: type_name
+  PetscBool :: same
+  PetscErrorCode ierr
+  call PetscObjectBaseTypeCompare(PetscObjectCast(obj), type_name, same, ierr)
+  end subroutine 
+  subroutine PetscObjectRegisterDestroyIS(obj, ierr)
+  IS obj
+  PetscErrorCode ierr
+  call PetscObjectRegisterDestroy(PetscObjectCast(obj), ierr)
+  end subroutine 
+  subroutine PetscObjectGetIdIS(obj, id, ierr)
+  IS obj
+  PetscObjectId :: id
+  PetscErrorCode ierr
+  call PetscObjectGetId(PetscObjectCast(obj), id, ierr)
+  end subroutine 
+  subroutine PetscObjectCompareIdIS(obj, id, eq, ierr)
+  IS obj
+  PetscObjectId :: id
+  PetscBool :: eq
+  PetscErrorCode ierr
+  call PetscObjectCompareId(PetscObjectCast(obj), id, eq, ierr)
+  end subroutine 
+  subroutine PetscObjectGetOptionsIS(obj, options, ierr)
+  IS obj
+  PetscOptions :: options
+  PetscErrorCode ierr
+  call PetscObjectGetOptions(PetscObjectCast(obj), options, ierr)
+  end subroutine 
+  subroutine PetscObjectSetOptionsIS(obj, options, ierr)
+  IS obj
+  PetscOptions :: options
+  PetscErrorCode ierr
+  call PetscObjectSetOptions(PetscObjectCast(obj), options, ierr)
+  end subroutine 
+  subroutine PetscObjectSetOptionsPrefixIS(obj, prefix, ierr)
+  IS obj
+  character(*) :: prefix
+  PetscErrorCode ierr
+  call PetscObjectSetOptionsPrefix(PetscObjectCast(obj), prefix, ierr)
+  end subroutine 
+  subroutine PetscObjectAppendOptionsPrefixIS(obj, prefix, ierr)
+  IS obj
+  character(*) :: prefix
+  PetscErrorCode ierr
+  call PetscObjectAppendOptionsPrefix(PetscObjectCast(obj), prefix, ierr)
+  end subroutine 
+  subroutine PetscObjectGetOptionsPrefixIS(obj, prefix, ierr)
+  IS obj
+  character(*) :: prefix
+  PetscErrorCode ierr
+  call PetscObjectGetOptionsPrefix(PetscObjectCast(obj), prefix, ierr)
+  end subroutine 
+  subroutine PetscObjectPrependOptionsPrefixIS(obj, prefix, ierr)
+  IS obj
+  character(*) :: prefix
+  PetscErrorCode ierr
+  call PetscObjectPrependOptionsPrefix(PetscObjectCast(obj), prefix, ierr)
+  end subroutine 
+  subroutine PetscObjectGetCommIS(obj, comm, ierr)
+  IS obj
+  MPIU_Comm :: comm
+  PetscErrorCode ierr
+  call PetscObjectGetComm(PetscObjectCast(obj), comm, ierr)
+  end subroutine 
+  subroutine PetscObjectGetTabLevelIS(obj, tab, ierr)
+  IS obj
+  PetscInt :: tab
+  PetscErrorCode ierr
+  call PetscObjectGetTabLevel(PetscObjectCast(obj), tab, ierr)
+  end subroutine 
+  subroutine PetscObjectSetTabLevelIS(obj, tab, ierr)
+  IS obj
+  PetscInt :: tab
+  PetscErrorCode ierr
+  call PetscObjectSetTabLevel(PetscObjectCast(obj), tab, ierr)
+  end subroutine 
+  subroutine PetscObjectIncrementTabLevelIS(obj, oldobj, tab, ierr)
+  IS obj
+  PetscObject :: oldobj
+  PetscInt :: tab
+  PetscErrorCode ierr
+  call PetscObjectIncrementTabLevel(PetscObjectCast(obj), oldobj, tab, ierr)
+  end subroutine 
+  subroutine PetscObjectGetNewTagIS(obj, tag, ierr)
+  IS obj
+  PetscMPIInt :: tag
+  PetscErrorCode ierr
+  call PetscObjectGetNewTag(PetscObjectCast(obj), tag, ierr)
+  end subroutine 
+  subroutine PetscObjectGetClassIdIS(obj, classid, ierr)
+  IS obj
+  PetscClassId :: classid
+  PetscErrorCode ierr
+  call PetscObjectGetClassId(PetscObjectCast(obj), classid, ierr)
+  end subroutine 
+  subroutine PetscObjectGetClassNameIS(obj, classname, ierr)
+  IS obj
+  character(*) :: classname
+  PetscErrorCode ierr
+  call PetscObjectGetClassName(PetscObjectCast(obj), classname, ierr)
+  end subroutine 
+  subroutine PetscObjectSetNameIS(obj, name, ierr)
+  IS obj
+  character(*) :: name
+  PetscErrorCode ierr
+  call PetscObjectSetName(PetscObjectCast(obj), name, ierr)
+  end subroutine 
+  subroutine PetscObjectPrintClassNamePrefixTypeIS(obj, viewer, ierr)
+  IS obj
+  PetscViewer :: viewer
+  PetscErrorCode ierr
+  call PetscObjectPrintClassNamePrefixType(PetscObjectCast(obj), viewer, ierr)
+  end subroutine 
+  subroutine PetscObjectNameIS(obj, ierr)
+  IS obj
+  PetscErrorCode ierr
+  call PetscObjectName(PetscObjectCast(obj), ierr)
+  end subroutine 
+  subroutine PetscObjectChangeTypeNameIS(obj, type_name, ierr)
+  IS obj
+  character(*) :: type_name
+  PetscErrorCode ierr
+  call PetscObjectChangeTypeName(PetscObjectCast(obj), type_name, ierr)
+  end subroutine 
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT:: ISLocalToGlobalMappingnotequals
+!DEC$ ATTRIBUTES DLLEXPORT:: ISLocalToGlobalMappingequals
+#endif
+
+  function ISLocalToGlobalMappingnotequals(A,B)
+    logical ISLocalToGlobalMappingnotequals
+    type(tISLocalToGlobalMapping), intent(in) :: A,B
+    ISLocalToGlobalMappingnotequals = (A%v .ne. B%v)
+  end function
+  function ISLocalToGlobalMappingequals(A,B)
+    logical ISLocalToGlobalMappingequals
+    type(tISLocalToGlobalMapping), intent(in) :: A,B
+    ISLocalToGlobalMappingequals = (A%v .eq. B%v)
+  end function
+  function PetscObjectCastISLocalToGlobalMapping(obj)
+    ISLocalToGlobalMapping obj
+    PetscObject PetscObjectCastISLocalToGlobalMapping
+    PetscObjectCastISLocalToGlobalMapping%v = obj%v
+  end function 
+  subroutine PetscBarrierISLocalToGlobalMapping(obj,ierr)
+    ISLocalToGlobalMapping obj
+    PetscErrorCode ierr
+    call PetscBarrier(PetscObjectCast(obj),ierr)
+  end subroutine 
+#if defined(PETSC_HAVE_SAWS)
+  subroutine PetscObjectSAWsTakeAccessISLocalToGlobalMapping(obj, ierr)
+  ISLocalToGlobalMapping obj
+  PetscErrorCode ierr
+  call PetscObjectSAWsTakeAccess(PetscObjectCast(obj), ierr)
+  end subroutine 
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  subroutine PetscObjectSAWsGrantAccessISLocalToGlobalMapping(obj, ierr)
+  ISLocalToGlobalMapping obj
+  PetscErrorCode ierr
+  call PetscObjectSAWsGrantAccess(PetscObjectCast(obj), ierr)
+  end subroutine 
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  subroutine PetscObjectSAWsBlockISLocalToGlobalMapping(obj, ierr)
+  ISLocalToGlobalMapping obj
+  PetscErrorCode ierr
+  call PetscObjectSAWsBlock(PetscObjectCast(obj), ierr)
+  end subroutine 
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  subroutine PetscObjectSAWsSetBlockISLocalToGlobalMapping(obj, flg, ierr)
+  ISLocalToGlobalMapping obj
+  PetscBool :: flg
+  PetscErrorCode ierr
+  call PetscObjectSAWsSetBlock(PetscObjectCast(obj), flg, ierr)
+  end subroutine 
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  subroutine PetscObjectSAWsViewOffISLocalToGlobalMapping(obj, ierr)
+  ISLocalToGlobalMapping obj
+  PetscErrorCode ierr
+  call PetscObjectSAWsViewOff(PetscObjectCast(obj), ierr)
+  end subroutine 
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  subroutine PetscObjectViewSAWsISLocalToGlobalMapping(obj, viewer, ierr)
+  ISLocalToGlobalMapping obj
+  PetscViewer :: viewer
+  PetscErrorCode ierr
+  call PetscObjectViewSAWs(PetscObjectCast(obj), viewer, ierr)
+  end subroutine 
+#endif
+  subroutine PetscObjectGetTypeISLocalToGlobalMapping(obj, type, ierr)
+  ISLocalToGlobalMapping obj
+  character(*) :: type
+  PetscErrorCode ierr
+  call PetscObjectGetType(PetscObjectCast(obj), type, ierr)
+  end subroutine 
+  subroutine PetscObjectSetPrintedOptionsISLocalToGlobalMapping(obj, ierr)
+  ISLocalToGlobalMapping obj
+  PetscErrorCode ierr
+  call PetscObjectSetPrintedOptions(PetscObjectCast(obj), ierr)
+  end subroutine 
+  subroutine PetscObjectInheritPrintedOptionsISLocalToGlobalMapping(pobj, obj, ierr)
+  ISLocalToGlobalMapping pobj
+  PetscObject :: obj
+  PetscErrorCode ierr
+  call PetscObjectInheritPrintedOptions(PetscObjectCast(pobj), obj, ierr)
+  end subroutine 
+  subroutine PetscObjectAddOptionsHandlerISLocalToGlobalMapping(obj, handle, destroy, ctx, ierr)
+  ISLocalToGlobalMapping obj
+  external :: handle
+  external :: destroy
+  type(*) :: ctx
+  PetscErrorCode ierr
+  call PetscObjectAddOptionsHandler(PetscObjectCast(obj), handle, destroy, ctx, ierr)
+  end subroutine 
+  subroutine PetscObjectProcessOptionsHandlersISLocalToGlobalMapping(obj, PetscOptionsObject, ierr)
+  ISLocalToGlobalMapping obj
+  PetscOptionItems :: PetscOptionsObject
+  PetscErrorCode ierr
+  call PetscObjectProcessOptionsHandlers(PetscObjectCast(obj), PetscOptionsObject, ierr)
+  end subroutine 
+  subroutine PetscObjectDestroyOptionsHandlersISLocalToGlobalMapping(obj, ierr)
+  ISLocalToGlobalMapping obj
+  PetscErrorCode ierr
+  call PetscObjectDestroyOptionsHandlers(PetscObjectCast(obj), ierr)
+  end subroutine 
+  subroutine PetscObjectReferenceISLocalToGlobalMapping(obj, ierr)
+  ISLocalToGlobalMapping obj
+  PetscErrorCode ierr
+  call PetscObjectReference(PetscObjectCast(obj), ierr)
+  end subroutine 
+  subroutine PetscObjectGetReferenceISLocalToGlobalMapping(obj, cnt, ierr)
+  ISLocalToGlobalMapping obj
+  PetscInt :: cnt
+  PetscErrorCode ierr
+  call PetscObjectGetReference(PetscObjectCast(obj), cnt, ierr)
+  end subroutine 
+  subroutine PetscObjectDereferenceISLocalToGlobalMapping(obj, ierr)
+  ISLocalToGlobalMapping obj
+  PetscErrorCode ierr
+  call PetscObjectDereference(PetscObjectCast(obj), ierr)
+  end subroutine 
+  subroutine PetscObjectRemoveReferenceISLocalToGlobalMapping(obj, name, ierr)
+  ISLocalToGlobalMapping obj
+  character(*) :: name
+  PetscErrorCode ierr
+  call PetscObjectRemoveReference(PetscObjectCast(obj), name, ierr)
+  end subroutine 
+  subroutine PetscObjectHasFunctionISLocalToGlobalMapping(obj, name, has, ierr)
+  ISLocalToGlobalMapping obj
+  character(*) :: name
+  PetscBool :: has
+  PetscErrorCode ierr
+  call PetscObjectHasFunction(PetscObjectCast(obj), name, has, ierr)
+  end subroutine 
+  subroutine PetscObjectSetFromOptionsISLocalToGlobalMapping(obj, ierr)
+  ISLocalToGlobalMapping obj
+  PetscErrorCode ierr
+  call PetscObjectSetFromOptions(PetscObjectCast(obj), ierr)
+  end subroutine 
+  subroutine PetscObjectSetUpISLocalToGlobalMapping(obj, ierr)
+  ISLocalToGlobalMapping obj
+  PetscErrorCode ierr
+  call PetscObjectSetUp(PetscObjectCast(obj), ierr)
+  end subroutine 
+  subroutine PetscObjectGetNameISLocalToGlobalMapping(obj, name, ierr)
+  ISLocalToGlobalMapping obj
+  character(*) :: name
+  PetscErrorCode ierr
+  call PetscObjectGetName(PetscObjectCast(obj), name, ierr)
+  end subroutine 
+  subroutine PetscObjectDestroyISLocalToGlobalMapping(obj, ierr)
+  ISLocalToGlobalMapping obj
+  PetscErrorCode ierr
+  call PetscObjectDestroy(PetscObjectCast(obj), ierr)
+  end subroutine 
+  subroutine PetscObjectViewISLocalToGlobalMapping(obj, viewer, ierr)
+  ISLocalToGlobalMapping obj
+  PetscViewer :: viewer
+  PetscErrorCode ierr
+  call PetscObjectView(PetscObjectCast(obj), viewer, ierr)
+  end subroutine 
+  subroutine PetscObjectViewFromOptionsISLocalToGlobalMapping(obj, bobj, name, ierr)
+  ISLocalToGlobalMapping obj
+  PetscObject :: bobj
+  character(*) :: name
+  PetscErrorCode ierr
+  call PetscObjectViewFromOptions(PetscObjectCast(obj), bobj, name, ierr)
+  end subroutine 
+  subroutine PetscObjectTypeCompareISLocalToGlobalMapping(obj, type_name, same, ierr)
+  ISLocalToGlobalMapping obj
+  character(*) :: type_name
+  PetscBool :: same
+  PetscErrorCode ierr
+  call PetscObjectTypeCompare(PetscObjectCast(obj), type_name, same, ierr)
+  end subroutine 
+  subroutine PetscObjectObjectTypeCompareISLocalToGlobalMapping(obj1, obj2, same, ierr)
+  ISLocalToGlobalMapping obj1
+  PetscObject :: obj2
+  PetscBool :: same
+  PetscErrorCode ierr
+  call PetscObjectObjectTypeCompare(PetscObjectCast(obj1), obj2, same, ierr)
+  end subroutine 
+  subroutine PetscObjectBaseTypeCompareISLocalToGlobalMapping(obj, type_name, same, ierr)
+  ISLocalToGlobalMapping obj
+  character(*) :: type_name
+  PetscBool :: same
+  PetscErrorCode ierr
+  call PetscObjectBaseTypeCompare(PetscObjectCast(obj), type_name, same, ierr)
+  end subroutine 
+  subroutine PetscObjectRegisterDestroyISLocalToGlobalMapping(obj, ierr)
+  ISLocalToGlobalMapping obj
+  PetscErrorCode ierr
+  call PetscObjectRegisterDestroy(PetscObjectCast(obj), ierr)
+  end subroutine 
+  subroutine PetscObjectGetIdISLocalToGlobalMapping(obj, id, ierr)
+  ISLocalToGlobalMapping obj
+  PetscObjectId :: id
+  PetscErrorCode ierr
+  call PetscObjectGetId(PetscObjectCast(obj), id, ierr)
+  end subroutine 
+  subroutine PetscObjectCompareIdISLocalToGlobalMapping(obj, id, eq, ierr)
+  ISLocalToGlobalMapping obj
+  PetscObjectId :: id
+  PetscBool :: eq
+  PetscErrorCode ierr
+  call PetscObjectCompareId(PetscObjectCast(obj), id, eq, ierr)
+  end subroutine 
+  subroutine PetscObjectGetOptionsISLocalToGlobalMapping(obj, options, ierr)
+  ISLocalToGlobalMapping obj
+  PetscOptions :: options
+  PetscErrorCode ierr
+  call PetscObjectGetOptions(PetscObjectCast(obj), options, ierr)
+  end subroutine 
+  subroutine PetscObjectSetOptionsISLocalToGlobalMapping(obj, options, ierr)
+  ISLocalToGlobalMapping obj
+  PetscOptions :: options
+  PetscErrorCode ierr
+  call PetscObjectSetOptions(PetscObjectCast(obj), options, ierr)
+  end subroutine 
+  subroutine PetscObjectSetOptionsPrefixISLocalToGlobalMapping(obj, prefix, ierr)
+  ISLocalToGlobalMapping obj
+  character(*) :: prefix
+  PetscErrorCode ierr
+  call PetscObjectSetOptionsPrefix(PetscObjectCast(obj), prefix, ierr)
+  end subroutine 
+  subroutine PetscObjectAppendOptionsPrefixISLocalToGlobalMapping(obj, prefix, ierr)
+  ISLocalToGlobalMapping obj
+  character(*) :: prefix
+  PetscErrorCode ierr
+  call PetscObjectAppendOptionsPrefix(PetscObjectCast(obj), prefix, ierr)
+  end subroutine 
+  subroutine PetscObjectGetOptionsPrefixISLocalToGlobalMapping(obj, prefix, ierr)
+  ISLocalToGlobalMapping obj
+  character(*) :: prefix
+  PetscErrorCode ierr
+  call PetscObjectGetOptionsPrefix(PetscObjectCast(obj), prefix, ierr)
+  end subroutine 
+  subroutine PetscObjectPrependOptionsPrefixISLocalToGlobalMapping(obj, prefix, ierr)
+  ISLocalToGlobalMapping obj
+  character(*) :: prefix
+  PetscErrorCode ierr
+  call PetscObjectPrependOptionsPrefix(PetscObjectCast(obj), prefix, ierr)
+  end subroutine 
+  subroutine PetscObjectGetCommISLocalToGlobalMapping(obj, comm, ierr)
+  ISLocalToGlobalMapping obj
+  MPIU_Comm :: comm
+  PetscErrorCode ierr
+  call PetscObjectGetComm(PetscObjectCast(obj), comm, ierr)
+  end subroutine 
+  subroutine PetscObjectGetTabLevelISLocalToGlobalMapping(obj, tab, ierr)
+  ISLocalToGlobalMapping obj
+  PetscInt :: tab
+  PetscErrorCode ierr
+  call PetscObjectGetTabLevel(PetscObjectCast(obj), tab, ierr)
+  end subroutine 
+  subroutine PetscObjectSetTabLevelISLocalToGlobalMapping(obj, tab, ierr)
+  ISLocalToGlobalMapping obj
+  PetscInt :: tab
+  PetscErrorCode ierr
+  call PetscObjectSetTabLevel(PetscObjectCast(obj), tab, ierr)
+  end subroutine 
+  subroutine PetscObjectIncrementTabLevelISLocalToGlobalMapping(obj, oldobj, tab, ierr)
+  ISLocalToGlobalMapping obj
+  PetscObject :: oldobj
+  PetscInt :: tab
+  PetscErrorCode ierr
+  call PetscObjectIncrementTabLevel(PetscObjectCast(obj), oldobj, tab, ierr)
+  end subroutine 
+  subroutine PetscObjectGetNewTagISLocalToGlobalMapping(obj, tag, ierr)
+  ISLocalToGlobalMapping obj
+  PetscMPIInt :: tag
+  PetscErrorCode ierr
+  call PetscObjectGetNewTag(PetscObjectCast(obj), tag, ierr)
+  end subroutine 
+  subroutine PetscObjectGetClassIdISLocalToGlobalMapping(obj, classid, ierr)
+  ISLocalToGlobalMapping obj
+  PetscClassId :: classid
+  PetscErrorCode ierr
+  call PetscObjectGetClassId(PetscObjectCast(obj), classid, ierr)
+  end subroutine 
+  subroutine PetscObjectGetClassNameISLocalToGlobalMapping(obj, classname, ierr)
+  ISLocalToGlobalMapping obj
+  character(*) :: classname
+  PetscErrorCode ierr
+  call PetscObjectGetClassName(PetscObjectCast(obj), classname, ierr)
+  end subroutine 
+  subroutine PetscObjectSetNameISLocalToGlobalMapping(obj, name, ierr)
+  ISLocalToGlobalMapping obj
+  character(*) :: name
+  PetscErrorCode ierr
+  call PetscObjectSetName(PetscObjectCast(obj), name, ierr)
+  end subroutine 
+  subroutine PetscObjectPrintClassNamePrefixTypeISLocalToGlobalMapping(obj, viewer, ierr)
+  ISLocalToGlobalMapping obj
+  PetscViewer :: viewer
+  PetscErrorCode ierr
+  call PetscObjectPrintClassNamePrefixType(PetscObjectCast(obj), viewer, ierr)
+  end subroutine 
+  subroutine PetscObjectNameISLocalToGlobalMapping(obj, ierr)
+  ISLocalToGlobalMapping obj
+  PetscErrorCode ierr
+  call PetscObjectName(PetscObjectCast(obj), ierr)
+  end subroutine 
+  subroutine PetscObjectChangeTypeNameISLocalToGlobalMapping(obj, type_name, ierr)
+  ISLocalToGlobalMapping obj
+  character(*) :: type_name
+  PetscErrorCode ierr
+  call PetscObjectChangeTypeName(PetscObjectCast(obj), type_name, ierr)
+  end subroutine 
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT:: ISColoringnotequals
+!DEC$ ATTRIBUTES DLLEXPORT:: ISColoringequals
+#endif
+
+  function ISColoringnotequals(A,B)
+    logical ISColoringnotequals
+    type(tISColoring), intent(in) :: A,B
+    ISColoringnotequals = (A%v .ne. B%v)
+  end function
+  function ISColoringequals(A,B)
+    logical ISColoringequals
+    type(tISColoring), intent(in) :: A,B
+    ISColoringequals = (A%v .eq. B%v)
+  end function
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT:: PetscLayoutnotequals
+!DEC$ ATTRIBUTES DLLEXPORT:: PetscLayoutequals
+#endif
+
+  function PetscLayoutnotequals(A,B)
+    logical PetscLayoutnotequals
+    type(tPetscLayout), intent(in) :: A,B
+    PetscLayoutnotequals = (A%v .ne. B%v)
+  end function
+  function PetscLayoutequals(A,B)
+    logical PetscLayoutequals
+    type(tPetscLayout), intent(in) :: A,B
+    PetscLayoutequals = (A%v .eq. B%v)
+  end function
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT:: ISInfonotequals
+!DEC$ ATTRIBUTES DLLEXPORT:: ISInfoequals
+#endif
+
+  function ISInfonotequals(A,B)
+    logical ISInfonotequals
+    type(eISInfo), intent(in) :: A,B
+    ISInfonotequals = (A%v .ne. B%v)
+  end function
+  function ISInfoequals(A,B)
+    logical ISInfoequals
+    type(eISInfo), intent(in) :: A,B
+    ISInfoequals = (A%v .eq. B%v)
+  end function
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT:: ISInfoTypenotequals
+!DEC$ ATTRIBUTES DLLEXPORT:: ISInfoTypeequals
+#endif
+
+  function ISInfoTypenotequals(A,B)
+    logical ISInfoTypenotequals
+    type(eISInfoType), intent(in) :: A,B
+    ISInfoTypenotequals = (A%v .ne. B%v)
+  end function
+  function ISInfoTypeequals(A,B)
+    logical ISInfoTypeequals
+    type(eISInfoType), intent(in) :: A,B
+    ISInfoTypeequals = (A%v .eq. B%v)
+  end function
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT:: ISGlobalToLocalMappingModenotequals
+!DEC$ ATTRIBUTES DLLEXPORT:: ISGlobalToLocalMappingModeequals
+#endif
+
+  function ISGlobalToLocalMappingModenotequals(A,B)
+    logical ISGlobalToLocalMappingModenotequals
+    type(eISGlobalToLocalMappingMode), intent(in) :: A,B
+    ISGlobalToLocalMappingModenotequals = (A%v .ne. B%v)
+  end function
+  function ISGlobalToLocalMappingModeequals(A,B)
+    logical ISGlobalToLocalMappingModeequals
+    type(eISGlobalToLocalMappingMode), intent(in) :: A,B
+    ISGlobalToLocalMappingModeequals = (A%v .eq. B%v)
+  end function
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT:: ISColoringTypenotequals
+!DEC$ ATTRIBUTES DLLEXPORT:: ISColoringTypeequals
+#endif
+
+  function ISColoringTypenotequals(A,B)
+    logical ISColoringTypenotequals
+    type(eISColoringType), intent(in) :: A,B
+    ISColoringTypenotequals = (A%v .ne. B%v)
+  end function
+  function ISColoringTypeequals(A,B)
+    logical ISColoringTypeequals
+    type(eISColoringType), intent(in) :: A,B
+    ISColoringTypeequals = (A%v .eq. B%v)
+  end function

@@ -1,0 +1,3801 @@
+  interface
+  subroutine PCMPIServerAddressesDestroycptr(ctx, ierr)
+  use, intrinsic :: ISO_C_binding
+  type(c_ptr) :: ctx
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCMPIServerAddressesDestroycptr
+#endif
+  interface operator(.ne.)
+    module procedure PetscTokennotequals
+  end interface operator (.ne.)
+  interface operator(.eq.)
+    module procedure PetscTokenequals
+  end interface operator (.eq.)
+
+  interface PetscObjectSAWsTakeAccess
+  subroutine PetscObjectSAWsTakeAccess(obj, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscObject
+  PetscObject :: obj
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscObjectSAWsTakeAccess
+#endif
+  interface PetscObjectSAWsGrantAccess
+  subroutine PetscObjectSAWsGrantAccess(obj, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscObject
+  PetscObject :: obj
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscObjectSAWsGrantAccess
+#endif
+  interface PetscObjectSAWsBlock
+  subroutine PetscObjectSAWsBlock(obj, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscObject
+  PetscObject :: obj
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscObjectSAWsBlock
+#endif
+  interface PetscObjectSAWsSetBlock
+  subroutine PetscObjectSAWsSetBlock(obj,flg, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscObject
+  PetscObject :: obj
+  PetscBool :: flg
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscObjectSAWsSetBlock
+#endif
+  interface PetscObjectSAWsViewOff
+  subroutine PetscObjectSAWsViewOff(obj, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscObject
+  PetscObject :: obj
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscObjectSAWsViewOff
+#endif
+  interface PetscObjectGetType
+  subroutine PetscObjectGetType(obj,type, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscObject
+  PetscObject :: obj
+  character(*) :: type
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscObjectGetType
+#endif
+  interface PetscObjectsView
+  subroutine PetscObjectsView(viewer, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscViewer
+  PetscViewer :: viewer
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscObjectsView
+#endif
+  interface PetscObjectsGetObject
+  subroutine PetscObjectsGetObject(name,obj,classname, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscObject
+  character(*) :: name
+  PetscObject :: obj
+  character(*) :: classname
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscObjectsGetObject
+#endif
+  interface PetscObjectSetPrintedOptions
+  subroutine PetscObjectSetPrintedOptions(obj, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscObject
+  PetscObject :: obj
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscObjectSetPrintedOptions
+#endif
+  interface PetscObjectInheritPrintedOptions
+  subroutine PetscObjectInheritPrintedOptions(pobj,obj, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscObject
+  PetscObject :: pobj
+  PetscObject :: obj
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscObjectInheritPrintedOptions
+#endif
+  interface PetscObjectReference
+  subroutine PetscObjectReference(obj, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscObject
+  PetscObject :: obj
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscObjectReference
+#endif
+  interface PetscObjectGetReference
+  subroutine PetscObjectGetReference(obj,cnt, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscObject
+  PetscObject :: obj
+  PetscInt :: cnt
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscObjectGetReference
+#endif
+  interface PetscObjectDereference
+  subroutine PetscObjectDereference(obj, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscObject
+  PetscObject :: obj
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscObjectDereference
+#endif
+  interface PetscObjectRemoveReference
+  subroutine PetscObjectRemoveReference(obj,name, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscObject
+  PetscObject :: obj
+  character(*) :: name
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscObjectRemoveReference
+#endif
+  interface PetscObjectComposeRaw
+  subroutine PetscObjectComposeRaw(obj,name,ptr, ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscFortranAddr :: obj
+  character(*) :: name
+  PetscFortranAddr :: ptr
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscObjectComposeRaw
+#endif
+  interface PetscObjectQueryRaw
+  subroutine PetscObjectQueryRaw(obj,name,ptr, ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscFortranAddr :: obj
+  character(*) :: name
+  PetscFortranAddr :: ptr
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscObjectQueryRaw
+#endif
+  interface PetscObjectHasFunction
+  subroutine PetscObjectHasFunction(obj,name,has, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscObject
+  PetscObject :: obj
+  character(*) :: name
+  PetscBool :: has
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscObjectHasFunction
+#endif
+  interface PetscObjectContainerQuery
+  subroutine PetscObjectContainerQuerycptr(obj,name,ptr, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscObject
+  PetscObject :: obj
+  character(*) :: name
+  type(c_ptr) :: ptr
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscObjectContainerQuerycptr
+#endif
+  interface PetscObjectSetFromOptions
+  subroutine PetscObjectSetFromOptions(obj, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscObject
+  PetscObject :: obj
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscObjectSetFromOptions
+#endif
+  interface PetscObjectSetUp
+  subroutine PetscObjectSetUp(obj, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscObject
+  PetscObject :: obj
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscObjectSetUp
+#endif
+  interface PetscObjectGetName
+  subroutine PetscObjectGetName(obj,name, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscObject
+  PetscObject :: obj
+  character(*) :: name
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscObjectGetName
+#endif
+  interface PetscObjectDestroy
+  subroutine PetscObjectDestroy(obj, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscObject
+  PetscObject :: obj
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscObjectDestroy
+#endif
+  interface PetscObjectView
+  subroutine PetscObjectView(obj,viewer, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscObject,tPetscViewer
+  PetscObject :: obj
+  PetscViewer :: viewer
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscObjectView
+#endif
+  interface PetscObjectViewFromOptions
+  subroutine PetscObjectViewFromOptions(obj,bobj,name, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscObject
+  PetscObject :: obj
+  PetscObject :: bobj
+  character(*) :: name
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscObjectViewFromOptions
+#endif
+  interface PetscObjectTypeCompare
+  subroutine PetscObjectTypeCompare(obj,type_name,same, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscObject
+  PetscObject :: obj
+  character(*) :: type_name
+  PetscBool :: same
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscObjectTypeCompare
+#endif
+  interface PetscObjectObjectTypeCompare
+  subroutine PetscObjectObjectTypeCompare(obj1,obj2,same, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscObject
+  PetscObject :: obj1
+  PetscObject :: obj2
+  PetscBool :: same
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscObjectObjectTypeCompare
+#endif
+  interface PetscObjectBaseTypeCompare
+  subroutine PetscObjectBaseTypeCompare(obj,type_name,same, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscObject
+  PetscObject :: obj
+  character(*) :: type_name
+  PetscBool :: same
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscObjectBaseTypeCompare
+#endif
+  interface PetscObjectRegisterDestroy
+  subroutine PetscObjectRegisterDestroy(obj, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscObject
+  PetscObject :: obj
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscObjectRegisterDestroy
+#endif
+  interface PetscObjectRegisterDestroyAll
+  subroutine PetscObjectRegisterDestroyAll(ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscObjectRegisterDestroyAll
+#endif
+  interface PetscObjectGetId
+  subroutine PetscObjectGetId(obj,id, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscObject
+  PetscObject :: obj
+  PetscObjectId :: id
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscObjectGetId
+#endif
+  interface PetscObjectCompareId
+  subroutine PetscObjectCompareId(obj,id,eq, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscObject
+  PetscObject :: obj
+  PetscObjectId :: id
+  PetscBool :: eq
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscObjectCompareId
+#endif
+  interface PetscObjectSetOptionsPrefix
+  subroutine PetscObjectSetOptionsPrefix(obj,prefix, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscObject
+  PetscObject :: obj
+  character(*) :: prefix
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscObjectSetOptionsPrefix
+#endif
+  interface PetscObjectAppendOptionsPrefix
+  subroutine PetscObjectAppendOptionsPrefix(obj,prefix, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscObject
+  PetscObject :: obj
+  character(*) :: prefix
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscObjectAppendOptionsPrefix
+#endif
+  interface PetscObjectGetOptionsPrefix
+  subroutine PetscObjectGetOptionsPrefix(obj,prefix, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscObject
+  PetscObject :: obj
+  character(*) :: prefix
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscObjectGetOptionsPrefix
+#endif
+  interface PetscObjectPrependOptionsPrefix
+  subroutine PetscObjectPrependOptionsPrefix(obj,prefix, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscObject
+  PetscObject :: obj
+  character(*) :: prefix
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscObjectPrependOptionsPrefix
+#endif
+  interface PetscObjectGetComm
+  subroutine PetscObjectGetComm(obj,comm, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscObject
+  PetscObject :: obj
+  MPIU_Comm :: comm
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscObjectGetComm
+#endif
+  interface PetscObjectGetTabLevel
+  subroutine PetscObjectGetTabLevel(obj,tab, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscObject
+  PetscObject :: obj
+  PetscInt :: tab
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscObjectGetTabLevel
+#endif
+  interface PetscObjectSetTabLevel
+  subroutine PetscObjectSetTabLevel(obj,tab, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscObject
+  PetscObject :: obj
+  PetscInt :: tab
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscObjectSetTabLevel
+#endif
+  interface PetscObjectIncrementTabLevel
+  subroutine PetscObjectIncrementTabLevel(obj,oldobj,tab, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscObject
+  PetscObject :: obj
+  PetscObject :: oldobj
+  PetscInt :: tab
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscObjectIncrementTabLevel
+#endif
+  interface PetscObjectGetNewTag
+  subroutine PetscObjectGetNewTag(obj,tag, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscObject
+  PetscObject :: obj
+  PetscMPIInt :: tag
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscObjectGetNewTag
+#endif
+  interface PetscObjectsListGetGlobalNumbering
+  subroutine PetscObjectsListGetGlobalNumbering(comm,len,objlist,count,numbering, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscObject
+  MPIU_Comm :: comm
+  PetscInt :: len
+  PetscObject :: objlist(*)
+  PetscInt :: count
+  PetscInt :: numbering
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscObjectsListGetGlobalNumbering
+#endif
+  interface PetscObjectGetClassId
+  subroutine PetscObjectGetClassId(obj,classid, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscObject
+  PetscObject :: obj
+  PetscClassId :: classid
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscObjectGetClassId
+#endif
+  interface PetscObjectGetClassName
+  subroutine PetscObjectGetClassName(obj,classname, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscObject
+  PetscObject :: obj
+  character(*) :: classname
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscObjectGetClassName
+#endif
+  interface PetscObjectSetName
+  subroutine PetscObjectSetName(obj,name, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscObject
+  PetscObject :: obj
+  character(*) :: name
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscObjectSetName
+#endif
+  interface PetscObjectPrintClassNamePrefixType
+  subroutine PetscObjectPrintClassNamePrefixType(obj,viewer, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscObject,tPetscViewer
+  PetscObject :: obj
+  PetscViewer :: viewer
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscObjectPrintClassNamePrefixType
+#endif
+  interface PetscObjectName
+  subroutine PetscObjectName(obj, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscObject
+  PetscObject :: obj
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscObjectName
+#endif
+  interface PetscObjectChangeTypeName
+  subroutine PetscObjectChangeTypeName(obj,type_name, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscObject
+  PetscObject :: obj
+  character(*) :: type_name
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscObjectChangeTypeName
+#endif
+  interface
+  subroutine PetscFunctionListDestroy(fl, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscFunctionList
+  PetscFunctionList :: fl
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscFunctionListDestroy
+#endif
+  interface
+  subroutine PetscFunctionListClear(fl, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscFunctionList
+  PetscFunctionList :: fl
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscFunctionListClear
+#endif
+  interface
+  subroutine PetscFunctionListPrintAll(ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscFunctionListPrintAll
+#endif
+  interface
+  subroutine PetscFunctionListPrintNonEmpty(fl, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscFunctionList
+  PetscFunctionList :: fl
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscFunctionListPrintNonEmpty
+#endif
+  interface
+  subroutine PetscFunctionListView(list,viewer, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscFunctionList,tPetscViewer
+  PetscFunctionList :: list
+  PetscViewer :: viewer
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscFunctionListView
+#endif
+  interface
+  subroutine PetscFunctionListDuplicate(fl,nl, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscFunctionList
+  PetscFunctionList :: fl
+  PetscFunctionList :: nl
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscFunctionListDuplicate
+#endif
+  interface operator(.ne.)
+    module procedure PetscFunctionListnotequals
+  end interface operator (.ne.)
+  interface operator(.eq.)
+    module procedure PetscFunctionListequals
+  end interface operator (.eq.)
+
+  interface PetscObjectListRemoveReference
+  subroutine PetscObjectListRemoveReference(fl,name, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscObjectList
+  PetscObjectList :: fl
+  character(*) :: name
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscObjectListRemoveReference
+#endif
+  interface PetscObjectListAdd
+  subroutine PetscObjectListAdd(fl,name,obj, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscObjectList,tPetscObject
+  PetscObjectList :: fl
+  character(*) :: name
+  PetscObject :: obj
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscObjectListAdd
+#endif
+  interface PetscObjectListDestroy
+  subroutine PetscObjectListDestroy(ifl, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscObjectList
+  PetscObjectList :: ifl
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscObjectListDestroy
+#endif
+  interface PetscObjectListFind
+  subroutine PetscObjectListFind(fl,name,obj, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscObjectList,tPetscObject
+  PetscObjectList :: fl
+  character(*) :: name
+  PetscObject :: obj
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscObjectListFind
+#endif
+  interface PetscObjectListReverseFind
+  subroutine PetscObjectListReverseFind(fl,obj,name,skipdereference, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscObjectList,tPetscObject
+  PetscObjectList :: fl
+  PetscObject :: obj
+  character(*) :: name
+  PetscBool :: skipdereference
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscObjectListReverseFind
+#endif
+  interface PetscObjectListDuplicate
+  subroutine PetscObjectListDuplicate(fl,nl, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscObjectList
+  PetscObjectList :: fl
+  PetscObjectList :: nl
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscObjectListDuplicate
+#endif
+  interface operator(.ne.)
+    module procedure PetscObjectListnotequals
+  end interface operator (.ne.)
+  interface operator(.eq.)
+    module procedure PetscObjectListequals
+  end interface operator (.eq.)
+
+  interface
+  subroutine PetscDLLibraryPrintPath(libs, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDLLibrary
+  PetscDLLibrary :: libs
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDLLibraryPrintPath
+#endif
+  interface
+  subroutine PetscDLLibraryRetrieve(comm,libname,lname,found, ierr)
+  use, intrinsic :: ISO_C_binding
+  MPIU_Comm :: comm
+  character(*) :: libname
+  character(*) :: lname
+  PetscBool :: found
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDLLibraryRetrieve
+#endif
+  interface
+  subroutine PetscDLLibraryOpen(comm,path,entry, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDLLibrary
+  MPIU_Comm :: comm
+  character(*) :: path
+  PetscDLLibrary :: entry
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDLLibraryOpen
+#endif
+  interface
+  subroutine PetscDLLibraryAppend(comm,outlist,path, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDLLibrary
+  MPIU_Comm :: comm
+  PetscDLLibrary :: outlist
+  character(*) :: path
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDLLibraryAppend
+#endif
+  interface
+  subroutine PetscDLLibraryPrepend(comm,outlist,path, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDLLibrary
+  MPIU_Comm :: comm
+  PetscDLLibrary :: outlist
+  character(*) :: path
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDLLibraryPrepend
+#endif
+  interface
+  subroutine PetscDLLibraryClose(list, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDLLibrary
+  PetscDLLibrary :: list
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDLLibraryClose
+#endif
+  interface operator(.ne.)
+    module procedure PetscDLLibrarynotequals
+  end interface operator (.ne.)
+  interface operator(.eq.)
+    module procedure PetscDLLibraryequals
+  end interface operator (.eq.)
+
+  interface
+  subroutine PetscContainerGetPointercptr(obj,ptr, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscContainer
+  PetscContainer :: obj
+  type(c_ptr) :: ptr
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscContainerGetPointercptr
+#endif
+  interface
+  subroutine PetscContainerDestroy(obj, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscContainer
+  PetscContainer :: obj
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscContainerDestroy
+#endif
+  interface
+  subroutine PetscContainerSetCtxDestroy(obj,des, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscContainer
+  PetscContainer :: obj
+  external des
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscContainerSetCtxDestroy
+#endif
+  interface
+  subroutine PetscContainerCreate(comm,container, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscContainer
+  MPIU_Comm :: comm
+  PetscContainer :: container
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscContainerCreate
+#endif
+  interface operator(.ne.)
+    module procedure PetscContainernotequals
+  end interface operator (.ne.)
+  interface operator(.eq.)
+    module procedure PetscContainerequals
+  end interface operator (.eq.)
+
+  interface PetscObjectCast
+    module procedure PetscObjectCastContainer
+  end interface
+  interface PetscBarrier
+  module procedure PetscBarrierContainer
+  end interface
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectSAWsTakeAccess
+    module procedure PetscObjectSAWsTakeAccessContainer
+  end interface
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectSAWsGrantAccess
+    module procedure PetscObjectSAWsGrantAccessContainer
+  end interface
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectSAWsBlock
+    module procedure PetscObjectSAWsBlockContainer
+  end interface
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectSAWsSetBlock
+    module procedure PetscObjectSAWsSetBlockContainer
+  end interface
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectSAWsViewOff
+    module procedure PetscObjectSAWsViewOffContainer
+  end interface
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectViewSAWs
+    module procedure PetscObjectViewSAWsContainer
+  end interface
+#endif
+  interface PetscObjectGetType
+    module procedure PetscObjectGetTypeContainer
+  end interface
+  interface PetscObjectSetPrintedOptions
+    module procedure PetscObjectSetPrintedOptionsContainer
+  end interface
+  interface PetscObjectInheritPrintedOptions
+    module procedure PetscObjectInheritPrintedOptionsContainer
+  end interface
+  interface PetscObjectAddOptionsHandler
+    module procedure PetscObjectAddOptionsHandlerContainer
+  end interface
+  interface PetscObjectProcessOptionsHandlers
+    module procedure PetscObjectProcessOptionsHandlersContainer
+  end interface
+  interface PetscObjectDestroyOptionsHandlers
+    module procedure PetscObjectDestroyOptionsHandlersContainer
+  end interface
+  interface PetscObjectReference
+    module procedure PetscObjectReferenceContainer
+  end interface
+  interface PetscObjectGetReference
+    module procedure PetscObjectGetReferenceContainer
+  end interface
+  interface PetscObjectDereference
+    module procedure PetscObjectDereferenceContainer
+  end interface
+  interface PetscObjectRemoveReference
+    module procedure PetscObjectRemoveReferenceContainer
+  end interface
+  interface PetscObjectHasFunction
+    module procedure PetscObjectHasFunctionContainer
+  end interface
+  interface PetscObjectSetFromOptions
+    module procedure PetscObjectSetFromOptionsContainer
+  end interface
+  interface PetscObjectSetUp
+    module procedure PetscObjectSetUpContainer
+  end interface
+  interface PetscObjectGetName
+    module procedure PetscObjectGetNameContainer
+  end interface
+  interface PetscObjectDestroy
+    module procedure PetscObjectDestroyContainer
+  end interface
+  interface PetscObjectView
+    module procedure PetscObjectViewContainer
+  end interface
+  interface PetscObjectViewFromOptions
+    module procedure PetscObjectViewFromOptionsContainer
+  end interface
+  interface PetscObjectTypeCompare
+    module procedure PetscObjectTypeCompareContainer
+  end interface
+  interface PetscObjectObjectTypeCompare
+    module procedure PetscObjectObjectTypeCompareContainer
+  end interface
+  interface PetscObjectBaseTypeCompare
+    module procedure PetscObjectBaseTypeCompareContainer
+  end interface
+  interface PetscObjectRegisterDestroy
+    module procedure PetscObjectRegisterDestroyContainer
+  end interface
+  interface PetscObjectGetId
+    module procedure PetscObjectGetIdContainer
+  end interface
+  interface PetscObjectCompareId
+    module procedure PetscObjectCompareIdContainer
+  end interface
+  interface PetscObjectGetOptions
+    module procedure PetscObjectGetOptionsContainer
+  end interface
+  interface PetscObjectSetOptions
+    module procedure PetscObjectSetOptionsContainer
+  end interface
+  interface PetscObjectSetOptionsPrefix
+    module procedure PetscObjectSetOptionsPrefixContainer
+  end interface
+  interface PetscObjectAppendOptionsPrefix
+    module procedure PetscObjectAppendOptionsPrefixContainer
+  end interface
+  interface PetscObjectGetOptionsPrefix
+    module procedure PetscObjectGetOptionsPrefixContainer
+  end interface
+  interface PetscObjectPrependOptionsPrefix
+    module procedure PetscObjectPrependOptionsPrefixContainer
+  end interface
+  interface PetscObjectGetComm
+    module procedure PetscObjectGetCommContainer
+  end interface
+  interface PetscObjectGetTabLevel
+    module procedure PetscObjectGetTabLevelContainer
+  end interface
+  interface PetscObjectSetTabLevel
+    module procedure PetscObjectSetTabLevelContainer
+  end interface
+  interface PetscObjectIncrementTabLevel
+    module procedure PetscObjectIncrementTabLevelContainer
+  end interface
+  interface PetscObjectGetNewTag
+    module procedure PetscObjectGetNewTagContainer
+  end interface
+  interface PetscObjectGetClassId
+    module procedure PetscObjectGetClassIdContainer
+  end interface
+  interface PetscObjectGetClassName
+    module procedure PetscObjectGetClassNameContainer
+  end interface
+  interface PetscObjectSetName
+    module procedure PetscObjectSetNameContainer
+  end interface
+  interface PetscObjectPrintClassNamePrefixType
+    module procedure PetscObjectPrintClassNamePrefixTypeContainer
+  end interface
+  interface PetscObjectName
+    module procedure PetscObjectNameContainer
+  end interface
+  interface PetscObjectChangeTypeName
+    module procedure PetscObjectChangeTypeNameContainer
+  end interface
+  interface
+  subroutine PetscRandomDestroy(r, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscRandom
+  PetscRandom :: r
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscRandomDestroy
+#endif
+  interface
+  subroutine PetscRandomGetSeed(r,seed, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscRandom
+  PetscRandom :: r
+  PetscInt64 :: seed
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscRandomGetSeed
+#endif
+  interface
+  subroutine PetscRandomSetSeed(r,seed, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscRandom
+  PetscRandom :: r
+  PetscInt64 :: seed
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscRandomSetSeed
+#endif
+  interface
+  subroutine PetscRandomSetFromOptions(rnd, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscRandom
+  PetscRandom :: rnd
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscRandomSetFromOptions
+#endif
+  interface
+  subroutine PetscRandomSetOptionsPrefix(r,prefix, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscRandom
+  PetscRandom :: r
+  character(*) :: prefix
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscRandomSetOptionsPrefix
+#endif
+  interface
+  subroutine PetscRandomViewFromOptions(A,obj,name, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscRandom,tPetscObject
+  PetscRandom :: A
+  PetscObject :: obj
+  character(*) :: name
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscRandomViewFromOptions
+#endif
+  interface
+  subroutine PetscRandomView(rnd,viewer, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscRandom,tPetscViewer
+  PetscRandom :: rnd
+  PetscViewer :: viewer
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscRandomView
+#endif
+  interface
+  subroutine PetscRandomCreate(comm,r, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscRandom
+  MPIU_Comm :: comm
+  PetscRandom :: r
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscRandomCreate
+#endif
+  interface
+  subroutine PetscRandomSeed(r, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscRandom
+  PetscRandom :: r
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscRandomSeed
+#endif
+  interface
+  subroutine PetscRandomSetType(rnd,type, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscRandom
+  PetscRandom :: rnd
+  character(*) :: type
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscRandomSetType
+#endif
+  interface
+  subroutine PetscRandomGetType(rnd,type, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscRandom
+  PetscRandom :: rnd
+  character(*) :: type
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscRandomGetType
+#endif
+  interface
+  subroutine PetscRandomRegister(sname,function, ierr)
+  use, intrinsic :: ISO_C_binding
+  character(*) :: sname
+  external :: function
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscRandomRegister
+#endif
+  interface
+  subroutine PetscRandomGetValue(r,val, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscRandom
+  PetscRandom :: r
+  PetscScalar :: val
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscRandomGetValue
+#endif
+  interface
+  subroutine PetscRandomGetValueReal(r,val, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscRandom
+  PetscRandom :: r
+  PetscReal :: val
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscRandomGetValueReal
+#endif
+  interface
+  subroutine PetscRandomGetValues(r,n,val, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscRandom
+  PetscRandom :: r
+  PetscInt :: n
+  PetscScalar :: val
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscRandomGetValues
+#endif
+  interface
+  subroutine PetscRandomGetValuesReal(r,n,val, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscRandom
+  PetscRandom :: r
+  PetscInt :: n
+  PetscReal :: val
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscRandomGetValuesReal
+#endif
+  interface
+  subroutine PetscRandomGetInterval(r,low,high, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscRandom
+  PetscRandom :: r
+  PetscScalar :: low
+  PetscScalar :: high
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscRandomGetInterval
+#endif
+  interface
+  subroutine PetscRandomSetInterval(r,low,high, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscRandom
+  PetscRandom :: r
+  PetscScalar :: low
+  PetscScalar :: high
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscRandomSetInterval
+#endif
+  interface
+  subroutine PetscRandomFinalizePackage(ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscRandomFinalizePackage
+#endif
+  interface
+  subroutine PetscRandomInitializePackage(ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscRandomInitializePackage
+#endif
+  interface operator(.ne.)
+    module procedure PetscRandomnotequals
+  end interface operator (.ne.)
+  interface operator(.eq.)
+    module procedure PetscRandomequals
+  end interface operator (.eq.)
+
+  interface PetscObjectCast
+    module procedure PetscObjectCastRandom
+  end interface
+  interface PetscBarrier
+  module procedure PetscBarrierRandom
+  end interface
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectSAWsTakeAccess
+    module procedure PetscObjectSAWsTakeAccessRandom
+  end interface
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectSAWsGrantAccess
+    module procedure PetscObjectSAWsGrantAccessRandom
+  end interface
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectSAWsBlock
+    module procedure PetscObjectSAWsBlockRandom
+  end interface
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectSAWsSetBlock
+    module procedure PetscObjectSAWsSetBlockRandom
+  end interface
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectSAWsViewOff
+    module procedure PetscObjectSAWsViewOffRandom
+  end interface
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectViewSAWs
+    module procedure PetscObjectViewSAWsRandom
+  end interface
+#endif
+  interface PetscObjectGetType
+    module procedure PetscObjectGetTypeRandom
+  end interface
+  interface PetscObjectSetPrintedOptions
+    module procedure PetscObjectSetPrintedOptionsRandom
+  end interface
+  interface PetscObjectInheritPrintedOptions
+    module procedure PetscObjectInheritPrintedOptionsRandom
+  end interface
+  interface PetscObjectAddOptionsHandler
+    module procedure PetscObjectAddOptionsHandlerRandom
+  end interface
+  interface PetscObjectProcessOptionsHandlers
+    module procedure PetscObjectProcessOptionsHandlersRandom
+  end interface
+  interface PetscObjectDestroyOptionsHandlers
+    module procedure PetscObjectDestroyOptionsHandlersRandom
+  end interface
+  interface PetscObjectReference
+    module procedure PetscObjectReferenceRandom
+  end interface
+  interface PetscObjectGetReference
+    module procedure PetscObjectGetReferenceRandom
+  end interface
+  interface PetscObjectDereference
+    module procedure PetscObjectDereferenceRandom
+  end interface
+  interface PetscObjectRemoveReference
+    module procedure PetscObjectRemoveReferenceRandom
+  end interface
+  interface PetscObjectHasFunction
+    module procedure PetscObjectHasFunctionRandom
+  end interface
+  interface PetscObjectSetFromOptions
+    module procedure PetscObjectSetFromOptionsRandom
+  end interface
+  interface PetscObjectSetUp
+    module procedure PetscObjectSetUpRandom
+  end interface
+  interface PetscObjectGetName
+    module procedure PetscObjectGetNameRandom
+  end interface
+  interface PetscObjectDestroy
+    module procedure PetscObjectDestroyRandom
+  end interface
+  interface PetscObjectView
+    module procedure PetscObjectViewRandom
+  end interface
+  interface PetscObjectViewFromOptions
+    module procedure PetscObjectViewFromOptionsRandom
+  end interface
+  interface PetscObjectTypeCompare
+    module procedure PetscObjectTypeCompareRandom
+  end interface
+  interface PetscObjectObjectTypeCompare
+    module procedure PetscObjectObjectTypeCompareRandom
+  end interface
+  interface PetscObjectBaseTypeCompare
+    module procedure PetscObjectBaseTypeCompareRandom
+  end interface
+  interface PetscObjectRegisterDestroy
+    module procedure PetscObjectRegisterDestroyRandom
+  end interface
+  interface PetscObjectGetId
+    module procedure PetscObjectGetIdRandom
+  end interface
+  interface PetscObjectCompareId
+    module procedure PetscObjectCompareIdRandom
+  end interface
+  interface PetscObjectGetOptions
+    module procedure PetscObjectGetOptionsRandom
+  end interface
+  interface PetscObjectSetOptions
+    module procedure PetscObjectSetOptionsRandom
+  end interface
+  interface PetscObjectSetOptionsPrefix
+    module procedure PetscObjectSetOptionsPrefixRandom
+  end interface
+  interface PetscObjectAppendOptionsPrefix
+    module procedure PetscObjectAppendOptionsPrefixRandom
+  end interface
+  interface PetscObjectGetOptionsPrefix
+    module procedure PetscObjectGetOptionsPrefixRandom
+  end interface
+  interface PetscObjectPrependOptionsPrefix
+    module procedure PetscObjectPrependOptionsPrefixRandom
+  end interface
+  interface PetscObjectGetComm
+    module procedure PetscObjectGetCommRandom
+  end interface
+  interface PetscObjectGetTabLevel
+    module procedure PetscObjectGetTabLevelRandom
+  end interface
+  interface PetscObjectSetTabLevel
+    module procedure PetscObjectSetTabLevelRandom
+  end interface
+  interface PetscObjectIncrementTabLevel
+    module procedure PetscObjectIncrementTabLevelRandom
+  end interface
+  interface PetscObjectGetNewTag
+    module procedure PetscObjectGetNewTagRandom
+  end interface
+  interface PetscObjectGetClassId
+    module procedure PetscObjectGetClassIdRandom
+  end interface
+  interface PetscObjectGetClassName
+    module procedure PetscObjectGetClassNameRandom
+  end interface
+  interface PetscObjectSetName
+    module procedure PetscObjectSetNameRandom
+  end interface
+  interface PetscObjectPrintClassNamePrefixType
+    module procedure PetscObjectPrintClassNamePrefixTypeRandom
+  end interface
+  interface PetscObjectName
+    module procedure PetscObjectNameRandom
+  end interface
+  interface PetscObjectChangeTypeName
+    module procedure PetscObjectChangeTypeNameRandom
+  end interface
+  interface
+  subroutine PetscSubcommSetFromOptions(psubcomm, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscSubcomm
+  PetscSubcomm :: psubcomm
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscSubcommSetFromOptions
+#endif
+  interface
+  subroutine PetscSubcommSetOptionsPrefix(psubcomm,pre, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscSubcomm
+  PetscSubcomm :: psubcomm
+  character(*) :: pre
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscSubcommSetOptionsPrefix
+#endif
+  interface
+  subroutine PetscSubcommView(psubcomm,viewer, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscSubcomm,tPetscViewer
+  PetscSubcomm :: psubcomm
+  PetscViewer :: viewer
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscSubcommView
+#endif
+  interface
+  subroutine PetscSubcommSetNumber(psubcomm,nsubcomm, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscSubcomm
+  PetscSubcomm :: psubcomm
+  PetscInt :: nsubcomm
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscSubcommSetNumber
+#endif
+  interface
+  subroutine PetscSubcommSetType(psubcomm,subcommtype, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscSubcomm,ePetscSubcommType
+  PetscSubcomm :: psubcomm
+  PetscSubcommType :: subcommtype
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscSubcommSetType
+#endif
+  interface
+  subroutine PetscSubcommSetTypeGeneral(psubcomm,color,subrank, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscSubcomm
+  PetscSubcomm :: psubcomm
+  PetscMPIInt :: color
+  PetscMPIInt :: subrank
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscSubcommSetTypeGeneral
+#endif
+  interface
+  subroutine PetscSubcommDestroy(psubcomm, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscSubcomm
+  PetscSubcomm :: psubcomm
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscSubcommDestroy
+#endif
+  interface
+  subroutine PetscSubcommCreate(comm,psubcomm, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscSubcomm
+  MPIU_Comm :: comm
+  PetscSubcomm :: psubcomm
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscSubcommCreate
+#endif
+  interface
+  subroutine PetscSubcommGetParent(scomm,pcomm, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscSubcomm
+  PetscSubcomm :: scomm
+  MPIU_Comm :: pcomm
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscSubcommGetParent
+#endif
+  interface
+  subroutine PetscSubcommGetContiguousParent(scomm,pcomm, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscSubcomm
+  PetscSubcomm :: scomm
+  MPIU_Comm :: pcomm
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscSubcommGetContiguousParent
+#endif
+  interface
+  subroutine PetscSubcommGetChild(scomm,ccomm, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscSubcomm
+  PetscSubcomm :: scomm
+  MPIU_Comm :: ccomm
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscSubcommGetChild
+#endif
+  interface operator(.ne.)
+    module procedure PetscSubcommnotequals
+  end interface operator (.ne.)
+  interface operator(.eq.)
+    module procedure PetscSubcommequals
+  end interface operator (.eq.)
+
+  interface operator(.ne.)
+    module procedure PetscHeapnotequals
+  end interface operator (.ne.)
+  interface operator(.eq.)
+    module procedure PetscHeapequals
+  end interface operator (.eq.)
+
+  interface
+  subroutine PetscShmCommGet(globcomm,pshmcomm, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscShmComm
+  MPIU_Comm :: globcomm
+  PetscShmComm :: pshmcomm
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscShmCommGet
+#endif
+  interface
+  subroutine PetscShmCommGlobalToLocal(pshmcomm,grank,lrank, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscShmComm
+  PetscShmComm :: pshmcomm
+  PetscMPIInt :: grank
+  PetscMPIInt :: lrank
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscShmCommGlobalToLocal
+#endif
+  interface
+  subroutine PetscShmCommLocalToGlobal(pshmcomm,lrank,grank, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscShmComm
+  PetscShmComm :: pshmcomm
+  PetscMPIInt :: lrank
+  PetscMPIInt :: grank
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscShmCommLocalToGlobal
+#endif
+  interface
+  subroutine PetscShmCommGetMpiShmComm(pshmcomm,comm, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscShmComm
+  PetscShmComm :: pshmcomm
+  MPIU_Comm :: comm
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscShmCommGetMpiShmComm
+#endif
+  interface operator(.ne.)
+    module procedure PetscShmCommnotequals
+  end interface operator (.ne.)
+  interface operator(.eq.)
+    module procedure PetscShmCommequals
+  end interface operator (.eq.)
+
+  interface
+  subroutine PetscOmpCtrlCreate(petsc_comm,nthreads,pctrl, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscOmpCtrl
+  MPIU_Comm :: petsc_comm
+  PetscInt :: nthreads
+  PetscOmpCtrl :: pctrl
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscOmpCtrlCreate
+#endif
+  interface
+  subroutine PetscOmpCtrlDestroy(pctrl, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscOmpCtrl
+  PetscOmpCtrl :: pctrl
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscOmpCtrlDestroy
+#endif
+  interface
+  subroutine PetscOmpCtrlGetOmpComms(ctrl,omp_comm,omp_master_comm,is_omp_master, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscOmpCtrl
+  PetscOmpCtrl :: ctrl
+  MPIU_Comm :: omp_comm
+  MPIU_Comm :: omp_master_comm
+  PetscBool :: is_omp_master
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscOmpCtrlGetOmpComms
+#endif
+  interface
+  subroutine PetscOmpCtrlBarrier(ctrl, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscOmpCtrl
+  PetscOmpCtrl :: ctrl
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscOmpCtrlBarrier
+#endif
+  interface
+  subroutine PetscOmpCtrlOmpRegionOnMasterBegin(ctrl, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscOmpCtrl
+  PetscOmpCtrl :: ctrl
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscOmpCtrlOmpRegionOnMasterBegin
+#endif
+  interface
+  subroutine PetscOmpCtrlOmpRegionOnMasterEnd(ctrl, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscOmpCtrl
+  PetscOmpCtrl :: ctrl
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscOmpCtrlOmpRegionOnMasterEnd
+#endif
+  interface operator(.ne.)
+    module procedure PetscOmpCtrlnotequals
+  end interface operator (.ne.)
+  interface operator(.eq.)
+    module procedure PetscOmpCtrlequals
+  end interface operator (.eq.)
+
+  interface
+  subroutine PetscSegBufferCreate(unitbytes,expected,seg, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscSegBuffer
+  PetscSizeT :: unitbytes
+  PetscCount :: expected
+  PetscSegBuffer :: seg
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscSegBufferCreate
+#endif
+  interface
+  subroutine PetscSegBufferDestroy(seg, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscSegBuffer
+  PetscSegBuffer :: seg
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscSegBufferDestroy
+#endif
+  interface
+  subroutine PetscSegBufferGetSize(seg,usedsize, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscSegBuffer
+  PetscSegBuffer :: seg
+  PetscCount :: usedsize
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscSegBufferGetSize
+#endif
+  interface
+  subroutine PetscSegBufferUnuse(seg,unused, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscSegBuffer
+  PetscSegBuffer :: seg
+  PetscCount :: unused
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscSegBufferUnuse
+#endif
+  interface operator(.ne.)
+    module procedure PetscSegBuffernotequals
+  end interface operator (.ne.)
+  interface operator(.eq.)
+    module procedure PetscSegBufferequals
+  end interface operator (.eq.)
+
+  interface
+  subroutine PetscOptionsHelpPrintedDestroy(hp, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscOptionsHelpPrinted
+  PetscOptionsHelpPrinted :: hp
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscOptionsHelpPrintedDestroy
+#endif
+  interface
+  subroutine PetscOptionsHelpPrintedCreate(hp, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscOptionsHelpPrinted
+  PetscOptionsHelpPrinted :: hp
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscOptionsHelpPrintedCreate
+#endif
+  interface
+  subroutine PetscOptionsHelpPrintedCheck(hp,pre,name,found, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscOptionsHelpPrinted
+  PetscOptionsHelpPrinted :: hp
+  character(*) :: pre
+  character(*) :: name
+  PetscBool :: found
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscOptionsHelpPrintedCheck
+#endif
+  interface operator(.ne.)
+    module procedure PetscOptionsHelpPrintednotequals
+  end interface operator (.ne.)
+  interface operator(.eq.)
+    module procedure PetscOptionsHelpPrintedequals
+  end interface operator (.eq.)
+
+  interface
+  subroutine PetscDataTypeGetSize(ptype,size, ierr)
+  use, intrinsic :: ISO_C_binding
+  import ePetscDataType
+  PetscDataType :: ptype
+  PetscSizeT :: size
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDataTypeGetSize
+#endif
+  interface
+  subroutine PetscDataTypeFromString(name,ptype,found, ierr)
+  use, intrinsic :: ISO_C_binding
+  import ePetscDataType
+  character(*) :: name
+  PetscDataType :: ptype
+  PetscBool :: found
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDataTypeFromString
+#endif
+  interface operator(.ne.)
+    module procedure PetscNullnotequals
+  end interface operator (.ne.)
+  interface operator(.eq.)
+    module procedure PetscNullequals
+  end interface operator (.eq.)
+
+  interface
+  subroutine PetscGlobusAuthorize(comm,access_token, ierr)
+  use, intrinsic :: ISO_C_binding
+  MPIU_Comm :: comm
+  character(*) :: access_token
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscGlobusAuthorize
+#endif
+  interface
+  subroutine PetscGlobusGetTransfers(comm,access_token,buff, ierr)
+  use, intrinsic :: ISO_C_binding
+  MPIU_Comm :: comm
+  character(*) :: access_token
+  character(*) :: buff
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscGlobusGetTransfers
+#endif
+  interface
+  subroutine PetscGlobusUpload(comm,access_token,filename, ierr)
+  use, intrinsic :: ISO_C_binding
+  MPIU_Comm :: comm
+  character(*) :: access_token
+  character(*) :: filename
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscGlobusUpload
+#endif
+  interface
+  subroutine PetscGoogleDriveRefresh(comm,refresh_token,access_token, ierr)
+  use, intrinsic :: ISO_C_binding
+  MPIU_Comm :: comm
+  character(*) :: refresh_token
+  character(*) :: access_token
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscGoogleDriveRefresh
+#endif
+  interface
+  subroutine PetscGoogleDriveUpload(comm,access_token,filename, ierr)
+  use, intrinsic :: ISO_C_binding
+  MPIU_Comm :: comm
+  character(*) :: access_token
+  character(*) :: filename
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscGoogleDriveUpload
+#endif
+  interface
+  subroutine PetscGoogleDriveAuthorize(comm,access_token,refresh_token, ierr)
+  use, intrinsic :: ISO_C_binding
+  MPIU_Comm :: comm
+  character(*) :: access_token
+  character(*) :: refresh_token
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscGoogleDriveAuthorize
+#endif
+  interface
+  subroutine PetscPullJSONValue(buff,key,value,found, ierr)
+  use, intrinsic :: ISO_C_binding
+  character(*) :: buff
+  character(*) :: key
+  character(*) :: value
+  PetscBool :: found
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscPullJSONValue
+#endif
+  interface
+  subroutine PetscPushJSONValue(buff,key,value,bufflen, ierr)
+  use, intrinsic :: ISO_C_binding
+  character(*) :: buff
+  character(*) :: key
+  character(*) :: value
+  PetscSizeT :: bufflen
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscPushJSONValue
+#endif
+  interface
+  subroutine PetscBoxRefresh(comm,refresh_token,access_token,new_refresh_token, ierr)
+  use, intrinsic :: ISO_C_binding
+  MPIU_Comm :: comm
+  character(*) :: refresh_token
+  character(*) :: access_token
+  character(*) :: new_refresh_token
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscBoxRefresh
+#endif
+  interface
+  subroutine PetscBoxUpload(comm,access_token,filename, ierr)
+  use, intrinsic :: ISO_C_binding
+  MPIU_Comm :: comm
+  character(*) :: access_token
+  character(*) :: filename
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscBoxUpload
+#endif
+  interface
+  subroutine PetscSAWsBlock(ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscSAWsBlock
+#endif
+  interface
+  subroutine PetscMemoryGetCurrentUsage(mem, ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscLogDouble :: mem
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscMemoryGetCurrentUsage
+#endif
+  interface
+  subroutine PetscMemoryGetMaximumUsage(mem, ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscLogDouble :: mem
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscMemoryGetMaximumUsage
+#endif
+  interface
+  subroutine PetscMemorySetGetMaximumUsage(ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscMemorySetGetMaximumUsage
+#endif
+  interface
+  subroutine PetscMallocValidate(line,function,file, ierr)
+  use, intrinsic :: ISO_C_binding
+  integer4 :: line
+  character(*) :: function
+  character(*) :: file
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscMallocValidate
+#endif
+  interface
+  subroutine PetscMemoryView(viewer,message, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscViewer
+  PetscViewer :: viewer
+  character(*) :: message
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscMemoryView
+#endif
+  interface
+  subroutine PetscMallocGetCurrentUsage(space, ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscLogDouble :: space
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscMallocGetCurrentUsage
+#endif
+  interface
+  subroutine PetscMallocGetMaximumUsage(space, ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscLogDouble :: space
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscMallocGetMaximumUsage
+#endif
+  interface
+  subroutine PetscMallocPushMaximumUsage(event, ierr)
+  use, intrinsic :: ISO_C_binding
+  integer4 :: event
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscMallocPushMaximumUsage
+#endif
+  interface
+  subroutine PetscMallocPopMaximumUsage(event,mu, ierr)
+  use, intrinsic :: ISO_C_binding
+  integer4 :: event
+  PetscLogDouble :: mu
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscMallocPopMaximumUsage
+#endif
+  interface
+  subroutine PetscMallocViewSet(logmin, ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscLogDouble :: logmin
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscMallocViewSet
+#endif
+  interface
+  subroutine PetscMallocViewGet(logging, ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscBool :: logging
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscMallocViewGet
+#endif
+  interface
+  subroutine PetscMallocTraceSet(viewer,active,logmin, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscViewer
+  PetscViewer :: viewer
+  PetscBool :: active
+  PetscLogDouble :: logmin
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscMallocTraceSet
+#endif
+  interface
+  subroutine PetscMallocTraceGet(logging, ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscBool :: logging
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscMallocTraceGet
+#endif
+  interface
+  subroutine PetscMallocSetDebug(eachcall,initializenan, ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscBool :: eachcall
+  PetscBool :: initializenan
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscMallocSetDebug
+#endif
+  interface
+  subroutine PetscMallocGetDebug(basic,eachcall,initializenan, ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscBool :: basic
+  PetscBool :: eachcall
+  PetscBool :: initializenan
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscMallocGetDebug
+#endif
+  interface
+  subroutine PetscMallocLogRequestedSizeSet(flg, ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscBool :: flg
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscMallocLogRequestedSizeSet
+#endif
+  interface
+  subroutine PetscMallocLogRequestedSizeGet(flg, ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscBool :: flg
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscMallocLogRequestedSizeGet
+#endif
+  interface
+  subroutine PetscMallocSet(imalloc,ifree,iralloc, ierr)
+  use, intrinsic :: ISO_C_binding
+  external :: imalloc
+  external :: ifree
+  external :: iralloc
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscMallocSet
+#endif
+  interface
+  subroutine PetscMallocClear(ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscMallocClear
+#endif
+  interface
+  subroutine PetscMemoryTrace(label, ierr)
+  use, intrinsic :: ISO_C_binding
+  character(*) :: label
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscMemoryTrace
+#endif
+  interface
+  subroutine PetscMallocSetDRAM(ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscMallocSetDRAM
+#endif
+  interface
+  subroutine PetscMallocResetDRAM(ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscMallocResetDRAM
+#endif
+  interface
+  subroutine PetscMallocSetCoalesce(coalesce, ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscBool :: coalesce
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscMallocSetCoalesce
+#endif
+  interface
+  subroutine PetscMallocSetCUDAHost(ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscMallocSetCUDAHost
+#endif
+  interface
+  subroutine PetscMallocResetCUDAHost(ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscMallocResetCUDAHost
+#endif
+  interface
+  subroutine PetscTestFile(fname,mode,flg, ierr)
+  use, intrinsic :: ISO_C_binding
+  character(*) :: fname
+  character :: mode
+  PetscBool :: flg
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscTestFile
+#endif
+  interface
+  subroutine PetscTestDirectory(dirname,mode,flg, ierr)
+  use, intrinsic :: ISO_C_binding
+  character(*) :: dirname
+  character :: mode
+  PetscBool :: flg
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscTestDirectory
+#endif
+  interface
+  subroutine PetscLs(comm,dirname,found,flg, ierr)
+  use, intrinsic :: ISO_C_binding
+  MPIU_Comm :: comm
+  character(*) :: dirname
+  character(*) :: found
+  PetscBool :: flg
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscLs
+#endif
+  interface
+  subroutine PetscGetRealPath(path,rpath, ierr)
+  use, intrinsic :: ISO_C_binding
+  character(*) :: path
+  character(*) :: rpath
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscGetRealPath
+#endif
+  interface
+  subroutine PetscGetTmp(comm,dir, ierr)
+  use, intrinsic :: ISO_C_binding
+  MPIU_Comm :: comm
+  character(*) :: dir
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscGetTmp
+#endif
+  interface
+  subroutine PetscSharedTmp(comm,shared, ierr)
+  use, intrinsic :: ISO_C_binding
+  MPIU_Comm :: comm
+  PetscBool :: shared
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscSharedTmp
+#endif
+  interface
+  subroutine PetscSharedWorkingDirectory(comm,shared, ierr)
+  use, intrinsic :: ISO_C_binding
+  MPIU_Comm :: comm
+  PetscBool :: shared
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscSharedWorkingDirectory
+#endif
+  interface
+  subroutine PetscFileRetrieve(comm,url,localname,found, ierr)
+  use, intrinsic :: ISO_C_binding
+  MPIU_Comm :: comm
+  character(*) :: url
+  character(*) :: localname
+  PetscBool :: found
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscFileRetrieve
+#endif
+  interface
+  subroutine PetscGetFullPath(path,fullpath, ierr)
+  use, intrinsic :: ISO_C_binding
+  character(*) :: path
+  character(*) :: fullpath
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscGetFullPath
+#endif
+  interface
+  subroutine PetscBinaryOpen(name,mode,fd, ierr)
+  use, intrinsic :: ISO_C_binding
+  import ePetscFileMode
+  character(*) :: name
+  PetscFileMode :: mode
+  integer4 :: fd
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscBinaryOpen
+#endif
+  interface
+  subroutine PetscBinaryClose(fd, ierr)
+  use, intrinsic :: ISO_C_binding
+  integer4 :: fd
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscBinaryClose
+#endif
+  interface
+  subroutine PetscPOpenSetMachine(machine, ierr)
+  use, intrinsic :: ISO_C_binding
+  character(*) :: machine
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscPOpenSetMachine
+#endif
+  interface
+  subroutine PetscGetWorkingDirectory(path, ierr)
+  use, intrinsic :: ISO_C_binding
+  character(*) :: path
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscGetWorkingDirectory
+#endif
+  interface
+  subroutine PetscGetHomeDirectory(dir, ierr)
+  use, intrinsic :: ISO_C_binding
+  character(*) :: dir
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscGetHomeDirectory
+#endif
+  interface
+  subroutine PetscFixFilename(filein,fileout, ierr)
+  use, intrinsic :: ISO_C_binding
+  character(*) :: filein
+  character(*) :: fileout
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscFixFilename
+#endif
+  interface
+  subroutine PetscGetRelativePath(fullpath,path, ierr)
+  use, intrinsic :: ISO_C_binding
+  character(*) :: fullpath
+  character(*) :: path
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscGetRelativePath
+#endif
+  interface
+  subroutine PetscFormatConvertGetSize(format,size, ierr)
+  use, intrinsic :: ISO_C_binding
+  character(*) :: format
+  PetscSizeT :: size
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscFormatConvertGetSize
+#endif
+  interface
+  subroutine PetscFormatConvert(format,newformat, ierr)
+  use, intrinsic :: ISO_C_binding
+  character(*) :: format
+  character(*) :: newformat
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscFormatConvert
+#endif
+  interface
+  subroutine PetscFormatRealArray(buf,fmt,n,x, ierr)
+  use, intrinsic :: ISO_C_binding
+  character(*) :: buf
+  character(*) :: fmt
+  PetscInt :: n
+  PetscReal :: x(*)
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscFormatRealArray
+#endif
+  interface
+  subroutine PetscMkdir(dir, ierr)
+  use, intrinsic :: ISO_C_binding
+  character(*) :: dir
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscMkdir
+#endif
+  interface
+  subroutine PetscMkdtemp(dir, ierr)
+  use, intrinsic :: ISO_C_binding
+  character(*) :: dir
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscMkdtemp
+#endif
+  interface
+  subroutine PetscRMTree(dir, ierr)
+  use, intrinsic :: ISO_C_binding
+  character(*) :: dir
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscRMTree
+#endif
+  interface
+  subroutine PetscPythonFinalize(ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscPythonFinalize
+#endif
+  interface
+  subroutine PetscPythonInitialize(pyexe,pylib, ierr)
+  use, intrinsic :: ISO_C_binding
+  character(*) :: pyexe
+  character(*) :: pylib
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscPythonInitialize
+#endif
+  interface
+  subroutine PetscPythonPrintError(ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscPythonPrintError
+#endif
+  interface
+  subroutine PetscPythonMonitorSet(obj,url, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscObject
+  PetscObject :: obj
+  character(*) :: url
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscPythonMonitorSet
+#endif
+  interface
+  subroutine PetscSysFinalizePackage(ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscSysFinalizePackage
+#endif
+  interface
+  subroutine PetscSysInitializePackage(ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscSysInitializePackage
+#endif
+  interface
+  subroutine PetscOpenSocket(hostname,portnum,t, ierr)
+  use, intrinsic :: ISO_C_binding
+  character(*) :: hostname
+  integer4 :: portnum
+  integer4 :: t
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscOpenSocket
+#endif
+  interface
+  subroutine PetscRegisterFinalize(f, ierr)
+  use, intrinsic :: ISO_C_binding
+  external :: f
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscRegisterFinalize
+#endif
+  interface
+  subroutine PetscRegisterFinalizeAll(ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscRegisterFinalizeAll
+#endif
+  interface
+  subroutine PetscHasExternalPackage(pkg,has, ierr)
+  use, intrinsic :: ISO_C_binding
+  character(*) :: pkg
+  PetscBool :: has
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscHasExternalPackage
+#endif
+  interface
+  subroutine PetscInitialized(isInitialized, ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscBool :: isInitialized
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscInitialized
+#endif
+  interface
+  subroutine PetscFinalized(isFinalized, ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscBool :: isFinalized
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscFinalized
+#endif
+  interface
+  subroutine PetscMaxSum(comm,array,max,sum, ierr)
+  use, intrinsic :: ISO_C_binding
+  MPIU_Comm :: comm
+  PetscInt :: array(*)
+  PetscInt :: max
+  PetscInt :: sum
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscMaxSum
+#endif
+  interface
+  subroutine PetscSetProgramName(name, ierr)
+  use, intrinsic :: ISO_C_binding
+  character(*) :: name
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscSetProgramName
+#endif
+  interface
+  subroutine PetscGetProgramName(name, ierr)
+  use, intrinsic :: ISO_C_binding
+  character(*) :: name
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscGetProgramName
+#endif
+  interface
+  subroutine PetscFinalize(ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscFinalize
+#endif
+  interface
+  subroutine PetscEnd(ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscEnd
+#endif
+  interface
+  subroutine PetscSetHelpVersionFunctions(help,version, ierr)
+  use, intrinsic :: ISO_C_binding
+  external :: help
+  external :: version
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscSetHelpVersionFunctions
+#endif
+  interface
+  subroutine PetscInitializeFortran(ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscInitializeFortran
+#endif
+  interface
+  subroutine PetscCommGetNewTag(comm,tag, ierr)
+  use, intrinsic :: ISO_C_binding
+  MPIU_Comm :: comm
+  PetscMPIInt :: tag
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscCommGetNewTag
+#endif
+  interface
+  subroutine PetscCommGetComm(comm_in,comm_out, ierr)
+  use, intrinsic :: ISO_C_binding
+  MPIU_Comm :: comm_in
+  MPIU_Comm :: comm_out
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscCommGetComm
+#endif
+  interface
+  subroutine PetscCommRestoreComm(comm_in,comm_out, ierr)
+  use, intrinsic :: ISO_C_binding
+  MPIU_Comm :: comm_in
+  MPIU_Comm :: comm_out
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscCommRestoreComm
+#endif
+  interface
+  subroutine PetscCommDuplicate(comm_in,comm_out,first_tag, ierr)
+  use, intrinsic :: ISO_C_binding
+  MPIU_Comm :: comm_in
+  MPIU_Comm :: comm_out
+  PetscMPIInt :: first_tag
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscCommDuplicate
+#endif
+  interface
+  subroutine PetscCommDestroy(comm, ierr)
+  use, intrinsic :: ISO_C_binding
+  MPIU_Comm :: comm
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscCommDestroy
+#endif
+  interface
+  subroutine PetscGetVersion(version, ierr)
+  use, intrinsic :: ISO_C_binding
+  character(*) :: version
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscGetVersion
+#endif
+  interface
+  subroutine PetscGetVersionNumber(major,minor,subminor,release, ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscInt :: major
+  PetscInt :: minor
+  PetscInt :: subminor
+  PetscInt :: release
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscGetVersionNumber
+#endif
+  interface
+  subroutine PetscBLASSetNumThreads(nt, ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscInt :: nt
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscBLASSetNumThreads
+#endif
+  interface
+  subroutine PetscBLASGetNumThreads(nt, ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscInt :: nt
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscBLASGetNumThreads
+#endif
+  interface
+  subroutine PetscKokkosInitializeCheck(ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscKokkosInitializeCheck
+#endif
+  interface
+  subroutine PetscElementalInitializePackage(ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscElementalInitializePackage
+#endif
+  interface
+  subroutine PetscElementalInitialized(isInitialized, ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscBool :: isInitialized
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscElementalInitialized
+#endif
+  interface
+  subroutine PetscElementalFinalizePackage(ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscElementalFinalizePackage
+#endif
+  interface
+  subroutine PetscIntSortSemiOrdered(n,arr, ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscInt :: n
+  PetscInt :: arr(*)
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscIntSortSemiOrdered
+#endif
+  interface
+  subroutine PetscIntSortSemiOrderedWithArray(n,arr1,arr2, ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscInt :: n
+  PetscInt :: arr1(*)
+  PetscInt :: arr2(*)
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscIntSortSemiOrderedWithArray
+#endif
+  interface
+  subroutine PetscMPIIntSortSemiOrdered(n,arr, ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscInt :: n
+  PetscMPIInt :: arr(*)
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscMPIIntSortSemiOrdered
+#endif
+  interface
+  subroutine PetscMPIIntSortSemiOrderedWithArray(n,arr1,arr2, ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscInt :: n
+  PetscMPIInt :: arr1(*)
+  PetscMPIInt :: arr2(*)
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscMPIIntSortSemiOrderedWithArray
+#endif
+  interface
+  subroutine PetscRealSortSemiOrdered(n,arr, ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscInt :: n
+  PetscReal :: arr(*)
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscRealSortSemiOrdered
+#endif
+  interface
+  subroutine PetscRealSortSemiOrderedWithArrayInt(n,arr1,arr2, ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscInt :: n
+  PetscReal :: arr1(*)
+  PetscInt :: arr2(*)
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscRealSortSemiOrderedWithArrayInt
+#endif
+  interface
+  subroutine PetscSortedInt(n,X,sorted, ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscCount :: n
+  PetscInt :: X(*)
+  PetscBool :: sorted
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscSortedInt
+#endif
+  interface
+  subroutine PetscSortedInt64(n,X,sorted, ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscCount :: n
+  PetscInt64 :: X(*)
+  PetscBool :: sorted
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscSortedInt64
+#endif
+  interface
+  subroutine PetscSortInt(n,X, ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscCount :: n
+  PetscInt :: X(*)
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscSortInt
+#endif
+  interface
+  subroutine PetscSortInt64(n,X, ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscCount :: n
+  PetscInt64 :: X(*)
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscSortInt64
+#endif
+  interface
+  subroutine PetscSortCount(n,X, ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscCount :: n
+  PetscCount :: X(*)
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscSortCount
+#endif
+  interface
+  subroutine PetscSortReverseInt(n,X, ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscCount :: n
+  PetscInt :: X(*)
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscSortReverseInt
+#endif
+  interface
+  subroutine PetscSortedRemoveDupsInt(n,X, ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscInt :: n
+  PetscInt :: X(*)
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscSortedRemoveDupsInt
+#endif
+  interface
+  subroutine PetscSortedCheckDupsInt(n,X,flg, ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscCount :: n
+  PetscInt :: X(*)
+  PetscBool :: flg
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscSortedCheckDupsInt
+#endif
+  interface
+  subroutine PetscSortedCheckDupsCount(n,X,flg, ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscCount :: n
+  PetscCount :: X(*)
+  PetscBool :: flg
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscSortedCheckDupsCount
+#endif
+  interface
+  subroutine PetscSortRemoveDupsInt(n,X, ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscInt :: n
+  PetscInt :: X(*)
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscSortRemoveDupsInt
+#endif
+  interface
+  subroutine PetscFindInt(key,n,X,loc, ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscInt :: key
+  PetscCount :: n
+  PetscInt :: X(*)
+  PetscInt :: loc
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscFindInt
+#endif
+  interface
+  subroutine PetscFindCount(key,n,X,loc, ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscCount :: key
+  PetscCount :: n
+  PetscCount :: X(*)
+  PetscCount :: loc
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscFindCount
+#endif
+  interface
+  subroutine PetscCheckDupsInt(n,X,dups, ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscInt :: n
+  PetscInt :: X(*)
+  PetscBool :: dups
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscCheckDupsInt
+#endif
+  interface
+  subroutine PetscFindMPIInt(key,n,X,loc, ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscMPIInt :: key
+  PetscCount :: n
+  PetscMPIInt :: X(*)
+  PetscInt :: loc
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscFindMPIInt
+#endif
+  interface
+  subroutine PetscSortIntWithArray(n,X,Y, ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscCount :: n
+  PetscInt :: X(*)
+  PetscInt :: Y(*)
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscSortIntWithArray
+#endif
+  interface
+  subroutine PetscSortIntWithArrayPair(n,X,Y,Z, ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscCount :: n
+  PetscInt :: X(*)
+  PetscInt :: Y(*)
+  PetscInt :: Z(*)
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscSortIntWithArrayPair
+#endif
+  interface
+  subroutine PetscSortIntWithMPIIntArray(n,X,Y, ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscCount :: n
+  PetscInt :: X(*)
+  PetscMPIInt :: Y(*)
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscSortIntWithMPIIntArray
+#endif
+  interface
+  subroutine PetscSortIntWithCountArray(n,X,Y, ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscCount :: n
+  PetscInt :: X(*)
+  PetscCount :: Y(*)
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscSortIntWithCountArray
+#endif
+  interface
+  subroutine PetscSortIntWithIntCountArrayPair(n,X,Y,Z, ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscCount :: n
+  PetscInt :: X(*)
+  PetscInt :: Y(*)
+  PetscCount :: Z(*)
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscSortIntWithIntCountArrayPair
+#endif
+  interface
+  subroutine PetscSortedMPIInt(n,X,sorted, ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscCount :: n
+  PetscMPIInt :: X(*)
+  PetscBool :: sorted
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscSortedMPIInt
+#endif
+  interface
+  subroutine PetscSortMPIInt(n,X, ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscCount :: n
+  PetscMPIInt :: X(*)
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscSortMPIInt
+#endif
+  interface
+  subroutine PetscSortRemoveDupsMPIInt(n,X, ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscInt :: n
+  PetscMPIInt :: X(*)
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscSortRemoveDupsMPIInt
+#endif
+  interface
+  subroutine PetscSortMPIIntWithArray(n,X,Y, ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscCount :: n
+  PetscMPIInt :: X(*)
+  PetscMPIInt :: Y(*)
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscSortMPIIntWithArray
+#endif
+  interface
+  subroutine PetscSortMPIIntWithIntArray(n,X,Y, ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscCount :: n
+  PetscMPIInt :: X(*)
+  PetscInt :: Y(*)
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscSortMPIIntWithIntArray
+#endif
+  interface
+  subroutine PetscSortIntWithScalarArray(n,X,Y, ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscCount :: n
+  PetscInt :: X(*)
+  PetscScalar :: Y(*)
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscSortIntWithScalarArray
+#endif
+  interface
+  subroutine PetscMergeIntArrayPair(an,aI,aJ,bn,bI,bJ,n,L,J, ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscInt :: an
+  PetscInt :: aI(*)
+  PetscInt :: aJ(*)
+  PetscInt :: bn
+  PetscInt :: bI(*)
+  PetscInt :: bJ(*)
+  PetscInt :: n
+  PetscInt, pointer :: L(:)
+  PetscInt, pointer :: J(:)
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscMergeIntArrayPair
+#endif
+  interface
+  subroutine PetscParallelSortedInt(comm,n,keys,is_sorted, ierr)
+  use, intrinsic :: ISO_C_binding
+  MPIU_Comm :: comm
+  PetscInt :: n
+  PetscInt :: keys(*)
+  PetscBool :: is_sorted
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscParallelSortedInt
+#endif
+  interface
+  subroutine PetscCommBuildTwoSidedSetType(comm,twosided, ierr)
+  use, intrinsic :: ISO_C_binding
+  import ePetscBuildTwoSidedType
+  MPIU_Comm :: comm
+  PetscBuildTwoSidedType :: twosided
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscCommBuildTwoSidedSetType
+#endif
+  interface
+  subroutine PetscCommBuildTwoSidedGetType(comm,twosided, ierr)
+  use, intrinsic :: ISO_C_binding
+  import ePetscBuildTwoSidedType
+  MPIU_Comm :: comm
+  PetscBuildTwoSidedType :: twosided
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscCommBuildTwoSidedGetType
+#endif
+  interface
+  subroutine PetscSplitOwnershipBlock(comm,bs,n,M_N, ierr)
+  use, intrinsic :: ISO_C_binding
+  MPIU_Comm :: comm
+  PetscInt :: bs
+  PetscInt :: n
+  PetscInt :: M_N
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscSplitOwnershipBlock
+#endif
+  interface
+  subroutine PetscSplitOwnership(comm,n,M_N, ierr)
+  use, intrinsic :: ISO_C_binding
+  MPIU_Comm :: comm
+  PetscInt :: n
+  PetscInt :: M_N
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscSplitOwnership
+#endif
+  interface
+  subroutine PetscSplitOwnershipEqual(comm,n,M_N, ierr)
+  use, intrinsic :: ISO_C_binding
+  MPIU_Comm :: comm
+  PetscInt :: n
+  PetscInt :: M_N
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscSplitOwnershipEqual
+#endif
+  interface
+  subroutine PetscGetPetscDir(dir, ierr)
+  use, intrinsic :: ISO_C_binding
+  character(*) :: dir
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscGetPetscDir
+#endif
+  interface
+  subroutine PetscGetArchType(str, ierr)
+  use, intrinsic :: ISO_C_binding
+  character(*) :: str
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscGetArchType
+#endif
+  interface
+  subroutine PetscSetDisplay(ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscSetDisplay
+#endif
+  interface
+  subroutine PetscGetDisplay(display, ierr)
+  use, intrinsic :: ISO_C_binding
+  character(*) :: display
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscGetDisplay
+#endif
+  interface
+  subroutine PetscGetHostName(name, ierr)
+  use, intrinsic :: ISO_C_binding
+  character(*) :: name
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscGetHostName
+#endif
+  interface
+  subroutine PetscSortedReal(n,X,sorted, ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscCount :: n
+  PetscReal :: X(*)
+  PetscBool :: sorted
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscSortedReal
+#endif
+  interface
+  subroutine PetscSortReal(n,v, ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscCount :: n
+  PetscReal :: v(*)
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscSortReal
+#endif
+  interface
+  subroutine PetscSortRealWithArrayInt(n,r,Ii, ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscCount :: n
+  PetscReal :: r(*)
+  PetscInt :: Ii(*)
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscSortRealWithArrayInt
+#endif
+  interface
+  subroutine PetscFindReal(key,n,t,eps,loc, ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscReal :: key
+  PetscCount :: n
+  PetscReal :: t(*)
+  PetscReal :: eps
+  PetscInt :: loc
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscFindReal
+#endif
+  interface
+  subroutine PetscSortRemoveDupsReal(n,v, ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscInt :: n
+  PetscReal :: v(*)
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscSortRemoveDupsReal
+#endif
+  interface
+  subroutine PetscSortSplit(ncut,n,a,idx, ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscInt :: ncut
+  PetscInt :: n
+  PetscScalar :: a(*)
+  PetscInt :: idx(*)
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscSortSplit
+#endif
+  interface
+  subroutine PetscSortSplitReal(ncut,n,a,idx, ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscInt :: ncut
+  PetscInt :: n
+  PetscReal :: a(*)
+  PetscInt :: idx(*)
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscSortSplitReal
+#endif
+  interface
+  subroutine PetscGatherNumberOfMessages(comm,iflags,ilengths,nrecvs, ierr)
+  use, intrinsic :: ISO_C_binding
+  MPIU_Comm :: comm
+  PetscMPIInt :: iflags(*)
+  PetscMPIInt :: ilengths(*)
+  PetscMPIInt :: nrecvs
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscGatherNumberOfMessages
+#endif
+  interface
+  subroutine PetscShmgetAddressesFinalize(ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscShmgetAddressesFinalize
+#endif
+  interface
+  subroutine PetscSortIntWithPermutation(n,i,idx, ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscInt :: n
+  PetscInt :: i(*)
+  PetscInt :: idx(*)
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscSortIntWithPermutation
+#endif
+  interface
+  subroutine PetscSortRealWithPermutation(n,i,idx, ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscInt :: n
+  PetscReal :: i(*)
+  PetscInt :: idx(*)
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscSortRealWithPermutation
+#endif
+  interface
+  subroutine PetscSortStrWithPermutation(n,i,idx, ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscInt :: n
+  character(*) :: i
+  PetscInt :: idx(*)
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscSortStrWithPermutation
+#endif
+  interface
+  subroutine PetscSleep(s, ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscReal :: s
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscSleep
+#endif
+  interface PetscBarrier
+  subroutine PetscBarrier(obj, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscObject
+  PetscObject :: obj
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscBarrier
+#endif
+  interface
+  subroutine PetscSequentialPhaseBegin(comm,ng, ierr)
+  use, intrinsic :: ISO_C_binding
+  MPIU_Comm :: comm
+  integer4 :: ng
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscSequentialPhaseBegin
+#endif
+  interface
+  subroutine PetscSequentialPhaseEnd(comm,ng, ierr)
+  use, intrinsic :: ISO_C_binding
+  MPIU_Comm :: comm
+  integer4 :: ng
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscSequentialPhaseEnd
+#endif
+  interface
+  subroutine PetscGlobalMinMaxInt(comm,minMaxVal,minMaxValGlobal, ierr)
+  use, intrinsic :: ISO_C_binding
+  MPIU_Comm :: comm
+  PetscInt :: minMaxVal(*)
+  PetscInt :: minMaxValGlobal(*)
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscGlobalMinMaxInt
+#endif
+  interface
+  subroutine PetscGlobalMinMaxReal(comm,minMaxVal,minMaxValGlobal, ierr)
+  use, intrinsic :: ISO_C_binding
+  MPIU_Comm :: comm
+  PetscReal :: minMaxVal(*)
+  PetscReal :: minMaxValGlobal(*)
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscGlobalMinMaxReal
+#endif
+  interface
+  subroutine PetscProcessPlacementView(viewer, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscViewer
+  PetscViewer :: viewer
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscProcessPlacementView
+#endif
+  interface
+  subroutine PetscGetUserName(name, ierr)
+  use, intrinsic :: ISO_C_binding
+  character(*) :: name
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscGetUserName
+#endif
+  interface
+  subroutine PetscGetDate(date, ierr)
+  use, intrinsic :: ISO_C_binding
+  character(*) :: date
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscGetDate
+#endif
+  interface
+  subroutine PetscDLAddr(func,name, ierr)
+  use, intrinsic :: ISO_C_binding
+  external func
+  character(*) :: name
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDLAddr
+#endif
+  interface
+  subroutine PetscSetDebugTerminal(terminal, ierr)
+  use, intrinsic :: ISO_C_binding
+  character(*) :: terminal
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscSetDebugTerminal
+#endif
+  interface
+  subroutine PetscSetDebugger(debugger,usedebugterminal, ierr)
+  use, intrinsic :: ISO_C_binding
+  character(*) :: debugger
+  PetscBool :: usedebugterminal
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscSetDebugger
+#endif
+  interface
+  subroutine PetscSetDefaultDebugger(ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscSetDefaultDebugger
+#endif
+  interface
+  subroutine PetscSetDebuggerFromString(string, ierr)
+  use, intrinsic :: ISO_C_binding
+  character(*) :: string
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscSetDebuggerFromString
+#endif
+  interface
+  subroutine PetscWaitOnError(ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscWaitOnError
+#endif
+  interface
+  subroutine PetscAttachDebugger(ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscAttachDebugger
+#endif
+  interface
+  subroutine PetscStopForDebugger(ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscStopForDebugger
+#endif
+  interface
+  subroutine PetscIntViewNumColumns(N,Ncol,idx,viewer, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscViewer
+  PetscInt :: N
+  PetscInt :: Ncol
+  PetscInt :: idx(*)
+  PetscViewer :: viewer
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscIntViewNumColumns
+#endif
+  interface
+  subroutine PetscRealViewNumColumns(N,Ncol,idx,viewer, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscViewer
+  PetscInt :: N
+  PetscInt :: Ncol
+  PetscReal :: idx(*)
+  PetscViewer :: viewer
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscRealViewNumColumns
+#endif
+  interface
+  subroutine PetscScalarViewNumColumns(N,Ncol,idx,viewer, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscViewer
+  PetscInt :: N
+  PetscInt :: Ncol
+  PetscScalar :: idx(*)
+  PetscViewer :: viewer
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscScalarViewNumColumns
+#endif
+  interface
+  subroutine PetscIntView(N,idx,viewer, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscViewer
+  PetscInt :: N
+  PetscInt :: idx(*)
+  PetscViewer :: viewer
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscIntView
+#endif
+  interface
+  subroutine PetscRealView(N,idx,viewer, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscViewer
+  PetscInt :: N
+  PetscReal :: idx(*)
+  PetscViewer :: viewer
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscRealView
+#endif
+  interface
+  subroutine PetscScalarView(N,idx,viewer, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscViewer
+  PetscInt :: N
+  PetscScalar :: idx(*)
+  PetscViewer :: viewer
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscScalarView
+#endif
+  interface
+  subroutine PetscClassIdRegister(name,oclass, ierr)
+  use, intrinsic :: ISO_C_binding
+  character(*) :: name
+  PetscClassId :: oclass
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscClassIdRegister
+#endif
+  interface
+  subroutine PetscIntMultError(a,b,result, ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscInt :: a
+  PetscInt :: b
+  PetscInt :: result
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscIntMultError
+#endif
+  interface
+  subroutine PetscIntSumError(a,b,result, ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscInt :: a
+  PetscInt :: b
+  PetscInt :: result
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscIntSumError
+#endif
+  interface
+  subroutine PetscCitationsRegister(cit,set, ierr)
+  use, intrinsic :: ISO_C_binding
+  character(*) :: cit
+  PetscBool :: set
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscCitationsRegister
+#endif
+  interface operator(.ne.)
+    module procedure PetscCopyModenotequals
+  end interface operator (.ne.)
+  interface operator(.eq.)
+    module procedure PetscCopyModeequals
+  end interface operator (.eq.)
+
+  interface operator(.ne.)
+    module procedure PetscDataTypenotequals
+  end interface operator (.ne.)
+  interface operator(.eq.)
+    module procedure PetscDataTypeequals
+  end interface operator (.eq.)
+
+  interface operator(.ne.)
+    module procedure PetscFileModenotequals
+  end interface operator (.ne.)
+  interface operator(.eq.)
+    module procedure PetscFileModeequals
+  end interface operator (.eq.)
+
+  interface operator(.ne.)
+    module procedure PetscDLModenotequals
+  end interface operator (.ne.)
+  interface operator(.eq.)
+    module procedure PetscDLModeequals
+  end interface operator (.eq.)
+
+  interface operator(.ne.)
+    module procedure PetscBinarySeekTypenotequals
+  end interface operator (.ne.)
+  interface operator(.eq.)
+    module procedure PetscBinarySeekTypeequals
+  end interface operator (.eq.)
+
+  interface operator(.ne.)
+    module procedure PetscBuildTwoSidedTypenotequals
+  end interface operator (.ne.)
+  interface operator(.eq.)
+    module procedure PetscBuildTwoSidedTypeequals
+  end interface operator (.eq.)
+
+  interface operator(.ne.)
+    module procedure InsertModenotequals
+  end interface operator (.ne.)
+  interface operator(.eq.)
+    module procedure InsertModeequals
+  end interface operator (.eq.)
+
+  interface operator(.ne.)
+    module procedure PetscSubcommTypenotequals
+  end interface operator (.ne.)
+  interface operator(.eq.)
+    module procedure PetscSubcommTypeequals
+  end interface operator (.eq.)
+

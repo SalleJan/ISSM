@@ -1,0 +1,59 @@
+!
+!  Tests VecScatterCreateToAll Fortran stub
+#include <petsc/finclude/petscvec.h>
+program main
+  use petscvec
+  implicit none
+
+  PetscErrorCode ierr
+  PetscInt nlocal, row
+  PetscScalar num
+  PetscMPIInt rank
+  Vec v1, v2
+  VecScatter toall
+
+  PetscCallA(PetscInitialize(ierr))
+  PetscCallMPIA(MPI_Comm_rank(PETSC_COMM_WORLD, rank, ierr))
+  row = rank
+  num = rank
+
+  nlocal = 1
+  PetscCallA(VecCreateFromOptions(PETSC_COMM_WORLD, PETSC_NULL_CHARACTER, 1_PETSC_INT_KIND, nlocal, PETSC_DECIDE, v1, ierr))
+
+  PetscCallA(VecSetValue(v1, row, num, INSERT_VALUES, ierr))
+  PetscCallA(VecAssemblyBegin(v1, ierr))
+  PetscCallA(VecAssemblyEnd(v1, ierr))
+
+  PetscCallA(VecScatterCreateToAll(v1, toall, v2, ierr))
+
+  PetscCallA(VecScatterBegin(toall, v1, v2, INSERT_VALUES, SCATTER_FORWARD, ierr))
+  PetscCallA(VecScatterEnd(toall, v1, v2, INSERT_VALUES, SCATTER_FORWARD, ierr))
+
+  PetscCallA(VecScatterDestroy(toall, ierr))
+! Destroy v2 and then re-create it in VecScatterCreateToAll() to test if PETSc can differentiate NULL projects with destroyed objects
+  PetscCallA(VecDestroy(v2, ierr))
+
+  PetscCallA(VecScatterCreateToAll(v1, toall, v2, ierr))
+  PetscCallA(VecScatterBegin(toall, v1, v2, INSERT_VALUES, SCATTER_FORWARD, ierr))
+  PetscCallA(VecScatterEnd(toall, v1, v2, INSERT_VALUES, SCATTER_FORWARD, ierr))
+
+  if (rank == 2) then
+    PetscCallA(PetscObjectSetName(v2, 'v2', ierr))
+    PetscCallA(VecView(v2, PETSC_VIEWER_STDOUT_SELF, ierr))
+  end if
+
+  PetscCallA(VecScatterDestroy(toall, ierr))
+  PetscCallA(VecDestroy(v1, ierr))
+  PetscCallA(VecDestroy(v2, ierr))
+! It is OK to destroy again
+  PetscCallA(VecDestroy(v2, ierr))
+
+  PetscCallA(PetscFinalize(ierr))
+end
+
+!/*TEST
+!
+!     test:
+!       nsize: 4
+!
+!TEST*/

@@ -1,0 +1,15 @@
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT:: PetscScalarPrecisionnotequals
+!DEC$ ATTRIBUTES DLLEXPORT:: PetscScalarPrecisionequals
+#endif
+
+  function PetscScalarPrecisionnotequals(A,B)
+    logical PetscScalarPrecisionnotequals
+    type(ePetscScalarPrecision), intent(in) :: A,B
+    PetscScalarPrecisionnotequals = (A%v .ne. B%v)
+  end function
+  function PetscScalarPrecisionequals(A,B)
+    logical PetscScalarPrecisionequals
+    type(ePetscScalarPrecision), intent(in) :: A,B
+    PetscScalarPrecisionequals = (A%v .eq. B%v)
+  end function

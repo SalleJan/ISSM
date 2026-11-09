@@ -1,0 +1,509 @@
+  interface
+  subroutine AOFinalizePackage(ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::AOFinalizePackage
+#endif
+  interface
+  subroutine AOInitializePackage(ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::AOInitializePackage
+#endif
+  interface
+  subroutine AOSetType(ao,method, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tAO
+  AO :: ao
+  character(*) :: method
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::AOSetType
+#endif
+  interface
+  subroutine AOGetType(ao,type, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tAO
+  AO :: ao
+  character(*) :: type
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::AOGetType
+#endif
+  interface
+  subroutine AORegister(sname,function, ierr)
+  use, intrinsic :: ISO_C_binding
+  character(*) :: sname
+  external :: function
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::AORegister
+#endif
+  interface
+  subroutine AORegisterAll(ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::AORegisterAll
+#endif
+  interface
+  subroutine AOView(ao,viewer, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tAO,tPetscViewer
+  AO :: ao
+  PetscViewer :: viewer
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::AOView
+#endif
+  interface
+  subroutine AOViewFromOptions(ao,obj,name, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tAO,tPetscObject
+  AO :: ao
+  PetscObject :: obj
+  character(*) :: name
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::AOViewFromOptions
+#endif
+  interface
+  subroutine AODestroy(ao, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tAO
+  AO :: ao
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::AODestroy
+#endif
+  interface
+  subroutine AOPetscToApplicationIS(ao,is, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tAO,tIS
+  AO :: ao
+  IS :: is
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::AOPetscToApplicationIS
+#endif
+  interface
+  subroutine AOApplicationToPetscIS(ao,is, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tAO,tIS
+  AO :: ao
+  IS :: is
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::AOApplicationToPetscIS
+#endif
+  interface
+  subroutine AOPetscToApplication(ao,n,ia, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tAO
+  AO :: ao
+  PetscInt :: n
+  PetscInt :: ia(*)
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::AOPetscToApplication
+#endif
+  interface
+  subroutine AOApplicationToPetsc(ao,n,ia, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tAO
+  AO :: ao
+  PetscInt :: n
+  PetscInt :: ia(*)
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::AOApplicationToPetsc
+#endif
+  interface
+  subroutine AOPetscToApplicationPermuteInt(ao,block,array, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tAO
+  AO :: ao
+  PetscInt :: block
+  PetscInt :: array(*)
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::AOPetscToApplicationPermuteInt
+#endif
+  interface
+  subroutine AOApplicationToPetscPermuteInt(ao,block,array, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tAO
+  AO :: ao
+  PetscInt :: block
+  PetscInt :: array(*)
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::AOApplicationToPetscPermuteInt
+#endif
+  interface
+  subroutine AOPetscToApplicationPermuteReal(ao,block,array, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tAO
+  AO :: ao
+  PetscInt :: block
+  PetscReal :: array(*)
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::AOPetscToApplicationPermuteReal
+#endif
+  interface
+  subroutine AOApplicationToPetscPermuteReal(ao,block,array, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tAO
+  AO :: ao
+  PetscInt :: block
+  PetscReal :: array(*)
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::AOApplicationToPetscPermuteReal
+#endif
+  interface
+  subroutine AOSetFromOptions(ao, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tAO
+  AO :: ao
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::AOSetFromOptions
+#endif
+  interface
+  subroutine AOSetIS(ao,isapp,ispetsc, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tAO,tIS
+  AO :: ao
+  IS :: isapp
+  IS :: ispetsc
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::AOSetIS
+#endif
+  interface
+  subroutine AOCreate(comm,ao, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tAO
+  MPIU_Comm :: comm
+  AO :: ao
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::AOCreate
+#endif
+  interface
+  subroutine AOMappingHasApplicationIndex(ao,idex,hasIndex, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tAO
+  AO :: ao
+  PetscInt :: idex
+  PetscBool :: hasIndex
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::AOMappingHasApplicationIndex
+#endif
+  interface
+  subroutine AOMappingHasPetscIndex(ao,idex,hasIndex, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tAO
+  AO :: ao
+  PetscInt :: idex
+  PetscBool :: hasIndex
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::AOMappingHasPetscIndex
+#endif
+  interface
+  subroutine AOCreateMapping(comm,napp,myapp,mypetsc,aoout, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tAO
+  MPIU_Comm :: comm
+  PetscInt :: napp
+  PetscInt :: myapp(*)
+  PetscInt :: mypetsc(*)
+  AO :: aoout
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::AOCreateMapping
+#endif
+  interface
+  subroutine AOCreateMappingIS(isapp,ispetsc,aoout, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tIS,tAO
+  IS :: isapp
+  IS :: ispetsc
+  AO :: aoout
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::AOCreateMappingIS
+#endif
+  interface
+  subroutine AOCreateMemoryScalable(comm,napp,myapp,mypetsc,aoout, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tAO
+  MPIU_Comm :: comm
+  PetscInt :: napp
+  PetscInt :: myapp(*)
+  PetscInt :: mypetsc(*)
+  AO :: aoout
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::AOCreateMemoryScalable
+#endif
+  interface
+  subroutine AOCreateMemoryScalableIS(isapp,ispetsc,aoout, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tIS,tAO
+  IS :: isapp
+  IS :: ispetsc
+  AO :: aoout
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::AOCreateMemoryScalableIS
+#endif
+  interface
+  subroutine AOCreateBasic(comm,napp,myapp,mypetsc,aoout, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tAO
+  MPIU_Comm :: comm
+  PetscInt :: napp
+  PetscInt :: myapp(*)
+  PetscInt :: mypetsc(*)
+  AO :: aoout
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::AOCreateBasic
+#endif
+  interface
+  subroutine AOCreateBasicIS(isapp,ispetsc,aoout, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tIS,tAO
+  IS :: isapp
+  IS :: ispetsc
+  AO :: aoout
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::AOCreateBasicIS
+#endif
+  interface operator(.ne.)
+    module procedure AOnotequals
+  end interface operator (.ne.)
+  interface operator(.eq.)
+    module procedure AOequals
+  end interface operator (.eq.)
+
+  interface PetscObjectCast
+    module procedure PetscObjectCastAO
+  end interface
+  interface PetscBarrier
+  module procedure PetscBarrierAO
+  end interface
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectSAWsTakeAccess
+    module procedure PetscObjectSAWsTakeAccessAO
+  end interface
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectSAWsGrantAccess
+    module procedure PetscObjectSAWsGrantAccessAO
+  end interface
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectSAWsBlock
+    module procedure PetscObjectSAWsBlockAO
+  end interface
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectSAWsSetBlock
+    module procedure PetscObjectSAWsSetBlockAO
+  end interface
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectSAWsViewOff
+    module procedure PetscObjectSAWsViewOffAO
+  end interface
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectViewSAWs
+    module procedure PetscObjectViewSAWsAO
+  end interface
+#endif
+  interface PetscObjectGetType
+    module procedure PetscObjectGetTypeAO
+  end interface
+  interface PetscObjectSetPrintedOptions
+    module procedure PetscObjectSetPrintedOptionsAO
+  end interface
+  interface PetscObjectInheritPrintedOptions
+    module procedure PetscObjectInheritPrintedOptionsAO
+  end interface
+  interface PetscObjectAddOptionsHandler
+    module procedure PetscObjectAddOptionsHandlerAO
+  end interface
+  interface PetscObjectProcessOptionsHandlers
+    module procedure PetscObjectProcessOptionsHandlersAO
+  end interface
+  interface PetscObjectDestroyOptionsHandlers
+    module procedure PetscObjectDestroyOptionsHandlersAO
+  end interface
+  interface PetscObjectReference
+    module procedure PetscObjectReferenceAO
+  end interface
+  interface PetscObjectGetReference
+    module procedure PetscObjectGetReferenceAO
+  end interface
+  interface PetscObjectDereference
+    module procedure PetscObjectDereferenceAO
+  end interface
+  interface PetscObjectRemoveReference
+    module procedure PetscObjectRemoveReferenceAO
+  end interface
+  interface PetscObjectHasFunction
+    module procedure PetscObjectHasFunctionAO
+  end interface
+  interface PetscObjectSetFromOptions
+    module procedure PetscObjectSetFromOptionsAO
+  end interface
+  interface PetscObjectSetUp
+    module procedure PetscObjectSetUpAO
+  end interface
+  interface PetscObjectGetName
+    module procedure PetscObjectGetNameAO
+  end interface
+  interface PetscObjectDestroy
+    module procedure PetscObjectDestroyAO
+  end interface
+  interface PetscObjectView
+    module procedure PetscObjectViewAO
+  end interface
+  interface PetscObjectViewFromOptions
+    module procedure PetscObjectViewFromOptionsAO
+  end interface
+  interface PetscObjectTypeCompare
+    module procedure PetscObjectTypeCompareAO
+  end interface
+  interface PetscObjectObjectTypeCompare
+    module procedure PetscObjectObjectTypeCompareAO
+  end interface
+  interface PetscObjectBaseTypeCompare
+    module procedure PetscObjectBaseTypeCompareAO
+  end interface
+  interface PetscObjectRegisterDestroy
+    module procedure PetscObjectRegisterDestroyAO
+  end interface
+  interface PetscObjectGetId
+    module procedure PetscObjectGetIdAO
+  end interface
+  interface PetscObjectCompareId
+    module procedure PetscObjectCompareIdAO
+  end interface
+  interface PetscObjectGetOptions
+    module procedure PetscObjectGetOptionsAO
+  end interface
+  interface PetscObjectSetOptions
+    module procedure PetscObjectSetOptionsAO
+  end interface
+  interface PetscObjectSetOptionsPrefix
+    module procedure PetscObjectSetOptionsPrefixAO
+  end interface
+  interface PetscObjectAppendOptionsPrefix
+    module procedure PetscObjectAppendOptionsPrefixAO
+  end interface
+  interface PetscObjectGetOptionsPrefix
+    module procedure PetscObjectGetOptionsPrefixAO
+  end interface
+  interface PetscObjectPrependOptionsPrefix
+    module procedure PetscObjectPrependOptionsPrefixAO
+  end interface
+  interface PetscObjectGetComm
+    module procedure PetscObjectGetCommAO
+  end interface
+  interface PetscObjectGetTabLevel
+    module procedure PetscObjectGetTabLevelAO
+  end interface
+  interface PetscObjectSetTabLevel
+    module procedure PetscObjectSetTabLevelAO
+  end interface
+  interface PetscObjectIncrementTabLevel
+    module procedure PetscObjectIncrementTabLevelAO
+  end interface
+  interface PetscObjectGetNewTag
+    module procedure PetscObjectGetNewTagAO
+  end interface
+  interface PetscObjectGetClassId
+    module procedure PetscObjectGetClassIdAO
+  end interface
+  interface PetscObjectGetClassName
+    module procedure PetscObjectGetClassNameAO
+  end interface
+  interface PetscObjectSetName
+    module procedure PetscObjectSetNameAO
+  end interface
+  interface PetscObjectPrintClassNamePrefixType
+    module procedure PetscObjectPrintClassNamePrefixTypeAO
+  end interface
+  interface PetscObjectName
+    module procedure PetscObjectNameAO
+  end interface
+  interface PetscObjectChangeTypeName
+    module procedure PetscObjectChangeTypeNameAO
+  end interface

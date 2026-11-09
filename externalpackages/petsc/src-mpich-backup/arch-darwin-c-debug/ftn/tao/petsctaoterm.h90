@@ -1,0 +1,1237 @@
+  interface
+  subroutine VecNestGetTaoTermSumParameters(params,index,subparams, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVec
+  Vec :: params
+  PetscInt :: index
+  Vec :: subparams
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::VecNestGetTaoTermSumParameters
+#endif
+  interface
+  subroutine TaoTermRegister(sname,func, ierr)
+  use, intrinsic :: ISO_C_binding
+  character(*) :: sname
+  external :: func
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoTermRegister
+#endif
+  interface
+  subroutine TaoTermDestroy(term, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTaoTerm
+  TaoTerm :: term
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoTermDestroy
+#endif
+  interface
+  subroutine TaoTermView(term,viewer, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTaoTerm,tPetscViewer
+  TaoTerm :: term
+  PetscViewer :: viewer
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoTermView
+#endif
+  interface
+  subroutine TaoTermSetUp(term, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTaoTerm
+  TaoTerm :: term
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoTermSetUp
+#endif
+  interface
+  subroutine TaoTermSetFromOptions(term, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTaoTerm
+  TaoTerm :: term
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoTermSetFromOptions
+#endif
+  interface
+  subroutine TaoTermSetType(term,type, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTaoTerm
+  TaoTerm :: term
+  character(*) :: type
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoTermSetType
+#endif
+  interface
+  subroutine TaoTermGetType(term,type, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTaoTerm
+  TaoTerm :: term
+  character(*) :: type
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoTermGetType
+#endif
+  interface
+  subroutine TaoTermCreate(comm,term, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTaoTerm
+  MPIU_Comm :: comm
+  TaoTerm :: term
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoTermCreate
+#endif
+  interface
+  subroutine TaoTermComputeObjective(term,x,params,value, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTaoTerm,tVec
+  TaoTerm :: term
+  Vec :: x
+  Vec :: params
+  PetscReal :: value
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoTermComputeObjective
+#endif
+  interface
+  subroutine TaoTermComputeGradient(term,x,params,g, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTaoTerm,tVec
+  TaoTerm :: term
+  Vec :: x
+  Vec :: params
+  Vec :: g
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoTermComputeGradient
+#endif
+  interface
+  subroutine TaoTermComputeObjectiveAndGradient(term,x,params,value,g, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTaoTerm,tVec
+  TaoTerm :: term
+  Vec :: x
+  Vec :: params
+  PetscReal :: value
+  Vec :: g
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoTermComputeObjectiveAndGradient
+#endif
+  interface
+  subroutine TaoTermComputeHessian(term,x,params,H,Hpre, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTaoTerm,tVec,tMat
+  TaoTerm :: term
+  Vec :: x
+  Vec :: params
+  Mat :: H
+  Mat :: Hpre
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoTermComputeHessian
+#endif
+  interface
+  subroutine TaoTermIsComputeHessianFDPossible(term,is_fdpossible, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTaoTerm,ePetscBool3
+  TaoTerm :: term
+  PetscBool3 :: is_fdpossible
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoTermIsComputeHessianFDPossible
+#endif
+  interface
+  subroutine TaoTermIsObjectiveDefined(term,is_defined, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTaoTerm
+  TaoTerm :: term
+  PetscBool :: is_defined
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoTermIsObjectiveDefined
+#endif
+  interface
+  subroutine TaoTermIsGradientDefined(term,is_defined, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTaoTerm
+  TaoTerm :: term
+  PetscBool :: is_defined
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoTermIsGradientDefined
+#endif
+  interface
+  subroutine TaoTermIsObjectiveAndGradientDefined(term,is_defined, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTaoTerm
+  TaoTerm :: term
+  PetscBool :: is_defined
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoTermIsObjectiveAndGradientDefined
+#endif
+  interface
+  subroutine TaoTermIsHessianDefined(term,is_defined, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTaoTerm
+  TaoTerm :: term
+  PetscBool :: is_defined
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoTermIsHessianDefined
+#endif
+  interface
+  subroutine TaoTermIsCreateHessianMatricesDefined(term,is_defined, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTaoTerm
+  TaoTerm :: term
+  PetscBool :: is_defined
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoTermIsCreateHessianMatricesDefined
+#endif
+  interface
+  subroutine TaoTermSetSolutionSizes(term,n,M_N,bs, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTaoTerm
+  TaoTerm :: term
+  PetscInt :: n
+  PetscInt :: M_N
+  PetscInt :: bs
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoTermSetSolutionSizes
+#endif
+  interface
+  subroutine TaoTermGetSolutionSizes(term,n,M_N,bs, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTaoTerm
+  TaoTerm :: term
+  PetscInt :: n
+  PetscInt :: M_N
+  PetscInt :: bs
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoTermGetSolutionSizes
+#endif
+  interface
+  subroutine TaoTermSetParametersSizes(term,k,M_K,bs, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTaoTerm
+  TaoTerm :: term
+  PetscInt :: k
+  PetscInt :: M_K
+  PetscInt :: bs
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoTermSetParametersSizes
+#endif
+  interface
+  subroutine TaoTermGetParametersSizes(term,k,M_K,bs, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTaoTerm
+  TaoTerm :: term
+  PetscInt :: k
+  PetscInt :: M_K
+  PetscInt :: bs
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoTermGetParametersSizes
+#endif
+  interface
+  subroutine TaoTermSetParametersLayout(term,parameters_layout, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTaoTerm,tPetscLayout
+  TaoTerm :: term
+  PetscLayout :: parameters_layout
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoTermSetParametersLayout
+#endif
+  interface
+  subroutine TaoTermGetParametersLayout(term,parameters_layout, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTaoTerm,tPetscLayout
+  TaoTerm :: term
+  PetscLayout :: parameters_layout
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoTermGetParametersLayout
+#endif
+  interface
+  subroutine TaoTermSetSolutionLayout(term,solution_layout, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTaoTerm,tPetscLayout
+  TaoTerm :: term
+  PetscLayout :: solution_layout
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoTermSetSolutionLayout
+#endif
+  interface
+  subroutine TaoTermGetSolutionLayout(term,solution_layout, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTaoTerm,tPetscLayout
+  TaoTerm :: term
+  PetscLayout :: solution_layout
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoTermGetSolutionLayout
+#endif
+  interface
+  subroutine TaoTermSetSolutionTemplate(term,sol_template, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTaoTerm,tVec
+  TaoTerm :: term
+  Vec :: sol_template
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoTermSetSolutionTemplate
+#endif
+  interface
+  subroutine TaoTermSetParametersTemplate(term,params_template, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTaoTerm,tVec
+  TaoTerm :: term
+  Vec :: params_template
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoTermSetParametersTemplate
+#endif
+  interface
+  subroutine TaoTermSetSolutionVecType(term,solution_type, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTaoTerm
+  TaoTerm :: term
+  character(*) :: solution_type
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoTermSetSolutionVecType
+#endif
+  interface
+  subroutine TaoTermSetParametersVecType(term,parameters_type, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTaoTerm
+  TaoTerm :: term
+  character(*) :: parameters_type
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoTermSetParametersVecType
+#endif
+  interface
+  subroutine TaoTermGetSolutionVecType(term,solution_type, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTaoTerm
+  TaoTerm :: term
+  character(*) :: solution_type
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoTermGetSolutionVecType
+#endif
+  interface
+  subroutine TaoTermGetParametersVecType(term,parameters_type, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTaoTerm
+  TaoTerm :: term
+  character(*) :: parameters_type
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoTermGetParametersVecType
+#endif
+  interface
+  subroutine TaoTermCreateSolutionVec(term,solution, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTaoTerm,tVec
+  TaoTerm :: term
+  Vec :: solution
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoTermCreateSolutionVec
+#endif
+  interface
+  subroutine TaoTermCreateParametersVec(term,parameters, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTaoTerm,tVec
+  TaoTerm :: term
+  Vec :: parameters
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoTermCreateParametersVec
+#endif
+  interface
+  subroutine TaoTermCreateHessianMatrices(term,H,Hpre, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTaoTerm,tMat
+  TaoTerm :: term
+  Mat :: H
+  Mat :: Hpre
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoTermCreateHessianMatrices
+#endif
+  interface
+  subroutine TaoTermCreateHessianMatricesDefault(term,H,Hpre, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTaoTerm,tMat
+  TaoTerm :: term
+  Mat :: H
+  Mat :: Hpre
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoTermCreateHessianMatricesDefault
+#endif
+  interface
+  subroutine TaoTermSetCreateHessianMode(term,Hpre_is_H,H_mattype,Hpre_mattype, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTaoTerm
+  TaoTerm :: term
+  PetscBool :: Hpre_is_H
+  character(*) :: H_mattype
+  character(*) :: Hpre_mattype
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoTermSetCreateHessianMode
+#endif
+  interface
+  subroutine TaoTermGetCreateHessianMode(term,Hpre_is_H,H_mattype,Hpre_mattype, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTaoTerm
+  TaoTerm :: term
+  PetscBool :: Hpre_is_H
+  character(*) :: H_mattype
+  character(*) :: Hpre_mattype
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoTermGetCreateHessianMode
+#endif
+  interface
+  subroutine TaoTermDuplicate(term,opt,newterm, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTaoTerm,eTaoTermDuplicateOption
+  TaoTerm :: term
+  TaoTermDuplicateOption :: opt
+  TaoTerm :: newterm
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoTermDuplicate
+#endif
+  interface
+  subroutine TaoTermSetParametersMode(term,parameters_mode, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTaoTerm,eTaoTermParametersMode
+  TaoTerm :: term
+  TaoTermParametersMode :: parameters_mode
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoTermSetParametersMode
+#endif
+  interface
+  subroutine TaoTermGetParametersMode(term,parameters_mode, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTaoTerm,eTaoTermParametersMode
+  TaoTerm :: term
+  TaoTermParametersMode :: parameters_mode
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoTermGetParametersMode
+#endif
+  interface
+  subroutine TaoTermGetFDDelta(term,delta, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTaoTerm
+  TaoTerm :: term
+  PetscReal :: delta
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoTermGetFDDelta
+#endif
+  interface
+  subroutine TaoTermSetFDDelta(term,delta, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTaoTerm
+  TaoTerm :: term
+  PetscReal :: delta
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoTermSetFDDelta
+#endif
+  interface
+  subroutine TaoTermComputeGradientSetUseFD(term,use_fd, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTaoTerm
+  TaoTerm :: term
+  PetscBool :: use_fd
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoTermComputeGradientSetUseFD
+#endif
+  interface
+  subroutine TaoTermComputeGradientGetUseFD(term,use_fd, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTaoTerm
+  TaoTerm :: term
+  PetscBool :: use_fd
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoTermComputeGradientGetUseFD
+#endif
+  interface
+  subroutine TaoTermComputeHessianSetUseFD(term,use_fd, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTaoTerm
+  TaoTerm :: term
+  PetscBool :: use_fd
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoTermComputeHessianSetUseFD
+#endif
+  interface
+  subroutine TaoTermComputeHessianGetUseFD(term,use_fd, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTaoTerm
+  TaoTerm :: term
+  PetscBool :: use_fd
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoTermComputeHessianGetUseFD
+#endif
+  interface
+  subroutine TaoTermCreateHalfL2Squared(comm,n,M_N,term, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTaoTerm
+  MPIU_Comm :: comm
+  PetscInt :: n
+  PetscInt :: M_N
+  TaoTerm :: term
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoTermCreateHalfL2Squared
+#endif
+  interface
+  subroutine TaoTermQuadraticGetMat(term,A, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTaoTerm,tMat
+  TaoTerm :: term
+  Mat :: A
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoTermQuadraticGetMat
+#endif
+  interface
+  subroutine TaoTermQuadraticSetMat(term,A, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTaoTerm,tMat
+  TaoTerm :: term
+  Mat :: A
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoTermQuadraticSetMat
+#endif
+  interface
+  subroutine TaoTermCreateQuadratic(A,term, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tMat,tTaoTerm
+  Mat :: A
+  TaoTerm :: term
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoTermCreateQuadratic
+#endif
+  interface
+  subroutine TaoTermShellSetContextDestroy(term,destroy, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTaoTerm
+  TaoTerm :: term
+  external destroy
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoTermShellSetContextDestroy
+#endif
+  interface
+  subroutine TaoTermShellGetContextcptr(term,ctx, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTaoTerm
+  TaoTerm :: term
+  type(c_ptr) :: ctx
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoTermShellGetContextcptr
+#endif
+  interface
+  subroutine TaoTermShellSetContext(term,ctx, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTaoTerm
+  TaoTerm :: term
+  type(*) :: ctx
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoTermShellSetContext
+#endif
+  interface
+  subroutine TaoTermShellSetObjective(term,objective, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTaoTerm
+  TaoTerm :: term
+  external objective
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoTermShellSetObjective
+#endif
+  interface
+  subroutine TaoTermShellSetGradient(term,gradient, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTaoTerm
+  TaoTerm :: term
+  external gradient
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoTermShellSetGradient
+#endif
+  interface
+  subroutine TaoTermShellSetObjectiveAndGradient(term,objandgrad, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTaoTerm
+  TaoTerm :: term
+  external objandgrad
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoTermShellSetObjectiveAndGradient
+#endif
+  interface
+  subroutine TaoTermShellSetHessian(term,hessian, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTaoTerm
+  TaoTerm :: term
+  external hessian
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoTermShellSetHessian
+#endif
+  interface
+  subroutine TaoTermShellSetIsComputeHessianFDPossible(term,ispossible, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTaoTerm,ePetscBool3
+  TaoTerm :: term
+  PetscBool3 :: ispossible
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoTermShellSetIsComputeHessianFDPossible
+#endif
+  interface
+  subroutine TaoTermShellSetView(term,view, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTaoTerm
+  TaoTerm :: term
+  external :: view
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoTermShellSetView
+#endif
+  interface
+  subroutine TaoTermShellSetCreateSolutionVec(term,createsolutionvec, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTaoTerm
+  TaoTerm :: term
+  external :: createsolutionvec
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoTermShellSetCreateSolutionVec
+#endif
+  interface
+  subroutine TaoTermShellSetCreateParametersVec(term,createparametersvec, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTaoTerm
+  TaoTerm :: term
+  external :: createparametersvec
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoTermShellSetCreateParametersVec
+#endif
+  interface
+  subroutine TaoTermShellSetCreateHessianMatrices(term,createmats, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTaoTerm
+  TaoTerm :: term
+  external :: createmats
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoTermShellSetCreateHessianMatrices
+#endif
+  interface
+  subroutine TaoTermCreateShell(comm,ctx,destroy,term, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTaoTerm
+  MPIU_Comm :: comm
+  type(*) :: ctx
+  external destroy
+  TaoTerm :: term
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoTermCreateShell
+#endif
+  interface
+  subroutine TaoTermSumParametersPack(term,p_arr,params, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTaoTerm,tVec
+  TaoTerm :: term
+  Vec :: p_arr(*)
+  Vec :: params
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoTermSumParametersPack
+#endif
+  interface
+  subroutine TaoTermSumParametersUnpack(term,params,p_arr, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTaoTerm,tVec
+  TaoTerm :: term
+  Vec :: params
+  Vec :: p_arr(*)
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoTermSumParametersUnpack
+#endif
+  interface
+  subroutine TaoTermSumSetNumberTerms(term,n_terms, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTaoTerm
+  TaoTerm :: term
+  PetscInt :: n_terms
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoTermSumSetNumberTerms
+#endif
+  interface
+  subroutine TaoTermSumGetNumberTerms(term,n_terms, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTaoTerm
+  TaoTerm :: term
+  PetscInt :: n_terms
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoTermSumGetNumberTerms
+#endif
+  interface
+  subroutine TaoTermSumSetTerm(sumterm,index,prefix,scale,term,map, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTaoTerm,tMat
+  TaoTerm :: sumterm
+  PetscInt :: index
+  character(*) :: prefix
+  PetscReal :: scale
+  TaoTerm :: term
+  Mat :: map
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoTermSumSetTerm
+#endif
+  interface
+  subroutine TaoTermSumSetTermHessianMatrices(term,index,unmapped_H,unmapped_Hpre,mapped_H,mapped_Hpre, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTaoTerm,tMat
+  TaoTerm :: term
+  PetscInt :: index
+  Mat :: unmapped_H
+  Mat :: unmapped_Hpre
+  Mat :: mapped_H
+  Mat :: mapped_Hpre
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoTermSumSetTermHessianMatrices
+#endif
+  interface
+  subroutine TaoTermSumGetTermHessianMatrices(term,index,unmapped_H,unmapped_Hpre,mapped_H,mapped_Hpre, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTaoTerm,tMat
+  TaoTerm :: term
+  PetscInt :: index
+  Mat :: unmapped_H
+  Mat :: unmapped_Hpre
+  Mat :: mapped_H
+  Mat :: mapped_Hpre
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoTermSumGetTermHessianMatrices
+#endif
+  interface
+  subroutine TaoTermSumGetTermMask(term,index,mask, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTaoTerm,eTaoTermMask
+  TaoTerm :: term
+  PetscInt :: index
+  TaoTermMask :: mask
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoTermSumGetTermMask
+#endif
+  interface
+  subroutine TaoTermSumSetTermMask(term,index,mask, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTaoTerm,eTaoTermMask
+  TaoTerm :: term
+  PetscInt :: index
+  TaoTermMask :: mask
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoTermSumSetTermMask
+#endif
+  interface
+  subroutine TaoTermSumAddTerm(sumterm,prefix,scale,term,map,index, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTaoTerm,tMat
+  TaoTerm :: sumterm
+  character(*) :: prefix
+  PetscReal :: scale
+  TaoTerm :: term
+  Mat :: map
+  PetscInt :: index
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoTermSumAddTerm
+#endif
+  interface
+  subroutine TaoTermSumGetLastTermObjectives(term,values, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTaoTerm
+  TaoTerm :: term
+  PetscReal, pointer :: values(:)
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoTermSumGetLastTermObjectives
+#endif
+  interface
+  subroutine TaoTermL1SetEpsilon(term,epsilon, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTaoTerm
+  TaoTerm :: term
+  PetscReal :: epsilon
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoTermL1SetEpsilon
+#endif
+  interface
+  subroutine TaoTermL1GetEpsilon(term,epsilon, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTaoTerm
+  TaoTerm :: term
+  PetscReal :: epsilon
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoTermL1GetEpsilon
+#endif
+  interface
+  subroutine TaoTermCreateL1(comm,n,M_N,epsilon,term, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTaoTerm
+  MPIU_Comm :: comm
+  PetscInt :: n
+  PetscInt :: M_N
+  PetscReal :: epsilon
+  TaoTerm :: term
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoTermCreateL1
+#endif
+  interface
+  subroutine TaoTermComputeGradientFD(term,x,params,g, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTaoTerm,tVec
+  TaoTerm :: term
+  Vec :: x
+  Vec :: params
+  Vec :: g
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoTermComputeGradientFD
+#endif
+  interface
+  subroutine TaoTermComputeHessianFD(term,x,params,H,Hpre, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTaoTerm,tVec,tMat
+  TaoTerm :: term
+  Vec :: x
+  Vec :: params
+  Mat :: H
+  Mat :: Hpre
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoTermComputeHessianFD
+#endif
+  interface
+  subroutine TaoTermCreateHessianMFFD(term,mffd, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTaoTerm,tMat
+  TaoTerm :: term
+  Mat :: mffd
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoTermCreateHessianMFFD
+#endif
+  interface
+  subroutine TaoTermComputeHessianMFFD(term,x,params,H,B, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTaoTerm,tVec,tMat
+  TaoTerm :: term
+  Vec :: x
+  Vec :: params
+  Mat :: H
+  Mat :: B
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoTermComputeHessianMFFD
+#endif
+  interface operator(.ne.)
+    module procedure TaoTermnotequals
+  end interface operator (.ne.)
+  interface operator(.eq.)
+    module procedure TaoTermequals
+  end interface operator (.eq.)
+
+  interface PetscObjectCast
+    module procedure PetscObjectCastTaoTerm
+  end interface
+  interface PetscBarrier
+  module procedure PetscBarrierTaoTerm
+  end interface
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectSAWsTakeAccess
+    module procedure PetscObjectSAWsTakeAccessTaoTerm
+  end interface
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectSAWsGrantAccess
+    module procedure PetscObjectSAWsGrantAccessTaoTerm
+  end interface
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectSAWsBlock
+    module procedure PetscObjectSAWsBlockTaoTerm
+  end interface
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectSAWsSetBlock
+    module procedure PetscObjectSAWsSetBlockTaoTerm
+  end interface
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectSAWsViewOff
+    module procedure PetscObjectSAWsViewOffTaoTerm
+  end interface
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectViewSAWs
+    module procedure PetscObjectViewSAWsTaoTerm
+  end interface
+#endif
+  interface PetscObjectGetType
+    module procedure PetscObjectGetTypeTaoTerm
+  end interface
+  interface PetscObjectSetPrintedOptions
+    module procedure PetscObjectSetPrintedOptionsTaoTerm
+  end interface
+  interface PetscObjectInheritPrintedOptions
+    module procedure PetscObjectInheritPrintedOptionsTaoTerm
+  end interface
+  interface PetscObjectAddOptionsHandler
+    module procedure PetscObjectAddOptionsHandlerTaoTerm
+  end interface
+  interface PetscObjectProcessOptionsHandlers
+    module procedure PetscObjectProcessOptionsHandlersTaoTerm
+  end interface
+  interface PetscObjectDestroyOptionsHandlers
+    module procedure PetscObjectDestroyOptionsHandlersTaoTerm
+  end interface
+  interface PetscObjectReference
+    module procedure PetscObjectReferenceTaoTerm
+  end interface
+  interface PetscObjectGetReference
+    module procedure PetscObjectGetReferenceTaoTerm
+  end interface
+  interface PetscObjectDereference
+    module procedure PetscObjectDereferenceTaoTerm
+  end interface
+  interface PetscObjectRemoveReference
+    module procedure PetscObjectRemoveReferenceTaoTerm
+  end interface
+  interface PetscObjectHasFunction
+    module procedure PetscObjectHasFunctionTaoTerm
+  end interface
+  interface PetscObjectSetFromOptions
+    module procedure PetscObjectSetFromOptionsTaoTerm
+  end interface
+  interface PetscObjectSetUp
+    module procedure PetscObjectSetUpTaoTerm
+  end interface
+  interface PetscObjectGetName
+    module procedure PetscObjectGetNameTaoTerm
+  end interface
+  interface PetscObjectDestroy
+    module procedure PetscObjectDestroyTaoTerm
+  end interface
+  interface PetscObjectView
+    module procedure PetscObjectViewTaoTerm
+  end interface
+  interface PetscObjectViewFromOptions
+    module procedure PetscObjectViewFromOptionsTaoTerm
+  end interface
+  interface PetscObjectTypeCompare
+    module procedure PetscObjectTypeCompareTaoTerm
+  end interface
+  interface PetscObjectObjectTypeCompare
+    module procedure PetscObjectObjectTypeCompareTaoTerm
+  end interface
+  interface PetscObjectBaseTypeCompare
+    module procedure PetscObjectBaseTypeCompareTaoTerm
+  end interface
+  interface PetscObjectRegisterDestroy
+    module procedure PetscObjectRegisterDestroyTaoTerm
+  end interface
+  interface PetscObjectGetId
+    module procedure PetscObjectGetIdTaoTerm
+  end interface
+  interface PetscObjectCompareId
+    module procedure PetscObjectCompareIdTaoTerm
+  end interface
+  interface PetscObjectGetOptions
+    module procedure PetscObjectGetOptionsTaoTerm
+  end interface
+  interface PetscObjectSetOptions
+    module procedure PetscObjectSetOptionsTaoTerm
+  end interface
+  interface PetscObjectSetOptionsPrefix
+    module procedure PetscObjectSetOptionsPrefixTaoTerm
+  end interface
+  interface PetscObjectAppendOptionsPrefix
+    module procedure PetscObjectAppendOptionsPrefixTaoTerm
+  end interface
+  interface PetscObjectGetOptionsPrefix
+    module procedure PetscObjectGetOptionsPrefixTaoTerm
+  end interface
+  interface PetscObjectPrependOptionsPrefix
+    module procedure PetscObjectPrependOptionsPrefixTaoTerm
+  end interface
+  interface PetscObjectGetComm
+    module procedure PetscObjectGetCommTaoTerm
+  end interface
+  interface PetscObjectGetTabLevel
+    module procedure PetscObjectGetTabLevelTaoTerm
+  end interface
+  interface PetscObjectSetTabLevel
+    module procedure PetscObjectSetTabLevelTaoTerm
+  end interface
+  interface PetscObjectIncrementTabLevel
+    module procedure PetscObjectIncrementTabLevelTaoTerm
+  end interface
+  interface PetscObjectGetNewTag
+    module procedure PetscObjectGetNewTagTaoTerm
+  end interface
+  interface PetscObjectGetClassId
+    module procedure PetscObjectGetClassIdTaoTerm
+  end interface
+  interface PetscObjectGetClassName
+    module procedure PetscObjectGetClassNameTaoTerm
+  end interface
+  interface PetscObjectSetName
+    module procedure PetscObjectSetNameTaoTerm
+  end interface
+  interface PetscObjectPrintClassNamePrefixType
+    module procedure PetscObjectPrintClassNamePrefixTypeTaoTerm
+  end interface
+  interface PetscObjectName
+    module procedure PetscObjectNameTaoTerm
+  end interface
+  interface PetscObjectChangeTypeName
+    module procedure PetscObjectChangeTypeNameTaoTerm
+  end interface
+  interface operator(.ne.)
+    module procedure TaoTermParametersModenotequals
+  end interface operator (.ne.)
+  interface operator(.eq.)
+    module procedure TaoTermParametersModeequals
+  end interface operator (.eq.)
+
+  interface operator(.ne.)
+    module procedure TaoTermMasknotequals
+  end interface operator (.ne.)
+  interface operator(.eq.)
+    module procedure TaoTermMaskequals
+  end interface operator (.eq.)
+
+  interface operator(.ne.)
+    module procedure TaoTermDuplicateOptionnotequals
+  end interface operator (.ne.)
+  interface operator(.eq.)
+    module procedure TaoTermDuplicateOptionequals
+  end interface operator (.eq.)
+

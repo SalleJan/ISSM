@@ -1,0 +1,630 @@
+!
+!  Description: Solves a nonlinear system in parallel with SNES.
+!  We solve the  Bratu (SFI - solid fuel ignition) problem in a 2D rectangular
+!  domain, using distributed arrays (DMDAs) to partition the parallel grid.
+!  The command line options include:
+!    -par <parameter>, where <parameter> indicates the nonlinearity of the problem
+!       problem SFI:  <parameter> = Bratu parameter (0 <= par <= 6.81)
+!
+
+!
+!  --------------------------------------------------------------------------
+!
+!  Solid Fuel Ignition (SFI) problem.  This problem is modeled by
+!  the partial differential equation
+!
+!          -Laplacian u - lambda*exp(u) = 0,  0 < x,y < 1,
+!
+!  with boundary conditions
+!
+!           u = 0  for  x = 0, x = 1, y = 0, y = 1.
+!
+!  A finite difference approximation with the usual 5-point stencil
+!  is used to discretize the boundary value problem to obtain a nonlinear
+!  system of equations.
+!
+!  The uniprocessor version of this code is snes/tutorials/ex4f.F
+!
+!  --------------------------------------------------------------------------
+!  The following define must be used before including any PETSc include files
+!  into a module or interface. This is because they can't handle declarations
+!  in them
+!
+#include <petsc/finclude/petscsnes.h>
+#include <petsc/finclude/petscdmda.h>
+module ex5module
+  use petscsnes
+  use petscdmda
+  implicit none
+  type AppCtx
+    PetscInt xs, xe, xm, gxs, gxe, gxm
+    PetscInt ys, ye, ym, gys, gye, gym
+    PetscInt mx, my
+    PetscMPIInt rank
+    PetscReal lambda
+  end type AppCtx
+
+contains
+! ---------------------------------------------------------------------
+!
+!  FormFunction - Evaluates nonlinear function, F(x).
+!
+!  Input Parameters:
+!  snes - the SNES context
+!  X - input vector
+!  dummy - optional user-defined context, as set by SNESSetFunction()
+!          (not used here)
+!
+!  Output Parameter:
+!  F - function vector
+!
+!  Notes:
+!  This routine serves as a wrapper for the lower-level routine
+!  "FormFunctionLocal", where the actual computations are
+!  done using the standard Fortran style of treating the local
+!  vector data as a multidimensional array over the local mesh.
+!  This routine merely handles ghost point scatters and accesses
+!  the local vector data via VecGetArray() and VecRestoreArray().
+!
+  subroutine FormFunction(snes, X, F, ctx, ierr)
+!  Input/output variables:
+    SNES snes
+    Vec X, F
+    PetscErrorCode, intent(out) :: ierr
+    type(AppCtx) ctx
+    DM da
+
+!  Declarations for use with local arrays:
+    PetscScalar, pointer :: lx_v(:), lf_v(:)
+    Vec localX
+
+!  Scatter ghost points to local vector, using the 2-step process
+!     DMGlobalToLocalBegin(), DMGlobalToLocalEnd().
+!  By placing code between these two statements, computations can
+!  be done while messages are in transition.
+    PetscCall(SNESGetDM(snes, da, ierr))
+    PetscCall(DMGetLocalVector(da, localX, ierr))
+    PetscCall(DMGlobalToLocalBegin(da, X, INSERT_VALUES, localX, ierr))
+    PetscCall(DMGlobalToLocalEnd(da, X, INSERT_VALUES, localX, ierr))
+
+!  Get a pointer to vector data.
+!    - For default PETSc vectors, VecGetArray() returns a pointer to
+!      the data array. Otherwise, the routine is implementation dependent.
+!    - You MUST call VecRestoreArray() when you no longer need access to
+!      the array.
+!    - Note that the interface to VecGetArray() differs from VecGetArray().
+
+    PetscCall(VecGetArray(localX, lx_v, ierr))
+    PetscCall(VecGetArray(F, lf_v, ierr))
+
+!  Compute function over the locally owned part of the grid
+    PetscCall(FormFunctionLocal(lx_v, lf_v, ctx, ierr))
+
+!  Restore vectors
+    PetscCall(VecRestoreArray(localX, lx_v, ierr))
+    PetscCall(VecRestoreArray(F, lf_v, ierr))
+
+!  Insert values into global vector
+
+    PetscCall(DMRestoreLocalVector(da, localX, ierr))
+    PetscCall(PetscLogFlops(11.0d0*ctx%ym*ctx%xm, ierr))
+
+!      PetscCallA(VecView(X,PETSC_VIEWER_STDOUT_WORLD,ierr))
+!      PetscCallA(VecView(F,PETSC_VIEWER_STDOUT_WORLD,ierr))
+  end subroutine formfunction
+
+! ---------------------------------------------------------------------
+!
+!  FormInitialGuess - Forms initial approximation.
+!
+!  Input Parameters:
+!  X - vector
+!
+!  Output Parameter:
+!  X - vector
+!
+!  Notes:
+!  This routine serves as a wrapper for the lower-level routine
+!  "InitialGuessLocal", where the actual computations are
+!  done using the standard Fortran style of treating the local
+!  vector data as a multidimensional array over the local mesh.
+!  This routine merely handles ghost point scatters and accesses
+!  the local vector data via VecGetArray() and VecRestoreArray().
+!
+  subroutine FormInitialGuess(snes, X, ierr)
+!  Input/output variables:
+    SNES snes
+    type(AppCtx), pointer:: ctx
+    Vec X
+    PetscErrorCode, intent(out) :: ierr
+    DM da
+
+!  Declarations for use with local arrays:
+    PetscScalar, pointer :: lx_v(:)
+
+    PetscCallA(SNESGetDM(snes, da, ierr))
+    PetscCallA(SNESGetApplicationContext(snes, ctx, ierr))
+!  Get a pointer to vector data.
+!    - For default PETSc vectors, VecGetArray() returns a pointer to
+!      the data array. Otherwise, the routine is implementation dependent.
+!    - You MUST call VecRestoreArray() when you no longer need access to
+!      the array.
+!    - Note that the interface to VecGetArray() differs from VecGetArray().
+
+    PetscCallA(VecGetArray(X, lx_v, ierr))
+
+!  Compute initial guess over the locally owned part of the grid
+    PetscCallA(InitialGuessLocal(ctx, lx_v, ierr))
+
+!  Restore vector
+    PetscCallA(VecRestoreArray(X, lx_v, ierr))
+
+!  Insert values into global vector
+
+  end
+
+! ---------------------------------------------------------------------
+!
+!  InitialGuessLocal - Computes initial approximation, called by
+!  the higher level routine FormInitialGuess().
+!
+!  Input Parameter:
+!  x - local vector data
+!
+!  Output Parameters:
+!  x - local vector data
+!  ierr - error code
+!
+!  Notes:
+!  This routine uses standard Fortran-style computations over a 2-dim array.
+!
+  subroutine InitialGuessLocal(ctx, x, ierr)
+!  Input/output variables:
+    type(AppCtx) ctx
+    PetscScalar x(ctx%xs:ctx%xe, ctx%ys:ctx%ye)
+    PetscErrorCode, intent(out) :: ierr
+!  Local variables:
+    PetscInt i, j
+    PetscReal temp1, temp, hx, hy
+
+    hx = 1._PETSC_REAL_KIND/(ctx%mx - 1)
+    hy = 1._PETSC_REAL_KIND/(ctx%my - 1)
+    temp1 = ctx%lambda/(ctx%lambda + 1._PETSC_REAL_KIND)
+
+    do j = ctx%ys, ctx%ye
+      temp = min(j - 1, ctx%my - j)*hy
+      do i = ctx%xs, ctx%xe
+        if (i == 1 .or. j == 1 .or. i == ctx%mx .or. j == ctx%my) then
+          x(i, j) = 0.0
+        else
+          x(i, j) = temp1*sqrt(min(hx*min(i - 1, ctx%mx - i), temp))
+        end if
+      end do
+    end do
+    ierr = 0
+  end
+
+! ---------------------------------------------------------------------
+!
+!  FormFunctionLocal - Computes nonlinear function, called by
+!  the higher level routine FormFunction().
+!
+!  Input Parameter:
+!  x - local vector data
+!
+!  Output Parameters:
+!  f - local vector data, f(x)
+!  ierr - error code
+!
+!  Notes:
+!  This routine uses standard Fortran-style computations over a 2-dim array.
+!
+  subroutine FormFunctionLocal(x, f, ctx, ierr)
+!  Input/output variables:
+    type(AppCtx), intent(in) :: ctx
+    PetscScalar x(ctx%gxs:ctx%gxe, ctx%gys:ctx%gye)
+    PetscScalar f(ctx%xs:ctx%xe, ctx%ys:ctx%ye)
+    PetscErrorCode, intent(out) :: ierr
+!  Local variables:
+    PetscScalar, parameter :: two = 2.0, one = 1.0
+    PetscScalar hx, hy, hxdhy, hydhx, sc
+    PetscScalar u, uxx, uyy
+    PetscInt i, j
+
+    hx = one/(ctx%mx - 1)
+    hy = one/(ctx%my - 1)
+    sc = hx*hy*ctx%lambda
+    hxdhy = hx/hy
+    hydhx = hy/hx
+
+!  Compute function over the locally owned part of the grid
+
+    do j = ctx%ys, ctx%ye
+      do i = ctx%xs, ctx%xe
+        if (i == 1 .or. j == 1 .or. i == ctx%mx .or. j == ctx%my) then
+          f(i, j) = x(i, j)
+        else
+          u = x(i, j)
+          uxx = hydhx*(two*u - x(i - 1, j) - x(i + 1, j))
+          uyy = hxdhy*(two*u - x(i, j - 1) - x(i, j + 1))
+          f(i, j) = uxx + uyy - sc*exp(u)
+        end if
+      end do
+    end do
+    ierr = 0
+  end
+
+! ---------------------------------------------------------------------
+!
+!  FormJacobian - Evaluates Jacobian matrix.
+!
+!  Input Parameters:
+!  snes     - the SNES context
+!  x        - input vector
+!  dummy    - optional user-defined context, as set by SNESSetJacobian()
+!             (not used here)
+!
+!  Output Parameters:
+!  jac      - Jacobian matrix
+!  jac_prec - optionally different matrix used to construct the preconditioner (not used here)
+!
+!  Notes:
+!  This routine serves as a wrapper for the lower-level routine
+!  "FormJacobianLocal", where the actual computations are
+!  done using the standard Fortran style of treating the local
+!  vector data as a multidimensional array over the local mesh.
+!  This routine merely accesses the local vector data via
+!  VecGetArray() and VecRestoreArray().
+!
+!  Notes:
+!  Due to grid point reordering with DMDAs, we must always work
+!  with the local grid points, and then transform them to the new
+!  global numbering with the "ltog" mapping
+!  We cannot work directly with the global numbers for the original
+!  uniprocessor grid!
+!
+!  Two methods are available for imposing this transformation
+!  when setting matrix entries:
+!    (A) MatSetValuesLocal(), using the local ordering (including
+!        ghost points!)
+!        - Set matrix entries using the local ordering
+!          by calling MatSetValuesLocal()
+!    (B) MatSetValues(), using the global ordering
+
+!        - Set matrix entries using the global ordering by calling
+!          MatSetValues()
+!  Option (A) seems cleaner/easier in many cases, and is the procedure
+!  used in this example.
+!
+  subroutine FormJacobian(snes, X, jac, jac_prec, ctx, ierr)
+!  Input/output variables:
+    SNES snes
+    Vec X
+    Mat jac, jac_prec
+    type(AppCtx) ctx
+    PetscErrorCode, intent(out) :: ierr
+    DM da
+!  Declarations for use with local arrays:
+    PetscScalar, pointer :: lx_v(:)
+    Vec localX
+
+!  Scatter ghost points to local vector, using the 2-step process
+!     DMGlobalToLocalBegin(), DMGlobalToLocalEnd()
+!  Computations can be done while messages are in transition,
+!  by placing code between these two statements.
+
+    PetscCallA(SNESGetDM(snes, da, ierr))
+    PetscCallA(DMGetLocalVector(da, localX, ierr))
+    PetscCallA(DMGlobalToLocalBegin(da, X, INSERT_VALUES, localX, ierr))
+    PetscCallA(DMGlobalToLocalEnd(da, X, INSERT_VALUES, localX, ierr))
+
+!  Get a pointer to vector data
+    PetscCallA(VecGetArray(localX, lx_v, ierr))
+
+!  Compute entries for the locally owned part of the Jacobian preconditioner.
+    PetscCallA(FormJacobianLocal(lx_v, jac_prec, ctx, ierr))
+
+!  Assemble matrix, using the 2-step process:
+!     MatAssemblyBegin(), MatAssemblyEnd()
+!  Computations can be done while messages are in transition,
+!  by placing code between these two statements.
+
+    PetscCallA(MatAssemblyBegin(jac, MAT_FINAL_ASSEMBLY, ierr))
+    if (jac /= jac_prec) then
+      PetscCallA(MatAssemblyBegin(jac_prec, MAT_FINAL_ASSEMBLY, ierr))
+    end if
+    PetscCallA(VecRestoreArray(localX, lx_v, ierr))
+    PetscCallA(DMRestoreLocalVector(da, localX, ierr))
+    PetscCallA(MatAssemblyEnd(jac, MAT_FINAL_ASSEMBLY, ierr))
+    if (jac /= jac_prec) then
+      PetscCallA(MatAssemblyEnd(jac_prec, MAT_FINAL_ASSEMBLY, ierr))
+    end if
+
+!  Tell the matrix we will never add a new nonzero location to the
+!  matrix. If we do it will generate an error.
+
+    PetscCallA(MatSetOption(jac, MAT_NEW_NONZERO_LOCATION_ERR, PETSC_TRUE, ierr))
+
+  end
+
+! ---------------------------------------------------------------------
+!
+!  FormJacobianLocal - Computes Jacobian matrix used to compute the preconditioner,
+!  called by the higher level routine FormJacobian().
+!
+!  Input Parameters:
+!  x        - local vector data
+!
+!  Output Parameters:
+!  jac_prec - Jacobian matrix used to compute the preconditioner
+!  ierr     - error code
+!
+!  Notes:
+!  This routine uses standard Fortran-style computations over a 2-dim array.
+!
+!  Notes:
+!  Due to grid point reordering with DMDAs, we must always work
+!  with the local grid points, and then transform them to the new
+!  global numbering with the "ltog" mapping
+!  We cannot work directly with the global numbers for the original
+!  uniprocessor grid!
+!
+!  Two methods are available for imposing this transformation
+!  when setting matrix entries:
+!    (A) MatSetValuesLocal(), using the local ordering (including
+!        ghost points!)
+!        - Set matrix entries using the local ordering
+!          by calling MatSetValuesLocal()
+!    (B) MatSetValues(), using the global ordering
+!        - Then apply this map explicitly yourself
+!        - Set matrix entries using the global ordering by calling
+!          MatSetValues()
+!  Option (A) seems cleaner/easier in many cases, and is the procedure
+!  used in this example.
+!
+  subroutine FormJacobianLocal(x, jac_prec, ctx, ierr)
+!  Input/output variables:
+    type(AppCtx) ctx
+    PetscScalar x(ctx%gxs:ctx%gxe, ctx%gys:ctx%gye)
+    Mat jac_prec
+    PetscErrorCode ierr
+
+!  Local variables:
+    PetscInt row, col(5), i, j
+    PetscScalar, parameter :: two = 2.0, one = 1.0
+    PetscScalar hx, hy, hxdhy, hydhx, sc, v(5)
+
+!  Set parameters
+    hx = one/(ctx%mx - 1)
+    hy = one/(ctx%my - 1)
+    sc = hx*hy
+    hxdhy = hx/hy
+    hydhx = hy/hx
+
+!  Compute entries for the locally owned part of the Jacobian.
+!   - Currently, all PETSc parallel matrix formats are partitioned by
+!     contiguous chunks of rows across the processors.
+!   - Each processor needs to insert only elements that it owns
+!     locally (but any non-local elements will be sent to the
+!     appropriate processor during matrix assembly).
+!   - Here, we set all entries for a particular row at once.
+!   - We can set matrix entries either using either
+!     MatSetValuesLocal() or MatSetValues(), as discussed above.
+!   - Note that MatSetValues() uses 0-based row and column numbers
+!     in Fortran as well as in C.
+
+    do j = ctx%ys, ctx%ye
+      row = (j - ctx%gys)*ctx%gxm + ctx%xs - ctx%gxs - 1
+      do i = ctx%xs, ctx%xe
+        row = row + 1
+!           boundary points
+        if (i == 1 .or. j == 1 .or. i == ctx%mx .or. j == ctx%my) then
+          col(1) = row
+          v(1) = one
+          PetscCallA(MatSetValuesLocal(jac_prec, 1_PETSC_INT_KIND, [row], 1_PETSC_INT_KIND, col, v, INSERT_VALUES, ierr))
+!           interior grid points
+        else
+          v(1) = -hxdhy
+          v(2) = -hydhx
+          v(3) = two*(hydhx + hxdhy) - sc*ctx%lambda*exp(x(i, j))
+          v(4) = -hydhx
+          v(5) = -hxdhy
+          col(1) = row - ctx%gxm
+          col(2) = row - 1
+          col(3) = row
+          col(4) = row + 1
+          col(5) = row + ctx%gxm
+          PetscCallA(MatSetValuesLocal(jac_prec, 1_PETSC_INT_KIND, [row], 5_PETSC_INT_KIND, col, v, INSERT_VALUES, ierr))
+        end if
+      end do
+    end do
+
+  end
+
+end module ex5module
+
+program main
+  use ex5module
+  implicit none
+!
+
+! - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+!                   Variable declarations
+! - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+!
+!  Variables:
+!     snes        - nonlinear solver
+!     x, r        - solution, residual vectors
+!     J           - Jacobian matrix
+!     its         - iterations for convergence
+!     Nx, Ny      - number of preocessors in x- and y- directions
+!     matrix_free - flag - 1 indicates matrix-free version
+!
+  SNES snes
+  Vec x, r
+  Mat J
+  PetscErrorCode ierr
+  PetscInt its
+  PetscBool flg, matrix_free
+  PetscReal, parameter :: lambda_min = 0.0_PETSC_REAL_KIND, lambda_max = 6.81_PETSC_REAL_KIND
+  type(AppCtx) ctx
+  DM da
+
+! - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+!  Initialize program
+! - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  PetscCallA(PetscInitialize(ierr))
+  PetscCallMPIA(MPI_Comm_rank(PETSC_COMM_WORLD, ctx%rank, ierr))
+
+!  Initialize problem parameters
+  ctx%lambda = 6.0
+  PetscCallA(PetscOptionsGetReal(PETSC_NULL_OPTIONS, PETSC_NULL_CHARACTER, '-par', ctx%lambda, flg, ierr))
+  PetscCheckA(ctx%lambda < lambda_max .and. ctx%lambda > lambda_min, PETSC_COMM_SELF, PETSC_ERR_USER, 'Lambda provided with -par is out of range')
+
+! - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+!  Create nonlinear solver context
+! - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  PetscCallA(SNESCreate(PETSC_COMM_WORLD, snes, ierr))
+
+! - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+!  Create vector data structures; set function evaluation routine
+! - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+!  Create distributed array (DMDA) to manage parallel grid and vectors
+
+! This really needs only the star-type stencil, but we use the box
+! stencil temporarily.
+  PetscCallA(DMDACreate2d(PETSC_COMM_WORLD, DM_BOUNDARY_NONE, DM_BOUNDARY_NONE, DMDA_STENCIL_BOX, 4_PETSC_INT_KIND, 4_PETSC_INT_KIND, PETSC_DECIDE, PETSC_DECIDE, 1_PETSC_INT_KIND, 1_PETSC_INT_KIND, PETSC_NULL_INTEGER_ARRAY, PETSC_NULL_INTEGER_ARRAY, da, ierr))
+  PetscCallA(DMSetFromOptions(da, ierr))
+  PetscCallA(DMSetUp(da, ierr))
+
+  PetscCallA(DMDAGetInfo(da, PETSC_NULL_INTEGER, ctx%mx, ctx%my, PETSC_NULL_INTEGER, PETSC_NULL_INTEGER, PETSC_NULL_INTEGER, PETSC_NULL_INTEGER, PETSC_NULL_INTEGER, PETSC_NULL_INTEGER, PETSC_NULL_DMBOUNDARYTYPE, PETSC_NULL_DMBOUNDARYTYPE, PETSC_NULL_DMBOUNDARYTYPE, PETSC_NULL_DMDASTENCILTYPE, ierr))
+
+!
+!   Visualize the distribution of the array across the processors
+!
+!     PetscCallA(DMView(da,PETSC_VIEWER_DRAW_WORLD,ierr))
+
+!  Extract global and local vectors from DMDA; then duplicate for remaining
+!  vectors that are the same types
+  PetscCallA(DMCreateGlobalVector(da, x, ierr))
+  PetscCallA(VecDuplicate(x, r, ierr))
+
+!  Get local grid boundaries (for 2-dimensional DMDA)
+  PetscCallA(DMDAGetCorners(da, ctx%xs, ctx%ys, PETSC_NULL_INTEGER, ctx%xm, ctx%ym, PETSC_NULL_INTEGER, ierr))
+  PetscCallA(DMDAGetGhostCorners(da, ctx%gxs, ctx%gys, PETSC_NULL_INTEGER, ctx%gxm, ctx%gym, PETSC_NULL_INTEGER, ierr))
+
+!  Here we shift the starting indices up by one so that we can easily
+!  use the Fortran convention of 1-based indices (rather 0-based indices).
+  ctx%xs = ctx%xs + 1
+  ctx%ys = ctx%ys + 1
+  ctx%gxs = ctx%gxs + 1
+  ctx%gys = ctx%gys + 1
+
+  ctx%ye = ctx%ys + ctx%ym - 1
+  ctx%xe = ctx%xs + ctx%xm - 1
+  ctx%gye = ctx%gys + ctx%gym - 1
+  ctx%gxe = ctx%gxs + ctx%gxm - 1
+
+  PetscCallA(SNESSetApplicationContext(snes, ctx, ierr))
+
+!  Set function evaluation routine and vector
+  PetscCallA(SNESSetFunction(snes, r, FormFunction, ctx, ierr))
+
+! - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+!  Create matrix data structure; set Jacobian evaluation routine
+! - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+!  Set Jacobian matrix data structure and default Jacobian evaluation
+!  routine. User can override with:
+!     -snes_fd : default finite differencing approximation of Jacobian
+!     -snes_mf : matrix-free Newton-Krylov method with no preconditioning
+!                (unless user explicitly sets preconditioner)
+!     -snes_mf_operator : form matrix used to construct the preconditioner as set by the user,
+!                         but use matrix-free approx for Jacobian-vector
+!                         products within Newton-Krylov method
+!
+!  Note:  For the parallel case, vectors and matrices MUST be partitioned
+!     accordingly.  When using distributed arrays (DMDAs) to create vectors,
+!     the DMDAs determine the problem partitioning.  We must explicitly
+!     specify the local matrix dimensions upon its creation for compatibility
+!     with the vector distribution.  Thus, the generic MatCreate() routine
+!     is NOT sufficient when working with distributed arrays.
+!
+!     Note: Here we only approximately preallocate storage space for the
+!     Jacobian.  See the users manual for a discussion of better techniques
+!     for preallocating matrix memory.
+
+  PetscCallA(PetscOptionsHasName(PETSC_NULL_OPTIONS, PETSC_NULL_CHARACTER, '-snes_mf', matrix_free, ierr))
+  if (.not. matrix_free) then
+    PetscCallA(DMSetMatType(da, MATAIJ, ierr))
+    PetscCallA(DMCreateMatrix(da, J, ierr))
+    PetscCallA(SNESSetJacobian(snes, J, J, FormJacobian, ctx, ierr))
+  end if
+
+! - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+!  Customize nonlinear solver; set runtime options
+! - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+!  Set runtime options (e.g., -snes_monitor -snes_rtol <rtol> -ksp_type <type>)
+  PetscCallA(SNESSetDM(snes, da, ierr))
+  PetscCallA(SNESSetFromOptions(snes, ierr))
+
+! - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+!  Evaluate initial guess; then solve nonlinear system.
+! - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+!  Note: The user should initialize the vector, x, with the initial guess
+!  for the nonlinear solver prior to calling SNESSolve().  In particular,
+!  to employ an initial guess of zero, the user should explicitly set
+!  this vector to zero by calling VecSet().
+
+  PetscCallA(FormInitialGuess(snes, x, ierr))
+  PetscCallA(SNESSolve(snes, PETSC_NULL_VEC, x, ierr))
+  PetscCallA(SNESGetIterationNumber(snes, its, ierr))
+  if (ctx%rank == 0) then
+    write (6, 100) its
+  end if
+100 format('Number of SNES iterations = ', i5)
+
+! - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+!  Free work space.  All PETSc objects should be destroyed when they
+!  are no longer needed.
+! - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  if (.not. matrix_free) PetscCallA(MatDestroy(J, ierr))
+  PetscCallA(VecDestroy(x, ierr))
+  PetscCallA(VecDestroy(r, ierr))
+  PetscCallA(SNESDestroy(snes, ierr))
+  PetscCallA(DMDestroy(da, ierr))
+
+  PetscCallA(PetscFinalize(ierr))
+end
+!
+!/*TEST
+!
+!   test:
+!      nsize: 4
+!      args: -snes_mf -pc_type none -da_processors_x 4 -da_processors_y 1 -snes_monitor_short -ksp_gmres_cgs_refinement_type refine_always
+!      requires: !single
+!
+!   test:
+!      suffix: 2
+!      nsize: 4
+!      args: -da_processors_x 2 -da_processors_y 2 -snes_monitor_short -ksp_gmres_cgs_refinement_type refine_always
+!      requires: !single
+!
+!   test:
+!      suffix: 3
+!      nsize: 3
+!      args: -snes_fd -snes_monitor_short -ksp_gmres_cgs_refinement_type refine_always
+!      requires: !single
+!
+!   test:
+!      suffix: 4
+!      nsize: 3
+!      args: -snes_mf_operator -snes_monitor_short -ksp_gmres_cgs_refinement_type refine_always
+!      requires: !single
+!
+!   test:
+!      suffix: 5
+!      requires: !single
+!
+!TEST*/

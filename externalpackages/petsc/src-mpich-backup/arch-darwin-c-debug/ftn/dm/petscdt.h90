@@ -1,0 +1,1044 @@
+  interface
+  subroutine PetscQuadratureCreate(comm,q, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscQuadrature
+  MPIU_Comm :: comm
+  PetscQuadrature :: q
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscQuadratureCreate
+#endif
+  interface
+  subroutine PetscQuadratureDuplicate(q,r, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscQuadrature
+  PetscQuadrature :: q
+  PetscQuadrature :: r
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscQuadratureDuplicate
+#endif
+  interface
+  subroutine PetscQuadratureDestroy(q, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscQuadrature
+  PetscQuadrature :: q
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscQuadratureDestroy
+#endif
+  interface
+  subroutine PetscQuadratureGetCellType(q,ct, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscQuadrature,eDMPolytopeType
+  PetscQuadrature :: q
+  DMPolytopeType :: ct
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscQuadratureGetCellType
+#endif
+  interface
+  subroutine PetscQuadratureSetCellType(q,ct, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscQuadrature,eDMPolytopeType
+  PetscQuadrature :: q
+  DMPolytopeType :: ct
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscQuadratureSetCellType
+#endif
+  interface
+  subroutine PetscQuadratureGetOrder(q,order, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscQuadrature
+  PetscQuadrature :: q
+  PetscInt :: order
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscQuadratureGetOrder
+#endif
+  interface
+  subroutine PetscQuadratureSetOrder(q,order, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscQuadrature
+  PetscQuadrature :: q
+  PetscInt :: order
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscQuadratureSetOrder
+#endif
+  interface
+  subroutine PetscQuadratureGetNumComponents(q,Nc, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscQuadrature
+  PetscQuadrature :: q
+  PetscInt :: Nc
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscQuadratureGetNumComponents
+#endif
+  interface
+  subroutine PetscQuadratureSetNumComponents(q,Nc, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscQuadrature
+  PetscQuadrature :: q
+  PetscInt :: Nc
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscQuadratureSetNumComponents
+#endif
+  interface
+  subroutine PetscQuadratureGetData(q,dim,Nc,npoints,points,weights, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscQuadrature
+  PetscQuadrature :: q
+  PetscInt :: dim
+  PetscInt :: Nc
+  PetscInt :: npoints
+  PetscReal, pointer :: points(:)
+  PetscReal, pointer :: weights(:)
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscQuadratureGetData
+#endif
+  interface
+  subroutine PetscQuadratureEqual(A,B,equal, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscQuadrature
+  PetscQuadrature :: A
+  PetscQuadrature :: B
+  PetscBool :: equal
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscQuadratureEqual
+#endif
+  interface
+  subroutine PetscQuadraturePushForward(q,imageDim,origin,originImage,J,formDegree,Jinvstarq, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscQuadrature
+  PetscQuadrature :: q
+  PetscInt :: imageDim
+  PetscReal :: origin(*)
+  PetscReal :: originImage(*)
+  PetscReal :: J(*)
+  PetscInt :: formDegree
+  PetscQuadrature :: Jinvstarq
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscQuadraturePushForward
+#endif
+  interface
+  subroutine PetscQuadratureSetData(q,dim,Nc,npoints,points,weights, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscQuadrature
+  PetscQuadrature :: q
+  PetscInt :: dim
+  PetscInt :: Nc
+  PetscInt :: npoints
+  PetscReal :: points(*)
+  PetscReal :: weights(*)
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscQuadratureSetData
+#endif
+  interface
+  subroutine PetscQuadratureView(quad,viewer, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscQuadrature,tPetscViewer
+  PetscQuadrature :: quad
+  PetscViewer :: viewer
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscQuadratureView
+#endif
+  interface
+  subroutine PetscQuadratureExpandComposite(q,numSubelements,v0,jac,qref, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscQuadrature
+  PetscQuadrature :: q
+  PetscInt :: numSubelements
+  PetscReal :: v0(*)
+  PetscReal :: jac(*)
+  PetscQuadrature :: qref
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscQuadratureExpandComposite
+#endif
+  interface
+  subroutine PetscQuadratureComputePermutations(quad,Np,perm, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscQuadrature,tIS
+  PetscQuadrature :: quad
+  PetscInt :: Np
+  IS, pointer :: perm(:)
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscQuadratureComputePermutations
+#endif
+  interface operator(.ne.)
+    module procedure PetscQuadraturenotequals
+  end interface operator (.ne.)
+  interface operator(.eq.)
+    module procedure PetscQuadratureequals
+  end interface operator (.eq.)
+
+  interface PetscObjectCast
+    module procedure PetscObjectCastQuadrature
+  end interface
+  interface PetscBarrier
+  module procedure PetscBarrierQuadrature
+  end interface
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectSAWsTakeAccess
+    module procedure PetscObjectSAWsTakeAccessQuadrature
+  end interface
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectSAWsGrantAccess
+    module procedure PetscObjectSAWsGrantAccessQuadrature
+  end interface
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectSAWsBlock
+    module procedure PetscObjectSAWsBlockQuadrature
+  end interface
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectSAWsSetBlock
+    module procedure PetscObjectSAWsSetBlockQuadrature
+  end interface
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectSAWsViewOff
+    module procedure PetscObjectSAWsViewOffQuadrature
+  end interface
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectViewSAWs
+    module procedure PetscObjectViewSAWsQuadrature
+  end interface
+#endif
+  interface PetscObjectGetType
+    module procedure PetscObjectGetTypeQuadrature
+  end interface
+  interface PetscObjectSetPrintedOptions
+    module procedure PetscObjectSetPrintedOptionsQuadrature
+  end interface
+  interface PetscObjectInheritPrintedOptions
+    module procedure PetscObjectInheritPrintedOptionsQuadrature
+  end interface
+  interface PetscObjectAddOptionsHandler
+    module procedure PetscObjectAddOptionsHandlerQuadrature
+  end interface
+  interface PetscObjectProcessOptionsHandlers
+    module procedure PetscObjectProcessOptionsHandlersQuadrature
+  end interface
+  interface PetscObjectDestroyOptionsHandlers
+    module procedure PetscObjectDestroyOptionsHandlersQuadrature
+  end interface
+  interface PetscObjectReference
+    module procedure PetscObjectReferenceQuadrature
+  end interface
+  interface PetscObjectGetReference
+    module procedure PetscObjectGetReferenceQuadrature
+  end interface
+  interface PetscObjectDereference
+    module procedure PetscObjectDereferenceQuadrature
+  end interface
+  interface PetscObjectRemoveReference
+    module procedure PetscObjectRemoveReferenceQuadrature
+  end interface
+  interface PetscObjectHasFunction
+    module procedure PetscObjectHasFunctionQuadrature
+  end interface
+  interface PetscObjectSetFromOptions
+    module procedure PetscObjectSetFromOptionsQuadrature
+  end interface
+  interface PetscObjectSetUp
+    module procedure PetscObjectSetUpQuadrature
+  end interface
+  interface PetscObjectGetName
+    module procedure PetscObjectGetNameQuadrature
+  end interface
+  interface PetscObjectDestroy
+    module procedure PetscObjectDestroyQuadrature
+  end interface
+  interface PetscObjectView
+    module procedure PetscObjectViewQuadrature
+  end interface
+  interface PetscObjectViewFromOptions
+    module procedure PetscObjectViewFromOptionsQuadrature
+  end interface
+  interface PetscObjectTypeCompare
+    module procedure PetscObjectTypeCompareQuadrature
+  end interface
+  interface PetscObjectObjectTypeCompare
+    module procedure PetscObjectObjectTypeCompareQuadrature
+  end interface
+  interface PetscObjectBaseTypeCompare
+    module procedure PetscObjectBaseTypeCompareQuadrature
+  end interface
+  interface PetscObjectRegisterDestroy
+    module procedure PetscObjectRegisterDestroyQuadrature
+  end interface
+  interface PetscObjectGetId
+    module procedure PetscObjectGetIdQuadrature
+  end interface
+  interface PetscObjectCompareId
+    module procedure PetscObjectCompareIdQuadrature
+  end interface
+  interface PetscObjectGetOptions
+    module procedure PetscObjectGetOptionsQuadrature
+  end interface
+  interface PetscObjectSetOptions
+    module procedure PetscObjectSetOptionsQuadrature
+  end interface
+  interface PetscObjectSetOptionsPrefix
+    module procedure PetscObjectSetOptionsPrefixQuadrature
+  end interface
+  interface PetscObjectAppendOptionsPrefix
+    module procedure PetscObjectAppendOptionsPrefixQuadrature
+  end interface
+  interface PetscObjectGetOptionsPrefix
+    module procedure PetscObjectGetOptionsPrefixQuadrature
+  end interface
+  interface PetscObjectPrependOptionsPrefix
+    module procedure PetscObjectPrependOptionsPrefixQuadrature
+  end interface
+  interface PetscObjectGetComm
+    module procedure PetscObjectGetCommQuadrature
+  end interface
+  interface PetscObjectGetTabLevel
+    module procedure PetscObjectGetTabLevelQuadrature
+  end interface
+  interface PetscObjectSetTabLevel
+    module procedure PetscObjectSetTabLevelQuadrature
+  end interface
+  interface PetscObjectIncrementTabLevel
+    module procedure PetscObjectIncrementTabLevelQuadrature
+  end interface
+  interface PetscObjectGetNewTag
+    module procedure PetscObjectGetNewTagQuadrature
+  end interface
+  interface PetscObjectGetClassId
+    module procedure PetscObjectGetClassIdQuadrature
+  end interface
+  interface PetscObjectGetClassName
+    module procedure PetscObjectGetClassNameQuadrature
+  end interface
+  interface PetscObjectSetName
+    module procedure PetscObjectSetNameQuadrature
+  end interface
+  interface PetscObjectPrintClassNamePrefixType
+    module procedure PetscObjectPrintClassNamePrefixTypeQuadrature
+  end interface
+  interface PetscObjectName
+    module procedure PetscObjectNameQuadrature
+  end interface
+  interface PetscObjectChangeTypeName
+    module procedure PetscObjectChangeTypeNameQuadrature
+  end interface
+  interface
+  subroutine PetscDTAltVApply(N,k,w,v,wv, ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscInt :: N
+  PetscInt :: k
+  PetscReal :: w
+  PetscReal :: v
+  PetscReal :: wv
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDTAltVApply
+#endif
+  interface
+  subroutine PetscDTAltVWedge(N,j,k,a,b,awedgeb, ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscInt :: N
+  PetscInt :: j
+  PetscInt :: k
+  PetscReal :: a
+  PetscReal :: b
+  PetscReal :: awedgeb
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDTAltVWedge
+#endif
+  interface
+  subroutine PetscDTAltVWedgeMatrix(N,j,k,a,awedgeMat, ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscInt :: N
+  PetscInt :: j
+  PetscInt :: k
+  PetscReal :: a
+  PetscReal :: awedgeMat
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDTAltVWedgeMatrix
+#endif
+  interface
+  subroutine PetscDTAltVPullback(N,M,L,k,w,Lstarw, ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscInt :: N
+  PetscInt :: M
+  PetscReal :: L
+  PetscInt :: k
+  PetscReal :: w
+  PetscReal :: Lstarw
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDTAltVPullback
+#endif
+  interface
+  subroutine PetscDTAltVPullbackMatrix(N,M,L,k,Lstar, ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscInt :: N
+  PetscInt :: M
+  PetscReal :: L
+  PetscInt :: k
+  PetscReal :: Lstar
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDTAltVPullbackMatrix
+#endif
+  interface
+  subroutine PetscDTAltVInterior(N,k,w,v,wIntv, ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscInt :: N
+  PetscInt :: k
+  PetscReal :: w
+  PetscReal :: v
+  PetscReal :: wIntv
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDTAltVInterior
+#endif
+  interface
+  subroutine PetscDTAltVInteriorMatrix(N,k,v,intvMat, ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscInt :: N
+  PetscInt :: k
+  PetscReal :: v
+  PetscReal :: intvMat
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDTAltVInteriorMatrix
+#endif
+  interface
+  subroutine PetscDTAltVStar(N,k,pow,w,starw, ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscInt :: N
+  PetscInt :: k
+  PetscInt :: pow
+  PetscReal :: w
+  PetscReal :: starw
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDTAltVStar
+#endif
+  interface
+  subroutine PetscProbComputeKSStatistic(v,cdf,alpha, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVec
+  Vec :: v
+  external cdf
+  PetscReal :: alpha
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscProbComputeKSStatistic
+#endif
+  interface
+  subroutine PetscProbComputeKSStatisticWeighted(v,w,cdf,alpha, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVec
+  Vec :: v
+  Vec :: w
+  external cdf
+  PetscReal :: alpha
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscProbComputeKSStatisticWeighted
+#endif
+  interface
+  subroutine PetscProbComputeKSStatisticMagnitude(v,cdf,alpha, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tVec
+  Vec :: v
+  external cdf
+  PetscReal :: alpha
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscProbComputeKSStatisticMagnitude
+#endif
+  interface
+  subroutine PetscDTJacobiNorm(alpha,beta,n,norm, ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscReal :: alpha
+  PetscReal :: beta
+  PetscInt :: n
+  PetscReal :: norm
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDTJacobiNorm
+#endif
+  interface
+  subroutine PetscDTJacobiEvalJet(alpha,beta,npoints,points,degree,k,p, ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscReal :: alpha
+  PetscReal :: beta
+  PetscInt :: npoints
+  PetscReal :: points(*)
+  PetscInt :: degree
+  PetscInt :: k
+  PetscReal :: p(*)
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDTJacobiEvalJet
+#endif
+  interface
+  subroutine PetscDTJacobiEval(npoints,alpha,beta,points,ndegree,degrees,B,D,D2, ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscInt :: npoints
+  PetscReal :: alpha
+  PetscReal :: beta
+  PetscReal :: points
+  PetscInt :: ndegree
+  PetscInt :: degrees
+  PetscReal :: B(*)
+  PetscReal :: D(*)
+  PetscReal :: D2(*)
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDTJacobiEval
+#endif
+  interface
+  subroutine PetscDTLegendreEval(npoints,points,ndegree,degrees,B,D,D2, ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscInt :: npoints
+  PetscReal :: points
+  PetscInt :: ndegree
+  PetscInt :: degrees
+  PetscReal :: B(*)
+  PetscReal :: D(*)
+  PetscReal :: D2(*)
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDTLegendreEval
+#endif
+  interface
+  subroutine PetscDTIndexToGradedOrder(len,index,degtup, ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscInt :: len
+  PetscInt :: index
+  PetscInt :: degtup(*)
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDTIndexToGradedOrder
+#endif
+  interface
+  subroutine PetscDTGradedOrderToIndex(len,degtup,index, ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscInt :: len
+  PetscInt :: degtup(*)
+  PetscInt :: index
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDTGradedOrderToIndex
+#endif
+  interface
+  subroutine PetscDTPKDEvalJet(dim,npoints,points,degree,k,p, ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscInt :: dim
+  PetscInt :: npoints
+  PetscReal :: points(*)
+  PetscInt :: degree
+  PetscInt :: k
+  PetscReal :: p(*)
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDTPKDEvalJet
+#endif
+  interface
+  subroutine PetscDTPTrimmedSize(dim,degree,formDegree,size, ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscInt :: dim
+  PetscInt :: degree
+  PetscInt :: formDegree
+  PetscInt :: size
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDTPTrimmedSize
+#endif
+  interface
+  subroutine PetscDTPTrimmedEvalJet(dim,npoints,points,degree,formDegree,jetDegree,p, ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscInt :: dim
+  PetscInt :: npoints
+  PetscReal :: points(*)
+  PetscInt :: degree
+  PetscInt :: formDegree
+  PetscInt :: jetDegree
+  PetscReal :: p(*)
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDTPTrimmedEvalJet
+#endif
+  interface
+  subroutine PetscDTGaussJacobiQuadrature(npoints,a,b,alpha,beta,x,w, ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscInt :: npoints
+  PetscReal :: a
+  PetscReal :: b
+  PetscReal :: alpha
+  PetscReal :: beta
+  PetscReal :: x(*)
+  PetscReal :: w(*)
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDTGaussJacobiQuadrature
+#endif
+  interface
+  subroutine PetscDTGaussLobattoJacobiQuadrature(npoints,a,b,alpha,beta,x,w, ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscInt :: npoints
+  PetscReal :: a
+  PetscReal :: b
+  PetscReal :: alpha
+  PetscReal :: beta
+  PetscReal :: x(*)
+  PetscReal :: w(*)
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDTGaussLobattoJacobiQuadrature
+#endif
+  interface
+  subroutine PetscDTGaussQuadrature(npoints,a,b,x,w, ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscInt :: npoints
+  PetscReal :: a
+  PetscReal :: b
+  PetscReal :: x(*)
+  PetscReal :: w(*)
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDTGaussQuadrature
+#endif
+  interface
+  subroutine PetscDTGaussLobattoLegendreQuadrature(npoints,type,x,w, ierr)
+  use, intrinsic :: ISO_C_binding
+  import ePetscGaussLobattoLegendreCreateType
+  PetscInt :: npoints
+  PetscGaussLobattoLegendreCreateType :: type
+  PetscReal :: x(*)
+  PetscReal :: w(*)
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDTGaussLobattoLegendreQuadrature
+#endif
+  interface
+  subroutine PetscDTGaussTensorQuadrature(dim,Nc,npoints,a,b,q, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscQuadrature
+  PetscInt :: dim
+  PetscInt :: Nc
+  PetscInt :: npoints
+  PetscReal :: a
+  PetscReal :: b
+  PetscQuadrature :: q
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDTGaussTensorQuadrature
+#endif
+  interface
+  subroutine PetscDTStroudConicalQuadrature(dim,Nc,npoints,a,b,q, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscQuadrature
+  PetscInt :: dim
+  PetscInt :: Nc
+  PetscInt :: npoints
+  PetscReal :: a
+  PetscReal :: b
+  PetscQuadrature :: q
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDTStroudConicalQuadrature
+#endif
+  interface
+  subroutine PetscDTSimplexQuadrature(dim,degree,type,quad, ierr)
+  use, intrinsic :: ISO_C_binding
+  import ePetscDTSimplexQuadratureType,tPetscQuadrature
+  PetscInt :: dim
+  PetscInt :: degree
+  PetscDTSimplexQuadratureType :: type
+  PetscQuadrature :: quad
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDTSimplexQuadrature
+#endif
+  interface
+  subroutine PetscDTTanhSinhTensorQuadrature(dim,level,a,b,q, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscQuadrature
+  PetscInt :: dim
+  PetscInt :: level
+  PetscReal :: a
+  PetscReal :: b
+  PetscQuadrature :: q
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDTTanhSinhTensorQuadrature
+#endif
+  interface
+  subroutine PetscDTTanhSinhIntegrate(func,a,b,digits,ctx,sol, ierr)
+  use, intrinsic :: ISO_C_binding
+  external :: func
+  PetscReal :: a
+  PetscReal :: b
+  PetscInt :: digits
+  type(*) :: ctx
+  PetscReal :: sol
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDTTanhSinhIntegrate
+#endif
+  interface
+  subroutine PetscDTTanhSinhIntegrateMPFR(func,a,b,digits,ctx,sol, ierr)
+  use, intrinsic :: ISO_C_binding
+  external :: func
+  PetscReal :: a
+  PetscReal :: b
+  PetscInt :: digits
+  type(*) :: ctx
+  PetscReal :: sol
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDTTanhSinhIntegrateMPFR
+#endif
+  interface
+  subroutine PetscDTTensorQuadratureCreate(q1,q2,q, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscQuadrature
+  PetscQuadrature :: q1
+  PetscQuadrature :: q2
+  PetscQuadrature :: q
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDTTensorQuadratureCreate
+#endif
+  interface
+  subroutine PetscDTReconstructPoly(degree,nsource,sourcex,ntarget,targetx,R, ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscInt :: degree
+  PetscInt :: nsource
+  PetscReal :: sourcex(*)
+  PetscInt :: ntarget
+  PetscReal :: targetx(*)
+  PetscReal :: R(*)
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDTReconstructPoly
+#endif
+  interface
+  subroutine PetscGaussLobattoLegendreIntegrate(n,nodes,weights,f,in, ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscInt :: n
+  PetscReal :: nodes(*)
+  PetscReal :: weights(*)
+  PetscReal :: f(*)
+  PetscReal :: in
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscGaussLobattoLegendreIntegrate
+#endif
+  interface
+  subroutine PetscDTIndexToBary(len,sum,index,coord, ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscInt :: len
+  PetscInt :: sum
+  PetscInt :: index
+  PetscInt :: coord(*)
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDTIndexToBary
+#endif
+  interface
+  subroutine PetscDTBaryToIndex(len,sum,coord,index, ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscInt :: len
+  PetscInt :: sum
+  PetscInt :: coord(*)
+  PetscInt :: index
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDTBaryToIndex
+#endif
+  interface
+  subroutine PetscDTCreateQuadratureByCell(ct,qorder,qtype,q,fq, ierr)
+  use, intrinsic :: ISO_C_binding
+  import eDMPolytopeType,ePetscDTSimplexQuadratureType,tPetscQuadrature
+  DMPolytopeType :: ct
+  PetscInt :: qorder
+  PetscDTSimplexQuadratureType :: qtype
+  PetscQuadrature :: q
+  PetscQuadrature :: fq
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDTCreateQuadratureByCell
+#endif
+  interface
+  subroutine PetscDTCreateDefaultQuadrature(ct,qorder,q,fq, ierr)
+  use, intrinsic :: ISO_C_binding
+  import eDMPolytopeType,tPetscQuadrature
+  DMPolytopeType :: ct
+  PetscInt :: qorder
+  PetscQuadrature :: q
+  PetscQuadrature :: fq
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDTCreateDefaultQuadrature
+#endif
+  interface
+  subroutine PetscDTFactorial(n,factorial, ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscInt :: n
+  PetscReal :: factorial
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDTFactorial
+#endif
+  interface
+  subroutine PetscDTFactorialInt(n,factorial, ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscInt :: n
+  PetscInt :: factorial
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDTFactorialInt
+#endif
+  interface
+  subroutine PetscDTBinomial(n,k,binomial, ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscInt :: n
+  PetscInt :: k
+  PetscReal :: binomial
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDTBinomial
+#endif
+  interface
+  subroutine PetscDTBinomialInt(n,k,binomial, ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscInt :: n
+  PetscInt :: k
+  PetscInt :: binomial
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDTBinomialInt
+#endif
+  interface
+  subroutine PetscDTEnumPerm(n,k,perm,isOdd, ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscInt :: n
+  PetscInt :: k
+  PetscInt :: perm
+  PetscBool :: isOdd
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDTEnumPerm
+#endif
+  interface
+  subroutine PetscDTPermIndex(n,perm,k,isOdd, ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscInt :: n
+  PetscInt :: perm
+  PetscInt :: k
+  PetscBool :: isOdd
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDTPermIndex
+#endif
+  interface
+  subroutine PetscDTEnumSubset(n,k,j,subset, ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscInt :: n
+  PetscInt :: k
+  PetscInt :: j
+  PetscInt :: subset
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDTEnumSubset
+#endif
+  interface
+  subroutine PetscDTSubsetIndex(n,k,subset,index, ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscInt :: n
+  PetscInt :: k
+  PetscInt :: subset
+  PetscInt :: index
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDTSubsetIndex
+#endif
+  interface
+  subroutine PetscDTEnumSplit(n,k,j,perm,isOdd, ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscInt :: n
+  PetscInt :: k
+  PetscInt :: j
+  PetscInt :: perm
+  PetscBool :: isOdd
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDTEnumSplit
+#endif
+  interface operator(.ne.)
+    module procedure PetscGaussLobattoLegendreCreateTypenotequals
+  end interface operator (.ne.)
+  interface operator(.eq.)
+    module procedure PetscGaussLobattoLegendreCreateTypeequals
+  end interface operator (.eq.)
+
+  interface operator(.ne.)
+    module procedure PetscDTNodeTypenotequals
+  end interface operator (.ne.)
+  interface operator(.eq.)
+    module procedure PetscDTNodeTypeequals
+  end interface operator (.eq.)
+
+  interface operator(.ne.)
+    module procedure PetscDTSimplexQuadratureTypenotequals
+  end interface operator (.ne.)
+  interface operator(.eq.)
+    module procedure PetscDTSimplexQuadratureTypeequals
+  end interface operator (.eq.)
+
+  interface operator(.ne.)
+    module procedure DTProbDensityTypenotequals
+  end interface operator (.ne.)
+  interface operator(.eq.)
+    module procedure DTProbDensityTypeequals
+  end interface operator (.eq.)
+

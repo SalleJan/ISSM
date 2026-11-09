@@ -1,0 +1,98 @@
+  interface
+  subroutine PetscHeapCreate(maxsize,heap, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscHeap
+  PetscInt :: maxsize
+  PetscHeap :: heap
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscHeapCreate
+#endif
+  interface
+  subroutine PetscHeapAdd(h,id,val, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscHeap
+  PetscHeap :: h
+  PetscInt :: id
+  PetscInt :: val
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscHeapAdd
+#endif
+  interface
+  subroutine PetscHeapPop(h,id,val, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscHeap
+  PetscHeap :: h
+  PetscInt :: id
+  PetscInt :: val
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscHeapPop
+#endif
+  interface
+  subroutine PetscHeapPeek(h,id,val, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscHeap
+  PetscHeap :: h
+  PetscInt :: id
+  PetscInt :: val
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscHeapPeek
+#endif
+  interface
+  subroutine PetscHeapStash(h,id,val, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscHeap
+  PetscHeap :: h
+  PetscInt :: id
+  PetscInt :: val
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscHeapStash
+#endif
+  interface
+  subroutine PetscHeapUnstash(h, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscHeap
+  PetscHeap :: h
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscHeapUnstash
+#endif
+  interface
+  subroutine PetscHeapDestroy(heap, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscHeap
+  PetscHeap :: heap
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscHeapDestroy
+#endif
+  interface
+  subroutine PetscHeapView(h,viewer, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscHeap,tPetscViewer
+  PetscHeap :: h
+  PetscViewer :: viewer
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscHeapView
+#endif

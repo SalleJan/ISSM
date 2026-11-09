@@ -1,0 +1,374 @@
+  interface
+  subroutine PetscPartitionerRegister(sname,function, ierr)
+  use, intrinsic :: ISO_C_binding
+  character(*) :: sname
+  external :: function
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscPartitionerRegister
+#endif
+  interface
+  subroutine PetscPartitionerFinalizePackage(ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscPartitionerFinalizePackage
+#endif
+  interface
+  subroutine PetscPartitionerInitializePackage(ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscPartitionerInitializePackage
+#endif
+  interface
+  subroutine PetscPartitionerSetType(part,name, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscPartitioner
+  PetscPartitioner :: part
+  character(*) :: name
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscPartitionerSetType
+#endif
+  interface
+  subroutine PetscPartitionerGetType(part,name, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscPartitioner
+  PetscPartitioner :: part
+  character(*) :: name
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscPartitionerGetType
+#endif
+  interface
+  subroutine PetscPartitionerViewFromOptions(A,obj,name, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscPartitioner,tPetscObject
+  PetscPartitioner :: A
+  PetscObject :: obj
+  character(*) :: name
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscPartitionerViewFromOptions
+#endif
+  interface
+  subroutine PetscPartitionerView(part,v, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscPartitioner,tPetscViewer
+  PetscPartitioner :: part
+  PetscViewer :: v
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscPartitionerView
+#endif
+  interface
+  subroutine PetscPartitionerSetFromOptions(part, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscPartitioner
+  PetscPartitioner :: part
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscPartitionerSetFromOptions
+#endif
+  interface
+  subroutine PetscPartitionerSetUp(part, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscPartitioner
+  PetscPartitioner :: part
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscPartitionerSetUp
+#endif
+  interface
+  subroutine PetscPartitionerReset(part, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscPartitioner
+  PetscPartitioner :: part
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscPartitionerReset
+#endif
+  interface
+  subroutine PetscPartitionerDestroy(part, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscPartitioner
+  PetscPartitioner :: part
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscPartitionerDestroy
+#endif
+  interface
+  subroutine PetscPartitionerPartition(part,nparts,numVertices,start,adjacency,vertexSection,edgeSection,targetSection,partSection,partition, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscPartitioner,tPetscSection,tIS
+  PetscPartitioner :: part
+  PetscInt :: nparts
+  PetscInt :: numVertices
+  PetscInt :: start(*)
+  PetscInt :: adjacency(*)
+  PetscSection :: vertexSection
+  PetscSection :: edgeSection
+  PetscSection :: targetSection
+  PetscSection :: partSection
+  IS :: partition
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscPartitionerPartition
+#endif
+  interface
+  subroutine PetscPartitionerCreate(comm,part, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscPartitioner
+  MPIU_Comm :: comm
+  PetscPartitioner :: part
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscPartitionerCreate
+#endif
+  interface
+  subroutine PetscPartitionerShellSetPartition(part,size,sizes,points, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscPartitioner
+  PetscPartitioner :: part
+  PetscInt :: size
+  PetscInt :: sizes(*)
+  PetscInt :: points(*)
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscPartitionerShellSetPartition
+#endif
+  interface
+  subroutine PetscPartitionerShellSetRandom(part,random, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscPartitioner
+  PetscPartitioner :: part
+  PetscBool :: random
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscPartitionerShellSetRandom
+#endif
+  interface
+  subroutine PetscPartitionerShellGetRandom(part,random, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscPartitioner
+  PetscPartitioner :: part
+  PetscBool :: random
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscPartitionerShellGetRandom
+#endif
+  interface
+  subroutine PetscPartitionerMatPartitioningGetMatPartitioning(part,mp, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscPartitioner,tMatPartitioning
+  PetscPartitioner :: part
+  MatPartitioning :: mp
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscPartitionerMatPartitioningGetMatPartitioning
+#endif
+  interface operator(.ne.)
+    module procedure PetscPartitionernotequals
+  end interface operator (.ne.)
+  interface operator(.eq.)
+    module procedure PetscPartitionerequals
+  end interface operator (.eq.)
+
+  interface PetscObjectCast
+    module procedure PetscObjectCastPartitioner
+  end interface
+  interface PetscBarrier
+  module procedure PetscBarrierPartitioner
+  end interface
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectSAWsTakeAccess
+    module procedure PetscObjectSAWsTakeAccessPartitioner
+  end interface
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectSAWsGrantAccess
+    module procedure PetscObjectSAWsGrantAccessPartitioner
+  end interface
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectSAWsBlock
+    module procedure PetscObjectSAWsBlockPartitioner
+  end interface
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectSAWsSetBlock
+    module procedure PetscObjectSAWsSetBlockPartitioner
+  end interface
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectSAWsViewOff
+    module procedure PetscObjectSAWsViewOffPartitioner
+  end interface
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectViewSAWs
+    module procedure PetscObjectViewSAWsPartitioner
+  end interface
+#endif
+  interface PetscObjectGetType
+    module procedure PetscObjectGetTypePartitioner
+  end interface
+  interface PetscObjectSetPrintedOptions
+    module procedure PetscObjectSetPrintedOptionsPartitioner
+  end interface
+  interface PetscObjectInheritPrintedOptions
+    module procedure PetscObjectInheritPrintedOptionsPartitioner
+  end interface
+  interface PetscObjectAddOptionsHandler
+    module procedure PetscObjectAddOptionsHandlerPartitioner
+  end interface
+  interface PetscObjectProcessOptionsHandlers
+    module procedure PetscObjectProcessOptionsHandlersPartitioner
+  end interface
+  interface PetscObjectDestroyOptionsHandlers
+    module procedure PetscObjectDestroyOptionsHandlersPartitioner
+  end interface
+  interface PetscObjectReference
+    module procedure PetscObjectReferencePartitioner
+  end interface
+  interface PetscObjectGetReference
+    module procedure PetscObjectGetReferencePartitioner
+  end interface
+  interface PetscObjectDereference
+    module procedure PetscObjectDereferencePartitioner
+  end interface
+  interface PetscObjectRemoveReference
+    module procedure PetscObjectRemoveReferencePartitioner
+  end interface
+  interface PetscObjectHasFunction
+    module procedure PetscObjectHasFunctionPartitioner
+  end interface
+  interface PetscObjectSetFromOptions
+    module procedure PetscObjectSetFromOptionsPartitioner
+  end interface
+  interface PetscObjectSetUp
+    module procedure PetscObjectSetUpPartitioner
+  end interface
+  interface PetscObjectGetName
+    module procedure PetscObjectGetNamePartitioner
+  end interface
+  interface PetscObjectDestroy
+    module procedure PetscObjectDestroyPartitioner
+  end interface
+  interface PetscObjectView
+    module procedure PetscObjectViewPartitioner
+  end interface
+  interface PetscObjectViewFromOptions
+    module procedure PetscObjectViewFromOptionsPartitioner
+  end interface
+  interface PetscObjectTypeCompare
+    module procedure PetscObjectTypeComparePartitioner
+  end interface
+  interface PetscObjectObjectTypeCompare
+    module procedure PetscObjectObjectTypeComparePartitioner
+  end interface
+  interface PetscObjectBaseTypeCompare
+    module procedure PetscObjectBaseTypeComparePartitioner
+  end interface
+  interface PetscObjectRegisterDestroy
+    module procedure PetscObjectRegisterDestroyPartitioner
+  end interface
+  interface PetscObjectGetId
+    module procedure PetscObjectGetIdPartitioner
+  end interface
+  interface PetscObjectCompareId
+    module procedure PetscObjectCompareIdPartitioner
+  end interface
+  interface PetscObjectGetOptions
+    module procedure PetscObjectGetOptionsPartitioner
+  end interface
+  interface PetscObjectSetOptions
+    module procedure PetscObjectSetOptionsPartitioner
+  end interface
+  interface PetscObjectSetOptionsPrefix
+    module procedure PetscObjectSetOptionsPrefixPartitioner
+  end interface
+  interface PetscObjectAppendOptionsPrefix
+    module procedure PetscObjectAppendOptionsPrefixPartitioner
+  end interface
+  interface PetscObjectGetOptionsPrefix
+    module procedure PetscObjectGetOptionsPrefixPartitioner
+  end interface
+  interface PetscObjectPrependOptionsPrefix
+    module procedure PetscObjectPrependOptionsPrefixPartitioner
+  end interface
+  interface PetscObjectGetComm
+    module procedure PetscObjectGetCommPartitioner
+  end interface
+  interface PetscObjectGetTabLevel
+    module procedure PetscObjectGetTabLevelPartitioner
+  end interface
+  interface PetscObjectSetTabLevel
+    module procedure PetscObjectSetTabLevelPartitioner
+  end interface
+  interface PetscObjectIncrementTabLevel
+    module procedure PetscObjectIncrementTabLevelPartitioner
+  end interface
+  interface PetscObjectGetNewTag
+    module procedure PetscObjectGetNewTagPartitioner
+  end interface
+  interface PetscObjectGetClassId
+    module procedure PetscObjectGetClassIdPartitioner
+  end interface
+  interface PetscObjectGetClassName
+    module procedure PetscObjectGetClassNamePartitioner
+  end interface
+  interface PetscObjectSetName
+    module procedure PetscObjectSetNamePartitioner
+  end interface
+  interface PetscObjectPrintClassNamePrefixType
+    module procedure PetscObjectPrintClassNamePrefixTypePartitioner
+  end interface
+  interface PetscObjectName
+    module procedure PetscObjectNamePartitioner
+  end interface
+  interface PetscObjectChangeTypeName
+    module procedure PetscObjectChangeTypeNamePartitioner
+  end interface
+  interface operator(.ne.)
+    module procedure PetscPartitionerMultistageStrategynotequals
+  end interface operator (.ne.)
+  interface operator(.eq.)
+    module procedure PetscPartitionerMultistageStrategyequals
+  end interface operator (.eq.)
+

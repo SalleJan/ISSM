@@ -1,0 +1,399 @@
+  interface
+  subroutine DMGlobalToLocalBeginDefaultShell(dm,g,mode,l, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM,tVec,eInsertMode
+  DM :: dm
+  Vec :: g
+  InsertMode :: mode
+  Vec :: l
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMGlobalToLocalBeginDefaultShell
+#endif
+  interface
+  subroutine DMGlobalToLocalEndDefaultShell(dm,g,mode,l, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM,tVec,eInsertMode
+  DM :: dm
+  Vec :: g
+  InsertMode :: mode
+  Vec :: l
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMGlobalToLocalEndDefaultShell
+#endif
+  interface
+  subroutine DMLocalToGlobalBeginDefaultShell(dm,l,mode,g, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM,tVec,eInsertMode
+  DM :: dm
+  Vec :: l
+  InsertMode :: mode
+  Vec :: g
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMLocalToGlobalBeginDefaultShell
+#endif
+  interface
+  subroutine DMLocalToGlobalEndDefaultShell(dm,l,mode,g, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM,tVec,eInsertMode
+  DM :: dm
+  Vec :: l
+  InsertMode :: mode
+  Vec :: g
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMLocalToGlobalEndDefaultShell
+#endif
+  interface
+  subroutine DMLocalToLocalBeginDefaultShell(dm,g,mode,l, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM,tVec,eInsertMode
+  DM :: dm
+  Vec :: g
+  InsertMode :: mode
+  Vec :: l
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMLocalToLocalBeginDefaultShell
+#endif
+  interface
+  subroutine DMLocalToLocalEndDefaultShell(dm,g,mode,l, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM,tVec,eInsertMode
+  DM :: dm
+  Vec :: g
+  InsertMode :: mode
+  Vec :: l
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMLocalToLocalEndDefaultShell
+#endif
+  interface
+  subroutine DMShellSetDestroyContext(dm,destroyctx, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  external destroyctx
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMShellSetDestroyContext
+#endif
+  interface
+  subroutine DMShellSetContext(dm,ctx, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  type(*) :: ctx
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMShellSetContext
+#endif
+  interface
+  subroutine DMShellGetContextcptr(dm,ctx, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  type(c_ptr) :: ctx
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMShellGetContextcptr
+#endif
+  interface
+  subroutine DMShellSetMatrix(dm,J, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM,tMat
+  DM :: dm
+  Mat :: J
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMShellSetMatrix
+#endif
+  interface
+  subroutine DMShellSetCreateMatrix(dm,func, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  external :: func
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMShellSetCreateMatrix
+#endif
+  interface
+  subroutine DMShellSetGlobalVector(dm,X, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM,tVec
+  DM :: dm
+  Vec :: X
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMShellSetGlobalVector
+#endif
+  interface
+  subroutine DMShellGetGlobalVector(dm,X, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM,tVec
+  DM :: dm
+  Vec :: X
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMShellGetGlobalVector
+#endif
+  interface
+  subroutine DMShellSetCreateGlobalVector(dm,func, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  external :: func
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMShellSetCreateGlobalVector
+#endif
+  interface
+  subroutine DMShellSetLocalVector(dm,X, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM,tVec
+  DM :: dm
+  Vec :: X
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMShellSetLocalVector
+#endif
+  interface
+  subroutine DMShellSetCreateLocalVector(dm,func, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  external :: func
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMShellSetCreateLocalVector
+#endif
+  interface
+  subroutine DMShellSetGlobalToLocal(dm,begin,end, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  external :: begin
+  external :: end
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMShellSetGlobalToLocal
+#endif
+  interface
+  subroutine DMShellSetLocalToGlobal(dm,begin,end, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  external :: begin
+  external :: end
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMShellSetLocalToGlobal
+#endif
+  interface
+  subroutine DMShellSetLocalToLocal(dm,begin,end, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  external :: begin
+  external :: end
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMShellSetLocalToLocal
+#endif
+  interface
+  subroutine DMShellSetGlobalToLocalVecScatter(dm,gtol, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM,tVecScatter
+  DM :: dm
+  VecScatter :: gtol
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMShellSetGlobalToLocalVecScatter
+#endif
+  interface
+  subroutine DMShellSetLocalToGlobalVecScatter(dm,ltog, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM,tVecScatter
+  DM :: dm
+  VecScatter :: ltog
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMShellSetLocalToGlobalVecScatter
+#endif
+  interface
+  subroutine DMShellSetLocalToLocalVecScatter(dm,ltol, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM,tVecScatter
+  DM :: dm
+  VecScatter :: ltol
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMShellSetLocalToLocalVecScatter
+#endif
+  interface
+  subroutine DMShellSetCoarsen(dm,coarsen, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  external :: coarsen
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMShellSetCoarsen
+#endif
+  interface
+  subroutine DMShellSetRefine(dm,refine, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  external :: refine
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMShellSetRefine
+#endif
+  interface
+  subroutine DMShellSetCreateInterpolation(dm,interp, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  external :: interp
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMShellSetCreateInterpolation
+#endif
+  interface
+  subroutine DMShellSetCreateRestriction(dm,restriction, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  external :: restriction
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMShellSetCreateRestriction
+#endif
+  interface
+  subroutine DMShellSetCreateInjection(dm,inject, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  external :: inject
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMShellSetCreateInjection
+#endif
+  interface
+  subroutine DMShellSetCreateFieldDecomposition(dm,decomp, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  external :: decomp
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMShellSetCreateFieldDecomposition
+#endif
+  interface
+  subroutine DMShellSetCreateDomainDecomposition(dm,decomp, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  external :: decomp
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMShellSetCreateDomainDecomposition
+#endif
+  interface
+  subroutine DMShellSetCreateDomainDecompositionScatters(dm,scatter, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  external :: scatter
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMShellSetCreateDomainDecompositionScatters
+#endif
+  interface
+  subroutine DMShellSetCreateSubDM(dm,subdm, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  DM :: dm
+  external :: subdm
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMShellSetCreateSubDM
+#endif
+  interface
+  subroutine DMShellCreate(comm,dm, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tDM
+  MPIU_Comm :: comm
+  DM :: dm
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::DMShellCreate
+#endif

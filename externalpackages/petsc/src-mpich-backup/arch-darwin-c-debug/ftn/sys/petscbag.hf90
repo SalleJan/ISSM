@@ -1,0 +1,30 @@
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT:: PetscBagnotequals
+!DEC$ ATTRIBUTES DLLEXPORT:: PetscBagequals
+#endif
+
+  function PetscBagnotequals(A,B)
+    logical PetscBagnotequals
+    type(tPetscBag), intent(in) :: A,B
+    PetscBagnotequals = (A%v .ne. B%v)
+  end function
+  function PetscBagequals(A,B)
+    logical PetscBagequals
+    type(tPetscBag), intent(in) :: A,B
+    PetscBagequals = (A%v .eq. B%v)
+  end function
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT:: PetscBagItemnotequals
+!DEC$ ATTRIBUTES DLLEXPORT:: PetscBagItemequals
+#endif
+
+  function PetscBagItemnotequals(A,B)
+    logical PetscBagItemnotequals
+    type(tPetscBagItem), intent(in) :: A,B
+    PetscBagItemnotequals = (A%v .ne. B%v)
+  end function
+  function PetscBagItemequals(A,B)
+    logical PetscBagItemequals
+    type(tPetscBagItem), intent(in) :: A,B
+    PetscBagItemequals = (A%v .eq. B%v)
+  end function

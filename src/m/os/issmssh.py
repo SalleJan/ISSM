@@ -1,3 +1,4 @@
+import io
 import os
 import subprocess
 from sys import platform as _platform
@@ -48,10 +49,10 @@ def issmssh(host, login, port, command):
         import fcntl
         from os import O_NONBLOCK
 
-        fd = sys.stdin.fileno()
-        flags = fcntl.fcntl(fd, fcntl.F_GETFL)
-        fcntl.fcntl(fd, fcntl.F_SETFL, flags & ~O_NONBLOCK)
-
-        fd = sys.stdout.fileno()
-        flags = fcntl.fcntl(fd, fcntl.F_GETFL)
-        fcntl.fcntl(fd, fcntl.F_SETFL, flags & ~O_NONBLOCK)
+        for stream in (sys.stdin, sys.stdout):
+            try:
+                fd = stream.fileno()
+            except (AttributeError, OSError, io.UnsupportedOperation):
+                continue
+            flags = fcntl.fcntl(fd, fcntl.F_GETFL)
+            fcntl.fcntl(fd, fcntl.F_SETFL, flags & ~O_NONBLOCK)

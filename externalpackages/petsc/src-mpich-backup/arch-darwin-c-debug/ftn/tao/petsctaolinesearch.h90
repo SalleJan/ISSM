@@ -1,0 +1,604 @@
+  interface
+  subroutine TaoLineSearchViewFromOptions(A,obj,name, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTaoLineSearch,tPetscObject
+  TaoLineSearch :: A
+  PetscObject :: obj
+  character(*) :: name
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoLineSearchViewFromOptions
+#endif
+  interface
+  subroutine TaoLineSearchView(ls,viewer, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTaoLineSearch,tPetscViewer
+  TaoLineSearch :: ls
+  PetscViewer :: viewer
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoLineSearchView
+#endif
+  interface
+  subroutine TaoLineSearchCreate(comm,newls, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTaoLineSearch
+  MPIU_Comm :: comm
+  TaoLineSearch :: newls
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoLineSearchCreate
+#endif
+  interface
+  subroutine TaoLineSearchSetUp(ls, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTaoLineSearch
+  TaoLineSearch :: ls
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoLineSearchSetUp
+#endif
+  interface
+  subroutine TaoLineSearchReset(ls, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTaoLineSearch
+  TaoLineSearch :: ls
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoLineSearchReset
+#endif
+  interface
+  subroutine TaoLineSearchDestroy(ls, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTaoLineSearch
+  TaoLineSearch :: ls
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoLineSearchDestroy
+#endif
+  interface
+  subroutine TaoLineSearchApply(ls,x,f,g,s,steplength,reason, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTaoLineSearch,tVec,eTaoLineSearchConvergedReason
+  TaoLineSearch :: ls
+  Vec :: x
+  PetscReal :: f
+  Vec :: g
+  Vec :: s
+  PetscReal :: steplength
+  TaoLineSearchConvergedReason :: reason
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoLineSearchApply
+#endif
+  interface
+  subroutine TaoLineSearchSetType(ls,type, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTaoLineSearch
+  TaoLineSearch :: ls
+  character(*) :: type
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoLineSearchSetType
+#endif
+  interface
+  subroutine TaoLineSearchMonitor(ls,its,f,step, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTaoLineSearch
+  TaoLineSearch :: ls
+  PetscInt :: its
+  PetscReal :: f
+  PetscReal :: step
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoLineSearchMonitor
+#endif
+  interface
+  subroutine TaoLineSearchSetFromOptions(ls, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTaoLineSearch
+  TaoLineSearch :: ls
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoLineSearchSetFromOptions
+#endif
+  interface
+  subroutine TaoLineSearchGetType(ls,type, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTaoLineSearch
+  TaoLineSearch :: ls
+  character(*) :: type
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoLineSearchGetType
+#endif
+  interface
+  subroutine TaoLineSearchGetNumberFunctionEvaluations(ls,nfeval,ngeval,nfgeval, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTaoLineSearch
+  TaoLineSearch :: ls
+  PetscInt :: nfeval
+  PetscInt :: ngeval
+  PetscInt :: nfgeval
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoLineSearchGetNumberFunctionEvaluations
+#endif
+  interface
+  subroutine TaoLineSearchIsUsingTaoRoutines(ls,flg, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTaoLineSearch
+  TaoLineSearch :: ls
+  PetscBool :: flg
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoLineSearchIsUsingTaoRoutines
+#endif
+  interface
+  subroutine TaoLineSearchSetObjectiveRoutine(ls,func,ctx, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTaoLineSearch
+  TaoLineSearch :: ls
+  external :: func
+  type(*) :: ctx
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoLineSearchSetObjectiveRoutine
+#endif
+  interface
+  subroutine TaoLineSearchSetGradientRoutine(ls,func,ctx, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTaoLineSearch
+  TaoLineSearch :: ls
+  external :: func
+  type(*) :: ctx
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoLineSearchSetGradientRoutine
+#endif
+  interface
+  subroutine TaoLineSearchSetObjectiveAndGradientRoutine(ls,func,ctx, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTaoLineSearch
+  TaoLineSearch :: ls
+  external :: func
+  type(*) :: ctx
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoLineSearchSetObjectiveAndGradientRoutine
+#endif
+  interface
+  subroutine TaoLineSearchSetObjectiveAndGTSRoutine(ls,func,ctx, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTaoLineSearch
+  TaoLineSearch :: ls
+  external :: func
+  type(*) :: ctx
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoLineSearchSetObjectiveAndGTSRoutine
+#endif
+  interface
+  subroutine TaoLineSearchUseTaoRoutines(ls,ts, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTaoLineSearch,tTao
+  TaoLineSearch :: ls
+  Tao :: ts
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoLineSearchUseTaoRoutines
+#endif
+  interface
+  subroutine TaoLineSearchComputeObjective(ls,x,f, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTaoLineSearch,tVec
+  TaoLineSearch :: ls
+  Vec :: x
+  PetscReal :: f
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoLineSearchComputeObjective
+#endif
+  interface
+  subroutine TaoLineSearchComputeObjectiveAndGradient(ls,x,f,g, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTaoLineSearch,tVec
+  TaoLineSearch :: ls
+  Vec :: x
+  PetscReal :: f
+  Vec :: g
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoLineSearchComputeObjectiveAndGradient
+#endif
+  interface
+  subroutine TaoLineSearchComputeGradient(ls,x,g, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTaoLineSearch,tVec
+  TaoLineSearch :: ls
+  Vec :: x
+  Vec :: g
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoLineSearchComputeGradient
+#endif
+  interface
+  subroutine TaoLineSearchComputeObjectiveAndGTS(ls,x,f,gts, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTaoLineSearch,tVec
+  TaoLineSearch :: ls
+  Vec :: x
+  PetscReal :: f
+  PetscReal :: gts
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoLineSearchComputeObjectiveAndGTS
+#endif
+  interface
+  subroutine TaoLineSearchGetSolution(ls,x,f,g,steplength,reason, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTaoLineSearch,tVec,eTaoLineSearchConvergedReason
+  TaoLineSearch :: ls
+  Vec :: x
+  PetscReal :: f
+  Vec :: g
+  PetscReal :: steplength
+  TaoLineSearchConvergedReason :: reason
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoLineSearchGetSolution
+#endif
+  interface
+  subroutine TaoLineSearchGetStartingVector(ls,x, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTaoLineSearch,tVec
+  TaoLineSearch :: ls
+  Vec :: x
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoLineSearchGetStartingVector
+#endif
+  interface
+  subroutine TaoLineSearchGetStepDirection(ls,s, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTaoLineSearch,tVec
+  TaoLineSearch :: ls
+  Vec :: s
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoLineSearchGetStepDirection
+#endif
+  interface
+  subroutine TaoLineSearchGetFullStepObjective(ls,f_fullstep, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTaoLineSearch
+  TaoLineSearch :: ls
+  PetscReal :: f_fullstep
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoLineSearchGetFullStepObjective
+#endif
+  interface
+  subroutine TaoLineSearchSetVariableBounds(ls,xl,xu, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTaoLineSearch,tVec
+  TaoLineSearch :: ls
+  Vec :: xl
+  Vec :: xu
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoLineSearchSetVariableBounds
+#endif
+  interface
+  subroutine TaoLineSearchSetInitialStepLength(ls,s, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTaoLineSearch
+  TaoLineSearch :: ls
+  PetscReal :: s
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoLineSearchSetInitialStepLength
+#endif
+  interface
+  subroutine TaoLineSearchGetStepLength(ls,s, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTaoLineSearch
+  TaoLineSearch :: ls
+  PetscReal :: s
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoLineSearchGetStepLength
+#endif
+  interface
+  subroutine TaoLineSearchRegister(sname,func, ierr)
+  use, intrinsic :: ISO_C_binding
+  character(*) :: sname
+  external :: func
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoLineSearchRegister
+#endif
+  interface
+  subroutine TaoLineSearchAppendOptionsPrefix(ls,p, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTaoLineSearch
+  TaoLineSearch :: ls
+  character(*) :: p
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoLineSearchAppendOptionsPrefix
+#endif
+  interface
+  subroutine TaoLineSearchGetOptionsPrefix(ls,p, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTaoLineSearch
+  TaoLineSearch :: ls
+  character(*) :: p
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoLineSearchGetOptionsPrefix
+#endif
+  interface
+  subroutine TaoLineSearchSetOptionsPrefix(ls,p, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tTaoLineSearch
+  TaoLineSearch :: ls
+  character(*) :: p
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoLineSearchSetOptionsPrefix
+#endif
+  interface
+  subroutine TaoLineSearchFinalizePackage(ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoLineSearchFinalizePackage
+#endif
+  interface
+  subroutine TaoLineSearchInitializePackage(ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::TaoLineSearchInitializePackage
+#endif
+  interface operator(.ne.)
+    module procedure TaoLineSearchnotequals
+  end interface operator (.ne.)
+  interface operator(.eq.)
+    module procedure TaoLineSearchequals
+  end interface operator (.eq.)
+
+  interface PetscObjectCast
+    module procedure PetscObjectCastTaoLineSearch
+  end interface
+  interface PetscBarrier
+  module procedure PetscBarrierTaoLineSearch
+  end interface
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectSAWsTakeAccess
+    module procedure PetscObjectSAWsTakeAccessTaoLineSearch
+  end interface
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectSAWsGrantAccess
+    module procedure PetscObjectSAWsGrantAccessTaoLineSearch
+  end interface
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectSAWsBlock
+    module procedure PetscObjectSAWsBlockTaoLineSearch
+  end interface
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectSAWsSetBlock
+    module procedure PetscObjectSAWsSetBlockTaoLineSearch
+  end interface
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectSAWsViewOff
+    module procedure PetscObjectSAWsViewOffTaoLineSearch
+  end interface
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectViewSAWs
+    module procedure PetscObjectViewSAWsTaoLineSearch
+  end interface
+#endif
+  interface PetscObjectGetType
+    module procedure PetscObjectGetTypeTaoLineSearch
+  end interface
+  interface PetscObjectSetPrintedOptions
+    module procedure PetscObjectSetPrintedOptionsTaoLineSearch
+  end interface
+  interface PetscObjectInheritPrintedOptions
+    module procedure PetscObjectInheritPrintedOptionsTaoLineSearch
+  end interface
+  interface PetscObjectAddOptionsHandler
+    module procedure PetscObjectAddOptionsHandlerTaoLineSearch
+  end interface
+  interface PetscObjectProcessOptionsHandlers
+    module procedure PetscObjectProcessOptionsHandlersTaoLineSearch
+  end interface
+  interface PetscObjectDestroyOptionsHandlers
+    module procedure PetscObjectDestroyOptionsHandlersTaoLineSearch
+  end interface
+  interface PetscObjectReference
+    module procedure PetscObjectReferenceTaoLineSearch
+  end interface
+  interface PetscObjectGetReference
+    module procedure PetscObjectGetReferenceTaoLineSearch
+  end interface
+  interface PetscObjectDereference
+    module procedure PetscObjectDereferenceTaoLineSearch
+  end interface
+  interface PetscObjectRemoveReference
+    module procedure PetscObjectRemoveReferenceTaoLineSearch
+  end interface
+  interface PetscObjectHasFunction
+    module procedure PetscObjectHasFunctionTaoLineSearch
+  end interface
+  interface PetscObjectSetFromOptions
+    module procedure PetscObjectSetFromOptionsTaoLineSearch
+  end interface
+  interface PetscObjectSetUp
+    module procedure PetscObjectSetUpTaoLineSearch
+  end interface
+  interface PetscObjectGetName
+    module procedure PetscObjectGetNameTaoLineSearch
+  end interface
+  interface PetscObjectDestroy
+    module procedure PetscObjectDestroyTaoLineSearch
+  end interface
+  interface PetscObjectView
+    module procedure PetscObjectViewTaoLineSearch
+  end interface
+  interface PetscObjectViewFromOptions
+    module procedure PetscObjectViewFromOptionsTaoLineSearch
+  end interface
+  interface PetscObjectTypeCompare
+    module procedure PetscObjectTypeCompareTaoLineSearch
+  end interface
+  interface PetscObjectObjectTypeCompare
+    module procedure PetscObjectObjectTypeCompareTaoLineSearch
+  end interface
+  interface PetscObjectBaseTypeCompare
+    module procedure PetscObjectBaseTypeCompareTaoLineSearch
+  end interface
+  interface PetscObjectRegisterDestroy
+    module procedure PetscObjectRegisterDestroyTaoLineSearch
+  end interface
+  interface PetscObjectGetId
+    module procedure PetscObjectGetIdTaoLineSearch
+  end interface
+  interface PetscObjectCompareId
+    module procedure PetscObjectCompareIdTaoLineSearch
+  end interface
+  interface PetscObjectGetOptions
+    module procedure PetscObjectGetOptionsTaoLineSearch
+  end interface
+  interface PetscObjectSetOptions
+    module procedure PetscObjectSetOptionsTaoLineSearch
+  end interface
+  interface PetscObjectSetOptionsPrefix
+    module procedure PetscObjectSetOptionsPrefixTaoLineSearch
+  end interface
+  interface PetscObjectAppendOptionsPrefix
+    module procedure PetscObjectAppendOptionsPrefixTaoLineSearch
+  end interface
+  interface PetscObjectGetOptionsPrefix
+    module procedure PetscObjectGetOptionsPrefixTaoLineSearch
+  end interface
+  interface PetscObjectPrependOptionsPrefix
+    module procedure PetscObjectPrependOptionsPrefixTaoLineSearch
+  end interface
+  interface PetscObjectGetComm
+    module procedure PetscObjectGetCommTaoLineSearch
+  end interface
+  interface PetscObjectGetTabLevel
+    module procedure PetscObjectGetTabLevelTaoLineSearch
+  end interface
+  interface PetscObjectSetTabLevel
+    module procedure PetscObjectSetTabLevelTaoLineSearch
+  end interface
+  interface PetscObjectIncrementTabLevel
+    module procedure PetscObjectIncrementTabLevelTaoLineSearch
+  end interface
+  interface PetscObjectGetNewTag
+    module procedure PetscObjectGetNewTagTaoLineSearch
+  end interface
+  interface PetscObjectGetClassId
+    module procedure PetscObjectGetClassIdTaoLineSearch
+  end interface
+  interface PetscObjectGetClassName
+    module procedure PetscObjectGetClassNameTaoLineSearch
+  end interface
+  interface PetscObjectSetName
+    module procedure PetscObjectSetNameTaoLineSearch
+  end interface
+  interface PetscObjectPrintClassNamePrefixType
+    module procedure PetscObjectPrintClassNamePrefixTypeTaoLineSearch
+  end interface
+  interface PetscObjectName
+    module procedure PetscObjectNameTaoLineSearch
+  end interface
+  interface PetscObjectChangeTypeName
+    module procedure PetscObjectChangeTypeNameTaoLineSearch
+  end interface
+  interface operator(.ne.)
+    module procedure TaoLineSearchConvergedReasonnotequals
+  end interface operator (.ne.)
+  interface operator(.eq.)
+    module procedure TaoLineSearchConvergedReasonequals
+  end interface operator (.eq.)
+

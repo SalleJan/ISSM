@@ -1,0 +1,33 @@
+!
+!  Program to test PetscSubcomm.
+!
+#include <petsc/finclude/petscsys.h>
+program main
+  use petscsys
+  implicit none
+
+  PetscErrorCode ierr
+  PetscSubcomm r
+  PetscMPIInt rank, size
+  MPIU_Comm scomm
+
+  PetscCallA(PetscInitialize(ierr))
+  PetscCallMPIA(MPI_Comm_size(PETSC_COMM_WORLD, size, ierr))
+  PetscCallMPIA(MPI_Comm_rank(PETSC_COMM_WORLD, rank, ierr))
+  PetscCallA(PetscSubcommCreate(PETSC_COMM_WORLD, r, ierr))
+  PetscCallA(PetscSubcommSetFromOptions(r, ierr))
+  PetscCallA(PetscSubcommSetTypeGeneral(r, rank, rank, ierr))
+
+  PetscCallA(PetscSubcommGetChild(r, scomm, ierr))
+  PetscCallA(PetscSubcommView(r, PETSC_VIEWER_STDOUT_WORLD, ierr))
+  PetscCallA(PetscSubcommDestroy(r, ierr))
+  PetscCallA(PetscFinalize(ierr))
+end
+
+!
+!/*TEST
+!
+!   test:
+!     nsize: 2
+!
+!TEST*/

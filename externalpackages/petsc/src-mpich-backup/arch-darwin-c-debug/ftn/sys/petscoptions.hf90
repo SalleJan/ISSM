@@ -1,0 +1,75 @@
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT:: PetscOptionsnotequals
+!DEC$ ATTRIBUTES DLLEXPORT:: PetscOptionsequals
+#endif
+
+  function PetscOptionsnotequals(A,B)
+    logical PetscOptionsnotequals
+    type(tPetscOptions), intent(in) :: A,B
+    PetscOptionsnotequals = (A%v .ne. B%v)
+  end function
+  function PetscOptionsequals(A,B)
+    logical PetscOptionsequals
+    type(tPetscOptions), intent(in) :: A,B
+    PetscOptionsequals = (A%v .eq. B%v)
+  end function
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT:: PetscOptionItemnotequals
+!DEC$ ATTRIBUTES DLLEXPORT:: PetscOptionItemequals
+#endif
+
+  function PetscOptionItemnotequals(A,B)
+    logical PetscOptionItemnotequals
+    type(tPetscOptionItem), intent(in) :: A,B
+    PetscOptionItemnotequals = (A%v .ne. B%v)
+  end function
+  function PetscOptionItemequals(A,B)
+    logical PetscOptionItemequals
+    type(tPetscOptionItem), intent(in) :: A,B
+    PetscOptionItemequals = (A%v .eq. B%v)
+  end function
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT:: PetscOptionItemsnotequals
+!DEC$ ATTRIBUTES DLLEXPORT:: PetscOptionItemsequals
+#endif
+
+  function PetscOptionItemsnotequals(A,B)
+    logical PetscOptionItemsnotequals
+    type(tPetscOptionItems), intent(in) :: A,B
+    PetscOptionItemsnotequals = (A%v .ne. B%v)
+  end function
+  function PetscOptionItemsequals(A,B)
+    logical PetscOptionItemsequals
+    type(tPetscOptionItems), intent(in) :: A,B
+    PetscOptionItemsequals = (A%v .eq. B%v)
+  end function
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT:: PetscOptionSourcenotequals
+!DEC$ ATTRIBUTES DLLEXPORT:: PetscOptionSourceequals
+#endif
+
+  function PetscOptionSourcenotequals(A,B)
+    logical PetscOptionSourcenotequals
+    type(ePetscOptionSource), intent(in) :: A,B
+    PetscOptionSourcenotequals = (A%v .ne. B%v)
+  end function
+  function PetscOptionSourceequals(A,B)
+    logical PetscOptionSourceequals
+    type(ePetscOptionSource), intent(in) :: A,B
+    PetscOptionSourceequals = (A%v .eq. B%v)
+  end function
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT:: PetscOptionTypenotequals
+!DEC$ ATTRIBUTES DLLEXPORT:: PetscOptionTypeequals
+#endif
+
+  function PetscOptionTypenotequals(A,B)
+    logical PetscOptionTypenotequals
+    type(ePetscOptionType), intent(in) :: A,B
+    PetscOptionTypenotequals = (A%v .ne. B%v)
+  end function
+  function PetscOptionTypeequals(A,B)
+    logical PetscOptionTypeequals
+    type(ePetscOptionType), intent(in) :: A,B
+    PetscOptionTypeequals = (A%v .eq. B%v)
+  end function

@@ -1,0 +1,947 @@
+  interface
+  subroutine PetscSpaceCreateSubspace(origSpace,dualSubspace,x,Jx,u,Ju,copymode,subspace, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscSpace,tPetscDualSpace,ePetscCopyMode
+  PetscSpace :: origSpace
+  PetscDualSpace :: dualSubspace
+  PetscReal :: x
+  PetscReal :: Jx
+  PetscReal :: u
+  PetscReal :: Ju
+  PetscCopyMode :: copymode
+  PetscSpace :: subspace
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscSpaceCreateSubspace
+#endif
+  interface
+  subroutine PetscDualSpaceRegister(sname,function, ierr)
+  use, intrinsic :: ISO_C_binding
+  character(*) :: sname
+  external :: function
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDualSpaceRegister
+#endif
+  interface
+  subroutine PetscDualSpaceSetType(sp,name, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDualSpace
+  PetscDualSpace :: sp
+  character(*) :: name
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDualSpaceSetType
+#endif
+  interface
+  subroutine PetscDualSpaceGetType(sp,name, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDualSpace
+  PetscDualSpace :: sp
+  character(*) :: name
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDualSpaceGetType
+#endif
+  interface
+  subroutine PetscDualSpaceViewFromOptions(A,obj,name, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDualSpace,tPetscObject
+  PetscDualSpace :: A
+  PetscObject :: obj
+  character(*) :: name
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDualSpaceViewFromOptions
+#endif
+  interface
+  subroutine PetscDualSpaceView(sp,v, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDualSpace,tPetscViewer
+  PetscDualSpace :: sp
+  PetscViewer :: v
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDualSpaceView
+#endif
+  interface
+  subroutine PetscDualSpaceSetFromOptions(sp, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDualSpace
+  PetscDualSpace :: sp
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDualSpaceSetFromOptions
+#endif
+  interface
+  subroutine PetscDualSpaceSetUp(sp, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDualSpace
+  PetscDualSpace :: sp
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDualSpaceSetUp
+#endif
+  interface
+  subroutine PetscDualSpaceDestroy(sp, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDualSpace
+  PetscDualSpace :: sp
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDualSpaceDestroy
+#endif
+  interface
+  subroutine PetscDualSpaceCreate(comm,sp, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDualSpace
+  MPIU_Comm :: comm
+  PetscDualSpace :: sp
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDualSpaceCreate
+#endif
+  interface
+  subroutine PetscDualSpaceDuplicate(sp,spNew, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDualSpace
+  PetscDualSpace :: sp
+  PetscDualSpace :: spNew
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDualSpaceDuplicate
+#endif
+  interface
+  subroutine PetscDualSpaceGetDM(sp,dm, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDualSpace,tDM
+  PetscDualSpace :: sp
+  DM :: dm
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDualSpaceGetDM
+#endif
+  interface
+  subroutine PetscDualSpaceSetDM(sp,dm, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDualSpace,tDM
+  PetscDualSpace :: sp
+  DM :: dm
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDualSpaceSetDM
+#endif
+  interface
+  subroutine PetscDualSpaceGetOrder(sp,order, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDualSpace
+  PetscDualSpace :: sp
+  PetscInt :: order
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDualSpaceGetOrder
+#endif
+  interface
+  subroutine PetscDualSpaceSetOrder(sp,order, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDualSpace
+  PetscDualSpace :: sp
+  PetscInt :: order
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDualSpaceSetOrder
+#endif
+  interface
+  subroutine PetscDualSpaceGetNumComponents(sp,Nc, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDualSpace
+  PetscDualSpace :: sp
+  PetscInt :: Nc
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDualSpaceGetNumComponents
+#endif
+  interface
+  subroutine PetscDualSpaceSetNumComponents(sp,Nc, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDualSpace
+  PetscDualSpace :: sp
+  PetscInt :: Nc
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDualSpaceSetNumComponents
+#endif
+  interface
+  subroutine PetscDualSpaceGetFunctional(sp,i,functional, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDualSpace,tPetscQuadrature
+  PetscDualSpace :: sp
+  PetscInt :: i
+  PetscQuadrature :: functional
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDualSpaceGetFunctional
+#endif
+  interface
+  subroutine PetscDualSpaceGetDimension(sp,dim, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDualSpace
+  PetscDualSpace :: sp
+  PetscInt :: dim
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDualSpaceGetDimension
+#endif
+  interface
+  subroutine PetscDualSpaceGetInteriorDimension(sp,intdim, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDualSpace
+  PetscDualSpace :: sp
+  PetscInt :: intdim
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDualSpaceGetInteriorDimension
+#endif
+  interface
+  subroutine PetscDualSpaceGetUniform(sp,uniform, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDualSpace
+  PetscDualSpace :: sp
+  PetscBool :: uniform
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDualSpaceGetUniform
+#endif
+  interface
+  subroutine PetscDualSpaceGetNumDof(sp,numDof, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDualSpace
+  PetscDualSpace :: sp
+  PetscInt, pointer :: numDof(:)
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDualSpaceGetNumDof
+#endif
+  interface
+  subroutine PetscDualSpaceGetSection(sp,section, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDualSpace,tPetscSection
+  PetscDualSpace :: sp
+  PetscSection :: section
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDualSpaceGetSection
+#endif
+  interface
+  subroutine PetscDualSpaceGetInteriorSection(sp,section, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDualSpace,tPetscSection
+  PetscDualSpace :: sp
+  PetscSection :: section
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDualSpaceGetInteriorSection
+#endif
+  interface
+  subroutine PetscDualSpaceApplyAll(sp,pointEval,spValue, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDualSpace
+  PetscDualSpace :: sp
+  PetscScalar :: pointEval
+  PetscScalar :: spValue
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDualSpaceApplyAll
+#endif
+  interface
+  subroutine PetscDualSpaceApplyInterior(sp,pointEval,spValue, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDualSpace
+  PetscDualSpace :: sp
+  PetscScalar :: pointEval
+  PetscScalar :: spValue
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDualSpaceApplyInterior
+#endif
+  interface
+  subroutine PetscDualSpaceApplyAllDefault(sp,pointEval,spValue, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDualSpace
+  PetscDualSpace :: sp
+  PetscScalar :: pointEval
+  PetscScalar :: spValue
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDualSpaceApplyAllDefault
+#endif
+  interface
+  subroutine PetscDualSpaceApplyInteriorDefault(sp,pointEval,spValue, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDualSpace
+  PetscDualSpace :: sp
+  PetscScalar :: pointEval
+  PetscScalar :: spValue
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDualSpaceApplyInteriorDefault
+#endif
+  interface
+  subroutine PetscDualSpaceGetAllData(sp,allNodes,allMat, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDualSpace,tPetscQuadrature,tMat
+  PetscDualSpace :: sp
+  PetscQuadrature :: allNodes
+  Mat :: allMat
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDualSpaceGetAllData
+#endif
+  interface
+  subroutine PetscDualSpaceCreateAllDataDefault(sp,allNodes,allMat, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDualSpace,tPetscQuadrature,tMat
+  PetscDualSpace :: sp
+  PetscQuadrature :: allNodes
+  Mat :: allMat
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDualSpaceCreateAllDataDefault
+#endif
+  interface
+  subroutine PetscDualSpaceGetInteriorData(sp,intNodes,intMat, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDualSpace,tPetscQuadrature,tMat
+  PetscDualSpace :: sp
+  PetscQuadrature :: intNodes
+  Mat :: intMat
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDualSpaceGetInteriorData
+#endif
+  interface
+  subroutine PetscDualSpaceCreateInteriorDataDefault(sp,intNodes,intMat, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDualSpace,tPetscQuadrature,tMat
+  PetscDualSpace :: sp
+  PetscQuadrature :: intNodes
+  Mat :: intMat
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDualSpaceCreateInteriorDataDefault
+#endif
+  interface
+  subroutine PetscDualSpaceEqual(A,B,equal, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDualSpace
+  PetscDualSpace :: A
+  PetscDualSpace :: B
+  PetscBool :: equal
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDualSpaceEqual
+#endif
+  interface
+  subroutine PetscDualSpaceGetHeightSubspace(sp,height,subsp, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDualSpace
+  PetscDualSpace :: sp
+  PetscInt :: height
+  PetscDualSpace :: subsp
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDualSpaceGetHeightSubspace
+#endif
+  interface
+  subroutine PetscDualSpaceGetPointSubspace(sp,point,bdsp, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDualSpace
+  PetscDualSpace :: sp
+  PetscInt :: point
+  PetscDualSpace :: bdsp
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDualSpaceGetPointSubspace
+#endif
+  interface
+  subroutine PetscDualSpaceGetFormDegree(dsp,k, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDualSpace
+  PetscDualSpace :: dsp
+  PetscInt :: k
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDualSpaceGetFormDegree
+#endif
+  interface
+  subroutine PetscDualSpaceSetFormDegree(dsp,k, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDualSpace
+  PetscDualSpace :: dsp
+  PetscInt :: k
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDualSpaceSetFormDegree
+#endif
+  interface
+  subroutine PetscDualSpaceGetDeRahm(dsp,k, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDualSpace
+  PetscDualSpace :: dsp
+  PetscInt :: k
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDualSpaceGetDeRahm
+#endif
+  interface
+  subroutine PetscDualSpaceSimpleSetDimension(sp,dim, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDualSpace
+  PetscDualSpace :: sp
+  PetscInt :: dim
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDualSpaceSimpleSetDimension
+#endif
+  interface
+  subroutine PetscDualSpaceSimpleSetFunctional(sp,func,q, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDualSpace,tPetscQuadrature
+  PetscDualSpace :: sp
+  PetscInt :: func
+  PetscQuadrature :: q
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDualSpaceSimpleSetFunctional
+#endif
+  interface
+  subroutine PetscDualSpaceLagrangeGetContinuity(sp,continuous, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDualSpace
+  PetscDualSpace :: sp
+  PetscBool :: continuous
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDualSpaceLagrangeGetContinuity
+#endif
+  interface
+  subroutine PetscDualSpaceLagrangeSetContinuity(sp,continuous, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDualSpace
+  PetscDualSpace :: sp
+  PetscBool :: continuous
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDualSpaceLagrangeSetContinuity
+#endif
+  interface
+  subroutine PetscDualSpaceLagrangeGetTensor(sp,tensor, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDualSpace
+  PetscDualSpace :: sp
+  PetscBool :: tensor
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDualSpaceLagrangeGetTensor
+#endif
+  interface
+  subroutine PetscDualSpaceLagrangeSetTensor(sp,tensor, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDualSpace
+  PetscDualSpace :: sp
+  PetscBool :: tensor
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDualSpaceLagrangeSetTensor
+#endif
+  interface
+  subroutine PetscDualSpaceLagrangeGetTrimmed(sp,trimmed, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDualSpace
+  PetscDualSpace :: sp
+  PetscBool :: trimmed
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDualSpaceLagrangeGetTrimmed
+#endif
+  interface
+  subroutine PetscDualSpaceLagrangeSetTrimmed(sp,trimmed, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDualSpace
+  PetscDualSpace :: sp
+  PetscBool :: trimmed
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDualSpaceLagrangeSetTrimmed
+#endif
+  interface
+  subroutine PetscDualSpaceLagrangeGetNodeType(sp,nodeType,boundary,exponent, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDualSpace,ePetscDTNodeType
+  PetscDualSpace :: sp
+  PetscDTNodeType :: nodeType
+  PetscBool :: boundary
+  PetscReal :: exponent
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDualSpaceLagrangeGetNodeType
+#endif
+  interface
+  subroutine PetscDualSpaceLagrangeSetNodeType(sp,nodeType,boundary,exponent, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDualSpace,ePetscDTNodeType
+  PetscDualSpace :: sp
+  PetscDTNodeType :: nodeType
+  PetscBool :: boundary
+  PetscReal :: exponent
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDualSpaceLagrangeSetNodeType
+#endif
+  interface
+  subroutine PetscDualSpaceLagrangeGetUseMoments(sp,useMoments, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDualSpace
+  PetscDualSpace :: sp
+  PetscBool :: useMoments
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDualSpaceLagrangeGetUseMoments
+#endif
+  interface
+  subroutine PetscDualSpaceLagrangeSetUseMoments(sp,useMoments, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDualSpace
+  PetscDualSpace :: sp
+  PetscBool :: useMoments
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDualSpaceLagrangeSetUseMoments
+#endif
+  interface
+  subroutine PetscDualSpaceLagrangeGetMomentOrder(sp,order, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDualSpace
+  PetscDualSpace :: sp
+  PetscInt :: order
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDualSpaceLagrangeGetMomentOrder
+#endif
+  interface
+  subroutine PetscDualSpaceLagrangeSetMomentOrder(sp,order, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDualSpace
+  PetscDualSpace :: sp
+  PetscInt :: order
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDualSpaceLagrangeSetMomentOrder
+#endif
+  interface
+  subroutine PetscDualSpaceSumGetNumSubspaces(sp,numSumSpaces, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDualSpace
+  PetscDualSpace :: sp
+  PetscInt :: numSumSpaces
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDualSpaceSumGetNumSubspaces
+#endif
+  interface
+  subroutine PetscDualSpaceSumSetNumSubspaces(sp,numSumSpaces, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDualSpace
+  PetscDualSpace :: sp
+  PetscInt :: numSumSpaces
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDualSpaceSumSetNumSubspaces
+#endif
+  interface
+  subroutine PetscDualSpaceSumGetConcatenate(sp,concatenate, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDualSpace
+  PetscDualSpace :: sp
+  PetscBool :: concatenate
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDualSpaceSumGetConcatenate
+#endif
+  interface
+  subroutine PetscDualSpaceSumSetConcatenate(sp,concatenate, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDualSpace
+  PetscDualSpace :: sp
+  PetscBool :: concatenate
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDualSpaceSumSetConcatenate
+#endif
+  interface
+  subroutine PetscDualSpaceSumGetSubspace(sp,s,subsp, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDualSpace
+  PetscDualSpace :: sp
+  PetscInt :: s
+  PetscDualSpace :: subsp
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDualSpaceSumGetSubspace
+#endif
+  interface
+  subroutine PetscDualSpaceSumSetSubspace(sp,s,subsp, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDualSpace
+  PetscDualSpace :: sp
+  PetscInt :: s
+  PetscDualSpace :: subsp
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDualSpaceSumSetSubspace
+#endif
+  interface
+  subroutine PetscDualSpaceSumSetInterleave(sp,interleave_basis,interleave_components, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDualSpace
+  PetscDualSpace :: sp
+  PetscBool :: interleave_basis
+  PetscBool :: interleave_components
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDualSpaceSumSetInterleave
+#endif
+  interface
+  subroutine PetscDualSpaceSumGetInterleave(sp,interleave_basis,interleave_components, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDualSpace
+  PetscDualSpace :: sp
+  PetscBool :: interleave_basis
+  PetscBool :: interleave_components
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDualSpaceSumGetInterleave
+#endif
+  interface
+  subroutine PetscDualSpaceCreateSum(numSubspaces,subspaces,concatenate,sumSpace, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDualSpace
+  PetscInt :: numSubspaces
+  PetscDualSpace :: subspaces(*)
+  PetscBool :: concatenate
+  PetscDualSpace :: sumSpace
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDualSpaceCreateSum
+#endif
+  interface
+  subroutine PetscDualSpaceRefinedSetCellSpaces(sp,cellSpaces, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscDualSpace
+  PetscDualSpace :: sp
+  PetscDualSpace :: cellSpaces(*)
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscDualSpaceRefinedSetCellSpaces
+#endif
+  interface operator(.ne.)
+    module procedure PetscDualSpacenotequals
+  end interface operator (.ne.)
+  interface operator(.eq.)
+    module procedure PetscDualSpaceequals
+  end interface operator (.eq.)
+
+  interface PetscObjectCast
+    module procedure PetscObjectCastDualSpace
+  end interface
+  interface PetscBarrier
+  module procedure PetscBarrierDualSpace
+  end interface
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectSAWsTakeAccess
+    module procedure PetscObjectSAWsTakeAccessDualSpace
+  end interface
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectSAWsGrantAccess
+    module procedure PetscObjectSAWsGrantAccessDualSpace
+  end interface
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectSAWsBlock
+    module procedure PetscObjectSAWsBlockDualSpace
+  end interface
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectSAWsSetBlock
+    module procedure PetscObjectSAWsSetBlockDualSpace
+  end interface
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectSAWsViewOff
+    module procedure PetscObjectSAWsViewOffDualSpace
+  end interface
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectViewSAWs
+    module procedure PetscObjectViewSAWsDualSpace
+  end interface
+#endif
+  interface PetscObjectGetType
+    module procedure PetscObjectGetTypeDualSpace
+  end interface
+  interface PetscObjectSetPrintedOptions
+    module procedure PetscObjectSetPrintedOptionsDualSpace
+  end interface
+  interface PetscObjectInheritPrintedOptions
+    module procedure PetscObjectInheritPrintedOptionsDualSpace
+  end interface
+  interface PetscObjectAddOptionsHandler
+    module procedure PetscObjectAddOptionsHandlerDualSpace
+  end interface
+  interface PetscObjectProcessOptionsHandlers
+    module procedure PetscObjectProcessOptionsHandlersDualSpace
+  end interface
+  interface PetscObjectDestroyOptionsHandlers
+    module procedure PetscObjectDestroyOptionsHandlersDualSpace
+  end interface
+  interface PetscObjectReference
+    module procedure PetscObjectReferenceDualSpace
+  end interface
+  interface PetscObjectGetReference
+    module procedure PetscObjectGetReferenceDualSpace
+  end interface
+  interface PetscObjectDereference
+    module procedure PetscObjectDereferenceDualSpace
+  end interface
+  interface PetscObjectRemoveReference
+    module procedure PetscObjectRemoveReferenceDualSpace
+  end interface
+  interface PetscObjectHasFunction
+    module procedure PetscObjectHasFunctionDualSpace
+  end interface
+  interface PetscObjectSetFromOptions
+    module procedure PetscObjectSetFromOptionsDualSpace
+  end interface
+  interface PetscObjectSetUp
+    module procedure PetscObjectSetUpDualSpace
+  end interface
+  interface PetscObjectGetName
+    module procedure PetscObjectGetNameDualSpace
+  end interface
+  interface PetscObjectDestroy
+    module procedure PetscObjectDestroyDualSpace
+  end interface
+  interface PetscObjectView
+    module procedure PetscObjectViewDualSpace
+  end interface
+  interface PetscObjectViewFromOptions
+    module procedure PetscObjectViewFromOptionsDualSpace
+  end interface
+  interface PetscObjectTypeCompare
+    module procedure PetscObjectTypeCompareDualSpace
+  end interface
+  interface PetscObjectObjectTypeCompare
+    module procedure PetscObjectObjectTypeCompareDualSpace
+  end interface
+  interface PetscObjectBaseTypeCompare
+    module procedure PetscObjectBaseTypeCompareDualSpace
+  end interface
+  interface PetscObjectRegisterDestroy
+    module procedure PetscObjectRegisterDestroyDualSpace
+  end interface
+  interface PetscObjectGetId
+    module procedure PetscObjectGetIdDualSpace
+  end interface
+  interface PetscObjectCompareId
+    module procedure PetscObjectCompareIdDualSpace
+  end interface
+  interface PetscObjectGetOptions
+    module procedure PetscObjectGetOptionsDualSpace
+  end interface
+  interface PetscObjectSetOptions
+    module procedure PetscObjectSetOptionsDualSpace
+  end interface
+  interface PetscObjectSetOptionsPrefix
+    module procedure PetscObjectSetOptionsPrefixDualSpace
+  end interface
+  interface PetscObjectAppendOptionsPrefix
+    module procedure PetscObjectAppendOptionsPrefixDualSpace
+  end interface
+  interface PetscObjectGetOptionsPrefix
+    module procedure PetscObjectGetOptionsPrefixDualSpace
+  end interface
+  interface PetscObjectPrependOptionsPrefix
+    module procedure PetscObjectPrependOptionsPrefixDualSpace
+  end interface
+  interface PetscObjectGetComm
+    module procedure PetscObjectGetCommDualSpace
+  end interface
+  interface PetscObjectGetTabLevel
+    module procedure PetscObjectGetTabLevelDualSpace
+  end interface
+  interface PetscObjectSetTabLevel
+    module procedure PetscObjectSetTabLevelDualSpace
+  end interface
+  interface PetscObjectIncrementTabLevel
+    module procedure PetscObjectIncrementTabLevelDualSpace
+  end interface
+  interface PetscObjectGetNewTag
+    module procedure PetscObjectGetNewTagDualSpace
+  end interface
+  interface PetscObjectGetClassId
+    module procedure PetscObjectGetClassIdDualSpace
+  end interface
+  interface PetscObjectGetClassName
+    module procedure PetscObjectGetClassNameDualSpace
+  end interface
+  interface PetscObjectSetName
+    module procedure PetscObjectSetNameDualSpace
+  end interface
+  interface PetscObjectPrintClassNamePrefixType
+    module procedure PetscObjectPrintClassNamePrefixTypeDualSpace
+  end interface
+  interface PetscObjectName
+    module procedure PetscObjectNameDualSpace
+  end interface
+  interface PetscObjectChangeTypeName
+    module procedure PetscObjectChangeTypeNameDualSpace
+  end interface
+  interface operator(.ne.)
+    module procedure PetscDualSpaceReferenceCellnotequals
+  end interface operator (.ne.)
+  interface operator(.eq.)
+    module procedure PetscDualSpaceReferenceCellequals
+  end interface operator (.eq.)
+
+  interface operator(.ne.)
+    module procedure PetscDualSpaceTransformTypenotequals
+  end interface operator (.ne.)
+  interface operator(.eq.)
+    module procedure PetscDualSpaceTransformTypeequals
+  end interface operator (.eq.)
+

@@ -1,0 +1,318 @@
+  interface
+  subroutine PetscViewerHDF5GetGroup(viewer,path,abspath, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscViewer
+  PetscViewer :: viewer
+  character(*) :: path
+  character(*) :: abspath
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscViewerHDF5GetGroup
+#endif
+  interface
+  subroutine PetscViewerHDF5SetBaseDimension2(viewer,flg, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscViewer
+  PetscViewer :: viewer
+  PetscBool :: flg
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscViewerHDF5SetBaseDimension2
+#endif
+  interface
+  subroutine PetscViewerHDF5GetBaseDimension2(viewer,flg, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscViewer
+  PetscViewer :: viewer
+  PetscBool :: flg
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscViewerHDF5GetBaseDimension2
+#endif
+  interface
+  subroutine PetscViewerHDF5SetSPOutput(viewer,flg, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscViewer
+  PetscViewer :: viewer
+  PetscBool :: flg
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscViewerHDF5SetSPOutput
+#endif
+  interface
+  subroutine PetscViewerHDF5GetSPOutput(viewer,flg, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscViewer
+  PetscViewer :: viewer
+  PetscBool :: flg
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscViewerHDF5GetSPOutput
+#endif
+  interface
+  subroutine PetscViewerHDF5SetCollective(viewer,flg, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscViewer
+  PetscViewer :: viewer
+  PetscBool :: flg
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscViewerHDF5SetCollective
+#endif
+  interface
+  subroutine PetscViewerHDF5GetCollective(viewer,flg, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscViewer
+  PetscViewer :: viewer
+  PetscBool :: flg
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscViewerHDF5GetCollective
+#endif
+  interface
+  subroutine PetscViewerHDF5SetDefaultTimestepping(viewer,flg, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscViewer
+  PetscViewer :: viewer
+  PetscBool :: flg
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscViewerHDF5SetDefaultTimestepping
+#endif
+  interface
+  subroutine PetscViewerHDF5GetDefaultTimestepping(viewer,flg, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscViewer
+  PetscViewer :: viewer
+  PetscBool :: flg
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscViewerHDF5GetDefaultTimestepping
+#endif
+  interface
+  subroutine PetscViewerHDF5SetCompress(viewer,flg, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscViewer
+  PetscViewer :: viewer
+  PetscBool :: flg
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscViewerHDF5SetCompress
+#endif
+  interface
+  subroutine PetscViewerHDF5GetCompress(viewer,flg, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscViewer
+  PetscViewer :: viewer
+  PetscBool :: flg
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscViewerHDF5GetCompress
+#endif
+  interface
+  subroutine PetscViewerHDF5Open(comm,name,type,hdf5v, ierr)
+  use, intrinsic :: ISO_C_binding
+  import ePetscFileMode,tPetscViewer
+  MPIU_Comm :: comm
+  character(*) :: name
+  PetscFileMode :: type
+  PetscViewer :: hdf5v
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscViewerHDF5Open
+#endif
+  interface
+  subroutine PetscViewerHDF5PushGroup(viewer,name, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscViewer
+  PetscViewer :: viewer
+  character(*) :: name
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscViewerHDF5PushGroup
+#endif
+  interface
+  subroutine PetscViewerHDF5PopGroup(viewer, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscViewer
+  PetscViewer :: viewer
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscViewerHDF5PopGroup
+#endif
+  interface
+  subroutine PetscViewerHDF5WriteGroup(viewer,path, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscViewer
+  PetscViewer :: viewer
+  character(*) :: path
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscViewerHDF5WriteGroup
+#endif
+  interface
+  subroutine PetscViewerHDF5PushTimestepping(viewer, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscViewer
+  PetscViewer :: viewer
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscViewerHDF5PushTimestepping
+#endif
+  interface
+  subroutine PetscViewerHDF5PopTimestepping(viewer, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscViewer
+  PetscViewer :: viewer
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscViewerHDF5PopTimestepping
+#endif
+  interface
+  subroutine PetscViewerHDF5IsTimestepping(viewer,flg, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscViewer
+  PetscViewer :: viewer
+  PetscBool :: flg
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscViewerHDF5IsTimestepping
+#endif
+  interface
+  subroutine PetscViewerHDF5IncrementTimestep(viewer, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscViewer
+  PetscViewer :: viewer
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscViewerHDF5IncrementTimestep
+#endif
+  interface
+  subroutine PetscViewerHDF5SetTimestep(viewer,timestep, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscViewer
+  PetscViewer :: viewer
+  PetscInt :: timestep
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscViewerHDF5SetTimestep
+#endif
+  interface
+  subroutine PetscViewerHDF5GetTimestep(viewer,timestep, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscViewer
+  PetscViewer :: viewer
+  PetscInt :: timestep
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscViewerHDF5GetTimestep
+#endif
+  interface
+  subroutine PetscViewerHDF5HasGroup(viewer,path,has, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscViewer
+  PetscViewer :: viewer
+  character(*) :: path
+  PetscBool :: has
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscViewerHDF5HasGroup
+#endif
+  interface
+  subroutine PetscViewerHDF5HasDataset(viewer,path,has, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscViewer
+  PetscViewer :: viewer
+  character(*) :: path
+  PetscBool :: has
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscViewerHDF5HasDataset
+#endif
+  interface
+  subroutine PetscViewerHDF5HasObject(viewer,obj,has, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscViewer,tPetscObject
+  PetscViewer :: viewer
+  PetscObject :: obj
+  PetscBool :: has
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscViewerHDF5HasObject
+#endif
+  interface
+  subroutine PetscViewerHDF5HasAttribute(viewer,parent,name,has, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscViewer
+  PetscViewer :: viewer
+  character(*) :: parent
+  character(*) :: name
+  PetscBool :: has
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscViewerHDF5HasAttribute
+#endif
+  interface
+  subroutine PetscViewerHDF5HasObjectAttribute(viewer,obj,name,has, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPetscViewer,tPetscObject
+  PetscViewer :: viewer
+  PetscObject :: obj
+  character(*) :: name
+  PetscBool :: has
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PetscViewerHDF5HasObjectAttribute
+#endif

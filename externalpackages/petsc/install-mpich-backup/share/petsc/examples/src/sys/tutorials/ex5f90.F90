@@ -1,0 +1,106 @@
+#include <petsc/finclude/petscsys.h>
+#include <petsc/finclude/petscbag.h>
+#include <petsc/finclude/petscviewer.h>
+
+module ex5module
+  use petscsys
+  use petscbag
+!     Data structure used to contain information about the problem
+!     You can add physical values etc here
+
+  type tuple
+    PetscReal:: x1, x2
+  end type tuple
+
+  type bag_data_type
+    PetscScalar :: x
+    PetscReal :: y
+    PetscInt  :: nxc
+    PetscReal :: rarray(3)
+    PetscBool  :: t
+    PetscBool  :: tarray(3)
+    PetscEnum :: enum
+    character(len=80) :: c
+    type(tuple) :: pos
+  end type bag_data_type
+end module ex5module
+
+program ex5f90
+  use ex5module
+  use petsc
+  implicit none
+
+  PetscBag bag
+  PetscErrorCode ierr
+  type(bag_data_type), pointer :: data
+  type(bag_data_type)          :: dummydata
+  character(len=1), pointer    :: dummychar(:)
+  PetscViewer viewer
+  PetscSizeT sizeofbag
+  character(len=99) list(6)
+  PetscReal value
+  PetscScalar svalue
+
+  PetscCallA(PetscInitialize(ierr))
+  list(1) = 'a123'
+  list(2) = 'b456'
+  list(3) = 'c789'
+  list(4) = 'list'
+  list(5) = 'prefix_'
+  list(6) = ''
+
+!   compute size of the data
+!
+  sizeofbag = size(transfer(dummydata, dummychar))
+
+! create the bag
+  PetscCallA(PetscBagCreate(PETSC_COMM_WORLD, sizeofbag, bag, ierr))
+  PetscCallA(PetscBagGetData(bag, data, ierr))
+  PetscCallA(PetscBagSetName(bag, 'demo parameters', 'super secret demo parameters in a bag', ierr))
+  PetscCallA(PetscBagSetOptionsPrefix(bag, 'pbag_', ierr))
+
+! register the data within the bag, grabbing values from the options database
+  PetscCallA(PetscBagRegisterInt(bag, data%nxc, 56_PETSC_INT_KIND, 'nxc', 'nxc_variable help message', ierr))
+  PetscCallA(PetscBagRegisterRealArray(bag, data%rarray, 3_PETSC_INT_KIND, 'rarray', 'rarray help message', ierr))
+!     Need to put the value into a variable to pass correctly for 128 bit quad precision numbers
+  svalue = 103.20_PETSC_SCALAR_KIND
+  PetscCallA(PetscBagRegisterScalar(bag, data%x, svalue, 'x', 'x variable help message', ierr))
+  PetscCallA(PetscBagRegisterBool(bag, data%t, PETSC_TRUE, 't', 't boolean help message', ierr))
+  PetscCallA(PetscBagRegisterBoolArray(bag, data%tarray, 3_PETSC_INT_KIND, 'tarray', 'tarray help message', ierr))
+  PetscCallA(PetscBagRegisterString(bag, data%c, 'hello', 'c', 'string help message', ierr))
+  value = -11.00
+  PetscCallA(PetscBagRegisterReal(bag, data%y, value, 'y', 'y variable help message', ierr))
+  value = 1.00
+  PetscCallA(PetscBagRegisterReal(bag, data%pos%x1, value, 'pos_x1', 'tuple value 1 help message', ierr))
+  value = 2.00
+  PetscCallA(PetscBagRegisterReal(bag, data%pos%x2, value, 'pos_x2', 'tuple value 2 help message', ierr))
+  PetscCallA(PetscBagRegisterEnum(bag, data%enum, list, 1, 'enum', 'tuple value 2 help message', ierr))
+  PetscCallA(PetscBagView(bag, PETSC_VIEWER_STDOUT_WORLD, ierr))
+
+  data%nxc = 23
+  data%rarray = [-1.0, -2.0, -3.0]
+  data%x = 155.4_PETSC_SCALAR_KIND
+  data%c = 'a whole new string'
+  data%t = PETSC_TRUE
+  data%tarray = [PETSC_TRUE, PETSC_FALSE, PETSC_TRUE]
+  PetscCallA(PetscBagView(bag, PETSC_VIEWER_BINARY_WORLD, ierr))
+
+  PetscCallA(PetscViewerBinaryOpen(PETSC_COMM_WORLD, 'binaryoutput', FILE_MODE_READ, viewer, ierr))
+  PetscCallA(PetscBagLoad(viewer, bag, ierr))
+  PetscCallA(PetscViewerDestroy(viewer, ierr))
+  PetscCallA(PetscBagView(bag, PETSC_VIEWER_STDOUT_WORLD, ierr))
+
+  PetscCallA(PetscBagSetFromOptions(bag, ierr))
+  PetscCallA(PetscBagView(bag, PETSC_VIEWER_STDOUT_WORLD, ierr))
+  PetscCallA(PetscBagDestroy(bag, ierr))
+
+  PetscCallA(PetscFinalize(ierr))
+end program ex5f90
+
+!
+!/*TEST
+!
+!   test:
+!      args: -pbag_rarray 4,5,88
+!
+!TEST*/

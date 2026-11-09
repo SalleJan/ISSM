@@ -1,0 +1,4994 @@
+  interface
+  subroutine PCSetType(pc,type, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC
+  PC :: pc
+  character(*) :: type
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCSetType
+#endif
+  interface
+  subroutine PCGetType(pc,type, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC
+  PC :: pc
+  character(*) :: type
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCGetType
+#endif
+  interface
+  subroutine PCSetFromOptions(pc, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC
+  PC :: pc
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCSetFromOptions
+#endif
+  interface
+  subroutine PCSetDM(pc,dm, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC,tDM
+  PC :: pc
+  DM :: dm
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCSetDM
+#endif
+  interface
+  subroutine PCGetDM(pc,dm, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC,tDM
+  PC :: pc
+  DM :: dm
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCGetDM
+#endif
+  interface
+  subroutine PCSetApplicationContext(pc,ctx, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC
+  PC :: pc
+  type(*) :: ctx
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCSetApplicationContext
+#endif
+  interface
+  subroutine PCGetApplicationContextcptr(pc,ctx, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC
+  PC :: pc
+  type(c_ptr) :: ctx
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCGetApplicationContextcptr
+#endif
+  interface
+  subroutine PCReset(pc, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC
+  PC :: pc
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCReset
+#endif
+  interface
+  subroutine PCDestroy(pc, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC
+  PC :: pc
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCDestroy
+#endif
+  interface
+  subroutine PCGetDiagonalScale(pc,flag, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC
+  PC :: pc
+  PetscBool :: flag
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCGetDiagonalScale
+#endif
+  interface
+  subroutine PCSetDiagonalScale(pc,s, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC,tVec
+  PC :: pc
+  Vec :: s
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCSetDiagonalScale
+#endif
+  interface
+  subroutine PCDiagonalScaleLeft(pc,in,out, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC,tVec
+  PC :: pc
+  Vec :: in
+  Vec :: out
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCDiagonalScaleLeft
+#endif
+  interface
+  subroutine PCDiagonalScaleRight(pc,in,out, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC,tVec
+  PC :: pc
+  Vec :: in
+  Vec :: out
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCDiagonalScaleRight
+#endif
+  interface
+  subroutine PCSetUseAmat(pc,flg, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC
+  PC :: pc
+  PetscBool :: flg
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCSetUseAmat
+#endif
+  interface
+  subroutine PCSetErrorIfFailure(pc,flg, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC
+  PC :: pc
+  PetscBool :: flg
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCSetErrorIfFailure
+#endif
+  interface
+  subroutine PCGetUseAmat(pc,flg, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC
+  PC :: pc
+  PetscBool :: flg
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCGetUseAmat
+#endif
+  interface
+  subroutine PCSetKSPNestLevel(pc,level, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC
+  PC :: pc
+  PetscInt :: level
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCSetKSPNestLevel
+#endif
+  interface
+  subroutine PCGetKSPNestLevel(pc,level, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC
+  PC :: pc
+  PetscInt :: level
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCGetKSPNestLevel
+#endif
+  interface
+  subroutine PCCreate(comm,newpc, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC
+  MPIU_Comm :: comm
+  PC :: newpc
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCCreate
+#endif
+  interface
+  subroutine PCApply(pc,x,y, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC,tVec
+  PC :: pc
+  Vec :: x
+  Vec :: y
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCApply
+#endif
+  interface
+  subroutine PCMatApply(pc,X,Y, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC,tMat
+  PC :: pc
+  Mat :: X
+  Mat :: Y
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCMatApply
+#endif
+  interface
+  subroutine PCMatApplyTranspose(pc,X,Y, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC,tMat
+  PC :: pc
+  Mat :: X
+  Mat :: Y
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCMatApplyTranspose
+#endif
+  interface
+  subroutine PCApplySymmetricLeft(pc,x,y, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC,tVec
+  PC :: pc
+  Vec :: x
+  Vec :: y
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCApplySymmetricLeft
+#endif
+  interface
+  subroutine PCApplySymmetricRight(pc,x,y, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC,tVec
+  PC :: pc
+  Vec :: x
+  Vec :: y
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCApplySymmetricRight
+#endif
+  interface
+  subroutine PCApplyTranspose(pc,x,y, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC,tVec
+  PC :: pc
+  Vec :: x
+  Vec :: y
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCApplyTranspose
+#endif
+  interface
+  subroutine PCApplyTransposeExists(pc,flg, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC
+  PC :: pc
+  PetscBool :: flg
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCApplyTransposeExists
+#endif
+  interface
+  subroutine PCApplyBAorAB(pc,side,x,y,work, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC,ePCSide,tVec
+  PC :: pc
+  PCSide :: side
+  Vec :: x
+  Vec :: y
+  Vec :: work
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCApplyBAorAB
+#endif
+  interface
+  subroutine PCApplyBAorABTranspose(pc,side,x,y,work, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC,ePCSide,tVec
+  PC :: pc
+  PCSide :: side
+  Vec :: x
+  Vec :: y
+  Vec :: work
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCApplyBAorABTranspose
+#endif
+  interface
+  subroutine PCApplyRichardsonExists(pc,exists, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC
+  PC :: pc
+  PetscBool :: exists
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCApplyRichardsonExists
+#endif
+  interface
+  subroutine PCApplyRichardson(pc,b,y,w,rtol,abstol,dtol,its,guesszero,outits,reason, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC,tVec,ePCRichardsonConvergedReason
+  PC :: pc
+  Vec :: b
+  Vec :: y
+  Vec :: w
+  PetscReal :: rtol
+  PetscReal :: abstol
+  PetscReal :: dtol
+  PetscInt :: its
+  PetscBool :: guesszero
+  PetscInt :: outits
+  PCRichardsonConvergedReason :: reason
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCApplyRichardson
+#endif
+  interface
+  subroutine PCSetFailedReason(pc,reason, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC,ePCFailedReason
+  PC :: pc
+  PCFailedReason :: reason
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCSetFailedReason
+#endif
+  interface
+  subroutine PCGetFailedReason(pc,reason, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC,ePCFailedReason
+  PC :: pc
+  PCFailedReason :: reason
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCGetFailedReason
+#endif
+  interface
+  subroutine PCReduceFailedReason(pc, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC
+  PC :: pc
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCReduceFailedReason
+#endif
+  interface
+  subroutine PCSetUp(pc, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC
+  PC :: pc
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCSetUp
+#endif
+  interface
+  subroutine PCSetUpOnBlocks(pc, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC
+  PC :: pc
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCSetUpOnBlocks
+#endif
+  interface
+  subroutine PCSetModifySubMatrices(pc,func,ctx, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC
+  PC :: pc
+  external func
+  type(*) :: ctx
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCSetModifySubMatrices
+#endif
+  interface
+  subroutine PCModifySubMatrices(pc,nsub,row,col,submat,ctx, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC,tIS,tMat
+  PC :: pc
+  PetscInt :: nsub
+  IS :: row(*)
+  IS :: col(*)
+  Mat :: submat(*)
+  type(*) :: ctx
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCModifySubMatrices
+#endif
+  interface
+  subroutine PCSetOperators(pc,Amat,Pmat, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC,tMat
+  PC :: pc
+  Mat :: Amat
+  Mat :: Pmat
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCSetOperators
+#endif
+  interface
+  subroutine PCSetReusePreconditioner(pc,flag, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC
+  PC :: pc
+  PetscBool :: flag
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCSetReusePreconditioner
+#endif
+  interface
+  subroutine PCGetReusePreconditioner(pc,flag, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC
+  PC :: pc
+  PetscBool :: flag
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCGetReusePreconditioner
+#endif
+  interface
+  subroutine PCGetOperators(pc,Amat,Pmat, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC,tMat
+  PC :: pc
+  Mat :: Amat
+  Mat :: Pmat
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCGetOperators
+#endif
+  interface
+  subroutine PCGetOperatorsSet(pc,mat,pmat, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC
+  PC :: pc
+  PetscBool :: mat
+  PetscBool :: pmat
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCGetOperatorsSet
+#endif
+  interface
+  subroutine PCFactorGetMatrix(pc,mat, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC,tMat
+  PC :: pc
+  Mat :: mat
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCFactorGetMatrix
+#endif
+  interface
+  subroutine PCSetOptionsPrefix(pc,prefix, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC
+  PC :: pc
+  character(*) :: prefix
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCSetOptionsPrefix
+#endif
+  interface
+  subroutine PCAppendOptionsPrefix(pc,prefix, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC
+  PC :: pc
+  character(*) :: prefix
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCAppendOptionsPrefix
+#endif
+  interface
+  subroutine PCGetOptionsPrefix(pc,prefix, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC
+  PC :: pc
+  character(*) :: prefix
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCGetOptionsPrefix
+#endif
+  interface
+  subroutine PCSetPostSetUp(pc,postsetup, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC
+  PC :: pc
+  external :: postsetup
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCSetPostSetUp
+#endif
+  interface
+  subroutine PCLoad(newdm,viewer, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC,tPetscViewer
+  PC :: newdm
+  PetscViewer :: viewer
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCLoad
+#endif
+  interface
+  subroutine PCViewFromOptions(A,obj,name, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC,tPetscObject
+  PC :: A
+  PetscObject :: obj
+  character(*) :: name
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCViewFromOptions
+#endif
+  interface
+  subroutine PCView(pc,viewer, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC,tPetscViewer
+  PC :: pc
+  PetscViewer :: viewer
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCView
+#endif
+  interface
+  subroutine PCRegister(sname,function, ierr)
+  use, intrinsic :: ISO_C_binding
+  character(*) :: sname
+  external :: function
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCRegister
+#endif
+  interface
+  subroutine PCComputeOperator(pc,mattype,mat, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC,tMat
+  PC :: pc
+  character(*) :: mattype
+  Mat :: mat
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCComputeOperator
+#endif
+  interface
+  subroutine PCSetCoordinates(pc,dim,nloc,coords, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC
+  PC :: pc
+  PetscInt :: dim
+  PetscInt :: nloc
+  PetscReal :: coords(*)
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCSetCoordinates
+#endif
+  interface
+  subroutine PCGetInterpolations(pc,num_levels,interpolations, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC,tMat
+  PC :: pc
+  PetscInt :: num_levels
+  Mat, pointer :: interpolations(:)
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCGetInterpolations
+#endif
+  interface
+  subroutine PCGetCoarseOperators(pc,num_levels,coarseOperators, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC,tMat
+  PC :: pc
+  PetscInt :: num_levels
+  Mat, pointer :: coarseOperators(:)
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCGetCoarseOperators
+#endif
+  interface
+  subroutine PCMatSetApplyOperation(pc,matop, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC,eMatOperation
+  PC :: pc
+  MatOperation :: matop
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCMatSetApplyOperation
+#endif
+  interface
+  subroutine PCMatGetApplyOperation(pc,matop, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC,eMatOperation
+  PC :: pc
+  MatOperation :: matop
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCMatGetApplyOperation
+#endif
+  interface
+  subroutine PCASMSetLocalSubdomains(pc,n,is,is_local, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC,tIS
+  PC :: pc
+  PetscInt :: n
+  IS :: is(*)
+  IS :: is_local(*)
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCASMSetLocalSubdomains
+#endif
+  interface
+  subroutine PCASMSetTotalSubdomains(pc,N,is,is_local, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC,tIS
+  PC :: pc
+  PetscInt :: N
+  IS :: is(*)
+  IS :: is_local(*)
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCASMSetTotalSubdomains
+#endif
+  interface
+  subroutine PCASMSetOverlap(pc,ovl, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC
+  PC :: pc
+  PetscInt :: ovl
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCASMSetOverlap
+#endif
+  interface
+  subroutine PCASMSetType(pc,type, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC,ePCASMType
+  PC :: pc
+  PCASMType :: type
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCASMSetType
+#endif
+  interface
+  subroutine PCASMGetType(pc,type, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC,ePCASMType
+  PC :: pc
+  PCASMType :: type
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCASMGetType
+#endif
+  interface
+  subroutine PCASMSetLocalType(pc,type, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC,ePCCompositeType
+  PC :: pc
+  PCCompositeType :: type
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCASMSetLocalType
+#endif
+  interface
+  subroutine PCASMGetLocalType(pc,type, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC,ePCCompositeType
+  PC :: pc
+  PCCompositeType :: type
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCASMGetLocalType
+#endif
+  interface
+  subroutine PCASMSetSortIndices(pc,doSort, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC
+  PC :: pc
+  PetscBool :: doSort
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCASMSetSortIndices
+#endif
+  interface
+  subroutine PCASMCreateSubdomains(A,n,outis, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tMat,tIS
+  Mat :: A
+  PetscInt :: n
+  IS, pointer :: outis(:)
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCASMCreateSubdomains
+#endif
+  interface
+  subroutine PCASMDestroySubdomains(n,is,is_local, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tIS
+  PetscInt :: n
+  IS, pointer :: is(:)
+  IS, pointer :: is_local(:)
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCASMDestroySubdomains
+#endif
+  interface
+  subroutine PCASMCreateSubdomains2D(m,n,M_M,M_N,dof,overlap,Nsub,is,is_local, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tIS
+  PetscInt :: m
+  PetscInt :: n
+  PetscInt :: M_M
+  PetscInt :: M_N
+  PetscInt :: dof
+  PetscInt :: overlap
+  PetscInt :: Nsub
+  IS, pointer :: is(:)
+  IS, pointer :: is_local(:)
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCASMCreateSubdomains2D
+#endif
+  interface
+  subroutine PCASMGetLocalSubdomains(pc,n,is,is_local, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC,tIS
+  PC :: pc
+  PetscInt :: n
+  IS, pointer :: is(:)
+  IS, pointer :: is_local(:)
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCASMGetLocalSubdomains
+#endif
+  interface
+  subroutine PCASMGetLocalSubmatrices(pc,n,mat, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC,tMat
+  PC :: pc
+  PetscInt :: n
+  Mat, pointer :: mat(:)
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCASMGetLocalSubmatrices
+#endif
+  interface
+  subroutine PCASMSetDMSubdomains(pc,flg, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC
+  PC :: pc
+  PetscBool :: flg
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCASMSetDMSubdomains
+#endif
+  interface
+  subroutine PCASMGetDMSubdomains(pc,flg, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC
+  PC :: pc
+  PetscBool :: flg
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCASMGetDMSubdomains
+#endif
+  interface
+  subroutine PCASMGetSubMatType(pc,sub_mat_type, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC
+  PC :: pc
+  character(*) :: sub_mat_type
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCASMGetSubMatType
+#endif
+  interface
+  subroutine PCASMSetSubMatType(pc,sub_mat_type, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC
+  PC :: pc
+  character(*) :: sub_mat_type
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCASMSetSubMatType
+#endif
+  interface
+  subroutine PCPythonSetType(pc,pyname, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC
+  PC :: pc
+  character(*) :: pyname
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCPythonSetType
+#endif
+  interface
+  subroutine PCPythonGetType(pc,pyname, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC
+  PC :: pc
+  character(*) :: pyname
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCPythonGetType
+#endif
+  interface
+  subroutine PCMGResidualDefault(mat,b,x,r, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tMat,tVec
+  Mat :: mat
+  Vec :: b
+  Vec :: x
+  Vec :: r
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCMGResidualDefault
+#endif
+  interface
+  subroutine PCMGResidualTransposeDefault(mat,b,x,r, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tMat,tVec
+  Mat :: mat
+  Vec :: b
+  Vec :: x
+  Vec :: r
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCMGResidualTransposeDefault
+#endif
+  interface
+  subroutine PCMGMatResidualDefault(mat,b,x,r, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tMat
+  Mat :: mat
+  Mat :: b
+  Mat :: x
+  Mat :: r
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCMGMatResidualDefault
+#endif
+  interface
+  subroutine PCMGMatResidualTransposeDefault(mat,b,x,r, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tMat
+  Mat :: mat
+  Mat :: b
+  Mat :: x
+  Mat :: r
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCMGMatResidualTransposeDefault
+#endif
+  interface
+  subroutine PCMGSetResidual(pc,l,residual,mat, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC,tMat
+  PC :: pc
+  PetscInt :: l
+  external :: residual
+  Mat :: mat
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCMGSetResidual
+#endif
+  interface
+  subroutine PCMGSetResidualTranspose(pc,l,residualt,mat, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC,tMat
+  PC :: pc
+  PetscInt :: l
+  external :: residualt
+  Mat :: mat
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCMGSetResidualTranspose
+#endif
+  interface
+  subroutine PCMGSetInterpolation(pc,l,mat, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC,tMat
+  PC :: pc
+  PetscInt :: l
+  Mat :: mat
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCMGSetInterpolation
+#endif
+  interface
+  subroutine PCMGSetOperators(pc,l,Amat,Pmat, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC,tMat
+  PC :: pc
+  PetscInt :: l
+  Mat :: Amat
+  Mat :: Pmat
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCMGSetOperators
+#endif
+  interface
+  subroutine PCMGGetInterpolation(pc,l,mat, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC,tMat
+  PC :: pc
+  PetscInt :: l
+  Mat :: mat
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCMGGetInterpolation
+#endif
+  interface
+  subroutine PCMGSetRestriction(pc,l,mat, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC,tMat
+  PC :: pc
+  PetscInt :: l
+  Mat :: mat
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCMGSetRestriction
+#endif
+  interface
+  subroutine PCMGGetRestriction(pc,l,mat, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC,tMat
+  PC :: pc
+  PetscInt :: l
+  Mat :: mat
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCMGGetRestriction
+#endif
+  interface
+  subroutine PCMGSetRScale(pc,l,rscale, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC,tVec
+  PC :: pc
+  PetscInt :: l
+  Vec :: rscale
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCMGSetRScale
+#endif
+  interface
+  subroutine PCMGGetRScale(pc,l,rscale, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC,tVec
+  PC :: pc
+  PetscInt :: l
+  Vec :: rscale
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCMGGetRScale
+#endif
+  interface
+  subroutine PCMGSetInjection(pc,l,mat, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC,tMat
+  PC :: pc
+  PetscInt :: l
+  Mat :: mat
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCMGSetInjection
+#endif
+  interface
+  subroutine PCMGGetInjection(pc,l,mat, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC,tMat
+  PC :: pc
+  PetscInt :: l
+  Mat :: mat
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCMGGetInjection
+#endif
+  interface
+  subroutine PCMGSetCycleTypeOnLevel(pc,l,c, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC,ePCMGCycleType
+  PC :: pc
+  PetscInt :: l
+  PCMGCycleType :: c
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCMGSetCycleTypeOnLevel
+#endif
+  interface
+  subroutine PCMGSetRhs(pc,l,c, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC,tVec
+  PC :: pc
+  PetscInt :: l
+  Vec :: c
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCMGSetRhs
+#endif
+  interface
+  subroutine PCMGSetX(pc,l,c, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC,tVec
+  PC :: pc
+  PetscInt :: l
+  Vec :: c
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCMGSetX
+#endif
+  interface
+  subroutine PCMGSetR(pc,l,c, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC,tVec
+  PC :: pc
+  PetscInt :: l
+  Vec :: c
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCMGSetR
+#endif
+  interface
+  subroutine PCMGSetLevels(pc,levels,comms, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC
+  PC :: pc
+  PetscInt :: levels
+  MPIU_Comm :: comms
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCMGSetLevels
+#endif
+  interface
+  subroutine PCMGGetLevels(pc,levels, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC
+  PC :: pc
+  PetscInt :: levels
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCMGGetLevels
+#endif
+  interface
+  subroutine PCMGGetGridComplexity(pc,gc,oc, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC
+  PC :: pc
+  PetscReal :: gc
+  PetscReal :: oc
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCMGGetGridComplexity
+#endif
+  interface
+  subroutine PCMGSetType(pc,form, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC,ePCMGType
+  PC :: pc
+  PCMGType :: form
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCMGSetType
+#endif
+  interface
+  subroutine PCMGGetType(pc,type, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC,ePCMGType
+  PC :: pc
+  PCMGType :: type
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCMGGetType
+#endif
+  interface
+  subroutine PCMGSetCycleType(pc,n, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC,ePCMGCycleType
+  PC :: pc
+  PCMGCycleType :: n
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCMGSetCycleType
+#endif
+  interface
+  subroutine PCMGMultiplicativeSetCycles(pc,n, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC
+  PC :: pc
+  PetscInt :: n
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCMGMultiplicativeSetCycles
+#endif
+  interface
+  subroutine PCMGSetGalerkin(pc,use, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC,ePCMGGalerkinType
+  PC :: pc
+  PCMGGalerkinType :: use
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCMGSetGalerkin
+#endif
+  interface
+  subroutine PCMGGetGalerkin(pc,galerkin, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC,ePCMGGalerkinType
+  PC :: pc
+  PCMGGalerkinType :: galerkin
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCMGGetGalerkin
+#endif
+  interface
+  subroutine PCMGSetAdaptCoarseSpaceType(pc,ctype, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC,ePCMGCoarseSpaceType
+  PC :: pc
+  PCMGCoarseSpaceType :: ctype
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCMGSetAdaptCoarseSpaceType
+#endif
+  interface
+  subroutine PCMGGetAdaptCoarseSpaceType(pc,ctype, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC,ePCMGCoarseSpaceType
+  PC :: pc
+  PCMGCoarseSpaceType :: ctype
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCMGGetAdaptCoarseSpaceType
+#endif
+  interface
+  subroutine PCMGSetAdaptInterpolation(pc,adapt, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC
+  PC :: pc
+  PetscBool :: adapt
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCMGSetAdaptInterpolation
+#endif
+  interface
+  subroutine PCMGGetAdaptInterpolation(pc,adapt, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC
+  PC :: pc
+  PetscBool :: adapt
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCMGGetAdaptInterpolation
+#endif
+  interface
+  subroutine PCMGSetAdaptCR(pc,cr, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC
+  PC :: pc
+  PetscBool :: cr
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCMGSetAdaptCR
+#endif
+  interface
+  subroutine PCMGGetAdaptCR(pc,cr, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC
+  PC :: pc
+  PetscBool :: cr
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCMGGetAdaptCR
+#endif
+  interface
+  subroutine PCMGSetNumberSmooth(pc,n, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC
+  PC :: pc
+  PetscInt :: n
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCMGSetNumberSmooth
+#endif
+  interface
+  subroutine PCMGSetDistinctSmoothUp(pc, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC
+  PC :: pc
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCMGSetDistinctSmoothUp
+#endif
+  interface
+  subroutine PCHMGSetReuseInterpolation(pc,reuse, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC
+  PC :: pc
+  PetscBool :: reuse
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCHMGSetReuseInterpolation
+#endif
+  interface
+  subroutine PCHMGSetUseSubspaceCoarsening(pc,subspace, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC
+  PC :: pc
+  PetscBool :: subspace
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCHMGSetUseSubspaceCoarsening
+#endif
+  interface
+  subroutine PCHMGSetInnerPCType(pc,type, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC
+  PC :: pc
+  character(*) :: type
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCHMGSetInnerPCType
+#endif
+  interface
+  subroutine PCHMGSetCoarseningComponent(pc,component, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC
+  PC :: pc
+  PetscInt :: component
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCHMGSetCoarseningComponent
+#endif
+  interface
+  subroutine PCHMGUseMatMAIJ(pc,usematmaij, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC
+  PC :: pc
+  PetscBool :: usematmaij
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCHMGUseMatMAIJ
+#endif
+  interface
+  subroutine PCTelescopeGetReductionFactor(pc,fact, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC
+  PC :: pc
+  PetscInt :: fact
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCTelescopeGetReductionFactor
+#endif
+  interface
+  subroutine PCTelescopeSetReductionFactor(pc,fact, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC
+  PC :: pc
+  PetscInt :: fact
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCTelescopeSetReductionFactor
+#endif
+  interface
+  subroutine PCTelescopeGetIgnoreDM(pc,v, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC
+  PC :: pc
+  PetscBool :: v
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCTelescopeGetIgnoreDM
+#endif
+  interface
+  subroutine PCTelescopeSetIgnoreDM(pc,v, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC
+  PC :: pc
+  PetscBool :: v
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCTelescopeSetIgnoreDM
+#endif
+  interface
+  subroutine PCTelescopeGetUseCoarseDM(pc,v, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC
+  PC :: pc
+  PetscBool :: v
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCTelescopeGetUseCoarseDM
+#endif
+  interface
+  subroutine PCTelescopeSetUseCoarseDM(pc,v, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC
+  PC :: pc
+  PetscBool :: v
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCTelescopeSetUseCoarseDM
+#endif
+  interface
+  subroutine PCTelescopeGetIgnoreKSPComputeOperators(pc,v, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC
+  PC :: pc
+  PetscBool :: v
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCTelescopeGetIgnoreKSPComputeOperators
+#endif
+  interface
+  subroutine PCTelescopeSetIgnoreKSPComputeOperators(pc,v, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC
+  PC :: pc
+  PetscBool :: v
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCTelescopeSetIgnoreKSPComputeOperators
+#endif
+  interface
+  subroutine PCTelescopeGetDM(pc,subdm, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC,tDM
+  PC :: pc
+  DM :: subdm
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCTelescopeGetDM
+#endif
+  interface
+  subroutine PCTelescopeSetSubcommType(pc,subcommtype, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC,ePetscSubcommType
+  PC :: pc
+  PetscSubcommType :: subcommtype
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCTelescopeSetSubcommType
+#endif
+  interface
+  subroutine PCTelescopeGetSubcommType(pc,subcommtype, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC,ePetscSubcommType
+  PC :: pc
+  PetscSubcommType :: subcommtype
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCTelescopeGetSubcommType
+#endif
+  interface
+  subroutine PCShellGetContextcptr(pc,ctx, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC
+  PC :: pc
+  type(c_ptr) :: ctx
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCShellGetContextcptr
+#endif
+  interface
+  subroutine PCShellSetContext(pc,ctx, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC
+  PC :: pc
+  type(*) :: ctx
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCShellSetContext
+#endif
+  interface
+  subroutine PCShellSetDestroy(pc,destroy, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC
+  PC :: pc
+  external :: destroy
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCShellSetDestroy
+#endif
+  interface
+  subroutine PCShellSetSetUp(pc,setup, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC
+  PC :: pc
+  external :: setup
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCShellSetSetUp
+#endif
+  interface
+  subroutine PCShellSetView(pc,view, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC
+  PC :: pc
+  external :: view
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCShellSetView
+#endif
+  interface
+  subroutine PCShellSetApply(pc,apply, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC
+  PC :: pc
+  external :: apply
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCShellSetApply
+#endif
+  interface
+  subroutine PCShellSetMatApply(pc,matapply, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC
+  PC :: pc
+  external :: matapply
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCShellSetMatApply
+#endif
+  interface
+  subroutine PCShellSetApplySymmetricLeft(pc,apply, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC
+  PC :: pc
+  external :: apply
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCShellSetApplySymmetricLeft
+#endif
+  interface
+  subroutine PCShellSetApplySymmetricRight(pc,apply, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC
+  PC :: pc
+  external :: apply
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCShellSetApplySymmetricRight
+#endif
+  interface
+  subroutine PCShellSetApplyBA(pc,applyBA, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC
+  PC :: pc
+  external :: applyBA
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCShellSetApplyBA
+#endif
+  interface
+  subroutine PCShellSetApplyTranspose(pc,applytranspose, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC
+  PC :: pc
+  external :: applytranspose
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCShellSetApplyTranspose
+#endif
+  interface
+  subroutine PCShellSetMatApplyTranspose(pc,matapplytranspose, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC
+  PC :: pc
+  external :: matapplytranspose
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCShellSetMatApplyTranspose
+#endif
+  interface
+  subroutine PCShellSetName(pc,name, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC
+  PC :: pc
+  character(*) :: name
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCShellSetName
+#endif
+  interface
+  subroutine PCShellGetName(pc,name, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC
+  PC :: pc
+  character(*) :: name
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCShellGetName
+#endif
+  interface
+  subroutine PCShellSetApplyRichardson(pc,apply, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC
+  PC :: pc
+  external :: apply
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCShellSetApplyRichardson
+#endif
+  interface
+  subroutine PCISSetUseStiffnessScaling(pc,use, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC
+  PC :: pc
+  PetscBool :: use
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCISSetUseStiffnessScaling
+#endif
+  interface
+  subroutine PCISSetSubdomainDiagonalScaling(pc,scaling_factors, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC,tVec
+  PC :: pc
+  Vec :: scaling_factors
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCISSetSubdomainDiagonalScaling
+#endif
+  interface
+  subroutine PCISSetSubdomainScalingFactor(pc,scal, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC
+  PC :: pc
+  PetscScalar :: scal
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCISSetSubdomainScalingFactor
+#endif
+  interface
+  subroutine PCISSetUp(pc,computematrices,computesolvers, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC
+  PC :: pc
+  PetscBool :: computematrices
+  PetscBool :: computesolvers
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCISSetUp
+#endif
+  interface
+  subroutine PCISReset(pc, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC
+  PC :: pc
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCISReset
+#endif
+  interface
+  subroutine PCISInitialize(pc, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC
+  PC :: pc
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCISInitialize
+#endif
+  interface
+  subroutine PCISApplySchur(pc,v,vec1_B,vec2_B,vec1_D,vec2_D, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC,tVec
+  PC :: pc
+  Vec :: v
+  Vec :: vec1_B
+  Vec :: vec2_B
+  Vec :: vec1_D
+  Vec :: vec2_D
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCISApplySchur
+#endif
+  interface
+  subroutine PCISScatterArrayNToVecB(pc,array_N,v_B,imode,smode, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC,tVec,eInsertMode,eScatterMode
+  PC :: pc
+  PetscScalar :: array_N
+  Vec :: v_B
+  InsertMode :: imode
+  ScatterMode :: smode
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCISScatterArrayNToVecB
+#endif
+  interface
+  subroutine PCISApplyInvSchur(pc,b,x,vec1_N,vec2_N, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC,tVec
+  PC :: pc
+  Vec :: b
+  Vec :: x
+  Vec :: vec1_N
+  Vec :: vec2_N
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCISApplyInvSchur
+#endif
+  interface
+  subroutine PCEisenstatSetOmega(pc,omega, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC
+  PC :: pc
+  PetscReal :: omega
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCEisenstatSetOmega
+#endif
+  interface
+  subroutine PCEisenstatSetNoDiagonalScaling(pc,flg, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC
+  PC :: pc
+  PetscBool :: flg
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCEisenstatSetNoDiagonalScaling
+#endif
+  interface
+  subroutine PCEisenstatGetOmega(pc,omega, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC
+  PC :: pc
+  PetscReal :: omega
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCEisenstatGetOmega
+#endif
+  interface
+  subroutine PCEisenstatGetNoDiagonalScaling(pc,flg, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC
+  PC :: pc
+  PetscBool :: flg
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCEisenstatGetNoDiagonalScaling
+#endif
+  interface
+  subroutine PCJacobiSetUseAbs(pc,flg, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC
+  PC :: pc
+  PetscBool :: flg
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCJacobiSetUseAbs
+#endif
+  interface
+  subroutine PCJacobiGetUseAbs(pc,flg, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC
+  PC :: pc
+  PetscBool :: flg
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCJacobiGetUseAbs
+#endif
+  interface
+  subroutine PCJacobiSetRowl1Scale(pc,scale, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC
+  PC :: pc
+  PetscReal :: scale
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCJacobiSetRowl1Scale
+#endif
+  interface
+  subroutine PCJacobiGetRowl1Scale(pc,scale, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC
+  PC :: pc
+  PetscReal :: scale
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCJacobiGetRowl1Scale
+#endif
+  interface
+  subroutine PCJacobiSetFixDiagonal(pc,flg, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC
+  PC :: pc
+  PetscBool :: flg
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCJacobiSetFixDiagonal
+#endif
+  interface
+  subroutine PCJacobiGetFixDiagonal(pc,flg, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC
+  PC :: pc
+  PetscBool :: flg
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCJacobiGetFixDiagonal
+#endif
+  interface
+  subroutine PCJacobiGetDiagonal(pc,diagonal,diagonal_sqrt, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC,tVec
+  PC :: pc
+  Vec :: diagonal
+  Vec :: diagonal_sqrt
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCJacobiGetDiagonal
+#endif
+  interface
+  subroutine PCJacobiSetType(pc,type, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC,ePCJacobiType
+  PC :: pc
+  PCJacobiType :: type
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCJacobiSetType
+#endif
+  interface
+  subroutine PCJacobiGetType(pc,type, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC,ePCJacobiType
+  PC :: pc
+  PCJacobiType :: type
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCJacobiGetType
+#endif
+  interface
+  subroutine PCGalerkinSetRestriction(pc,R, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC,tMat
+  PC :: pc
+  Mat :: R
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCGalerkinSetRestriction
+#endif
+  interface
+  subroutine PCGalerkinSetInterpolation(pc,P, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC,tMat
+  PC :: pc
+  Mat :: P
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCGalerkinSetInterpolation
+#endif
+  interface
+  subroutine PCGalerkinSetComputeSubmatrix(pc,computeAsub,ctx, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC
+  PC :: pc
+  external :: computeAsub
+  type(*) :: ctx
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCGalerkinSetComputeSubmatrix
+#endif
+  interface
+  subroutine PCPARMSSetGlobal(pc,type, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC,ePCPARMSGlobalType
+  PC :: pc
+  PCPARMSGlobalType :: type
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCPARMSSetGlobal
+#endif
+  interface
+  subroutine PCPARMSSetLocal(pc,type, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC,ePCPARMSLocalType
+  PC :: pc
+  PCPARMSLocalType :: type
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCPARMSSetLocal
+#endif
+  interface
+  subroutine PCPARMSSetSolveTolerances(pc,tol,maxits, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC
+  PC :: pc
+  PetscReal :: tol
+  PetscInt :: maxits
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCPARMSSetSolveTolerances
+#endif
+  interface
+  subroutine PCPARMSSetSolveRestart(pc,restart, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC
+  PC :: pc
+  PetscInt :: restart
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCPARMSSetSolveRestart
+#endif
+  interface
+  subroutine PCPARMSSetNonsymPerm(pc,nonsym, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC
+  PC :: pc
+  PetscBool :: nonsym
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCPARMSSetNonsymPerm
+#endif
+  interface
+  subroutine PCPARMSSetFill(pc,lfil0,lfil1,lfil2, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC
+  PC :: pc
+  PetscInt :: lfil0
+  PetscInt :: lfil1
+  PetscInt :: lfil2
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCPARMSSetFill
+#endif
+  interface
+  subroutine PCExoticSetType(pc,type, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC,ePCExoticType
+  PC :: pc
+  PCExoticType :: type
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCExoticSetType
+#endif
+  interface
+  subroutine PCFactorSetUpMatSolverType(pc, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC
+  PC :: pc
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCFactorSetUpMatSolverType
+#endif
+  interface
+  subroutine PCFactorSetZeroPivot(pc,zero, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC
+  PC :: pc
+  PetscReal :: zero
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCFactorSetZeroPivot
+#endif
+  interface
+  subroutine PCFactorSetShiftType(pc,shifttype, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC,eMatFactorShiftType
+  PC :: pc
+  MatFactorShiftType :: shifttype
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCFactorSetShiftType
+#endif
+  interface
+  subroutine PCFactorSetShiftAmount(pc,shiftamount, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC
+  PC :: pc
+  PetscReal :: shiftamount
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCFactorSetShiftAmount
+#endif
+  interface
+  subroutine PCFactorSetDropTolerance(pc,dt,dtcol,maxrowcount, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC
+  PC :: pc
+  PetscReal :: dt
+  PetscReal :: dtcol
+  PetscInt :: maxrowcount
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCFactorSetDropTolerance
+#endif
+  interface
+  subroutine PCFactorGetZeroPivot(pc,pivot, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC
+  PC :: pc
+  PetscReal :: pivot
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCFactorGetZeroPivot
+#endif
+  interface
+  subroutine PCFactorGetShiftAmount(pc,shift, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC
+  PC :: pc
+  PetscReal :: shift
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCFactorGetShiftAmount
+#endif
+  interface
+  subroutine PCFactorGetShiftType(pc,type, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC,eMatFactorShiftType
+  PC :: pc
+  MatFactorShiftType :: type
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCFactorGetShiftType
+#endif
+  interface
+  subroutine PCFactorGetLevels(pc,levels, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC
+  PC :: pc
+  PetscInt :: levels
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCFactorGetLevels
+#endif
+  interface
+  subroutine PCFactorSetLevels(pc,levels, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC
+  PC :: pc
+  PetscInt :: levels
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCFactorSetLevels
+#endif
+  interface
+  subroutine PCFactorSetAllowDiagonalFill(pc,flg, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC
+  PC :: pc
+  PetscBool :: flg
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCFactorSetAllowDiagonalFill
+#endif
+  interface
+  subroutine PCFactorGetAllowDiagonalFill(pc,flg, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC
+  PC :: pc
+  PetscBool :: flg
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCFactorGetAllowDiagonalFill
+#endif
+  interface
+  subroutine PCFactorReorderForNonzeroDiagonal(pc,rtol, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC
+  PC :: pc
+  PetscReal :: rtol
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCFactorReorderForNonzeroDiagonal
+#endif
+  interface
+  subroutine PCFactorSetMatSolverType(pc,stype, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC
+  PC :: pc
+  character(*) :: stype
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCFactorSetMatSolverType
+#endif
+  interface
+  subroutine PCFactorGetMatSolverType(pc,stype, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC
+  PC :: pc
+  character(*) :: stype
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCFactorGetMatSolverType
+#endif
+  interface
+  subroutine PCFactorSetFill(pc,fill, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC
+  PC :: pc
+  PetscReal :: fill
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCFactorSetFill
+#endif
+  interface
+  subroutine PCFactorSetUseInPlace(pc,flg, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC
+  PC :: pc
+  PetscBool :: flg
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCFactorSetUseInPlace
+#endif
+  interface
+  subroutine PCFactorGetUseInPlace(pc,flg, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC
+  PC :: pc
+  PetscBool :: flg
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCFactorGetUseInPlace
+#endif
+  interface
+  subroutine PCFactorSetMatOrderingType(pc,ordering, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC
+  PC :: pc
+  character(*) :: ordering
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCFactorSetMatOrderingType
+#endif
+  interface
+  subroutine PCFactorSetColumnPivot(pc,dtcol, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC
+  PC :: pc
+  PetscReal :: dtcol
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCFactorSetColumnPivot
+#endif
+  interface
+  subroutine PCFactorSetPivotInBlocks(pc,pivot, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC
+  PC :: pc
+  PetscBool :: pivot
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCFactorSetPivotInBlocks
+#endif
+  interface
+  subroutine PCFactorSetReuseFill(pc,flag, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC
+  PC :: pc
+  PetscBool :: flag
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCFactorSetReuseFill
+#endif
+  interface
+  subroutine PCFactorSetReuseOrdering(pc,flag, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC
+  PC :: pc
+  PetscBool :: flag
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCFactorSetReuseOrdering
+#endif
+  interface
+  subroutine PCCompositeSetType(pc,type, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC,ePCCompositeType
+  PC :: pc
+  PCCompositeType :: type
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCCompositeSetType
+#endif
+  interface
+  subroutine PCCompositeGetType(pc,type, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC,ePCCompositeType
+  PC :: pc
+  PCCompositeType :: type
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCCompositeGetType
+#endif
+  interface
+  subroutine PCCompositeSpecialSetAlpha(pc,alpha, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC
+  PC :: pc
+  PetscScalar :: alpha
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCCompositeSpecialSetAlpha
+#endif
+  interface
+  subroutine PCCompositeSpecialSetAlphaMat(pc,alpha_mat, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC,tMat
+  PC :: pc
+  Mat :: alpha_mat
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCCompositeSpecialSetAlphaMat
+#endif
+  interface
+  subroutine PCCompositeAddPCType(pc,type, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC
+  PC :: pc
+  character(*) :: type
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCCompositeAddPCType
+#endif
+  interface
+  subroutine PCCompositeAddPC(pc,subpc, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC
+  PC :: pc
+  PC :: subpc
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCCompositeAddPC
+#endif
+  interface
+  subroutine PCCompositeGetNumberPC(pc,num, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC
+  PC :: pc
+  PetscInt :: num
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCCompositeGetNumberPC
+#endif
+  interface
+  subroutine PCCompositeGetPC(pc,n,subpc, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC
+  PC :: pc
+  PetscInt :: n
+  PC :: subpc
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCCompositeGetPC
+#endif
+  interface
+  subroutine PCBDDCSetDiscreteGradient(pc,G,order,field,global,conforming, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC,tMat
+  PC :: pc
+  Mat :: G
+  PetscInt :: order
+  PetscInt :: field
+  PetscBool :: global
+  PetscBool :: conforming
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCBDDCSetDiscreteGradient
+#endif
+  interface
+  subroutine PCBDDCSetDivergenceMat(pc,divudotp,trans,vl2l, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC,tMat,tIS
+  PC :: pc
+  Mat :: divudotp
+  PetscBool :: trans
+  IS :: vl2l
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCBDDCSetDivergenceMat
+#endif
+  interface
+  subroutine PCBDDCSetChangeOfBasisMat(pc,change,interior, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC,tMat
+  PC :: pc
+  Mat :: change
+  PetscBool :: interior
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCBDDCSetChangeOfBasisMat
+#endif
+  interface
+  subroutine PCBDDCSetPrimalVerticesIS(pc,PrimalVertices, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC,tIS
+  PC :: pc
+  IS :: PrimalVertices
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCBDDCSetPrimalVerticesIS
+#endif
+  interface
+  subroutine PCBDDCGetPrimalVerticesIS(pc,is, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC,tIS
+  PC :: pc
+  IS :: is
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCBDDCGetPrimalVerticesIS
+#endif
+  interface
+  subroutine PCBDDCSetPrimalVerticesLocalIS(pc,PrimalVertices, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC,tIS
+  PC :: pc
+  IS :: PrimalVertices
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCBDDCSetPrimalVerticesLocalIS
+#endif
+  interface
+  subroutine PCBDDCGetPrimalVerticesLocalIS(pc,is, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC,tIS
+  PC :: pc
+  IS :: is
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCBDDCGetPrimalVerticesLocalIS
+#endif
+  interface
+  subroutine PCBDDCSetCoarseningRatio(pc,k, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC
+  PC :: pc
+  PetscInt :: k
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCBDDCSetCoarseningRatio
+#endif
+  interface
+  subroutine PCBDDCSetLevels(pc,levels, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC
+  PC :: pc
+  PetscInt :: levels
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCBDDCSetLevels
+#endif
+  interface
+  subroutine PCBDDCSetDirichletBoundaries(pc,DirichletBoundaries, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC,tIS
+  PC :: pc
+  IS :: DirichletBoundaries
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCBDDCSetDirichletBoundaries
+#endif
+  interface
+  subroutine PCBDDCSetDirichletBoundariesLocal(pc,DirichletBoundaries, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC,tIS
+  PC :: pc
+  IS :: DirichletBoundaries
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCBDDCSetDirichletBoundariesLocal
+#endif
+  interface
+  subroutine PCBDDCSetNeumannBoundaries(pc,NeumannBoundaries, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC,tIS
+  PC :: pc
+  IS :: NeumannBoundaries
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCBDDCSetNeumannBoundaries
+#endif
+  interface
+  subroutine PCBDDCSetNeumannBoundariesLocal(pc,NeumannBoundaries, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC,tIS
+  PC :: pc
+  IS :: NeumannBoundaries
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCBDDCSetNeumannBoundariesLocal
+#endif
+  interface
+  subroutine PCBDDCGetDirichletBoundaries(pc,DirichletBoundaries, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC,tIS
+  PC :: pc
+  IS :: DirichletBoundaries
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCBDDCGetDirichletBoundaries
+#endif
+  interface
+  subroutine PCBDDCGetDirichletBoundariesLocal(pc,DirichletBoundaries, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC,tIS
+  PC :: pc
+  IS :: DirichletBoundaries
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCBDDCGetDirichletBoundariesLocal
+#endif
+  interface
+  subroutine PCBDDCGetNeumannBoundaries(pc,NeumannBoundaries, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC,tIS
+  PC :: pc
+  IS :: NeumannBoundaries
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCBDDCGetNeumannBoundaries
+#endif
+  interface
+  subroutine PCBDDCGetNeumannBoundariesLocal(pc,NeumannBoundaries, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC,tIS
+  PC :: pc
+  IS :: NeumannBoundaries
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCBDDCGetNeumannBoundariesLocal
+#endif
+  interface
+  subroutine PCBDDCSetLocalAdjacencyGraph(pc,nvtxs,xadj,adjncy,copymode, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC,ePetscCopyMode
+  PC :: pc
+  PetscInt :: nvtxs
+  PetscInt :: xadj(*)
+  PetscInt :: adjncy(*)
+  PetscCopyMode :: copymode
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCBDDCSetLocalAdjacencyGraph
+#endif
+  interface
+  subroutine PCBDDCSetDofsSplittingLocal(pc,n_is,ISForDofs, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC,tIS
+  PC :: pc
+  PetscInt :: n_is
+  IS :: ISForDofs(*)
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCBDDCSetDofsSplittingLocal
+#endif
+  interface
+  subroutine PCBDDCSetDofsSplitting(pc,n_is,ISForDofs, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC,tIS
+  PC :: pc
+  PetscInt :: n_is
+  IS :: ISForDofs(*)
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCBDDCSetDofsSplitting
+#endif
+  interface
+  subroutine PCBDDCMatFETIDPGetRHS(fetidp_mat,standard_rhs,fetidp_flux_rhs, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tMat,tVec
+  Mat :: fetidp_mat
+  Vec :: standard_rhs
+  Vec :: fetidp_flux_rhs
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCBDDCMatFETIDPGetRHS
+#endif
+  interface
+  subroutine PCBDDCMatFETIDPGetSolution(fetidp_mat,fetidp_flux_sol,standard_sol, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tMat,tVec
+  Mat :: fetidp_mat
+  Vec :: fetidp_flux_sol
+  Vec :: standard_sol
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCBDDCMatFETIDPGetSolution
+#endif
+  interface
+  subroutine PCBDDCCreateFETIDPOperators(pc,fully_redundant,prefix,fetidp_mat,fetidp_pc, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC,tMat
+  PC :: pc
+  PetscBool :: fully_redundant
+  character(*) :: prefix
+  Mat :: fetidp_mat
+  PC :: fetidp_pc
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCBDDCCreateFETIDPOperators
+#endif
+  interface
+  subroutine PCBDDCInitializePackage(ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCBDDCInitializePackage
+#endif
+  interface
+  subroutine PCBDDCFinalizePackage(ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCBDDCFinalizePackage
+#endif
+  interface
+  subroutine PCHPDDMSetAuxiliaryMat(pc,is,A,setup,ctx, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC,tIS,tMat
+  PC :: pc
+  IS :: is
+  Mat :: A
+  external :: setup
+  type(*) :: ctx
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCHPDDMSetAuxiliaryMat
+#endif
+  interface
+  subroutine PCHPDDMHasNeumannMat(pc,has, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC
+  PC :: pc
+  PetscBool :: has
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCHPDDMHasNeumannMat
+#endif
+  interface
+  subroutine PCHPDDMSetRHSMat(pc,B, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC,tMat
+  PC :: pc
+  Mat :: B
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCHPDDMSetRHSMat
+#endif
+  interface
+  subroutine PCHPDDMGetComplexities(pc,gc,oc, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC
+  PC :: pc
+  PetscReal :: gc
+  PetscReal :: oc
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCHPDDMGetComplexities
+#endif
+  interface
+  subroutine PCHPDDMSetCoarseCorrectionType(pc,type, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC,ePCHPDDMCoarseCorrectionType
+  PC :: pc
+  PCHPDDMCoarseCorrectionType :: type
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCHPDDMSetCoarseCorrectionType
+#endif
+  interface
+  subroutine PCHPDDMGetCoarseCorrectionType(pc,type, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC,ePCHPDDMCoarseCorrectionType
+  PC :: pc
+  PCHPDDMCoarseCorrectionType :: type
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCHPDDMGetCoarseCorrectionType
+#endif
+  interface
+  subroutine PCHPDDMSetSTShareSubKSP(pc,share, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC
+  PC :: pc
+  PetscBool :: share
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCHPDDMSetSTShareSubKSP
+#endif
+  interface
+  subroutine PCHPDDMGetSTShareSubKSP(pc,share, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC
+  PC :: pc
+  PetscBool :: share
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCHPDDMGetSTShareSubKSP
+#endif
+  interface
+  subroutine PCHPDDMSetDeflationMat(pc,is,U, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC,tIS,tMat
+  PC :: pc
+  IS :: is
+  Mat :: U
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCHPDDMSetDeflationMat
+#endif
+  interface
+  subroutine PCHPDDMInitializePackage(ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCHPDDMInitializePackage
+#endif
+  interface
+  subroutine PCHPDDMFinalizePackage(ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCHPDDMFinalizePackage
+#endif
+  interface
+  subroutine PCPatchSetSaveOperators(pc,flg, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC
+  PC :: pc
+  PetscBool :: flg
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCPatchSetSaveOperators
+#endif
+  interface
+  subroutine PCPatchGetSaveOperators(pc,flg, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC
+  PC :: pc
+  PetscBool :: flg
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCPatchGetSaveOperators
+#endif
+  interface
+  subroutine PCPatchSetPrecomputeElementTensors(pc,flg, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC
+  PC :: pc
+  PetscBool :: flg
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCPatchSetPrecomputeElementTensors
+#endif
+  interface
+  subroutine PCPatchGetPrecomputeElementTensors(pc,flg, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC
+  PC :: pc
+  PetscBool :: flg
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCPatchGetPrecomputeElementTensors
+#endif
+  interface
+  subroutine PCPatchSetPartitionOfUnity(pc,flg, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC
+  PC :: pc
+  PetscBool :: flg
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCPatchSetPartitionOfUnity
+#endif
+  interface
+  subroutine PCPatchGetPartitionOfUnity(pc,flg, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC
+  PC :: pc
+  PetscBool :: flg
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCPatchGetPartitionOfUnity
+#endif
+  interface
+  subroutine PCPatchSetSubMatType(pc,sub_mat_type, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC
+  PC :: pc
+  character(*) :: sub_mat_type
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCPatchSetSubMatType
+#endif
+  interface
+  subroutine PCPatchGetSubMatType(pc,sub_mat_type, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC
+  PC :: pc
+  character(*) :: sub_mat_type
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCPatchGetSubMatType
+#endif
+  interface
+  subroutine PCPatchSetCellNumbering(pc,cellNumbering, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC,tPetscSection
+  PC :: pc
+  PetscSection :: cellNumbering
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCPatchSetCellNumbering
+#endif
+  interface
+  subroutine PCPatchGetCellNumbering(pc,cellNumbering, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC,tPetscSection
+  PC :: pc
+  PetscSection :: cellNumbering
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCPatchGetCellNumbering
+#endif
+  interface
+  subroutine PCPatchSetConstructType(pc,ctype,func,ctx, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC,ePCPatchConstructType
+  PC :: pc
+  PCPatchConstructType :: ctype
+  external :: func
+  type(*) :: ctx
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCPatchSetConstructType
+#endif
+  interface
+  subroutine PCPatchSetComputeFunction(pc,func,ctx, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC
+  PC :: pc
+  external :: func
+  type(*) :: ctx
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCPatchSetComputeFunction
+#endif
+  interface
+  subroutine PCPatchSetComputeFunctionInteriorFacets(pc,func,ctx, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC
+  PC :: pc
+  external :: func
+  type(*) :: ctx
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCPatchSetComputeFunctionInteriorFacets
+#endif
+  interface
+  subroutine PCPatchSetComputeOperator(pc,func,ctx, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC
+  PC :: pc
+  external :: func
+  type(*) :: ctx
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCPatchSetComputeOperator
+#endif
+  interface
+  subroutine PCPatchSetComputeOperatorInteriorFacets(pc,func,ctx, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC
+  PC :: pc
+  external :: func
+  type(*) :: ctx
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCPatchSetComputeOperatorInteriorFacets
+#endif
+  interface
+  subroutine PCPatchSetComputeOperatorExteriorFacets(pc,func,ctx, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC
+  PC :: pc
+  external :: func
+  type(*) :: ctx
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCPatchSetComputeOperatorExteriorFacets
+#endif
+  interface
+  subroutine PCPatchSetComputeFunctionExteriorFacets(pc,func,ctx, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC
+  PC :: pc
+  external :: func
+  type(*) :: ctx
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCPatchSetComputeFunctionExteriorFacets
+#endif
+  interface
+  subroutine PCBJacobiSetTotalBlocks(pc,blocks,lens, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC
+  PC :: pc
+  PetscInt :: blocks
+  PetscInt :: lens(*)
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCBJacobiSetTotalBlocks
+#endif
+  interface
+  subroutine PCBJacobiGetTotalBlocks(pc,blocks,lens, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC
+  PC :: pc
+  PetscInt :: blocks
+  PetscInt, pointer :: lens(:)
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCBJacobiGetTotalBlocks
+#endif
+  interface
+  subroutine PCBJacobiSetLocalBlocks(pc,blocks,lens, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC
+  PC :: pc
+  PetscInt :: blocks
+  PetscInt :: lens(*)
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCBJacobiSetLocalBlocks
+#endif
+  interface
+  subroutine PCBJacobiGetLocalBlocks(pc,blocks,lens, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC
+  PC :: pc
+  PetscInt :: blocks
+  PetscInt, pointer :: lens(:)
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCBJacobiGetLocalBlocks
+#endif
+  interface
+  subroutine PCSPAISetEpsilon(pc,epsilon1, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC
+  PC :: pc
+  PetscReal :: epsilon1
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCSPAISetEpsilon
+#endif
+  interface
+  subroutine PCSPAISetNBSteps(pc,nbsteps1, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC
+  PC :: pc
+  PetscInt :: nbsteps1
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCSPAISetNBSteps
+#endif
+  interface
+  subroutine PCSPAISetMax(pc,max1, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC
+  PC :: pc
+  PetscInt :: max1
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCSPAISetMax
+#endif
+  interface
+  subroutine PCSPAISetMaxNew(pc,maxnew1, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC
+  PC :: pc
+  PetscInt :: maxnew1
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCSPAISetMaxNew
+#endif
+  interface
+  subroutine PCSPAISetBlockSize(pc,block_size1, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC
+  PC :: pc
+  PetscInt :: block_size1
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCSPAISetBlockSize
+#endif
+  interface
+  subroutine PCSPAISetCacheSize(pc,cache_size, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC
+  PC :: pc
+  PetscInt :: cache_size
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCSPAISetCacheSize
+#endif
+  interface
+  subroutine PCSPAISetVerbose(pc,verbose, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC
+  PC :: pc
+  PetscInt :: verbose
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCSPAISetVerbose
+#endif
+  interface
+  subroutine PCSPAISetSp(pc,sp, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC
+  PC :: pc
+  PetscInt :: sp
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCSPAISetSp
+#endif
+  interface
+  subroutine PCRedundantSetNumber(pc,nredundant, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC
+  PC :: pc
+  PetscInt :: nredundant
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCRedundantSetNumber
+#endif
+  interface
+  subroutine PCRedundantSetScatter(pc,in,out, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC,tVecScatter
+  PC :: pc
+  VecScatter :: in
+  VecScatter :: out
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCRedundantSetScatter
+#endif
+  interface
+  subroutine PCRedundantGetOperators(pc,mat,pmat, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC,tMat
+  PC :: pc
+  Mat :: mat
+  Mat :: pmat
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCRedundantGetOperators
+#endif
+  interface
+  subroutine PCLMVMSetUpdateVec(pc,X, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC,tVec
+  PC :: pc
+  Vec :: X
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCLMVMSetUpdateVec
+#endif
+  interface
+  subroutine PCLMVMSetMatLMVM(pc,B, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC,tMat
+  PC :: pc
+  Mat :: B
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCLMVMSetMatLMVM
+#endif
+  interface
+  subroutine PCLMVMGetMatLMVM(pc,B, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC,tMat
+  PC :: pc
+  Mat :: B
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCLMVMGetMatLMVM
+#endif
+  interface
+  subroutine PCLMVMSetIS(pc,inactive, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC,tIS
+  PC :: pc
+  IS :: inactive
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCLMVMSetIS
+#endif
+  interface
+  subroutine PCLMVMClearIS(pc, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC
+  PC :: pc
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCLMVMClearIS
+#endif
+  interface
+  subroutine PCFieldSplitRestrictIS(pc,isy, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC,tIS
+  PC :: pc
+  IS :: isy
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCFieldSplitRestrictIS
+#endif
+  interface
+  subroutine PCFieldSplitSetFields(pc,splitname,n,fields,fields_col, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC
+  PC :: pc
+  character(*) :: splitname
+  PetscInt :: n
+  PetscInt :: fields(*)
+  PetscInt :: fields_col(*)
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCFieldSplitSetFields
+#endif
+  interface
+  subroutine PCFieldSplitSetDiagUseAmat(pc,flg, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC
+  PC :: pc
+  PetscBool :: flg
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCFieldSplitSetDiagUseAmat
+#endif
+  interface
+  subroutine PCFieldSplitGetDiagUseAmat(pc,flg, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC
+  PC :: pc
+  PetscBool :: flg
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCFieldSplitGetDiagUseAmat
+#endif
+  interface
+  subroutine PCFieldSplitSetOffDiagUseAmat(pc,flg, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC
+  PC :: pc
+  PetscBool :: flg
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCFieldSplitSetOffDiagUseAmat
+#endif
+  interface
+  subroutine PCFieldSplitGetOffDiagUseAmat(pc,flg, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC
+  PC :: pc
+  PetscBool :: flg
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCFieldSplitGetOffDiagUseAmat
+#endif
+  interface
+  subroutine PCFieldSplitSetIS(pc,splitname,is, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC,tIS
+  PC :: pc
+  character(*) :: splitname
+  IS :: is
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCFieldSplitSetIS
+#endif
+  interface
+  subroutine PCFieldSplitGetIS(pc,splitname,is, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC,tIS
+  PC :: pc
+  character(*) :: splitname
+  IS :: is
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCFieldSplitGetIS
+#endif
+  interface
+  subroutine PCFieldSplitGetISByIndex(pc,index,is, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC,tIS
+  PC :: pc
+  PetscInt :: index
+  IS :: is
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCFieldSplitGetISByIndex
+#endif
+  interface
+  subroutine PCFieldSplitSetBlockSize(pc,bs, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC
+  PC :: pc
+  PetscInt :: bs
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCFieldSplitSetBlockSize
+#endif
+  interface
+  subroutine PCFieldSplitSetSchurPre(pc,ptype,pre, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC,ePCFieldSplitSchurPreType,tMat
+  PC :: pc
+  PCFieldSplitSchurPreType :: ptype
+  Mat :: pre
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCFieldSplitSetSchurPre
+#endif
+  interface
+  subroutine PCFieldSplitGetSchurPre(pc,ptype,pre, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC,ePCFieldSplitSchurPreType,tMat
+  PC :: pc
+  PCFieldSplitSchurPreType :: ptype
+  Mat :: pre
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCFieldSplitGetSchurPre
+#endif
+  interface
+  subroutine PCFieldSplitSchurGetS(pc,S, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC,tMat
+  PC :: pc
+  Mat :: S
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCFieldSplitSchurGetS
+#endif
+  interface
+  subroutine PCFieldSplitSchurRestoreS(pc,S, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC,tMat
+  PC :: pc
+  Mat :: S
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCFieldSplitSchurRestoreS
+#endif
+  interface
+  subroutine PCFieldSplitSetSchurFactType(pc,ftype, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC,ePCFieldSplitSchurFactType
+  PC :: pc
+  PCFieldSplitSchurFactType :: ftype
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCFieldSplitSetSchurFactType
+#endif
+  interface
+  subroutine PCFieldSplitSetSchurScale(pc,scale, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC
+  PC :: pc
+  PetscScalar :: scale
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCFieldSplitSetSchurScale
+#endif
+  interface
+  subroutine PCFieldSplitGetSchurBlocks(pc,A00,A01,A10,A11, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC,tMat
+  PC :: pc
+  Mat :: A00
+  Mat :: A01
+  Mat :: A10
+  Mat :: A11
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCFieldSplitGetSchurBlocks
+#endif
+  interface
+  subroutine PCFieldSplitSetGKBTol(pc,tolerance, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC
+  PC :: pc
+  PetscReal :: tolerance
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCFieldSplitSetGKBTol
+#endif
+  interface
+  subroutine PCFieldSplitSetGKBMaxit(pc,maxit, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC
+  PC :: pc
+  PetscInt :: maxit
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCFieldSplitSetGKBMaxit
+#endif
+  interface
+  subroutine PCFieldSplitSetGKBDelay(pc,delay, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC
+  PC :: pc
+  PetscInt :: delay
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCFieldSplitSetGKBDelay
+#endif
+  interface
+  subroutine PCFieldSplitSetGKBNu(pc,nu, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC
+  PC :: pc
+  PetscReal :: nu
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCFieldSplitSetGKBNu
+#endif
+  interface
+  subroutine PCFieldSplitSetType(pc,type, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC,ePCCompositeType
+  PC :: pc
+  PCCompositeType :: type
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCFieldSplitSetType
+#endif
+  interface
+  subroutine PCFieldSplitGetType(pc,type, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC,ePCCompositeType
+  PC :: pc
+  PCCompositeType :: type
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCFieldSplitGetType
+#endif
+  interface
+  subroutine PCFieldSplitSetDMSplits(pc,flg, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC
+  PC :: pc
+  PetscBool :: flg
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCFieldSplitSetDMSplits
+#endif
+  interface
+  subroutine PCFieldSplitGetDMSplits(pc,flg, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC
+  PC :: pc
+  PetscBool :: flg
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCFieldSplitGetDMSplits
+#endif
+  interface
+  subroutine PCFieldSplitGetDetectSaddlePoint(pc,flg, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC
+  PC :: pc
+  PetscBool :: flg
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCFieldSplitGetDetectSaddlePoint
+#endif
+  interface
+  subroutine PCFieldSplitSetDetectSaddlePoint(pc,flg, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC
+  PC :: pc
+  PetscBool :: flg
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCFieldSplitSetDetectSaddlePoint
+#endif
+  interface
+  subroutine PCGASMSetTotalSubdomains(pc,N, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC
+  PC :: pc
+  PetscInt :: N
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCGASMSetTotalSubdomains
+#endif
+  interface
+  subroutine PCGASMSetSubdomains(pc,n,iis,ois, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC,tIS
+  PC :: pc
+  PetscInt :: n
+  IS :: iis(*)
+  IS :: ois(*)
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCGASMSetSubdomains
+#endif
+  interface
+  subroutine PCGASMSetOverlap(pc,ovl, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC
+  PC :: pc
+  PetscInt :: ovl
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCGASMSetOverlap
+#endif
+  interface
+  subroutine PCGASMSetType(pc,type, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC,ePCGASMType
+  PC :: pc
+  PCGASMType :: type
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCGASMSetType
+#endif
+  interface
+  subroutine PCGASMSetSortIndices(pc,doSort, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC
+  PC :: pc
+  PetscBool :: doSort
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCGASMSetSortIndices
+#endif
+  interface
+  subroutine PCGASMCreateSubdomains(A,N,M_n,iis, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tMat,tIS
+  Mat :: A
+  PetscInt :: N
+  PetscInt :: M_n
+  IS, pointer :: iis(:)
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCGASMCreateSubdomains
+#endif
+  interface
+  subroutine PCGASMDestroySubdomains(n,iis,ois, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tIS
+  PetscInt :: n
+  IS, pointer :: iis(:)
+  IS, pointer :: ois(:)
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCGASMDestroySubdomains
+#endif
+  interface
+  subroutine PCGASMCreateSubdomains2D(pc,M,N,Mdomains,Ndomains,dof,overlap,nsub,iis,ois, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC,tIS
+  PC :: pc
+  PetscInt :: M
+  PetscInt :: N
+  PetscInt :: Mdomains
+  PetscInt :: Ndomains
+  PetscInt :: dof
+  PetscInt :: overlap
+  PetscInt :: nsub
+  IS, pointer :: iis(:)
+  IS, pointer :: ois(:)
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCGASMCreateSubdomains2D
+#endif
+  interface
+  subroutine PCGASMGetSubdomains(pc,n,iis,ois, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC,tIS
+  PC :: pc
+  PetscInt :: n
+  IS, pointer :: iis(:)
+  IS, pointer :: ois(:)
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCGASMGetSubdomains
+#endif
+  interface
+  subroutine PCGASMGetSubmatrices(pc,n,mat, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC,tMat
+  PC :: pc
+  PetscInt :: n
+  Mat, pointer :: mat(:)
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCGASMGetSubmatrices
+#endif
+  interface
+  subroutine PCGASMSetUseDMSubdomains(pc,flg, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC
+  PC :: pc
+  PetscBool :: flg
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCGASMSetUseDMSubdomains
+#endif
+  interface
+  subroutine PCGASMGetUseDMSubdomains(pc,flg, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC
+  PC :: pc
+  PetscBool :: flg
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCGASMGetUseDMSubdomains
+#endif
+  interface
+  subroutine PCHYPRESetDiscreteGradient(pc,G, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC,tMat
+  PC :: pc
+  Mat :: G
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCHYPRESetDiscreteGradient
+#endif
+  interface
+  subroutine PCHYPRESetDiscreteCurl(pc,C, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC,tMat
+  PC :: pc
+  Mat :: C
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCHYPRESetDiscreteCurl
+#endif
+  interface
+  subroutine PCHYPRESetInterpolations(pc,dim,RT_PiFull,RT_Pi,ND_PiFull,ND_Pi, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC,tMat
+  PC :: pc
+  PetscInt :: dim
+  Mat :: RT_PiFull
+  Mat :: RT_Pi(*)
+  Mat :: ND_PiFull
+  Mat :: ND_Pi(*)
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCHYPRESetInterpolations
+#endif
+  interface
+  subroutine PCHYPRESetAlphaPoissonMatrix(pc,A, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC,tMat
+  PC :: pc
+  Mat :: A
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCHYPRESetAlphaPoissonMatrix
+#endif
+  interface
+  subroutine PCHYPRESetBetaPoissonMatrix(pc,A, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC,tMat
+  PC :: pc
+  Mat :: A
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCHYPRESetBetaPoissonMatrix
+#endif
+  interface
+  subroutine PCHYPRESetEdgeConstantVectors(pc,ozz,zoz,zzo, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC,tVec
+  PC :: pc
+  Vec :: ozz
+  Vec :: zoz
+  Vec :: zzo
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCHYPRESetEdgeConstantVectors
+#endif
+  interface
+  subroutine PCHYPREAMSSetInteriorNodes(pc,interior, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC,tVec
+  PC :: pc
+  Vec :: interior
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCHYPREAMSSetInteriorNodes
+#endif
+  interface
+  subroutine PCHYPRESetType(pc,name, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC
+  PC :: pc
+  character(*) :: name
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCHYPRESetType
+#endif
+  interface
+  subroutine PCHYPREGetType(pc,name, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC
+  PC :: pc
+  character(*) :: name
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCHYPREGetType
+#endif
+  interface
+  subroutine PCMGGalerkinSetMatProductAlgorithm(pc,name, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC
+  PC :: pc
+  character(*) :: name
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCMGGalerkinSetMatProductAlgorithm
+#endif
+  interface
+  subroutine PCMGGalerkinGetMatProductAlgorithm(pc,name, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC
+  PC :: pc
+  character(*) :: name
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCMGGalerkinGetMatProductAlgorithm
+#endif
+  interface
+  subroutine PCSORGetSymmetric(pc,flag, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC,eMatSORType
+  PC :: pc
+  MatSORType :: flag
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCSORGetSymmetric
+#endif
+  interface
+  subroutine PCSORGetOmega(pc,omega, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC
+  PC :: pc
+  PetscReal :: omega
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCSORGetOmega
+#endif
+  interface
+  subroutine PCSORGetIterations(pc,its,lits, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC
+  PC :: pc
+  PetscInt :: its
+  PetscInt :: lits
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCSORGetIterations
+#endif
+  interface
+  subroutine PCSORSetSymmetric(pc,flag, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC,eMatSORType
+  PC :: pc
+  MatSORType :: flag
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCSORSetSymmetric
+#endif
+  interface
+  subroutine PCSORSetOmega(pc,omega, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC
+  PC :: pc
+  PetscReal :: omega
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCSORSetOmega
+#endif
+  interface
+  subroutine PCSORSetIterations(pc,its,lits, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC
+  PC :: pc
+  PetscInt :: its
+  PetscInt :: lits
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCSORSetIterations
+#endif
+  interface
+  subroutine PCDeflationSetInitOnly(pc,flg, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC
+  PC :: pc
+  PetscBool :: flg
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCDeflationSetInitOnly
+#endif
+  interface
+  subroutine PCDeflationSetLevels(pc,max, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC
+  PC :: pc
+  PetscInt :: max
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCDeflationSetLevels
+#endif
+  interface
+  subroutine PCDeflationSetReductionFactor(pc,red, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC
+  PC :: pc
+  PetscInt :: red
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCDeflationSetReductionFactor
+#endif
+  interface
+  subroutine PCDeflationSetCorrectionFactor(pc,fact, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC
+  PC :: pc
+  PetscScalar :: fact
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCDeflationSetCorrectionFactor
+#endif
+  interface
+  subroutine PCDeflationSetSpaceToCompute(pc,type,size, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC,ePCDeflationSpaceType
+  PC :: pc
+  PCDeflationSpaceType :: type
+  PetscInt :: size
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCDeflationSetSpaceToCompute
+#endif
+  interface
+  subroutine PCDeflationSetSpace(pc,W,transpose, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC,tMat
+  PC :: pc
+  Mat :: W
+  PetscBool :: transpose
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCDeflationSetSpace
+#endif
+  interface
+  subroutine PCDeflationSetProjectionNullSpaceMat(pc,mat, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC,tMat
+  PC :: pc
+  Mat :: mat
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCDeflationSetProjectionNullSpaceMat
+#endif
+  interface
+  subroutine PCDeflationSetCoarseMat(pc,mat, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC,tMat
+  PC :: pc
+  Mat :: mat
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCDeflationSetCoarseMat
+#endif
+  interface
+  subroutine PCDeflationGetPC(pc,apc, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC
+  PC :: pc
+  PC :: apc
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCDeflationGetPC
+#endif
+  interface
+  subroutine PCGAMGSetNSmooths(pc,n, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC
+  PC :: pc
+  PetscInt :: n
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCGAMGSetNSmooths
+#endif
+  interface
+  subroutine PCGAMGSetAggressiveLevels(pc,n, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC
+  PC :: pc
+  PetscInt :: n
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCGAMGSetAggressiveLevels
+#endif
+  interface
+  subroutine PCGAMGMISkSetAggressive(pc,n, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC
+  PC :: pc
+  PetscInt :: n
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCGAMGMISkSetAggressive
+#endif
+  interface
+  subroutine PCGAMGSetAggressiveSquareGraph(pc,b, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC
+  PC :: pc
+  PetscBool :: b
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCGAMGSetAggressiveSquareGraph
+#endif
+  interface
+  subroutine PCGAMGMISkSetMinDegreeOrdering(pc,b, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC
+  PC :: pc
+  PetscBool :: b
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCGAMGMISkSetMinDegreeOrdering
+#endif
+  interface
+  subroutine PCGAMGSetLowMemoryFilter(pc,b, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC
+  PC :: pc
+  PetscBool :: b
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCGAMGSetLowMemoryFilter
+#endif
+  interface
+  subroutine PCGAMGSetGraphSymmetrize(pc,b, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC
+  PC :: pc
+  PetscBool :: b
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCGAMGSetGraphSymmetrize
+#endif
+  interface
+  subroutine PCGAMGSetProcEqLim(pc,n, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC
+  PC :: pc
+  PetscInt :: n
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCGAMGSetProcEqLim
+#endif
+  interface
+  subroutine PCGAMGSetCoarseEqLim(pc,n, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC
+  PC :: pc
+  PetscInt :: n
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCGAMGSetCoarseEqLim
+#endif
+  interface
+  subroutine PCGAMGSetRepartition(pc,n, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC
+  PC :: pc
+  PetscBool :: n
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCGAMGSetRepartition
+#endif
+  interface
+  subroutine PCGAMGSetUseSAEstEig(pc,b, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC
+  PC :: pc
+  PetscBool :: b
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCGAMGSetUseSAEstEig
+#endif
+  interface
+  subroutine PCGAMGSetRecomputeEstEig(pc,b, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC
+  PC :: pc
+  PetscBool :: b
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCGAMGSetRecomputeEstEig
+#endif
+  interface
+  subroutine PCGAMGSetEigenvalues(pc,emax,emin, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC
+  PC :: pc
+  PetscReal :: emax
+  PetscReal :: emin
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCGAMGSetEigenvalues
+#endif
+  interface
+  subroutine PCGAMGSetReuseInterpolation(pc,n, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC
+  PC :: pc
+  PetscBool :: n
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCGAMGSetReuseInterpolation
+#endif
+  interface
+  subroutine PCGAMGASMSetUseAggs(pc,flg, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC
+  PC :: pc
+  PetscBool :: flg
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCGAMGASMSetUseAggs
+#endif
+  interface
+  subroutine PCGAMGSetParallelCoarseGridSolve(pc,flg, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC
+  PC :: pc
+  PetscBool :: flg
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCGAMGSetParallelCoarseGridSolve
+#endif
+  interface
+  subroutine PCGAMGSetCpuPinCoarseGrids(pc,flg, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC
+  PC :: pc
+  PetscBool :: flg
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCGAMGSetCpuPinCoarseGrids
+#endif
+  interface
+  subroutine PCGAMGSetCoarseGridLayoutType(pc,flg, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC,ePCGAMGLayoutType
+  PC :: pc
+  PCGAMGLayoutType :: flg
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCGAMGSetCoarseGridLayoutType
+#endif
+  interface
+  subroutine PCGAMGSetNlevels(pc,n, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC
+  PC :: pc
+  PetscInt :: n
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCGAMGSetNlevels
+#endif
+  interface
+  subroutine PCGAMGASMSetHEM(pc,n, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC
+  PC :: pc
+  PetscInt :: n
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCGAMGASMSetHEM
+#endif
+  interface
+  subroutine PCGAMGSetThreshold(pc,v,n, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC
+  PC :: pc
+  PetscReal :: v(*)
+  PetscInt :: n
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCGAMGSetThreshold
+#endif
+  interface
+  subroutine PCGAMGSetRankReductionFactors(pc,v,n, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC
+  PC :: pc
+  PetscInt :: v(*)
+  PetscInt :: n
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCGAMGSetRankReductionFactors
+#endif
+  interface
+  subroutine PCGAMGSetThresholdScale(pc,v, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC
+  PC :: pc
+  PetscReal :: v
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCGAMGSetThresholdScale
+#endif
+  interface
+  subroutine PCGAMGSetType(pc,type, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC
+  PC :: pc
+  character(*) :: type
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCGAMGSetType
+#endif
+  interface
+  subroutine PCGAMGGetType(pc,type, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC
+  PC :: pc
+  character(*) :: type
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCGAMGGetType
+#endif
+  interface
+  subroutine PCGAMGSetInjectionIndex(pc,n,idx, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC
+  PC :: pc
+  PetscInt :: n
+  PetscInt :: idx(*)
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCGAMGSetInjectionIndex
+#endif
+  interface
+  subroutine PCGAMGInitializePackage(ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCGAMGInitializePackage
+#endif
+  interface
+  subroutine PCGAMGFinalizePackage(ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCGAMGFinalizePackage
+#endif
+  interface
+  subroutine PCGAMGRegister(type,create, ierr)
+  use, intrinsic :: ISO_C_binding
+  character(*) :: type
+  external :: create
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCGAMGRegister
+#endif
+  interface
+  subroutine PCGAMGCreateGraph(pc,A,G, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC,tMat
+  PC :: pc
+  Mat :: A
+  Mat :: G
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCGAMGCreateGraph
+#endif
+  interface
+  subroutine PCGAMGClassicalSetType(pc,type, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC
+  PC :: pc
+  character(*) :: type
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCGAMGClassicalSetType
+#endif
+  interface
+  subroutine PCGAMGClassicalGetType(pc,type, ierr)
+  use, intrinsic :: ISO_C_binding
+  import tPC
+  PC :: pc
+  character(*) :: type
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCGAMGClassicalGetType
+#endif
+  interface
+  subroutine PCFinalizePackage(ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCFinalizePackage
+#endif
+  interface
+  subroutine PCInitializePackage(ierr)
+  use, intrinsic :: ISO_C_binding
+  PetscErrorCode, intent(out) :: ierr
+  end subroutine
+  end interface
+#if defined(_WIN32) && defined(PETSC_USE_SHARED_LIBRARIES)
+!DEC$ ATTRIBUTES DLLEXPORT::PCInitializePackage
+#endif
+  interface operator(.ne.)
+    module procedure PCnotequals
+  end interface operator (.ne.)
+  interface operator(.eq.)
+    module procedure PCequals
+  end interface operator (.eq.)
+
+  interface PetscObjectCast
+    module procedure PetscObjectCastPC
+  end interface
+  interface PetscBarrier
+  module procedure PetscBarrierPC
+  end interface
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectSAWsTakeAccess
+    module procedure PetscObjectSAWsTakeAccessPC
+  end interface
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectSAWsGrantAccess
+    module procedure PetscObjectSAWsGrantAccessPC
+  end interface
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectSAWsBlock
+    module procedure PetscObjectSAWsBlockPC
+  end interface
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectSAWsSetBlock
+    module procedure PetscObjectSAWsSetBlockPC
+  end interface
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectSAWsViewOff
+    module procedure PetscObjectSAWsViewOffPC
+  end interface
+#endif
+#if defined(PETSC_HAVE_SAWS)
+  interface PetscObjectViewSAWs
+    module procedure PetscObjectViewSAWsPC
+  end interface
+#endif
+  interface PetscObjectGetType
+    module procedure PetscObjectGetTypePC
+  end interface
+  interface PetscObjectSetPrintedOptions
+    module procedure PetscObjectSetPrintedOptionsPC
+  end interface
+  interface PetscObjectInheritPrintedOptions
+    module procedure PetscObjectInheritPrintedOptionsPC
+  end interface
+  interface PetscObjectAddOptionsHandler
+    module procedure PetscObjectAddOptionsHandlerPC
+  end interface
+  interface PetscObjectProcessOptionsHandlers
+    module procedure PetscObjectProcessOptionsHandlersPC
+  end interface
+  interface PetscObjectDestroyOptionsHandlers
+    module procedure PetscObjectDestroyOptionsHandlersPC
+  end interface
+  interface PetscObjectReference
+    module procedure PetscObjectReferencePC
+  end interface
+  interface PetscObjectGetReference
+    module procedure PetscObjectGetReferencePC
+  end interface
+  interface PetscObjectDereference
+    module procedure PetscObjectDereferencePC
+  end interface
+  interface PetscObjectRemoveReference
+    module procedure PetscObjectRemoveReferencePC
+  end interface
+  interface PetscObjectHasFunction
+    module procedure PetscObjectHasFunctionPC
+  end interface
+  interface PetscObjectSetFromOptions
+    module procedure PetscObjectSetFromOptionsPC
+  end interface
+  interface PetscObjectSetUp
+    module procedure PetscObjectSetUpPC
+  end interface
+  interface PetscObjectGetName
+    module procedure PetscObjectGetNamePC
+  end interface
+  interface PetscObjectDestroy
+    module procedure PetscObjectDestroyPC
+  end interface
+  interface PetscObjectView
+    module procedure PetscObjectViewPC
+  end interface
+  interface PetscObjectViewFromOptions
+    module procedure PetscObjectViewFromOptionsPC
+  end interface
+  interface PetscObjectTypeCompare
+    module procedure PetscObjectTypeComparePC
+  end interface
+  interface PetscObjectObjectTypeCompare
+    module procedure PetscObjectObjectTypeComparePC
+  end interface
+  interface PetscObjectBaseTypeCompare
+    module procedure PetscObjectBaseTypeComparePC
+  end interface
+  interface PetscObjectRegisterDestroy
+    module procedure PetscObjectRegisterDestroyPC
+  end interface
+  interface PetscObjectGetId
+    module procedure PetscObjectGetIdPC
+  end interface
+  interface PetscObjectCompareId
+    module procedure PetscObjectCompareIdPC
+  end interface
+  interface PetscObjectGetOptions
+    module procedure PetscObjectGetOptionsPC
+  end interface
+  interface PetscObjectSetOptions
+    module procedure PetscObjectSetOptionsPC
+  end interface
+  interface PetscObjectSetOptionsPrefix
+    module procedure PetscObjectSetOptionsPrefixPC
+  end interface
+  interface PetscObjectAppendOptionsPrefix
+    module procedure PetscObjectAppendOptionsPrefixPC
+  end interface
+  interface PetscObjectGetOptionsPrefix
+    module procedure PetscObjectGetOptionsPrefixPC
+  end interface
+  interface PetscObjectPrependOptionsPrefix
+    module procedure PetscObjectPrependOptionsPrefixPC
+  end interface
+  interface PetscObjectGetComm
+    module procedure PetscObjectGetCommPC
+  end interface
+  interface PetscObjectGetTabLevel
+    module procedure PetscObjectGetTabLevelPC
+  end interface
+  interface PetscObjectSetTabLevel
+    module procedure PetscObjectSetTabLevelPC
+  end interface
+  interface PetscObjectIncrementTabLevel
+    module procedure PetscObjectIncrementTabLevelPC
+  end interface
+  interface PetscObjectGetNewTag
+    module procedure PetscObjectGetNewTagPC
+  end interface
+  interface PetscObjectGetClassId
+    module procedure PetscObjectGetClassIdPC
+  end interface
+  interface PetscObjectGetClassName
+    module procedure PetscObjectGetClassNamePC
+  end interface
+  interface PetscObjectSetName
+    module procedure PetscObjectSetNamePC
+  end interface
+  interface PetscObjectPrintClassNamePrefixType
+    module procedure PetscObjectPrintClassNamePrefixTypePC
+  end interface
+  interface PetscObjectName
+    module procedure PetscObjectNamePC
+  end interface
+  interface PetscObjectChangeTypeName
+    module procedure PetscObjectChangeTypeNamePC
+  end interface
+  interface operator(.ne.)
+    module procedure PCSidenotequals
+  end interface operator (.ne.)
+  interface operator(.eq.)
+    module procedure PCSideequals
+  end interface operator (.eq.)
+
+  interface operator(.ne.)
+    module procedure PCRichardsonConvergedReasonnotequals
+  end interface operator (.ne.)
+  interface operator(.eq.)
+    module procedure PCRichardsonConvergedReasonequals
+  end interface operator (.eq.)
+
+  interface operator(.ne.)
+    module procedure PCJacobiTypenotequals
+  end interface operator (.ne.)
+  interface operator(.eq.)
+    module procedure PCJacobiTypeequals
+  end interface operator (.eq.)
+
+  interface operator(.ne.)
+    module procedure PCASMTypenotequals
+  end interface operator (.ne.)
+  interface operator(.eq.)
+    module procedure PCASMTypeequals
+  end interface operator (.eq.)
+
+  interface operator(.ne.)
+    module procedure PCGASMTypenotequals
+  end interface operator (.ne.)
+  interface operator(.eq.)
+    module procedure PCGASMTypeequals
+  end interface operator (.eq.)
+
+  interface operator(.ne.)
+    module procedure PCCompositeTypenotequals
+  end interface operator (.ne.)
+  interface operator(.eq.)
+    module procedure PCCompositeTypeequals
+  end interface operator (.eq.)
+
+  interface operator(.ne.)
+    module procedure PCFieldSplitSchurPreTypenotequals
+  end interface operator (.ne.)
+  interface operator(.eq.)
+    module procedure PCFieldSplitSchurPreTypeequals
+  end interface operator (.eq.)
+
+  interface operator(.ne.)
+    module procedure PCFieldSplitSchurFactTypenotequals
+  end interface operator (.ne.)
+  interface operator(.eq.)
+    module procedure PCFieldSplitSchurFactTypeequals
+  end interface operator (.eq.)
+
+  interface operator(.ne.)
+    module procedure PCPARMSGlobalTypenotequals
+  end interface operator (.ne.)
+  interface operator(.eq.)
+    module procedure PCPARMSGlobalTypeequals
+  end interface operator (.eq.)
+
+  interface operator(.ne.)
+    module procedure PCPARMSLocalTypenotequals
+  end interface operator (.ne.)
+  interface operator(.eq.)
+    module procedure PCPARMSLocalTypeequals
+  end interface operator (.eq.)
+
+  interface operator(.ne.)
+    module procedure PCMGTypenotequals
+  end interface operator (.ne.)
+  interface operator(.eq.)
+    module procedure PCMGTypeequals
+  end interface operator (.eq.)
+
+  interface operator(.ne.)
+    module procedure PCMGCycleTypenotequals
+  end interface operator (.ne.)
+  interface operator(.eq.)
+    module procedure PCMGCycleTypeequals
+  end interface operator (.eq.)
+
+  interface operator(.ne.)
+    module procedure PCMGGalerkinTypenotequals
+  end interface operator (.ne.)
+  interface operator(.eq.)
+    module procedure PCMGGalerkinTypeequals
+  end interface operator (.eq.)
+
+  interface operator(.ne.)
+    module procedure PCExoticTypenotequals
+  end interface operator (.ne.)
+  interface operator(.eq.)
+    module procedure PCExoticTypeequals
+  end interface operator (.eq.)
+
+  interface operator(.ne.)
+    module procedure PCBDDCInterfaceExtTypenotequals
+  end interface operator (.ne.)
+  interface operator(.eq.)
+    module procedure PCBDDCInterfaceExtTypeequals
+  end interface operator (.eq.)
+
+  interface operator(.ne.)
+    module procedure PCMGCoarseSpaceTypenotequals
+  end interface operator (.ne.)
+  interface operator(.eq.)
+    module procedure PCMGCoarseSpaceTypeequals
+  end interface operator (.eq.)
+
+  interface operator(.ne.)
+    module procedure PCPatchConstructTypenotequals
+  end interface operator (.ne.)
+  interface operator(.eq.)
+    module procedure PCPatchConstructTypeequals
+  end interface operator (.eq.)
+
+  interface operator(.ne.)
+    module procedure PCDeflationSpaceTypenotequals
+  end interface operator (.ne.)
+  interface operator(.eq.)
+    module procedure PCDeflationSpaceTypeequals
+  end interface operator (.eq.)
+
+  interface operator(.ne.)
+    module procedure PCHPDDMCoarseCorrectionTypenotequals
+  end interface operator (.ne.)
+  interface operator(.eq.)
+    module procedure PCHPDDMCoarseCorrectionTypeequals
+  end interface operator (.eq.)
+
+  interface operator(.ne.)
+    module procedure PCHPDDMSchurPreTypenotequals
+  end interface operator (.ne.)
+  interface operator(.eq.)
+    module procedure PCHPDDMSchurPreTypeequals
+  end interface operator (.eq.)
+
+  interface operator(.ne.)
+    module procedure PCFailedReasonnotequals
+  end interface operator (.ne.)
+  interface operator(.eq.)
+    module procedure PCFailedReasonequals
+  end interface operator (.eq.)
+
+  interface operator(.ne.)
+    module procedure PCGAMGLayoutTypenotequals
+  end interface operator (.ne.)
+  interface operator(.eq.)
+    module procedure PCGAMGLayoutTypeequals
+  end interface operator (.eq.)
+
